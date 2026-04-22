@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAHP Toolkit — Workflow Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & Variables ───────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  /* ToIP brand palette */
+  --navy:       #1a3c5e;
+  --navy-light: #234d78;
+  --teal:       #0a9396;
+  --teal-light: #94d2bd;
+  --teal-pale:  #e0f4f4;
+  --sky:        #0077b6;
+
+  /* Neutrals */
+  --white:      #ffffff;
+  --off-white:  #f8fafc;
+  --border:     #e2e8f0;
+  --border-med: #cbd5e1;
+  --muted:      #64748b;
+  --faint:      #94a3b8;
+  --text:       #1e293b;
+  --text-light: #334155;
+
+  /* Stage colours */
+  --c-scope:    #1a3c5e;
+  --c-draft:    #0a9396;
+  --c-review:   #2a6496;
+  --c-publish:  #2d6a4f;
+  --c-maintain: #7b4f12;
+
+  /* Functional */
+  --gap:        #b45309;
+  --gap-bg:     #fffbeb;
+  --gap-border: #fcd34d;
+  --persona:    #6b21a8;
+  --persona-bg: #f5f3ff;
+  --bad-actor:  #991b1b;
+  --bad-bg:     #fef2f2;
+  --extreme:    #9a3412;
+  --extreme-bg: #fff7ed;
+
+  --radius:     8px;
+  --radius-lg:  12px;
+  --shadow-sm:  0 1px 3px rgba(0,0,0,.08);
+  --shadow:     0 4px 16px rgba(26,60,94,.10);
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--white);
+  color:var(--text);
+  font-size:14px;
+  line-height:1.6;
+  min-height:100vh;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────── */
+.site-header{
+  background:var(--navy);
+  padding:20px 40px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:3px solid var(--teal);
+}
+.header-brand{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.header-logo{
+  width:48px;
+  height:48px;
+}
+.header-title{
+  color:var(--white);
+}
+.header-title h1{
+  font-family:'DM Serif Display',serif;
+  font-size:22px;
+  font-weight:400;
+  letter-spacing:-0.3px;
+  line-height:1.2;
+}
+.header-title p{
+  font-size:12px;
+  color:var(--teal-light);
+  font-weight:500;
+  letter-spacing:0.04em;
+  margin-top:2px;
+}
+.header-meta{
+  font-size:11px;
+  color:var(--teal-light);
+  text-align:right;
+  line-height:1.6;
+}
+
+/* ── Nav tabs ────────────────────────────────────────────────────────── */
+.tab-nav{
+  background:var(--navy);
+  padding:0 40px;
+  display:flex;
+  gap:0;
+  border-bottom:1px solid rgba(255,255,255,.1);
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.tab-nav::-webkit-scrollbar{display:none}
+
+.tab-btn{
+  background:none;
+  border:none;
+  color:rgba(255,255,255,.55);
+  font-family:'Inter',sans-serif;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:0.04em;
+  padding:14px 20px;
+  cursor:pointer;
+  border-bottom:3px solid transparent;
+  white-space:nowrap;
+  transition:all .2s;
+  position:relative;
+  top:1px;
+}
+.tab-btn:hover{color:rgba(255,255,255,.85)}
+.tab-btn.active{
+  color:var(--white);
+  border-bottom-color:var(--teal);
+}
+.tab-num{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:rgba(255,255,255,.12);
+  font-size:10px;
+  margin-right:6px;
+  font-weight:600;
+}
+.tab-btn.active .tab-num{background:var(--teal)}
+
+/* ── Main content ────────────────────────────────────────────────────── */
+.main{max-width:1200px;margin:0 auto;padding:0 40px 60px}
+
+.diagram-panel{display:none}
+.diagram-panel.active{display:block}
+
+/* ── Section headings ─────────────────────────────────────────────────── */
+.panel-header{
+  padding:32px 0 24px;
+  border-bottom:1px solid var(--border);
+  margin-bottom:28px;
+}
+.panel-header .stage-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  padding:4px 10px;
+  border-radius:20px;
+  margin-bottom:10px;
+}
+.panel-header h2{
+  font-family:'DM Serif Display',serif;
+  font-size:28px;
+  font-weight:400;
+  color:var(--navy);
+  letter-spacing:-.4px;
+  line-height:1.2;
+  margin-bottom:8px;
+}
+.panel-header .subtitle{
+  color:var(--muted);
+  font-size:14px;
+  max-width:680px;
+  line-height:1.65;
+}
+
+/* ── Gap callout ──────────────────────────────────────────────────────── */
+.gap-box{
+  background:var(--gap-bg);
+  border:1px solid var(--gap-border);
+  border-left:4px solid var(--gap);
+  border-radius:var(--radius);
+  padding:14px 18px;
+  margin:20px 0;
+  font-size:13px;
+}
+.gap-box-title{
+  font-weight:600;
+  color:var(--gap);
+  font-size:12px;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  margin-bottom:6px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.gap-box ul{margin:6px 0 0 16px;color:var(--text-light)}
+.gap-box li{margin-bottom:3px}
+
+/* ── Workflow layout ────────────────────────────────────────────────── */
+.workflow-container{display:flex;flex-direction:column;gap:0}
+
+.flow-step{
+  display:grid;
+  grid-template-columns:220px 1fr;
+  gap:0;
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  margin-bottom:12px;
+  box-shadow:var(--shadow-sm);
+}
+.flow-step-label{
+  padding:20px 18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:8px;
+}
+.flow-step-label h3{
+  font-size:14px;
+  font-weight:700;
+  line-height:1.3;
+}
+.flow-step-label .step-num{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.08em;
+  opacity:.7;
+  text-transform:uppercase;
+}
+.flow-step-label .step-io{
+  font-size:11px;
+  line-height:1.5;
+  opacity:.75;
+}
+.flow-step-body{
+  background:var(--white);
+  padding:20px 24px;
+  border-left:1px solid var(--border);
+}
+.flow-step-body p{
+  font-size:13px;
+  line-height:1.65;
+  color:var(--text-light);
+  margin-bottom:8px;
+}
+.flow-step-body p:last-child{margin-bottom:0}
+
+/* Step colour variants */
+.step-context  .flow-step-label{background:var(--navy);color:var(--white)}
+.step-draft    .flow-step-label{background:var(--teal);color:var(--white)}
+.step-review   .flow-step-label{background:#1d4ed8;color:var(--white)}
+.step-publish  .flow-step-label{background:#166534;color:var(--white)}
+.step-maintain .flow-step-label{background:#92400e;color:var(--white)}
+
+/* ── Pill tags ─────────────────────────────────────────────────────── */
+.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  font-weight:500;
+  padding:2px 8px;
+  border-radius:4px;
+}
+.tag-artefact{background:#e0f4f4;color:#0e7490}
+.tag-persona {background:var(--persona-bg);color:var(--persona)}
+.tag-gap     {background:var(--gap-bg);color:var(--gap)}
+.tag-input   {background:#f0fdf4;color:#15803d}
+.tag-output  {background:#eff6ff;color:#1d4ed8}
+
+/* ── Overview diagram ─────────────────────────────────────────────── */
+.overview-svg-wrap{
+  background:var(--off-white);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:24px;
+  margin-bottom:24px;
+  overflow-x:auto;
+}
+.overview-svg-wrap svg{display:block;min-width:760px}
+
+/* ── Phase blocks (detail diagrams) ────────────────────────────────── */
+.phase-block{
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  margin-bottom:16px;
+}
+.phase-header{
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  cursor:pointer;
+  user-select:none;
+}
+.phase-header h3{
+  font-size:14px;
+  font-weight:600;
+  color:var(--white);
+  letter-spacing:.01em;
+}
+.phase-header .phase-label{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  opacity:.75;
+  color:var(--white);
+}
+.phase-header .toggle{
+  font-size:18px;
+  color:rgba(255,255,255,.6);
+  transition:transform .2s;
+  line-height:1;
+}
+.phase-block.open .toggle{transform:rotate(180deg)}
+.phase-content{
+  display:none;
+  padding:20px 24px;
+  background:var(--white);
+  border-top:1px solid var(--border);
+}
+.phase-block.open .phase-content{display:block}
+
+/* Activity list */
+.activity-list{
+  list-style:none;
+  margin:12px 0;
+}
+.activity-list li{
+  padding:8px 0 8px 20px;
+  border-bottom:1px solid var(--border);
+  font-size:13px;
+  color:var(--text-light);
+  line-height:1.55;
+  position:relative;
+}
+.activity-list li::before{
+  content:'→';
+  position:absolute;
+  left:0;
+  color:var(--teal);
+  font-weight:600;
+}
+.activity-list li:last-child{border-bottom:none}
+
+/* Input / output strips */
+.io-strip{
+  display:flex;
+  gap:8px;
+  padding:12px 0;
+  flex-wrap:wrap;
+}
+.io-label{
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.07em;
+  color:var(--faint);
+  margin-bottom:6px;
+}
+.io-section{flex:1;min-width:200px}
+
+/* Connector arrows between phases */
+.phase-connector{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:4px 0;
+  color:var(--teal);
+  font-size:20px;
+}
+
+/* ── Overview grid ─────────────────────────────────────────────────── */
+.overview-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+  margin-bottom:24px;
+}
+.ov-card{
+  border-radius:var(--radius);
+  overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow-sm);
+  cursor:pointer;
+  transition:transform .15s, box-shadow .15s;
+}
+.ov-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.ov-card-head{
+  padding:14px 14px 10px;
+  color:var(--white);
+}
+.ov-card-head .num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  opacity:.65;
+  display:block;
+  margin-bottom:4px;
+}
+.ov-card-head h3{
+  font-size:13px;
+  font-weight:600;
+  line-height:1.25;
+}
+.ov-card-body{
+  padding:12px 14px;
+  background:var(--white);
+}
+.ov-card-body p{
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.5;
+  margin-bottom:8px;
+}
+.ov-card-artefacts{display:flex;flex-wrap:wrap;gap:4px}
+.ov-artefact{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  padding:1px 6px;
+  border-radius:3px;
+  background:#f1f5f9;
+  color:#475569;
+}
+
+/* Stage card colours */
+.ov-scope{background:var(--navy)}
+.ov-draft{background:var(--teal)}
+.ov-review{background:#1d4ed8}
+.ov-publish{background:#166534}
+.ov-maintain{background:#92400e}
+
+/* ── Feedback track ────────────────────────────────────────────────── */
+.feedback-track{
+  background:linear-gradient(135deg,#f8fafc 0%,#f0fdf4 100%);
+  border:2px dashed var(--teal-light);
+  border-radius:var(--radius-lg);
+  padding:20px 24px;
+  margin:24px 0;
+}
+.feedback-track h3{
+  font-size:14px;
+  font-weight:600;
+  color:var(--teal);
+  margin-bottom:8px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.feedback-track p{
+  font-size:13px;
+  color:var(--text-light);
+  line-height:1.6;
+}
+
+/* ── Principle cards ───────────────────────────────────────────────── */
+.principles-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:16px 0;
+}
+.principle-card{
+  background:var(--off-white);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:14px 16px;
+}
+.principle-card h4{
+  font-size:13px;
+  font-weight:600;
+  color:var(--navy);
+  margin-bottom:6px;
+}
+.principle-card p{
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.55;
+}
+
+/* ── Two-column layout ─────────────────────────────────────────────── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.col-card{
+  background:var(--off-white);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:16px 18px;
+}
+.col-card h4{
+  font-size:13px;
+  font-weight:600;
+  color:var(--navy);
+  margin-bottom:8px;
+  padding-bottom:8px;
+  border-bottom:1px solid var(--border);
+}
+.col-card ul{
+  list-style:none;
+  font-size:12.5px;
+  color:var(--text-light);
+}
+.col-card li{
+  padding:4px 0 4px 14px;
+  position:relative;
+  line-height:1.5;
+}
+.col-card li::before{content:'·';position:absolute;left:2px;color:var(--teal);font-weight:700}
+
+/* ── Loop diagram ──────────────────────────────────────────────────── */
+.loop-container{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:0;
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  margin:16px 0;
+}
+.loop-step{
+  padding:16px;
+  text-align:center;
+  border-right:1px solid var(--border);
+  position:relative;
+}
+.loop-step:last-child{border-right:none}
+.loop-step::after{
+  content:'→';
+  position:absolute;
+  right:-10px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--teal);
+  font-weight:700;
+  font-size:16px;
+  z-index:1;
+}
+.loop-step:last-child::after{content:none}
+.loop-step h4{
+  font-size:12px;
+  font-weight:700;
+  color:var(--navy);
+  margin:8px 0 4px;
+}
+.loop-step p{font-size:11.5px;color:var(--muted);line-height:1.4}
+.loop-icon{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:var(--teal-pale);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:16px;
+}
+
+/* ── Three-track layout ──────────────────────────────────────────────── */
+.track-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:12px;
+  margin:16px 0;
+}
+.track{
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+}
+.track-head{
+  padding:10px 14px;
+  font-size:12px;
+  font-weight:600;
+  color:var(--white);
+}
+.track-body{
+  padding:14px;
+  background:var(--white);
+}
+.track-body ul{
+  list-style:none;
+  font-size:12px;
+  color:var(--text-light);
+}
+.track-body li{
+  padding:4px 0 4px 14px;
+  position:relative;
+  line-height:1.5;
+  border-bottom:1px solid var(--border);
+}
+.track-body li:last-child{border-bottom:none}
+.track-body li::before{content:'›';position:absolute;left:0;color:var(--teal);font-weight:700}
+
+/* ── Maintenance trigger cards ──────────────────────────────────────── */
+.trigger-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:16px 0;
+}
+.trigger-card{
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+}
+.trigger-head{
+  padding:12px 16px;
+  font-size:12px;
+  font-weight:600;
+  color:var(--white);
+}
+.trigger-body{
+  padding:14px 16px;
+  font-size:12.5px;
+  color:var(--text-light);
+  line-height:1.55;
+}
+
+/* ── Footer ─────────────────────────────────────────────────────────── */
+.site-footer{
+  background:var(--navy);
+  color:rgba(255,255,255,.5);
+  text-align:center;
+  padding:24px 40px;
+  font-size:12px;
+  margin-top:40px;
+  border-top:3px solid var(--teal);
+}
+.site-footer a{color:var(--teal-light);text-decoration:none}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+@media(max-width:900px){
+  .main{padding:0 20px 40px}
+  .overview-grid{grid-template-columns:repeat(2,1fr)}
+  .two-col,.track-layout,.trigger-grid,.principles-grid{grid-template-columns:1fr}
+  .loop-container{grid-template-columns:1fr 1fr}
+  .flow-step{grid-template-columns:1fr}
+  .site-header,.tab-nav{padding-left:20px;padding-right:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- ── Header ─────────────────────────────────────────────────────────── -->
+<header class="site-header">
+  <div class="header-brand">
+    <svg class="header-logo" viewBox="0 0 48 48" fill="none">
+      <circle cx="24" cy="24" r="22" fill="#0a9396" opacity=".15"/>
+      <circle cx="24" cy="24" r="14" fill="#0a9396" opacity=".25"/>
+      <circle cx="24" cy="24" r="7"  fill="#0a9396"/>
+      <circle cx="24" cy="10" r="4"  fill="#94d2bd"/>
+      <circle cx="38" cy="32" r="4"  fill="#94d2bd"/>
+      <circle cx="10" cy="32" r="4"  fill="#94d2bd"/>
+    </svg>
+    <div class="header-title">
+      <h1>RAHP Toolkit — Workflow Reference</h1>
+      <p>Risk Assessment &amp; Harms Prevention Task Force · LFDT / ToIP / DIF · v1 · April 2026</p>
+    </div>
+  </div>
+  <div class="header-meta">
+    CC-BY 4.0<br>
+    LFDT / ToIP / DIF
+  </div>
+</header>
+
+<!-- ── Tab nav ────────────────────────────────────────────────────────── -->
+<nav class="tab-nav" id="tab-nav">
+  <button class="tab-btn active" onclick="showTab(0)"><span class="tab-num">0</span>Overview</button>
+  <button class="tab-btn" onclick="showTab(1)"><span class="tab-num">1</span>Context &amp; scoping</button>
+  <button class="tab-btn" onclick="showTab(2)"><span class="tab-num">2</span>Drafting</button>
+  <button class="tab-btn" onclick="showTab(3)"><span class="tab-num">3</span>Review &amp; harmonisation</button>
+  <button class="tab-btn" onclick="showTab(4)"><span class="tab-num">4</span>Publication</button>
+  <button class="tab-btn" onclick="showTab(5)"><span class="tab-num">5</span>Maintenance</button>
+</nav>
+
+<main class="main">
+
+<!-- ════════════════════════════════════════════════════
+     TAB 0 — OVERVIEW
+════════════════════════════════════════════════════ -->
+<div class="diagram-panel active" id="panel-0">
+  <div class="panel-header">
+    <div class="stage-badge" style="background:var(--teal-pale);color:var(--teal)">Standards lifecycle map</div>
+    <h2>RAHP Toolkit across the standards development lifecycle</h2>
+    <p class="subtitle">The RAHP Toolkit is active across all five stages of standards development. People and implementation context drive everything — the Context stage is the generative engine from which all downstream artefacts derive their analytical grounding. Click any stage card to open the detailed workflow.</p>
+  </div>
+
+  <!-- Stage overview cards -->
+  <div class="overview-grid">
+    <div class="ov-card" onclick="showTab(1)">
+      <div class="ov-card-head ov-scope">
+        <span class="num">Stage 1</span>
+        <h3>Context &amp; scoping</h3>
+      </div>
+      <div class="ov-card-body">
+        <p>Participant mapping, extreme users, bad-actor identification, persona synthesis, objective mapping, context validation.</p>
+        <div class="ov-card-artefacts">
+          <span class="ov-artefact">Personas</span>
+          <span class="ov-artefact">Objectives</span>
+          <span class="ov-artefact">Scenarios</span>
+          <span class="ov-artefact">Context baseline</span>
+        </div>
+      </div>
+    </div>
+    <div class="ov-card" onclick="showTab(2)">
+      <div class="ov-card-head ov-draft">
+        <span class="num">Stage 2</span>
+        <h3>Drafting</h3>
+      </div>
+      <div class="ov-card-body">
+        <p>Iterative risk-design-control cycling. Every design decision assessed against the toolkit before acceptance into draft.</p>
+        <div class="ov-card-artefacts">
+          <span class="ov-artefact">RK-xx</span>
+          <span class="ov-artefact">CT-xx</span>
+          <span class="ov-artefact">GR-xx</span>
+          <span class="ov-artefact">M-xx</span>
+          <span class="ov-artefact">AT-xx</span>
+        </div>
+      </div>
+    </div>
+    <div class="ov-card" onclick="showTab(3)">
+      <div class="ov-card-head ov-review">
+        <span class="num">Stage 3</span>
+        <h3>Review &amp; harmonisation</h3>
+      </div>
+      <div class="ov-card-body">
+        <p>Cross-standard alignment, community review, formal risk acceptance. Spec recommendations (REC-xx) produced.</p>
+        <div class="ov-card-artefacts">
+          <span class="ov-artefact">REC-xx</span>
+          <span class="ov-artefact">Risk acceptance</span>
+          <span class="ov-artefact">Updated artefacts</span>
+        </div>
+      </div>
+    </div>
+    <div class="ov-card" onclick="showTab(4)">
+      <div class="ov-card-head ov-publish">
+        <span class="num">Stage 4</span>
+        <h3>Publication</h3>
+      </div>
+      <div class="ov-card-body">
+        <p>Version tagging, toolkit snapshot linked to standard version. Transition to implementation support tool.</p>
+        <div class="ov-card-artefacts">
+          <span class="ov-artefact">Version tag</span>
+          <span class="ov-artefact">CHANGELOG.md</span>
+          <span class="ov-artefact">JSON export</span>
+        </div>
+      </div>
+    </div>
+    <div class="ov-card" onclick="showTab(5)">
+      <div class="ov-card-head ov-maintain">
+        <span class="num">Stage 5</span>
+        <h3>Maintenance</h3>
+      </div>
+      <div class="ov-card-body">
+        <p>Three trigger streams: spec revision, operational experience, threat landscape change. CT-48 annual review cadence.</p>
+        <div class="ov-card-artefacts">
+          <span class="ov-artefact">CT-48 review</span>
+          <span class="ov-artefact">GP-xx</span>
+          <span class="ov-artefact">Updated toolkit</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overview SVG flow -->
+  <div class="overview-svg-wrap">
+    <svg viewBox="0 0 900 200" width="100%" style="font-family:'Inter',sans-serif">
+      <defs>
+        <marker id="ov-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M1 1L9 5L1 9" fill="none" stroke="#0a9396" stroke-width="1.5" stroke-linecap="round"/>
+        </marker>
+      </defs>
+      <!-- Stage boxes -->
+      <g>
+        <rect x="10"  y="60" width="150" height="80" rx="8" fill="#1a3c5e"/>
+        <text x="85"  y="93"  text-anchor="middle" fill="white" font-size="12" font-weight="600">Context</text>
+        <text x="85"  y="110" text-anchor="middle" fill="#94d2bd" font-size="10">&amp; scoping</text>
+        <text x="85"  y="128" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="9">Personas · Objectives</text>
+      </g>
+      <g>
+        <rect x="192" y="60" width="150" height="80" rx="8" fill="#0a9396"/>
+        <text x="267" y="93"  text-anchor="middle" fill="white" font-size="12" font-weight="600">Drafting</text>
+        <text x="267" y="110" text-anchor="middle" fill="rgba(255,255,255,.8)" font-size="10">Risk-design-control loop</text>
+        <text x="267" y="128" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="9">RK · CT · GR · AT · M</text>
+      </g>
+      <g>
+        <rect x="374" y="60" width="150" height="80" rx="8" fill="#1d4ed8"/>
+        <text x="449" y="93"  text-anchor="middle" fill="white" font-size="12" font-weight="600">Review</text>
+        <text x="449" y="110" text-anchor="middle" fill="rgba(255,255,255,.8)" font-size="10">&amp; harmonisation</text>
+        <text x="449" y="128" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="9">REC · Risk acceptance</text>
+      </g>
+      <g>
+        <rect x="556" y="60" width="150" height="80" rx="8" fill="#166534"/>
+        <text x="631" y="93"  text-anchor="middle" fill="white" font-size="12" font-weight="600">Publication</text>
+        <text x="631" y="110" text-anchor="middle" fill="rgba(255,255,255,.8)" font-size="10">Version tagging</text>
+        <text x="631" y="128" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="9">Snapshot · CHANGELOG</text>
+      </g>
+      <g>
+        <rect x="738" y="60" width="150" height="80" rx="8" fill="#92400e"/>
+        <text x="813" y="93"  text-anchor="middle" fill="white" font-size="12" font-weight="600">Maintenance</text>
+        <text x="813" y="110" text-anchor="middle" fill="rgba(255,255,255,.8)" font-size="10">CT-48 annual review</text>
+        <text x="813" y="128" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="9">3 trigger streams</text>
+      </g>
+      <!-- Forward arrows -->
+      <line x1="162" y1="100" x2="190" y2="100" stroke="#0a9396" stroke-width="1.5" marker-end="url(#ov-arr)"/>
+      <line x1="344" y1="100" x2="372" y2="100" stroke="#0a9396" stroke-width="1.5" marker-end="url(#ov-arr)"/>
+      <line x1="526" y1="100" x2="554" y2="100" stroke="#0a9396" stroke-width="1.5" marker-end="url(#ov-arr)"/>
+      <line x1="708" y1="100" x2="736" y2="100" stroke="#0a9396" stroke-width="1.5" marker-end="url(#ov-arr)"/>
+      <!-- Feedback track (dashed) -->
+      <rect x="10" y="155" width="878" height="28" rx="6" fill="none" stroke="#94d2bd" stroke-width="1.2" stroke-dasharray="6 4"/>
+      <text x="449" y="174" text-anchor="middle" fill="#0a9396" font-size="11" font-weight="500">Contribution &amp; iteration pathway  —  methodology under development; practitioner trials planned</text>
+    </svg>
+  </div>
+
+  <!-- People-driven callout -->
+  <div style="background:var(--teal-pale);border:1px solid var(--teal-light);border-left:4px solid var(--teal);border-radius:var(--radius);padding:16px 20px;margin-bottom:20px">
+    <p style="font-size:13px;color:#0e7490;font-weight:600;margin-bottom:4px">Core principle: people and implementation context drive everything</p>
+    <p style="font-size:13px;color:var(--text-light)">Every risk score, control, guardrail, assurance test, trust metric, and user story is only as analytically sound as the Context that preceded it. The toolkit is not a framework applied to a system — it is derived from a community. The artefacts are outputs of structured inquiry into human experience, not inputs to it.</p>
+  </div>
+
+  <div class="gap-box">
+    <div class="gap-box-title">⚠ Known gaps — overview level</div>
+    <ul>
+      <li>Formal risk acceptance workflow not yet defined (Stage 3)</li>
+      <li>Contribution intake process not yet implemented (all stages)</li>
+      <li>Feedback loop governance pending practitioner trials</li>
+      <li>No defined implementation guidance bridging toolkit to common deployment patterns (Stage 4)</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     TAB 1 — CONTEXT & SCOPING
+════════════════════════════════════════════════════ -->
+<div class="diagram-panel" id="panel-1">
+  <div class="panel-header">
+    <div class="stage-badge" style="background:#e0f4f4;color:var(--navy)">Stage 1</div>
+    <h2>Context &amp; scoping</h2>
+    <p class="subtitle">The generative engine of the toolkit. Everything downstream is only as sound as the contextual grounding produced here. Covers four phases: community inquiry, extreme user and bad-actor identification, persona synthesis, and context validation.</p>
+  </div>
+
+  <!-- Inclusive by design principles -->
+  <h3 style="font-size:14px;font-weight:600;color:var(--navy);margin-bottom:12px">Governing discipline: inclusive by design (Sovrin / Hickman)</h3>
+  <div class="principles-grid">
+    <div class="principle-card">
+      <h4>Design for the margins</h4>
+      <p>Extreme users define requirements, not middle cases. A standard designed only for the typical case will fail edge cases in ways that cause the most harm to the most vulnerable.</p>
+    </div>
+    <div class="principle-card">
+      <h4>No-one left behind</h4>
+      <p>Participation must not require technical literacy, legal literacy, or social capital that many legitimate participants will not have. Barriers to participation are a design failure, not a user problem.</p>
+    </div>
+    <div class="principle-card">
+      <h4>Harm prevention as first-class design</h4>
+      <p>Harm prevention is not a mitigation layer added after design. It is a design input that constrains choices from the outset. The RAHP toolkit operationalises this.</p>
+    </div>
+    <div class="principle-card">
+      <h4>Power asymmetry awareness</h4>
+      <p>Trust systems concentrate power in particular roles (initiators, anchors, IDVPs). That concentration must be accounted for in the design, not assumed away.</p>
+    </div>
+    <div class="principle-card">
+      <h4>Represent those who cannot speak</h4>
+      <p>Communities who are most affected by design failures are often those least able to attend a working group meeting. Systematic representation is a requirement, not a courtesy.</p>
+    </div>
+    <div class="principle-card">
+      <h4>Interoperability of human experience</h4>
+      <p>Standards that interoperate technically but produce different human outcomes in different contexts have not solved the interoperability problem.</p>
+    </div>
+  </div>
+
+  <!-- Phase A -->
+  <div class="phase-block open">
+    <div class="phase-header" style="background:var(--navy)" onclick="togglePhase(this)">
+      <div>
+        <div class="phase-label">Phase A</div>
+        <h3>Community inquiry — who is in this system and what do they need?</h3>
+      </div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="phase-content">
+      <p style="font-size:13px;color:var(--text-light);margin-bottom:14px">This phase is participatory and qualitative. It cannot be done at a desk. The outputs are raw material, not finished artefacts. The working group charter and implementation context document are the starting anchors.</p>
+      <ul class="activity-list">
+        <li>Identify the full participant landscape — who interacts with, depends on, or is affected by the system, including people who have no voice in the working group</li>
+        <li>Conduct or commission structured engagement with participant representatives across the full range — not just the technically engaged</li>
+        <li>Explicitly seek out harm-exposed communities: people who would be most affected by design failures, not most able to influence design decisions</li>
+        <li>Document the implementation context: technical architecture, lifecycle phases, jurisdictional scope, regulatory environment</li>
+        <li>For DTG specifically: document VTC bootstrapping phases 1–4 as the implementation context anchor</li>
+      </ul>
+      <div class="io-strip">
+        <div class="io-section">
+          <div class="io-label">Input</div>
+          <div class="tag-row">
+            <span class="tag tag-input">WG charter</span>
+            <span class="tag tag-input">Problem statement</span>
+            <span class="tag tag-input">Technical scope</span>
+          </div>
+        </div>
+        <div class="io-section">
+          <div class="io-label">Output</div>
+          <div class="tag-row">
+            <span class="tag tag-output">Raw participant map</span>
+            <span class="tag tag-output">Implementation context doc</span>
+          </div>
+        </div>
+      </div>
+      <div class="gap-box">
+        <div class="gap-box-title">⚠ Gap</div>
+        <ul>
+          <li>No defined standard for how much community inquiry is sufficient before Phase B can begin</li>
+          <li>No protocol for representing communities who cannot participate directly (children, people in high-risk political contexts, future users). The Verifiable AI SDJ methodology (Hickman, 2025) provides a partial approach — not yet integrated into toolkit workflow</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase-connector">↓</div>
+
+  <!-- Phase B -->
+  <div class="phase-block open">
+    <div class="phase-header" style="background:#7b2d8b" onclick="togglePhase(this)">
+      <div>
+        <div class="phase-label">Phase B</div>
+        <h3>Extreme users and bad-actor identification</h3>
+      </div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="phase-content">
+      <p style="font-size:13px;color:var(--text-light);margin-bottom:14px">Explicitly separated from general participant mapping because it requires a different analytical stance — systematic imagination of edge cases, failure modes, and adversarial motivations. This is where the inclusive by design discipline is most critical.</p>
+
+      <div class="two-col">
+        <div class="col-card" style="border-top:3px solid #9a3412">
+          <h4 style="color:#9a3412">Extreme users</h4>
+          <ul>
+            <li>Participants without conventional government-issued identity documents</li>
+            <li>Participants in jurisdictions with hostile state actors</li>
+            <li>Participants whose community membership is itself sensitive or dangerous to disclose</li>
+            <li>Participants with accessibility needs that standard credential UX does not serve</li>
+            <li>Participants with very low technical or legal literacy</li>
+            <li>Participants who are subject to coercion from within their own community</li>
+          </ul>
+          <p style="font-size:11.5px;color:var(--muted);margin-top:10px;padding-top:8px;border-top:1px solid var(--border)"><strong>Design principle:</strong> designing for extreme users produces systems robust enough to serve the mainstream. The extreme case is not an afterthought — it is the stress test that reveals design failures that only become visible at the edges.</p>
+        </div>
+        <div class="col-card" style="border-top:3px solid var(--bad-actor)">
+          <h4 style="color:var(--bad-actor)">Bad-actor personas</h4>
+          <ul>
+            <li><strong>B1 Viktor</strong> — Sybil network operator: AI-mediated identity fraud at scale, collusive vouching, registry manipulation</li>
+            <li><strong>B2 State Security Directorate</strong> — state-level coercive actor: legal coercion of IDVPs, anchor pressure, revocation weaponisation</li>
+            <li><strong>B3 The Collective</strong> — community disruptor: coordinated inauthentic behaviour, governance bandwidth exhaustion, disinformation</li>
+          </ul>
+          <p style="font-size:11.5px;color:var(--muted);margin-top:10px;padding-top:8px;border-top:1px solid var(--border)"><strong>Calibration discipline:</strong> bad-actor personas must be precisely calibrated to actual capabilities. An implausible threat model produces controls calibrated to the wrong risk. Viktor does not have infinite resources; the State Security Directorate does not need to break the cryptography.</p>
+        </div>
+      </div>
+
+      <ul class="activity-list">
+        <li>Research documented threat classes specific to the system type — for DTG: Sybil attacks, state coercion of identity infrastructure, CIB in governance</li>
+        <li>Draft initial bad-actor persona narratives grounded in published threat intelligence (sourced)</li>
+        <li>Identify extreme user profiles from Phase A participant map — who has the hardest participation pathway?</li>
+        <li>Check whether each extreme user type is currently represented in the preliminary participant map, or would be systematically missed by the working group's natural gravity towards the technically engaged</li>
+      </ul>
+
+      <div class="io-strip">
+        <div class="io-section">
+          <div class="io-label">Input</div>
+          <div class="tag-row">
+            <span class="tag tag-input">Raw participant map (Phase A)</span>
+            <span class="tag tag-input">Threat intelligence</span>
+          </div>
+        </div>
+        <div class="io-section">
+          <div class="io-label">Output</div>
+          <div class="tag-row">
+            <span class="tag tag-output">Extreme user profiles</span>
+            <span class="tag tag-output">Bad-actor persona drafts</span>
+          </div>
+        </div>
+      </div>
+      <div class="gap-box">
+        <div class="gap-box-title">⚠ Gap</div>
+        <ul>
+          <li>No formal completeness criterion for extreme user identification — no defined test for when you have identified enough</li>
+          <li>No protocol for validating that bad-actor threat calibration is realistic rather than over- or under-stated</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase-connector">↓</div>
+
+  <!-- Phase C -->
+  <div class="phase-block">
+    <div class="phase-header" style="background:#0e7490" onclick="togglePhase(this)">
+      <div>
+        <div class="phase-label">Phase C</div>
+        <h3>Persona synthesis — abstracting participants into analytical instruments</h3>
+      </div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="phase-content">
+      <p style="font-size:13px;color:var(--text-light);margin-bottom:14px">Personas in the RAHP sense are not marketing personas or UX proto-personas. They are analytical instruments that carry simultaneously: realistic human context, documented objectives and vulnerabilities, risk context, and lifecycle phase linkage.</p>
+      <ul class="activity-list">
+        <li>Abstract raw participants into persona types — each persona traceable to at least one participant type from Phase A or B</li>
+        <li>Document for each persona: realistic context, primary objectives, vulnerabilities, risk exposure, lifecycle phase activity, inclusion/exclusion factors</li>
+        <li>Apply specificity discipline: "a new member in a jurisdiction with weak rule of law" is more analytically useful than "a new member"</li>
+        <li>Avoid stereotyping discipline: specificity must not collapse into caricature or encode assumptions that bias the analysis</li>
+        <li>Link machine agent personas (M-series) to their human operators and the delegation relationships that make them trustworthy or dangerous</li>
+        <li>Review persona set for coverage: every lifecycle phase should have at least one persona whose primary risk exposure occurs in that phase</li>
+      </ul>
+      <div class="io-strip">
+        <div class="io-section">
+          <div class="io-label">Input</div>
+          <div class="tag-row">
+            <span class="tag tag-input">Raw participant map</span>
+            <span class="tag tag-input">Extreme user profiles</span>
+            <span class="tag tag-input">Bad-actor drafts</span>
+          </div>
+        </div>
+        <div class="io-section">
+          <div class="io-label">Output</div>
+          <div class="tag-row">
+            <span class="tag tag-output">Initial persona set</span>
+            <span class="tag tag-artefact">D1–D6 · M1–M2 · B1–B3</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase-connector">↓</div>
+
+  <!-- Phase D -->
+  <div class="phase-block">
+    <div class="phase-header" style="background:#1d4ed8" onclick="togglePhase(this)">
+      <div>
+        <div class="phase-label">Phase D</div>
+        <h3>Objective mapping and context validation</h3>
+      </div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="phase-content">
+      <p style="font-size:13px;color:var(--text-light);margin-bottom:14px">Bridges the human layer (personas and goals) and the technical layer (what properties the standard must specify). Also the point at which objective tensions are surfaced explicitly — these are not design errors, they are governance decisions that the standard must address.</p>
+      <ul class="activity-list">
+        <li>For each persona: map objectives to system-level properties the objectives require</li>
+        <li>Identify objective tensions — where legitimate participant objectives conflict, surface them explicitly rather than resolving them implicitly in favour of the most powerful party</li>
+        <li>Cross-reference the implementation context to check which risks are real (technically plausible) versus theoretical given the actual system</li>
+        <li>Coverage check: at minimum, the persona set must include at least one harm subject (D5-type), one bad-actor per threat class, one extreme user with significantly harder participation pathway than mainstream</li>
+        <li>Version-control and link the validated baseline — this is the authoritative input to all downstream stages</li>
+      </ul>
+      <div class="io-strip">
+        <div class="io-section">
+          <div class="io-label">Input</div>
+          <div class="tag-row">
+            <span class="tag tag-input">Initial persona set</span>
+            <span class="tag tag-input">Implementation context doc</span>
+          </div>
+        </div>
+        <div class="io-section">
+          <div class="io-label">Output</div>
+          <div class="tag-row">
+            <span class="tag tag-output">Validated context baseline</span>
+            <span class="tag tag-output">Objectives map</span>
+            <span class="tag tag-output">Coverage check results</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feedback-track" style="margin-top:20px">
+    <h3>↩ Contribution back to toolkit</h3>
+    <p>The raw participant map, persona set, and objectives map are committed to the shared repository at the end of scoping — even in draft form. Provisional personas committed early are far more valuable than polished personas committed late, because they establish the human grounding for all subsequent technical decisions. Provenance is tracked: who contributed each persona, what fieldwork or source material it is based on.</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     TAB 2 — DRAFTING
+════════════════════════════════════════════════════ -->
+<div class="diagram-panel" id="panel-2">
+  <div class="panel-header">
+    <div class="stage-badge" style="background:#e0f4f4;color:var(--teal)">Stage 2</div>
+    <h2>Drafting</h2>
+    <p class="subtitle">The most intensive period of toolkit use. The workflow is a continuous loop — not sequential assessment after design, but genuine iteration where risk assessment informs design as it develops. Every significant design choice is proposed, assessed, controlled, and documented before acceptance.</p>
+  </div>
+
+  <!-- The loop -->
+  <h3 style="font-size:14px;font-weight:600;color:var(--navy);margin-bottom:12px">The risk-design-control cycle</h3>
+  <div class="loop-container">
+    <div class="loop-step">
+      <div class="loop-icon">✏</div>
+      <h4>1. Propose</h4>
+      <p>Design choice proposed with explicit statement of which personas it affects and which objectives it serves or constrains</p>
+    </div>
+    <div class="loop-step">
+      <div class="loop-icon">⚖</div>
+      <h4>2. Assess</h4>
+      <p>Cross-referenced against risk register: existing risks affected, new risks surfaced, guardrails implicated</p>
+    </div>
+    <div class="loop-step">
+      <div class="loop-icon">🔧</div>
+      <h4>3. Control</h4>
+      <p>Controls and guardrails selected or proposed. Metric linkage checked — every control needs a measurable signal</p>
+    </div>
+    <div class="loop-step">
+      <div class="loop-icon">📝</div>
+      <h4>4. Document</h4>
+      <p>Design choice, affected risks, selected controls, toolkit additions — all documented with provenance tags</p>
+    </div>
+  </div>
+  <p style="font-size:12px;color:var(--muted);text-align:center;margin-bottom:20px">Loop restarts with next design proposal · Circles back to Propose if assessment requires fundamental revision</p>
+
+  <!-- Station details -->
+  <div class="phase-block open">
+    <div class="phase-header" style="background:var(--teal)" onclick="togglePhase(this)">
+      <div><div class="phase-label">Station 2</div><h3>Risk assessment — three questions every design choice must answer</h3></div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="phase-content">
+      <div class="track-layout">
+        <div class="track">
+          <div class="track-head" style="background:#b45309">Does it affect existing risks?</div>
+          <div class="track-body">
+            <ul>
+              <li>Check risk register for RK-xx entries affected by this design choice</li>
+              <li>Assess direction: does the choice increase or reduce severity / likelihood?</li>
+              <li>Update risk scores if warranted, with rationale and design decision reference</li>
+              <li>Example: a new revocation mechanism may reduce RK-HX03 while increasing RK-ID02</li>
+            </ul>
+          </div>
+        </div>
+        <div class="track">
+          <div class="track-head" style="background:var(--navy)">Does it introduce new risks?</div>
+          <div class="track-body">
+            <ul>
+              <li>Primary source of new RK-xx entries during drafting</li>
+              <li>Provisionally score new risks — flag for community review, not immediate permanent acceptance</li>
+              <li>Link to the design decision and persona that surfaced it</li>
+              <li>Blue-cell tag (or equivalent provenance marker) to track spec-sourced additions</li>
+            </ul>
+          </div>
+        </div>
+        <div class="track">
+          <div class="track-head" style="background:#991b1b">Does it affect a guardrail?</div>
+          <div class="track-body">
+            <ul>
+              <li>A design choice that makes a GR-xx guardrail technically unenforceable needs revision or a corresponding guardrail update</li>
+              <li>This is not negotiable — guardrails are binary phase-gate pre-conditions, not aspirations</li>
+              <li>Document the implication explicitly; do not paper over it</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase-block">
+    <div class="phase-header" style="background:var(--teal)" onclick="togglePhase(this)">
+      <div><div class="phase-label">Station 3</div><h3>Control and guardrail selection — with mandatory metric linkage</h3></div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="phase-content">
+      <ul class="activity-list">
+        <li>For each affected risk: are existing CT-xx controls still adequate, or do they need revision given this design choice?</li>
+        <li>For new risks: what controls are technically and governancally feasible within the proposed design?</li>
+        <li>Every accepted control must be linked to at least one M-xx metric — a control without a metric link is unmonitorable</li>
+        <li>Every new guardrail must have a corresponding AT-xx assurance test — a guardrail without a test is unverifiable</li>
+        <li>Assess residual risk after controls: is it acceptable, or does the design need fundamental revision?</li>
+      </ul>
+      <div class="gap-box">
+        <div class="gap-box-title">⚠ Gap</div>
+        <ul>
+          <li>No defined protocol for what constitutes "adequate control coverage" before a design choice is accepted into the draft</li>
+          <li>No agreed threshold for when a newly surfaced risk requires a full persona update versus a note in the register</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="phase-block">
+    <div class="phase-header" style="background:var(--teal)" onclick="togglePhase(this)">
+      <div><div class="phase-label">Station 4</div><h3>Documentation and provenance — contributions back to the toolkit</h3></div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="phase-content">
+      <p style="font-size:13px;color:var(--text-light);margin-bottom:12px">The documentation step serves two purposes: audit trail for the design decision, and contribution back to the shared toolkit. These are the same action, not two separate steps.</p>
+      <ul class="activity-list">
+        <li>Record: the design choice, the risks it affects, the controls selected, any new risks or controls added, any guardrail updates</li>
+        <li>Apply provenance tag to all additions: which design decision triggered this, which spec version, who proposed it</li>
+        <li>Additions to the toolkit arising from specific design decisions are marked with their source — not added silently to the register</li>
+        <li>Extreme users surfaced by the drafting process are added to the Phase B working document for persona review</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="feedback-track">
+    <h3>↩ Contributions generated at this stage</h3>
+    <p>New RK-xx risks, revised risk scores, new CT-xx controls, guardrail updates, new AT-xx tests, new M-xx metric requirements, and extreme user additions — all tagged with the design decision and spec version that triggered them. This is the primary source of toolkit evolution between major revision cycles.</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     TAB 3 — REVIEW & HARMONISATION
+════════════════════════════════════════════════════ -->
+<div class="diagram-panel" id="panel-3">
+  <div class="panel-header">
+    <div class="stage-badge" style="background:#dbeafe;color:#1d4ed8">Stage 3</div>
+    <h2>Review &amp; harmonisation</h2>
+    <p class="subtitle">Three parallel tracks operating simultaneously: cross-standard alignment, community review, and formal risk acceptance. They converge at a harmonisation point before the draft proceeds to publication. The toolkit shifts from generative to evaluative — assessing proposed changes against the established baseline.</p>
+  </div>
+
+  <div class="track-layout" style="margin-bottom:16px">
+    <div class="track">
+      <div class="track-head" style="background:#1d4ed8">Track 1: Cross-standard alignment</div>
+      <div class="track-body">
+        <ul>
+          <li>Compare spec against W3C DID Core, VC Data Model, OpenID4VP, eIDAS 2.0, GDPR, TRQP v2.0</li>
+          <li>Identify gaps: risks unaddressed by spec but addressed by an adjacent standard → resolvable by reference</li>
+          <li>Identify conflicts: normative provisions that cannot be reconciled → require working group decision</li>
+          <li>Produce REC-xx recommendations: normative requirements arising from gaps or conflicts</li>
+          <li>For DTG v1: REC-1 through REC-8 from v0.3 spec analysis</li>
+        </ul>
+      </div>
+    </div>
+    <div class="track">
+      <div class="track-head" style="background:#7b2d8b">Track 2: Community review</div>
+      <div class="track-body">
+        <ul>
+          <li>Open draft and toolkit artefacts to working group members, external reviewers, implementors</li>
+          <li>Active outreach to harm-exposed communities — passive public comment systematically underrepresents those most at risk</li>
+          <li>External persona validation: do the personas accurately represent the communities they abstract?</li>
+          <li>Extreme user review: do the design choices hold up under scrutiny from extreme user perspectives?</li>
+        </ul>
+      </div>
+    </div>
+    <div class="track">
+      <div class="track-head" style="background:#991b1b">Track 3: Formal risk acceptance</div>
+      <div class="track-body">
+        <ul>
+          <li>Every identified risk must either have adequate controls/guardrails, or be formally accepted</li>
+          <li>Formal acceptance requires: named decision-maker, documented rationale, review trigger, public record</li>
+          <li>Directly analogous to corporate information security residual risk acceptance — named accountability with audit trail</li>
+          <li>AT-17: all open issues have documented mitigations or risk acceptances signed by governing body</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="gap-box">
+    <div class="gap-box-title">⚠ Gaps — Review stage</div>
+    <ul>
+      <li><strong>Formal risk acceptance workflow not yet defined</strong> — who can accept a risk, under what authority, for how long, with what documentation. This is the most significant process gap in the current toolkit.</li>
+      <li>No defined process for community outreach during review — passive invitation is not sufficient</li>
+      <li>No protocol for translating community feedback not expressed in technical standards language into toolkit artefact updates</li>
+    </ul>
+  </div>
+
+  <!-- Harmonisation point -->
+  <div style="background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin:16px 0">
+    <h4 style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:8px">Harmonisation point — convergence before publication</h4>
+    <p style="font-size:13px;color:var(--text-light)">The three tracks converge. Conflicts between them — a cross-standard recommendation that conflicts with a community review request, a formal risk acceptance that a community reviewer objects to — require working group decision. The output is a consolidated set of revisions to both the draft specification and the toolkit artefacts, ready for final editorial review before publication.</p>
+  </div>
+
+  <div class="feedback-track">
+    <h3>↩ Contributions generated at this stage</h3>
+    <p>New risks identified by external reviewers, refined risk scores from implementation feedback, updated persona set where review reveals unrepresented participant types, formal risk acceptances recorded with full provenance, REC-xx recommendations added to spec review register.</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     TAB 4 — PUBLICATION
+════════════════════════════════════════════════════ -->
+<div class="diagram-panel" id="panel-4">
+  <div class="panel-header">
+    <div class="stage-badge" style="background:#dcfce7;color:#166534">Stage 4</div>
+    <h2>Publication</h2>
+    <p class="subtitle">A point-in-time event with ongoing implications. Version tagging links the toolkit snapshot to the standard version. The toolkit transitions from standards development tool to implementation support tool — the same artefacts serve both functions but the usage patterns differ.</p>
+  </div>
+
+  <div class="two-col">
+    <div class="col-card" style="border-top:3px solid #166534">
+      <h4>Pre-publication: version tagging</h4>
+      <ul>
+        <li>Snapshot current state of all toolkit artefacts</li>
+        <li>Tag with standard version (e.g. RAHP-v1 ↔ DTG-Credential-Spec-v1.0)</li>
+        <li>Relationship navigable in both directions: spec version → toolkit version, toolkit version → applicable spec versions</li>
+        <li>GitHub tagged release in dual format: Excel (canonical) + JSON export</li>
+        <li>CHANGELOG.md entry: what changed, what triggered it, who reviewed</li>
+        <li>All open issues and formal risk acceptances recorded in the released artefacts</li>
+      </ul>
+    </div>
+    <div class="col-card" style="border-top:3px solid #0a9396">
+      <h4>Post-publication: implementation support</h4>
+      <ul>
+        <li>Implementors ask: which controls are mandatory (guardrail-backed), recommended (controls catalogue), measurable (metric-linked), or governance decisions?</li>
+        <li>The toolkit provides the analytical framework for these questions — it does not prescribe implementation choices</li>
+        <li>Early adopter feedback begins feeding back through the implementation intake process</li>
+        <li>Implementation context data from real deployments updates the risk scoring where severity or likelihood diverges from design-time assessment</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="gap-box">
+    <div class="gap-box-title">⚠ Gaps — Publication stage</div>
+    <ul>
+      <li>No defined implementation guidance document bridging toolkit artefacts and common deployment patterns</li>
+      <li>No structured intake process for collecting implementation experience from early adopters</li>
+    </ul>
+  </div>
+
+  <!-- Version relationship diagram -->
+  <div style="background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin:16px 0">
+    <h4 style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:12px">Version relationship model</h4>
+    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+      <div style="background:var(--navy);color:white;padding:10px 16px;border-radius:6px;font-size:12px;font-weight:600;text-align:center">DTG Credential<br>Spec v0.3</div>
+      <div style="color:var(--teal);font-size:20px;font-weight:700">↔</div>
+      <div style="background:var(--teal);color:white;padding:10px 16px;border-radius:6px;font-size:12px;font-weight:600;text-align:center">RAHP Toolkit<br>v1 (April 2026)</div>
+      <div style="color:var(--muted);font-size:12px;max-width:300px">Risk Register v4 · User Stories Framework v3 · HTML reference site · Theory of Change SVG · Toolchain spreadsheet</div>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:10px">Future versions: each significant spec revision triggers a parallel toolkit update. The version relationship is explicit and navigable in the CHANGELOG.</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     TAB 5 — MAINTENANCE
+════════════════════════════════════════════════════ -->
+<div class="diagram-panel" id="panel-5">
+  <div class="panel-header">
+    <div class="stage-badge" style="background:#fef3c7;color:#92400e">Stage 5</div>
+    <h2>Maintenance</h2>
+    <p class="subtitle">The longest and most underserved stage. Three trigger streams feed into a triage and integration process. The CT-48 annual review is the primary integration cadence, but the monitoring process that feeds it is continuous. The periodic extreme user review is a required, not optional, component.</p>
+  </div>
+
+  <!-- Three triggers -->
+  <h3 style="font-size:14px;font-weight:600;color:var(--navy);margin-bottom:12px">Three trigger streams</h3>
+  <div class="trigger-grid">
+    <div class="trigger-card">
+      <div class="trigger-head" style="background:var(--navy)">Trigger 1: Specification revision</div>
+      <div class="trigger-body">
+        When the standard is revised, the toolkit is updated in parallel. The spec review process (Stage 3, Track 1) is repeated for revised sections. New artefacts arising from the revision are tagged with the spec version that triggered them. Every significant spec revision produces a corresponding toolkit version increment.
+      </div>
+    </div>
+    <div class="trigger-card">
+      <div class="trigger-head" style="background:var(--teal)">Trigger 2: Operational experience</div>
+      <div class="trigger-body">
+        Implementors, VTC operators, and community members report: harms that occurred, near-misses, controls that were infeasible, risks that were higher or lower severity than scored. Reports are structured against toolkit artefact types via the intake process (currently a known gap) and routed to the triage process.
+      </div>
+    </div>
+    <div class="trigger-card">
+      <div class="trigger-head" style="background:#92400e">Trigger 3: Threat landscape change</div>
+      <div class="trigger-body">
+        Relevant threat intelligence — new attack techniques, geopolitical shifts, regulatory changes, documented harms in analogous systems — is monitored and assessed for toolkit implications. CT-48 requires an annual review; the monitoring process that feeds it runs continuously between reviews.
+      </div>
+    </div>
+  </div>
+
+  <!-- Annual review -->
+  <div class="phase-block">
+    <div class="phase-header" style="background:#92400e" onclick="togglePhase(this)">
+      <div><div class="phase-label">CT-48 cadence</div><h3>Annual threat model review and toolkit update</h3></div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="phase-content">
+      <ul class="activity-list">
+        <li>Review all three trigger streams: spec changes, operational reports, threat intelligence since last review</li>
+        <li>Triage contributions: assess, prioritise, and prepare for integration</li>
+        <li>Update risk register: rescore risks where severity or likelihood has changed; add new risks; retire risks no longer relevant</li>
+        <li>Update controls and guardrails where implementation experience reveals gaps or infeasibilities</li>
+        <li>Periodic extreme user review: reassess persona set against current deployment landscape — who is now using the system that was not anticipated at scoping?</li>
+        <li>Formal risk acceptance review: revisit accepted risks against defined review triggers</li>
+        <li>Release new toolkit version with CHANGELOG entry</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Extreme user review -->
+  <div class="phase-block">
+    <div class="phase-header" style="background:#7b2d8b" onclick="togglePhase(this)">
+      <div><div class="phase-label">Required component</div><h3>Periodic extreme user review</h3></div>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="phase-content">
+      <p style="font-size:13px;color:var(--text-light);margin-bottom:12px">The inclusive by design commitment does not end at scoping. Extreme users tend to fall out of the persona set as standards development progresses, because the people most present in working group processes are not extreme users. Active mechanisms are needed to counteract this tendency.</p>
+      <ul class="activity-list">
+        <li>At each major revision cycle: reassess whether the persona set still represents the full range of people affected by the current version of the standard</li>
+        <li>Has the deployment landscape expanded to include participant types not anticipated at scoping?</li>
+        <li>Have new categories of harm-exposed participant emerged?</li>
+        <li>Has the threat landscape changed in ways that require new bad-actor personas?</li>
+        <li>Conduct direct engagement with communities representing current participants — not just desk review of existing artefacts</li>
+        <li>D3 and D5 analogue personas: the empirical test of whether the risk analysis was correct is the lived experience of people like Ahmed and Sophie in deployed VTCs</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="gap-box">
+    <div class="gap-box-title">⚠ Gaps — Maintenance stage (most significant cluster)</div>
+    <ul>
+      <li><strong>Contribution and integration governance not yet defined</strong> — no process for triage, review, and acceptance of community contributions; no defined authority for deciding what enters the next toolkit version</li>
+      <li>No structured intake process for operational experience reports from implementors</li>
+      <li>No monitoring process specified for threat landscape tracking between annual reviews</li>
+      <li>Governance Precedent Records (GP-xx) not yet defined — decisions are not currently retained between governance sessions</li>
+      <li><strong>Feedback loop design deliberately deferred</strong> — methodology under development; practitioner trials planned before specification. The feedback loop must be empirically grounded, not designed in theory and imposed on practitioners.</li>
+    </ul>
+  </div>
+
+  <div class="feedback-track">
+    <h3>↩ The contribution loop — open question</h3>
+    <p>The maintenance stage is where the contribution loop needs to be most clearly specified — and where it is most underspecified. The intake process, the triage governance, the integration authority, and the version release cadence all need to be defined through practitioner trials rather than top-down specification. This is acknowledged as the primary development priority for the toolkit after v1 publication. If you are an implementor or practitioner with experience of what works in practice, your input is explicitly requested.</p>
+  </div>
+</div>
+
+</main>
+
+<!-- ── Footer ─────────────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <p>Risk Assessment &amp; Harms Prevention Task Force · RAHP Toolkit v1 · April 2026 · <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a></p>
+  <p style="margin-top:6px">For DIF Trusted AI Agents WG · ToIP AI &amp; Human Trust WG · DTGWG · <a href="https://lf-toip.atlassian.net/">DTGWG GitHub</a></p>
+</footer>
+
+<script>
+function showTab(n){
+  document.querySelectorAll('.diagram-panel').forEach((p,i)=>{
+    p.classList.toggle('active',i===n);
+  });
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>{
+    b.classList.toggle('active',i===n);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function togglePhase(header){
+  const block = header.closest('.phase-block');
+  block.classList.toggle('open');
+}
+
+// Open first phase block in each panel on load
+document.querySelectorAll('.diagram-panel').forEach(panel=>{
+  const first = panel.querySelector('.phase-block');
+  if(first) first.classList.add('open');
+});
+</script>
+</body>
+</html>
