@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cross-Reference Matrix — DTG RAHP</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#f6f5f1;--surface:#fff;--surface2:#fafaf8;
+  --border:#e6e3db;--border2:#d4d0c6;
+  --text:#18170f;--muted:#6b6860;--faint:#a8a49a;
+  --blue:#1a47b8;--blue-bg:#eef1fb;--blue-mid:#c3ceee;--blue-dark:#0e2e7a;
+  --teal:#0a7560;--teal-bg:#e6f5f1;--teal-mid:#8dd4c4;
+  --amber:#9a4a00;--amber-bg:#fdf2e3;--amber-mid:#f0c07a;
+  --plum:#5b1fb5;--plum-bg:#f0eafb;--plum-mid:#c4b0f0;--plum-dark:#3b0f7a;
+  --red:#b82020;--red-bg:#fdf0ee;--red-mid:#e9b0a8;
+  --green:#145228;--green-bg:#edf7f0;
+  --font:'DM Sans',system-ui,sans-serif;
+  --mono:'DM Mono','Fira Code',monospace;
+  --r:8px;--rl:14px;--rxl:20px;
+  --sh:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
+  --shm:0 4px 16px rgba(0,0,0,.10);
+}
+
+body{font-family:var(--font);font-size:14px;line-height:1.6;color:var(--text);background:var(--bg);min-height:100vh}
+
+/* ── Layout ── */
+.layout{display:flex;min-height:100vh}
+
+.sidebar{
+  width:230px;min-width:230px;background:var(--surface);
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;
+  position:sticky;top:0;height:100vh;overflow-y:auto
+}
+.sb-brand{padding:22px 20px 18px;border-bottom:1px solid var(--border)}
+.sb-wordmark{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:3px}
+.sb-project{font-size:15px;font-weight:600;color:var(--text);line-height:1.3}
+.sb-nav{padding:10px 0;flex:1}
+.nav-group{padding:16px 20px 4px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.nav-a{
+  display:flex;align-items:center;gap:9px;padding:8px 20px;
+  font-size:13px;font-weight:400;color:var(--muted);text-decoration:none;
+  transition:background .1s,color .1s;border-left:2px solid transparent
+}
+.nav-a:hover{background:var(--bg);color:var(--text)}
+.nav-a.on{background:var(--bg);color:var(--text);font-weight:500;border-left-color:var(--text)}
+.nav-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.sb-foot{padding:14px 20px;border-top:1px solid var(--border);font-size:11px;color:var(--faint);line-height:1.7}
+
+.main{flex:1;overflow-x:hidden;max-width:calc(100vw - 230px)}
+.ph{padding:32px 40px 24px;border-bottom:1px solid var(--border);background:var(--surface)}
+.ph h1{font-size:22px;font-weight:600;letter-spacing:-.3px;margin-bottom:5px}
+.ph-sub{font-size:14px;color:var(--muted);max-width:680px;line-height:1.6}
+.content{padding:32px 40px}
+
+/* ── Intro banner ── */
+.intro-banner{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--rl);padding:28px 32px;margin-bottom:32px;
+  border-left:4px solid var(--plum)
+}
+.intro-banner h2{font-size:16px;font-weight:600;margin-bottom:10px;color:var(--plum-dark)}
+.intro-banner p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:8px}
+.intro-banner p:last-child{margin-bottom:0}
+.intro-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+.intro-step{background:var(--bg);border-radius:var(--r);padding:14px 16px}
+.intro-step strong{display:block;font-size:12px;font-weight:600;margin-bottom:4px;color:var(--text)}
+.intro-step span{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* ── Type legend ── */
+.legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:500}
+.chip-l{background:var(--blue-bg);color:var(--blue-dark)}
+.chip-m{background:var(--teal-bg);color:var(--teal)}
+.chip-b{background:var(--amber-bg);color:var(--amber)}
+.chip-dot{width:5px;height:5px;border-radius:50%;background:currentColor}
+
+/* ── Persona gallery ── */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+
+.pcard{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--rl);overflow:hidden;cursor:pointer;
+  transition:box-shadow .15s,border-color .15s,transform .12s
+}
+.pcard:hover{box-shadow:var(--shm);border-color:var(--border2);transform:translateY(-2px)}
+
+.pcard-img{
+  width:100%;height:200px;object-fit:cover;object-position:center top;
+  display:block;transition:transform .3s
+}
+.pcard:hover .pcard-img{transform:scale(1.03)}
+
+.pcard-body{padding:14px 16px 16px}
+.pcard-id{font-family:var(--mono);font-size:10px;font-weight:500;color:var(--faint);margin-bottom:2px}
+.pcard-name{font-size:14px;font-weight:600;margin-bottom:2px;line-height:1.3}
+.pcard-role{font-size:11px;color:var(--muted);margin-bottom:10px;line-height:1.4}
+.pcard-quote{
+  font-size:11px;font-style:italic;color:var(--muted);line-height:1.5;
+  border-left:2px solid var(--border2);padding-left:8px;margin-bottom:10px
+}
+.pcard-metrics{display:flex;flex-wrap:wrap;gap:3px}
+
+/* type accents */
+.pt-l .pcard-img-wrap::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--blue)}
+.pt-m .pcard-img-wrap::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--teal)}
+.pt-b .pcard-img-wrap::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--amber)}
+.pcard-img-wrap{position:relative;overflow:hidden}
+.pcard-type-bar{height:3px;width:100%}
+.pt-l .pcard-type-bar{background:var(--blue)}
+.pt-m .pcard-type-bar{background:var(--teal)}
+.pt-b .pcard-type-bar{background:var(--amber)}
+
+/* ── Right-side detail panel ── */
+.panel-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.2);z-index:200}
+.panel-overlay.open{display:block}
+.panel{
+  position:fixed;top:0;right:0;bottom:0;width:min(500px,92vw);
+  background:var(--surface);border-left:1px solid var(--border);
+  overflow-y:auto;transform:translateX(100%);
+  transition:transform .22s cubic-bezier(.4,0,.2,1);z-index:201;
+  display:flex;flex-direction:column
+}
+.panel.open{transform:translateX(0)}
+.panel-photo{width:100%;height:220px;object-fit:cover;object-position:center top;flex-shrink:0}
+.panel-body{padding:24px;flex:1}
+.panel-close{
+  position:absolute;top:14px;right:14px;z-index:10;
+  background:rgba(255,255,255,.85);backdrop-filter:blur(4px);
+  border:1px solid rgba(0,0,0,.12);border-radius:var(--r);
+  width:32px;height:32px;cursor:pointer;font-size:16px;
+  display:flex;align-items:center;justify-content:center;color:var(--muted)
+}
+.panel-close:hover{background:#fff}
+.panel-id{font-family:var(--mono);font-size:11px;color:var(--faint);margin-bottom:4px}
+.panel-name{font-size:20px;font-weight:600;margin-bottom:2px}
+.panel-role{font-size:13px;color:var(--muted);margin-bottom:16px}
+.panel-quote{
+  font-size:13px;font-style:italic;color:var(--muted);line-height:1.6;
+  border-left:3px solid var(--border2);padding:2px 0 2px 12px;margin-bottom:20px
+}
+.panel-sec{margin-bottom:18px}
+.panel-sec h4{font-size:10px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);margin-bottom:8px}
+.panel-concerns{list-style:none;padding:0}
+.panel-concerns li{font-size:12px;color:var(--muted);padding:4px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:6px}
+.panel-concerns li::before{content:'·';color:var(--faint);margin-top:1px}
+.pill-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+
+/* ── Pills ── */
+.pill{
+  display:inline-flex;align-items:center;padding:2px 7px;
+  border-radius:20px;font-size:11px;font-weight:500;font-family:var(--mono);
+  text-decoration:none;cursor:pointer;white-space:nowrap;
+  transition:opacity .1s;position:relative
+}
+.pill:hover{opacity:.8}
+.pm {background:var(--plum-bg); color:var(--plum)}
+.pu {background:var(--blue-bg); color:var(--blue-dark)}
+.psc{background:var(--teal-bg); color:var(--teal)}
+.pep{background:var(--amber-bg);color:var(--amber)}
+.prk{background:var(--red-bg);  color:var(--red)}
+.pct{background:#f0f4ff;        color:#2d4da0}
+.pat{background:#f5f0ff;        color:var(--plum-dark)}
+.pgr{background:#fff8ee;        color:var(--amber)}
+.ph-pill{background:var(--red-bg);  color:var(--red)}
+.pm-pill{background:var(--amber-bg);color:var(--amber)}
+.pl-pill{background:var(--green-bg);color:var(--green)}
+
+/* ── Tooltip ── */
+.tt{
+  position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);
+  background:var(--text);color:#fff;border-radius:var(--r);
+  padding:8px 12px;min-width:180px;max-width:280px;
+  font-size:12px;font-family:var(--font);font-weight:400;
+  line-height:1.4;white-space:normal;z-index:999;
+  pointer-events:none;opacity:0;transition:opacity .12s;
+  box-shadow:0 4px 12px rgba(0,0,0,.2)
+}
+.tt.show{opacity:1}
+.tt-title{font-weight:500;margin-bottom:2px}
+.tt-sub{opacity:.7;font-size:11px;margin-bottom:3px}
+.tt-desc{opacity:.8;font-size:11px}
+.tt::after{
+  content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:5px solid transparent;border-top-color:var(--text)
+}
+
+/* ── Filter bar ── */
+.fbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:20px}
+.finput{
+  padding:8px 12px;border:1px solid var(--border);border-radius:var(--r);
+  font-size:13px;font-family:var(--font);background:var(--surface);color:var(--text);
+  outline:none;transition:border-color .1s
+}
+.finput:focus{border-color:var(--border2);box-shadow:0 0 0 2px rgba(0,0,0,.05)}
+.fsel{
+  padding:7px 10px;border:1px solid var(--border);border-radius:var(--r);
+  font-size:13px;font-family:var(--font);background:var(--surface);color:var(--text);
+  cursor:pointer;outline:none
+}
+
+/* ── Tabs ── */
+.tabs{display:flex;gap:2px;padding:4px;background:var(--bg);border-radius:var(--r);margin-bottom:24px;width:fit-content}
+.tab{
+  padding:7px 16px;border:none;background:none;border-radius:calc(var(--r) - 2px);
+  font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;
+  transition:background .1s,color .1s;font-family:var(--font)
+}
+.tab.on{background:var(--surface);color:var(--text);box-shadow:var(--sh)}
+.tp{display:none}.tp.on{display:block}
+
+/* ── Matrix ── */
+.mx-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--rl)}
+.mx{border-collapse:collapse;width:100%;font-size:12px;min-width:720px}
+.mx th{
+  background:var(--surface2);padding:10px 6px;font-weight:600;font-size:10px;
+  text-align:center;white-space:nowrap;border-bottom:1px solid var(--border);
+  border-right:1px solid var(--border);position:sticky;top:0;z-index:2
+}
+.mx th.rh{text-align:left;min-width:200px;padding-left:14px;position:sticky;left:0;z-index:3;background:var(--surface2)}
+.mx th.mh{font-family:var(--mono);font-size:10px;max-width:60px;cursor:pointer;padding:10px 4px}
+.mx th.mh:hover{background:var(--plum-bg);color:var(--plum)}
+.mx td{padding:7px 5px;text-align:center;border-bottom:1px solid var(--border);border-right:1px solid var(--border)}
+.mx td.rl{text-align:left;padding-left:14px;background:var(--surface);position:sticky;left:0;z-index:1;font-weight:500;white-space:nowrap}
+.mx tr:hover td{background:var(--bg)}
+.mx tr:hover td.rl{background:var(--bg)}
+.mdot{width:9px;height:9px;background:var(--plum);border-radius:50%;margin:0 auto;transition:transform .1s}
+.mdot.hi{background:var(--blue);transform:scale(1.5)}
+.col-hi th.mh, .col-hi td{background:var(--plum-bg) !important}
+
+/* ── Risk table ── */
+.rtbl{width:100%;border-collapse:collapse;font-size:13px}
+.rtbl th{
+  font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--faint);padding:10px 12px;text-align:left;
+  border-bottom:2px solid var(--border);white-space:nowrap;cursor:pointer;
+  user-select:none;background:var(--surface2)
+}
+.rtbl th:hover{color:var(--text)}
+.rtbl th .sort-arrow{margin-left:4px;opacity:.4}
+.rtbl th.sorted .sort-arrow{opacity:1}
+.rtbl td{padding:12px;border-bottom:1px solid var(--border);vertical-align:top}
+.rtbl tr:hover td{background:var(--bg)}
+.risk-n{font-weight:500;margin-bottom:2px}
+.risk-c{font-size:11px;color:var(--muted)}
+
+/* ── Metric detail cards ── */
+.mlist{}
+.mrow{display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid var(--border)}
+.mrow:last-child{border-bottom:none}
+.mid-badge{
+  font-family:var(--mono);font-size:12px;font-weight:500;
+  background:var(--plum-bg);color:var(--plum);
+  padding:3px 9px;border-radius:6px;flex-shrink:0;margin-top:1px;
+  min-width:52px;text-align:center
+}
+.minfo{flex:1}
+.mn{font-size:14px;font-weight:500;margin-bottom:2px}
+.md{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:8px}
+.mppl{display:flex;gap:16px;flex-wrap:wrap}
+.mpg{}
+.mpgl{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin-bottom:4px}
+
+/* ── Section header ── */
+.sh2{display:flex;align-items:baseline;gap:10px;margin-bottom:18px}
+.sh2 h2{font-size:16px;font-weight:600}
+.sh2 .cnt{font-size:12px;color:var(--faint);font-family:var(--mono)}
+
+/* ── Card ── */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden}
+.cb{padding:20px}
+
+@media(max-width:768px){
+  .sidebar{display:none}
+  .main{max-width:100vw}
+  .content,.ph{padding:16px}
+  .pgrid{grid-template-columns:repeat(2,1fr)}
+  .intro-steps{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+  <div class="sb-brand">
+    <span class="sb-wordmark">DTG RAHP</span>
+    <span class="sb-project">Risk &amp; Harm Prevention</span>
+  </div>
+  <nav class="sb-nav">
+    <div class="nav-group">Navigate</div>
+    <a href="index.html" class="nav-a"><span class="nav-dot" style="background:var(--blue)"></span>Personas</a>
+<a href="matrix.html" class="nav-a on"><span class="nav-dot" style="background:var(--plum)"></span>Cross-Reference Matrix</a>
+<a href="risks.html" class="nav-a"><span class="nav-dot" style="background:var(--red)"></span>Risks & Metrics</a>
+
+    <div class="nav-group" style="margin-top:12px">Reference</div>
+    <a href="risks.html#tab-metrics" class="nav-a"><span class="nav-dot" style="background:var(--plum)"></span>Metrics reference</a>
+  </nav>
+  <div class="sb-foot">v3 · March 2026<br>DTG Credentials Task Force</div>
+</aside>
+<main class="main">
+<div class="ph"><h1>Cross-Reference Matrix</h1><p class="ph-sub">Every User Story, Scenario, and EPIC mapped to its linked metrics. Click any metric ID to highlight its column.</p></div>
+<div class="content">
+<p style="font-size:13px;color:var(--muted);margin-bottom:14px">Click any metric pill or column header to highlight it. Hover any ID for a description.</p>
+<div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:24px"><span class="pill pm" data-tip="M-01" onclick="hlCol('M-01')" style="cursor:pointer">M-01</span><span class="pill pm" data-tip="M-02" onclick="hlCol('M-02')" style="cursor:pointer">M-02</span><span class="pill pm" data-tip="M-03" onclick="hlCol('M-03')" style="cursor:pointer">M-03</span><span class="pill pm" data-tip="M-04" onclick="hlCol('M-04')" style="cursor:pointer">M-04</span><span class="pill pm" data-tip="M-05" onclick="hlCol('M-05')" style="cursor:pointer">M-05</span><span class="pill pm" data-tip="M-06" onclick="hlCol('M-06')" style="cursor:pointer">M-06</span><span class="pill pm" data-tip="M-07" onclick="hlCol('M-07')" style="cursor:pointer">M-07</span><span class="pill pm" data-tip="M-08" onclick="hlCol('M-08')" style="cursor:pointer">M-08</span><span class="pill pm" data-tip="M-09" onclick="hlCol('M-09')" style="cursor:pointer">M-09</span><span class="pill pm" data-tip="M-10" onclick="hlCol('M-10')" style="cursor:pointer">M-10</span><span class="pill pm" data-tip="M-11" onclick="hlCol('M-11')" style="cursor:pointer">M-11</span><span class="pill pm" data-tip="M-12" onclick="hlCol('M-12')" style="cursor:pointer">M-12</span><span class="pill pm" data-tip="M-13" onclick="hlCol('M-13')" style="cursor:pointer">M-13</span><span class="pill pm" data-tip="M-14" onclick="hlCol('M-14')" style="cursor:pointer">M-14</span><span class="pill pm" data-tip="M-15" onclick="hlCol('M-15')" style="cursor:pointer">M-15</span><span class="pill pm" data-tip="M-16" onclick="hlCol('M-16')" style="cursor:pointer">M-16</span><span class="pill pm" data-tip="M-17" onclick="hlCol('M-17')" style="cursor:pointer">M-17</span><span class="pill pm" data-tip="M-18" onclick="hlCol('M-18')" style="cursor:pointer">M-18</span></div>
+<div class="tabs">
+  <button class="tab on" onclick="swTab('us',this)">User Stories × Metrics</button>
+  <button class="tab" onclick="swTab('sc',this)">Scenarios × Metrics</button>
+  <button class="tab" onclick="swTab('ep',this)">EPICs × Metrics</button>
+</div>
+<div class="tp on" id="tab-us">
+  <div class="mx-wrap"><table class="mx" id="mx-us">
+    <thead><tr><th class="rh">Item</th><th class="mh" data-tip="M-01" onclick="hlCol('M-01')" title="Anchor Diversity Index">M-01</th><th class="mh" data-tip="M-02" onclick="hlCol('M-02')" title="Time to Revocation Notice">M-02</th><th class="mh" data-tip="M-03" onclick="hlCol('M-03')" title="VRC Reciprocity Rate">M-03</th><th class="mh" data-tip="M-04" onclick="hlCol('M-04')" title="IDVC Issuer Verification Rate">M-04</th><th class="mh" data-tip="M-05" onclick="hlCol('M-05')" title="Anomaly Detection Hit Rate">M-05</th><th class="mh" data-tip="M-06" onclick="hlCol('M-06')" title="Registry Write Auth Failure Rate">M-06</th><th class="mh" data-tip="M-07" onclick="hlCol('M-07')" title="Appeals Process Response Time">M-07</th><th class="mh" data-tip="M-08" onclick="hlCol('M-08')" title="Agent Scope Violation Rate">M-08</th><th class="mh" data-tip="M-09" onclick="hlCol('M-09')" title="ZKP / Selective Disclosure Uptake">M-09</th><th class="mh" data-tip="M-10" onclick="hlCol('M-10')" title="Jurisdictional Concentration">M-10</th><th class="mh" data-tip="M-11" onclick="hlCol('M-11')" title="Bad-Faith Appeals Rate">M-11</th><th class="mh" data-tip="M-12" onclick="hlCol('M-12')" title="Member Admission Denial Rate">M-12</th><th class="mh" data-tip="M-13" onclick="hlCol('M-13')" title="Credential Expiry-to-Renewal Latency">M-13</th><th class="mh" data-tip="M-14" onclick="hlCol('M-14')" title="Sybil Cluster Detection Rate">M-14</th><th class="mh" data-tip="M-15" onclick="hlCol('M-15')" title="DID Document Integrity Rate">M-15</th><th class="mh" data-tip="M-16" onclick="hlCol('M-16')" title="Governance Response Time">M-16</th><th class="mh" data-tip="M-17" onclick="hlCol('M-17')" title="Cross-VTC Revocation Contamination">M-17</th><th class="mh" data-tip="M-18" onclick="hlCol('M-18')" title="Rate-Limiting Trigger Accuracy">M-18</th></tr></thead>
+    <tbody><tr id="us01">
+  <td class="rl"><span class="pill pu" data-tip="US-01">US-01</span> <span style="font-size:12px;color:var(--muted)">Set up a new VTC by generating a Community D…</span></td>
+  <td><div class="mdot" data-metric="M-01" data-tip="M-01"></div></td><td></td><td><div class="mdot" data-metric="M-03" data-tip="M-03"></div></td><td><div class="mdot" data-metric="M-04" data-tip="M-04"></div></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-09" data-tip="M-09"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-12" data-tip="M-12"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-15" data-tip="M-15"></div></td><td><div class="mdot" data-metric="M-16" data-tip="M-16"></div></td><td></td><td></td>
+</tr><tr id="us02">
+  <td class="rl"><span class="pill pu" data-tip="US-02">US-02</span> <span style="font-size:12px;color:var(--muted)">Invite a defined set of Community Trust Anch…</span></td>
+  <td><div class="mdot" data-metric="M-01" data-tip="M-01"></div></td><td></td><td><div class="mdot" data-metric="M-03" data-tip="M-03"></div></td><td></td><td><div class="mdot" data-metric="M-05" data-tip="M-05"></div></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-10" data-tip="M-10"></div></td><td></td><td><div class="mdot" data-metric="M-12" data-tip="M-12"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-16" data-tip="M-16"></div></td><td></td><td></td>
+</tr><tr id="us03">
+  <td class="rl"><span class="pill pu" data-tip="US-03">US-03</span> <span style="font-size:12px;color:var(--muted)">Issue Verifiable Relationship Credentials (V…</span></td>
+  <td><div class="mdot" data-metric="M-01" data-tip="M-01"></div></td><td></td><td><div class="mdot" data-metric="M-03" data-tip="M-03"></div></td><td></td><td><div class="mdot" data-metric="M-05" data-tip="M-05"></div></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-10" data-tip="M-10"></div></td><td></td><td><div class="mdot" data-metric="M-12" data-tip="M-12"></div></td><td><div class="mdot" data-metric="M-13" data-tip="M-13"></div></td><td><div class="mdot" data-metric="M-14" data-tip="M-14"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-18" data-tip="M-18"></div></td>
+</tr><tr id="us04">
+  <td class="rl"><span class="pill pu" data-tip="US-04">US-04</span> <span style="font-size:12px;color:var(--muted)">Apply for VTC membership by presenting proof…</span></td>
+  <td><div class="mdot" data-metric="M-01" data-tip="M-01"></div></td><td></td><td><div class="mdot" data-metric="M-03" data-tip="M-03"></div></td><td></td><td><div class="mdot" data-metric="M-05" data-tip="M-05"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-09" data-tip="M-09"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-12" data-tip="M-12"></div></td><td><div class="mdot" data-metric="M-13" data-tip="M-13"></div></td><td></td><td><div class="mdot" data-metric="M-15" data-tip="M-15"></div></td><td><div class="mdot" data-metric="M-16" data-tip="M-16"></div></td><td><div class="mdot" data-metric="M-17" data-tip="M-17"></div></td><td></td>
+</tr><tr id="us05">
+  <td class="rl"><span class="pill pu" data-tip="US-05">US-05</span> <span style="font-size:12px;color:var(--muted)">Issue Identity Verification Credentials (IDV…</span></td>
+  <td></td><td><div class="mdot" data-metric="M-02" data-tip="M-02"></div></td><td></td><td><div class="mdot" data-metric="M-04" data-tip="M-04"></div></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-09" data-tip="M-09"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-13" data-tip="M-13"></div></td><td></td><td><div class="mdot" data-metric="M-15" data-tip="M-15"></div></td><td></td><td></td><td></td>
+</tr><tr id="us06">
+  <td class="rl"><span class="pill pu" data-tip="US-06">US-06</span> <span style="font-size:12px;color:var(--muted)">Receive timely, clear notice of any revocati…</span></td>
+  <td></td><td><div class="mdot" data-metric="M-02" data-tip="M-02"></div></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-07" data-tip="M-07"></div></td><td></td><td><div class="mdot" data-metric="M-09" data-tip="M-09"></div></td><td></td><td><div class="mdot" data-metric="M-11" data-tip="M-11"></div></td><td><div class="mdot" data-metric="M-12" data-tip="M-12"></div></td><td><div class="mdot" data-metric="M-13" data-tip="M-13"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-17" data-tip="M-17"></div></td><td></td>
+</tr><tr id="us07">
+  <td class="rl"><span class="pill pu" data-tip="US-07">US-07</span> <span style="font-size:12px;color:var(--muted)">Run systematic stress-tests against VTC uniq…</span></td>
+  <td></td><td></td><td><div class="mdot" data-metric="M-03" data-tip="M-03"></div></td><td><div class="mdot" data-metric="M-04" data-tip="M-04"></div></td><td><div class="mdot" data-metric="M-05" data-tip="M-05"></div></td><td><div class="mdot" data-metric="M-06" data-tip="M-06"></div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-14" data-tip="M-14"></div></td><td><div class="mdot" data-metric="M-15" data-tip="M-15"></div></td><td><div class="mdot" data-metric="M-16" data-tip="M-16"></div></td><td></td><td></td>
+</tr><tr id="us08">
+  <td class="rl"><span class="pill pu" data-tip="US-08">US-08</span> <span style="font-size:12px;color:var(--muted)">Present VTC membership credentials on behalf…</span></td>
+  <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-08" data-tip="M-08"></div></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-13" data-tip="M-13"></div></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-18" data-tip="M-18"></div></td>
+</tr><tr id="us09">
+  <td class="rl"><span class="pill pu" data-tip="US-09">US-09</span> <span style="font-size:12px;color:var(--muted)">Detect and block AI-mediated sybil generatio…</span></td>
+  <td><div class="mdot" data-metric="M-01" data-tip="M-01"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-05" data-tip="M-05"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-08" data-tip="M-08"></div></td><td></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-14" data-tip="M-14"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-18" data-tip="M-18"></div></td>
+</tr><tr id="us10">
+  <td class="rl"><span class="pill pu" data-tip="US-10">US-10</span> <span style="font-size:12px;color:var(--muted)">Detect and prevent coordinated multi-M-DID r…</span></td>
+  <td><div class="mdot" data-metric="M-01" data-tip="M-01"></div></td><td></td><td><div class="mdot" data-metric="M-03" data-tip="M-03"></div></td><td></td><td><div class="mdot" data-metric="M-05" data-tip="M-05"></div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-14" data-tip="M-14"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-18" data-tip="M-18"></div></td>
+</tr><tr id="us11">
+  <td class="rl"><span class="pill pu" data-tip="US-11">US-11</span> <span style="font-size:12px;color:var(--muted)">Detect and resist state-level coercion of tr…</span></td>
+  <td></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-06" data-tip="M-06"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-09" data-tip="M-09"></div></td><td><div class="mdot" data-metric="M-10" data-tip="M-10"></div></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-15" data-tip="M-15"></div></td><td></td><td><div class="mdot" data-metric="M-17" data-tip="M-17"></div></td><td></td>
+</tr><tr id="us12">
+  <td class="rl"><span class="pill pu" data-tip="US-12">US-12</span> <span style="font-size:12px;color:var(--muted)">Detect and limit coordinated false reporting…</span></td>
+  <td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-05" data-tip="M-05"></div></td><td></td><td><div class="mdot" data-metric="M-07" data-tip="M-07"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-11" data-tip="M-11"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-14" data-tip="M-14"></div></td><td></td><td></td><td></td><td></td>
+</tr></tbody>
+  </table></div>
+</div><div class="tp " id="tab-sc">
+  <div class="mx-wrap"><table class="mx" id="mx-sc">
+    <thead><tr><th class="rh">Item</th><th class="mh" data-tip="M-01" onclick="hlCol('M-01')" title="Anchor Diversity Index">M-01</th><th class="mh" data-tip="M-02" onclick="hlCol('M-02')" title="Time to Revocation Notice">M-02</th><th class="mh" data-tip="M-03" onclick="hlCol('M-03')" title="VRC Reciprocity Rate">M-03</th><th class="mh" data-tip="M-04" onclick="hlCol('M-04')" title="IDVC Issuer Verification Rate">M-04</th><th class="mh" data-tip="M-05" onclick="hlCol('M-05')" title="Anomaly Detection Hit Rate">M-05</th><th class="mh" data-tip="M-06" onclick="hlCol('M-06')" title="Registry Write Auth Failure Rate">M-06</th><th class="mh" data-tip="M-07" onclick="hlCol('M-07')" title="Appeals Process Response Time">M-07</th><th class="mh" data-tip="M-08" onclick="hlCol('M-08')" title="Agent Scope Violation Rate">M-08</th><th class="mh" data-tip="M-09" onclick="hlCol('M-09')" title="ZKP / Selective Disclosure Uptake">M-09</th><th class="mh" data-tip="M-10" onclick="hlCol('M-10')" title="Jurisdictional Concentration">M-10</th><th class="mh" data-tip="M-11" onclick="hlCol('M-11')" title="Bad-Faith Appeals Rate">M-11</th><th class="mh" data-tip="M-12" onclick="hlCol('M-12')" title="Member Admission Denial Rate">M-12</th><th class="mh" data-tip="M-13" onclick="hlCol('M-13')" title="Credential Expiry-to-Renewal Latency">M-13</th><th class="mh" data-tip="M-14" onclick="hlCol('M-14')" title="Sybil Cluster Detection Rate">M-14</th><th class="mh" data-tip="M-15" onclick="hlCol('M-15')" title="DID Document Integrity Rate">M-15</th><th class="mh" data-tip="M-16" onclick="hlCol('M-16')" title="Governance Response Time">M-16</th><th class="mh" data-tip="M-17" onclick="hlCol('M-17')" title="Cross-VTC Revocation Contamination">M-17</th><th class="mh" data-tip="M-18" onclick="hlCol('M-18')" title="Rate-Limiting Trigger Accuracy">M-18</th></tr></thead>
+    <tbody><tr id="sc01">
+  <td class="rl"><span class="pill psc" data-tip="SC-01">SC-01</span> <span style="font-size:12px;color:var(--muted)">VTC Genesis — Bootstrapping Under Founder Co…</span></td>
+  <td><div class="mdot" data-metric="M-01" data-tip="M-01"></div></td><td></td><td><div class="mdot" data-metric="M-03" data-tip="M-03"></div></td><td><div class="mdot" data-metric="M-04" data-tip="M-04"></div></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-09" data-tip="M-09"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-12" data-tip="M-12"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-15" data-tip="M-15"></div></td><td><div class="mdot" data-metric="M-16" data-tip="M-16"></div></td><td><div class="mdot" data-metric="M-17" data-tip="M-17"></div></td><td></td>
+</tr><tr id="sc02">
+  <td class="rl"><span class="pill psc" data-tip="SC-02">SC-02</span> <span style="font-size:12px;color:var(--muted)">Trust Anchor Seeding — Diversity vs. Speed</span></td>
+  <td><div class="mdot" data-metric="M-01" data-tip="M-01"></div></td><td></td><td><div class="mdot" data-metric="M-03" data-tip="M-03"></div></td><td></td><td><div class="mdot" data-metric="M-05" data-tip="M-05"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-09" data-tip="M-09"></div></td><td><div class="mdot" data-metric="M-10" data-tip="M-10"></div></td><td></td><td><div class="mdot" data-metric="M-12" data-tip="M-12"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-16" data-tip="M-16"></div></td><td><div class="mdot" data-metric="M-17" data-tip="M-17"></div></td><td></td>
+</tr><tr id="sc03">
+  <td class="rl"><span class="pill psc" data-tip="SC-03">SC-03</span> <span style="font-size:12px;color:var(--muted)">Member Admission — Web-of-Trust Threshold En…</span></td>
+  <td></td><td></td><td><div class="mdot" data-metric="M-03" data-tip="M-03"></div></td><td></td><td><div class="mdot" data-metric="M-05" data-tip="M-05"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-09" data-tip="M-09"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-12" data-tip="M-12"></div></td><td><div class="mdot" data-metric="M-13" data-tip="M-13"></div></td><td></td><td></td><td></td><td></td><td></td>
+</tr><tr id="sc04">
+  <td class="rl"><span class="pill psc" data-tip="SC-04">SC-04</span> <span style="font-size:12px;color:var(--muted)">Full Member Admission — IDVC + Multi-VRC Req…</span></td>
+  <td></td><td></td><td><div class="mdot" data-metric="M-03" data-tip="M-03"></div></td><td><div class="mdot" data-metric="M-04" data-tip="M-04"></div></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-09" data-tip="M-09"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-12" data-tip="M-12"></div></td><td><div class="mdot" data-metric="M-13" data-tip="M-13"></div></td><td></td><td><div class="mdot" data-metric="M-15" data-tip="M-15"></div></td><td></td><td></td><td></td>
+</tr><tr id="sc05">
+  <td class="rl"><span class="pill psc" data-tip="SC-05">SC-05</span> <span style="font-size:12px;color:var(--muted)">IDVP Compromise — Cascading Credential Inval…</span></td>
+  <td></td><td><div class="mdot" data-metric="M-02" data-tip="M-02"></div></td><td></td><td><div class="mdot" data-metric="M-04" data-tip="M-04"></div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-13" data-tip="M-13"></div></td><td></td><td></td><td></td><td></td><td></td>
+</tr><tr id="sc06">
+  <td class="rl"><span class="pill psc" data-tip="SC-06">SC-06</span> <span style="font-size:12px;color:var(--muted)">Unjust Revocation — Due Process and Appeals</span></td>
+  <td></td><td><div class="mdot" data-metric="M-02" data-tip="M-02"></div></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-07" data-tip="M-07"></div></td><td></td><td><div class="mdot" data-metric="M-09" data-tip="M-09"></div></td><td></td><td><div class="mdot" data-metric="M-11" data-tip="M-11"></div></td><td></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-17" data-tip="M-17"></div></td><td></td>
+</tr><tr id="sc07">
+  <td class="rl"><span class="pill psc" data-tip="SC-07">SC-07</span> <span style="font-size:12px;color:var(--muted)">Sybil Attack — Coordinated Multi-Identity In…</span></td>
+  <td><div class="mdot" data-metric="M-01" data-tip="M-01"></div></td><td></td><td><div class="mdot" data-metric="M-03" data-tip="M-03"></div></td><td></td><td><div class="mdot" data-metric="M-05" data-tip="M-05"></div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-14" data-tip="M-14"></div></td><td></td><td><div class="mdot" data-metric="M-16" data-tip="M-16"></div></td><td></td><td><div class="mdot" data-metric="M-18" data-tip="M-18"></div></td>
+</tr><tr id="sc08">
+  <td class="rl"><span class="pill psc" data-tip="SC-08">SC-08</span> <span style="font-size:12px;color:var(--muted)">Registry Manipulation — Write Access Attack</span></td>
+  <td></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-06" data-tip="M-06"></div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-14" data-tip="M-14"></div></td><td><div class="mdot" data-metric="M-15" data-tip="M-15"></div></td><td><div class="mdot" data-metric="M-16" data-tip="M-16"></div></td><td></td><td></td>
+</tr><tr id="sc09">
+  <td class="rl"><span class="pill psc" data-tip="SC-09">SC-09</span> <span style="font-size:12px;color:var(--muted)">State Coercion — Forced Disclosure and Weapo…</span></td>
+  <td><div class="mdot" data-metric="M-01" data-tip="M-01"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-05" data-tip="M-05"></div></td><td><div class="mdot" data-metric="M-06" data-tip="M-06"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-09" data-tip="M-09"></div></td><td><div class="mdot" data-metric="M-10" data-tip="M-10"></div></td><td></td><td><div class="mdot" data-metric="M-12" data-tip="M-12"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-15" data-tip="M-15"></div></td><td></td><td><div class="mdot" data-metric="M-17" data-tip="M-17"></div></td><td></td>
+</tr><tr id="sc10">
+  <td class="rl"><span class="pill psc" data-tip="SC-10">SC-10</span> <span style="font-size:12px;color:var(--muted)">Benign AI Agent — Delegated Credential Opera…</span></td>
+  <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-08" data-tip="M-08"></div></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-13" data-tip="M-13"></div></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-18" data-tip="M-18"></div></td>
+</tr><tr id="sc11">
+  <td class="rl"><span class="pill psc" data-tip="SC-11">SC-11</span> <span style="font-size:12px;color:var(--muted)">Malign AI Agent — Machine-Scale Attack Surfa…</span></td>
+  <td><div class="mdot" data-metric="M-01" data-tip="M-01"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-05" data-tip="M-05"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-08" data-tip="M-08"></div></td><td></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-14" data-tip="M-14"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-18" data-tip="M-18"></div></td>
+</tr><tr id="sc12">
+  <td class="rl"><span class="pill psc" data-tip="SC-12">SC-12</span> <span style="font-size:12px;color:var(--muted)">Community Disruption — Bad-Faith Governance …</span></td>
+  <td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-05" data-tip="M-05"></div></td><td></td><td><div class="mdot" data-metric="M-07" data-tip="M-07"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-11" data-tip="M-11"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-14" data-tip="M-14"></div></td><td></td><td></td><td></td><td></td>
+</tr></tbody>
+  </table></div>
+</div><div class="tp " id="tab-ep">
+  <div class="mx-wrap"><table class="mx" id="mx-ep">
+    <thead><tr><th class="rh">Item</th><th class="mh" data-tip="M-01" onclick="hlCol('M-01')" title="Anchor Diversity Index">M-01</th><th class="mh" data-tip="M-02" onclick="hlCol('M-02')" title="Time to Revocation Notice">M-02</th><th class="mh" data-tip="M-03" onclick="hlCol('M-03')" title="VRC Reciprocity Rate">M-03</th><th class="mh" data-tip="M-04" onclick="hlCol('M-04')" title="IDVC Issuer Verification Rate">M-04</th><th class="mh" data-tip="M-05" onclick="hlCol('M-05')" title="Anomaly Detection Hit Rate">M-05</th><th class="mh" data-tip="M-06" onclick="hlCol('M-06')" title="Registry Write Auth Failure Rate">M-06</th><th class="mh" data-tip="M-07" onclick="hlCol('M-07')" title="Appeals Process Response Time">M-07</th><th class="mh" data-tip="M-08" onclick="hlCol('M-08')" title="Agent Scope Violation Rate">M-08</th><th class="mh" data-tip="M-09" onclick="hlCol('M-09')" title="ZKP / Selective Disclosure Uptake">M-09</th><th class="mh" data-tip="M-10" onclick="hlCol('M-10')" title="Jurisdictional Concentration">M-10</th><th class="mh" data-tip="M-11" onclick="hlCol('M-11')" title="Bad-Faith Appeals Rate">M-11</th><th class="mh" data-tip="M-12" onclick="hlCol('M-12')" title="Member Admission Denial Rate">M-12</th><th class="mh" data-tip="M-13" onclick="hlCol('M-13')" title="Credential Expiry-to-Renewal Latency">M-13</th><th class="mh" data-tip="M-14" onclick="hlCol('M-14')" title="Sybil Cluster Detection Rate">M-14</th><th class="mh" data-tip="M-15" onclick="hlCol('M-15')" title="DID Document Integrity Rate">M-15</th><th class="mh" data-tip="M-16" onclick="hlCol('M-16')" title="Governance Response Time">M-16</th><th class="mh" data-tip="M-17" onclick="hlCol('M-17')" title="Cross-VTC Revocation Contamination">M-17</th><th class="mh" data-tip="M-18" onclick="hlCol('M-18')" title="Rate-Limiting Trigger Accuracy">M-18</th></tr></thead>
+    <tbody><tr id="epic1">
+  <td class="rl"><span class="pill pep" data-tip="EPIC-1">EPIC-1</span> <span style="font-size:12px;color:var(--muted)">VTC Bootstrapping</span></td>
+  <td><div class="mdot" data-metric="M-01" data-tip="M-01"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-04" data-tip="M-04"></div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-15" data-tip="M-15"></div></td><td><div class="mdot" data-metric="M-16" data-tip="M-16"></div></td><td></td><td></td>
+</tr><tr id="epic2">
+  <td class="rl"><span class="pill pep" data-tip="EPIC-2">EPIC-2</span> <span style="font-size:12px;color:var(--muted)">Trust Anchor Management</span></td>
+  <td><div class="mdot" data-metric="M-01" data-tip="M-01"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-05" data-tip="M-05"></div></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-10" data-tip="M-10"></div></td><td></td><td><div class="mdot" data-metric="M-12" data-tip="M-12"></div></td><td></td><td><div class="mdot" data-metric="M-14" data-tip="M-14"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-18" data-tip="M-18"></div></td>
+</tr><tr id="epic3">
+  <td class="rl"><span class="pill pep" data-tip="EPIC-3">EPIC-3</span> <span style="font-size:12px;color:var(--muted)">Member Admission</span></td>
+  <td></td><td></td><td><div class="mdot" data-metric="M-03" data-tip="M-03"></div></td><td><div class="mdot" data-metric="M-04" data-tip="M-04"></div></td><td><div class="mdot" data-metric="M-05" data-tip="M-05"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-09" data-tip="M-09"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-12" data-tip="M-12"></div></td><td><div class="mdot" data-metric="M-13" data-tip="M-13"></div></td><td><div class="mdot" data-metric="M-14" data-tip="M-14"></div></td><td></td><td></td><td></td><td></td>
+</tr><tr id="epic4">
+  <td class="rl"><span class="pill pep" data-tip="EPIC-4">EPIC-4</span> <span style="font-size:12px;color:var(--muted)">Identity Verification</span></td>
+  <td></td><td></td><td></td><td><div class="mdot" data-metric="M-04" data-tip="M-04"></div></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-09" data-tip="M-09"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-13" data-tip="M-13"></div></td><td></td><td><div class="mdot" data-metric="M-15" data-tip="M-15"></div></td><td></td><td></td><td></td>
+</tr><tr id="epic5">
+  <td class="rl"><span class="pill pep" data-tip="EPIC-5">EPIC-5</span> <span style="font-size:12px;color:var(--muted)">Revocation & Expiry</span></td>
+  <td></td><td><div class="mdot" data-metric="M-02" data-tip="M-02"></div></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-07" data-tip="M-07"></div></td><td></td><td><div class="mdot" data-metric="M-09" data-tip="M-09"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-13" data-tip="M-13"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-17" data-tip="M-17"></div></td><td></td>
+</tr><tr id="epic6">
+  <td class="rl"><span class="pill pep" data-tip="EPIC-6">EPIC-6</span> <span style="font-size:12px;color:var(--muted)">AI Agent Governance</span></td>
+  <td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-05" data-tip="M-05"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-08" data-tip="M-08"></div></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-13" data-tip="M-13"></div></td><td><div class="mdot" data-metric="M-14" data-tip="M-14"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-18" data-tip="M-18"></div></td>
+</tr><tr id="epic7">
+  <td class="rl"><span class="pill pep" data-tip="EPIC-7">EPIC-7</span> <span style="font-size:12px;color:var(--muted)">Security & Audit</span></td>
+  <td><div class="mdot" data-metric="M-01" data-tip="M-01"></div></td><td></td><td><div class="mdot" data-metric="M-03" data-tip="M-03"></div></td><td></td><td><div class="mdot" data-metric="M-05" data-tip="M-05"></div></td><td><div class="mdot" data-metric="M-06" data-tip="M-06"></div></td><td></td><td><div class="mdot" data-metric="M-08" data-tip="M-08"></div></td><td></td><td><div class="mdot" data-metric="M-10" data-tip="M-10"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-14" data-tip="M-14"></div></td><td><div class="mdot" data-metric="M-15" data-tip="M-15"></div></td><td><div class="mdot" data-metric="M-16" data-tip="M-16"></div></td><td></td><td><div class="mdot" data-metric="M-18" data-tip="M-18"></div></td>
+</tr><tr id="epic8">
+  <td class="rl"><span class="pill pep" data-tip="EPIC-8">EPIC-8</span> <span style="font-size:12px;color:var(--muted)">Threat Modelling</span></td>
+  <td></td><td></td><td><div class="mdot" data-metric="M-03" data-tip="M-03"></div></td><td></td><td><div class="mdot" data-metric="M-05" data-tip="M-05"></div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-14" data-tip="M-14"></div></td><td><div class="mdot" data-metric="M-15" data-tip="M-15"></div></td><td><div class="mdot" data-metric="M-16" data-tip="M-16"></div></td><td></td><td><div class="mdot" data-metric="M-18" data-tip="M-18"></div></td>
+</tr><tr id="epic9">
+  <td class="rl"><span class="pill pep" data-tip="EPIC-9">EPIC-9</span> <span style="font-size:12px;color:var(--muted)">Data Protection & Privacy</span></td>
+  <td></td><td></td><td></td><td><div class="mdot" data-metric="M-04" data-tip="M-04"></div></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-09" data-tip="M-09"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-13" data-tip="M-13"></div></td><td></td><td><div class="mdot" data-metric="M-15" data-tip="M-15"></div></td><td></td><td><div class="mdot" data-metric="M-17" data-tip="M-17"></div></td><td></td>
+</tr><tr id="epic10">
+  <td class="rl"><span class="pill pep" data-tip="EPIC-10">EPIC-10</span> <span style="font-size:12px;color:var(--muted)">Inclusion & Non-Discrimination</span></td>
+  <td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-05" data-tip="M-05"></div></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-09" data-tip="M-09"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-12" data-tip="M-12"></div></td><td></td><td></td><td></td><td></td><td></td><td></td>
+</tr><tr id="epic11">
+  <td class="rl"><span class="pill pep" data-tip="EPIC-11">EPIC-11</span> <span style="font-size:12px;color:var(--muted)">Appeals & Fairness</span></td>
+  <td></td><td><div class="mdot" data-metric="M-02" data-tip="M-02"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-05" data-tip="M-05"></div></td><td></td><td><div class="mdot" data-metric="M-07" data-tip="M-07"></div></td><td></td><td><div class="mdot" data-metric="M-09" data-tip="M-09"></div></td><td></td><td><div class="mdot" data-metric="M-11" data-tip="M-11"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-14" data-tip="M-14"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-17" data-tip="M-17"></div></td><td></td>
+</tr><tr id="epic12">
+  <td class="rl"><span class="pill pep" data-tip="EPIC-12">EPIC-12</span> <span style="font-size:12px;color:var(--muted)">UX & Human Workflows</span></td>
+  <td></td><td></td><td><div class="mdot" data-metric="M-03" data-tip="M-03"></div></td><td></td><td></td><td></td><td></td><td></td><td><div class="mdot" data-metric="M-09" data-tip="M-09"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-12" data-tip="M-12"></div></td><td><div class="mdot" data-metric="M-13" data-tip="M-13"></div></td><td></td><td></td><td></td><td></td><td></td>
+</tr><tr id="epic13">
+  <td class="rl"><span class="pill pep" data-tip="EPIC-13">EPIC-13</span> <span style="font-size:12px;color:var(--muted)">Governance & Policy Framework</span></td>
+  <td><div class="mdot" data-metric="M-01" data-tip="M-01"></div></td><td></td><td></td><td><div class="mdot" data-metric="M-04" data-tip="M-04"></div></td><td><div class="mdot" data-metric="M-05" data-tip="M-05"></div></td><td><div class="mdot" data-metric="M-06" data-tip="M-06"></div></td><td><div class="mdot" data-metric="M-07" data-tip="M-07"></div></td><td></td><td><div class="mdot" data-metric="M-09" data-tip="M-09"></div></td><td><div class="mdot" data-metric="M-10" data-tip="M-10"></div></td><td><div class="mdot" data-metric="M-11" data-tip="M-11"></div></td><td></td><td><div class="mdot" data-metric="M-13" data-tip="M-13"></div></td><td><div class="mdot" data-metric="M-14" data-tip="M-14"></div></td><td><div class="mdot" data-metric="M-15" data-tip="M-15"></div></td><td><div class="mdot" data-metric="M-16" data-tip="M-16"></div></td><td><div class="mdot" data-metric="M-17" data-tip="M-17"></div></td><td></td>
+</tr></tbody>
+  </table></div>
+</div>
+<script>
+function swTab(id,btn){
+  document.querySelectorAll('.tp').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('tab-'+id).classList.add('on');
+  btn.classList.add('on');
+}
+let _hlCol=null;
+function hlCol(m){
+  if(_hlCol===m){_hlCol=null;document.querySelectorAll('.mdot').forEach(d=>d.classList.remove('hi'));document.querySelectorAll('.mh').forEach(th=>th.style.background='');return;}
+  _hlCol=m;
+  document.querySelectorAll('.mdot').forEach(d=>d.classList.toggle('hi',d.dataset.metric===m));
+  document.querySelectorAll('.mh').forEach(th=>{th.style.background=th.dataset.tip===m?'var(--plum-bg)':''});
+}
+if(location.hash){
+  const m=location.hash.replace('#','').replace('metric','').toUpperCase();
+  if(m.match(/^[0-9]{2}$/))setTimeout(()=>hlCol('M-'+m),200);
+}
+</script>
+</div>
+</main>
+</div>
+
+<script>
+const TT = {"M-01": {"title": "Anchor Diversity Index", "sub": "Governance", "desc": "Measures geographic, organisational, and cultural spread of trust anchors. Higher = more decentralis"}, "M-02": {"title": "Time to Revocation Notice", "sub": "Governance", "desc": "Elapsed time between a revocation decision and formal notification to the affected member. Lower is "}, "M-03": {"title": "VRC Reciprocity Rate", "sub": "Identity", "desc": "Proportion of VMC issuances where a valid reciprocal VRC exchange was confirmed. Should be 100%."}, "M-04": {"title": "IDVC Issuer Verification Rate", "sub": "Identity", "desc": "Proportion of Phase 4 admissions where the IDVP DID was verified against the trust registry before V"}, "M-05": {"title": "Anomaly Detection Hit Rate", "sub": "Security", "desc": "Rate at which coordinated or anomalous vouching patterns are flagged. Higher is better for Sybil res"}, "M-06": {"title": "Registry Write Auth Failure Rate", "sub": "Security", "desc": "Rate at which single-party registry write attempts are rejected. Should be 100% \u2014 any successful sin"}, "M-07": {"title": "Appeals Process Response Time", "sub": "Human Experience", "desc": "Median time from appeal submission to formal response from the governing body. Lower indicates a mor"}, "M-08": {"title": "Agent Scope Violation Rate", "sub": "AI Agents", "desc": "Rate at which AI agents attempt operations outside their delegated credential scope. Any non-zero ra"}, "M-09": {"title": "ZKP / Selective Disclosure Uptake", "sub": "Privacy", "desc": "Proportion of Phase 4 applicants using privacy-preserving proofing options rather than raw IDVC disc"}, "M-10": {"title": "Jurisdictional Concentration", "sub": "Governance", "desc": "Proportion of trust anchors and IDVPs within a single legal jurisdiction. Lower is better \u2014 high con"}, "M-11": {"title": "Bad-Faith Appeals Rate", "sub": "Governance", "desc": "Proportion of appeal submissions subsequently determined to be coordinated or bad-faith. Rate-limiti"}, "M-12": {"title": "Member Admission Denial Rate", "sub": "Human Experience", "desc": "Proportion of well-formed membership applications denied. High rate may indicate discriminatory gate"}, "M-13": {"title": "Credential Expiry-to-Renewal Latency", "sub": "Lifecycle", "desc": "Time between credential expiry notification and successful renewal. Relevant for both human members "}, "M-14": {"title": "Sybil Cluster Detection Rate", "sub": "Security", "desc": "Rate at which coordinated multi-M-DID registration attempts are identified and blocked. A primary un"}, "M-15": {"title": "DID Document Integrity Rate", "sub": "Cryptography", "desc": "Proportion of DID document resolutions where the VTA confirms document integrity before relying on r"}, "M-16": {"title": "Governance Response Time", "sub": "Governance", "desc": "Elapsed time from submission of a security researcher's findings to formal governance acknowledgemen"}, "M-17": {"title": "Cross-VTC Revocation Contamination", "sub": "Lifecycle", "desc": "Rate at which revocation in one VTC propagates to unrelated VTCs. Should be governed and explicitly "}, "M-18": {"title": "Rate-Limiting Trigger Accuracy", "sub": "AI Agents", "desc": "Proportion of rate-limiting events that correctly target non-human or adversarial activity, avoiding"}, "US-01": {"title": "Set up a new VTC by generating a Community DID, instantiating a Verifiable Trust", "sub": "Persona D1 \u00b7 Phase 1: Genesis", "desc": "Establish the community with auditable genesis policies, a time-bounded initiator authority, and a d"}, "US-02": {"title": "Invite a defined set of Community Trust Anchors by issuing VTC invitation creden", "sub": "Persona D1 \u00b7 Phase 2: Anchor Seeding", "desc": "Build the initial trust graph with diversity-aware, policy-constrained anchor selection before openi"}, "US-03": {"title": "Issue Verifiable Relationship Credentials (VRCs) to vouch for new members and re", "sub": "Persona D2 \u00b7 Phase 2\u20133: Anchor Vouching", "desc": "Grow the community responsibly, vouch only for people I genuinely know, and avoid becoming a single "}, "US-04": {"title": "Apply for VTC membership by presenting proof of a VTC invitation credential, two", "sub": "Persona D3 \u00b7 Phase 3\u20134: Member Admission", "desc": "Gain legitimate, privacy-preserving access to the VTC without facing discriminatory gatekeeping or d"}, "US-05": {"title": "Issue Identity Verification Credentials (IDVCs) to applicants after performing r", "sub": "Persona D4 \u00b7 Phase 4: Identity Verification", "desc": "Provide reliable, privacy-preserving identity verification while minimising regulatory exposure and "}, "US-06": {"title": "Receive timely, clear notice of any revocation action, access a formal appeals p", "sub": "Persona D5 \u00b7 Revocation & Expiration", "desc": "Avoid unjust or arbitrary revocation, protect my professional reputation, and have a fair process fo"}, "US-07": {"title": "Run systematic stress-tests against VTC uniqueness enforcement, registry integri", "sub": "Persona D6 \u00b7 Open Issues / Threat Modelling", "desc": "Identify exploitable weaknesses before malicious actors do, and produce actionable findings that imp"}, "US-08": {"title": "Present VTC membership credentials on behalf of my operator, autonomously reques", "sub": "Persona M1 \u00b7 Agent Credential Lifecycle", "desc": "Execute delegated credential operations reliably within authorised scope, without exceeding granted "}, "US-09": {"title": "Detect and block AI-mediated sybil generation, automated social engineering of t", "sub": "Persona M2 \u00b7 AI Threat Detection", "desc": "Ensure VTC governance and admission controls remain effective against non-human threat actors operat"}, "US-10": {"title": "Detect and prevent coordinated multi-M-DID registration, collusive anchor vouchi", "sub": "Persona B1 \u00b7 Sybil & Identity Fraud", "desc": "Protect VTC integrity against large-scale identity fraud that exploits invitation thresholds and wea"}, "US-11": {"title": "Detect and resist state-level coercion of trust anchors, IDVPs, or registry oper", "sub": "Persona B2 \u00b7 State Coercion & Surveillance", "desc": "Maintain VTC integrity and member safety against jurisdictional legal coercion, mandatory disclosure"}, "US-12": {"title": "Detect and limit coordinated false reporting, bad-faith appeals flooding, and di", "sub": "Persona B3 \u00b7 Community Disruption & CIB", "desc": "Protect VTC governance bandwidth and anchor credibility against organised disruption while preservin"}, "SC-01": {"title": "VTC Genesis \u2014 Bootstrapping Under Founder Control", "sub": "Phase 1: Genesis", "desc": "A single initiator establishes the VTC, generating the Community DID and hard-coding Phase 1 policie"}, "SC-02": {"title": "Trust Anchor Seeding \u2014 Diversity vs. Speed", "sub": "Phase 2: Anchor Seeding", "desc": "The initiator invites the first cohort of trust anchors. Speed of seeding is in tension with anchor "}, "SC-03": {"title": "Member Admission \u2014 Web-of-Trust Threshold Enforcement", "sub": "Phase 3: Member Admission", "desc": "Trust anchors begin inviting members under Phase 3 web-of-trust policies. Risks: social graph privil"}, "SC-04": {"title": "Full Member Admission \u2014 IDVC + Multi-VRC Requirements", "sub": "Phase 4: Member Admission", "desc": "Phase 4 opens organic member-to-member growth. Applicants must satisfy multi-VRC and IDVC requiremen"}, "SC-05": {"title": "IDVP Compromise \u2014 Cascading Credential Invalidation", "sub": "Phase 4 / Revocation", "desc": "An approved IDVP suffers a breach or is deregistered. Members admitted via those credentials face po"}, "SC-06": {"title": "Unjust Revocation \u2014 Due Process and Appeals", "sub": "Revocation & Expiration", "desc": "A member's VMC is revoked, potentially arbitrarily or under political pressure. The member disputes "}, "SC-07": {"title": "Sybil Attack \u2014 Coordinated Multi-Identity Infiltration", "sub": "Identity Fraud / Sybil", "desc": "A sophisticated attacker creates multiple synthetic identities and attempts coordinated anchor vouch"}, "SC-08": {"title": "Registry Manipulation \u2014 Write Access Attack", "sub": "Registry Integrity", "desc": "An adversary attempts to manipulate VTC trust registry records by exploiting weak write-access contr"}, "SC-09": {"title": "State Coercion \u2014 Forced Disclosure and Weaponised Revocation", "sub": "State Coercion", "desc": "A state-level actor legally compels a trust anchor or IDVP to disclose member identities or revoke c"}, "SC-10": {"title": "Benign AI Agent \u2014 Delegated Credential Operations", "sub": "Agent Credential Lifecycle", "desc": "A legitimate AI agent operates on behalf of a VTC member, presenting credentials, requesting renewal"}, "SC-11": {"title": "Malign AI Agent \u2014 Machine-Scale Attack Surface", "sub": "AI Threat Detection", "desc": "An adversarial AI agent automates sybil generation, social engineering of anchors, and policy fuzzin"}, "SC-12": {"title": "Community Disruption \u2014 Bad-Faith Governance Abuse", "sub": "Community Disruption", "desc": "A coordinated network submits mass false complaints, floods the appeals process, and runs disinforma"}, "EPIC-1": {"title": "VTC Bootstrapping", "sub": "Technology / Governance", "desc": ""}, "EPIC-2": {"title": "Trust Anchor Management", "sub": "Governance", "desc": ""}, "EPIC-3": {"title": "Member Admission", "sub": "Technology / Governance", "desc": ""}, "EPIC-4": {"title": "Identity Verification", "sub": "Technology / Governance", "desc": ""}, "EPIC-5": {"title": "Revocation & Expiry", "sub": "Technology / Governance", "desc": ""}, "EPIC-6": {"title": "AI Agent Governance", "sub": "Technology / Governance", "desc": ""}, "EPIC-7": {"title": "Security & Audit", "sub": "Technology / Governance", "desc": ""}, "EPIC-8": {"title": "Threat Modelling", "sub": "Governance", "desc": ""}, "EPIC-9": {"title": "Data Protection & Privacy", "sub": "Governance / Technology", "desc": ""}, "EPIC-10": {"title": "Inclusion & Non-Discrimination", "sub": "Human Experience / Governance", "desc": ""}, "EPIC-11": {"title": "Appeals & Fairness", "sub": "Governance / Human Experience", "desc": ""}, "EPIC-12": {"title": "UX & Human Workflows", "sub": "Human Experience", "desc": ""}, "EPIC-13": {"title": "Governance & Policy Framework", "sub": "Governance", "desc": ""}, "RK-G01": {"title": "Genesis Policy Capture", "sub": "Governance \u00b7 High severity", "desc": ""}, "RK-G02": {"title": "Governance Transition Failure", "sub": "Governance \u00b7 High severity", "desc": ""}, "RK-G03": {"title": "Anchor Homogeneity / Collusion Cluster", "sub": "Governance \u00b7 High severity", "desc": ""}, "RK-G04": {"title": "Governance Bandwidth Exhaustion", "sub": "Governance \u00b7 Medium severity", "desc": ""}, "RK-G05": {"title": "Governanceless VTC Claiming Credential Compliance", "sub": "Governance \u00b7 Medium severity", "desc": ""}, "RK-ID01": {"title": "Sybil Identity Proliferation", "sub": "Identity \u00b7 High severity", "desc": ""}, "RK-ID02": {"title": "Social Graph Privilege Exclusion", "sub": "Identity \u00b7 High severity", "desc": ""}, "RK-ID03": {"title": "IDVP Breach / Cascading Invalidation", "sub": "Identity \u00b7 High severity", "desc": ""}, "RK-ID04": {"title": "DID Document Manipulation", "sub": "Identity \u00b7 High severity", "desc": ""}, "RK-ID05": {"title": "M-DID Linkability Across VTCs", "sub": "Identity \u00b7 Medium severity", "desc": ""}, "RK-SC01": {"title": "Over-Disclosure in IDVC Schema", "sub": "Schemas \u00b7 Medium severity", "desc": ""}, "RK-SC02": {"title": "Credential Schema Ambiguity", "sub": "Schemas \u00b7 Medium severity", "desc": ""}, "RK-SC03": {"title": "VRC Over-Disclosure", "sub": "Schemas \u00b7 Medium severity", "desc": ""}, "RK-SC04": {"title": "M-DID Bootstrapping Exception Undermines R-DID Privacy", "sub": "Schemas \u00b7 Medium severity", "desc": ""}, "RK-NM01": {"title": "Personal Network Manager UX Failure", "sub": "Network Managers \u00b7 High severity", "desc": ""}, "RK-NM02": {"title": "Key Loss / Recovery Failure", "sub": "Network Managers \u00b7 Medium severity", "desc": ""}, "RK-CR01": {"title": "Credential Revocation Without Due Process", "sub": "Credentials \u00b7 High severity", "desc": ""}, "RK-CR02": {"title": "Stale Credential / Expiry Without Renewal Path", "sub": "Credentials \u00b7 Medium severity", "desc": ""}, "RK-CR03": {"title": "Revocation Cascade / Cross-VTC Contamination", "sub": "Credentials \u00b7 Medium severity", "desc": ""}, "RK-CR04": {"title": "Endorsement Credential (VEC) Manipulation", "sub": "Credentials \u00b7 Medium severity", "desc": ""}, "RK-CY01": {"title": "ZKP Implementation Failure", "sub": "Cryptography \u00b7 High severity", "desc": ""}, "RK-CY02": {"title": "Quantum / Algorithm Obsolescence", "sub": "Cryptography \u00b7 Medium severity", "desc": ""}, "RK-AI01": {"title": "Agent Credential Scope Creep", "sub": "AI Agents \u00b7 High severity", "desc": ""}, "RK-AI02": {"title": "Stale Agent After Operator Revocation", "sub": "AI Agents \u00b7 High severity", "desc": ""}, "RK-AI03": {"title": "AI-Mediated Sybil Generation at Scale", "sub": "AI Agents \u00b7 High severity", "desc": ""}, "RK-AI04": {"title": "LLM-Powered Social Engineering of Anchors", "sub": "AI Agents \u00b7 High severity", "desc": ""}, "RK-EX01": {"title": "State-Level Coercion of Anchors / IDVPs", "sub": "External \u00b7 High severity", "desc": ""}, "RK-EX02": {"title": "Registry Censorship / Denial of Service", "sub": "External \u00b7 Medium severity", "desc": ""}, "RK-EX03": {"title": "Legal / Regulatory Framework Conflict", "sub": "External \u00b7 Medium severity", "desc": ""}, "RK-HX01": {"title": "Chilling Effect on Community Participation", "sub": "Human Experience \u00b7 Medium severity", "desc": ""}, "RK-HX02": {"title": "Discriminatory Vouching Practices", "sub": "Human Experience \u00b7 High severity", "desc": ""}, "RK-HX03": {"title": "Reputational Harm from Public Revocation", "sub": "Human Experience \u00b7 High severity", "desc": ""}, "RK-SY01": {"title": "Trust Graph Capture by Coordinated Actor", "sub": "Systemic \u00b7 High severity", "desc": ""}, "RK-SY02": {"title": "Coordinated Inauthentic Behaviour (CIB) in Governance", "sub": "Systemic \u00b7 High severity", "desc": ""}, "RK-SY03": {"title": "Open Issues Left Unresolved at Scale", "sub": "Systemic \u00b7 High severity", "desc": ""}, "CT-01": {"title": "Version-Controlled Public Genesis Policy", "sub": "Procedural", "desc": "All Phase 1 bootstrapping policies must be committed to a public, version-controlled record before P"}, "CT-02": {"title": "Independent Governance Review at Genesis", "sub": "Governance", "desc": "An independent review of bootstrap policies by parties other than the initiator must be completed be"}, "CT-03": {"title": "Governance Transition Milestones", "sub": "Governance", "desc": "Explicit milestones for transitioning initiator authority to the governing body must be defined and "}, "CT-04": {"title": "Trust Anchor Diversity Policy", "sub": "Governance", "desc": "A minimum diversity standard for trust anchors \u2014 geographic, organisational, cultural \u2014 must be defi"}, "CT-05": {"title": "Anchor Clustering Metric Monitoring", "sub": "Technical", "desc": "The VTA tracks an anchor clustering metric (e.g. organisational or jurisdictional Herfindahl index)."}, "CT-06": {"title": "Governance Capacity Planning", "sub": "Procedural", "desc": "The governing body must conduct annual capacity planning for admission, appeals, revocation, and sec"}, "CT-07": {"title": "Complaint / Appeals Rate-Limiting", "sub": "Technical", "desc": "The VTA or governance portal enforces rate-limiting on complaint and appeal submissions per member p"}, "CT-08": {"title": "Uniqueness Enforcement Mechanism", "sub": "Technical", "desc": "A documented uniqueness enforcement mechanism must be in place before Phase 4 opens. Acceptable appr"}, "CT-09": {"title": "Vouching Pattern Anomaly Detection", "sub": "Technical", "desc": "The VTA or a monitoring layer analyses vouching patterns for statistical anomalies \u2014 e.g. tight clus"}, "CT-10": {"title": "Non-Discriminatory Admission Criteria", "sub": "Governance", "desc": "Admission criteria must be published, non-discriminatory, and reviewed against applicable equality l"}, "CT-11": {"title": "Alternative Identity Proofing Paths", "sub": "Procedural", "desc": "At least one admission pathway must not require conventional government-issued ID, to accommodate th"}, "CT-12": {"title": "IDVP Security Approval Criteria", "sub": "Governance", "desc": "IDVPs must meet documented security and operational standards \u2014 including breach notification obliga"}, "CT-13": {"title": "IDVP Deregistration Handling Protocol", "sub": "Procedural", "desc": "The governing body must define how member VMCs issued via a deregistered IDVP's IDVCs are handled: w"}, "CT-14": {"title": "DID Document Integrity Verification", "sub": "Technical", "desc": "The VTA must verify DID document integrity cryptographically before accepting any credential present"}, "CT-15": {"title": "Pseudonymous Per-VTC M-DID Design", "sub": "Technical", "desc": "Personal network managers should generate a distinct M-DID per VTC, and registry metadata exposure s"}, "CT-16": {"title": "Minimum-Necessary IDVC Attribute Set", "sub": "Governance", "desc": "A defined minimum-necessary IDVC attribute set must be published before Phase 4, specifying only att"}, "CT-17": {"title": "Data Minimisation Audit", "sub": "Procedural", "desc": "An annual data minimisation audit of all credential schemas (VRC, VMC, IDVC) must be conducted to id"}, "CT-18": {"title": "Normative Credential Schema Publication", "sub": "Technical", "desc": "Normative credential schemas for VRC, VMC, and IDVC must be published before Phase 2. Schemas must i"}, "CT-19": {"title": "Conformance Test Suite", "sub": "Technical", "desc": "A conformance test suite for VTA and personal network manager implementations must be published, ena"}, "CT-20": {"title": "Sovereign Wallet UX Design Principles", "sub": "UX", "desc": "UX design principles for sovereign wallets must be defined, addressing task-based trust ceremonies, "}, "CT-21": {"title": "Non-Technical User Onboarding Testing", "sub": "UX", "desc": "Structured user testing with non-technical participants must be conducted before each major release "}, "CT-22": {"title": "Key Recovery Mechanism", "sub": "Technical", "desc": "A key recovery mechanism \u2014 e.g. social recovery quorum, hardware backup \u2014 must be defined and docume"}, "CT-23": {"title": "Mandatory Pre-Revocation Notice", "sub": "Governance", "desc": "No VMC shall be revoked without prior written notice to the member, including documented rationale a"}, "CT-24": {"title": "Privacy-Preserving Revocation Disclosure", "sub": "Technical", "desc": "Revocation status must not be publicly linked to a member's real-world identity by default. ZKP-base"}, "CT-25": {"title": "Credential Renewal Workflow", "sub": "Technical", "desc": "A defined credential renewal workflow \u2014 including advance expiry notification (recommended: 30 days)"}, "CT-26": {"title": "VTC-Scoped Revocation", "sub": "Technical", "desc": "Revocation must be explicitly scoped to the issuing VTC only. Cross-VTC revocation requires a separa"}, "CT-27": {"title": "Audited ZKP Library Requirement", "sub": "Technical", "desc": "Only ZKP implementations that have undergone formal security review or are from audited open-source "}, "CT-28": {"title": "ZKP Conformance Testing", "sub": "Technical", "desc": "A conformance test suite for ZKP implementations must be developed as part of the DTG credential spe"}, "CT-29": {"title": "Algorithm Agility and Migration Pathway", "sub": "Technical", "desc": "VTC credential schemas must be designed for algorithm agility. A quantum-readiness assessment and mi"}, "CT-30": {"title": "Cryptographic Delegation Scope Constraints", "sub": "Technical", "desc": "AI agent delegation credentials must cryptographically encode explicit capability constraints (e.g. "}, "CT-31": {"title": "Short-Lived Agent Credentials", "sub": "Technical", "desc": "AI agent delegation credentials should be short-lived (recommended: maximum 24-hour validity) with a"}, "CT-32": {"title": "Agent Liveness Check on Operator VMC", "sub": "Technical", "desc": "Before executing any delegated credential operation, an AI agent must verify that its operator's VMC"}, "CT-33": {"title": "Non-Human Activity Rate-Limiting", "sub": "Technical", "desc": "The VTA and governance portal must enforce rate-limiting on admission requests, credential presentat"}, "CT-34": {"title": "Behavioural Anomaly Detection for Non-Human Actors", "sub": "Technical", "desc": "A behavioural anomaly detection layer must be deployed before Phase 4 to identify non-human activity"}, "CT-35": {"title": "Anchor Awareness of AI Social Engineering", "sub": "Procedural", "desc": "Community trust anchors must receive training on AI-powered social engineering vectors, including LL"}, "CT-36": {"title": "Out-of-Band Verification for High-Stakes Vouching", "sub": "Procedural", "desc": "For Phase 2 trust anchor admission and Phase 3 high-trust vouching, anchors should use out-of-band v"}, "CT-37": {"title": "Jurisdictional Diversity of Key Parties", "sub": "Governance", "desc": "The governing body must document the jurisdictional distribution of trust anchors and IDVPs, and ass"}, "CT-38": {"title": "Legal Coercion Response Protocol", "sub": "Procedural", "desc": "A documented legal coercion response protocol must be in place for trust anchors and IDVPs, includin"}, "CT-39": {"title": "Distributed Registry Architecture", "sub": "Technical", "desc": "The VTC trust registry must be deployed with geographic redundancy and a defined degraded-mode opera"}, "CT-40": {"title": "Legal Review of Credential Schemas", "sub": "Legal", "desc": "A legal review of all credential schemas and trust registry designs against applicable data protecti"}, "CT-41": {"title": "Open Issues Regulatory Risk Acceptance", "sub": "Governance", "desc": "Each of the four VTC Bootstrapping Draft open issues must have an explicit regulatory risk assessmen"}, "CT-42": {"title": "Anonymous Membership Option", "sub": "Technical", "desc": "For VTCs operating in politically sensitive contexts, an anonymous membership pathway \u2014 using ZKP pr"}, "CT-43": {"title": "Governing Body Accountability for Systematic Exclusion", "sub": "Governance", "desc": "The governing body must track admission denial rates by demographic proxy where legally permissible,"}, "CT-44": {"title": "Remediation Pathway After Overturned Revocation", "sub": "Governance", "desc": "Where a revocation is overturned on appeal, a documented remediation pathway must exist, including r"}, "CT-45": {"title": "Multi-Party Registry Write Authorisation", "sub": "Technical", "desc": "Trust registry writes must require multi-party or threshold authorisation (e.g. m-of-n signature). N"}, "CT-46": {"title": "Coordinated Behaviour Detection in Governance", "sub": "Technical", "desc": "The complaints and appeals workflow must include coordinated behaviour detection, identifying statis"}, "CT-47": {"title": "Formal Open Issues Mitigation Plan", "sub": "Governance", "desc": "Each of the four VTC Bootstrapping Draft open issues must have a formal mitigation plan with owner, "}, "CT-48": {"title": "Threat Model Maintenance", "sub": "Governance", "desc": "A formal VTC threat model must be published, reviewed, and updated at least annually. It must cover "}, "CT-49": {"title": "VRC Data Minimisation Clause", "sub": "Technical", "desc": "The VRC `credentialSubject` SHOULD contain only the minimum claims necessary for graph structure: th"}, "CT-50": {"title": "M-DID to R-DID Migration Trigger", "sub": "Governance", "desc": "VTC implementations MUST define and publish a normative trigger for migration from M-DID-based to R-"}, "CT-51": {"title": "Non-Human DID Designation in DID Document", "sub": "Technical", "desc": "Agent DIDs MUST be designated as non-human in the DID Document using a defined service type property"}, "CT-52": {"title": "Agent Delegation Credential Requirement", "sub": "Technical", "desc": "An AI agent operating on behalf of a human VTC member MUST hold a delegation credential issued by th"}, "CT-53": {"title": "VIC Role Embedding (membershipRole field)", "sub": "Technical", "desc": "The VIC `credentialSubject` SHOULD include a `membershipRole` field specifying the role to be grante"}, "CT-54": {"title": "VWC Requirement for High-Stakes Anchor Admission", "sub": "Technical", "desc": "For Phase 2 trust anchor admission, VTC governance SHOULD require that VRCs used in anchor admission"}, "CT-55": {"title": "VEC Issuer Co-Membership Requirement", "sub": "Governance", "desc": "VTC implementations SHOULD require that Endorsement Credential (VEC per spec \u00a77.2) issuers hold a va"}, "CT-56": {"title": "VTC Governance Conformance Class", "sub": "Governance", "desc": "A VTC claiming DTG credential specification compliance MUST publish a version-controlled governance "}, "AT-01": {"title": "Assurance test for GR-01", "sub": "Governance", "desc": "Genesis policy artefact exists, is version-controlled, and was committed before any Phase 2 invitati"}, "AT-02": {"title": "Assurance test for GR-02", "sub": "Technology", "desc": "VTA PEP rejects Phase 2 invitation attempts after documented initiator authority expiry"}, "AT-03": {"title": "Assurance test for GR-03", "sub": "Governance", "desc": "Anchor diversity metric (geographic / organisational spread) meets documented policy floor at end of"}, "AT-04": {"title": "Assurance test for GR-04", "sub": "Technology", "desc": "VMC issuance fails when only one-directional VRC exists"}, "AT-05": {"title": "Assurance test for GR-05", "sub": "Technology", "desc": "IDVP DID not in trust registry with correct role \u2192 VTA rejects IDVC presentation"}, "AT-06": {"title": "Assurance test for GR-06", "sub": "Technology / UX", "desc": "At least one ZKP / selective disclosure path is available and functional in Phase 4 UX"}, "AT-07": {"title": "Assurance test for GR-07", "sub": "Governance", "desc": "Uniqueness enforcement mechanism is documented; if none exists, risk acceptance is signed and dated"}, "AT-08": {"title": "Assurance test for GR-08", "sub": "Governance", "desc": "Revocation notice delivered to member within SLA; appeals path accessible within 24 hours"}, "AT-09": {"title": "Assurance test for GR-09", "sub": "Governance / Privacy", "desc": "Default revocation status disclosure does not expose member real-world identity"}, "AT-10": {"title": "Assurance test for GR-10", "sub": "Technology", "desc": "Registry write with single-party authorisation rejected"}, "AT-11": {"title": "Assurance test for GR-11", "sub": "Governance", "desc": "Jurisdictional distribution of key parties documented; coercion risk assessment signed by governing "}, "AT-12": {"title": "Assurance test for GR-12", "sub": "Technology", "desc": "Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propagates to ag"}, "AT-13": {"title": "Assurance test for GR-13", "sub": "Technology", "desc": "Agent credential operations visible in operator audit log with all required fields"}, "AT-14": {"title": "Assurance test for GR-14", "sub": "Technology", "desc": "Rate-limiting triggers on high-frequency non-human credential presentation; legitimate agent traffic"}, "AT-15": {"title": "Assurance test for GR-15", "sub": "Governance", "desc": "Complaint rate-limiting active; legitimate single-member complaint receives response within SLA"}, "AT-16": {"title": "Assurance test for GR-16", "sub": "Governance", "desc": "Published threat model exists, is dated within 12 months, and covers all six listed threat categorie"}, "AT-17": {"title": "Assurance test for GR-17", "sub": "Governance", "desc": "All four open issues have documented mitigations or risk acceptances signed by governing body with r"}, "AT-18": {"title": "Assurance test for GR-18", "sub": "Governance / Technology", "desc": "VTC trust registry records a migration trigger date for R-DID adoption; all VRCs issued after that d"}, "GR-01": {"title": "Genesis Policy Documentation", "sub": "Governance", "desc": "All Phase 1 bootstrapping policies must be version-controlled, publicly readable, and committed to a"}, "GR-02": {"title": "Time-Bounded Initiator Authority", "sub": "Governance", "desc": "Initiator authority must be explicitly time-bounded or role-transitioned under documented governance"}, "GR-03": {"title": "Trust Anchor Diversity Policy", "sub": "Governance / Human Experience", "desc": "A minimum diversity standard for trust anchors must be defined and documented before Phase 2 seeding"}, "GR-04": {"title": "Reciprocal VRC Requirement", "sub": "Technology / Governance", "desc": "No VMC shall be issued to a trust anchor or member without a verified reciprocal VRC exchange. The V"}, "GR-05": {"title": "IDVP Registry Standing", "sub": "Technology / Governance", "desc": "IDVCs are only valid for VTC admission if issued by an IDVP whose DID is listed in the VTC trust reg"}, "GR-06": {"title": "Privacy-Preserving Proofing Option", "sub": "Human Experience / Technology", "desc": "At least one privacy-preserving alternative to raw IDVC disclosure (ZKP, selective disclosure) must "}, "GR-07": {"title": "Uniqueness Enforcement Mechanism", "sub": "Technology / Governance", "desc": "The VTC must define and document its uniqueness enforcement mechanism before Phase 4 opens. Absence "}, "GR-08": {"title": "Revocation Due Process", "sub": "Governance / Human Experience", "desc": "No VMC shall be revoked without prior notice to the member, a documented rationale, and access to a "}, "GR-09": {"title": "Privacy-Preserving Revocation Disclosure", "sub": "Technology / Governance", "desc": "Revocation status must not be publicly linked to member real-world identity by default. ZKP-based or"}, "GR-10": {"title": "Multi-Party Registry Write Authorisation", "sub": "Technology / Governance", "desc": "Trust registry writes must require multi-party or threshold authorisation. No single actor shall hav"}, "GR-11": {"title": "Jurisdictional Diversity for Key Parties", "sub": "Governance", "desc": "The VTC governance framework must document the jurisdictional distribution of trust anchors and IDVP"}, "GR-12": {"title": "Agent Delegation Scope Constraint", "sub": "Technology / Governance", "desc": "AI agents operating on behalf of VTC members must hold cryptographically scoped delegation credentia"}, "GR-13": {"title": "Agent Audit Logging", "sub": "Technology / Governance", "desc": "All credential operations performed by an AI agent must be logged with sufficient detail to distingu"}, "GR-14": {"title": "Non-Human Actor Detection", "sub": "Technology / Governance", "desc": "Rate-limiting and behavioural anomaly detection for non-human activity patterns must be in place bef"}, "GR-15": {"title": "Complaint and Appeals Rate-Limiting", "sub": "Governance / Human Experience", "desc": "The complaints and appeals process must include rate-limiting controls to prevent bad-faith flooding"}, "GR-16": {"title": "Formal Threat Model Publication", "sub": "Governance", "desc": "A formal VTC threat model covering Sybil attacks, state coercion, anchor collusion, AI-mediated atta"}, "GR-17": {"title": "Open Issues Risk Acceptance", "sub": "Governance", "desc": "The four open issues from the VTC Bootstrapping Draft \u2014 uniqueness, trust task protocols, expiration"}, "GR-18": {"title": "R-DID Migration Phase Gate", "sub": "Technology / Governance", "desc": "Before Phase 4 opens (or before the VTC exceeds a governance-defined membership threshold, whichever"}, "D1": {"title": "Daniel Wright", "sub": "Initiator", "desc": ""}, "D2": {"title": "Laila Hassan", "sub": "Community Trust Anchor", "desc": ""}, "D3": {"title": "Ahmed Khan", "sub": "New Member Seeking Inclusion", "desc": ""}, "D4": {"title": "Elena Rossi", "sub": "IDVP \u2014 Senior Compliance Executive", "desc": ""}, "D5": {"title": "Sophie Dubois", "sub": "Member Subject to Revocation", "desc": ""}, "D6": {"title": "Tomasz Kowalski", "sub": "Security Researcher / Harm Analyst", "desc": ""}, "M1": {"title": "Aether", "sub": "Benign AI Agent", "desc": ""}, "M2": {"title": "Phantom", "sub": "Malign AI Agent", "desc": ""}, "B1": {"title": "Viktor", "sub": "Sybil Network Operator", "desc": ""}, "B2": {"title": "State Security Directorate", "sub": "State-Level Coercive Actor", "desc": ""}, "B3": {"title": "The Collective", "sub": "Community Disruptor", "desc": ""}};
+
+function mktt(el) {
+  const id = el.dataset.tip;
+  if (!id || !TT[id]) return;
+  const d = TT[id];
+  const div = document.createElement('div');
+  div.className = 'tt';
+  div.innerHTML = (d.title ? '<div class="tt-title">'+d.title+'</div>' : '') +
+                  (d.sub   ? '<div class="tt-sub">'+d.sub+'</div>' : '') +
+                  (d.desc  ? '<div class="tt-desc">'+d.desc+'</div>' : '');
+  el.style.position = 'relative';
+  el.appendChild(div);
+  requestAnimationFrame(() => div.classList.add('show'));
+  el._tt = div;
+}
+function rmtt(el) {
+  if (el._tt) { el._tt.remove(); el._tt = null; }
+}
+document.addEventListener('mouseover', e => {
+  const el = e.target.closest('[data-tip]');
+  if (el && !el._tt) mktt(el);
+});
+document.addEventListener('mouseout', e => {
+  const el = e.target.closest('[data-tip]');
+  if (el) rmtt(el);
+});
+
+// Panel
+function openPanel(html) {
+  document.getElementById('panel-content').innerHTML = html;
+  document.getElementById('panel').classList.add('open');
+  document.getElementById('poverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closePanel() {
+  document.getElementById('panel').classList.remove('open');
+  document.getElementById('poverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closePanel(); });
+</script>
+<div class="panel-overlay" id="poverlay" onclick="closePanel()"></div>
+<div class="panel" id="panel">
+  <button class="panel-close" onclick="closePanel()">✕</button>
+  <div id="panel-content"></div>
+</div>
+
+</body>
+</html>
