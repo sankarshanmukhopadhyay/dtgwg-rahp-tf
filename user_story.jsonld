@@ -1,0 +1,1131 @@
+{
+  "@context": "../../context/rahp.jsonld",
+  "@graph": [
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-01",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D1",
+      "persona_label": "D1 – Daniel Wright – Initiator",
+      "function": "Set up a new VTC by generating a Community DID, instantiating a Verifiable Trust Agent, and hard-coding Phase 1 bootstrapping policies",
+      "goal": "Establish the community with auditable genesis policies, a time-bounded initiator authority, and a defensible governance record",
+      "lifecyclePhase": "Phase 1: Genesis",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-02"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-1",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+      ],
+      "risk_categories": [
+        "Governance"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-12",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-15",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-16"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-02",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D1",
+      "persona_label": "D1 – Daniel Wright – Initiator",
+      "function": "Invite a defined set of Community Trust Anchors by issuing VTC invitation credentials scoped to the trust anchor role",
+      "goal": "Build the initial trust graph with diversity-aware, policy-constrained anchor selection before opening to broader membership",
+      "lifecyclePhase": "Phase 2: Anchor Seeding",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-06"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-1",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-2"
+      ],
+      "risk_categories": [
+        "Governance",
+        "Identity"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-10",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-12",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-16"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-03",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D2",
+      "persona_label": "D2 – Laila Hassan – Trust Anchor",
+      "function": "Issue Verifiable Relationship Credentials (VRCs) to vouch for new members and respond to invitation requests from the initiator",
+      "goal": "Grow the community responsibly, vouch only for people I genuinely know, and avoid becoming a single point of failure or collusion risk",
+      "lifecyclePhase": "Phase 2–3: Anchor Vouching",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-07"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-2",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-3"
+      ],
+      "risk_categories": [
+        "Identity",
+        "Governance"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-10",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-12",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-13",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-14",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-18"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-04",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D3",
+      "persona_label": "D3 – Ahmed Khan – New Member",
+      "function": "Apply for VTC membership by presenting proof of a VTC invitation credential, two VRCs from existing members, and an IDVC from an approved IDVP",
+      "goal": "Gain legitimate, privacy-preserving access to the VTC without facing discriminatory gatekeeping or disproportionate identity proofing burdens",
+      "lifecyclePhase": "Phase 3–4: Member Admission",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-05"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-3",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-10"
+      ],
+      "risk_categories": [
+        "Identity",
+        "Human Experience"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-12",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-13",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-15",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-16",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-17"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-05",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D4",
+      "persona_label": "D4 – Elena Rossi – IDVP",
+      "function": "Issue Identity Verification Credentials (IDVCs) to applicants after performing required identity proofing, and maintain IDVP standing in the VTC trust registry",
+      "goal": "Provide reliable, privacy-preserving identity verification while minimising regulatory exposure and avoiding becoming a surveillance or data breach vector",
+      "lifecyclePhase": "Phase 4: Identity Verification",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-05"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-4",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9"
+      ],
+      "risk_categories": [
+        "Identity",
+        "Cryptography"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-13",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-15"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-06",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D5",
+      "persona_label": "D5 – Sophie Dubois – Revocation Subject",
+      "function": "Receive timely, clear notice of any revocation action, access a formal appeals process, and retain portability of credentials for use in other VTCs",
+      "goal": "Avoid unjust or arbitrary revocation, protect my professional reputation, and have a fair process for contesting governance decisions",
+      "lifecyclePhase": "Revocation & Expiration",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-06"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-5",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-11"
+      ],
+      "risk_categories": [
+        "Governance",
+        "Human Experience"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-11",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-12",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-13",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-17"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-07",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D6",
+      "persona_label": "D6 – Tomasz Kowalski – Researcher",
+      "function": "Run systematic stress-tests against VTC uniqueness enforcement, registry integrity, Sybil resistance, and DID resolution under adversarial conditions",
+      "goal": "Identify exploitable weaknesses before malicious actors do, and produce actionable findings that improve VTC governance and cryptographic design",
+      "lifecyclePhase": "Open Issues / Threat Modelling",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-08",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-09"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-8"
+      ],
+      "risk_categories": [
+        "Governance",
+        "Cryptography"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-14",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-15",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-16"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-08",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/M1",
+      "persona_label": "M1 – Aether – Benign AI Agent",
+      "function": "Present VTC membership credentials on behalf of my operator, autonomously request renewal prior to expiry, and log all actions for operator audit",
+      "goal": "Execute delegated credential operations reliably within authorised scope, without exceeding granted permissions or persisting after operator revocation",
+      "lifecyclePhase": "Agent Credential Lifecycle",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-10",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-11"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-6",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9"
+      ],
+      "risk_categories": [
+        "AI Agents",
+        "Cryptography"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-08",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-13",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-18"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-09",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/M2",
+      "persona_label": "M2 – Phantom – Malign AI Agent",
+      "function": "Detect and block AI-mediated sybil generation, automated social engineering of trust anchors, and adversarial policy fuzzing at machine scale",
+      "goal": "Ensure VTC governance and admission controls remain effective against non-human threat actors operating at speed and scale beyond human review capacity",
+      "lifecyclePhase": "AI Threat Detection",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-10",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-11"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-8"
+      ],
+      "risk_categories": [
+        "AI Agents",
+        "Governance"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-08",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-14",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-18"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-10",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/B1",
+      "persona_label": "B1 – Viktor – Sybil Operator",
+      "function": "Detect and prevent coordinated multi-M-DID registration, collusive anchor vouching rings, and gradual graph capture by a sophisticated adversarial actor",
+      "goal": "Protect VTC integrity against large-scale identity fraud that exploits invitation thresholds and weak uniqueness enforcement",
+      "lifecyclePhase": "Sybil & Identity Fraud",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-08",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-09"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-3"
+      ],
+      "risk_categories": [
+        "Identity",
+        "Governance"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-14",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-18"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-11",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/B2",
+      "persona_label": "B2 – State Security Directorate",
+      "function": "Detect and resist state-level coercion of trust anchors, IDVPs, or registry operators, and prevent forced credential revocation for political purposes",
+      "goal": "Maintain VTC integrity and member safety against jurisdictional legal coercion, mandatory disclosure demands, and weaponised revocation",
+      "lifecyclePhase": "State Coercion & Surveillance",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-09"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7"
+      ],
+      "risk_categories": [
+        "Governance",
+        "Identity"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-10",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-15",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-17"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-12",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/B3",
+      "persona_label": "B3 – The Collective – Disruptor",
+      "function": "Detect and limit coordinated false reporting, bad-faith appeals flooding, and disinformation campaigns targeting VTC governance and trust anchor reputations",
+      "goal": "Protect VTC governance bandwidth and anchor credibility against organised disruption while preserving legitimate grievance channels",
+      "lifecyclePhase": "Community Disruption & CIB",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-09"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-11"
+      ],
+      "risk_categories": [
+        "Governance",
+        "Human Experience"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-11",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-14"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-13",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D3",
+      "persona_label": "D3 – Ahmed Khan – New Member",
+      "function": "Initiate a connecting VRC ceremony with a trust anchor I do not yet know well, declare my relational terms upfront, and negotiate a staged exchange that allows time for relationship deliberation",
+      "goal": "Gain a VRC from an anchor outside my existing social graph without being forced into synchronous completion or penalised for requesting a multi-session ceremony",
+      "lifecyclePhase": "Phase 3–4: Member Admission / Ceremony Protocol",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-13"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-12",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-14"
+      ],
+      "risk_categories": [
+        "Human Experience",
+        "Ceremony Protocol"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-19",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-20",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-22"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-14",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D5",
+      "persona_label": "D5 – Sophie Dubois – Member Subject to Revocation",
+      "function": "Request a witnessed VRC renewal with a specific anchor serving as constitutor witness — not just attestor — so that the witness's presence makes the ceremony socially real within the community",
+      "goal": "Protect my standing in a potential future dispute by ensuring the VWC encodes the witness role, not just cryptographic proof of attendance, creating a usable outcome record for Restore",
+      "lifecyclePhase": "VRC Renewal / Ceremony Protocol",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-14"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-11",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-14"
+      ],
+      "risk_categories": [
+        "Human Experience",
+        "Ceremony Protocol"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-19",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-21",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-07"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-15",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D2",
+      "persona_label": "D2 – Laila Hassan – Trust Anchor",
+      "function": "Decline a witnessed VRC exchange request via INDIRECT_DECLINE after detecting anomalous party graph patterns, triggering a community-only log entry that feeds anomaly detection without exposing my reason to the requester",
+      "goal": "Protect my integrity and the VTC from a potential Sybil laundering attempt while preserving dignity norms — the counterparty receives a refusal without a reason code; the community log receives a committed reason for investigation",
+      "lifecyclePhase": "Phase 2–3: Anchor Vouching / Security",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-15"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-2",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-14"
+      ],
+      "risk_categories": [
+        "Security",
+        "Ceremony Protocol",
+        "Governance"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-14",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-22",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-23"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-16",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D3",
+      "persona_label": "D3 – Ahmed Khan – New Member",
+      "function": "Present a VRC issued by a different VTC as partial evidence of membership eligibility in a second VTC, relying on cross-VTC credential recognition governed by a shared trust registry entry",
+      "goal": "Join a second affiliated VTC without repeating the full admission process from scratch, while ensuring the second VTC can verify the issuing VTC's governance framework and my credential's dependency chain",
+      "lifecyclePhase": "Cross-VTC Interoperability",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-16"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-3",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-16"
+      ],
+      "risk_categories": [
+        "Identity",
+        "Interoperability"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-17",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-24",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-15"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-17",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D1",
+      "persona_label": "D1 – Daniel Wright – Initiator",
+      "function": "Amend the VTC constitution mid-lifecycle following a governance vote, versioning the change so that in-flight ceremonies are bound to the prior version and new ceremonies apply the amended version",
+      "goal": "Update governance rules without invalidating existing member credentials or disrupting active ceremonies, and ensure the VTA's PEP applies the correct governance version to each ceremony based on when it reached AGREED state",
+      "lifecyclePhase": "Governance Amendment / Lifecycle",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-17"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-16"
+      ],
+      "risk_categories": [
+        "Governance",
+        "Lifecycle"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-25",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-16",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-19"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-18",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D3",
+      "persona_label": "D3 – Ahmed Khan – New Member",
+      "function": "Initiate a formal adjudication of a contested admission denial, presenting my case to an independent governance body with authority to issue a binding ruling overriding the anchor's original decision",
+      "goal": "Obtain a fair, independently adjudicated outcome for a disputed denial without relying solely on the anchor who made the original decision, and receive a binding ruling artefact that the VTA must honour",
+      "lifecyclePhase": "Adjudication / Appeals",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-18"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-11",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-16"
+      ],
+      "risk_categories": [
+        "Human Experience",
+        "Governance"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-26",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-12"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-19",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/M1",
+      "persona_label": "M1 – Aether – Benign AI Agent",
+      "function": "Detect and gracefully halt operations when my operator's VMC is revoked, within the liveness check interval declared in my behavioural commitment, and produce a signed suspension record for the operator's audit log",
+      "goal": "Avoid acting on behalf of a member whose VTC membership has been revoked, limiting the harm window to the committed liveness interval and providing a verifiable record that I ceased operations promptly on detection",
+      "lifecyclePhase": "Agent Liveness / Lifecycle",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-19"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-6",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-16"
+      ],
+      "risk_categories": [
+        "AI Agents",
+        "Lifecycle"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-27",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-08",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-13"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-20",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/M2",
+      "persona_label": "M2 – Phantom – Malign AI Agent",
+      "function": "Detect and enforce behavioural commitment violations by agents operating inside the trust perimeter, producing cryptographically provable breach records when an agent exceeds its declared operational parameters",
+      "goal": "Ensure that agent misbehaviour inside the VTC is detectable as a protocol-level event — not merely a statistical anomaly — by comparing observed behaviour against the agent's signed behavioural commitment and generating verifiable breach records",
+      "lifecyclePhase": "Behavioural Commitment Enforcement",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-20"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-6",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-16"
+      ],
+      "risk_categories": [
+        "AI Agents",
+        "Security"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-28",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-08",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-18"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-21",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D6",
+      "persona_label": "D6 – Tomasz Kowalski – Security Researcher",
+      "function": "Model a sensor network holding a legal-personhood DID as a first-class party in a trust task protocol, verifying that the five atomic trust task types can be executed with a non-human entity as a named participant",
+      "goal": "Establish proof-of-concept that the DTG trust task protocol specifications are entity-agnostic — that Identify, Attest, Exchange, Signal, and Restore operate identically whether the party is a human, an AI agent, or a non-human entity with legal personhood",
+      "lifecyclePhase": "Entangled Systems / Non-Human Entity",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-21"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-16",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-8"
+      ],
+      "risk_categories": [
+        "Entangled Systems",
+        "Cryptography"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-29",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-15",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-19"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-22",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D6",
+      "persona_label": "D6 – Tomasz Kowalski – Security Researcher",
+      "function": "Test the protocol-level enforcement of trust task pre-conditions by intentionally invoking Exchange before completing Identify, and verify that the PEP produces a standard pre-condition violation record rather than an unhandled runtime error",
+      "goal": "Confirm that the VTA's PEP enforces the mandatory ordering constraint (Identify before Exchange) as a protocol requirement, not an implementation convention, and that the failure artefact is interoperable across implementations",
+      "lifecyclePhase": "Pre-condition Enforcement / Security",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-22"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-8",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-16"
+      ],
+      "risk_categories": [
+        "Security",
+        "Governance"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-15",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-19",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-16"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-23",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D2",
+      "persona_label": "D2 – Laila Hassan – Trust Anchor",
+      "function": "Issue and accumulate endorsements for specific member skills within the VTC, support retraction of an endorsement that no longer reflects my assessment, and ensure the endorsement graph topology is verifiable by third parties",
+      "goal": "Enable a reputation layer within the VTC that is distinct from membership credentials, where endorsements accumulate over time, retractions are prospective (not retrospective), and the endorsement graph can be verified for anomalous clustering patterns",
+      "lifecyclePhase": "Endorsement / Reputation",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-23"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-15",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-16"
+      ],
+      "risk_categories": [
+        "Identity",
+        "Human Experience"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-21"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-24",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D1",
+      "persona_label": "D1 – Daniel Wright – Initiator",
+      "function": "Execute a governed VTC dissolution, revoking all VMCs and the Community DID, preserving the tamper-evident governance log, and issuing a portability package to every member containing their credentials, outcome records, and the signed dissolution record",
+      "goal": "Wind down the VTC in a way that is verifiably legitimate — members can prove their prior credentials were valid at issuance — and that leaves no active credentials pointing to a dissolved issuer DID",
+      "lifecyclePhase": "VTC Lifecycle / Dissolution",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-24"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-5",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-16"
+      ],
+      "risk_categories": [
+        "Lifecycle",
+        "Governance"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-30",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-17",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-25"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-25",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D6",
+      "persona_label": "D6 – Tomasz Kowalski – Security Researcher",
+      "function": "Reproduce a governance configuration failure where the VTA applies the wrong governance framework version to a live ceremony, and verify that the resulting failure record captures the version mismatch in a machine-readable, diagnosable form",
+      "goal": "Establish that governance version binding at ceremony AGREED state is a protocol requirement with a specified failure mode — not an implementation detail — so that version mismatch failures are interoperable and diagnosable across VTA implementations",
+      "lifecyclePhase": "Governance Configuration / Security",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-25"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-8",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-16"
+      ],
+      "risk_categories": [
+        "Governance",
+        "Security"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-25",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-19",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-16"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-26",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EC1",
+      "persona_label": "EC1 – Mia Okafor – Minor/SEN",
+      "function": "Apply for VTC membership using a co-signed admission credential where my responsible adult (Grace) acts as co-signatory for consent purposes, not as a substituted decision-maker",
+      "goal": "Participate in a VTC relevant to my interests on equal terms, with my SEN status not exposed as a credential attribute and my consent clearly recorded as supported rather than substituted",
+      "lifecyclePhase": "Phase 3–4: Member Admission / Supported Decision-Making",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-26",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-27"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-10",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-17",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-18"
+      ],
+      "risk_categories": [
+        "Human Experience / Safeguarding"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-12",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-19",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-31",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-32"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-27",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EC1",
+      "persona_label": "EC1 – Mia Okafor – Minor/SEN",
+      "function": "Contest a VTC admission denial through an accessible appeals pathway adapted for a minor with executive function differences, with Grace able to submit on my behalf",
+      "goal": "Exercise due process rights without being disadvantaged by an appeals procedure designed exclusively for full-capacity adults",
+      "lifecyclePhase": "Adjudication / Appeals / Minor",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-26"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-11",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-17",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-18"
+      ],
+      "risk_categories": [
+        "Human Experience / Safeguarding"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-26",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-31"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-28",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EC1",
+      "persona_label": "EC1 – Mia Okafor – Minor/SEN",
+      "function": "Transition from a guardian-mediated credential wallet to sole independent credential control at age 18, preserving my membership history and VRC relationships without requiring re-admission",
+      "goal": "Move into full adult participation without losing the trust-graph relationships I built before majority, and without any gap in membership status during the transition",
+      "lifecyclePhase": "Credential Lifecycle / Capacity Transition",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-27"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-17",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-18",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-5"
+      ],
+      "risk_categories": [
+        "Human Experience / Safeguarding / Lifecycle"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-13",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-30",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-32"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-29",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EC2a",
+      "persona_label": "EC2a – Arthur Kowalczyk – Person Living with Dementia",
+      "function": "Remain an active, recognised VTC member while I still have capacity, and pre-register Margaret as my LPA holder so that she can take over credential management seamlessly if and when I lose capacity",
+      "goal": "Retain ownership of my identity in the trust graph through a capacity transition, with continuity of membership and no requirement for re-admission under a different identity",
+      "lifecyclePhase": "Phase 3–4: Member Admission / LPA Pre-Registration",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-28",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-29"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-17",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-19"
+      ],
+      "risk_categories": [
+        "Human Experience / Safeguarding / Lifecycle"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-13",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-31",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-32",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-33"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-30",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EC2b",
+      "persona_label": "EC2b – Margaret Kowalczyk – LPA Holder",
+      "function": "Authenticate as Arthur's registered attorney and perform credential renewals and VRC exchanges on his behalf under a scope-limited delegation credential, with all my actions logged separately from Arthur's own credential history",
+      "goal": "Exercise my legally recognised LPA authority within the DTG architecture without the system treating my actions as an unauthorised account takeover or conflating my identity with Arthur's",
+      "lifecyclePhase": "Agent / LPA Delegation / Lifecycle",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-28",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-29"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-17",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-19",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-6"
+      ],
+      "risk_categories": [
+        "Human Experience / Safeguarding / Governance"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-26",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-31",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-32",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-33"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-31",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EC2b",
+      "persona_label": "EC2b – Margaret Kowalczyk – LPA Holder",
+      "function": "Receive all VTC governance communications relating to Arthur's credentials — including revocation notices, renewal reminders, and appeals deadlines — as a named secondary recipient, and respond to them on his behalf as his registered attorney",
+      "goal": "Ensure Arthur's due process rights are not forfeited by default delivery to an account he can no longer access, and exercise revocation appeals rights within required timeframes",
+      "lifecyclePhase": "Revocation & Expiration / LPA Due Process",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-29"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-5",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-11",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-17",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-19"
+      ],
+      "risk_categories": [
+        "Governance / Human Experience"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-26",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-33"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-32",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EC2b",
+      "persona_label": "EC2b – Margaret Kowalczyk – LPA Holder",
+      "function": "Close Arthur's M-DID and notify the trust graph of his death, producing an auditable record of the closure and issuing a portability package for his credential history and governance participation",
+      "goal": "Fulfil my fiduciary duty to Arthur's estate and ensure the trust graph is updated with accurate, tamper-evident information rather than simply going silent",
+      "lifecyclePhase": "Credential Lifecycle / Death and DID Closure",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-29"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-5",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-17",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-19"
+      ],
+      "risk_categories": [
+        "Governance / Lifecycle"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-13",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-30",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-33"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-33",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EC3",
+      "persona_label": "EC3 – Northgate Community Health Trust – NHS Organisational VTC Member",
+      "function": "Issue Verifiable Member Credentials (VMCs) to nursing and clinical staff as an NHS Foundation Trust acting through named officers (Caldicott Guardian as trust anchor), with credential issuance aligned to the NHS Identity Verification and Authentication Standard (DCB3051)",
+      "goal": "Enable staff to present credentials across NHS Trust boundaries during surge capacity events without paper-based verification, complying with NHS data residency requirements and the Data Security and Protection Toolkit",
+      "lifecyclePhase": "Phase 3–4: Organisational Member / Credential Issuance",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-30",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-31"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-3",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-4",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-20"
+      ],
+      "risk_categories": [
+        "Governance / Identity / Organisational"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-10",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-13",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-34",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-35"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-34",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EC3",
+      "persona_label": "EC3 – Northgate Community Health Trust – NHS Organisational VTC Member",
+      "function": "Revoke a staff VMC within 24 hours of employment termination and ensure the revocation is visible to all NHS relying parties within the agreed SLA, without requiring manual intervention at each Trust",
+      "goal": "Meet the NHS Digital Staff Passport near-real-time revocation requirement and limit the window in which a departed employee can present a stale VMC to a relying party",
+      "lifecyclePhase": "Revocation & Expiration / Organisational",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-31"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-5",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-20"
+      ],
+      "risk_categories": [
+        "Governance / Lifecycle"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-13",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-17",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-34",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-35"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-35",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EC4",
+      "persona_label": "EC4 – Velvet Gate Ltd – Age-Restricted Relying Party",
+      "function": "Accept a ZKP-based age proof from a subscriber's IDVC — confirming the subscriber is over 18 without retaining their identity data — and verify that the issuing IDVP is listed in the VTC trust registry as an approved age verification provider",
+      "goal": "Satisfy Ofcom's highly effective age assurance requirement under the Online Safety Act 2023 using privacy-preserving verification that simultaneously complies with the UK GDPR data minimisation obligation, without building a persistent identity database",
+      "lifecyclePhase": "Phase 4: Identity Verification / Relying Party / Age Assurance",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-32",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-33"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-4",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-21"
+      ],
+      "risk_categories": [
+        "Privacy / Identity / Safeguarding"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-34",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-36",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-37"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-36",
+      "@type": "UserStory",
+      "persona": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EC4",
+      "persona_label": "EC4 – Velvet Gate Ltd – Age-Restricted Relying Party",
+      "function": "Detect and block synthetic age credentials generated by Phantom (M2) or Viktor (B1) at the IDVP or VTA layer before they reach the platform, and produce an Ofcom-compliant audit record demonstrating that age assurance was performed using a technically accurate, robust, reliable, and fair method",
+      "goal": "Prevent automated fake-age-credential generation from enabling a child safety failure, whilst maintaining an auditable compliance record that protects Velvet Gate from Ofcom enforcement action",
+      "lifecyclePhase": "AI Threat Detection / Child Safety / Age Assurance",
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-32",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-33"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-21"
+      ],
+      "risk_categories": [
+        "Security / Safeguarding"
+      ],
+      "metrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-14",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-18",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-36",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-37"
+      ],
+      "provenance": {
+        "source": "workbook:UserStories_v6.xlsx",
+        "imported": "2026-08-05"
+      }
+    }
+  ]
+}

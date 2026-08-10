@@ -1,0 +1,561 @@
+{
+  "@context": "../../context/rahp.jsonld",
+  "@graph": [
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-01",
+      "@type": "Guardrail",
+      "name": "Genesis Policy Documentation",
+      "category": "Governance",
+      "requirement": "All Phase 1 bootstrapping policies must be version-controlled, publicly readable, and committed to an auditable record before the initiator issues any Phase 2 invitations. Hard-coded policy changes require documented governance approval.",
+      "applies_to_phase": "Phase 1 (all subsequent phases)",
+      "owner": "Initiator / Governing Body",
+      "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-NM02"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-18"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-01"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-02",
+      "@type": "Guardrail",
+      "name": "Time-Bounded Initiator Authority",
+      "category": "Governance",
+      "requirement": "Initiator authority must be explicitly time-bounded or role-transitioned under documented governance rules. The VTA PEP must enforce the initiator count limit and refuse Phase 2 actions after authority expiry.",
+      "applies_to_phase": "Phase 1–2",
+      "owner": "VTA PEP / Governing Body",
+      "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G02"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-03"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-02"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-03",
+      "@type": "Guardrail",
+      "name": "Trust Anchor Diversity Policy",
+      "category": "Governance / Human Experience",
+      "requirement": "A minimum diversity standard for trust anchors must be defined and documented before Phase 2 seeding. The VTA must enforce the anchor count limit. Homogeneous anchor clusters constitute a policy violation.",
+      "applies_to_phase": "Phase 2",
+      "owner": "Governing Body",
+      "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY01"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-05"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-03"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-04",
+      "@type": "Guardrail",
+      "name": "Reciprocal VRC Requirement",
+      "category": "Technology / Governance",
+      "requirement": "No VMC shall be issued to a trust anchor or member without a verified reciprocal VRC exchange. The VTA PEP must reject VMC issuance where only a unilateral VRC exists.",
+      "applies_to_phase": "Phase 2–4",
+      "owner": "VTA PEP",
+      "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID01"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-08"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-04"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-05",
+      "@type": "Guardrail",
+      "name": "IDVP Registry Standing",
+      "category": "Technology / Governance",
+      "requirement": "IDVCs are only valid for VTC admission if issued by an IDVP whose DID is listed in the VTC trust registry with the role of identity verification provider at the time of presentation.",
+      "applies_to_phase": "Phase 4",
+      "owner": "VTA PEP / Governing Body",
+      "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID03"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-12"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-05"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06",
+      "@type": "Guardrail",
+      "name": "Privacy-Preserving Proofing Option",
+      "category": "Human Experience / Technology",
+      "requirement": "At least one privacy-preserving alternative to raw IDVC disclosure (ZKP, selective disclosure) must be available for Phase 4 admission. No applicant should be required to disclose more data than strictly necessary.",
+      "applies_to_phase": "Phase 4",
+      "owner": "VTA PEP / DPO",
+      "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-NM01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX02"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-10",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-11",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-15",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-16",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-20",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-27",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-40"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-07",
+      "@type": "Guardrail",
+      "name": "Uniqueness Enforcement Mechanism",
+      "category": "Technology / Governance",
+      "requirement": "The VTC must define and document its uniqueness enforcement mechanism before Phase 4 opens. Absence of a uniqueness mechanism at scale is an open issue and constitutes a known risk that must be risk-accepted or mitigated.",
+      "applies_to_phase": "Phase 4 (open issue)",
+      "owner": "Governing Body / Security",
+      "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY03"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-08",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-28"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-07"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-08",
+      "@type": "Guardrail",
+      "name": "Revocation Due Process",
+      "category": "Governance / Human Experience",
+      "requirement": "No VMC shall be revoked without prior notice to the member, a documented rationale, and access to a formal appeals process with defined timelines. Revocation criteria must be published in the governance framework.",
+      "applies_to_phase": "Revocation",
+      "owner": "Governing Body / VTA",
+      "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX03"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-23",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-25"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-08"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09",
+      "@type": "Guardrail",
+      "name": "Privacy-Preserving Revocation Disclosure",
+      "category": "Technology / Governance",
+      "requirement": "Revocation status must not be publicly linked to member real-world identity by default. ZKP-based or status-list approaches should be used. Cross-VTC contamination must be explicitly scoped and documented.",
+      "applies_to_phase": "Revocation",
+      "owner": "VTA PEP / DPO",
+      "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX03"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-15",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-24",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-26",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-42"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-09"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-10",
+      "@type": "Guardrail",
+      "name": "Multi-Party Registry Write Authorisation",
+      "category": "Technology / Governance",
+      "requirement": "Trust registry writes must require multi-party or threshold authorisation. No single actor shall have unilateral write access. All registry writes must be logged in a tamper-evident audit trail.",
+      "applies_to_phase": "All phases",
+      "owner": "Registry Operator / Governing Body",
+      "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY01"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-14",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-45"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-10"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-11",
+      "@type": "Guardrail",
+      "name": "Jurisdictional Diversity for Key Parties",
+      "category": "Governance",
+      "requirement": "The VTC governance framework must document the jurisdictional distribution of trust anchors and IDVPs, and assess the risk of any single jurisdiction having coercive legal leverage over a controlling majority of key parties.",
+      "applies_to_phase": "Phase 2–4 (ongoing)",
+      "owner": "Governing Body",
+      "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX01"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-37"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-11"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-12",
+      "@type": "Guardrail",
+      "name": "Agent Delegation Scope Constraint",
+      "category": "Technology / Governance",
+      "requirement": "AI agents operating on behalf of VTC members must hold cryptographically scoped delegation credentials with explicit capability constraints. Operator revocation of a VMC must propagate to agent credential invalidation within an agreed latency SLA.",
+      "applies_to_phase": "Agent Lifecycle",
+      "owner": "VTA PEP / Operator",
+      "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI02"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-30",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-31",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-32"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-12"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-13",
+      "@type": "Guardrail",
+      "name": "Agent Audit Logging",
+      "category": "Technology / Governance",
+      "requirement": "All credential operations performed by an AI agent must be logged with sufficient detail to distinguish them from human operations, including agent DID, delegation credential reference, timestamp, and action type.",
+      "applies_to_phase": "Agent Lifecycle",
+      "owner": "VTA / Operator",
+      "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI01"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-31"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-13"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-14",
+      "@type": "Guardrail",
+      "name": "Non-Human Actor Detection",
+      "category": "Technology / Governance",
+      "requirement": "Rate-limiting and behavioural anomaly detection for non-human activity patterns must be in place before Phase 4 opens. Governance rules must explicitly address agent-mediated attacks.",
+      "applies_to_phase": "Phase 4 + Agent Lifecycle",
+      "owner": "Security / Governing Body",
+      "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY01"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-33",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-34"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-14"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-15",
+      "@type": "Guardrail",
+      "name": "Complaint and Appeals Rate-Limiting",
+      "category": "Governance / Human Experience",
+      "requirement": "The complaints and appeals process must include rate-limiting controls to prevent bad-faith flooding, without suppressing legitimate grievances. Anti-retaliation protections for legitimate complainants must be documented.",
+      "applies_to_phase": "Governance Operations",
+      "owner": "Governing Body",
+      "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY02"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-46"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-15"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-16",
+      "@type": "Guardrail",
+      "name": "Formal Threat Model Publication",
+      "category": "Governance",
+      "requirement": "A formal VTC threat model covering Sybil attacks, state coercion, anchor collusion, AI-mediated attacks, registry manipulation, and CIB must be published and reviewed before Phase 4 opens and at least annually thereafter.",
+      "applies_to_phase": "Pre-Phase 4 / Ongoing",
+      "owner": "Security / Governing Body",
+      "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY02"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-48"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-16"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-17",
+      "@type": "Guardrail",
+      "name": "Open Issues Risk Acceptance",
+      "category": "Governance",
+      "requirement": "The four open issues from the VTC Bootstrapping Draft — uniqueness, trust task protocols, expiration/revocation, DID document storage — must each be either mitigated or formally risk-accepted by the governing body before Phase 4 opens.",
+      "applies_to_phase": "Phase 4 (pre-condition)",
+      "owner": "Governing Body",
+      "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY03"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-41",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-47"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-17"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-18",
+      "@type": "Guardrail",
+      "name": "R-DID Migration Phase Gate",
+      "category": "Technology / Governance",
+      "requirement": "Before Phase 4 opens (or before the VTC exceeds a governance-defined membership threshold, whichever comes first), the VTC MUST complete migration from M-DID-based to R-DID-based VRC edges, or formally risk-accept the residual linkability exposure with a documented rationale and review date. The migration trigger MUST be recorded in the trust registry. New VRCs issued after the trigger MUST use R-DIDs. This guardrail converts the spec's §5.2 privacy RECOMMENDATION ('migration recommended post-bootstrapping') into a binding phase gate, closing the residual window identified in RK-SC04. **Source:** DTG Credential Spec v0.3 §5.2 Privacy Considerations.",
+      "applies_to_phase": "Pre-Phase 4",
+      "owner": "VTA PEP / Governing Body",
+      "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX01"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-50"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-18"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-19",
+      "@type": "Guardrail",
+      "name": "Supported Decision-Making and Legal Delegation Pathway",
+      "category": "Human Experience / Legal",
+      "requirement": "Before a VTC may admit any participant who requires supported or substituted decision-making, or any participant for whom a registered legal authority (LPA, court deputyship, or equivalent) is in place, the VTC must: (a) have defined a supported consent pathway in its admission policy; (b) have a credential mechanism capable of representing co-signed consent and LPA delegation distinctly from substituted impersonation; and (c) have registered the legal delegation in the trust registry with a scope-limited delegation credential. Absence of this pathway is a block on admission for in-scope participants.",
+      "applies_to_phase": "Phase 3–4 (pre-condition for admission of in-scope participants)",
+      "owner": "Governing Body / VTC Initiator",
+      "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC05"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-57",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-58",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-59",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-60",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-66"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-19"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-20",
+      "@type": "Guardrail",
+      "name": "Age Assurance Architecture Readiness",
+      "category": "Safeguarding / Technology",
+      "requirement": "Before any VTC member may operate as an age-restricted relying party under the Online Safety Act 2023 or equivalent legislation, the governing body must verify that: (a) the ZKP implementation used for over-18 proofs has been independently audited (AT-06 extended to age context); (b) the IDVP trust registry entries used for age verification include an age-verification scope claim; (c) the IDVP's cross-jurisdiction standing can be verified in near-real-time; and (d) a child safety incident response protocol has been published. Non-compliance with this guardrail means the VTC cannot support OSA 2023-regulated use cases.",
+      "applies_to_phase": "Phase 4 (pre-condition for age-restricted relying party operations)",
+      "owner": "Governing Body / IDVP",
+      "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY01"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-27",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-28",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-62",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-65"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-20"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-21",
+      "@type": "Guardrail",
+      "name": "Organisational Identity Governance Mapping",
+      "category": "Governance / Organisational",
+      "requirement": "Before a regulated organisation may be admitted as a VTC member using a C-DID or Organisational Member Credential (OMC), the governing body must: (a) verify the organisation's legal identifier and regulatory standing; (b) document the mapping between the organisation's internal governance framework and the VTC governance conformance class (CT-56); (c) identify the individual officers responsible for credential operations and their personal DIDs; and (d) confirm that the organisation's data residency requirements are compatible with the VTC trust registry's architecture. Admission without this mapping is blocked.",
+      "applies_to_phase": "Phase 1–4 (pre-condition for organisational member admission)",
+      "owner": "Governing Body",
+      "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX05"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-63",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-64",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-56"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-21"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      }
+    }
+  ]
+}

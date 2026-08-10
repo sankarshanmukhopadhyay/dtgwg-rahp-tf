@@ -1,0 +1,6 @@
+# RAHP toolkit tooling. Deliberately minimal.
+PyYAML>=6.0
+jsonschema>=4.0
+# openpyxl is only needed to re-run the one-off workbook migration (tools/import_xlsx.py)
+# or to regenerate spreadsheet exports. Not needed for validate.py or build.py.
+openpyxl>=3.1

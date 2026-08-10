@@ -1,0 +1,2092 @@
+{
+  "@context": "../../context/rahp.jsonld",
+  "@graph": [
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G01",
+      "@type": "Risk",
+      "name": "Genesis Policy Capture",
+      "category": "Governance",
+      "lifecyclePhase": "Phase 1",
+      "description": "The initiator hard-codes biased, self-serving, or exclusionary policies at genesis before any oversight mechanism exists. Phase 1 concentrates all power in one person; these policies may persist and shape the entire community lifecycle.",
+      "harmType": [
+        "Governance Failure"
+      ],
+      "severity": "High",
+      "likelihood": "Medium",
+      "harm_description": "Biased or discriminatory membership criteria embedded permanently; initiator retains unchecked authority; downstream decisions tainted by flawed genesis assumptions.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-16"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-01"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-01"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-02"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-02"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-02"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-1",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 6
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G02",
+      "@type": "Risk",
+      "name": "Governance Transition Failure",
+      "category": "Governance",
+      "lifecyclePhase": "Phase 1–2",
+      "description": "The initiator's elevated authority is never formally transitioned to the governing body or anchors. The VTC continues to depend on a single person for governance decisions beyond the bootstrapping period.",
+      "harmType": [
+        "Governance Failure"
+      ],
+      "severity": "High",
+      "likelihood": "Low",
+      "harm_description": "Single point of governance failure; community paralysed or captured if initiator unavailable, coerced, or acting in bad faith.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-16"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-02"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-02"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-02"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-03"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-02"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 3
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G03",
+      "@type": "Risk",
+      "name": "Anchor Homogeneity / Collusion Cluster",
+      "category": "Governance",
+      "lifecyclePhase": "Phase 2",
+      "description": "Trust anchors are selected from a single social, geographic, or organisational network, creating a homogeneous cluster that can collude, share bias, or be collectively coerced.",
+      "harmType": [
+        "Trust Graph Integrity"
+      ],
+      "severity": "High",
+      "likelihood": "Medium",
+      "harm_description": "Coordinated anchor collusion enables mass fraudulent admissions; single-jurisdiction anchors vulnerable to state coercion; cultural bias embedded in vouching practices.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-10"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-03"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-09"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-11"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-05"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-11"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-2",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 6
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G04",
+      "@type": "Risk",
+      "name": "Governance Bandwidth Exhaustion",
+      "category": "Governance",
+      "lifecyclePhase": "Ongoing",
+      "description": "Governing body capacity is overwhelmed — naturally through growth or deliberately through bad-faith abuse of governance mechanisms.",
+      "harmType": [
+        "Governance Failure"
+      ],
+      "severity": "Medium",
+      "likelihood": "Medium",
+      "harm_description": "Backlogs in admission, appeals, revocation; legitimate members denied timely due process; community trust in governance erodes.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-11"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-12"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-12"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-08",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-15"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-07"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-08",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-15"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-11",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+      ],
+      "standardsPriority": "should_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 4
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID01",
+      "@type": "Risk",
+      "name": "Sybil Identity Proliferation",
+      "category": "Identity",
+      "lifecyclePhase": "Phase 3–4",
+      "description": "A malicious actor creates multiple M-DIDs and uses coordinated vouching to pass multi-VRC admission thresholds. Uniqueness enforcement is an explicitly open issue in the VTC Bootstrapping Draft.",
+      "harmType": [
+        "Trust Graph Integrity",
+        "Identity Fraud"
+      ],
+      "severity": "High",
+      "likelihood": "High",
+      "harm_description": "Adversary gains disproportionate influence; voting and governance captured; legitimate members outvoted or silenced.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-14"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-10"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-07"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-07"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-08",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-09"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-07"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-8",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-3"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 9
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID02",
+      "@type": "Risk",
+      "name": "Social Graph Privilege Exclusion",
+      "category": "Identity",
+      "lifecyclePhase": "Phase 3–4",
+      "description": "The web-of-trust model structurally advantages applicants with pre-existing social connections. Those with non-dominant cultural backgrounds or limited digital literacy are disproportionately excluded.",
+      "harmType": [
+        "Discrimination",
+        "Exclusion"
+      ],
+      "severity": "High",
+      "likelihood": "High",
+      "harm_description": "Marginalised individuals unable to obtain required VRCs; VTC becomes homogeneous; human rights implications where VTC access enables civic or economic participation.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-12"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-04"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-04"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-10",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-11"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-10",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-12"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 9
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID03",
+      "@type": "Risk",
+      "name": "IDVP Breach / Cascading Invalidation",
+      "category": "Identity",
+      "lifecyclePhase": "Phase 4",
+      "description": "An IDVP suffers a data breach, is deregistered, or issues fraudulent IDVCs. Members admitted using those credentials face re-verification or revocation with no clear pathway.",
+      "harmType": [
+        "Data Breach",
+        "Identity Fraud",
+        "Service Disruption"
+      ],
+      "severity": "High",
+      "likelihood": "Medium",
+      "harm_description": "Mass credential invalidation; personal identity data exposed; fraud ring may have obtained IDVCs through compromised IDVP; re-verification creates accessibility barriers.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-13"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-05"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-05"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-12",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-13"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-09"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-4",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 6
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID04",
+      "@type": "Risk",
+      "name": "DID Document Manipulation",
+      "category": "Identity",
+      "lifecyclePhase": "All phases",
+      "description": "An adversary manipulates DID documents to substitute or forge public keys, enabling impersonation of legitimate members or anchors. DID document storage is an open issue in the bootstrapping draft.",
+      "harmType": [
+        "Identity Fraud",
+        "Trust Graph Integrity"
+      ],
+      "severity": "High",
+      "likelihood": "Low",
+      "harm_description": "Fraudulent credential presentations accepted as genuine; impersonated anchors used to admit sybil members; member credentials stolen and replayed.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-15",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-06"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-07"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-08"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-10"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-14"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-10"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-8"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 3
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID05",
+      "@type": "Risk",
+      "name": "M-DID Linkability Across VTCs",
+      "category": "Identity",
+      "lifecyclePhase": "All phases",
+      "description": "If a member uses the same M-DID across VTCs, or if the trust registry exposes sufficient metadata, an adversary can construct a cross-community profile. **SPEC UPDATE (v0.3 §5.2):** The spec's R-DID MUST requirement — one new unique R-DID per relationship — materially reduces this risk for compliant implementations. However, the M-DID bootstrapping exception (Privacy Considerations §9) creates a residual window: if migration to R-DIDs is never triggered normatively, early-phase M-DID usage remains linkable.",
+      "harmType": [
+        "Privacy",
+        "Surveillance"
+      ],
+      "severity": "Medium",
+      "likelihood": "Low",
+      "harm_description": "Member's full community participation graph exposed; surveillance by state actors; chilling effect on membership in politically sensitive VTCs.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-17"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-06"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-09"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-15",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-50"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9"
+      ],
+      "standardsPriority": "should_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 2
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC01",
+      "@type": "Risk",
+      "name": "Over-Disclosure in IDVC Schema",
+      "category": "Schemas",
+      "lifecyclePhase": "Phase 4",
+      "description": "The IDVC schema requires or permits more personal data than strictly necessary. Excess data increases breach impact and enables cross-system correlation.",
+      "harmType": [
+        "Privacy",
+        "Data Protection"
+      ],
+      "severity": "Medium",
+      "likelihood": "Medium",
+      "harm_description": "Excessive personal data collected; breach exposes more than necessary; correlation with external databases enables de-anonymisation.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-04"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-05"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-04"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-16",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-17"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-09"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-4",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9"
+      ],
+      "standardsPriority": "should_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 4
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC02",
+      "@type": "Risk",
+      "name": "Credential Schema Ambiguity",
+      "category": "Schemas",
+      "lifecyclePhase": "All phases",
+      "description": "Underspecified VRC, VMC, or IDVC schemas lead to inconsistent implementation across personal network managers, VTAs, and IDVPs — creating interoperability failures and policy bypass opportunities. **SPEC UPDATE (v0.3 §2–§4):** The spec defines a formal W3C VC type hierarchy and normative base structure (§4), reducing schema ambiguity for the six DTG credential types. However, the DTG JSON-LD context (`firstperson.network/credentials/dtg/v1`) is not yet published as a resolvable normative artefact, and no conformance test suite exists. Schema ambiguity risk is partially reduced but not resolved.",
+      "harmType": [
+        "Technical Failure",
+        "Governance Failure"
+      ],
+      "severity": "Medium",
+      "likelihood": "Medium",
+      "harm_description": "VTA rejects valid credentials due to schema mismatch; non-compliant implementations admit members who should be rejected; community trust damaged.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-15"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-07"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-04"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-01"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-18",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-19"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-01"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-1",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-4",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+      ],
+      "standardsPriority": "should_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 4
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-NM01",
+      "@type": "Risk",
+      "name": "Personal Network Manager UX Failure",
+      "category": "Network Managers",
+      "lifecyclePhase": "All phases",
+      "description": "The personal network manager presents cryptographic operations incomprehensibly to non-technical members, causing errors, abandonment, or security failures. The DTGWG itself acknowledges UX as 'the single hardest problem'.",
+      "harmType": [
+        "Human Experience",
+        "Usability",
+        "Security"
+      ],
+      "severity": "High",
+      "likelihood": "High",
+      "harm_description": "Members generate unsafe keys; incorrect M-DID selection creates linkability; members abandon onboarding; trust task ceremonies not completed correctly.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-12",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-03"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-04"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-04"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-20",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-21"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-12"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 9
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-NM02",
+      "@type": "Risk",
+      "name": "Key Loss / Recovery Failure",
+      "category": "Network Managers",
+      "lifecyclePhase": "All phases",
+      "description": "A member loses access to their M-DID private key with no recovery mechanism, rendering their membership credential unverifiable and participation irrecoverable.",
+      "harmType": [
+        "Service Disruption",
+        "Human Experience"
+      ],
+      "severity": "Medium",
+      "likelihood": "Medium",
+      "harm_description": "Member locked out permanently; trust graph has orphaned nodes; key recovery attempts create identity fraud risk if not properly gated.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-13"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-04"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-04"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-01"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-22"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-01"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-12",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+      ],
+      "standardsPriority": "should_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 4
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR01",
+      "@type": "Risk",
+      "name": "Credential Revocation Without Due Process",
+      "category": "Credentials",
+      "lifecyclePhase": "Revocation",
+      "description": "A VMC is revoked without prior notice, documented rationale, or accessible appeals. May be triggered by anchor pressure, administrative error, or deliberate abuse.",
+      "harmType": [
+        "Human Rights",
+        "Governance Failure"
+      ],
+      "severity": "High",
+      "likelihood": "Medium",
+      "harm_description": "Member unjustly excluded; professional or reputational harm; no remedy available; chilling effect on participation for other members.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-06"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-06"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-08",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-23",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-24"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-08",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-09"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-5",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-11"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 6
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR02",
+      "@type": "Risk",
+      "name": "Stale Credential / Expiry Without Renewal Path",
+      "category": "Credentials",
+      "lifecyclePhase": "Revocation",
+      "description": "VTC credentials expire without a clear, accessible renewal pathway. Members unable to renew lose membership inadvertently.",
+      "harmType": [
+        "Service Disruption",
+        "Human Experience"
+      ],
+      "severity": "Medium",
+      "likelihood": "Medium",
+      "harm_description": "Active members locked out through administrative failure; valuable contributors excluded; trust in credential infrastructure eroded.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-13",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-02"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-06"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-05"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-08"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-25"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-08"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-5"
+      ],
+      "standardsPriority": "should_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 4
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR03",
+      "@type": "Risk",
+      "name": "Revocation Cascade / Cross-VTC Contamination",
+      "category": "Credentials",
+      "lifecyclePhase": "Revocation",
+      "description": "Revocation in one VTC propagates to credentials in other unrelated VTCs, or revocation status becomes globally visible.",
+      "harmType": [
+        "Privacy",
+        "Human Rights"
+      ],
+      "severity": "Medium",
+      "likelihood": "Low",
+      "harm_description": "Member penalised across multiple communities for a single community's decision; effective blacklisting without cross-community due process.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-17",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-06"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-06"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-26"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-09"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-5",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9"
+      ],
+      "standardsPriority": "should_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 2
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY01",
+      "@type": "Risk",
+      "name": "ZKP Implementation Failure",
+      "category": "Cryptography",
+      "lifecyclePhase": "Phase 4 / Revocation",
+      "description": "Zero-knowledge proof implementations for privacy-preserving IDVC presentation or revocation are incorrectly implemented, introducing soundness or zero-knowledge property failures.",
+      "harmType": [
+        "Privacy",
+        "Security",
+        "Technical Failure"
+      ],
+      "severity": "High",
+      "likelihood": "Low",
+      "harm_description": "Member identity data exposed despite expectation of privacy; forged ZKP proofs used to pass admission checks with invalid credentials.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-15"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-05"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-04"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-07"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-27",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-28"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-07"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 3
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY02",
+      "@type": "Risk",
+      "name": "Quantum / Algorithm Obsolescence",
+      "category": "Cryptography",
+      "lifecyclePhase": "Long-term",
+      "description": "Cryptographic algorithms underpinning VTC credentials become vulnerable to quantum computing attacks or are deprecated, requiring coordinated migration of all community credentials. **SPEC UPDATE (v0.3 §9):** The spec's format-agnostic ZKP design — explicitly not binding to BBS+, SD-JWT-VC, or any specific scheme — reduces algorithm lock-in and partially supports algorithm agility (CT-29). The spec does not yet define a migration pathway or post-quantum readiness assessment requirement.",
+      "harmType": [
+        "Security",
+        "Technical Failure"
+      ],
+      "severity": "Medium",
+      "likelihood": "Low",
+      "harm_description": "All existing credentials become cryptographically untrustworthy; mass re-issuance required; members without updated tooling excluded during transition.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-15",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-16"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-07"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-08"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-16",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-17"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-29"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-16",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-17"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-8"
+      ],
+      "standardsPriority": "should_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 2
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI01",
+      "@type": "Risk",
+      "name": "Agent Credential Scope Creep",
+      "category": "AI Agents",
+      "lifecyclePhase": "Agent Lifecycle",
+      "description": "An AI agent exceeds the cryptographic capability constraints in its delegation credential through misconfiguration, vulnerability, or adversarial prompt injection.",
+      "harmType": [
+        "Security",
+        "Trust Graph Integrity"
+      ],
+      "severity": "High",
+      "likelihood": "Medium",
+      "harm_description": "Agent performs unauthorised credential operations; if compromised, attacker gains persistent trusted access with full operator permissions.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-08",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-18"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-08",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-09"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-10",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-11"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-12",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-13"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-30",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-31"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-12",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-13"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-6",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 6
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI02",
+      "@type": "Risk",
+      "name": "Stale Agent After Operator Revocation",
+      "category": "AI Agents",
+      "lifecyclePhase": "Agent Lifecycle",
+      "description": "An AI agent continues to operate and present credentials after its human operator's VMC has been revoked, because revocation does not propagate to the agent credential.",
+      "harmType": [
+        "Security",
+        "Trust Graph Integrity"
+      ],
+      "severity": "High",
+      "likelihood": "Medium",
+      "harm_description": "Revoked member's agent maintains unauthorised VTC access; governance decisions may be influenced by a member no longer legitimate.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-08",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-13"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-08"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-10"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-12"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-32"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-12"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-6"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 6
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI03",
+      "@type": "Risk",
+      "name": "AI-Mediated Sybil Generation at Scale",
+      "category": "AI Agents",
+      "lifecyclePhase": "Phase 4 / Agent Lifecycle",
+      "description": "A malicious actor deploys AI agents to automate synthetic identity creation and coordinated VRC vouching at a speed that overwhelms human review capacity and defeats standard rate-limiting.",
+      "harmType": [
+        "Identity Fraud",
+        "Trust Graph Integrity"
+      ],
+      "severity": "High",
+      "likelihood": "Medium",
+      "harm_description": "VTC trust graph flooded with synthetic members; governance capture by AI-controlled fake identities; admission controls rendered ineffective.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-14",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-18"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-10"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-11",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-07"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-14",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-07"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-33",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-34"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-14",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-07"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-6",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-8"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 6
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI04",
+      "@type": "Risk",
+      "name": "LLM-Powered Social Engineering of Anchors",
+      "category": "AI Agents",
+      "lifecyclePhase": "Phase 2–3",
+      "description": "Adversarial AI agents generate convincing synthetic communications to social-engineer community trust anchors into issuing VRCs or invitation credentials to fraudulent applicants. **SPEC UPDATE (v0.3 §7.3):** The Witness Credential (VWC) provides a partial technical counter-measure: requiring a VWC from a trusted in-person or out-of-band witness for high-stakes anchor-level VRCs makes AI-generated synthetic personas harder to sustain. This does not eliminate the risk but raises the operational cost of the attack.",
+      "harmType": [
+        "Identity Fraud",
+        "Social Engineering"
+      ],
+      "severity": "High",
+      "likelihood": "Medium",
+      "harm_description": "Fraudulent members admitted through compromised anchor vouching; anchor reputation and liability implicated; trust graph integrity undermined.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-18"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-09"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-11"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-14"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-35",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-36",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-54"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-14"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-6",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-2"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 6
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX01",
+      "@type": "Risk",
+      "name": "State-Level Coercion of Anchors / IDVPs",
+      "category": "External",
+      "lifecyclePhase": "Ongoing",
+      "description": "A government agency legally compels trust anchors, IDVPs, or registry operators to disclose member identities, revoke credentials for political purposes, or grant unauthorised write access.",
+      "harmType": [
+        "Privacy",
+        "Political Repression",
+        "Human Rights"
+      ],
+      "severity": "High",
+      "likelihood": "Medium",
+      "harm_description": "Dissidents identified and targeted via VTC membership data; members forced out under political pressure; VTC becomes instrument of state surveillance.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-10"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-11"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-09"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-11",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-10"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-37",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-38"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-11",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-10"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 6
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX02",
+      "@type": "Risk",
+      "name": "Registry Censorship / Denial of Service",
+      "category": "External",
+      "lifecyclePhase": "Ongoing",
+      "description": "A state actor or adversary blocks access to the VTC trust registry or VTA, preventing credential verification and collapsing VTC operations.",
+      "harmType": [
+        "Service Disruption",
+        "Political Repression"
+      ],
+      "severity": "Medium",
+      "likelihood": "Medium",
+      "harm_description": "VTC operations halted; members unable to verify credentials or be admitted; VTA unavailability cascades to relying parties.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-15"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-11"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-08",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-09"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-10",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-16"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-39"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-10",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-16"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+      ],
+      "standardsPriority": "should_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 4
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX03",
+      "@type": "Risk",
+      "name": "Legal / Regulatory Framework Conflict",
+      "category": "External",
+      "lifecyclePhase": "All phases",
+      "description": "VTC operations or credential schemes conflict with applicable data protection law (GDPR, eIDAS 2.0) or national identity law, exposing the governing body to liability.",
+      "harmType": [
+        "Legal",
+        "Regulatory"
+      ],
+      "severity": "Medium",
+      "likelihood": "Medium",
+      "harm_description": "Governing body exposed to regulatory fines; members' data processed unlawfully; IDVP faces licence revocation; VTC forced to suspend operations.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-04"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-05"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-04"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-17"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-40",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-41"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-17"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+      ],
+      "standardsPriority": "should_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 4
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX01",
+      "@type": "Risk",
+      "name": "Chilling Effect on Community Participation",
+      "category": "Human Experience",
+      "lifecyclePhase": "All phases",
+      "description": "Members self-censor or reduce participation because VTC membership, credential graph, or communications are observable by governance bodies or adversaries.",
+      "harmType": [
+        "Human Rights",
+        "Privacy",
+        "Community Health"
+      ],
+      "severity": "Medium",
+      "likelihood": "Medium",
+      "harm_description": "Community loses diversity and candour; whistle-blowers and dissidents avoid participation; community loses the genuine peer relationship value that DTG is designed to enable.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-12"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-06"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-09"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-15",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-42"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-10"
+      ],
+      "standardsPriority": "should_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 4
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX02",
+      "@type": "Risk",
+      "name": "Discriminatory Vouching Practices",
+      "category": "Human Experience",
+      "lifecyclePhase": "Phase 2–4",
+      "description": "Trust anchors or members informally apply discriminatory criteria when vouching, perpetuating social biases even when formal admission criteria are non-discriminatory.",
+      "harmType": [
+        "Discrimination",
+        "Exclusion"
+      ],
+      "severity": "High",
+      "likelihood": "Medium",
+      "harm_description": "Marginalised groups excluded through informal practices; VTC replicates existing social inequalities; legal exposure for governing body.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-12",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-04"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-03"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-10",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-43"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-10",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-2"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 6
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX03",
+      "@type": "Risk",
+      "name": "Reputational Harm from Public Revocation",
+      "category": "Human Experience",
+      "lifecyclePhase": "Revocation",
+      "description": "A member's revocation status is disclosed publicly in a way that damages their professional or personal reputation, even if the revocation was erroneous or later overturned.",
+      "harmType": [
+        "Reputational Harm",
+        "Human Rights"
+      ],
+      "severity": "High",
+      "likelihood": "Medium",
+      "harm_description": "Member suffers professional consequences before appeal is resolved; reputational harm not remedied even if appeal succeeds; chilling effect on participation for others.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-17"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-06"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-06"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-08",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-24",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-44"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-08",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-09"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-5",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-11"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 6
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY01",
+      "@type": "Risk",
+      "name": "Trust Graph Capture by Coordinated Actor",
+      "category": "Systemic",
+      "lifecyclePhase": "Phase 3–4 / Ongoing",
+      "description": "A coordinated adversary — through Sybil attacks, anchor collusion, or gradual infiltration — gains sufficient influence to control admission decisions, governance votes, or community norms.",
+      "harmType": [
+        "Trust Graph Integrity",
+        "Governance Failure"
+      ],
+      "severity": "High",
+      "likelihood": "Medium",
+      "harm_description": "VTC governance captured by malicious actors; legitimate members outvoted or silenced; community used as infrastructure for further attacks; DTG ecosystem integrity undermined.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-14"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-10",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-09"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-11"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-10",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-14"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-34",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-45"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-10",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-14"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-8"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 6
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY02",
+      "@type": "Risk",
+      "name": "Coordinated Inauthentic Behaviour (CIB) in Governance",
+      "category": "Systemic",
+      "lifecyclePhase": "Ongoing",
+      "description": "A coordinated disinformation network exploits governance mechanisms to undermine anchor reputations, exhaust governance bandwidth, and fragment community consensus.",
+      "harmType": [
+        "Governance Failure",
+        "Community Harm"
+      ],
+      "severity": "High",
+      "likelihood": "Medium",
+      "harm_description": "Trust anchors resign or make poor decisions under attack; governance bandwidth consumed; VTC unable to function as intended.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-11",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-12"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-12"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-15",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-16"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-46"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-15",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-16"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-11",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 6
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY03",
+      "@type": "Risk",
+      "name": "Open Issues Left Unresolved at Scale",
+      "category": "Systemic",
+      "lifecyclePhase": "Phase 4 / Long-term",
+      "description": "The four open issues in the VTC Bootstrapping Draft — uniqueness, trust task protocols, expiration/revocation, DID document storage — remain unresolved when the VTC scales beyond small community management.",
+      "harmType": [
+        "Technical Failure",
+        "Governance Failure"
+      ],
+      "severity": "High",
+      "likelihood": "High",
+      "harm_description": "Uniqueness enforcement fails at scale; revocation mechanisms fail under load; DID documents become irresolvable; trust task protocols incompatible across implementations.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-14",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-16"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-07"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-08"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-17"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-47",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-48"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-17"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-8",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 9
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC03",
+      "@type": "Risk",
+      "name": "VRC Over-Disclosure — Rich Data in Core Edge",
+      "category": "Schemas",
+      "lifecyclePhase": "All phases",
+      "description": "The VRC schema (spec §5.2) requires only the target DID and proof, but places no constraint on what additional data may be embedded in `credentialSubject`. Implementers who embed rich relationship metadata — relationship duration, first-meeting location, mutual endorsements — directly in VRCs rather than using the annotation credential layer (VPC, VEC, VWC) create credentials in which both parties have cryptographically committed to that data. It cannot then be selectively disclosed or withheld from verifiers. The annotation credential architecture exists in the spec but is not normatively required as the channel for supplementary data. **Introduced by:** DTG Credential Spec v0.3 analysis (RAHP commentary §2.4).",
+      "harmType": [
+        "Privacy",
+        "Data Protection"
+      ],
+      "severity": "Medium",
+      "likelihood": "Medium",
+      "harm_description": "Members inadvertently commit to more personal data than intended in bilateral VRCs; ZKP selective disclosure is undermined because the data is in the core credential, not an annotation; relationship graphs become richer surveillance targets than necessary.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-06"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-04"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-49"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-09"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-12"
+      ],
+      "standardsPriority": "should_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 4
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC04",
+      "@type": "Risk",
+      "name": "M-DID Bootstrapping Exception Undermines R-DID Privacy",
+      "category": "Schemas",
+      "lifecyclePhase": "Phase 1–3",
+      "description": "Spec §5.2 permits M-DIDs 'for bootstrapping' with no normative migration trigger or timeline. The Privacy Considerations section (§9) recommends migration to R-DIDs post-bootstrapping but does not make this a normative requirement. In practice, if migration never happens — the likely outcome without a phase-gate — early VRC relationships remain M-DID-based. An adversary monitoring the trust registry during the bootstrapping phase can reconstruct membership graphs from M-DID co-occurrences in VRCs issued before migration. **Introduced by:** DTG Credential Spec v0.3 §5.2 and Privacy Considerations §9 (RAHP commentary §2.5).",
+      "harmType": [
+        "Privacy",
+        "Governance Failure"
+      ],
+      "severity": "Medium",
+      "likelihood": "High",
+      "harm_description": "The R-DID architecture's privacy guarantee is contingent on migration actually happening. Without a normative trigger, the bootstrapping exception becomes the permanent operating mode for many implementations. State actors and registry observers can reconstruct trust graphs from the pre-migration VRC corpus.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-17"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-11"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-09"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-18"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-50"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-18"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 6
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR04",
+      "@type": "Risk",
+      "name": "Endorsement Credential (VEC) Manipulation",
+      "category": "Credentials",
+      "lifecyclePhase": "Phase 3–4 / Ongoing",
+      "description": "Spec §7.2 defines the VEC's `endorsement` field as 'community/VTN-defined — structure and fields determined by community policy.' This maximum flexibility, with no normative constraint requiring endorsers to be co-members of the same VTC as the endorsed party, creates a reputation manipulation attack surface. A coordinated bad-faith actor can issue large volumes of fabricated VECs with high `competencyLevel` claims to inflate the reputation of synthetic personas, then use those reputational signals to gain governance influence. **Introduced by:** DTG Credential Spec v0.3 §7.2 (RAHP commentary §2.8).",
+      "harmType": [
+        "Governance Failure",
+        "Identity Fraud"
+      ],
+      "severity": "Medium",
+      "likelihood": "Medium",
+      "harm_description": "Synthetic personas receive artificially inflated reputation scores via coordinated VEC issuance; governance decisions influenced by reputational signals that are manufactured rather than earned; admission thresholds gamed via endorsement proxies.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-14"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-10",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-12"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-12"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-03"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-55"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-03"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-2",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-11"
+      ],
+      "standardsPriority": "should_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 4
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G05",
+      "@type": "Risk",
+      "name": "Governanceless VTC Claiming Credential Compliance",
+      "category": "Governance",
+      "lifecyclePhase": "Phase 1",
+      "description": "The DTG Credential Specification v0.3 defines credential schemas (§2–§8) and normative credential requirements without requiring that a VTC deploying these credentials has any governance framework in place. A developer group could deploy technically compliant VMCs and VRCs — passing all credential-layer verification checks — while operating with no genesis policy, no time-bounded initiator authority, and no trust anchor diversity requirements. Relying parties would have no normative signal that governance is absent. **Introduced by:** DTG Credential Spec v0.3 analysis — gap identified in §9 (Trust Registries section) and commentary §2.9.",
+      "harmType": [
+        "Governance Failure",
+        "False Assurance"
+      ],
+      "severity": "Medium",
+      "likelihood": "High",
+      "harm_description": "Relying parties accept VMCs from VTCs with no governance backing; DTG compliance signals trustworthiness that does not exist at the governance layer; a single actor controls a 'compliant' VTC indefinitely with no accountability.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-16"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-04"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-01"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-02"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-56"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-02"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-1",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 6
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX04",
+      "@type": "Risk",
+      "name": "Incapacity / Unsupported Decision-Making Exclusion",
+      "category": "Human Experience",
+      "lifecyclePhase": "Phase 3–4 / Ongoing",
+      "description": "The VTC admission and ongoing participation architecture assumes all members are adults with full independent legal capacity. Persons who require supported decision-making — including minors with SEN (EC1), adults with progressive cognitive impairment (EC2a), and others acting under delegated authority — are structurally excluded or forced into non-compliant workarounds. The credential architecture has no concept of co-signed or supported consent distinct from substituted decision-making.",
+      "harmType": [
+        "Exclusion",
+        "Discrimination"
+      ],
+      "severity": "High",
+      "likelihood": "High",
+      "harm_description": "Persons requiring support are excluded from VTC participation entirely, or their participation is mediated through impersonation-equivalent workarounds (a guardian using their own DID on behalf of the member). Admission denials fall disproportionately on disabled people, older adults with declining capacity, and minors — groups with legal protection against discrimination. Governance decisions affecting these members lack due process adapted to their situation.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-12",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-19",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-31",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-32"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-26",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-27",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-28",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-29"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-26",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-27",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-28"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-19"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-57",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-58"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-19"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-10",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-17",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-18"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 9
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX05",
+      "@type": "Risk",
+      "name": "Legal Capacity Architecture Gap — LPA / Guardianship Not Representable",
+      "category": "Human Experience",
+      "lifecyclePhase": "Phase 3–4 / Revocation / Ongoing",
+      "description": "A registered Lasting Power of Attorney (or equivalent legal guardianship instrument) has no representation in the DTG credential architecture. The VTC system cannot distinguish a legitimate LPA holder authenticating on behalf of a donor from an account takeover. Governance communications (revocation notices, renewal reminders, appeals deadlines) are addressed to the credential holder's contact details — which an incapacitated person cannot access — with no secondary recipient mechanism. The LPA holder has no audit-trail separate from the donor, and no defined pathway to close an M-DID on the donor's death.",
+      "harmType": [
+        "Governance Failure",
+        "Legal Harm"
+      ],
+      "severity": "High",
+      "likelihood": "Medium",
+      "harm_description": "A person who has lost capacity loses their VTC membership by default because no one can operate their credentials lawfully. Legitimate LPA holders are treated as unauthorised actors. Revocation due process rights (GR-08) are forfeited because notices reach an inaccessible account. The governing body cannot involve the LPA holder in governance processes. On death, the M-DID is abandoned rather than formally closed, leaving a ghost node in the trust graph and no tamper-evident record of the credential lifecycle end.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-26",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-30",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-33"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-29",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-30",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-31",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-32"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-28",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-29"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-08",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-19"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-59",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-60"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-08",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-19"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-5",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-11",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-17",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-19"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 6
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX06",
+      "@type": "Risk",
+      "name": "Credential Lifecycle Abandonment on Capacity Loss or Death",
+      "category": "Human Experience",
+      "lifecyclePhase": "Revocation / Ongoing",
+      "description": "When a member loses capacity progressively (e.g., dementia) or dies, the DTG architecture has no defined lifecycle event for credential closure, dormancy, or attorney-mediated continuation. The M-DID simply goes silent. There is no mechanism for the trust graph to record a capacity transition, for credentials to enter an attorney-managed state, or for a death notification to propagate to relying parties. The spec addresses revocation but not the end of life as a credential lifecycle event.",
+      "harmType": [
+        "Governance Failure",
+        "Privacy Harm"
+      ],
+      "severity": "Medium",
+      "likelihood": "High",
+      "harm_description": "Ghost nodes accumulate in the trust graph: members who have lost capacity or died appear as active participants. Trust graph topology calculations (anchor diversity, reciprocity rates) are distorted by stale nodes. Relying parties may accept credentials from a deceased member's DID. Family members or attorneys have no recognised pathway to close the account, creating distress and potential identity misuse risk. The absence of a death-closure pathway also means a malicious actor could continue operating a deceased member's DID without detection.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-13",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-30",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-32",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-33"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-32"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-29"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-08",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-19"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-59",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-60",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-61"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-08",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-19"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-5",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-17",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-19"
+      ],
+      "standardsPriority": "should_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 6
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID06",
+      "@type": "Risk",
+      "name": "Minor Data Exposure via Co-Signatory Inference",
+      "category": "Identity",
+      "lifecyclePhase": "Phase 3–4",
+      "description": "When a minor (or person lacking full independent capacity) applies to join a VTC, any co-signatory structure in the admission credential implicitly signals that the credential holder has reduced or delegated capacity. This disclosure is not consented to: the minor's SEN status, age, or disability is inferred from the governance structure itself, even if no explicit SEN attribute is included in the credential. The UK Online Safety Act 2023 and the Data (Use and Access) Act 2025 impose additional obligations on systems processing children's data, which a VTC admitting under-18s becomes subject to — often without realising it.",
+      "harmType": [
+        "Privacy Harm",
+        "Regulatory Breach"
+      ],
+      "severity": "High",
+      "likelihood": "High",
+      "harm_description": "A minor's SEN profile, disability status, or reduced capacity is disclosed without their consent to any party that can observe the credential structure. This constitutes processing of special-category data under UK GDPR without a lawful basis. The VTC governing body becomes subject to Online Safety Act 2023 children's data obligations without necessarily having the governance structures to comply. Failure to protect this inferred data creates regulatory exposure and reputational harm to the minor.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-12",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-31"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-26",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-27"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-26"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-19"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-57",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-16",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-17"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-19"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-17",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-18"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 9
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX04",
+      "@type": "Risk",
+      "name": "Child Safety Non-Compliance — Age Assurance Failure",
+      "category": "External",
+      "lifecyclePhase": "Phase 4 / Age-Restricted Use Cases",
+      "description": "A minor successfully obtains or presents a valid-appearing over-18 IDVC, whether through IDVP failure, synthetic credential generation by Phantom (M2) or Viktor (B1), a ZKP implementation gap (RK-CY01), or an architecture flaw in the age assurance pathway. This is a non-negotiable child safety failure with criminal liability implications under the Online Safety Act 2023 for any age-restricted relying party (e.g., EC4 Velvet Gate). Unlike other register risks, this risk has a binary outcome: any non-zero incident rate is a system-level failure. The Ofcom regime provides no safe harbour for technical failure where the architecture was knowingly immature.",
+      "harmType": [
+        "Child Safety",
+        "Criminal Liability"
+      ],
+      "severity": "Critical",
+      "likelihood": "Medium",
+      "harm_description": "A minor accesses age-restricted content due to a false-positive age assurance outcome. The relying party faces Ofcom enforcement action including fines up to £18 million or 10% of global qualifying revenue. Criminal liability for platform operators is possible under OSA 2023. The IDVP that issued the compromised credential faces deregistration and regulatory action. The DTG architecture's fitness for age-assurance use cases is brought into question, with potential for wider loss of trust in the ecosystem. The harm to the child is primary and irreversible.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-36",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-37"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-35",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-36"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-32",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-33"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-20"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-27",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-28",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-33",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-62"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-20"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-21"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX05",
+      "@type": "Risk",
+      "name": "Organisational Identity Architecture Gap",
+      "category": "External",
+      "lifecyclePhase": "Phase 1–4 / Ongoing",
+      "description": "The DTG Credential Specification v0.3 defines credential schemas for individual natural persons. An NHS Foundation Trust (EC3) or other regulated organisation seeking to participate as a VTC member holds institutional identity, makes decisions through board governance rather than individual consent, and has complex internal authority chains (Caldicott Guardian, CDO, board resolution) that cannot be represented in the current C-DID model. Regulatory compliance (NHS DSPT, DCB3051, CQC) requires the organisation's governance to be traceable to its credential operations in ways the current architecture does not support. The DTG spec has no organisational credential type.",
+      "harmType": [
+        "Governance Failure",
+        "Regulatory Breach"
+      ],
+      "severity": "High",
+      "likelihood": "High",
+      "harm_description": "Regulated organisations cannot participate in the DTG ecosystem in a compliant way. NHS Trusts cannot issue VMCs interoperable with the NHS Digital Staff Passport. The absence of an organisational identity model means the DTG ecosystem remains limited to individual participants, excluding the institutional sector that would drive adoption at scale. Organisations that attempt to participate using workarounds (an individual holding a C-DID on behalf of an institution) create unrecognised personal liability and governance gaps.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-10",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-34",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-35"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-33",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-34"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-30",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-31"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-21"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-63",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-64"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-21"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-4",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-20"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 9
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX06",
+      "@type": "Risk",
+      "name": "IDVP Regulatory Cascade — Cross-Jurisdiction Age Assurance",
+      "category": "External",
+      "lifecyclePhase": "Phase 4 / Age-Restricted Use Cases",
+      "description": "An age-restricted relying party (EC4) relies on IDVCs issued by IDVPs registered in the VTC trust registry. Where subscribers are located internationally, their IDVCs may have been issued by IDVPs whose trust registry standing is uncertain, whose jurisdiction's age verification standards differ from UK Ofcom requirements, or who have subsequently been deregistered or compromised (cf. RK-ID03, AU10TIX breach 2024). The relying party cannot independently verify the current standing of a foreign IDVP in near-real-time without a cross-jurisdiction trust registry resolution mechanism. The Online Safety Act 2023 does not provide a safe harbour for good-faith reliance on a deregistered IDVP.",
+      "harmType": [
+        "Regulatory Breach",
+        "Liability"
+      ],
+      "severity": "High",
+      "likelihood": "Medium",
+      "harm_description": "A relying party accepts an IDVC from a subscriber whose IDVP has been deregistered or was never compliant with UK Ofcom standards. Ofcom finds the age assurance technically inadequate regardless of the relying party's good faith. The relying party faces enforcement action. The DTG trust registry does not have a defined mechanism for propagating IDVP deregistration to relying parties in near-real-time across jurisdictions. The broader IDVP ecosystem loses confidence in the DTG trust registry as a reliable source of IDVP standing.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-17",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-34",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-36"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-35"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-32"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-20"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-13",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-62",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-65"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-20"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-4",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-21"
+      ],
+      "standardsPriority": "should_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 6
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC05",
+      "@type": "Risk",
+      "name": "Credential Schema Gap — Supported Consent and LPA Not Representable",
+      "category": "Schemas",
+      "lifecyclePhase": "Phase 3–4 / Ongoing",
+      "description": "The current VRC, VMC, and IDVC schemas assume a single credential holder who is the same legal person as the consent-giver, the DID controller, and the community participant. The schemas have no field or structure for: (a) co-signed admission where the signatory is not a substituted decision-maker; (b) a delegation credential representing a registered LPA; (c) a capacity-status flag indicating that the holder currently operates under supported or substituted decision-making; or (d) a secondary notification recipient registered in the trust registry. These gaps mean the architecture literally cannot represent legal relationships that exist in the real world for an estimated 1.3 million people in England and Wales alone (LPA registrations as of 2025).",
+      "harmType": [
+        "Governance Failure",
+        "Exclusion"
+      ],
+      "severity": "High",
+      "likelihood": "High",
+      "harm_description": "The credential architecture cannot serve a large class of legitimate participants without introducing impersonation-equivalent workarounds. Any attempt to accommodate these users without schema changes creates governance ambiguity, audit trail corruption (Margaret's actions appear as Arthur's), and potential violations of the Mental Capacity Act 2005 (which requires clear records of attorney decision-making). Standards bodies that adopt the DTG spec without addressing this gap will produce a credential ecosystem that is legally non-compliant in the UK, EU, and any jurisdiction with equivalent incapacity law.",
+      "affectedMetrics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-31",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-32",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-33"
+      ],
+      "userStories": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-26",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-29",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-30"
+      ],
+      "scenarios": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-26",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-28"
+      ],
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-19"
+      ],
+      "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-57",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-58",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-59",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-60",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-66"
+      ],
+      "assuranceTests": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-19"
+      ],
+      "epics": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-17",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-18",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-19"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "workbook:RiskRegister_v5.xlsx",
+        "imported": "2026-08-05"
+      },
+      "riskScore": 9
+    }
+  ]
+}
