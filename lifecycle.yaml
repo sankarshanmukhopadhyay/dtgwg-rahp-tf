@@ -1,0 +1,190 @@
+# The RAHP standards-development lifecycle.
+#
+# Part of the METHOD. Source: RAHP_Workflow_Reference.html v1 (April 2026),
+# converted from hand-maintained HTML to data so that the HTML page becomes a
+# generated view. Gap callouts are first-class records here: each one is a
+# tracked deficiency in the method, not prose.
+#
+# Governing discipline (Sovrin / ToIP Human Experience WG, Hickman):
+#   - Design for the margins: extreme users define requirements, not middle cases.
+#   - No-one left behind: participation must not require technical, legal or
+#     social capital that legitimate participants will not have.
+#   - Harm prevention as a first-class design input, not a mitigation layer.
+#   - Power asymmetry awareness.
+#   - Represent those who cannot speak.
+#   - Interoperability of human experience.
+
+record_type: lifecycle_stage
+core_principle: >-
+  People and implementation context drive everything. Every risk score, control,
+  guardrail, assurance test, trust metric and user story is only as analytically
+  sound as the Context stage that preceded it. The toolkit is not a framework
+  applied to a system — it is derived from a community.
+
+records:
+- id: STAGE-1
+  name: Context & scoping
+  summary: >-
+    The generative engine. Community inquiry, extreme user and bad-actor identification,
+    persona synthesis, and context validation.
+  input_artefacts: [Working group charter, Problem statement, Technical scope, Threat intelligence]
+  produces_record_types: [persona]
+  required_outputs:
+  - Raw participant map
+  - Implementation context document
+  - Extreme user profiles
+  - Bad-actor persona drafts
+  - Validated context baseline and objectives map
+  evidence_required: Signed-off persona register with named contributor and source material per persona
+  phases:
+  - id: STAGE-1-A
+    name: Community inquiry
+    note: Participatory and qualitative. Cannot be done at a desk. Outputs are raw material, not artefacts.
+  - id: STAGE-1-B
+    name: Extreme users and bad-actor identification
+    note: >-
+      Requires a different analytical stance from participant mapping — systematic imagination of edge
+      cases and adversarial motivation. Bad-actor capability must be precisely calibrated: an implausible
+      threat model produces controls calibrated to the wrong risk.
+  - id: STAGE-1-C
+    name: Persona synthesis
+    note: >-
+      RAHP personas are analytical instruments, not marketing or UX proto-personas. Specificity discipline
+      without collapsing into caricature.
+  - id: STAGE-1-D
+    name: Objective mapping and context validation
+    note: Objective tensions are surfaced explicitly — they are governance decisions, not design errors.
+  gaps:
+  - id: GAP-1.1
+    description: No defined standard for how much community inquiry is sufficient before Phase B can begin.
+    severity: method
+  - id: GAP-1.2
+    description: >-
+      No protocol for representing communities who cannot participate directly (children, people in
+      high-risk political contexts, future users). The Verifiable AI SDJ methodology (Hickman, 2025)
+      is a partial approach, not yet integrated into the workflow.
+    severity: method
+
+- id: STAGE-2
+  name: Drafting
+  summary: >-
+    Continuous risk-design-control loop. Every significant design choice is proposed, assessed,
+    controlled and documented before acceptance into the draft.
+  input_artefacts: [Validated persona set, Risk register, Draft specification text]
+  produces_record_types: [risk, control, guardrail, assurance_test, metric, user_story, scenario]
+  required_outputs: [Risk-control mapping with rationale, Provenance-tagged toolkit additions]
+  evidence_required: >-
+    For each accepted design choice — the affected risks, the selected controls, the metric linkage,
+    and the provenance tag naming the design decision and specification version that triggered it.
+  stations:
+  - {id: STAGE-2-1, name: Propose,  note: "Design choice stated with the personas it affects and the objectives it serves or constrains."}
+  - {id: STAGE-2-2, name: Assess,   note: "Three questions: does it affect existing risks, introduce new ones, or affect a guardrail?"}
+  - {id: STAGE-2-3, name: Control,  note: "Every accepted control links to at least one metric — a control without a metric is unmonitorable. Every new guardrail has an assurance test — a guardrail without a test is unverifiable."}
+  - {id: STAGE-2-4, name: Document, note: "Audit trail and contribution back to the toolkit are the same action, not two steps."}
+  invariants:
+  - Every control MUST link to at least one metric.
+  - Every guardrail MUST have at least one assurance test.
+  - A design choice that makes a guardrail technically unenforceable requires revision or an explicit guardrail update.
+  gaps:
+  - id: GAP-2.1
+    description: No defined protocol for what constitutes adequate control coverage before a design choice is accepted into the draft.
+    severity: method
+  - id: GAP-2.2
+    description: No agreed threshold for when a newly surfaced risk requires a full persona update versus a note in the register.
+    severity: method
+
+- id: STAGE-3
+  name: Review & harmonisation
+  summary: >-
+    Three parallel tracks — cross-standard alignment, community review, formal risk acceptance —
+    converging at a harmonisation point before publication.
+  input_artefacts: [Draft specification, Risk register, Adjacent standards]
+  produces_record_types: [recommendation, risk_acceptance, spec_review]
+  required_outputs: [Specification gap analysis, Updated risk/control/guardrail/assurance records, REC records]
+  evidence_required: Specification commentary report; every risk either adequately controlled or formally accepted with named authority and review date
+  tracks:
+  - id: STAGE-3-T1
+    name: Cross-standard alignment
+    compare_against: [W3C DID Core, W3C VC Data Model, OpenID4VP, eIDAS 2.0, GDPR, ToIP TRQP v2.0]
+  - id: STAGE-3-T2
+    name: Community review
+    note: >-
+      Active outreach to harm-exposed communities. Passive public comment systematically
+      under-represents those most at risk.
+  - id: STAGE-3-T3
+    name: Formal risk acceptance
+    note: >-
+      Requires a named decision-maker, documented rationale, review trigger and public record.
+      Directly analogous to residual risk acceptance in corporate information security.
+  gaps:
+  - id: GAP-3.1
+    description: >-
+      Formal risk acceptance workflow not yet defined — who can accept a risk, under what authority,
+      for how long, with what documentation. The most significant process gap in the toolkit.
+    severity: blocking
+    addressed_by: data/risk-acceptances.yaml (schema exists; authority model still undecided)
+  - id: GAP-3.2
+    description: No defined process for community outreach during review; passive invitation is insufficient.
+    severity: method
+  - id: GAP-3.3
+    description: No protocol for translating community feedback not expressed in standards language into artefact updates.
+    severity: method
+
+- id: STAGE-4
+  name: Publication
+  summary: >-
+    Point-in-time event with ongoing implications. The toolkit snapshot is version-bound to the
+    standard version and transitions from development tool to implementation support tool.
+  input_artefacts: [Validated artefact set]
+  produces_record_types: [conformance_claim]
+  required_outputs: [Normative candidate list, Assurance test suite, Tagged release, CHANGELOG entry]
+  evidence_required: Conformance claim template; bidirectional version binding between toolkit version and specification version
+  gaps:
+  - id: GAP-4.1
+    description: No implementation guidance document bridging toolkit artefacts and common deployment patterns.
+    severity: method
+  - id: GAP-4.2
+    description: No structured intake process for collecting implementation experience from early adopters.
+    severity: method
+
+- id: STAGE-5
+  name: Maintenance
+  summary: >-
+    The longest and most underserved stage. Three trigger streams feed a triage and integration
+    process on an annual review cadence, with continuous monitoring between reviews.
+  input_artefacts: [Field reports, Threat model review, Specification revisions]
+  produces_record_types: [risk, governance_precedent, changelog_entry]
+  required_outputs: [Updated records, New risks, Diff-annotated changelog entry]
+  evidence_required: Dated review record covering all three trigger streams and the periodic extreme user review
+  trigger_streams:
+  - {id: TRIG-1, name: Specification revision}
+  - {id: TRIG-2, name: Operational experience}
+  - {id: TRIG-3, name: Threat landscape change}
+  required_components:
+  - id: STAGE-5-EUR
+    name: Periodic extreme user review
+    note: >-
+      Not optional. Extreme users tend to fall out of the persona set as standards development
+      progresses, because the people most present in working group processes are not extreme users.
+      Active counter-measures are required.
+  gaps:
+  - id: GAP-5.1
+    description: >-
+      Contribution and integration governance not defined — no triage process, no acceptance authority,
+      no decision on what enters the next toolkit version.
+    severity: blocking
+  - id: GAP-5.2
+    description: No structured intake process for operational experience reports from implementors.
+    severity: method
+  - id: GAP-5.3
+    description: No monitoring process specified for threat landscape tracking between annual reviews.
+    severity: method
+  - id: GAP-5.4
+    description: Governance precedent records not yet in use — decisions are not retained between governance sessions.
+    severity: method
+    addressed_by: data/governance-precedents.yaml
+  - id: GAP-5.5
+    description: >-
+      Feedback loop design deliberately deferred pending practitioner trials. The loop must be
+      empirically grounded, not designed in theory and imposed on practitioners.
+    severity: deferred_by_design

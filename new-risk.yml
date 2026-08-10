@@ -1,0 +1,39 @@
+name: Propose a new risk
+description: A harm pathway the register does not currently cover
+labels: [risk, triage]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What goes wrong?
+      description: The mechanism, not the consequence.
+    validations: {required: true}
+  - type: textarea
+    id: harm
+    attributes:
+      label: Who is harmed, and how?
+      description: Name the persona if one fits. If no existing persona is exposed to this, say so — that may itself be a persona gap.
+    validations: {required: true}
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Proposed severity
+      options: [Critical, High, Medium, Low]
+    validations: {required: true}
+  - type: dropdown
+    id: likelihood
+    attributes:
+      label: Proposed likelihood
+      options: [High, Medium, Low]
+    validations: {required: true}
+  - type: input
+    id: metric
+    attributes:
+      label: Which metric would move if this happened?
+      description: An existing M-xx, or a description of a new one. A risk with no measurable signal cannot be monitored.
+    validations: {required: true}
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Sources with URLs. Analogous incidents count. State clearly if this is a judgement rather than an evidenced claim.

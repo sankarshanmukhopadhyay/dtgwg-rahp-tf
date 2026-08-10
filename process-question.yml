@@ -1,0 +1,25 @@
+name: Method or process question
+description: A question about how to apply RAHP, or a gap in the method itself
+labels: [method, question]
+body:
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Lifecycle stage
+      options:
+        - "STAGE-1 Context & scoping"
+        - "STAGE-2 Drafting"
+        - "STAGE-3 Review & harmonisation"
+        - "STAGE-4 Publication"
+        - "STAGE-5 Maintenance"
+        - Not stage-specific
+    validations: {required: true}
+  - type: textarea
+    id: question
+    attributes: {label: Question}
+    validations: {required: true}
+  - type: input
+    id: gap
+    attributes:
+      label: Related known gap
+      description: "See method/lifecycle.yaml — e.g. GAP-3.1"

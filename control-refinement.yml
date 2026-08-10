@@ -1,0 +1,28 @@
+name: Refine a control, guardrail or assurance test
+description: An existing CT/GR/AT is wrong, unenforceable, or infeasible in practice
+labels: [control, triage]
+body:
+  - type: input
+    id: artefact
+    attributes: {label: Artefact ID, placeholder: "CT-08"}
+    validations: {required: true}
+  - type: dropdown
+    id: problem
+    attributes:
+      label: What is the problem?
+      options:
+        - Infeasible to implement as written
+        - Not verifiable — the assurance test cannot decide pass/fail
+        - Wrong layer (should be a guardrail, or should be a control)
+        - Duplicates another artefact
+        - Wording is ambiguous
+    validations: {required: true}
+  - type: textarea
+    id: detail
+    attributes: {label: Detail and proposed change}
+    validations: {required: true}
+  - type: textarea
+    id: experience
+    attributes:
+      label: Implementation experience
+      description: If you hit this in a real deployment or spec review, say what happened. Field evidence outranks desk review.

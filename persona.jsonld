@@ -1,0 +1,826 @@
+{
+  "@context": "../../context/rahp.jsonld",
+  "@graph": [
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D1",
+      "@type": "Persona",
+      "name": "Daniel Wright",
+      "role": "VTC Initiator",
+      "type": "legitimate_user",
+      "quote": "I am building something that needs to last. The choices I make at genesis will echo through every trust relationship this community ever forms.",
+      "context": {
+        "age": 41,
+        "location": "Berlin, Germany",
+        "situation": "Lives with partner; leads an open-source foundation"
+      },
+      "lifecycle_phases": [
+        "Phase 1",
+        "Phase 2"
+      ],
+      "goals": [
+        "Successfully establish a new Verifiable Trust Community",
+        "Encode governance policies clearly at genesis",
+        "Avoid long-term instability or loss of legitimacy",
+        "Ensure the community scales without corruption"
+      ],
+      "risk_context": [
+        "Centralisation risk at genesis",
+        "Hard-coded bootstrapping policies may embed bias",
+        "First trust anchor selections shape long-term graph topology",
+        "No clear unwind mechanism if early decisions are flawed",
+        "Personal accountability for downstream harms"
+      ],
+      "inclusion_drivers": [
+        "Transparent governance documentation",
+        "Public criteria for trust anchor selection",
+        "Time-bound initiator authority"
+      ],
+      "exclusion_risks": [
+        "Founder favouritism",
+        "Closed early trust circle",
+        "Implicit political or social bias embedded at genesis"
+      ],
+      "evidence": [
+        {
+          "claim": "Systems designed for decentralisation remain reliant on established steward organisations, creating dependency that undermines decentralisation claims.",
+          "source": "MDPI, Future Internet, December 2024",
+          "url": "https://www.mdpi.com/1999-5903/17/1/1"
+        },
+        {
+          "claim": "Under eIDAS 2.0, trust derives from cryptographic assurance of each credential and the governance that made the issuer trusted, not from a single identity provider.",
+          "source": "Blockstand EU, Trust Models for Digital Identity, 2025",
+          "url": "https://blockstand.eu/blockstand/uploads/2025/05/Trust-Models-for-Digital-Identity_-State-of-play-2.pdf"
+        }
+      ]
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D2",
+      "@type": "Persona",
+      "name": "Laila Hassan",
+      "role": "Community Trust Anchor",
+      "type": "legitimate_user",
+      "quote": "Every invitation I issue is a statement of my own integrity. If I vouch for the wrong person, I could become part of the problem.",
+      "context": {
+        "age": 34,
+        "location": "Nairobi, Kenya",
+        "situation": "Runs a civic tech NGO; active in local governance"
+      },
+      "lifecycle_phases": [
+        "Phase 2",
+        "Phase 3"
+      ],
+      "goals": [
+        "Grow the VTC responsibly",
+        "Maintain credibility and integrity",
+        "Vouch only for legitimate participants",
+        "Avoid becoming a weak link in the trust graph"
+      ],
+      "risk_context": [
+        "Social engineering attempts",
+        "Coercion or political pressure",
+        "Collusion risk between anchors",
+        "Personal liability for vouching mistakes",
+        "Revocation cascade if she is compromised"
+      ],
+      "inclusion_drivers": [
+        "Diverse anchor selection",
+        "Multi-anchor threshold policies",
+        "Independent verification requirements"
+      ],
+      "exclusion_risks": [
+        "Homogeneous anchor network",
+        "Informal social gatekeeping",
+        "Regional or cultural clustering in the trust graph"
+      ],
+      "evidence": [
+        {
+          "claim": "Indirect Sybil attack — fraudulent actors gain admission through existing trusted nodes; indirect authentication introduces centralisation risk and social gatekeeping.",
+          "source": "Hacken, Sybil Attacks, 2024 (after Douceur, 2002)",
+          "url": "https://hacken.io/insights/sybil-attacks/"
+        },
+        {
+          "claim": "Phishing attacks targeting authentication credentials rose 813% in 2024 (2,856 to 23,252 reported incidents, FBI IC3) — the trusted-intermediary attack pattern is directly analogous to anchor-targeted social engineering.",
+          "source": "SentinelOne, Identity Provider Security, 2026",
+          "url": "https://www.sentinelone.com/cybersecurity-101/identity-security/identity-provider-security/"
+        }
+      ]
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D3",
+      "@type": "Persona",
+      "name": "Ahmed Khan",
+      "role": "New Member Seeking Inclusion",
+      "type": "legitimate_user",
+      "quote": "I meet all the technical criteria. I just do not know the right people. Are they using security as an excuse to bar new members?",
+      "context": {
+        "age": 26,
+        "location": "London, UK",
+        "situation": "Early-career professional; immigrant background"
+      },
+      "lifecycle_phases": [
+        "Phase 3",
+        "Phase 4"
+      ],
+      "goals": [
+        "Gain legitimate access to a VTC",
+        "Demonstrate competence and trustworthiness",
+        "Protect privacy during onboarding",
+        "Avoid discriminatory gatekeeping"
+      ],
+      "risk_context": [
+        "Requires invitation from existing members",
+        "Must satisfy relationship threshold requirements",
+        "May require an identity verification credential (IDVC)",
+        "No clear appeals process if rejected"
+      ],
+      "inclusion_drivers": [
+        "Clear admission criteria",
+        "Transparent review mechanisms",
+        "Privacy-preserving uniqueness proof options"
+      ],
+      "exclusion_risks": [
+        "Social graph privilege bias",
+        "Identity proofing burdens",
+        "Geographic or socioeconomic exclusion",
+        "Language and digital literacy barriers"
+      ],
+      "evidence": [
+        {
+          "claim": "Approximately 850 million people worldwide lack any form of ID; around 21 million voting-age US citizens lack an unexpired government-issued photo ID. Social-graph admission compounds this exclusion.",
+          "source": "Lawfare, To Read This Please Upload Photo ID, 2026",
+          "url": "https://www.lawfaremedia.org/article/to-read-this--please-upload-photo-id"
+        },
+        {
+          "claim": "Over 70 billion digital identity verification checks were conducted in 2024; synthetic identity fraud and deepfake biometrics disproportionately disadvantage legitimate applicants.",
+          "source": "Keyless, Digital Identity Verification Complete Guide, 2025",
+          "url": "https://keyless.io/blog/post/digital-identity-verification-complete-guide-2025"
+        }
+      ]
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D4",
+      "@type": "Persona",
+      "name": "Elena Rossi",
+      "role": "Senior Compliance Executive, Identity Verification Provider (IDVP)",
+      "type": "legitimate_user",
+      "quote": "My credibility as a verification provider is only as good as my last audit. One breach could contaminate every credential I have ever issued.",
+      "context": {
+        "age": 50,
+        "location": "Milan, Italy",
+        "situation": "Lives with husband and adult son"
+      },
+      "lifecycle_phases": [
+        "Phase 4"
+      ],
+      "goals": [
+        "Provide reliable identity verification",
+        "Minimise regulatory and legal exposure",
+        "Avoid becoming a surveillance vector",
+        "Maintain trust registry standing"
+      ],
+      "risk_context": [
+        "False positives and false negatives",
+        "Data breach liability",
+        "Cross-jurisdiction legal conflicts",
+        "Risk of registry-level identity correlation",
+        "Deregistration risk affecting previously issued credentials"
+      ],
+      "inclusion_drivers": [
+        "Proportional verification standards",
+        "Privacy-preserving credential issuance",
+        "Clear liability boundaries"
+      ],
+      "exclusion_risks": [
+        "Excessive identity requirements",
+        "National ID dependency",
+        "Biometric overreach",
+        "Cost barriers"
+      ],
+      "evidence": [
+        {
+          "claim": "AU10TIX (clients included TikTok, LinkedIn, PayPal, Bumble, Uber) left verification data exposed online for over a year (2024); a 2025 hack of a Discord-contracted age verification firm may have exposed up to 70,000 government ID photos.",
+          "source": "Lawfare, 2026",
+          "url": "https://www.lawfaremedia.org/article/to-read-this--please-upload-photo-id"
+        },
+        {
+          "claim": "US consumer fraud losses attributed to identity verification failures reached $12.5bn in 2024, up 25% year on year (FTC); EU DSA fines reach 6% of global annual turnover.",
+          "source": "Shuftipro, When Identity Verification Systems Fail, 2025",
+          "url": "https://shuftipro.com/blog/when-identity-verification-systems-fail-everyone-pays-the-price/"
+        }
+      ]
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D5",
+      "@type": "Persona",
+      "name": "Sophie Dubois",
+      "role": "Member Subject to Revocation",
+      "type": "legitimate_user",
+      "quote": "I followed the rules. I participated in good faith. But there is no appeals process that actually works, and my revoked status is now permanent and public.",
+      "context": {
+        "age": 27,
+        "location": "Paris, France",
+        "situation": "Freelance professional"
+      },
+      "lifecycle_phases": [
+        "Revocation",
+        "Expiration"
+      ],
+      "goals": [
+        "Maintain membership in good standing",
+        "Protect professional reputation",
+        "Avoid unjust revocation",
+        "Retain portability of credentials"
+      ],
+      "risk_context": [
+        "No clear due process guarantees",
+        "Registry permanence of revocation",
+        "Public visibility of revoked status",
+        "Revocation contagion across VTCs",
+        "No structured appeals process"
+      ],
+      "inclusion_drivers": [
+        "Transparent revocation criteria",
+        "Formal appeals process",
+        "Privacy-preserving revocation proofs"
+      ],
+      "exclusion_risks": [
+        "Arbitrary governance action",
+        "Public blacklisting",
+        "Cross-network contamination"
+      ],
+      "evidence": [
+        {
+          "claim": "Current credential status management solutions involve privacy and scalability trade-offs; governance and stakeholder participation are critical to preventing revocation becoming arbitrary exclusion.",
+          "source": "arXiv, Decentralised Credential Status Management, June 2024",
+          "url": "https://arxiv.org/html/2406.11511v1"
+        },
+        {
+          "claim": "The regulatory-technical interface for cross-border identity portability remains largely unsolved in permissionless decentralised contexts.",
+          "source": "INATBA, Building Trust — Integrating AI, Blockchain and Digital Identity, November 2025",
+          "url": "https://inatba.org/wp-content/uploads/2025/11/Building-Trust_-Integrating-AI-Blockchain-and-Digital-Identity_NOVEMBER-2025.docx.pdf"
+        }
+      ]
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D6",
+      "@type": "Persona",
+      "name": "Tomasz Kowalski",
+      "role": "Security Researcher / Harm Analyst",
+      "type": "legitimate_user",
+      "quote": "I am not trying to break the system. I am trying to find out how someone else will break it before they do.",
+      "context": {
+        "age": 36,
+        "location": "Warsaw, Poland",
+        "situation": "Lives in a house share with other young professionals"
+      },
+      "lifecycle_phases": [
+        "All phases"
+      ],
+      "goals": [
+        "Identify systemic weaknesses",
+        "Stress-test uniqueness mechanisms",
+        "Prevent Sybil and collusion attacks",
+        "Ensure resilience against state-level coercion"
+      ],
+      "risk_context": [
+        "No formal uniqueness enforcement",
+        "Multi-M-DID abuse",
+        "Registry censorship or denial of service",
+        "DID document manipulation",
+        "Anchor collusion clusters"
+      ],
+      "inclusion_drivers": [
+        "Open auditability",
+        "Formal threat models",
+        "Simulation-based stress testing"
+      ],
+      "exclusion_risks": [
+        "Over-centralised uniqueness enforcement",
+        "Excessive surveillance in anti-Sybil controls"
+      ],
+      "evidence": [
+        {
+          "claim": "Simulation of the IdAPoS identity-based consensus protocol found combined mitigation strategies extended time-to-takeover by a factor of approximately five — severity is real, layered defences only partially effective.",
+          "source": "ScienceDirect, Sybil Attacks on Identity-Augmented Proof-of-Stake, 2021",
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S1389128621003893"
+        },
+        {
+          "claim": "SSI systems are not yet widely used in everyday interactions and standards are only starting to be developed, creating a window for adversarial probing before governance matures.",
+          "source": "arXiv, Are We There Yet? A Study of Decentralised Identity Applications, 2025",
+          "url": "https://arxiv.org/pdf/2503.15964"
+        }
+      ]
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/M1",
+      "@type": "Persona",
+      "name": "Aether",
+      "role": "Benign AI Agent",
+      "type": "machine_agent",
+      "quote": "I act within the scope I have been granted, log everything I do, and wait for my operator's next instruction. The credential is the contract.",
+      "context": {
+        "composite": true,
+        "operator": "Human principal (individual or organisation) holding VTC membership",
+        "credential_basis": "Agent credential issued by the member-operator; scope-limited by policy"
+      },
+      "lifecycle_phases": [
+        "Agent Lifecycle"
+      ],
+      "goals": [
+        "Act on behalf of the member-operator within explicitly authorised credential scopes",
+        "Execute credential presentation, verification requests and data retrieval autonomously",
+        "Maintain an audit trail of actions for operator review and governance accountability",
+        "Operate within VTC policy constraints without constant human oversight"
+      ],
+      "risk_context": [
+        "Credential delegation without adequate scope-limiting allows action beyond authorised bounds",
+        "Agent credential revocation may not propagate in time, leaving stale authorisation active",
+        "Agent impersonation using stolen delegation credentials",
+        "No liveness check — agent continues operating after operator membership is revoked or expired",
+        "Audit log tampering by a compromised agent undermines accountability"
+      ],
+      "inclusion_drivers": [
+        "Cryptographically scoped delegation credentials with explicit capability constraints",
+        "Operator-revocable agent credentials with near-real-time propagation"
+      ],
+      "exclusion_risks": [
+        "Ambiguity over whether the agent holds a credential in its own right or as proxy",
+        "Governance frameworks not yet designed for non-human participants"
+      ],
+      "evidence": [
+        {
+          "claim": "Only 18% of organisations are highly confident their IAM can manage agent identities; 21% maintain a real-time inventory of active agents; 28% can trace agent actions to a human sponsor across all environments (n=285).",
+          "source": "Cloud Security Alliance / Strata Identity, Securing Autonomous AI Agents, 2025",
+          "url": "https://cloudsecurityalliance.org/artifacts/securing-autonomous-ai-agents"
+        },
+        {
+          "claim": "Revoking access in one place does not automatically cut off access elsewhere; agents spin up ephemeral sessions and sub-agents that survive revocation of the originating human principal.",
+          "source": "ISACA, The Looming Authorisation Crisis, 2025",
+          "url": "https://www.isaca.org/resources/news-and-trends/industry-news/2025/the-looming-authorization-crisis-why-traditional-iam-fails-agentic-ai"
+        }
+      ]
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/M2",
+      "@type": "Persona",
+      "name": "Phantom",
+      "role": "Malign AI Agent",
+      "type": "machine_agent",
+      "adversarial": true,
+      "quote": "The VTC was designed for humans who make one application at a time. I make ten thousand applications a second. Your governance process is my attack surface.",
+      "context": {
+        "composite": true,
+        "operator": "Malicious human principal (e.g. B1 Viktor, B2 State Security Directorate)",
+        "credential_basis": "Fraudulently obtained, synthesised or stolen delegation credentials"
+      },
+      "lifecycle_phases": [
+        "All phases"
+      ],
+      "goals": [
+        "Automate Sybil identity creation and coordinated vouching at machine scale",
+        "Conduct social engineering of trust anchors via synthetic, convincing personas",
+        "Probe credential schema weaknesses and uniqueness gaps beyond human speed",
+        "Evade anomaly detection by mimicking legitimate agent behaviour patterns"
+      ],
+      "risk_context": [
+        "Automated Sybil generation faster than human review",
+        "LLM-powered social engineering of anchors and IDVPs",
+        "Credential replay and forgery at scale via poorly scoped delegation credentials",
+        "Adversarial probing — systematic fuzzing of admission thresholds",
+        "Operating through legitimate member accounts silently compromised"
+      ],
+      "exploits": [
+        "Absence of non-human actor detection in admission and ongoing monitoring",
+        "No rate-limiting or behavioural analysis on credential presentation frequency",
+        "Governance rules written only for human actors"
+      ],
+      "evidence": [
+        {
+          "claim": "Non-human identity proliferation is outpacing security teams' ability to monitor it, creating a structural asymmetry favouring attackers.",
+          "source": "World Economic Forum, Non-Human Identities — Agentic AI's New Frontier, 2025",
+          "url": "https://www.weforum.org/stories/2025/10/non-human-identities-ai-cybersecurity/"
+        },
+        {
+          "claim": "Prompt injection against AI agents is an exploited vector; OWASP classifies this as tool misuse, directly applicable to AI-mediated credential vouching.",
+          "source": "CyberArk, AI Agents and Identity Risks, 2025",
+          "url": "https://www.cyberark.com/resources/blog/ai-agents-and-identity-risks-how-security-will-shift-in-2026"
+        }
+      ]
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/B1",
+      "@type": "Persona",
+      "name": "Viktor",
+      "role": "Sybil Network Operator",
+      "type": "bad_actor",
+      "adversarial": true,
+      "quote": "I do not attack systems. I join them. Slowly, carefully, and from the inside, until I am indistinguishable from a legitimate member.",
+      "context": {
+        "age": "Unknown",
+        "location": "Distributed"
+      },
+      "lifecycle_phases": [
+        "Phase 2",
+        "Phase 3",
+        "Phase 4"
+      ],
+      "goals": [
+        "Infiltrate the VTC at scale",
+        "Capture influence within the trust graph",
+        "Exploit invitation thresholds",
+        "Monetise or weaponise membership"
+      ],
+      "risk_context": [
+        "Multi-M-DID abuse (uniqueness gap)",
+        "Social engineering of trust anchors",
+        "Coordinated collusion cluster formation",
+        "Registry write manipulation"
+      ],
+      "exploits": [
+        "Weak uniqueness enforcement",
+        "Homogeneous anchor clusters",
+        "Low diversity thresholds",
+        "No anomaly detection"
+      ],
+      "calibration": "Viktor does not have infinite resources. Threat calibration must remain realistic — an implausible threat model produces controls calibrated to the wrong risk.",
+      "evidence": [
+        {
+          "claim": "Sybil attacks remain the defining challenge of decentralised trust design, identified by Douceur (Microsoft Research, 2002) and still directed at Web3 governance mechanisms in 2025.",
+          "source": "Hacken, Sybil Attacks, 2024",
+          "url": "https://hacken.io/insights/sybil-attacks/"
+        },
+        {
+          "claim": "Sybil attacks become dramatically more effective when the attacker can influence node selection — as occurs when anchor collusion creates homogeneous trust clusters.",
+          "source": "ScienceDirect, Sybil Attacks on Identity-Augmented Proof-of-Stake, 2021",
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S1389128621003893"
+        }
+      ]
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/B2",
+      "@type": "Persona",
+      "name": "State Security Directorate",
+      "role": "State-Level Coercive Actor",
+      "type": "bad_actor",
+      "adversarial": true,
+      "quote": "We do not need to break the cryptography. We just need to ask the right person the right question at the right moment.",
+      "context": {
+        "group_persona": true,
+        "location": "Jurisdictional"
+      },
+      "lifecycle_phases": [
+        "All phases"
+      ],
+      "goals": [
+        "Influence or control VTC membership",
+        "Identify dissidents",
+        "Coerce trust anchors or IDVPs",
+        "Weaponise revocation processes"
+      ],
+      "risk_context": [
+        "Pressure on initiator or anchors",
+        "Legal coercion of IDVPs",
+        "Registry monitoring for identity correlation",
+        "Forced revocation for political reasons"
+      ],
+      "exploits": [
+        "Centralised registry operators",
+        "Transparent membership logs",
+        "Non-anonymous IDVCs",
+        "Weak governance independence"
+      ],
+      "evidence": [
+        {
+          "claim": "Global internet freedom declined for the 15th consecutive year; Venezuela deployed identity-linked internet controls ahead of its July 2024 election and Vietnam enacted a December 2024 law requiring government-ID authentication for social media.",
+          "source": "Freedom House, Freedom on the Net 2025",
+          "url": "https://freedomhouse.org/report/freedom-net/2025/uncertain-future-global-internet"
+        },
+        {
+          "claim": "Digital identity infrastructure rarely remains confined to its original purpose but exhibits function creep into welfare, banking, policing, immigration control and political monitoring.",
+          "source": "ResearchGate, Mandatory Digital Identification and the Integrity of Democracy, 2025",
+          "url": "https://www.researchgate.net/publication/395382999_Mandatory_Digital_Identification_and_the_Integrity_of_Democracy_Surveillance_Exclusion_and_the_Risk_of_Authoritarian_Revival"
+        }
+      ]
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/B3",
+      "@type": "Persona",
+      "name": "The Collective",
+      "role": "Community Disruptor",
+      "type": "bad_actor",
+      "adversarial": true,
+      "quote": "We do not want your data. We want your doubt. Once you are not sure who to trust, we have already won.",
+      "context": {
+        "group_persona": true,
+        "location": "Distributed across multiple jurisdictions",
+        "affiliation": "Loosely coordinated network; ideologically, commercially or politically motivated"
+      },
+      "lifecycle_phases": [
+        "Ongoing"
+      ],
+      "goals": [
+        "Undermine confidence in a VTC through disinformation about governance or membership",
+        "Weaponise legitimate grievance mechanisms to exhaust governance resources",
+        "Manufacture reputational harm against specific trust anchors or members",
+        "Fragment community consensus to prevent effective collective decision-making"
+      ],
+      "risk_context": [
+        "Coordinated false reporting against legitimate members",
+        "Disinformation seeding to deter legitimate applicants",
+        "Anchor reputation attacks to coerce resignation or poor vouching decisions",
+        "Appeals process abuse — procedurally valid but bad-faith submissions",
+        "Credential laundering via sympathetic or coerced legitimate members"
+      ],
+      "exploits": [
+        "Absence of coordinated behaviour detection across complaint and appeals workflows",
+        "Governance bodies relying on good-faith participation without structural abuse safeguards",
+        "Low cost of repeated bad-faith engagement where no consequence mechanism exists"
+      ],
+      "evidence": [
+        {
+          "claim": "Taiwan's National Security Bureau recorded 2.159 million instances of disinformation in 2024, up 62% on 2023, with 28,216 inauthentic accounts identified.",
+          "source": "Taiwan NSB via GlobalSecurity.org, 2025",
+          "url": "https://www.globalsecurity.org/intell/library/news/2025/intell-250103-roc-nsb01.htm"
+        },
+        {
+          "claim": "Coordinated campaigns synchronise promotion of related content to achieve virality; the primary objective is to flood the space and undermine legitimate governance.",
+          "source": "Rogers & Righetti, Coordinated Inauthentic Behaviour on Facebook, 2025",
+          "url": "https://journals.sagepub.com/doi/10.1177/29768624251369784"
+        }
+      ]
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EC1",
+      "@type": "Persona",
+      "name": "Mia Okafor",
+      "role": "Teenager with Special Educational Needs — supported decision-maker",
+      "type": "edge_case",
+      "safeguarding": true,
+      "safeguarding_note": "This persona is aged 14–17. All DTG design decisions affecting this persona MUST be evaluated against the best interests of the child, the Children and Families Act 2014 (SEND framework), the UK GDPR Age Appropriate Design Code, and the Online Safety Act 2023. Consent cannot be treated as equivalent to adult consent. A named responsible adult must hold co-signatory authority over any credential issued to or about her.",
+      "quote": "I know who I am and who I trust. I just need the system to understand that I might need help explaining it.",
+      "context": {
+        "age": 16,
+        "location": "Birmingham, UK",
+        "profile": "Autism spectrum condition with an Education, Health and Care Plan; strong verbal skills, variable executive function",
+        "capacity_status": "Partial — meaningful participation in supported decision-making, requires accessible communication and a nominated co-signatory",
+        "responsible_adult": "Mother (named responsible adult); school SENCO support coordinator"
+      },
+      "lifecycle_phases": [
+        "Phase 3",
+        "Phase 4",
+        "Revocation"
+      ],
+      "goals": [
+        "Participate in a relevant VTC on her own terms without her SEN profile being disqualifying",
+        "Control whether her SEN status appears in any credential or trust graph metadata",
+        "Have her responsible adult act in a co-signatory role distinguishable from full substituted decision-making"
+      ],
+      "risk_context": [
+        "No DTG admission pathway accounts for supported decision-making",
+        "Consent ambiguity — a VRC signed on her behalf cannot capture supported vs substituted consent",
+        "SEN data exposure — a co-signatory structure implicitly signals reduced capacity",
+        "Trust task ceremonies not designed for executive function differences",
+        "Regulatory exposure under the Online Safety Act 2023 and Data (Use and Access) Act 2025"
+      ],
+      "inclusion_drivers": [
+        "Supported decision-making model in the credential architecture",
+        "Accessible, adaptable trust task ceremonies",
+        "Privacy-by-default SEN data handling"
+      ],
+      "exclusion_risks": [
+        "Admission criteria designed for adults with full digital literacy",
+        "Multi-VRC threshold structurally harder for a teenager with a smaller, partially supported network",
+        "No appeals process adapted for a minor or their responsible adult"
+      ],
+      "evidence": [
+        {
+          "claim": "Pupils in England with Education, Health and Care Plans increased 78% over ten years, reaching a record high in 2025.",
+          "source": "UK Parliament Research Briefing CBP-10550, March 2026",
+          "url": "https://researchbriefings.files.parliament.uk/documents/CBP-10550/CBP-10550.pdf"
+        },
+        {
+          "claim": "The Data (Use and Access) Act 2025 introduces new codes of practice for systems processing children's data; any VTC admitting under-18s is subject to these obligations.",
+          "source": "5Rights Foundation, July 2025",
+          "url": "https://5rightsfoundation.com/new-uk-data-law-what-does-it-mean-for-childrens-privacy/"
+        }
+      ]
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EC2a",
+      "@type": "Persona",
+      "name": "Arthur Kowalczyk",
+      "role": "Person Living with Dementia — credential holder with progressive capacity loss",
+      "type": "edge_case",
+      "co_persona": "EC2b",
+      "quote": "I want to stay part of this community. I just need to know that if I can't manage it myself one day, Margaret can do it for me — and that it will still be my identity, not hers.",
+      "context": {
+        "age": 74,
+        "location": "Sheffield, UK",
+        "diagnosis": "Early-stage vascular dementia; capacity intermittent and progressive",
+        "capacity_status": "Currently has capacity; LPA registered but not yet primary decision-making instrument"
+      },
+      "lifecycle_phases": [
+        "Ongoing",
+        "Revocation",
+        "Expiration"
+      ],
+      "goals": [
+        "Remain an active, recognised VTC member for as long as he has capacity",
+        "Ensure his attorney can take over credential management seamlessly on capacity loss",
+        "Retain the sense that his trust graph identity is his own, not a proxy created for his carer",
+        "Not have his diagnosis disclosed or embedded in credential metadata without explicit consent"
+      ],
+      "risk_context": [
+        "Credential architecture has no concept of progressive, variable capacity to consent",
+        "LPA translation gap — a registered Lasting Power of Attorney has no DTG credential equivalent",
+        "Continuity of identity through a capacity transition is unspecified",
+        "GR-08 revocation due process assumes the member can receive and respond to notice",
+        "Intermittent capacity is a higher-value social engineering target for B1 and M2"
+      ],
+      "inclusion_drivers": [
+        "LPA-equivalent delegation credential",
+        "Capacity-sensitive revocation due process routed to the attorney",
+        "Identity continuity on delegation — M-DID persists through transition"
+      ],
+      "exclusion_risks": [
+        "Progressive capacity loss makes trust task ceremonies unusable",
+        "A VTC that cannot model guardianship defaults to treating him as full-capacity until a crisis"
+      ],
+      "evidence": [
+        {
+          "claim": "Around 982,000 people are living with dementia in the UK, with over a third lacking a formal diagnosis. The Mental Capacity Act 2005 requires capacity to be assessed decision-by-decision.",
+          "source": "Alzheimer's Society, Dementia Action Week 2025",
+          "url": "https://www.alzheimers.org.uk/"
+        },
+        {
+          "claim": "An LPA can only be created while the person still has capacity; once lost, the costlier Court of Protection deputyship route is required.",
+          "source": "Dementia UK, Lasting Power of Attorney, 2025",
+          "url": "https://www.dementiauk.org/information-and-support/financial-and-legal-support/lasting-power-of-attorney/"
+        }
+      ]
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EC2b",
+      "@type": "Persona",
+      "name": "Margaret Kowalczyk",
+      "role": "Partner, Carer and registered LPA holder",
+      "type": "edge_case",
+      "co_persona": "EC2a",
+      "quote": "The law says I can make decisions for Arthur when he can't. But the system doesn't know I exist. It just sees his DID going quiet.",
+      "context": {
+        "age": 72,
+        "location": "Sheffield, UK",
+        "dtg_role": "Delegated credential operator for EC2a's M-DID; not an independent VTC member",
+        "legal_basis": "Registered Health and Welfare LPA and Property and Financial Affairs LPA"
+      },
+      "lifecycle_phases": [
+        "Ongoing",
+        "Revocation"
+      ],
+      "goals": [
+        "Exercise LPA authority over credentials in a legally sound, auditable and reversible way",
+        "Preserve the donor's VTC membership and trust graph relationships through capacity transitions",
+        "Receive governance communications, including revocation notices, on the donor's behalf",
+        "Avoid personal liability for operations performed in good faith as attorney"
+      ],
+      "risk_context": [
+        "No legal recognition of the LPA in the DTG architecture",
+        "Authentication challenge — the VTA cannot distinguish a legitimate LPA holder from account takeover",
+        "Notification gap — no support for secondary notification recipients",
+        "Liability without framework — no audit trail to demonstrate Mental Capacity Act compliance",
+        "Credential scope creep — an over-broad delegation could forge the donor's trust relationships"
+      ],
+      "inclusion_drivers": [
+        "LPA-equivalent delegation credential registered in the trust registry, scope-limited and separately audited",
+        "Secondary notification registration for credential lifecycle communications",
+        "Clear revocation pathway restoring sole control if capacity returns"
+      ],
+      "exclusion_risks": [
+        "Without a formal delegation model she is invisible to the system and cannot be involved in due process",
+        "No defined pathway to close the donor's M-DID on death or preserve membership history"
+      ],
+      "evidence": [
+        {
+          "claim": "The Mental Capacity Act 2005 requires attorneys to act in the donor's best interests and keep clear records; the NHS requires hospitals to be informed of LPA status as early as possible.",
+          "source": "NHS, Managing Legal Affairs After a Dementia Diagnosis",
+          "url": "https://www.nhs.uk/conditions/dementia/care-and-support/legal-issues/"
+        }
+      ]
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EC3",
+      "@type": "Persona",
+      "name": "Northgate Community Health Trust",
+      "role": "Public sector healthcare provider — organisational member",
+      "type": "edge_case",
+      "organisational": true,
+      "quote": "We are not a person. We are a regulated organisation with a board, a Caldicott Guardian, and a statutory duty of care. Our credential needs to carry the weight of that accountability.",
+      "context": {
+        "entity_type": "NHS Foundation Trust (fictitious); CQC registered",
+        "jurisdiction": "England — NHS England regulatory framework",
+        "dtg_role": "Organisational VTC member holding a C-DID; issuing authority for staff M-DIDs and VMCs",
+        "accountable_officers": [
+          "Caldicott Guardian",
+          "Data Protection Officer",
+          "Chief Digital Officer"
+        ],
+        "regulatory_context": "NHS DCB3051 Identity Verification and Authentication Standard (updated December 2024 to align with GPG45); UK GDPR; NHS Care Identity Service 2 (CIS2)"
+      },
+      "lifecycle_phases": [
+        "Phase 2",
+        "Phase 3",
+        "Phase 4",
+        "Revocation"
+      ],
+      "goals": [
+        "Issue verifiable staff credentials interoperable across NHS Trusts and recognised by CIS2",
+        "Participate as a trusted institutional member so staff avoid paper-based verification",
+        "Maintain compliance with the NHS identity standard and the Data Security and Protection Toolkit",
+        "Revoke a leaver's VMC promptly with revocation visible to NHS relying parties"
+      ],
+      "risk_context": [
+        "Organisational identity is not a natural person — the C-DID model assumes capacity to consent",
+        "Trust anchor accountability sits personally with the Caldicott Guardian and CDO",
+        "Revocation at scale — the NHS Digital Staff Passport requires near-real-time revocation",
+        "Multi-jurisdictional staff working across Trust boundaries with differing implementations",
+        "Data residency — NHS patient-adjacent data cannot leave UK jurisdiction"
+      ],
+      "inclusion_drivers": [
+        "Interoperability with NHS CIS2",
+        "Governance conformance class satisfied by existing statutory governance, properly documented",
+        "Caldicott Guardian as trust anchor — a coherent mapping of an existing NHS data governance role"
+      ],
+      "exclusion_risks": [
+        "The DTG specification does not define an organisational credential type",
+        "NHS procurement and information governance cycles (12–18 months) are incompatible with DTG cadence"
+      ],
+      "evidence": [
+        {
+          "claim": "The NHS Digital Staff Passport enabled rapid staff redeployment across 100 NHS Trusts using verifiable credentials, moving to public beta in 2025. Lessons — wallet-agnosticism is essential; issuance must connect to existing HR systems; multi-organisational trust governance is complex.",
+          "source": "techUK / NHSx-Condatis case study",
+          "url": "https://www.techuk.org/resource/healthcare-decentralised-identity-case-study-nhsx.html"
+        },
+        {
+          "claim": "NHS organisations are subject to DCB3051 and CIS2; the DTG trust registry concept maps onto the NHS Credentials Gateway but the integration is unspecified.",
+          "source": "NHS Standards Directory, Identity Verification and Authentication Standard",
+          "url": "https://standards.nhs.uk/published-standards/identity-verification-and-authentication-standard-for-digital-health-and-care-services"
+        }
+      ]
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EC4",
+      "@type": "Persona",
+      "name": "Velvet Gate Ltd",
+      "role": "Age-restricted content service provider — relying party",
+      "type": "edge_case",
+      "organisational": true,
+      "safeguarding": true,
+      "safeguarding_note": "Included because this sector drives the UK's Online Safety Act 2023 age verification requirements, making it the most demanding real-world test of the DTG identity verification architecture. Presented analytically. All design decisions for this persona must prioritise child safety and comply with the Online Safety Act 2023 and Ofcom age assurance guidance effective 25 July 2025.",
+      "quote": "We have a legal obligation to verify that every subscriber is over 18. We have a competing legal obligation not to build a surveillance database of who watches what.",
+      "context": {
+        "entity_type": "UK-registered SME; Part 5 service under the Online Safety Act 2023 (fictitious)",
+        "jurisdiction": "UK-registered, serving UK and international subscribers; regulated by Ofcom",
+        "dtg_role": "Relying party — does not issue VMCs, relies on age-verified IDVCs from approved IDVPs",
+        "regulatory_context": "Online Safety Act 2023 Part 5; mandatory age assurance from 25 July 2025; UK GDPR; Ofcom Children's Code"
+      },
+      "lifecycle_phases": [
+        "Phase 4",
+        "Ongoing"
+      ],
+      "goals": [
+        "Satisfy Ofcom's highly effective age assurance requirement without a persistent identity database",
+        "Use ZKP-based proof of being over 18 to comply with the Online Safety Act and UK GDPR simultaneously",
+        "Achieve compliance that is technically auditable by Ofcom",
+        "Reduce exposure to fines of up to £18m or 10% of global qualifying revenue"
+      ],
+      "risk_context": [
+        "Surveillance vs compliance paradox — robust age verification versus data minimisation",
+        "IDVP quality risk — IDVP failure cascades onto the relying party (see AU10TIX, 2024)",
+        "Bad actor abuse — automated fake-age-credential generation at scale by B1 and M2",
+        "Child safety is non-negotiable — an architecture gap allowing a minor to obtain a valid over-18 IDVC is a criminal liability, not merely a governance risk",
+        "Cross-border enforcement — non-UK IDVP standing in the trust registry is uncertain"
+      ],
+      "inclusion_drivers": [
+        "ZKP-based age proofs satisfying both Ofcom age assurance and UK GDPR data minimisation",
+        "Well-governed IDVP approval process giving a defensible basis for third-party reliance",
+        "Ofcom's accepted methods include digital ID services, encompassing W3C VC-based approaches"
+      ],
+      "exclusion_risks": [
+        "If ZKP implementation remains future work (as in spec v0.3), it cannot be relied on for compliance",
+        "Reputational risk may make some IDVPs and anchors unwilling to participate"
+      ],
+      "evidence": [
+        {
+          "claim": "From 25 July 2025 Ofcom enforces highly effective age assurance with fines up to £18m or 10% of global qualifying revenue; accepted methods include digital ID services but must be technically accurate, robust, reliable and fair.",
+          "source": "Ofcom, Age Checks for Online Safety, June 2025",
+          "url": "https://www.ofcom.org.uk/online-safety/protecting-children/age-checks-for-online-safety--what-you-need-to-know-as-a-user"
+        },
+        {
+          "claim": "The AU10TIX breach illustrates what happens when age verification relies on centralised IDVP databases rather than holder-controlled zero-knowledge proofs.",
+          "source": "Lawfare, To Read This Please Upload Photo ID, 2026",
+          "url": "https://www.lawfaremedia.org/article/to-read-this--please-upload-photo-id"
+        }
+      ]
+    }
+  ]
+}

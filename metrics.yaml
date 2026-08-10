@@ -1,0 +1,1134 @@
+record_type: metric
+generated_by: tools/import_xlsx.py
+records:
+- id: M-01
+  name: Anchor Diversity Index
+  category: Governance
+  description: Measures the geographic, organisational, and cultural spread of trust anchors across the
+    trust graph. A higher score indicates greater decentralisation and resilience to collusion.
+  personas_want_high:
+  - D1
+  - D2
+  - D3
+  - D5
+  - D6
+  personas_want_suppressed:
+  - B1
+  - B2
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-G01
+  - RK-G02
+  - RK-G03
+  - RK-G05
+  - RK-SY01
+  user_stories:
+  - US-01
+  - US-02
+  - US-03
+  - US-04
+  - US-09
+  - US-10
+  scenarios:
+  - SC-01
+  - SC-02
+  - SC-07
+  - SC-09
+  - SC-11
+  epics:
+  - EPIC-1
+  - EPIC-2
+  - EPIC-7
+  - EPIC-13
+  monitoring: null
+- id: M-02
+  name: Time to Revocation Notice (SLA)
+  category: Governance
+  description: The elapsed time between a revocation decision and formal notification to the affected
+    member. Lower is better for due process compliance.
+  personas_want_high:
+  - D5
+  - D6
+  personas_want_suppressed:
+  - B2
+  - B3
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-CR01
+  - RK-CR02
+  - RK-HX03
+  user_stories:
+  - US-05
+  - US-06
+  scenarios:
+  - SC-05
+  - SC-06
+  epics:
+  - EPIC-5
+  - EPIC-11
+  monitoring: null
+- id: M-03
+  name: VRC Reciprocity Rate
+  category: Identity
+  description: Proportion of VMC issuances where a valid reciprocal VRC exchange was confirmed. A low
+    rate indicates PEP enforcement failures.
+  personas_want_high:
+  - D1
+  - D2
+  - D4
+  - D6
+  personas_want_suppressed:
+  - B1
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-ID01
+  - RK-NM01
+  user_stories:
+  - US-01
+  - US-02
+  - US-03
+  - US-04
+  - US-07
+  - US-10
+  - US-13
+  scenarios:
+  - SC-01
+  - SC-02
+  - SC-03
+  - SC-04
+  - SC-07
+  - SC-13
+  epics:
+  - EPIC-3
+  - EPIC-7
+  - EPIC-8
+  - EPIC-12
+  - EPIC-15
+  monitoring: null
+- id: M-04
+  name: IDVC Issuer Verification Rate
+  category: Identity
+  description: Proportion of Phase 4 admissions where the IDVP DID was verified against the trust registry
+    before VMC issuance. Should be 100%.
+  personas_want_high:
+  - D4
+  - D6
+  personas_want_suppressed:
+  - B1
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-ID03
+  - RK-SC01
+  - RK-SC02
+  - RK-EX03
+  user_stories:
+  - US-01
+  - US-05
+  - US-07
+  scenarios:
+  - SC-01
+  - SC-04
+  - SC-05
+  epics:
+  - EPIC-1
+  - EPIC-3
+  - EPIC-4
+  - EPIC-9
+  - EPIC-13
+  monitoring: null
+- id: M-05
+  name: Anomaly Detection Hit Rate (Vouching Patterns)
+  category: Security
+  description: Rate at which coordinated or anomalous vouching patterns are flagged by the VTA analytics
+    engine. Higher is better for Sybil resistance.
+  personas_want_high:
+  - D6
+  - D2
+  personas_want_suppressed:
+  - B1
+  - B3
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-G03
+  - RK-ID01
+  - RK-CR04
+  - RK-AI04
+  - RK-HX02
+  - RK-SY01
+  - RK-SY02
+  user_stories:
+  - US-02
+  - US-03
+  - US-04
+  - US-07
+  - US-09
+  - US-10
+  - US-12
+  - US-15
+  scenarios:
+  - SC-02
+  - SC-03
+  - SC-07
+  - SC-09
+  - SC-11
+  - SC-12
+  - SC-15
+  epics:
+  - EPIC-2
+  - EPIC-3
+  - EPIC-6
+  - EPIC-7
+  - EPIC-8
+  - EPIC-10
+  - EPIC-11
+  - EPIC-13
+  - EPIC-14
+  monitoring: null
+- id: M-06
+  name: Registry Write Authorisation Failure Rate
+  category: Security
+  description: Rate at which single-party registry write attempts are rejected. Should be 100% — any successful
+    single-party write is a governance failure.
+  personas_want_high:
+  - D6
+  - D1
+  personas_want_suppressed:
+  - B1
+  - B2
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-ID04
+  - RK-EX01
+  - RK-EX02
+  user_stories:
+  - US-07
+  - US-11
+  scenarios:
+  - SC-08
+  - SC-09
+  epics:
+  - EPIC-7
+  - EPIC-13
+  monitoring: null
+- id: M-07
+  name: Appeals Process Response Time
+  category: Human Experience
+  description: Median time from appeal submission to formal response from the governing body. Lower indicates
+    a more effective due process mechanism.
+  personas_want_high:
+  - D3
+  - D5
+  personas_want_suppressed:
+  - B2
+  - B3
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-G04
+  - RK-CR01
+  user_stories:
+  - US-06
+  - US-12
+  - US-14
+  scenarios:
+  - SC-06
+  - SC-12
+  - SC-14
+  epics:
+  - EPIC-5
+  - EPIC-11
+  - EPIC-13
+  - EPIC-15
+  monitoring: null
+- id: M-08
+  name: Agent Credential Scope Violation Rate
+  category: AI Agents
+  description: Rate at which AI agents attempt operations outside their delegated credential scope. Any
+    non-zero rate indicates a governance or enforcement failure.
+  personas_want_high:
+  - M1
+  - D6
+  personas_want_suppressed:
+  - M2
+  - B1
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-AI01
+  - RK-AI02
+  user_stories:
+  - US-08
+  - US-09
+  scenarios:
+  - SC-10
+  - SC-11
+  epics:
+  - EPIC-6
+  - EPIC-7
+  monitoring: null
+- id: M-09
+  name: ZKP / Selective Disclosure Uptake Rate
+  category: Privacy
+  description: Proportion of Phase 4 applicants using privacy-preserving proofing options rather than
+    raw IDVC disclosure. Higher indicates better privacy protection.
+  personas_want_high:
+  - D3
+  - D4
+  - D5
+  personas_want_suppressed:
+  - B2
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-ID02
+  - RK-ID05
+  - RK-SC01
+  - RK-SC03
+  - RK-SC04
+  - RK-CR01
+  - RK-CR03
+  - RK-CY01
+  - RK-EX03
+  - RK-HX01
+  user_stories:
+  - US-01
+  - US-04
+  - US-05
+  - US-06
+  - US-11
+  scenarios:
+  - SC-01
+  - SC-02
+  - SC-03
+  - SC-04
+  - SC-06
+  - SC-09
+  epics:
+  - EPIC-3
+  - EPIC-4
+  - EPIC-5
+  - EPIC-9
+  - EPIC-10
+  - EPIC-11
+  - EPIC-12
+  - EPIC-13
+  monitoring: null
+- id: M-10
+  name: Jurisdictional Concentration of Key Parties
+  category: Governance
+  description: Proportion of trust anchors and IDVPs located within a single legal jurisdiction. Lower
+    is better — high concentration indicates coercion risk.
+  personas_want_high:
+  - D1
+  - D6
+  personas_want_suppressed:
+  - B2
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-G03
+  - RK-EX01
+  user_stories:
+  - US-02
+  - US-03
+  - US-11
+  scenarios:
+  - SC-02
+  - SC-09
+  epics:
+  - EPIC-2
+  - EPIC-7
+  - EPIC-13
+  monitoring: null
+- id: M-11
+  name: Bad-Faith Appeals Rate
+  category: Governance
+  description: Proportion of appeal submissions subsequently determined to be coordinated or bad-faith.
+    Rate-limiting and CIB detection should suppress this.
+  personas_want_high:
+  - D5
+  - D6
+  personas_want_suppressed:
+  - B3
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-G04
+  - RK-SY02
+  user_stories:
+  - US-06
+  - US-12
+  scenarios:
+  - SC-06
+  - SC-12
+  epics:
+  - EPIC-11
+  - EPIC-13
+  monitoring: null
+- id: M-12
+  name: Member Admission Denial Rate
+  category: Human Experience
+  description: Proportion of well-formed membership applications that are denied. A high rate may indicate
+    discriminatory gatekeeping; a very low rate may indicate weak admission enforcement.
+  personas_want_high:
+  - D3
+  personas_want_suppressed:
+  - B1
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-ID02
+  - RK-NM01
+  - RK-HX01
+  - RK-HX02
+  user_stories:
+  - US-01
+  - US-02
+  - US-03
+  - US-04
+  - US-06
+  scenarios:
+  - SC-01
+  - SC-02
+  - SC-03
+  - SC-04
+  - SC-09
+  epics:
+  - EPIC-2
+  - EPIC-3
+  - EPIC-10
+  - EPIC-12
+  monitoring: null
+- id: M-13
+  name: Credential Expiry-to-Renewal Latency
+  category: Lifecycle
+  description: Time between credential expiry notification and successful renewal. Relevant for both human
+    members and AI agents. Longer latency increases operational disruption.
+  personas_want_high:
+  - D5
+  - M1
+  personas_want_suppressed:
+  - M2
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-ID03
+  - RK-NM02
+  - RK-CR02
+  - RK-AI02
+  user_stories:
+  - US-03
+  - US-04
+  - US-05
+  - US-06
+  - US-08
+  scenarios:
+  - SC-03
+  - SC-04
+  - SC-05
+  - SC-10
+  epics:
+  - EPIC-3
+  - EPIC-4
+  - EPIC-5
+  - EPIC-6
+  - EPIC-9
+  - EPIC-12
+  - EPIC-13
+  monitoring: null
+- id: M-14
+  name: Sybil Cluster Detection Rate
+  category: Security
+  description: Rate at which coordinated multi-M-DID registration attempts are identified and blocked.
+    A primary uniqueness enforcement metric.
+  personas_want_high:
+  - D6
+  - D1
+  - D2
+  personas_want_suppressed:
+  - B1
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-ID01
+  - RK-CR04
+  - RK-AI03
+  - RK-SY01
+  - RK-SY03
+  user_stories:
+  - US-03
+  - US-07
+  - US-09
+  - US-10
+  - US-12
+  - US-15
+  scenarios:
+  - SC-07
+  - SC-08
+  - SC-11
+  - SC-12
+  - SC-15
+  epics:
+  - EPIC-2
+  - EPIC-3
+  - EPIC-6
+  - EPIC-7
+  - EPIC-8
+  - EPIC-11
+  - EPIC-13
+  - EPIC-14
+  monitoring: null
+- id: M-15
+  name: DID Document Integrity Verification Rate
+  category: Cryptography
+  description: Proportion of DID document resolutions where the VTA confirms document integrity before
+    relying on the resolved content. Should be 100%.
+  personas_want_high:
+  - D6
+  - D4
+  personas_want_suppressed:
+  - B1
+  - B2
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-ID04
+  - RK-SC02
+  - RK-CY01
+  - RK-CY02
+  - RK-EX02
+  user_stories:
+  - US-01
+  - US-04
+  - US-05
+  - US-07
+  - US-11
+  scenarios:
+  - SC-01
+  - SC-04
+  - SC-08
+  - SC-09
+  epics:
+  - EPIC-1
+  - EPIC-4
+  - EPIC-7
+  - EPIC-8
+  - EPIC-9
+  - EPIC-13
+  monitoring: null
+- id: M-16
+  name: Governance Body Response Time to Security Findings
+  category: Governance
+  description: Elapsed time from submission of a security researcher's findings to formal governance acknowledgement
+    and response. Lower supports responsible disclosure and trust.
+  personas_want_high:
+  - D6
+  personas_want_suppressed:
+  - B1
+  - B2
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-G01
+  - RK-G02
+  - RK-G05
+  - RK-CY02
+  - RK-SY03
+  user_stories:
+  - US-01
+  - US-02
+  - US-04
+  - US-07
+  scenarios:
+  - SC-01
+  - SC-02
+  - SC-07
+  - SC-08
+  epics:
+  - EPIC-1
+  - EPIC-7
+  - EPIC-8
+  - EPIC-13
+  monitoring: null
+- id: M-17
+  name: Cross-VTC Revocation Contamination Rate
+  category: Lifecycle
+  description: Rate at which a revocation in one VTC propagates (intentionally or accidentally) to unrelated
+    VTCs where the member holds credentials. Should be governed and scoped.
+  personas_want_high:
+  - D5
+  - D3
+  personas_want_suppressed:
+  - B2
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-ID05
+  - RK-SC04
+  - RK-CR03
+  - RK-HX03
+  user_stories:
+  - US-04
+  - US-06
+  - US-11
+  scenarios:
+  - SC-01
+  - SC-02
+  - SC-06
+  - SC-09
+  epics:
+  - EPIC-5
+  - EPIC-9
+  - EPIC-11
+  - EPIC-13
+  monitoring: null
+- id: M-18
+  name: Rate-Limiting Trigger Accuracy (AI / Non-Human)
+  category: AI Agents
+  description: Proportion of rate-limiting events that correctly target non-human or adversarial activity,
+    avoiding false positives on legitimate benign agents.
+  personas_want_high:
+  - M1
+  - D6
+  personas_want_suppressed:
+  - M2
+  - B1
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-AI01
+  - RK-AI03
+  - RK-AI04
+  user_stories:
+  - US-03
+  - US-08
+  - US-09
+  - US-10
+  - US-15
+  scenarios:
+  - SC-07
+  - SC-10
+  - SC-11
+  - SC-15
+  epics:
+  - EPIC-2
+  - EPIC-6
+  - EPIC-7
+  - EPIC-8
+  monitoring: null
+- id: M-19
+  name: Ceremony Completion Rate
+  category: Ceremony Protocol
+  description: Proportion of initiated witnessed VRC ceremonies that reach COMPLETE or COMPLETE_WITH_EXCEPTIONS
+    terminal state. Low rate indicates profile mismatch, abandonment, or bad-actor interference.
+  personas_want_high:
+  - D2
+  - D3
+  - D5
+  - D6
+  personas_want_suppressed:
+  - B1
+  - M2
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  user_stories:
+  - US-13
+  - US-14
+  - US-15
+  scenarios:
+  - SC-13
+  - SC-14
+  - SC-15
+  epics:
+  - EPIC-14
+  - EPIC-15
+  risks_measured: []
+  monitoring: null
+- id: M-20
+  name: Ceremony Profile Negotiation Cycles
+  category: Ceremony Protocol
+  description: 'Mean number of proposal/counter-proposal rounds before AGREED state is reached. High values
+    indicate persistent term incompatibility or bad-faith negotiation. Target: ≤ 2 rounds.'
+  personas_want_high:
+  - D2
+  - D3
+  - D6
+  personas_want_suppressed:
+  - B1
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  user_stories:
+  - US-13
+  scenarios:
+  - SC-13
+  epics:
+  - EPIC-14
+  risks_measured: []
+  monitoring: null
+- id: M-21
+  name: Witness Role Coverage Rate
+  category: Ceremony Protocol
+  description: Proportion of witnessed ceremonies where the VWC explicitly encodes a witness role (attestor
+    / constitutor / guarantor). Should be 100% — absence indicates the spec gap identified in SC-14.
+  personas_want_high:
+  - D2
+  - D5
+  - D6
+  personas_want_suppressed:
+  - B1
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  user_stories:
+  - US-14
+  - US-15
+  scenarios:
+  - SC-14
+  - SC-15
+  epics:
+  - EPIC-14
+  - EPIC-15
+  risks_measured: []
+  monitoring: null
+- id: M-22
+  name: Indirect Decline Rate
+  category: Human Experience / Ceremony
+  description: Proportion of ceremony terminations resulting in INDIRECT_DECLINE (reason committed to
+    community log; not disclosed to counterparty). Distinguishes dignity-preserving refusal from technical
+    failure.
+  personas_want_high:
+  - D2
+  - D3
+  - D5
+  personas_want_suppressed:
+  - B1
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  user_stories:
+  - US-13
+  - US-15
+  scenarios:
+  - SC-13
+  - SC-15
+  epics:
+  - EPIC-14
+  risks_measured: []
+  monitoring: null
+- id: M-23
+  name: Pre-Witness Verification Completion Rate
+  category: Security / Ceremony
+  description: Proportion of witnessed ceremonies where the witness independently verified both parties
+    before issuing the VWC. Any rate below 100% indicates the social-engineering vulnerability identified
+    in SC-15.
+  personas_want_high:
+  - D2
+  - D6
+  personas_want_suppressed:
+  - B1
+  - M2
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  user_stories:
+  - US-15
+  scenarios:
+  - SC-15
+  epics:
+  - EPIC-14
+  risks_measured: []
+  monitoring: null
+- id: M-24
+  name: Cross-VTC Dependency Resolution Rate
+  category: Interoperability
+  description: Proportion of cross-VTC credential presentations where the receiving VTA successfully resolves
+    the issuing VTC's governance framework and dependency map before accepting the credential. Should
+    be 100%.
+  personas_want_high:
+  - D3
+  - D6
+  - D1
+  personas_want_suppressed:
+  - B1
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  user_stories:
+  - US-16
+  - US-21
+  scenarios:
+  - SC-16
+  - SC-21
+  epics:
+  - EPIC-16
+  risks_measured: []
+  monitoring: null
+- id: M-25
+  name: Constitution Version Binding Rate
+  category: Governance
+  description: Proportion of ceremonies where the ceremony profile explicitly references a specific governance
+    framework version. A low rate indicates ceremonies may be validated against an incorrect or outdated
+    governance version (see SC-25).
+  personas_want_high:
+  - D1
+  - D6
+  personas_want_suppressed:
+  - B2
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  user_stories:
+  - US-17
+  - US-24
+  - US-25
+  scenarios:
+  - SC-17
+  - SC-24
+  - SC-25
+  epics:
+  - EPIC-16
+  risks_measured: []
+  monitoring: null
+- id: M-26
+  name: Adjudication Initiation Latency
+  category: Human Experience
+  description: Time from formal adjudication request submission to appointment of an independent adjudicator.
+    Measures governance responsiveness to contested decisions.
+  personas_want_high:
+  - D3
+  - D5
+  - D6
+  personas_want_suppressed:
+  - B2
+  - B3
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  user_stories:
+  - US-18
+  - US-25
+  scenarios:
+  - SC-18
+  - SC-25
+  epics:
+  - EPIC-16
+  risks_measured: []
+  monitoring: null
+- id: M-27
+  name: Agent Liveness Check Interval Compliance Rate
+  category: AI Agents
+  description: Proportion of active agents whose last liveness check (operator VMC validity verification)
+    falls within their declared behavioural commitment interval. Any rate below 100% indicates a potential
+    harm window.
+  personas_want_high:
+  - M1
+  - D6
+  personas_want_suppressed:
+  - M2
+  - B1
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  user_stories:
+  - US-19
+  scenarios:
+  - SC-19
+  epics:
+  - EPIC-16
+  risks_measured: []
+  monitoring: null
+- id: M-28
+  name: Behavioural Commitment Breach Rate
+  category: AI Agents
+  description: Rate at which active agents are observed operating outside their signed behavioural commitment
+    parameters (rate limits, interaction scope, geographic constraints). Any non-zero rate triggers a
+    Restore task.
+  personas_want_high:
+  - D6
+  - M1
+  personas_want_suppressed:
+  - M2
+  - B1
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  user_stories:
+  - US-19
+  - US-20
+  scenarios:
+  - SC-19
+  - SC-20
+  epics:
+  - EPIC-16
+  risks_measured: []
+  monitoring: null
+- id: M-29
+  name: Non-Human Entity Participation Rate
+  category: Entangled Systems
+  description: Proportion of trust task protocol invocations where at least one party is a non-human entity
+    (IoT device, sensor network, legal-personhood natural entity). Tracks adoption of entangled model
+    capabilities.
+  personas_want_high:
+  - D6
+  personas_want_suppressed: []
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  user_stories:
+  - US-21
+  scenarios:
+  - SC-21
+  epics:
+  - EPIC-16
+  risks_measured: []
+  monitoring: null
+- id: M-30
+  name: VTC Dissolution Portability Completeness
+  category: Lifecycle
+  description: Proportion of VTC members who successfully receive a complete portability package (credentials,
+    outcome records, endorsement history, dissolution record) within the SLA window during a VTC dissolution
+    event.
+  personas_want_high:
+  - D5
+  - D3
+  personas_want_suppressed:
+  - B2
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  user_stories:
+  - US-24
+  scenarios:
+  - SC-24
+  epics:
+  - EPIC-16
+  risks_measured: []
+  monitoring: null
+- id: M-31
+  name: Supported Decision-Making Consent Flag Rate
+  category: Human Experience / Safeguarding
+  description: Proportion of admission ceremonies involving a co-signatory or guardian delegation where
+    the supported-consent flag is correctly set and distinguishable from full substituted consent. A low
+    rate indicates the architecture cannot represent co-signed consent without conflating it with substituted
+    decision-making.
+  personas_want_high:
+  - EC1
+  - EC2a
+  - EC2b
+  personas_want_suppressed:
+  - B1
+  - B2
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-HX04
+  - RK-ID06
+  - RK-SC05
+  user_stories:
+  - US-26
+  - US-27
+  - US-29
+  - US-30
+  scenarios:
+  - SC-26
+  - SC-28
+  epics:
+  - EPIC-17
+  - EPIC-18
+  monitoring: null
+- id: M-32
+  name: Guardian-Mediated Credential Transition Rate
+  category: Lifecycle / Safeguarding
+  description: Proportion of participants who transition from guardian-mediated to sole independent credential
+    control (or vice versa) without membership discontinuity, VRC relationship loss, or re-admission requirement.
+    Tracks capacity-transition lifecycle integrity.
+  personas_want_high:
+  - EC1
+  - EC2a
+  - EC2b
+  personas_want_suppressed:
+  - B1
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-HX04
+  - RK-HX05
+  - RK-HX06
+  user_stories:
+  - US-26
+  - US-28
+  - US-29
+  - US-30
+  scenarios:
+  - SC-26
+  - SC-27
+  - SC-28
+  epics:
+  - EPIC-17
+  - EPIC-18
+  - EPIC-19
+  monitoring: null
+- id: M-33
+  name: LPA Registration Completion Rate
+  category: Governance / Legal
+  description: Proportion of VTC members who have a registered power of attorney that have successfully
+    registered their attorney as a secondary notification recipient and scope-limited delegate in the
+    VTC trust registry before capacity loss. A low rate indicates the LPA pre-registration pathway is
+    inaccessible or undefined.
+  personas_want_high:
+  - EC2a
+  - EC2b
+  personas_want_suppressed:
+  - B1
+  - B2
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-HX05
+  - RK-HX06
+  - RK-SC05
+  user_stories:
+  - US-29
+  - US-30
+  - US-31
+  - US-32
+  scenarios:
+  - SC-28
+  - SC-29
+  epics:
+  - EPIC-17
+  - EPIC-19
+  monitoring: null
+- id: M-34
+  name: Organisational Governance Conformance Rate
+  category: Governance / Organisational
+  description: Proportion of organisational VTC members (holding a C-DID) where the organisation's internal
+    governance framework has been formally mapped to and accepted as satisfying the VTC governance conformance
+    class. A low rate indicates the DTG architecture does not accommodate regulated organisational identities.
+  personas_want_high:
+  - EC3
+  personas_want_suppressed:
+  - B2
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-EX05
+  user_stories:
+  - US-33
+  - US-34
+  - US-35
+  scenarios:
+  - SC-30
+  - SC-31
+  - SC-32
+  epics:
+  - EPIC-20
+  - EPIC-21
+  monitoring: null
+- id: M-35
+  name: Credential Interoperability Failure Rate
+  category: Interoperability
+  description: Rate at which credentials issued by one organisational VTC member (e.g., an NHS Trust)
+    are rejected or require manual verification by another organisational relying party due to implementation
+    divergence. Tracks the practical utility of cross-organisational credential presentation.
+  personas_want_high:
+  - EC3
+  personas_want_suppressed:
+  - B1
+  - B2
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-EX05
+  user_stories:
+  - US-33
+  - US-34
+  scenarios:
+  - SC-30
+  - SC-31
+  epics:
+  - EPIC-20
+  monitoring: null
+- id: M-36
+  name: Age Assurance Failure Rate
+  category: Safeguarding / Privacy
+  description: Rate at which age assurance checks produce false positives (adult incorrectly blocked)
+    or false negatives (minor incorrectly admitted). False negatives are a non-negotiable child safety
+    failure with criminal liability implications; false positives are a privacy and access harm. Both
+    are tracked separately.
+  personas_want_high:
+  - EC4
+  - D3
+  personas_want_suppressed:
+  - B1
+  - M2
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-EX04
+  - RK-EX06
+  user_stories:
+  - US-35
+  - US-36
+  scenarios:
+  - SC-32
+  - SC-33
+  epics:
+  - EPIC-21
+  monitoring: null
+- id: M-37
+  name: Child Safety Non-Compliance Incident Rate
+  category: Safeguarding
+  description: Number of confirmed incidents in which a minor successfully obtained or presented a valid-appearing
+    over-18 IDVC, whether through IDVP failure, synthetic credential generation, or architecture gap.
+    A non-zero rate is a system-level failure requiring immediate escalation to the governance body, the
+    relevant IDVP, and the appropriate regulatory authority (Ofcom/ICO).
+  personas_want_high:
+  - EC4
+  personas_want_suppressed:
+  - B1
+  - M2
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+  risks_measured:
+  - RK-EX04
+  user_stories:
+  - US-36
+  scenarios:
+  - SC-33
+  epics:
+  - EPIC-21
+  monitoring: null

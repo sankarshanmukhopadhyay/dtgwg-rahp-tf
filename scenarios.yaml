@@ -1,0 +1,1008 @@
+record_type: scenario
+generated_by: tools/import_xlsx.py
+records:
+- id: SC-01
+  name: VTC Genesis — Bootstrapping Under Founder Control
+  description: A single initiator establishes the VTC, generating the Community DID and hard-coding Phase
+    1 policies. Power is maximally concentrated.
+  lifecycle_phase: 'Phase 1: Genesis'
+  legitimate_personas:
+  - D1
+  adversarial_personas:
+  - B1
+  governance_decisions: '1. How is initiator authority time-bounded?
+
+    2. What governance artefacts must exist before Phase 2?
+
+    3. What constitutes unacceptable bootstrap bias?'
+  user_stories:
+  - US-01
+  metrics:
+  - M-01
+  - M-03
+  - M-04
+  - M-09
+  - M-12
+  - M-15
+  - M-16
+  - M-17
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-02
+  name: Trust Anchor Seeding — Diversity vs. Speed
+  description: The initiator invites the first cohort of trust anchors. Speed is in tension with diversity.
+    Collusion risk is highest when the graph is sparse.
+  lifecycle_phase: 'Phase 2: Anchor Seeding'
+  legitimate_personas:
+  - D1
+  - D2
+  adversarial_personas:
+  - B1
+  - B2
+  governance_decisions: '1. What diversity criteria govern anchor selection?
+
+    2. How many anchors before Phase 3 opens?
+
+    3. Revocation cascade policy if anchor compromised?'
+  user_stories:
+  - US-01
+  - US-02
+  - US-03
+  metrics:
+  - M-01
+  - M-03
+  - M-05
+  - M-09
+  - M-10
+  - M-12
+  - M-16
+  - M-17
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-03
+  name: Member Admission — Web-of-Trust Threshold Enforcement
+  description: 'Trust anchors begin inviting members under Phase 3 web-of-trust policies. Risks: social
+    graph privilege bias, digital literacy barriers.'
+  lifecycle_phase: 'Phase 3: Member Admission (Anchor-Vouched)'
+  legitimate_personas:
+  - D2
+  - D3
+  adversarial_personas:
+  - B1
+  governance_decisions: '1. Minimum VRC threshold for Phase 3 admission?
+
+    2. How are literacy/language barriers addressed?
+
+    3. Is there an appeals path for rejected applicants?'
+  user_stories:
+  - US-03
+  - US-04
+  metrics:
+  - M-03
+  - M-05
+  - M-09
+  - M-12
+  - M-13
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-04
+  name: Full Member Admission — IDVC + Multi-VRC Requirements
+  description: Phase 4 opens organic member-to-member growth. Identity proofing burden, IDVP quality,
+    and Sybil resistance in tension with accessibility.
+  lifecycle_phase: 'Phase 4: Member Admission (Member-Vouched + IDVC)'
+  legitimate_personas:
+  - D3
+  - D4
+  adversarial_personas:
+  - B1
+  governance_decisions: '1. Which IDVPs are approved and by what criteria?
+
+    2. What privacy-preserving proofing options exist?
+
+    3. How does VTA verify IDVC issuer authority?'
+  user_stories:
+  - US-04
+  - US-05
+  metrics:
+  - M-03
+  - M-04
+  - M-09
+  - M-12
+  - M-13
+  - M-15
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-05
+  name: IDVP Compromise — Cascading Credential Invalidation
+  description: An approved IDVP suffers a breach or is deregistered. Members admitted via those IDVCs
+    face potential re-verification or revocation.
+  lifecycle_phase: Phase 4 / Revocation
+  legitimate_personas:
+  - D4
+  - D5
+  adversarial_personas:
+  - B1
+  governance_decisions: '1. Does IDVP deregistration automatically invalidate dependent VMCs?
+
+    2. What re-verification pathway exists?
+
+    3. Who notifies affected members and within what SLA?'
+  user_stories:
+  - US-05
+  - US-06
+  metrics:
+  - M-02
+  - M-04
+  - M-13
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-06
+  name: Unjust Revocation — Due Process and Appeals
+  description: A member's VMC is revoked, potentially arbitrarily or under political pressure. Tests appeals
+    process, anti-retaliation controls.
+  lifecycle_phase: Revocation & Expiration
+  legitimate_personas:
+  - D5
+  adversarial_personas:
+  - B2
+  governance_decisions: '1. What due process is guaranteed before revocation?
+
+    2. How is revocation status disclosed?
+
+    3. Can a state actor trigger revocation via legal coercion?'
+  user_stories:
+  - US-06
+  - US-11
+  metrics:
+  - M-02
+  - M-07
+  - M-09
+  - M-11
+  - M-17
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-07
+  name: Sybil Attack — Coordinated Multi-Identity Infiltration
+  description: A sophisticated attacker creates multiple synthetic identities and attempts coordinated
+    anchor vouching to pass multi-VRC admission thresholds.
+  lifecycle_phase: Identity Fraud / Sybil
+  legitimate_personas:
+  - D6
+  adversarial_personas:
+  - B1
+  governance_decisions: '1. Does the VTC enforce uniqueness at the M-DID level?
+
+    2. What anomaly detection is in place for coordinated vouching?
+
+    3. Governance response when a Sybil cluster is detected?'
+  user_stories:
+  - US-07
+  - US-10
+  metrics:
+  - M-01
+  - M-03
+  - M-05
+  - M-14
+  - M-16
+  - M-18
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-08
+  name: Registry Manipulation — Write Access Attack
+  description: An adversary attempts to manipulate VTC trust registry records by exploiting weak write-access
+    controls or coercing a registry operator.
+  lifecycle_phase: Registry Integrity
+  legitimate_personas:
+  - D6
+  adversarial_personas:
+  - B1
+  - B2
+  governance_decisions: '1. Who has write access, under what authorisation model?
+
+    2. Is write access multi-signature / threshold-controlled?
+
+    3. Are all registry writes logged in a tamper-evident audit trail?'
+  user_stories:
+  - US-07
+  - US-11
+  metrics:
+  - M-06
+  - M-14
+  - M-15
+  - M-16
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-09
+  name: State Coercion — Forced Disclosure and Weaponised Revocation
+  description: A state-level actor legally compels a trust anchor or IDVP to disclose member identities
+    or revoke credentials for political reasons.
+  lifecycle_phase: State Coercion
+  legitimate_personas:
+  - D6
+  adversarial_personas:
+  - B2
+  governance_decisions: '1. Can a single actor trigger revocation without multi-party approval?
+
+    2. Is member identity linkable to real-world identity via the registry?
+
+    3. What is the legal coercion response protocol?'
+  user_stories:
+  - US-11
+  - US-12
+  metrics:
+  - M-01
+  - M-05
+  - M-06
+  - M-09
+  - M-10
+  - M-12
+  - M-15
+  - M-17
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-10
+  name: Benign AI Agent — Delegated Credential Operations
+  description: A legitimate AI agent operates on behalf of a VTC member, presenting credentials, requesting
+    renewals, and maintaining audit logs.
+  lifecycle_phase: Agent Credential Lifecycle
+  legitimate_personas:
+  - M1
+  - D1
+  - D2
+  - D3
+  adversarial_personas: []
+  governance_decisions: '1. How is agent authority cryptographically constrained?
+
+    2. What happens when the operator''s VMC is revoked?
+
+    3. Are agent actions distinguishable from human in audit logs?'
+  user_stories:
+  - US-08
+  metrics:
+  - M-08
+  - M-13
+  - M-18
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-11
+  name: Malign AI Agent — Machine-Scale Attack Surface
+  description: An adversarial AI agent automates sybil generation, social engineering of anchors, and
+    policy fuzzing at speed beyond human review capacity.
+  lifecycle_phase: AI Threat Detection
+  legitimate_personas:
+  - D6
+  adversarial_personas:
+  - M2
+  - B1
+  governance_decisions: '1. Does the VTC have rate-limiting and anomaly detection for non-human actors?
+
+    2. Do governance rules explicitly cover agent-mediated attacks?
+
+    3. Escalation path when AI-driven patterns are detected?'
+  user_stories:
+  - US-09
+  metrics:
+  - M-01
+  - M-05
+  - M-08
+  - M-14
+  - M-18
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-12
+  name: Community Disruption — Bad-Faith Governance Abuse
+  description: A coordinated network submits mass false complaints, floods the appeals process, and runs
+    disinformation campaigns targeting trust anchor reputations.
+  lifecycle_phase: Community Disruption
+  legitimate_personas:
+  - D5
+  adversarial_personas:
+  - B3
+  governance_decisions: '1. What rate-limiting is applied to complaints and appeals?
+
+    2. How are legitimate grievances protected?
+
+    3. Is there governance capacity-planning for adversarial load?'
+  user_stories:
+  - US-12
+  metrics:
+  - M-05
+  - M-07
+  - M-11
+  - M-14
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-13
+  name: Witnessed VRC Exchange — First Contact Across a Trust Gap
+  description: Ahmed (D3) initiates a connecting VRC ceremony with Laila (D2) via a mutual non-member
+    introduction. Neither party has prior relational history. Laila's terms require multiple interactions
+    before VRC exchange; Ahmed's terms decline biometric attestation. They negotiate a staged two-session
+    ceremony with no hard timeout. The VTA holds ceremony state as PENDING across sessions without firing
+    ABANDONED. On completion the outcome record captures ceremony type, duration, and mutual obligations.
+  lifecycle_phase: 'Phase 3–4: Member Admission / Ceremony Protocol'
+  legitimate_personas:
+  - D3
+  - D2
+  adversarial_personas: []
+  governance_decisions: '1. Does the ceremony state machine support PENDING across multiple sessions without
+    ABANDONED firing?
+
+    2. Is a provisional intent token (receipt primitive) specifiable as an intermediate artefact?
+
+    3. Does the outcome record encode ceremony type (connecting) and session count?
+
+    4. Can the VTA enforce the no-hard-timeout rule for connecting ceremonies?'
+  user_stories:
+  - US-13
+  metrics:
+  - M-03
+  - M-19
+  - M-20
+  - M-22
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-14
+  name: Witnessed VRC Renewal — Constitutor Witness as Dispute Evidence
+  description: Sophie (D5) counter-proposes a witnessed VRC renewal with Remi, requiring Laila (D2) as
+    constitutor witness (not attestor). Remi accepts. The VWC encodes Laila's role as constitutor. Two
+    months later, Sophie invokes Restore after a revocation complaint from Remi. The outcome record and
+    VWC together demonstrate the relationship was in good standing at renewal, with the witness's social
+    standing behind it. The Redress HX profile is invoked; Sophie's appeal is upheld.
+  lifecycle_phase: VRC Renewal / Ceremony Protocol / Restore
+  legitimate_personas:
+  - D5
+  - D2
+  adversarial_personas: []
+  governance_decisions: '1. Does the VWC credential structure support the attestor/constitutor/guarantor
+    role distinction?
+
+    2. Is the outcome record portable and referenceable by the Restore task?
+
+    3. Does the Redress HX profile require the outcome record as a mandatory input?
+
+    4. What is the minimum ceremony profile for a renewal vs. a first-exchange?'
+  user_stories:
+  - US-14
+  metrics:
+  - M-19
+  - M-21
+  - M-07
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-15
+  name: Witnessed VRC Exchange — Sybil Laundering via Social Engineering of Witness
+  description: 'Viktor (B1) uses Phantom (M2) to social-engineer Laila (D2) into witnessing a VRC exchange
+    between two synthetic identities (Marco and Petra) by fabricating a plausible shared-event context.
+    Laila''s pre-ceremony terms require independent verification of both parties. She queries the registry:
+    both show single-jurisdiction VRC graphs with anomalous timing. Laila invokes INDIRECT_DECLINE, committing
+    her reason to the community governance log. The log entry triggers Tomasz''s (D6) Sybil cluster investigation.
+    The attack fails before any credential is issued; the failure record is created and referenced in
+    subsequent anomaly detection.'
+  lifecycle_phase: Identity Fraud / Sybil / Ceremony Protocol
+  legitimate_personas:
+  - D2
+  - D6
+  adversarial_personas:
+  - B1
+  - M2
+  governance_decisions: '1. Does the ceremony protocol require a mandatory pre-witness verification step
+    before the witness can issue a VWC?
+
+    2. Does INDIRECT_DECLINE write a committed reason to the community governance log (not the counterparty)?
+
+    3. Does the community governance log feed anomaly detection in a machine-readable format?
+
+    4. Does the failure record reference the declined ceremony profile and the witness''s registry query
+    evidence?
+
+    5. What prevents Phantom from attempting the same social engineering against a different anchor?'
+  user_stories:
+  - US-15
+  metrics:
+  - M-05
+  - M-14
+  - M-22
+  - M-23
+  - M-18
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-16
+  name: Cross-VTC Credential Recognition — Ahmed Joins a Second VTC
+  description: Ahmed holds a valid VRC from Laila's VTC and applies to join a second affiliated VTC. The
+    second VTC's admission policy accepts one cross-VTC VRC as a substitute for one of its required two
+    VRCs, provided the issuing VTC is on its trust registry. The receiving VTA must resolve the issuing
+    VTC's C-DID, verify its governance framework version, retrieve the dependency map for Ahmed's VRC,
+    and confirm no cascade revocation has occurred. If Ahmed's first-VTC membership is later revoked,
+    the second VTC must be notified via the dependency map mechanism.
+  lifecycle_phase: Cross-VTC Interoperability
+  legitimate_personas:
+  - D3
+  - D1
+  adversarial_personas: []
+  governance_decisions: '1. What is the minimum dependency record a cross-VTC credential must carry to
+    enable the receiving VTA to verify its continued validity?
+
+    2. At what point does cross-VTC revocation propagate — immediately, at next presentation, or on a
+    scheduled reconciliation?
+
+    3. Is registry-anchored delegation (IDVP authority chain) the correct model for cross-VTC credential
+    recognition, or does it require a new pattern?
+
+    4. Does the dependency map need to be signed by the issuing VTC, the receiving VTC, or both?'
+  user_stories:
+  - US-16
+  metrics:
+  - M-17
+  - M-24
+  - M-04
+  - M-15
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-17
+  name: Governance Amendment — Daniel Updates the Constitution Mid-Lifecycle
+  description: After a governance vote, Daniel amends the VTC admission threshold from two VRCs to three.
+    Version 1.1 of the governance framework is published with a defined effective date. Ceremonies that
+    reached AGREED state before the effective date are bound to version 1.0 and must complete under those
+    rules. New ceremonies initiated after the effective date apply version 1.1. The VTA's PEP must enforce
+    version binding at ceremony AGREED state. A member who was mid-ceremony at the effective date must
+    not have their in-progress ceremony invalidated by the amendment.
+  lifecycle_phase: Governance Amendment / Lifecycle
+  legitimate_personas:
+  - D1
+  - D5
+  adversarial_personas: []
+  governance_decisions: '1. Is governance version binding at PROPOSED, AGREED, or IN_PROGRESS state?
+
+    2. What is the data model for a constitution version reference in a ceremony profile?
+
+    3. How does the VTA determine which governance version to apply when a ceremony spans the effective
+    date of an amendment?
+
+    4. What is the remediation path if the VTA applies the wrong version to a live ceremony?'
+  user_stories:
+  - US-17
+  metrics:
+  - M-25
+  - M-16
+  - M-19
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-18
+  name: Adjudication — Independent Review of a Disputed Anchor Denial
+  description: Laila denies Ahmed's VRC application. Ahmed believes the denial is discriminatory and initiates
+    a formal adjudication request. An independent governance body — not Laila, not Daniel, not any party
+    to the original ceremony — is appointed as adjudicator. The adjudicator reviews the ceremony profile,
+    the denial failure record, Ahmed's terms declaration, and Laila's registry query evidence. The adjudicator
+    issues a binding ruling artefact. The VTA is required to honour the ruling. If the ruling overturns
+    the denial, Laila must re-enter the ceremony or a substitute anchor must be appointed.
+  lifecycle_phase: Adjudication / Appeals
+  legitimate_personas:
+  - D3
+  - D2
+  - D6
+  adversarial_personas:
+  - B2
+  governance_decisions: '1. What authorises the adjudicator to issue a binding ruling — what credential
+    does the adjudicator hold, and who issued it?
+
+    2. Is adjudication a new interaction pattern or a constrained subtype of Restore?
+
+    3. What is the data model for a binding ruling artefact, and what trust task produces it?
+
+    4. Can a state actor coerce the adjudicator body, and what structural mitigations exist?
+
+    5. If the ruling requires Laila to re-enter a ceremony she has declined, what consent mechanism applies?'
+  user_stories:
+  - US-18
+  metrics:
+  - M-26
+  - M-07
+  - M-12
+  - M-16
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-19
+  name: Agent Liveness Failure — Aether Continues Acting After Operator Revocation
+  description: Aether (M1) is managing credential renewals for its operator. The operator's VMC is revoked
+    for a governance violation. Aether has declared a behavioural commitment with a liveness check interval
+    of five minutes. For up to five minutes, Aether continues to execute delegated exchanges on behalf
+    of a revoked member. On the next liveness check, Aether detects the revocation, ceases all operations,
+    and produces a signed suspension record referencing the operator's revocation timestamp and the list
+    of actions taken during the harm window. The suspension record is submitted to the VTC governance
+    log.
+  lifecycle_phase: Agent Liveness / Lifecycle
+  legitimate_personas:
+  - M1
+  - D6
+  adversarial_personas: []
+  governance_decisions: '1. Is the subscription/liveness pattern a push (VTA notifies Aether) or pull
+    (Aether polls) model, or both?
+
+    2. What is the data model for a suspension record, and is it a subtype of the failure record or a
+    distinct artefact?
+
+    3. What is the maximum permissible liveness check interval — is this set by the agent, the operator,
+    or the VTC governance framework?
+
+    4. Are actions taken during the harm window retroactively void, or are they valid until the suspension
+    record is issued?
+
+    5. How does the VTA distinguish between an agent that has ceased operations correctly and one that
+    is unreachable (ABANDONED)?'
+  user_stories:
+  - US-19
+  metrics:
+  - M-27
+  - M-08
+  - M-13
+  - M-28
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-20
+  name: Behavioural Commitment Enforcement — Phantom Exceeds Its Declared Envelope
+  description: 'Phantom (M2) has registered with a legitimate operator credential and declared a behavioural
+    commitment: maximum 10 credential presentations per hour, interactions limited to VTC members, no
+    ceremony initiations. Phantom begins exceeding these parameters: 400 presentations per hour, ceremony
+    initiations with non-members, parallel policy fuzzing. Each violation is compared against Phantom''s
+    signed behavioural commitment. The VTA generates breach records — cryptographically provable deviations
+    from declared parameters — rather than relying solely on statistical anomaly detection. The breach
+    records trigger a Restore task and Phantom''s operator credential is suspended pending investigation.'
+  lifecycle_phase: Behavioural Commitment Enforcement / Security
+  legitimate_personas:
+  - D6
+  adversarial_personas:
+  - M2
+  - B1
+  governance_decisions: '1. What is the data model for a behavioural commitment, and how is it bound to
+    the agent''s DID at registration?
+
+    2. What trust task produces a breach record — is it a subtype of Signal/Capacity or Restore, or a
+    new task?
+
+    3. Is a breach record sufficient to trigger operator credential suspension, or is a governance vote
+    required?
+
+    4. How does a behavioural commitment differ from a policy token — both constrain permitted behaviour?
+
+    5. Can Phantom manipulate its own behavioural commitment declaration to set parameters that permit
+    its intended attack pattern?'
+  user_stories:
+  - US-20
+  metrics:
+  - M-28
+  - M-08
+  - M-18
+  - M-05
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-21
+  name: Ecological Entity as First-Class Party — Sensor Network in a Land-Use Ceremony
+  description: A river basin sensor network holds a DID granted by the relevant jurisdiction (analogous
+    to the Whanganui River's legal personhood in New Zealand). A construction company proposes a land-use
+    exchange with the river basin authority. Under the applicable governance framework, the sensor network
+    is a named party in the Exchange — it declares terms (minimum flow rate thresholds must be maintained;
+    no construction within 50m of the river bank), attests to current ecological state via a verifiable
+    sensor credential, and can invoke Restore if the agreement is breached. The ceremony profile requires
+    all five trust tasks to be executed with the sensor network as a named participant alongside the human
+    parties.
+  lifecycle_phase: Entangled Systems / Non-Human Entity
+  legitimate_personas:
+  - D6
+  adversarial_personas: []
+  governance_decisions: '1. Is the sensor network''s manifest structurally identical to a human member''s
+    manifest, or does it require additional fields (sensor calibration lineage, ecological obligation
+    declarations, legal personhood jurisdiction)?
+
+    2. Does the sensor network''s terms declaration follow the same Intent Signal protocol as a human
+    party''s, or does it require a machine-readable encoding that differs in structure?
+
+    3. Can the sensor network invoke Restore autonomously, or must a human guardian act on its behalf?
+
+    4. Is a non-human entity''s DID resolvable via the same DID method as a human member''s M-DID, or
+    does it require a distinct DID method for ecological/IoT entities?
+
+    5. How does the dependency map record the sensor network''s relationship to its physical sensors —
+    is sensor calibration lineage part of the manifest or a separate provenance record?'
+  user_stories:
+  - US-21
+  metrics:
+  - M-29
+  - M-15
+  - M-19
+  - M-24
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-22
+  name: Pre-Condition Violation — Exchange Initiated Without Prior Identify
+  description: 'A developer integrating a VTC client application makes an implementation error: their
+    code sends a ceremony PROPOSED message before completing DID resolution for the counterparty. The
+    counterparty''s M-DID is unresolved. The ceremony proceeds to PROPOSED state. At Level D, the signature
+    check fails. The scenario tests whether the VTA''s PEP enforces the Identify-before-Exchange pre-condition
+    at the protocol layer (producing a standard pre-condition violation artefact) or whether the failure
+    manifests as an implementation-specific runtime error with no interoperable representation.'
+  lifecycle_phase: Pre-condition Enforcement / Security
+  legitimate_personas:
+  - D6
+  adversarial_personas: []
+  governance_decisions: '1. Is Identify-before-Exchange a mandatory protocol pre-condition enforced by
+    the PEP, or a recommended implementation practice?
+
+    2. What is the standard data model for a pre-condition violation artefact — is it a subtype of failure
+    record?
+
+    3. Does a pre-condition violation produce ceremony state FAILED or a new state (INVALID/REJECTED)?
+
+    4. Is the pre-condition violation artefact visible only to the initiating party, or is it shared with
+    the counterparty and community log?
+
+    5. How does the spec distinguish a pre-condition violation (implementation error) from a deliberate
+    identity spoofing attempt (adversarial)?'
+  user_stories:
+  - US-22
+  metrics:
+  - M-15
+  - M-19
+  - M-16
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-23
+  name: Endorsement as Primary Pattern — Professional Reputation in the Open-Source VTC
+  description: 'Daniel''s VTC is a community of open-source maintainers. Members endorse each other''s
+    contributions in specific domains (e.g., cryptography, governance design, accessibility). Laila endorses
+    Ahmed for "decentralised identity protocol design" after collaborating on a proposal. Six months later,
+    Laila retracts the endorsement — not because Ahmed did anything wrong, but because a later collaboration
+    revealed a significant disagreement about approach. The retraction is prospective: it does not invalidate
+    past decisions made on the basis of the endorsement, but Ahmed''s current reputation profile no longer
+    includes it. A recruiter queries the endorsement graph and the topology is verifiable for anomalous
+    clustering.'
+  lifecycle_phase: Endorsement / Reputation
+  legitimate_personas:
+  - D2
+  - D3
+  adversarial_personas:
+  - B1
+  governance_decisions: '1. Is endorsement a subtype of Attest, or does it require its own trust task
+    type with different revocation semantics?
+
+    2. What is the data model distinction between endorsement retraction (prospective) and credential
+    revocation (retrospective)?
+
+    3. What is the data model for an endorsement record, and how does it differ from a VRC?
+
+    4. Is the endorsement graph topology a verifiable claim (signed by the VTA) or an application-layer
+    analytics output?
+
+    5. How does the accumulation pattern apply to endorsements — what is the aggregation rule and decay
+    function?'
+  user_stories:
+  - US-23
+  metrics:
+  - M-03
+  - M-05
+  - M-21
+  - M-14
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-24
+  name: VTC Dissolution — Winding Down with Full Member Portability
+  description: 'Daniel''s VTC passes a governance vote to dissolve. The dissolution protocol requires:
+    (1) all members notified within 24 hours via Signal; (2) all VMCs revoked via Lifecycle Transition;
+    (3) the Community DID deactivated; (4) the tamper-evident governance ledger preserved and transferred
+    to a designated archive; (5) each member issued a portability package containing their VMC (with dissolution
+    record attached), all outcome records from ceremonies they participated in, all VWCs and endorsements,
+    and the signed dissolution record; (6) a historical legitimacy binding — a signed assertion that all
+    credentials issued before the dissolution date were valid at issuance — so other VTCs can verify the
+    historical record.'
+  lifecycle_phase: VTC Lifecycle / Dissolution
+  legitimate_personas:
+  - D1
+  - D5
+  - D3
+  adversarial_personas:
+  - B2
+  governance_decisions: '1. What is the data model for a portability package — what must it contain as
+    a minimum, and what is the maximum retention SLA?
+
+    2. What is the historical legitimacy binding — which trust task produces it, and which primitives
+    underpin it?
+
+    3. How is the governance ledger preserved — is it transferred to a new DID, archived on-chain, or
+    distributed to members?
+
+    4. What happens to in-flight ceremonies at the moment of dissolution announcement — do they complete,
+    fail, or enter a special DISSOLVING terminal state?
+
+    5. Can the Community DID be deactivated while historical legitimacy binding remains verifiable?'
+  user_stories:
+  - US-24
+  metrics:
+  - M-30
+  - M-02
+  - M-17
+  - M-25
+  - M-15
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-25
+  name: Governance Configuration Failure — VTA Applies Wrong Framework Version to Live Ceremony
+  description: A deployment error causes a VTA to apply governance framework version 1.1 (the amended
+    three-VRC threshold) to a ceremony that was AGREED under version 1.0 (the two-VRC threshold). At Level
+    B, the PEP rejects a sub-exchange that was valid under 1.0 but not under 1.1, producing an unexpected
+    FAILED terminal state for a ceremony whose parties did nothing wrong. The failure record must capture
+    the version mismatch in a machine-readable form. The parties invoke Restore. The Restore task must
+    determine whether the failure was a protocol error (PEP applied wrong version), a governance error
+    (version effective date was set incorrectly), or an implementation error (VTA deployment bug).
+  lifecycle_phase: Governance Configuration / Security
+  legitimate_personas:
+  - D5
+  - D6
+  adversarial_personas: []
+  governance_decisions: '1. Is governance version binding at ceremony AGREED state a mandatory protocol
+    requirement or an implementation recommendation?
+
+    2. What is the data model for a governance version reference in a ceremony profile — must it be a
+    content-addressed hash of the governance document?
+
+    3. Does a version mismatch failure produce a distinct terminal state (INVALID/VERSION_MISMATCH) or
+    does it collapse to FAILED?
+
+    4. What is the Restore pathway for a ceremony that failed due to a governance configuration error
+    — who initiates, who adjudicates, and what is the remediation?
+
+    5. How does the spec prevent a malicious VTA operator from deliberately applying an incorrect governance
+    version to deny a ceremony to targeted members?'
+  user_stories:
+  - US-25
+  metrics:
+  - M-25
+  - M-19
+  - M-16
+  - M-26
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-26
+  name: Minor / SEN Admission — Supported Consent and Accessible Onboarding
+  description: A 16-year-old with autism spectrum condition (Mia) applies to join a VTC with her responsible
+    adult (Grace) acting as co-signatory. The ceremony protocol has no concept of co-signed or supported
+    consent; the VTA cannot distinguish supported consent from substituted consent.
+  lifecycle_phase: 'Phase 3–4: Member Admission / Supported Decision-Making'
+  legitimate_personas:
+  - EC1
+  adversarial_personas:
+  - B1
+  governance_decisions: '1. Can the VRC architecture represent co-signed consent without conflating it
+    with substituted decision-making?
+
+    2. How is SEN data prevented from being inferred from a co-signatory structure?
+
+    3. What accessible UX adaptations are mandatory for trust task ceremonies?'
+  user_stories:
+  - US-26
+  - US-27
+  metrics:
+  - M-07
+  - M-09
+  - M-12
+  - M-19
+  - M-31
+  - M-32
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-27
+  name: Minor Capacity Transition — Credential Continuity at Age 18
+  description: Mia turns 18. The guardian-mediated wallet must transfer full credential control to her
+    without loss of membership history or trust-graph relationships, and without triggering a re-admission
+    workflow.
+  lifecycle_phase: Credential Lifecycle / Capacity Transition
+  legitimate_personas:
+  - EC1
+  adversarial_personas: []
+  governance_decisions: '1. Is the transition from delegated to sole control a credential lifecycle event
+    or a new admission?
+
+    2. How is the prior guardian delegation credential revoked cleanly on transition?
+
+    3. Is membership history preserved across the transition?'
+  user_stories:
+  - US-28
+  metrics:
+  - M-13
+  - M-30
+  - M-32
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-28
+  name: LPA Pre-Registration — Capacity Planning Before Loss
+  description: Arthur, with early-stage dementia but current capacity, pre-registers Margaret as his LPA
+    holder in the VTC trust registry. The architecture has no credential type for a legally registered
+    power of attorney.
+  lifecycle_phase: 'Phase 3–4: Member / LPA Pre-Registration'
+  legitimate_personas:
+  - EC2a
+  - EC2b
+  adversarial_personas:
+  - B1
+  governance_decisions: '1. What credential type represents a registered LPA in the DTG architecture?
+
+    2. How is an LPA-delegation credential distinguished from a Sybil-style account takeover?
+
+    3. Is the LPA registration itself publicly visible in the trust registry?'
+  user_stories:
+  - US-29
+  - US-30
+  metrics:
+  - M-31
+  - M-32
+  - M-33
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-29
+  name: Capacity Loss and Death — LPA Activation and M-DID Closure
+  description: Arthur loses capacity. Margaret activates her LPA-holder credential, receives governance
+    communications on his behalf, and contests a revocation notice. Arthur later dies; Margaret must close
+    his M-DID and notify the trust graph with an auditable record.
+  lifecycle_phase: Revocation & Expiration / LPA / Death
+  legitimate_personas:
+  - EC2b
+  adversarial_personas:
+  - B2
+  governance_decisions: '1. What is the governance workflow for activating an LPA-holder credential?
+
+    2. How are revocation appeals managed when the credential holder lacks capacity?
+
+    3. What is the defined process for closing an M-DID on death?'
+  user_stories:
+  - US-30
+  - US-31
+  - US-32
+  metrics:
+  - M-02
+  - M-07
+  - M-26
+  - M-30
+  - M-33
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-30
+  name: NHS Trust Bootstrapping — Organisational DID and Caldicott Anchor
+  description: Northgate NHS Trust seeks to join a VTC as an organisational member, with its Caldicott
+    Guardian as trust anchor and the Trust's C-DID as its community identity. The DTG spec does not define
+    an organisational credential type.
+  lifecycle_phase: 'Phase 1–2: Organisational Member Admission / Bootstrapping'
+  legitimate_personas:
+  - EC3
+  adversarial_personas:
+  - B2
+  - B1
+  governance_decisions: '1. Is the C-DID model sufficient for an NHS Foundation Trust with board-level
+    governance?
+
+    2. How is the Caldicott Guardian role mapped to the trust anchor role with accountability preserved?
+
+    3. How are NHS data residency requirements enforced at the trust registry layer?'
+  user_stories:
+  - US-33
+  metrics:
+  - M-04
+  - M-10
+  - M-34
+  - M-35
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-31
+  name: NHS Staff Credential Revocation — 24-Hour SLA Compliance
+  description: A staff member leaves Northgate Trust. The Trust must revoke their VMC within 24 hours
+    so the revocation is visible to all NHS relying parties. The DTG revocation mechanism must meet NHS
+    Digital Staff Passport SLA requirements.
+  lifecycle_phase: Revocation & Expiration / NHS / Organisational
+  legitimate_personas:
+  - EC3
+  adversarial_personas:
+  - B2
+  - B1
+  governance_decisions: '1. Can the DTG revocation propagation mechanism meet a 24-hour SLA at NHS scale?
+
+    2. How are cross-Trust credential presentations checked against a near-real-time revocation list?
+
+    3. What audit record satisfies the NHS Data Security and Protection Toolkit?'
+  user_stories:
+  - US-33
+  - US-34
+  metrics:
+  - M-02
+  - M-13
+  - M-17
+  - M-34
+  - M-35
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-32
+  name: Age Assurance — ZKP Over-18 Proof for Subscriber Admission
+  description: A subscriber presents a ZKP-based age proof to Velvet Gate, derived from their IDVC, confirming
+    they are over 18 without revealing their identity. Velvet Gate verifies the IDVP's trust registry
+    standing and logs the check for Ofcom compliance.
+  lifecycle_phase: 'Phase 4: Identity Verification / Relying Party / Age Assurance'
+  legitimate_personas:
+  - EC4
+  adversarial_personas:
+  - B1
+  - M2
+  governance_decisions: '1. Does the ZKP architecture satisfy Ofcom''s technically accurate, robust, reliable,
+    and fair standard?
+
+    2. How is the IDVP trust registry entry checked in near-real-time without retaining subscriber identity?
+
+    3. What constitutes an adequate Ofcom-compliant audit record under privacy-preserving verification?'
+  user_stories:
+  - US-35
+  - US-36
+  metrics:
+  - M-04
+  - M-09
+  - M-34
+  - M-36
+  - M-37
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
+- id: SC-33
+  name: Child Safety Failure — Synthetic Age Credential Bypasses Age Assurance
+  description: Phantom (M2) generates synthetic over-18 IDVCs at scale, enabling minors to present valid-appearing
+    age proofs to Velvet Gate. The platform must detect and block the attack before any minor accesses
+    age-restricted content — a non-negotiable child safety requirement.
+  lifecycle_phase: AI Threat Detection / Child Safety / Age Assurance
+  legitimate_personas:
+  - EC4
+  - D6
+  adversarial_personas:
+  - M2
+  - B1
+  governance_decisions: '1. At what layer should synthetic age credential detection operate — IDVP, VTA,
+    or relying party?
+
+    2. What rate-limiting or behavioural analysis can detect automated credential generation at machine
+    scale?
+
+    3. What is the liability regime for Velvet Gate if a synthetic credential passes undetected?'
+  user_stories:
+  - US-36
+  metrics:
+  - M-05
+  - M-14
+  - M-18
+  - M-36
+  - M-37
+  provenance:
+    source: workbook:UserStories_v6.xlsx
+    imported: '2026-08-05'
