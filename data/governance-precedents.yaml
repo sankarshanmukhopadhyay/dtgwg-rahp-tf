@@ -1,0 +1,70 @@
+# Governance precedent records (GP-xx).
+#
+# Why these exist: the toolkit captures what risks exist and what controls address
+# them, but not the reasoning behind the design decisions that shaped it. Those
+# decisions currently live in GitHub discussion threads and meeting notes, where
+# they are effectively unretrievable. GP records give future contributors the
+# design intent, and give standards bodies an auditable trail of reasoned
+# decision-making.
+#
+# The records below are `status: proposed`. They are reconstructed from the DTG
+# Credential Specification v0.3 review recorded in the risk register, so the
+# reasoning is evidenced — but the RAHP Task Force has not ratified them as
+# precedent. Ratifying them is a v0.3 task force action.
+
+record_type: governance_precedent
+records:
+
+- id: GP-001
+  title: Bilateral VRC signatures accepted as partial GR-04 implementation
+  decision_date: 2026-03
+  status: proposed
+  context: >-
+    DTG Credential Specification v0.3 introduced bilateral VRC signatures. RAHP assessed this as
+    partially implementing GR-04 (Reciprocal VRC Requirement), raising per-edge Sybil cost without
+    requiring full threshold signing.
+  rationale: >-
+    Full threshold signing imposes a UX burden incompatible with EPIC-12 (UX & Human Workflows) at
+    current tooling maturity. Bilateral signing accepted as an interim measure, with GR-04 retained
+    as a future normative candidate rather than closed.
+  linked_risks: [RK-ID01, RK-ID03, RK-AI03]
+  linked_controls: [CT-09]
+  linked_guardrails: [GR-04]
+  evidence: DTG Credential Specification v0.3 review, March 2026 (risk register v5, section 6a)
+  superseded_by: null
+
+- id: GP-002
+  title: R-DID per-relationship requirement reduces linkability risk
+  decision_date: 2026-03
+  status: proposed
+  context: >-
+    Specification v0.3 made R-DIDs a MUST on a per-relationship basis. RAHP reassessed RK-ID05
+    (M-DID Linkability Across VTCs) and reduced its likelihood from Medium to Low as a direct result.
+  rationale: >-
+    A specification change that measurably reduces an assessed risk should be recorded as precedent,
+    not merely reflected in a changed score. Without the record, a future revision could reverse the
+    design choice without anyone noticing the risk score was contingent on it.
+  linked_risks: [RK-ID05]
+  linked_controls: [CT-15]
+  linked_guardrails: []
+  evidence: DTG Credential Specification v0.3 review, March 2026 (risk register v5, section 6a)
+  superseded_by: null
+
+- id: GP-003
+  title: M-DID bootstrapping exception permitted without a migration trigger
+  decision_date: 2026-03
+  status: proposed
+  context: >-
+    Specification v0.3 permits M-DID use during bootstrapping but defines no trigger for migration to
+    R-DIDs. RAHP recorded this as a new risk (RK-SC04) introduced by a specification design choice,
+    scored Medium severity x High likelihood.
+  rationale: >-
+    Recorded as a precedent because it is a decision the working group may not have taken
+    deliberately. The exception is reasonable for bootstrapping; the absence of a migration trigger
+    is what converts a temporary allowance into a permanent weakening of the R-DID privacy model.
+    CT-50 and GR-18 propose the trigger.
+  linked_risks: [RK-SC04]
+  linked_controls: [CT-50]
+  linked_guardrails: [GR-18]
+  evidence: DTG Credential Specification v0.3 review, March 2026 (risk register v5, section 6b)
+  superseded_by: null

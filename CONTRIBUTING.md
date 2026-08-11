@@ -25,7 +25,7 @@ data/              The DTG instance. Another working group replaces this.
   recommendations.yaml  risk-acceptances.yaml  governance-precedents.yaml
 tools/             validate.py · build.py · import_xlsx.py (migration only)
 context/           JSON-LD context
-build/             Generated. Not committed except on tagged releases.
+build/             Generated. Do not hand-edit; regenerate after canonical changes.
 ```
 
 ## Setup
@@ -116,7 +116,7 @@ The validator enforces this.
 
 ## Using an AI assistant
 
-`RAHP_AI_Assisted_Process.md` covers this in detail. Two rules apply here:
+`docs/ai-assisted-process.md` covers this in detail. Two rules apply here:
 
 - Anything an assistant drafts enters the repository through the same PR review
   as anything else. There is no fast path.
@@ -124,6 +124,12 @@ The validator enforces this.
   substantially drafted by an assistant. This is not a warning label; it lets a
   reviewer calibrate how much independent verification the record needs. Risk
   scoring, guardrail verification and governance decisions are not assistant work.
+
+## Contributing a specification pressure test
+
+Use `docs/pressure-testing-a-spec.md` and place worked review material under `examples/<target>/` unless/until the Working Group decides to make review records part of canonical `data/`. Every finding should identify the target version/commit, linked RAHP risks, disposition, status, and evidence or resolution reference.
+
+A finding is not a mandate to edit the core specification. Reviewers must identify the control plane with legitimate authority and an enforceable evidence path.
 
 ## Review expectations
 

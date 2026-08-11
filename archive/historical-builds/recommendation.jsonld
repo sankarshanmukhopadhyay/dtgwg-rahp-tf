@@ -1,0 +1,175 @@
+{
+  "@context": "../../context/rahp.jsonld",
+  "@graph": [
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/REC-1",
+      "@type": "Recommendation",
+      "class": "normative",
+      "title": "Uniqueness Enforcement as Phase-Gate",
+      "statement": "GR-07 and CT-08 must become normative MUST requirements in the DTG credential specification. The VTC must define and document its uniqueness enforcement mechanism before Phase 4 opens. This is the single highest-coverage control requirement identified in this analysis, addressing Sybil proliferation, AI-mediated identity fraud, and the open issues cluster simultaneously. The specification should define at least three acceptable uniqueness mechanisms (ZKP personhood proof, trusted IDVP quorum, social recovery) and require governing bodies to select and document one.",
+      "linked_guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-07"
+      ],
+      "linked_controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-08"
+      ],
+      "target": "DTG Credential Specification",
+      "status": "proposed",
+      "provenance": {
+        "source": "workbook:DTG_RAHP_Risk_Register_v5.xlsx#Analysis & Conclusions",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/REC-2",
+      "@type": "Recommendation",
+      "class": "normative",
+      "title": "AI Agent Governance as First-Class Specification Area",
+      "statement": "All four AI Agent risks are rated High severity. The DTG credential specification must include a dedicated AI agent governance chapter covering: (a) cryptographic delegation scope constraints (CT-30) as a normative MUST; (b) operator VMC liveness checks before agent actions (CT-32) as a normative MUST; (c) non-human actor detection as a Phase 4 pre-condition (GR-14). This is a gap in all existing VC/DID standards — none address autonomous agent participation in trust graphs.",
+      "linked_guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-14"
+      ],
+      "linked_controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-30",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-32"
+      ],
+      "target": "DTG Credential Specification",
+      "status": "proposed",
+      "provenance": {
+        "source": "workbook:DTG_RAHP_Risk_Register_v5.xlsx#Analysis & Conclusions",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/REC-3",
+      "@type": "Recommendation",
+      "class": "normative",
+      "title": "Privacy-Preserving Revocation as Core Specification Requirement",
+      "statement": "GR-09 (Privacy-Preserving Revocation Disclosure) and CT-24 address 8 risks in total. The specification must require privacy-preserving revocation status mechanisms (e.g. W3C Status List 2021 with ZKP) as a normative MUST, not an optional feature. VTC-scoped revocation (CT-26) must also be normative: cross-VTC revocation contamination is a human rights risk that arises directly from the decentralised architecture.",
+      "linked_guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09"
+      ],
+      "linked_controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-24",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-26"
+      ],
+      "target": "DTG Credential Specification",
+      "status": "proposed",
+      "provenance": {
+        "source": "workbook:DTG_RAHP_Risk_Register_v5.xlsx#Analysis & Conclusions",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/REC-4",
+      "@type": "Recommendation",
+      "class": "normative",
+      "title": "Non-Discriminatory Admission and Alternative Identity Proofing",
+      "statement": "RK-ID02 (Social Graph Privilege Exclusion) and RK-HX02 (Discriminatory Vouching) are both rated High severity and High likelihood — the most urgent combination in the dataset. The specification must require: (a) published non-discriminatory admission criteria; (b) at least one admission pathway not requiring conventional government-issued ID; (c) a documented appeals process for denied applicants. These are simultaneously legal requirements under equality and human rights law in most jurisdictions.",
+      "linkedRisks": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID02"
+      ],
+      "target": "DTG Credential Specification",
+      "status": "proposed",
+      "provenance": {
+        "source": "workbook:DTG_RAHP_Risk_Register_v5.xlsx#Analysis & Conclusions",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/REC-5",
+      "@type": "Recommendation",
+      "class": "normative",
+      "title": "Multi-Party Registry Write Authorisation",
+      "statement": "CT-45 and GR-10 address trust graph capture, state coercion, and registry manipulation. Multi-party write authorisation must be a normative MUST in the DTG trust registry specification. The specification should define minimum threshold requirements (e.g. 2-of-3 for small VTCs, higher thresholds at scale) and require tamper-evident audit trails for all writes.",
+      "linked_guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-10"
+      ],
+      "linked_controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-45"
+      ],
+      "target": "DTG Credential Specification",
+      "status": "proposed",
+      "provenance": {
+        "source": "workbook:DTG_RAHP_Risk_Register_v5.xlsx#Analysis & Conclusions",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/REC-6",
+      "@type": "Recommendation",
+      "class": "recommended",
+      "title": "Formal Threat Model as Standards Deliverable",
+      "statement": "GR-16 and CT-48 require a formal threat model. The DTGWG should publish this as a standalone deliverable alongside the credential specification. The threat model should be normatively referenced in the specification so that implementations can demonstrate conformance.",
+      "linked_guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-16"
+      ],
+      "linked_controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-48"
+      ],
+      "target": "DTG Credential Specification",
+      "status": "proposed",
+      "provenance": {
+        "source": "workbook:DTG_RAHP_Risk_Register_v5.xlsx#Analysis & Conclusions",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/REC-7",
+      "@type": "Recommendation",
+      "class": "recommended",
+      "title": "UX Design Principles as Normative Standards Annex",
+      "statement": "RK-NM01 is rated High severity and High likelihood — and the DTGWG itself acknowledges UX as 'the single hardest problem'. Sovereign wallet UX design principles (CT-20) and non-technical user onboarding testing requirements (CT-21) should be published as a normative annex to the credential specification, not left to individual implementations. Poor UX creates security failures, not just usability problems.",
+      "linked_controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-20",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-21"
+      ],
+      "linkedRisks": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-NM01"
+      ],
+      "target": "DTG Credential Specification",
+      "status": "proposed",
+      "provenance": {
+        "source": "workbook:DTG_RAHP_Risk_Register_v5.xlsx#Analysis & Conclusions",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/REC-8",
+      "@type": "Recommendation",
+      "class": "process",
+      "title": "Mandatory Open Issues Resolution Before Phase 4",
+      "statement": "GR-17 requires the four bootstrapping open issues to be formally resolved or risk-accepted before Phase 4. The DTGWG standards process should define a formal phase-gate procedure: any VTC implementation claiming conformance to the DTG specification must demonstrate that each open issue has either a documented mitigation or a signed risk acceptance with a review date.",
+      "linked_guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-17"
+      ],
+      "target": "DTG Credential Specification",
+      "status": "proposed",
+      "provenance": {
+        "source": "workbook:DTG_RAHP_Risk_Register_v5.xlsx#Analysis & Conclusions",
+        "imported": "2026-08-05"
+      }
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/REC-9",
+      "@type": "Recommendation",
+      "class": "normative",
+      "title": "Organisational Member Credential Type and Supported Decision-Making Credential Extensions",
+      "statement": "The DTG Credential Specification must define two new credential types as normative additions. First, the Organisational Member Credential (OMC): a credential type for legal entities (companies, public bodies, NHS Trusts, charities) participating as VTC members. The OMC must carry: the organisation's legal identifier (Companies House number, NHS ODS code, etc.); the DIDs of named responsible officers; a governance conformance attestation mapping the organisation's internal governance to the VTC governance conformance class; and data residency declarations. Without this, the DTG ecosystem cannot accommodate regulated institutions — a class that includes every NHS Trust, local authority, and regulated financial entity in the UK. Second, the Legal Delegation Credential (LDC): a scope-limited delegation credential representing a registered legal authority (Lasting Power of Attorney, court deputyship, or equivalent). The LDC must distinguish co-signed supported consent from substituted decision-making; name the attorney and donor DIDs; reference the legal instrument by registration number; and support a secondary notification recipient mechanism for governance communications. Both credential types address risks currently rated High or Critical (RK-EX04, RK-EX05, RK-HX04, RK-HX05, RK-SC05) and are required for compliance with the Mental Capacity Act 2005, UK Online Safety Act 2023, and NHS Digital Staff Passport programme requirements. These are specification-layer gaps — they cannot be resolved by controls or guardrails alone.",
+      "linkedRisks": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC05"
+      ],
+      "target": "DTG Credential Specification",
+      "status": "proposed",
+      "provenance": {
+        "source": "workbook:DTG_RAHP_Risk_Register_v5.xlsx#Analysis & Conclusions",
+        "imported": "2026-08-05"
+      }
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "@context": "../../context/rahp.jsonld",
+  "@graph": [
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RA-001",
+      "@type": "RiskAcceptance",
+      "riskId": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G05",
+      "title": "Governanceless VTC claiming credential compliance",
+      "decision": "pending",
+      "rationale": "Cannot be fully mitigated without a normative governance conformance class in the DTG Credential Specification. CT-56 proposes one; it is not yet in the specification. Until the authority model is settled this is recorded as an open decision, not an acceptance.",
+      "residual_risk": "Medium",
+      "conditions": [
+        "REC-8 (phase-gate procedure) progressed to Implementer's Draft",
+        "GR-17 defined as a normative MUST before Phase 4 opens"
+      ],
+      "evidence": "DTG Credential Specification v0.3 review, March 2026",
+      "blocked_by": [
+        "GAP-3.1"
+      ]
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RA-002",
+      "@type": "RiskAcceptance",
+      "riskId": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID01",
+      "title": "Sybil identity proliferation — uniqueness enforcement absent from spec v0.3",
+      "decision": "pending",
+      "rationale": "Scored High severity x High likelihood. GR-07 and CT-08 are the designated mitigations and are completely absent from DTG Credential Specification v0.3. Either the specification adopts REC-1 or the working group records a signed acceptance of an unmitigated 9-score risk. There is presently no process for the latter.",
+      "residual_risk": "High",
+      "conditions": [
+        "REC-1 adopted as normative, or a signed acceptance recorded with a review date"
+      ],
+      "evidence": "Risk register v5; spec v0.3 gap analysis section 6c item 1",
+      "blocked_by": [
+        "GAP-3.1"
+      ]
+    },
+    {
+      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RA-003",
+      "@type": "RiskAcceptance",
+      "riskId": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY03",
+      "title": "Open issues left unresolved at scale",
+      "decision": "pending",
+      "rationale": "GR-17 requires each of the four VTC Bootstrapping Draft open issues to have a documented mitigation or a signed risk acceptance before Phase 4. AT-17 tests for exactly this. The test cannot pass while no acceptance authority exists — this record makes that circularity explicit.",
+      "residual_risk": "High",
+      "conditions": [
+        "Each of the four bootstrapping open issues has a mitigation plan or signed acceptance"
+      ],
+      "evidence": "GR-17, AT-17, CT-41, CT-47",
+      "blocked_by": [
+        "GAP-3.1"
+      ]
+    }
+  ]
+}

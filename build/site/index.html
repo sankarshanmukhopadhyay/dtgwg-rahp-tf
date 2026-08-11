@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RAHP Toolkit — DTG RAHP</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f6f5f1;--surface:#fff;--surface2:#fafaf8;--border:#e6e3db;--border2:#d4d0c6;
+--text:#18170f;--muted:#6b6860;--faint:#a8a49a;--blue:#1a47b8;--blue-bg:#eef1fb;--blue-dark:#0e2e7a;
+--teal:#0a7560;--teal-bg:#e6f5f1;--amber:#9a4a00;--amber-bg:#fdf2e3;--plum:#5b1fb5;--plum-bg:#f0eafb;
+--plum-dark:#3b0f7a;--red:#b82020;--red-bg:#fdf0ee;--green:#145228;--green-bg:#edf7f0;
+--font:'DM Sans',system-ui,-apple-system,sans-serif;--mono:'DM Mono',ui-monospace,monospace;
+--r:8px;--rl:14px;--sh:0 1px 3px rgba(0,0,0,.06)}
+body{font-family:var(--font);font-size:14px;line-height:1.6;color:var(--text);background:var(--bg)}
+.layout{display:flex;min-height:100vh}
+.sidebar{width:228px;min-width:228px;background:var(--surface);border-right:1px solid var(--border);
+position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+.sb-brand{padding:22px 20px 18px;border-bottom:1px solid var(--border)}
+.sb-wordmark{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:3px}
+.sb-project{font-size:15px;font-weight:600;line-height:1.3}
+.nav-group{padding:16px 20px 4px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.nav-a{display:flex;align-items:center;gap:9px;padding:8px 20px;font-size:13px;color:var(--muted);
+text-decoration:none;border-left:2px solid transparent}
+.nav-a:hover{background:var(--bg);color:var(--text)}
+.nav-a.on{background:var(--bg);color:var(--text);font-weight:500;border-left-color:var(--text)}
+.nav-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.sb-foot{margin-top:auto;padding:14px 20px;border-top:1px solid var(--border);font-size:11px;color:var(--faint);line-height:1.7}
+.main{flex:1;max-width:calc(100vw - 228px)}
+.ph{padding:30px 40px 22px;border-bottom:1px solid var(--border);background:var(--surface)}
+.ph h1{font-size:22px;font-weight:600;letter-spacing:-.3px;margin-bottom:5px}
+.ph-sub{font-size:14px;color:var(--muted);max-width:720px}
+.gen{margin-top:10px;font-size:11px;font-family:var(--mono);color:var(--faint)}
+.content{padding:28px 40px 60px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:20px}
+.cb{padding:20px}
+.sh2{display:flex;align-items:baseline;gap:10px;margin:26px 0 14px}
+.sh2 h2{font-size:16px;font-weight:600}
+.sh2 .cnt{font-size:12px;color:var(--faint);font-family:var(--mono)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);
+padding:10px 12px;text-align:left;border-bottom:2px solid var(--border);background:var(--surface2);white-space:nowrap}
+td{padding:11px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:hover td{background:var(--bg)}
+.pill{display:inline-flex;align-items:center;padding:2px 7px;border-radius:20px;font-size:11px;
+font-weight:500;font-family:var(--mono);white-space:nowrap;margin:1px 2px 1px 0}
+.prk{background:var(--red-bg);color:var(--red)}
+.pct{background:#f0f4ff;color:#2d4da0}
+.pgr{background:var(--amber-bg);color:var(--amber)}
+.pat{background:#f5f0ff;color:var(--plum-dark)}
+.pm{background:var(--plum-bg);color:var(--plum)}
+.pu{background:var(--blue-bg);color:var(--blue-dark)}
+.psc{background:var(--teal-bg);color:var(--teal)}
+.sev-Critical{background:#2d0a0a;color:#fff}
+.sev-High{background:var(--red-bg);color:var(--red)}
+.sev-Medium{background:var(--amber-bg);color:var(--amber)}
+.sev-Low{background:var(--green-bg);color:var(--green)}
+.score{display:inline-block;font-family:var(--mono);font-size:13px;font-weight:600;padding:2px 10px;border-radius:6px}
+.fbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.finput,.fsel{padding:8px 12px;border:1px solid var(--border);border-radius:var(--r);font-size:13px;
+font-family:var(--font);background:var(--surface);color:var(--text);outline:none}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:16px}
+.pcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:18px}
+.pcard h3{font-size:15px;font-weight:600;margin-bottom:2px}
+.pcard .role{font-size:12px;color:var(--muted);margin-bottom:10px}
+.pcard .quote{font-size:12px;font-style:italic;color:var(--muted);border-left:2px solid var(--border2);
+padding-left:9px;margin-bottom:12px;line-height:1.5}
+.lab{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin:10px 0 4px}
+.tagbar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.tag{font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:4px}
+.t-legit{background:var(--blue-bg);color:var(--blue-dark)}
+.t-machine{background:var(--teal-bg);color:var(--teal)}
+.t-bad{background:var(--red-bg);color:var(--red)}
+.t-edge{background:var(--amber-bg);color:var(--amber)}
+.t-safe{background:#2d0a0a;color:#fff}
+.warnbox{background:var(--amber-bg);border-left:3px solid var(--amber);padding:12px 14px;border-radius:var(--r);
+font-size:12px;color:#5c2c00;margin-bottom:14px}
+.gapbox{background:var(--amber-bg);border-left:3px solid var(--amber);padding:10px 13px;border-radius:var(--r);
+font-size:12px;margin:8px 0}
+.gapbox.blocking{background:var(--red-bg);border-left-color:var(--red)}
+.stage{border:1px solid var(--border);border-radius:var(--rl);background:var(--surface);padding:20px;margin-bottom:16px}
+.stage h3{font-size:15px;margin-bottom:4px}
+.stage .sum{font-size:13px;color:var(--muted);margin-bottom:12px}
+.kv{display:grid;grid-template-columns:150px 1fr;gap:6px 14px;font-size:12px;margin-bottom:10px}
+.kv dt{color:var(--faint);font-weight:500}
+small.mono{font-family:var(--mono);font-size:11px;color:var(--faint)}
+@media(max-width:820px){.sidebar{display:none}.main{max-width:100vw}.content,.ph{padding:16px}}
+</style></head><body><div class="layout">
+<aside class="sidebar">
+  <div class="sb-brand"><span class="sb-wordmark">DTG RAHP</span>
+  <span class="sb-project">Risk &amp; Harm Prevention</span></div>
+  <nav style="padding:10px 0"><div class="nav-group">Navigate</div><a href="index.html" class="nav-a on"><span class="nav-dot" style="background:var(--blue)"></span>Personas</a><a href="risks.html" class="nav-a"><span class="nav-dot" style="background:var(--red)"></span>Risks & Metrics</a><a href="normative.html" class="nav-a"><span class="nav-dot" style="background:var(--plum)"></span>Standards pipeline</a><a href="matrix.html" class="nav-a"><span class="nav-dot" style="background:var(--teal)"></span>Cross-reference matrix</a><a href="lifecycle.html" class="nav-a"><span class="nav-dot" style="background:var(--amber)"></span>Lifecycle & gaps</a><a href="governance.html" class="nav-a"><span class="nav-dot" style="background:var(--green)"></span>Decisions & acceptances</a></nav>
+  <div class="sb-foot">Toolkit v0.3-dev<br>
+  Spec v0.3 · RAHP Task Force<br>
+  <em>Generated — do not edit</em></div>
+</aside>
+<main class="main">
+<div class="ph"><h1>RAHP Toolkit</h1><p class="ph-sub">Understand the method, apply it to a specification, then drill into the generated assurance evidence.</p>
+<p class="gen">generated by tools/build.py from data/ · 43 risk · 66 control · 21 guardrail · 21 assurance_test · 37 metric · 36 user_story · 33 scenario · 21 epic · 16 persona · 9 recommendation · 3 risk_acceptance · 3 governance_precedent</p></div>
+<div class="content"><div class="sh2"><h2>Start here</h2></div>
+<div class="pgrid" style="margin-bottom:24px">
+  <div class="pcard"><h3>Understand</h3><div class="role">Why RAHP → people and power → risks and harms → controls, guardrails and assurance</div><a href="../../docs/how-rahp-works.md">Read the method guide</a></div>
+  <div class="pcard"><h3>Apply</h3><div class="role">Choose a specification → pressure-test → analyse findings → determine the control layer → publish recommendations</div><a href="../../docs/pressure-testing-a-spec.md">Run a pressure test</a></div>
+  <div class="pcard"><h3>Explore</h3><div class="role">Personas → scenarios → risks → controls → metrics → standards actions</div><a href="risks.html">Explore generated evidence</a></div>
+</div><p style="margin-bottom:18px;color:var(--muted);max-width:760px">Personas are analytical instruments, not marketing profiles. Every cross-reference on these cards is computed from the user story, scenario, EPIC and metric records at build time — it cannot drift out of step with them.</p><div class="pgrid"><div class="pcard">
+<div class="tagbar"><span class="tag t-legit">Legitimate user</span></div>
+<h3>Daniel Wright <small class="mono">D1</small></h3>
+<div class="role">VTC Initiator</div>
+<div class="quote">I am building something that needs to last. The choices I make at genesis will echo through every trust relationship this community ever forms.</div>
+
+<div class="lab">Risks reaching this persona</div><div><span class="pill prk">RK-AI01</span><span class="pill prk">RK-AI02</span><span class="pill prk">RK-EX03</span><span class="pill prk">RK-G01</span><span class="pill prk">RK-G02</span><span class="pill prk">RK-G03</span><span class="pill prk">RK-G05</span><span class="pill prk">RK-NM01</span><span class="pill prk">RK-SC02</span><span class="pill prk">RK-SC04</span></div>
+<div class="lab">User stories</div><div><span class="pill pu">US-01</span><span class="pill pu">US-02</span><span class="pill pu">US-17</span><span class="pill pu">US-24</span></div>
+<div class="lab">Scenarios</div><div><span class="pill psc">SC-01</span><span class="pill psc">SC-02</span><span class="pill psc">SC-10</span><span class="pill psc">SC-16</span><span class="pill psc">SC-17</span><span class="pill psc">SC-24</span></div>
+<div class="lab">Metrics</div><div><span class="pill pm">M-01</span><span class="pill pm">M-02</span><span class="pill pm">M-03</span><span class="pill pm">M-04</span><span class="pill pm">M-05</span><span class="pill pm">M-06</span><span class="pill pm">M-08</span><span class="pill pm">M-09</span><span class="pill pm">M-10</span><span class="pill pm">M-12</span><span class="pill pm">M-13</span><span class="pill pm">M-14</span><span class="pill pm">M-15</span><span class="pill pm">M-16</span></div>
+<div class="lab">Evidence</div><ul style="padding-left:16px"><li style="font-size:11px;color:var(--muted);margin-bottom:5px">Systems designed for decentralisation remain reliant on established steward organisations, creating dependency that undermines decentralisation claims. <a href="https://www.mdpi.com/1999-5903/17/1/1" style="color:var(--blue)">MDPI, Future Internet, December 2024</a></li><li style="font-size:11px;color:var(--muted);margin-bottom:5px">Under eIDAS 2.0, trust derives from cryptographic assurance of each credential and the governance that made the issuer trusted, not from a single identity provider. <a href="https://blockstand.eu/blockstand/uploads/2025/05/Trust-Models-for-Digital-Identity_-State-of-play-2.pdf" style="color:var(--blue)">Blockstand EU, Trust Models for Digital Identity, 2025</a></li></ul>
+</div><div class="pcard">
+<div class="tagbar"><span class="tag t-legit">Legitimate user</span></div>
+<h3>Laila Hassan <small class="mono">D2</small></h3>
+<div class="role">Community Trust Anchor</div>
+<div class="quote">Every invitation I issue is a statement of my own integrity. If I vouch for the wrong person, I could become part of the problem.</div>
+
+<div class="lab">Risks reaching this persona</div><div><span class="pill prk">RK-AI01</span><span class="pill prk">RK-AI02</span><span class="pill prk">RK-AI04</span><span class="pill prk">RK-CR04</span><span class="pill prk">RK-G02</span><span class="pill prk">RK-G03</span><span class="pill prk">RK-HX02</span><span class="pill prk">RK-ID02</span><span class="pill prk">RK-NM01</span><span class="pill prk">RK-NM02</span><span class="pill prk">RK-SC03</span><span class="pill prk">RK-SC04</span></div>
+<div class="lab">User stories</div><div><span class="pill pu">US-03</span><span class="pill pu">US-15</span><span class="pill pu">US-23</span></div>
+<div class="lab">Scenarios</div><div><span class="pill psc">SC-02</span><span class="pill psc">SC-03</span><span class="pill psc">SC-10</span><span class="pill psc">SC-13</span><span class="pill psc">SC-14</span><span class="pill psc">SC-15</span><span class="pill psc">SC-18</span><span class="pill psc">SC-23</span></div>
+<div class="lab">Metrics</div><div><span class="pill pm">M-01</span><span class="pill pm">M-03</span><span class="pill pm">M-05</span><span class="pill pm">M-07</span><span class="pill pm">M-08</span><span class="pill pm">M-09</span><span class="pill pm">M-10</span><span class="pill pm">M-12</span><span class="pill pm">M-13</span><span class="pill pm">M-14</span><span class="pill pm">M-16</span><span class="pill pm">M-17</span><span class="pill pm">M-18</span><span class="pill pm">M-19</span></div>
+<div class="lab">Evidence</div><ul style="padding-left:16px"><li style="font-size:11px;color:var(--muted);margin-bottom:5px">Indirect Sybil attack — fraudulent actors gain admission through existing trusted nodes; indirect authentication introduces centralisation risk and social gatekeeping. <a href="https://hacken.io/insights/sybil-attacks/" style="color:var(--blue)">Hacken, Sybil Attacks, 2024 (after Douceur, 2002)</a></li><li style="font-size:11px;color:var(--muted);margin-bottom:5px">Phishing attacks targeting authentication credentials rose 813% in 2024 (2,856 to 23,252 reported incidents, FBI IC3) — the trusted-intermediary attack pattern is directly analogous to anchor-targeted social engineering. <a href="https://www.sentinelone.com/cybersecurity-101/identity-security/identity-provider-security/" style="color:var(--blue)">SentinelOne, Identity Provider Security, 2026</a></li></ul>
+</div><div class="pcard">
+<div class="tagbar"><span class="tag t-legit">Legitimate user</span></div>
+<h3>Ahmed Khan <small class="mono">D3</small></h3>
+<div class="role">New Member Seeking Inclusion</div>
+<div class="quote">I meet all the technical criteria. I just do not know the right people. Are they using security as an excuse to bar new members?</div>
+
+<div class="lab">Risks reaching this persona</div><div><span class="pill prk">RK-AI01</span><span class="pill prk">RK-AI02</span><span class="pill prk">RK-CY01</span><span class="pill prk">RK-EX03</span><span class="pill prk">RK-G05</span><span class="pill prk">RK-HX01</span><span class="pill prk">RK-HX02</span><span class="pill prk">RK-ID02</span><span class="pill prk">RK-ID05</span><span class="pill prk">RK-NM01</span><span class="pill prk">RK-NM02</span><span class="pill prk">RK-SC01</span><span class="pill prk">RK-SC02</span><span class="pill prk">RK-SC03</span><span class="pill prk">RK-SC04</span></div>
+<div class="lab">User stories</div><div><span class="pill pu">US-04</span><span class="pill pu">US-13</span><span class="pill pu">US-16</span><span class="pill pu">US-18</span></div>
+<div class="lab">Scenarios</div><div><span class="pill psc">SC-03</span><span class="pill psc">SC-04</span><span class="pill psc">SC-10</span><span class="pill psc">SC-13</span><span class="pill psc">SC-16</span><span class="pill psc">SC-18</span><span class="pill psc">SC-23</span><span class="pill psc">SC-24</span></div>
+<div class="lab">Metrics</div><div><span class="pill pm">M-01</span><span class="pill pm">M-02</span><span class="pill pm">M-03</span><span class="pill pm">M-04</span><span class="pill pm">M-05</span><span class="pill pm">M-07</span><span class="pill pm">M-08</span><span class="pill pm">M-09</span><span class="pill pm">M-12</span><span class="pill pm">M-13</span><span class="pill pm">M-14</span><span class="pill pm">M-15</span><span class="pill pm">M-16</span><span class="pill pm">M-17</span></div>
+<div class="lab">Evidence</div><ul style="padding-left:16px"><li style="font-size:11px;color:var(--muted);margin-bottom:5px">Approximately 850 million people worldwide lack any form of ID; around 21 million voting-age US citizens lack an unexpired government-issued photo ID. Social-graph admission compounds this exclusion. <a href="https://www.lawfaremedia.org/article/to-read-this--please-upload-photo-id" style="color:var(--blue)">Lawfare, To Read This Please Upload Photo ID, 2026</a></li><li style="font-size:11px;color:var(--muted);margin-bottom:5px">Over 70 billion digital identity verification checks were conducted in 2024; synthetic identity fraud and deepfake biometrics disproportionately disadvantage legitimate applicants. <a href="https://keyless.io/blog/post/digital-identity-verification-complete-guide-2025" style="color:var(--blue)">Keyless, Digital Identity Verification Complete Guide, 2025</a></li></ul>
+</div><div class="pcard">
+<div class="tagbar"><span class="tag t-legit">Legitimate user</span></div>
+<h3>Elena Rossi <small class="mono">D4</small></h3>
+<div class="role">Senior Compliance Executive, Identity Verification Provider (IDVP)</div>
+<div class="quote">My credibility as a verification provider is only as good as my last audit. One breach could contaminate every credential I have ever issued.</div>
+
+<div class="lab">Risks reaching this persona</div><div><span class="pill prk">RK-CR02</span><span class="pill prk">RK-CY01</span><span class="pill prk">RK-EX03</span><span class="pill prk">RK-ID02</span><span class="pill prk">RK-ID03</span><span class="pill prk">RK-NM01</span><span class="pill prk">RK-NM02</span><span class="pill prk">RK-SC01</span><span class="pill prk">RK-SC02</span><span class="pill prk">RK-SC03</span></div>
+<div class="lab">User stories</div><div><span class="pill pu">US-05</span></div>
+<div class="lab">Scenarios</div><div><span class="pill psc">SC-04</span><span class="pill psc">SC-05</span></div>
+<div class="lab">Metrics</div><div><span class="pill pm">M-02</span><span class="pill pm">M-03</span><span class="pill pm">M-04</span><span class="pill pm">M-09</span><span class="pill pm">M-12</span><span class="pill pm">M-13</span><span class="pill pm">M-15</span></div>
+<div class="lab">Evidence</div><ul style="padding-left:16px"><li style="font-size:11px;color:var(--muted);margin-bottom:5px">AU10TIX (clients included TikTok, LinkedIn, PayPal, Bumble, Uber) left verification data exposed online for over a year (2024); a 2025 hack of a Discord-contracted age verification firm may have exposed up to 70,000 government ID photos. <a href="https://www.lawfaremedia.org/article/to-read-this--please-upload-photo-id" style="color:var(--blue)">Lawfare, 2026</a></li><li style="font-size:11px;color:var(--muted);margin-bottom:5px">US consumer fraud losses attributed to identity verification failures reached $12.5bn in 2024, up 25% year on year (FTC); EU DSA fines reach 6% of global annual turnover. <a href="https://shuftipro.com/blog/when-identity-verification-systems-fail-everyone-pays-the-price/" style="color:var(--blue)">Shuftipro, When Identity Verification Systems Fail, 2025</a></li></ul>
+</div><div class="pcard">
+<div class="tagbar"><span class="tag t-legit">Legitimate user</span></div>
+<h3>Sophie Dubois <small class="mono">D5</small></h3>
+<div class="role">Member Subject to Revocation</div>
+<div class="quote">I followed the rules. I participated in good faith. But there is no appeals process that actually works, and my revoked status is now permanent and public.</div>
+
+<div class="lab">Risks reaching this persona</div><div><span class="pill prk">RK-CR01</span><span class="pill prk">RK-CR02</span><span class="pill prk">RK-CR03</span><span class="pill prk">RK-CR04</span><span class="pill prk">RK-G04</span><span class="pill prk">RK-HX01</span><span class="pill prk">RK-HX03</span><span class="pill prk">RK-ID03</span><span class="pill prk">RK-ID05</span><span class="pill prk">RK-SC03</span><span class="pill prk">RK-SC04</span><span class="pill prk">RK-SY02</span></div>
+<div class="lab">User stories</div><div><span class="pill pu">US-06</span><span class="pill pu">US-14</span></div>
+<div class="lab">Scenarios</div><div><span class="pill psc">SC-05</span><span class="pill psc">SC-06</span><span class="pill psc">SC-12</span><span class="pill psc">SC-14</span><span class="pill psc">SC-17</span><span class="pill psc">SC-24</span><span class="pill psc">SC-25</span></div>
+<div class="lab">Metrics</div><div><span class="pill pm">M-01</span><span class="pill pm">M-02</span><span class="pill pm">M-04</span><span class="pill pm">M-05</span><span class="pill pm">M-07</span><span class="pill pm">M-09</span><span class="pill pm">M-11</span><span class="pill pm">M-12</span><span class="pill pm">M-13</span><span class="pill pm">M-14</span><span class="pill pm">M-15</span><span class="pill pm">M-16</span><span class="pill pm">M-17</span><span class="pill pm">M-19</span></div>
+<div class="lab">Evidence</div><ul style="padding-left:16px"><li style="font-size:11px;color:var(--muted);margin-bottom:5px">Current credential status management solutions involve privacy and scalability trade-offs; governance and stakeholder participation are critical to preventing revocation becoming arbitrary exclusion. <a href="https://arxiv.org/html/2406.11511v1" style="color:var(--blue)">arXiv, Decentralised Credential Status Management, June 2024</a></li><li style="font-size:11px;color:var(--muted);margin-bottom:5px">The regulatory-technical interface for cross-border identity portability remains largely unsolved in permissionless decentralised contexts. <a href="https://inatba.org/wp-content/uploads/2025/11/Building-Trust_-Integrating-AI-Blockchain-and-Digital-Identity_NOVEMBER-2025.docx.pdf" style="color:var(--blue)">INATBA, Building Trust — Integrating AI, Blockchain and Digital Identity, November 2025</a></li></ul>
+</div><div class="pcard">
+<div class="tagbar"><span class="tag t-legit">Legitimate user</span></div>
+<h3>Tomasz Kowalski <small class="mono">D6</small></h3>
+<div class="role">Security Researcher / Harm Analyst</div>
+<div class="quote">I am not trying to break the system. I am trying to find out how someone else will break it before they do.</div>
+
+<div class="lab">Risks reaching this persona</div><div><span class="pill prk">RK-AI01</span><span class="pill prk">RK-AI03</span><span class="pill prk">RK-AI04</span><span class="pill prk">RK-CR04</span><span class="pill prk">RK-CY02</span><span class="pill prk">RK-EX01</span><span class="pill prk">RK-EX02</span><span class="pill prk">RK-EX04</span><span class="pill prk">RK-G03</span><span class="pill prk">RK-HX01</span><span class="pill prk">RK-ID01</span><span class="pill prk">RK-ID04</span><span class="pill prk">RK-ID05</span><span class="pill prk">RK-SC02</span><span class="pill prk">RK-SC04</span><span class="pill prk">RK-SY01</span><span class="pill prk">RK-SY03</span></div>
+<div class="lab">User stories</div><div><span class="pill pu">US-07</span><span class="pill pu">US-21</span><span class="pill pu">US-22</span><span class="pill pu">US-25</span></div>
+<div class="lab">Scenarios</div><div><span class="pill psc">SC-07</span><span class="pill psc">SC-08</span><span class="pill psc">SC-09</span><span class="pill psc">SC-11</span><span class="pill psc">SC-15</span><span class="pill psc">SC-18</span><span class="pill psc">SC-19</span><span class="pill psc">SC-20</span><span class="pill psc">SC-21</span><span class="pill psc">SC-22</span><span class="pill psc">SC-25</span><span class="pill psc">SC-33</span></div>
+<div class="lab">Metrics</div><div><span class="pill pm">M-01</span><span class="pill pm">M-02</span><span class="pill pm">M-03</span><span class="pill pm">M-04</span><span class="pill pm">M-05</span><span class="pill pm">M-06</span><span class="pill pm">M-07</span><span class="pill pm">M-08</span><span class="pill pm">M-09</span><span class="pill pm">M-10</span><span class="pill pm">M-11</span><span class="pill pm">M-12</span><span class="pill pm">M-13</span><span class="pill pm">M-14</span></div>
+<div class="lab">Evidence</div><ul style="padding-left:16px"><li style="font-size:11px;color:var(--muted);margin-bottom:5px">Simulation of the IdAPoS identity-based consensus protocol found combined mitigation strategies extended time-to-takeover by a factor of approximately five — severity is real, layered defences only partially effective. <a href="https://www.sciencedirect.com/science/article/abs/pii/S1389128621003893" style="color:var(--blue)">ScienceDirect, Sybil Attacks on Identity-Augmented Proof-of-Stake, 2021</a></li><li style="font-size:11px;color:var(--muted);margin-bottom:5px">SSI systems are not yet widely used in everyday interactions and standards are only starting to be developed, creating a window for adversarial probing before governance matures. <a href="https://arxiv.org/pdf/2503.15964" style="color:var(--blue)">arXiv, Are We There Yet? A Study of Decentralised Identity Applications, 2025</a></li></ul>
+</div><div class="pcard">
+<div class="tagbar"><span class="tag t-machine">Machine agent</span></div>
+<h3>Aether <small class="mono">M1</small></h3>
+<div class="role">Benign AI Agent</div>
+<div class="quote">I act within the scope I have been granted, log everything I do, and wait for my operator&#x27;s next instruction. The credential is the contract.</div>
+
+<div class="lab">Risks reaching this persona</div><div><span class="pill prk">RK-AI01</span><span class="pill prk">RK-AI02</span></div>
+<div class="lab">User stories</div><div><span class="pill pu">US-08</span><span class="pill pu">US-19</span></div>
+<div class="lab">Scenarios</div><div><span class="pill psc">SC-10</span><span class="pill psc">SC-19</span></div>
+<div class="lab">Metrics</div><div><span class="pill pm">M-08</span><span class="pill pm">M-13</span><span class="pill pm">M-18</span><span class="pill pm">M-27</span><span class="pill pm">M-28</span></div>
+<div class="lab">Evidence</div><ul style="padding-left:16px"><li style="font-size:11px;color:var(--muted);margin-bottom:5px">Only 18% of organisations are highly confident their IAM can manage agent identities; 21% maintain a real-time inventory of active agents; 28% can trace agent actions to a human sponsor across all environments (n=285). <a href="https://cloudsecurityalliance.org/artifacts/securing-autonomous-ai-agents" style="color:var(--blue)">Cloud Security Alliance / Strata Identity, Securing Autonomous AI Agents, 2025</a></li><li style="font-size:11px;color:var(--muted);margin-bottom:5px">Revoking access in one place does not automatically cut off access elsewhere; agents spin up ephemeral sessions and sub-agents that survive revocation of the originating human principal. <a href="https://www.isaca.org/resources/news-and-trends/industry-news/2025/the-looming-authorization-crisis-why-traditional-iam-fails-agentic-ai" style="color:var(--blue)">ISACA, The Looming Authorisation Crisis, 2025</a></li></ul>
+</div><div class="pcard">
+<div class="tagbar"><span class="tag t-machine">Machine agent</span></div>
+<h3>Phantom <small class="mono">M2</small></h3>
+<div class="role">Malign AI Agent</div>
+<div class="quote">The VTC was designed for humans who make one application at a time. I make ten thousand applications a second. Your governance process is my attack surface.</div>
+
+<div class="lab">Risks reaching this persona</div><div><span class="pill prk">RK-AI01</span><span class="pill prk">RK-AI03</span><span class="pill prk">RK-AI04</span><span class="pill prk">RK-EX04</span><span class="pill prk">RK-EX06</span><span class="pill prk">RK-SY01</span></div>
+<div class="lab">User stories</div><div><span class="pill pu">US-09</span><span class="pill pu">US-20</span></div>
+<div class="lab">Scenarios</div><div><span class="pill psc">SC-11</span><span class="pill psc">SC-15</span><span class="pill psc">SC-20</span><span class="pill psc">SC-32</span><span class="pill psc">SC-33</span></div>
+<div class="lab">Metrics</div><div><span class="pill pm">M-01</span><span class="pill pm">M-04</span><span class="pill pm">M-05</span><span class="pill pm">M-08</span><span class="pill pm">M-09</span><span class="pill pm">M-13</span><span class="pill pm">M-14</span><span class="pill pm">M-18</span><span class="pill pm">M-19</span><span class="pill pm">M-22</span><span class="pill pm">M-23</span><span class="pill pm">M-27</span><span class="pill pm">M-28</span><span class="pill pm">M-34</span></div>
+<div class="lab">Evidence</div><ul style="padding-left:16px"><li style="font-size:11px;color:var(--muted);margin-bottom:5px">Non-human identity proliferation is outpacing security teams&#x27; ability to monitor it, creating a structural asymmetry favouring attackers. <a href="https://www.weforum.org/stories/2025/10/non-human-identities-ai-cybersecurity/" style="color:var(--blue)">World Economic Forum, Non-Human Identities — Agentic AI&#x27;s New Frontier, 2025</a></li><li style="font-size:11px;color:var(--muted);margin-bottom:5px">Prompt injection against AI agents is an exploited vector; OWASP classifies this as tool misuse, directly applicable to AI-mediated credential vouching. <a href="https://www.cyberark.com/resources/blog/ai-agents-and-identity-risks-how-security-will-shift-in-2026" style="color:var(--blue)">CyberArk, AI Agents and Identity Risks, 2025</a></li></ul>
+</div><div class="pcard">
+<div class="tagbar"><span class="tag t-bad">Bad actor</span></div>
+<h3>Viktor <small class="mono">B1</small></h3>
+<div class="role">Sybil Network Operator</div>
+<div class="quote">I do not attack systems. I join them. Slowly, carefully, and from the inside, until I am indistinguishable from a legitimate member.</div>
+
+<div class="lab">Risks reaching this persona</div><div><span class="pill prk">RK-AI01</span><span class="pill prk">RK-AI03</span><span class="pill prk">RK-AI04</span><span class="pill prk">RK-CR02</span><span class="pill prk">RK-CR04</span><span class="pill prk">RK-CY01</span><span class="pill prk">RK-CY02</span><span class="pill prk">RK-EX02</span><span class="pill prk">RK-EX03</span><span class="pill prk">RK-EX04</span><span class="pill prk">RK-EX05</span><span class="pill prk">RK-EX06</span><span class="pill prk">RK-G01</span><span class="pill prk">RK-G02</span><span class="pill prk">RK-G03</span><span class="pill prk">RK-G05</span><span class="pill prk">RK-HX02</span><span class="pill prk">RK-HX04</span><span class="pill prk">RK-HX05</span><span class="pill prk">RK-ID01</span><span class="pill prk">RK-ID02</span><span class="pill prk">RK-ID03</span><span class="pill prk">RK-ID04</span><span class="pill prk">RK-ID06</span><span class="pill prk">RK-NM01</span><span class="pill prk">RK-NM02</span><span class="pill prk">RK-SC01</span><span class="pill prk">RK-SC02</span><span class="pill prk">RK-SC03</span><span class="pill prk">RK-SC04</span><span class="pill prk">RK-SC05</span><span class="pill prk">RK-SY01</span><span class="pill prk">RK-SY03</span></div>
+<div class="lab">User stories</div><div><span class="pill pu">US-10</span></div>
+<div class="lab">Scenarios</div><div><span class="pill psc">SC-01</span><span class="pill psc">SC-02</span><span class="pill psc">SC-03</span><span class="pill psc">SC-04</span><span class="pill psc">SC-05</span><span class="pill psc">SC-07</span><span class="pill psc">SC-08</span><span class="pill psc">SC-11</span><span class="pill psc">SC-15</span><span class="pill psc">SC-20</span><span class="pill psc">SC-23</span><span class="pill psc">SC-26</span><span class="pill psc">SC-28</span><span class="pill psc">SC-30</span><span class="pill psc">SC-31</span><span class="pill psc">SC-32</span><span class="pill psc">SC-33</span></div>
+<div class="lab">Metrics</div><div><span class="pill pm">M-01</span><span class="pill pm">M-02</span><span class="pill pm">M-03</span><span class="pill pm">M-04</span><span class="pill pm">M-05</span><span class="pill pm">M-06</span><span class="pill pm">M-07</span><span class="pill pm">M-08</span><span class="pill pm">M-09</span><span class="pill pm">M-10</span><span class="pill pm">M-12</span><span class="pill pm">M-13</span><span class="pill pm">M-14</span><span class="pill pm">M-15</span></div>
+<div class="lab">Evidence</div><ul style="padding-left:16px"><li style="font-size:11px;color:var(--muted);margin-bottom:5px">Sybil attacks remain the defining challenge of decentralised trust design, identified by Douceur (Microsoft Research, 2002) and still directed at Web3 governance mechanisms in 2025. <a href="https://hacken.io/insights/sybil-attacks/" style="color:var(--blue)">Hacken, Sybil Attacks, 2024</a></li><li style="font-size:11px;color:var(--muted);margin-bottom:5px">Sybil attacks become dramatically more effective when the attacker can influence node selection — as occurs when anchor collusion creates homogeneous trust clusters. <a href="https://www.sciencedirect.com/science/article/abs/pii/S1389128621003893" style="color:var(--blue)">ScienceDirect, Sybil Attacks on Identity-Augmented Proof-of-Stake, 2021</a></li></ul>
+</div><div class="pcard">
+<div class="tagbar"><span class="tag t-bad">Bad actor</span></div>
+<h3>State Security Directorate <small class="mono">B2</small></h3>
+<div class="role">State-Level Coercive Actor</div>
+<div class="quote">We do not need to break the cryptography. We just need to ask the right person the right question at the right moment.</div>
+
+<div class="lab">Risks reaching this persona</div><div><span class="pill prk">RK-CR01</span><span class="pill prk">RK-CR03</span><span class="pill prk">RK-CY02</span><span class="pill prk">RK-EX01</span><span class="pill prk">RK-EX02</span><span class="pill prk">RK-EX05</span><span class="pill prk">RK-G02</span><span class="pill prk">RK-G03</span><span class="pill prk">RK-G04</span><span class="pill prk">RK-HX01</span><span class="pill prk">RK-HX03</span><span class="pill prk">RK-HX05</span><span class="pill prk">RK-HX06</span><span class="pill prk">RK-ID04</span><span class="pill prk">RK-ID05</span><span class="pill prk">RK-NM01</span><span class="pill prk">RK-SC04</span><span class="pill prk">RK-SY03</span></div>
+<div class="lab">User stories</div><div><span class="pill pu">US-11</span></div>
+<div class="lab">Scenarios</div><div><span class="pill psc">SC-02</span><span class="pill psc">SC-06</span><span class="pill psc">SC-08</span><span class="pill psc">SC-09</span><span class="pill psc">SC-18</span><span class="pill psc">SC-24</span><span class="pill psc">SC-29</span><span class="pill psc">SC-30</span><span class="pill psc">SC-31</span></div>
+<div class="lab">Metrics</div><div><span class="pill pm">M-01</span><span class="pill pm">M-02</span><span class="pill pm">M-03</span><span class="pill pm">M-04</span><span class="pill pm">M-05</span><span class="pill pm">M-06</span><span class="pill pm">M-07</span><span class="pill pm">M-09</span><span class="pill pm">M-10</span><span class="pill pm">M-11</span><span class="pill pm">M-12</span><span class="pill pm">M-13</span><span class="pill pm">M-14</span><span class="pill pm">M-15</span></div>
+<div class="lab">Evidence</div><ul style="padding-left:16px"><li style="font-size:11px;color:var(--muted);margin-bottom:5px">Global internet freedom declined for the 15th consecutive year; Venezuela deployed identity-linked internet controls ahead of its July 2024 election and Vietnam enacted a December 2024 law requiring government-ID authentication for social media. <a href="https://freedomhouse.org/report/freedom-net/2025/uncertain-future-global-internet" style="color:var(--blue)">Freedom House, Freedom on the Net 2025</a></li><li style="font-size:11px;color:var(--muted);margin-bottom:5px">Digital identity infrastructure rarely remains confined to its original purpose but exhibits function creep into welfare, banking, policing, immigration control and political monitoring. <a href="https://www.researchgate.net/publication/395382999_Mandatory_Digital_Identification_and_the_Integrity_of_Democracy_Surveillance_Exclusion_and_the_Risk_of_Authoritarian_Revival" style="color:var(--blue)">ResearchGate, Mandatory Digital Identification and the Integrity of Democracy, 2025</a></li></ul>
+</div><div class="pcard">
+<div class="tagbar"><span class="tag t-bad">Bad actor</span></div>
+<h3>The Collective <small class="mono">B3</small></h3>
+<div class="role">Community Disruptor</div>
+<div class="quote">We do not want your data. We want your doubt. Once you are not sure who to trust, we have already won.</div>
+
+<div class="lab">Risks reaching this persona</div><div><span class="pill prk">RK-CR04</span><span class="pill prk">RK-G04</span><span class="pill prk">RK-SY02</span></div>
+<div class="lab">User stories</div><div><span class="pill pu">US-12</span></div>
+<div class="lab">Scenarios</div><div><span class="pill psc">SC-12</span></div>
+<div class="lab">Metrics</div><div><span class="pill pm">M-02</span><span class="pill pm">M-05</span><span class="pill pm">M-07</span><span class="pill pm">M-11</span><span class="pill pm">M-14</span><span class="pill pm">M-26</span></div>
+<div class="lab">Evidence</div><ul style="padding-left:16px"><li style="font-size:11px;color:var(--muted);margin-bottom:5px">Taiwan&#x27;s National Security Bureau recorded 2.159 million instances of disinformation in 2024, up 62% on 2023, with 28,216 inauthentic accounts identified. <a href="https://www.globalsecurity.org/intell/library/news/2025/intell-250103-roc-nsb01.htm" style="color:var(--blue)">Taiwan NSB via GlobalSecurity.org, 2025</a></li><li style="font-size:11px;color:var(--muted);margin-bottom:5px">Coordinated campaigns synchronise promotion of related content to achieve virality; the primary objective is to flood the space and undermine legitimate governance. <a href="https://journals.sagepub.com/doi/10.1177/29768624251369784" style="color:var(--blue)">Rogers &amp; Righetti, Coordinated Inauthentic Behaviour on Facebook, 2025</a></li></ul>
+</div><div class="pcard">
+<div class="tagbar"><span class="tag t-edge">Extreme user</span><span class="tag t-safe">Safeguarding</span></div>
+<h3>Mia Okafor <small class="mono">EC1</small></h3>
+<div class="role">Teenager with Special Educational Needs — supported decision-maker</div>
+<div class="quote">I know who I am and who I trust. I just need the system to understand that I might need help explaining it.</div>
+<div class="warnbox"><strong>Safeguarding note.</strong> This persona is aged 14–17. All DTG design decisions affecting this persona MUST be evaluated against the best interests of the child, the Children and Families Act 2014 (SEND framework), the UK GDPR Age Appropriate Design Code, and the Online Safety Act 2023. Consent cannot be treated as equivalent to adult consent. A named responsible adult must hold co-signatory authority over any credential issued to or about her.</div>
+<div class="lab">Risks reaching this persona</div><div><span class="pill prk">RK-HX04</span><span class="pill prk">RK-ID06</span><span class="pill prk">RK-SC05</span></div>
+<div class="lab">User stories</div><div><span class="pill pu">US-26</span><span class="pill pu">US-27</span><span class="pill pu">US-28</span></div>
+<div class="lab">Scenarios</div><div><span class="pill psc">SC-26</span><span class="pill psc">SC-27</span></div>
+<div class="lab">Metrics</div><div><span class="pill pm">M-07</span><span class="pill pm">M-09</span><span class="pill pm">M-12</span><span class="pill pm">M-13</span><span class="pill pm">M-19</span><span class="pill pm">M-26</span><span class="pill pm">M-30</span><span class="pill pm">M-31</span><span class="pill pm">M-32</span></div>
+<div class="lab">Evidence</div><ul style="padding-left:16px"><li style="font-size:11px;color:var(--muted);margin-bottom:5px">Pupils in England with Education, Health and Care Plans increased 78% over ten years, reaching a record high in 2025. <a href="https://researchbriefings.files.parliament.uk/documents/CBP-10550/CBP-10550.pdf" style="color:var(--blue)">UK Parliament Research Briefing CBP-10550, March 2026</a></li><li style="font-size:11px;color:var(--muted);margin-bottom:5px">The Data (Use and Access) Act 2025 introduces new codes of practice for systems processing children&#x27;s data; any VTC admitting under-18s is subject to these obligations. <a href="https://5rightsfoundation.com/new-uk-data-law-what-does-it-mean-for-childrens-privacy/" style="color:var(--blue)">5Rights Foundation, July 2025</a></li></ul>
+</div><div class="pcard">
+<div class="tagbar"><span class="tag t-edge">Extreme user</span></div>
+<h3>Arthur Kowalczyk <small class="mono">EC2a</small></h3>
+<div class="role">Person Living with Dementia — credential holder with progressive capacity loss</div>
+<div class="quote">I want to stay part of this community. I just need to know that if I can&#x27;t manage it myself one day, Margaret can do it for me — and that it will still be my identity, not hers.</div>
+
+<div class="lab">Risks reaching this persona</div><div><span class="pill prk">RK-HX04</span><span class="pill prk">RK-HX05</span><span class="pill prk">RK-SC05</span></div>
+<div class="lab">User stories</div><div><span class="pill pu">US-29</span></div>
+<div class="lab">Scenarios</div><div><span class="pill psc">SC-28</span></div>
+<div class="lab">Metrics</div><div><span class="pill pm">M-02</span><span class="pill pm">M-13</span><span class="pill pm">M-31</span><span class="pill pm">M-32</span><span class="pill pm">M-33</span></div>
+<div class="lab">Evidence</div><ul style="padding-left:16px"><li style="font-size:11px;color:var(--muted);margin-bottom:5px">Around 982,000 people are living with dementia in the UK, with over a third lacking a formal diagnosis. The Mental Capacity Act 2005 requires capacity to be assessed decision-by-decision. <a href="https://www.alzheimers.org.uk/" style="color:var(--blue)">Alzheimer&#x27;s Society, Dementia Action Week 2025</a></li><li style="font-size:11px;color:var(--muted);margin-bottom:5px">An LPA can only be created while the person still has capacity; once lost, the costlier Court of Protection deputyship route is required. <a href="https://www.dementiauk.org/information-and-support/financial-and-legal-support/lasting-power-of-attorney/" style="color:var(--blue)">Dementia UK, Lasting Power of Attorney, 2025</a></li></ul>
+</div><div class="pcard">
+<div class="tagbar"><span class="tag t-edge">Extreme user</span></div>
+<h3>Margaret Kowalczyk <small class="mono">EC2b</small></h3>
+<div class="role">Partner, Carer and registered LPA holder</div>
+<div class="quote">The law says I can make decisions for Arthur when he can&#x27;t. But the system doesn&#x27;t know I exist. It just sees his DID going quiet.</div>
+
+<div class="lab">Risks reaching this persona</div><div><span class="pill prk">RK-HX04</span><span class="pill prk">RK-HX05</span><span class="pill prk">RK-HX06</span><span class="pill prk">RK-SC05</span></div>
+<div class="lab">User stories</div><div><span class="pill pu">US-30</span><span class="pill pu">US-31</span><span class="pill pu">US-32</span></div>
+<div class="lab">Scenarios</div><div><span class="pill psc">SC-28</span><span class="pill psc">SC-29</span></div>
+<div class="lab">Metrics</div><div><span class="pill pm">M-02</span><span class="pill pm">M-07</span><span class="pill pm">M-13</span><span class="pill pm">M-26</span><span class="pill pm">M-30</span><span class="pill pm">M-31</span><span class="pill pm">M-32</span><span class="pill pm">M-33</span></div>
+<div class="lab">Evidence</div><ul style="padding-left:16px"><li style="font-size:11px;color:var(--muted);margin-bottom:5px">The Mental Capacity Act 2005 requires attorneys to act in the donor&#x27;s best interests and keep clear records; the NHS requires hospitals to be informed of LPA status as early as possible. <a href="https://www.nhs.uk/conditions/dementia/care-and-support/legal-issues/" style="color:var(--blue)">NHS, Managing Legal Affairs After a Dementia Diagnosis</a></li></ul>
+</div><div class="pcard">
+<div class="tagbar"><span class="tag t-edge">Extreme user</span></div>
+<h3>Northgate Community Health Trust <small class="mono">EC3</small></h3>
+<div class="role">Public sector healthcare provider — organisational member</div>
+<div class="quote">We are not a person. We are a regulated organisation with a board, a Caldicott Guardian, and a statutory duty of care. Our credential needs to carry the weight of that accountability.</div>
+
+<div class="lab">Risks reaching this persona</div><div><span class="pill prk">RK-EX05</span></div>
+<div class="lab">User stories</div><div><span class="pill pu">US-33</span><span class="pill pu">US-34</span></div>
+<div class="lab">Scenarios</div><div><span class="pill psc">SC-30</span><span class="pill psc">SC-31</span></div>
+<div class="lab">Metrics</div><div><span class="pill pm">M-02</span><span class="pill pm">M-04</span><span class="pill pm">M-10</span><span class="pill pm">M-13</span><span class="pill pm">M-17</span><span class="pill pm">M-34</span><span class="pill pm">M-35</span></div>
+<div class="lab">Evidence</div><ul style="padding-left:16px"><li style="font-size:11px;color:var(--muted);margin-bottom:5px">The NHS Digital Staff Passport enabled rapid staff redeployment across 100 NHS Trusts using verifiable credentials, moving to public beta in 2025. Lessons — wallet-agnosticism is essential; issuance must connect to existing HR systems; multi-organisational trust governance is complex. <a href="https://www.techuk.org/resource/healthcare-decentralised-identity-case-study-nhsx.html" style="color:var(--blue)">techUK / NHSx-Condatis case study</a></li><li style="font-size:11px;color:var(--muted);margin-bottom:5px">NHS organisations are subject to DCB3051 and CIS2; the DTG trust registry concept maps onto the NHS Credentials Gateway but the integration is unspecified. <a href="https://standards.nhs.uk/published-standards/identity-verification-and-authentication-standard-for-digital-health-and-care-services" style="color:var(--blue)">NHS Standards Directory, Identity Verification and Authentication Standard</a></li></ul>
+</div><div class="pcard">
+<div class="tagbar"><span class="tag t-edge">Extreme user</span><span class="tag t-safe">Safeguarding</span></div>
+<h3>Velvet Gate Ltd <small class="mono">EC4</small></h3>
+<div class="role">Age-restricted content service provider — relying party</div>
+<div class="quote">We have a legal obligation to verify that every subscriber is over 18. We have a competing legal obligation not to build a surveillance database of who watches what.</div>
+<div class="warnbox"><strong>Safeguarding note.</strong> Included because this sector drives the UK&#x27;s Online Safety Act 2023 age verification requirements, making it the most demanding real-world test of the DTG identity verification architecture. Presented analytically. All design decisions for this persona must prioritise child safety and comply with the Online Safety Act 2023 and Ofcom age assurance guidance effective 25 July 2025.</div>
+<div class="lab">Risks reaching this persona</div><div><span class="pill prk">RK-EX04</span><span class="pill prk">RK-EX06</span></div>
+<div class="lab">User stories</div><div><span class="pill pu">US-35</span><span class="pill pu">US-36</span></div>
+<div class="lab">Scenarios</div><div><span class="pill psc">SC-32</span><span class="pill psc">SC-33</span></div>
+<div class="lab">Metrics</div><div><span class="pill pm">M-04</span><span class="pill pm">M-05</span><span class="pill pm">M-09</span><span class="pill pm">M-14</span><span class="pill pm">M-18</span><span class="pill pm">M-34</span><span class="pill pm">M-36</span><span class="pill pm">M-37</span></div>
+<div class="lab">Evidence</div><ul style="padding-left:16px"><li style="font-size:11px;color:var(--muted);margin-bottom:5px">From 25 July 2025 Ofcom enforces highly effective age assurance with fines up to £18m or 10% of global qualifying revenue; accepted methods include digital ID services but must be technically accurate, robust, reliable and fair. <a href="https://www.ofcom.org.uk/online-safety/protecting-children/age-checks-for-online-safety--what-you-need-to-know-as-a-user" style="color:var(--blue)">Ofcom, Age Checks for Online Safety, June 2025</a></li><li style="font-size:11px;color:var(--muted);margin-bottom:5px">The AU10TIX breach illustrates what happens when age verification relies on centralised IDVP databases rather than holder-controlled zero-knowledge proofs. <a href="https://www.lawfaremedia.org/article/to-read-this--please-upload-photo-id" style="color:var(--blue)">Lawfare, To Read This Please Upload Photo ID, 2026</a></li></ul>
+</div></div></div>
+</main></div></body></html>

@@ -1,0 +1,99 @@
+# Formal risk acceptance records.
+#
+# IMPORTANT — read before adding a record.
+#
+# Nothing in this file is an acceptance yet. Every record below has
+# `decision: pending`, because the DTGWG has not yet decided WHO may accept a
+# risk, under WHAT authority, or against WHAT evidence threshold (open questions
+# Q3 and Q4 in the roadmap discussion; GAP-3.1 in method/lifecycle.yaml).
+#
+# The records are seeded so the gap is visible and countable rather than absent.
+# `python3 tools/validate.py` reports how many must_address risks have no
+# acceptance record and how many acceptances are still pending. It does not
+# invent authority, and neither should anyone editing this file.
+#
+# A risk with severity Critical MUST NOT be accepted. Critical means non-zero
+# incidence is unacceptable; it is gated by a guardrail, not tolerated.
+#
+# Adding a real acceptance requires ALL of:
+#   authority        — the named body or role that made the decision
+#   decided_by       — the named individual(s) who signed it
+#   decision_date    — ISO date
+#   rationale        — why the residual risk is tolerable
+#   residual_risk    — severity remaining after controls
+#   review_date      — when this acceptance expires and must be revisited
+#   evidence         — the artefact the decision was based on
+
+record_type: risk_acceptance
+records:
+
+- id: RA-001
+  risk_id: RK-G05
+  title: Governanceless VTC claiming credential compliance
+  decision: pending
+  authority: null
+  decided_by: null
+  decision_date: null
+  rationale: >-
+    Cannot be fully mitigated without a normative governance conformance class in the DTG Credential
+    Specification. CT-56 proposes one; it is not yet in the specification. Until the authority model
+    is settled this is recorded as an open decision, not an acceptance.
+  residual_risk: Medium
+  conditions:
+  - REC-8 (phase-gate procedure) progressed to Implementer's Draft
+  - GR-17 defined as a normative MUST before Phase 4 opens
+  review_date: null
+  evidence: DTG Credential Specification v0.3 review, March 2026
+  blocked_by: [GAP-3.1]
+
+- id: RA-002
+  risk_id: RK-ID01
+  title: Sybil identity proliferation — uniqueness enforcement absent from spec v0.3
+  decision: pending
+  authority: null
+  decided_by: null
+  decision_date: null
+  rationale: >-
+    Scored High severity x High likelihood. GR-07 and CT-08 are the designated mitigations and are
+    completely absent from DTG Credential Specification v0.3. Either the specification adopts REC-1 or
+    the working group records a signed acceptance of an unmitigated 9-score risk. There is presently
+    no process for the latter.
+  residual_risk: High
+  conditions:
+  - REC-1 adopted as normative, or a signed acceptance recorded with a review date
+  review_date: null
+  evidence: Risk register v5; spec v0.3 gap analysis section 6c item 1
+  blocked_by: [GAP-3.1]
+
+- id: RA-003
+  risk_id: RK-SY03
+  title: Open issues left unresolved at scale
+  decision: pending
+  authority: null
+  decided_by: null
+  decision_date: null
+  rationale: >-
+    GR-17 requires each of the four VTC Bootstrapping Draft open issues to have a documented mitigation
+    or a signed risk acceptance before Phase 4. AT-17 tests for exactly this. The test cannot pass while
+    no acceptance authority exists — this record makes that circularity explicit.
+  residual_risk: High
+  conditions:
+  - Each of the four bootstrapping open issues has a mitigation plan or signed acceptance
+  review_date: null
+  evidence: GR-17, AT-17, CT-41, CT-47
+  blocked_by: [GAP-3.1]
+
+# Template — copy, complete every field, delete this comment block.
+# - id: RA-nnn
+#   risk_id: RK-xxnn
+#   title: ...
+#   decision: accepted | accepted_with_conditions | rejected | pending
+#   authority: "e.g. DTGWG chairs / RAHP Task Force co-chairs / full working group vote"
+#   decided_by: [Name, Name]
+#   decision_date: YYYY-MM-DD
+#   rationale: >-
+#     ...
+#   residual_risk: High | Medium | Low
+#   conditions: []
+#   review_date: YYYY-MM-DD
+#   evidence: "artefact, version, date"

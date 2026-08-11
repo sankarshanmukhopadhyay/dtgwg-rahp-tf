@@ -1,0 +1,19 @@
+review:
+  id: SR-001
+  status: illustrative
+  target:
+    repository: trustoverip/dtgwg-cred-spec
+    version: WD-01
+    commit: abc123
+  reviewed_against:
+    rahp_version: v0.3
+  findings:
+    - finding: F-001
+      risks: [RK-CR01, RK-CR02]
+      disposition: specification
+      status: open
+    - finding: F-002
+      risks: [RK-SC02]
+      disposition: resolved-by-pr
+      status: illustrative
+      reference: trustoverip/dtgwg-cred-spec#12

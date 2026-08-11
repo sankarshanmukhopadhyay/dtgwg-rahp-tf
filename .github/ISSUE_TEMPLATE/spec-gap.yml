@@ -1,0 +1,27 @@
+name: Report a specification gap
+description: Something the target specification does not address that RAHP says it should
+labels: [spec-gap, triage]
+body:
+  - type: input
+    id: spec
+    attributes: {label: Specification and version, placeholder: "DTG Credential Spec v0.4"}
+    validations: {required: true}
+  - type: input
+    id: section
+    attributes: {label: Section reference}
+  - type: textarea
+    id: gap
+    attributes:
+      label: What is missing or in conflict?
+    validations: {required: true}
+  - type: input
+    id: artefacts
+    attributes:
+      label: Related RAHP artefacts
+      placeholder: "GR-07, CT-08, RK-ID01"
+  - type: dropdown
+    id: class
+    attributes:
+      label: Proposed class
+      options: [normative, recommended, process]
+    validations: {required: true}

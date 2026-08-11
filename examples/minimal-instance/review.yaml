@@ -1,0 +1,14 @@
+review:
+  id: SR-MIN-001
+  target:
+    name: Example specification
+    version: draft-01
+  personas: [service-user, operator, affected-non-user]
+  risk_hypotheses:
+    - id: H-01
+      statement: A technically valid action may execute after delegated authority has expired.
+      harm: An affected party experiences an unauthorised outcome with no timely redress.
+      disposition: specification
+      status: open
+  recommendations:
+    - Require verifiable authority status at the decision point and define failure behaviour.
