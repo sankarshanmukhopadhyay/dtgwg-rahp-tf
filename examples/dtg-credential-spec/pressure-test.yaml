@@ -72,9 +72,9 @@ review:
       related_work:
         - reference: trustoverip/dtgwg-cred-spec#12
           status: open-pr
-          note: PR #12 proposes direction-qualified VMC rules and explicit consent semantics but was not merged at the reviewed commit.
+          note: "PR #12 proposes direction-qualified VMC rules and explicit consent semantics but was not merged at the reviewed commit."
       retest_when:
-        - PR #12 or an equivalent VMC directionality change is merged.
+        - "PR #12 or an equivalent VMC directionality change is merged."
 
     - id: F-002
       title: VMC membership of an agent can be misread as agent authority, capability or operator accountability

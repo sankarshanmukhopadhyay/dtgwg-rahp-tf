@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import pathlib
 import re
+import subprocess
 import sys
 
 try:
@@ -145,7 +146,13 @@ def main() -> int:
         print(f"\nPressure-test validation failed: {len(errors)} error(s) across {len(files)} review file(s).")
         return 1
 
-    print(f"Pressure-test validation clean: {len(files)} review file(s), {findings_seen} finding(s), all references resolved.")
+    renderer = ROOT / "tools" / "render_pressure_tests.py"
+    rendered = subprocess.run([sys.executable, str(renderer), "--check"], cwd=ROOT, text=True)
+    if rendered.returncode != 0:
+        print("\nPressure-test validation failed: generated Markdown is missing or stale.")
+        return 1
+
+    print(f"Pressure-test validation clean: {len(files)} review file(s), {findings_seen} finding(s), all references resolved, Markdown current.")
     return 0
 
 

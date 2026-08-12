@@ -2,34 +2,346 @@
 
 This directory contains a **substantive RAHP pressure test**, not an illustrative placeholder. It demonstrates how a standards review can be pinned to a precise target revision, mapped to the canonical RAHP corpus, routed to the correct control plane, and retained for later re-testing.
 
-## Review target
+The target revision, review scope, RAHP baseline, summary and complete finding record are rendered below directly from the canonical [`pressure-test.yaml`](pressure-test.yaml).
+
+<!-- BEGIN GENERATED PRESSURE TEST -->
+
+## Generated pressure-test record
+
+> This section is generated from [`pressure-test.yaml`](pressure-test.yaml). Do not edit it by hand. The YAML is the canonical review record; run `python3 tools/render_pressure_tests.py` after changing it.
+
+### Review metadata
 
 | Field | Value |
 |---|---|
-| Specification | DTG Core Credential Specification |
-| Repository | `trustoverip/dtgwg-cred-spec` |
-| Version | Working Draft 01 |
-| Reviewed commit | `d19f7c9cac364fab8e50cf434513ef53fef80e37` |
-| Review date | 2026-08-12 |
-| RAHP baseline | `v0.3-dev` corpus in this repository |
-| Machine-readable record | [`pressure-test.yaml`](pressure-test.yaml) |
+| Review ID | `SR-001` |
+| Status | complete |
+| Title | DTG Core Credential Specification Working Draft 01 pressure test |
+| Reviewed on | 2026-08-12 |
+| Target repository | `trustoverip/dtgwg-cred-spec` |
+| Target document | https://trustoverip.github.io/dtgwg-cred-spec/ |
+| Target version | Working Draft 01 |
+| Target commit | `d19f7c9cac364fab8e50cf434513ef53fef80e37` |
+| Target source paths | `spec/intro.md`, `spec/body.md` |
+| RAHP repository | `sankarshanmukhopadhyay/dtgwg-rahp-tf` |
+| RAHP version | `v0.3-dev` |
+| RAHP corpus date | 2026-08-12 |
 
-The commit is intentionally recorded in full. A rendered specification URL can move; a commit gives a later reviewer a stable answer to **what was actually pressure-tested**.
+### Method
 
-## Result at a glance
+| Field | Value |
+|---|---|
+| Workflow | `docs/pressure-testing-a-spec.md` |
+| Rule | Reuse existing RAHP risks before creating new risks; route each recommendation to the narrowest effective control plane. |
 
-The review records **8 open findings**. They do not all belong in the credential specification. RAHP's control-plane discipline is used to separate schema/semantic defects from companion-protocol and governance obligations.
+### Review scope
 
-| Finding | Primary disposition | RAHP risks | Core issue |
-|---|---|---|---|
-| F-001 | Specification | RK-SC02 | Reverse VMC required for membership-edge completion is not constructible from WD-01 schema |
-| F-002 | Specification | RK-AI01, RK-AI02, RK-G05 | Agent membership can be over-read as authority/capability/accountability |
-| F-003 | Specification | RK-ID03, RK-CR01/02/03, RK-AI02 | Revocation/status/lifecycle semantics are not interoperable enough |
-| F-004 | Specification | RK-SC04, RK-ID05 | M-DID bootstrap exception can become a permanent correlation path |
-| F-005 | Companion specification | RK-CY01 | ZKP-by-default guidance lacks a proof interoperability profile |
-| F-006 | Governance | RK-G05, RK-SC02 | Technical conformance is not sharply separated from governance legitimacy |
-| F-007 | Companion specification | RK-HX05, RK-SC05 | Supported decision-making/LPA/guardianship is not representable |
-| F-008 | Specification | RK-EX05 | Ordinary organisational entity semantics are not explicit |
+**Included**
+
+- Credential taxonomy and common credential structure
+- VRC and VMC edge semantics
+- VIC invitation semantics
+- VPC, VWC and VEC annotation semantics
+- Trust Task context binding
+- Security, privacy, governance and conformance requirements
+
+**Excluded**
+
+- Cryptographic implementation review of any specific ZKP suite
+- Review of the future DTG Core Trust Task Protocols specification
+- Review of any specific VTC governance framework or registry implementation
+
+### Summary
+
+| Measure | Value |
+|---|---:|
+| Findings | 8 |
+| Open findings | 8 |
+| Primary disposition: Specification | 5 |
+| Primary disposition: Companion Specification | 2 |
+| Primary disposition: Governance | 1 |
+
+**Overall assessment**
+
+Working Draft 01 is materially stronger than the earlier credential draft in privacy, task-context binding, witness semantics and verifier authorization checks. The pressure test nevertheless identifies eight open assurance gaps. Two are structural schema or semantic ambiguities, three concern lifecycle/authority boundaries, and three are scope gaps that need an explicit companion-specification or governance route rather than being silently left to implementers.
+
+### Finding index
+
+| ID | Finding | Severity | Status | Primary disposition | RAHP risks |
+|---|---|---|---|---|---|
+| `F-001` | The reverse VMC required for a complete membership edge is not constructible from the normative schema | High | open | Specification | `RK-SC02` |
+| `F-002` | VMC membership of an agent can be misread as agent authority, capability or operator accountability | High | open | Specification | `RK-AI01`, `RK-AI02`, `RK-G05` |
+| `F-003` | Credential status and lifecycle semantics are too weak for consistent revocation and stale-authority handling | High | open | Specification | `RK-ID03`, `RK-CR01`, `RK-CR02`, `RK-CR03`, `RK-AI02` |
+| `F-004` | The M-DID bootstrapping exception has no bounded migration or retirement semantics | High | open | Specification | `RK-SC04`, `RK-ID05` |
+| `F-005` | ZKP-by-default guidance is not interoperable or conformance-testable without a proof profile | High | open | Companion Specification | `RK-CY01` |
+| `F-006` | Conformance needs a sharper boundary between schema validity and governance-qualified DTG meaning | High | open | Governance | `RK-G05`, `RK-SC02` |
+| `F-007` | Supported decision-making, guardianship and power-of-attorney relationships are not representable | High | open | Companion Specification | `RK-HX05`, `RK-SC05` |
+| `F-008` | Organisational membership and relationship semantics are not explicit in the identifier model | High | open | Specification | `RK-EX05` |
+
+### Detailed findings
+
+#### F-001 — The reverse VMC required for a complete membership edge is not constructible from the normative schema
+
+| Field | Value |
+|---|---|
+| Severity | High |
+| Status | open |
+| Primary disposition | Specification |
+| Secondary dispositions | — |
+| Risks | `RK-SC02` |
+| Controls | `CT-18`, `CT-19` |
+| Guardrails | `GR-01` |
+| Assurance tests | `AT-01` |
+
+**Evidence**
+
+| Source | Observation |
+|---|---|
+| `spec/body.md#vmc-verifiable-membership-credential` | The specification states that two VMCs, one in each direction, form a complete DTG edge, but the normative VMC schema requires the issuer to be the VTC/VTN C-DID and the subject to be the member M-DID (or a C-DID for VTN-to-VTC membership). It does not define the member-issued acknowledgement direction. |
+
+**Related work**
+
+| Reference | Status | Note |
+|---|---|---|
+| `trustoverip/dtgwg-cred-spec#12` | open-pr | PR #12 proposes direction-qualified VMC rules and explicit consent semantics but was not merged at the reviewed commit. |
+
+**Potential harm**
+
+Implementations can either treat a unilateral community assertion as complete membership or invent incompatible reverse-credential structures. The former permits unconsented membership assertions; the latter breaks interoperability.
+
+**Recommended treatment**
+
+Define both VMC directions normatively, including issuer/subject rules, binding between the grant and acknowledgement, ordering, verifier behavior and the consent semantics of the reverse direction.
+
+**Retest when**
+
+- PR #12 or an equivalent VMC directionality change is merged.
+
+#### F-002 — VMC membership of an agent can be misread as agent authority, capability or operator accountability
+
+| Field | Value |
+|---|---|
+| Severity | High |
+| Status | open |
+| Primary disposition | Specification |
+| Secondary dispositions | Companion Specification, Governance |
+| Risks | `RK-AI01`, `RK-AI02`, `RK-G05` |
+| Controls | `CT-30`, `CT-31`, `CT-32`, `CT-56` |
+| Guardrails | `GR-12`, `GR-13` |
+| Assurance tests | `AT-12`, `AT-13` |
+
+**Evidence**
+
+| Source | Observation |
+|---|---|
+| `spec/body.md#vmc-verifiable-membership-credential` | The VMC subject is explicitly allowed to be a person, device or agent, while the VMC schema contains only membership semantics. |
+| `spec/body.md#security-considerations` | Issuer authorization is checked, but the specification does not state that membership must not be interpreted as authority to act, delegation, operator identity, autonomy or capability. |
+
+**Potential harm**
+
+A verifier or higher-layer protocol can over-read a valid agent VMC as evidence that the agent is authorized to perform an action or that accountability has been established. This creates scope creep and can leave agent authority live after the operator's mandate changes.
+
+**Recommended treatment**
+
+Add an explicit semantic non-inference rule: a VMC may establish membership of an agent node but does not establish agenthood, operator/controller identity, accountability, delegation, autonomy, capability or current authority. Require those properties to be established by separate verifiable evidence and define the binding point to the companion agent/delegation protocol.
+
+**Retest when**
+
+- The VMC semantics or companion agent/delegation specification defines this boundary.
+
+#### F-003 — Credential status and lifecycle semantics are too weak for consistent revocation and stale-authority handling
+
+| Field | Value |
+|---|---|
+| Severity | High |
+| Status | open |
+| Primary disposition | Specification |
+| Secondary dispositions | Companion Specification, Governance |
+| Risks | `RK-ID03`, `RK-CR01`, `RK-CR02`, `RK-CR03`, `RK-AI02` |
+| Controls | `CT-12`, `CT-13`, `CT-23`, `CT-24`, `CT-25`, `CT-26`, `CT-32` |
+| Guardrails | `GR-05`, `GR-08`, `GR-09`, `GR-12` |
+| Assurance tests | `AT-05`, `AT-08`, `AT-09`, `AT-12` |
+
+**Evidence**
+
+| Source | Observation |
+|---|---|
+| `spec/body.md#base-structure` | The common schema defines validity dates but no required credential-status mechanism or status-reference semantics. |
+| `spec/body.md#security-considerations` | Verifiers are told they should check applicable revocation status via the governing trust registry, leaving the mechanism, required availability, failure behavior and timing semantics undefined. |
+
+**Potential harm**
+
+Two conforming verifiers may reach different decisions about a credential after withdrawal, issuer compromise, membership termination or operator revocation. Stale credentials can remain cryptographically valid while their governing authority is no longer valid.
+
+**Recommended treatment**
+
+Define a normative lifecycle/status contract or a mandatory profile hook: how status is discovered, the authoritative time semantics, verifier behavior when status is unavailable, and how revocation, suspension, expiry and renewal differ. Keep due process and cross-community consequence policy in governance, but make the technical status semantics interoperable.
+
+**Retest when**
+
+- Credential status/lifecycle semantics are specified or normatively delegated to a named profile.
+
+#### F-004 — The M-DID bootstrapping exception has no bounded migration or retirement semantics
+
+| Field | Value |
+|---|---|
+| Severity | High |
+| Status | open |
+| Primary disposition | Specification |
+| Secondary dispositions | — |
+| Risks | `RK-SC04`, `RK-ID05` |
+| Controls | `CT-15`, `CT-50` |
+| Guardrails | `GR-06`, `GR-09`, `GR-18` |
+| Assurance tests | `AT-06`, `AT-09`, `AT-18` |
+
+**Evidence**
+
+| Source | Observation |
+|---|---|
+| `spec/body.md#vrc-verifiable-relationship-credential` | R-DIDs are recommended for privacy while M-DIDs are allowed for bootstrapping. |
+| `spec/body.md#privacy-considerations` | Migration from M-DID-based to R-DID-based edges is recommended post-bootstrapping, without a trigger, deadline or verifier-visible state transition. |
+
+**Potential harm**
+
+The privacy-preserving path can remain optional indefinitely. Implementations may normalize M-DID reuse across relationships and VTCs, making correlation a de facto permanent property rather than a temporary bootstrap compromise.
+
+**Recommended treatment**
+
+Define when the bootstrap exception applies, what event ends it, whether new relationships may continue using M-DIDs after that point, and how an existing edge migrates or is re-issued without creating ambiguous duplicate relationships.
+
+**Retest when**
+
+- Bootstrapping and M-DID-to-R-DID migration semantics are made testable.
+
+#### F-005 — ZKP-by-default guidance is not interoperable or conformance-testable without a proof profile
+
+| Field | Value |
+|---|---|
+| Severity | High |
+| Status | open |
+| Primary disposition | Companion Specification |
+| Secondary dispositions | Implementation Guidance |
+| Risks | `RK-CY01` |
+| Controls | `CT-27`, `CT-28` |
+| Guardrails | `GR-06`, `GR-07` |
+| Assurance tests | `AT-06`, `AT-07` |
+
+**Evidence**
+
+| Source | Observation |
+|---|---|
+| `spec/body.md#zero-knowledge-and-selective-disclosure` | The specification is intentionally format-agnostic and leaves detailed ZK protocols and registry-ZK interactions to future work. |
+| `spec/body.md#privacy-considerations` | Implementations are encouraged to use ZKP presentation by default. |
+
+**Potential harm**
+
+Independent implementations can satisfy the prose while choosing incompatible proof systems, predicate semantics, freshness mechanisms or registry bindings. Privacy expectations can therefore diverge even when credential schemas interoperate.
+
+**Recommended treatment**
+
+Keep the credential specification proof-format agnostic, but normatively reference a companion ZKP/selective-disclosure profile before claiming interoperable ZKP behavior. The profile should define supported proof constructions, freshness/replay requirements, predicates, status checks and conformance vectors.
+
+**Retest when**
+
+- A DTG ZKP profile is normatively bound or equivalent interoperability requirements are added.
+
+#### F-006 — Conformance needs a sharper boundary between schema validity and governance-qualified DTG meaning
+
+| Field | Value |
+|---|---|
+| Severity | High |
+| Status | open |
+| Primary disposition | Governance |
+| Secondary dispositions | Specification |
+| Risks | `RK-G05`, `RK-SC02` |
+| Controls | `CT-18`, `CT-19`, `CT-56` |
+| Guardrails | `GR-01`, `GR-02` |
+| Assurance tests | `AT-01`, `AT-02` |
+
+**Evidence**
+
+| Source | Observation |
+|---|---|
+| `spec/body.md#governance-considerations` | Most membership, invitation and identity-proofing policy is delegated to each VTC/VTN governance framework and trust registry. |
+| `spec/body.md#conformance` | Conformance targets are defined for issuers, holders and verifiers, but no separate claim vocabulary distinguishes syntactic credential conformance from governance-qualified participation in a recognized VTC/VTN. |
+
+**Potential harm**
+
+A technically valid issuer can present a credential as "DTG compliant" even when the community has no legitimate governance, policy publication or recognized authority chain. Cryptographic validity can be confused with governance legitimacy.
+
+**Recommended treatment**
+
+Define conformance claim levels or terminology that separates schema/protocol conformance from governance-qualified trust semantics. State what evidence a verifier needs to establish that a VTC, VTN or role is recognized under the applicable governance framework and trust registry.
+
+**Retest when**
+
+- Conformance language explicitly separates technical validity from governance legitimacy.
+
+#### F-007 — Supported decision-making, guardianship and power-of-attorney relationships are not representable
+
+| Field | Value |
+|---|---|
+| Severity | High |
+| Status | open |
+| Primary disposition | Companion Specification |
+| Secondary dispositions | Specification, Governance |
+| Risks | `RK-HX05`, `RK-SC05` |
+| Controls | `CT-57`, `CT-58`, `CT-59`, `CT-60`, `CT-66` |
+| Guardrails | `GR-19` |
+| Assurance tests | `AT-19` |
+
+**Evidence**
+
+| Source | Observation |
+|---|---|
+| `spec/body.md#base-structure` | The credential model identifies issuer and subject but has no representation/delegation semantics for a person acting with or for another person. |
+| `spec/body.md#related-specifications` | Higher-layer trust-task and agent-card work is anticipated, but legal-capacity and supported-consent relationships are not assigned a concrete representation path in WD-01. |
+
+**Potential harm**
+
+Systems built only from the core credential types can assume that the subject is always the sole decision-maker and key controller. People using supported decision-making, an LPA or guardianship arrangement can be excluded or forced into non-standard workarounds that weaken accountability.
+
+**Recommended treatment**
+
+Assign representation and supported-consent semantics to a named companion specification and add a non-inference note to the core credentials: subject identity does not by itself establish legal capacity, exclusive control or absence of an authorized representative.
+
+**Retest when**
+
+- A concrete representation/delegation path is documented and linked from the credential specification.
+
+#### F-008 — Organisational membership and relationship semantics are not explicit in the identifier model
+
+| Field | Value |
+|---|---|
+| Severity | High |
+| Status | open |
+| Primary disposition | Specification |
+| Secondary dispositions | Governance |
+| Risks | `RK-EX05` |
+| Controls | `CT-63`, `CT-64` |
+| Guardrails | `GR-21` |
+| Assurance tests | `AT-21` |
+
+**Evidence**
+
+| Source | Observation |
+|---|---|
+| `spec/body.md#vmc-verifiable-membership-credential` | The VMC member subject is described as a person, device or agent; C-DID is reserved for VTC/VTN community membership cases. |
+| `spec/body.md#vrc-verifiable-relationship-credential` | VRC issuer and subject rules are expressed in terms of R-DID or M-DID without stating how a non-community organisation participates as an organisation. |
+
+**Potential harm**
+
+Implementers may model organisations inconsistently as members, communities, agents or out-of-band identities. That ambiguity affects authorization, accountability, key rotation and staff/role changes.
+
+**Recommended treatment**
+
+State whether ordinary organisations are valid DTG entities and, if so, which DID class and credential semantics represent them. If organisational identity is intentionally out of scope, say so explicitly and identify the companion architecture required before organisational use cases can claim interoperability.
+
+**Retest when**
+
+- Organisational entity semantics are defined or explicitly delegated.
+
+<!-- END GENERATED PRESSURE TEST -->
 
 ## What the pressure test found
 
@@ -72,6 +384,7 @@ Run the repository integrity validator and the pressure-test validator:
 ```bash
 pip install -r requirements.txt
 python3 tools/validate.py
+python3 tools/render_pressure_tests.py
 python3 tools/validate_pressure_tests.py
 ```
 

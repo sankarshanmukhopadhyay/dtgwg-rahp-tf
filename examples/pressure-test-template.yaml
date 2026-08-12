@@ -1,4 +1,8 @@
 # Copy this file into examples/<target>/pressure-test.yaml and replace all placeholders.
+# Keep this YAML as the canonical pressure-test record. Add a sibling README.md and run
+# `python3 tools/render_pressure_tests.py` to insert/update its generated Markdown view.
+# Quote scalar values that contain `#` (for example, "PR #12 merged") so YAML does not
+# treat the remainder as a comment.
 review:
   id: SR-XXX
   status: in-progress

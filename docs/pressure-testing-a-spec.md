@@ -72,13 +72,16 @@ review:
         - Observable condition that should trigger re-review.
 ```
 
-A completed review is expected to pin the target to a full commit SHA and preserve enough evidence to explain why each canonical RAHP risk was triggered. Validate worked records with:
+A completed review is expected to pin the target to a full commit SHA and preserve enough evidence to explain why each canonical RAHP risk was triggered. The YAML review record is canonical. Render its human-readable view into the sibling README, then validate it:
 
 ```bash
+python3 tools/render_pressure_tests.py
 python3 tools/validate_pressure_tests.py
 ```
 
-The validator checks target pinning, required finding metadata, controlled dispositions, summary counts, and that every referenced risk, control, guardrail and assurance test resolves in the canonical corpus.
+The renderer updates only the region between `<!-- BEGIN GENERATED PRESSURE TEST -->` and `<!-- END GENERATED PRESSURE TEST -->`, preserving human-authored interpretation around it. It produces review metadata, scope, summary counts, a finding index, detailed RAHP mappings, evidence tables, harm statements, recommendations, related work, and retest triggers.
+
+The validator checks target pinning, required finding metadata, controlled dispositions, summary counts, every referenced risk/control/guardrail/assurance-test identifier, and whether the generated README view is current. A YAML change without regeneration therefore fails validation rather than silently drifting from the human-readable report.
 
 ## 8. Re-run after change
 
@@ -87,3 +90,13 @@ A review is not complete when findings are published. Preserve the target versio
 ## Evidence produced
 
 A pressure test should leave behind enough evidence to answer: what was reviewed, against which RAHP version, which risks were triggered, which target version was assessed, what remains open, what change resolved a finding, and when retesting is required.
+
+## Worked examples
+
+Two complete reviews are maintained as regression fixtures for the method:
+
+- [`examples/dtg-credential-spec/`](../examples/dtg-credential-spec/README.md) pressure-tests a credential specification and demonstrates schema, lifecycle, privacy, governance, agent-authority and representation findings.
+- [`examples/trust-tasks-spec/`](../examples/trust-tasks-spec/README.md) pressure-tests a protocol/framework specification and demonstrates replay, freshness, delegation, registry-dependency, capability-negotiation, consent-policy and supported-representation findings.
+
+The second example is intentionally important for method discipline: several findings are **not** recommendations to add another field to the core Trust Task envelope. They are routed to companion specifications, governance, runtime controls or operational policy because those are the narrowest effective control planes.
+
