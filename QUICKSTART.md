@@ -19,3 +19,6 @@ python3 tools/build.py
 ```
 
 For the complete process, see [ADOPTION.md](ADOPTION.md) and [docs/pressure-testing-a-spec.md](docs/pressure-testing-a-spec.md).
+
+
+Worked pressure tests: [`examples/dtg-credential-spec/`](examples/dtg-credential-spec/README.md) and [`examples/trust-tasks-spec/`](examples/trust-tasks-spec/README.md).
