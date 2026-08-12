@@ -91,6 +91,13 @@ A review is not complete when findings are published. Preserve the target versio
 
 A pressure test should leave behind enough evidence to answer: what was reviewed, against which RAHP version, which risks were triggered, which target version was assessed, what remains open, what change resolved a finding, and when retesting is required.
 
+
+## Reference-link convention
+
+`pressure-test.yaml` stores RAHP identifiers only. Authors should not maintain URLs in YAML. The renderer resolves each Risk, Control, Guardrail and Assurance Test against the canonical corpus and emits an **ID + title** Markdown link to `build/site/catalogue.html#<ID>`. The catalogue is generated from the same YAML corpus and assigns a stable HTML anchor to every canonical RAHP artefact.
+
+This creates a repository invariant: **a RAHP identifier in generated human-facing output should not be a dead identifier**. A reader should be able to follow the citation and immediately see its title, scope/description, relevant metadata and related artefacts. Run `python3 tools/validate_reference_links.py` after `tools/build.py` to verify the catalogue anchors and pressure-test links.
+
 ## Worked examples
 
 Two complete reviews are maintained as regression fixtures for the method:

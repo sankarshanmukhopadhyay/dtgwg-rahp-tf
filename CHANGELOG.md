@@ -8,6 +8,7 @@
 - Replaced the illustrative DTG Credential Specification placeholder with a substantive Working Draft 01 pressure test containing eight traceable findings and explicit re-test triggers.
 - Added a second substantive worked pressure test for the Trust Tasks Framework editor's draft 0.3, covering replay/idempotency, freshness, portable delegation, draft immutability, registry dependency, capability negotiation, delegated-execution consent and supported representation.
 - Added YAML-to-Markdown pressure-test rendering: `pressure-test.yaml` remains canonical, `tools/render_pressure_tests.py` maintains structured generated README sections, and validation now fails when rendered Markdown is stale.
+- Added a canonical deep-linkable RAHP Reference catalogue and repository-wide generated reference links: pressure-test citations now render as ID + title hyperlinks, generated site pills resolve to stable catalogue anchors, and `tools/validate_reference_links.py` checks catalogue/link integrity.
 - Added `tools/validate_pressure_tests.py` and `examples/pressure-test-template.yaml` so worked reviews are reproducible, commit-pinned, disposition-controlled and referentially valid against the canonical RAHP corpus.
 - Retained the minimal-instance review record as the smallest adoption pattern.
 - Added a controlled finding-disposition vocabulary so review findings can be routed to the correct control plane.

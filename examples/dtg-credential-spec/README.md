@@ -69,14 +69,14 @@ Working Draft 01 is materially stronger than the earlier credential draft in pri
 
 | ID | Finding | Severity | Status | Primary disposition | RAHP risks |
 |---|---|---|---|---|---|
-| `F-001` | The reverse VMC required for a complete membership edge is not constructible from the normative schema | High | open | Specification | `RK-SC02` |
-| `F-002` | VMC membership of an agent can be misread as agent authority, capability or operator accountability | High | open | Specification | `RK-AI01`, `RK-AI02`, `RK-G05` |
-| `F-003` | Credential status and lifecycle semantics are too weak for consistent revocation and stale-authority handling | High | open | Specification | `RK-ID03`, `RK-CR01`, `RK-CR02`, `RK-CR03`, `RK-AI02` |
-| `F-004` | The M-DID bootstrapping exception has no bounded migration or retirement semantics | High | open | Specification | `RK-SC04`, `RK-ID05` |
-| `F-005` | ZKP-by-default guidance is not interoperable or conformance-testable without a proof profile | High | open | Companion Specification | `RK-CY01` |
-| `F-006` | Conformance needs a sharper boundary between schema validity and governance-qualified DTG meaning | High | open | Governance | `RK-G05`, `RK-SC02` |
-| `F-007` | Supported decision-making, guardianship and power-of-attorney relationships are not representable | High | open | Companion Specification | `RK-HX05`, `RK-SC05` |
-| `F-008` | Organisational membership and relationship semantics are not explicit in the identifier model | High | open | Specification | `RK-EX05` |
+| `F-001` | The reverse VMC required for a complete membership edge is not constructible from the normative schema | High | open | Specification | [RK-SC02 — Credential Schema Ambiguity](../../build/site/catalogue.html#RK-SC02) |
+| `F-002` | VMC membership of an agent can be misread as agent authority, capability or operator accountability | High | open | Specification | [RK-AI01 — Agent Credential Scope Creep](../../build/site/catalogue.html#RK-AI01), [RK-AI02 — Stale Agent After Operator Revocation](../../build/site/catalogue.html#RK-AI02), [RK-G05 — Governanceless VTC Claiming Credential Compliance](../../build/site/catalogue.html#RK-G05) |
+| `F-003` | Credential status and lifecycle semantics are too weak for consistent revocation and stale-authority handling | High | open | Specification | [RK-ID03 — IDVP Breach / Cascading Invalidation](../../build/site/catalogue.html#RK-ID03), [RK-CR01 — Credential Revocation Without Due Process](../../build/site/catalogue.html#RK-CR01), [RK-CR02 — Stale Credential / Expiry Without Renewal Path](../../build/site/catalogue.html#RK-CR02), [RK-CR03 — Revocation Cascade / Cross-VTC Contamination](../../build/site/catalogue.html#RK-CR03), [RK-AI02 — Stale Agent After Operator Revocation](../../build/site/catalogue.html#RK-AI02) |
+| `F-004` | The M-DID bootstrapping exception has no bounded migration or retirement semantics | High | open | Specification | [RK-SC04 — M-DID Bootstrapping Exception Undermines R-DID Privacy](../../build/site/catalogue.html#RK-SC04), [RK-ID05 — M-DID Linkability Across VTCs](../../build/site/catalogue.html#RK-ID05) |
+| `F-005` | ZKP-by-default guidance is not interoperable or conformance-testable without a proof profile | High | open | Companion Specification | [RK-CY01 — ZKP Implementation Failure](../../build/site/catalogue.html#RK-CY01) |
+| `F-006` | Conformance needs a sharper boundary between schema validity and governance-qualified DTG meaning | High | open | Governance | [RK-G05 — Governanceless VTC Claiming Credential Compliance](../../build/site/catalogue.html#RK-G05), [RK-SC02 — Credential Schema Ambiguity](../../build/site/catalogue.html#RK-SC02) |
+| `F-007` | Supported decision-making, guardianship and power-of-attorney relationships are not representable | High | open | Companion Specification | [RK-HX05 — Legal Capacity Architecture Gap — LPA / Guardianship Not Representable](../../build/site/catalogue.html#RK-HX05), [RK-SC05 — Credential Schema Gap — Supported Consent and LPA Not Representable](../../build/site/catalogue.html#RK-SC05) |
+| `F-008` | Organisational membership and relationship semantics are not explicit in the identifier model | High | open | Specification | [RK-EX05 — Organisational Identity Architecture Gap](../../build/site/catalogue.html#RK-EX05) |
 
 ### Detailed findings
 
@@ -88,10 +88,10 @@ Working Draft 01 is materially stronger than the earlier credential draft in pri
 | Status | open |
 | Primary disposition | Specification |
 | Secondary dispositions | — |
-| Risks | `RK-SC02` |
-| Controls | `CT-18`, `CT-19` |
-| Guardrails | `GR-01` |
-| Assurance tests | `AT-01` |
+| Risks | [RK-SC02 — Credential Schema Ambiguity](../../build/site/catalogue.html#RK-SC02) |
+| Controls | [CT-18 — Normative Credential Schema Publication](../../build/site/catalogue.html#CT-18), [CT-19 — Conformance Test Suite](../../build/site/catalogue.html#CT-19) |
+| Guardrails | [GR-01 — Genesis Policy Documentation](../../build/site/catalogue.html#GR-01) |
+| Assurance tests | [AT-01 — Genesis policy artefact exists, is version-controlled, and was committed before any Phase …](../../build/site/catalogue.html#AT-01) |
 
 **Evidence**
 
@@ -125,10 +125,10 @@ Define both VMC directions normatively, including issuer/subject rules, binding 
 | Status | open |
 | Primary disposition | Specification |
 | Secondary dispositions | Companion Specification, Governance |
-| Risks | `RK-AI01`, `RK-AI02`, `RK-G05` |
-| Controls | `CT-30`, `CT-31`, `CT-32`, `CT-56` |
-| Guardrails | `GR-12`, `GR-13` |
-| Assurance tests | `AT-12`, `AT-13` |
+| Risks | [RK-AI01 — Agent Credential Scope Creep](../../build/site/catalogue.html#RK-AI01), [RK-AI02 — Stale Agent After Operator Revocation](../../build/site/catalogue.html#RK-AI02), [RK-G05 — Governanceless VTC Claiming Credential Compliance](../../build/site/catalogue.html#RK-G05) |
+| Controls | [CT-30 — Cryptographic Delegation Scope Constraints](../../build/site/catalogue.html#CT-30), [CT-31 — Short-Lived Agent Credentials](../../build/site/catalogue.html#CT-31), [CT-32 — Agent Liveness Check on Operator VMC](../../build/site/catalogue.html#CT-32), [CT-56 — VTC Governance Conformance Class](../../build/site/catalogue.html#CT-56) |
+| Guardrails | [GR-12 — Agent Delegation Scope Constraint](../../build/site/catalogue.html#GR-12), [GR-13 — Agent Audit Logging](../../build/site/catalogue.html#GR-13) |
+| Assurance tests | [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../build/site/catalogue.html#AT-12), [AT-13 — Agent credential operations visible in operator audit log with all required fields](../../build/site/catalogue.html#AT-13) |
 
 **Evidence**
 
@@ -157,10 +157,10 @@ Add an explicit semantic non-inference rule: a VMC may establish membership of a
 | Status | open |
 | Primary disposition | Specification |
 | Secondary dispositions | Companion Specification, Governance |
-| Risks | `RK-ID03`, `RK-CR01`, `RK-CR02`, `RK-CR03`, `RK-AI02` |
-| Controls | `CT-12`, `CT-13`, `CT-23`, `CT-24`, `CT-25`, `CT-26`, `CT-32` |
-| Guardrails | `GR-05`, `GR-08`, `GR-09`, `GR-12` |
-| Assurance tests | `AT-05`, `AT-08`, `AT-09`, `AT-12` |
+| Risks | [RK-ID03 — IDVP Breach / Cascading Invalidation](../../build/site/catalogue.html#RK-ID03), [RK-CR01 — Credential Revocation Without Due Process](../../build/site/catalogue.html#RK-CR01), [RK-CR02 — Stale Credential / Expiry Without Renewal Path](../../build/site/catalogue.html#RK-CR02), [RK-CR03 — Revocation Cascade / Cross-VTC Contamination](../../build/site/catalogue.html#RK-CR03), [RK-AI02 — Stale Agent After Operator Revocation](../../build/site/catalogue.html#RK-AI02) |
+| Controls | [CT-12 — IDVP Security Approval Criteria](../../build/site/catalogue.html#CT-12), [CT-13 — IDVP Deregistration Handling Protocol](../../build/site/catalogue.html#CT-13), [CT-23 — Mandatory Pre-Revocation Notice](../../build/site/catalogue.html#CT-23), [CT-24 — Privacy-Preserving Revocation Disclosure](../../build/site/catalogue.html#CT-24), [CT-25 — Credential Renewal Workflow](../../build/site/catalogue.html#CT-25), [CT-26 — VTC-Scoped Revocation](../../build/site/catalogue.html#CT-26), [CT-32 — Agent Liveness Check on Operator VMC](../../build/site/catalogue.html#CT-32) |
+| Guardrails | [GR-05 — IDVP Registry Standing](../../build/site/catalogue.html#GR-05), [GR-08 — Revocation Due Process](../../build/site/catalogue.html#GR-08), [GR-09 — Privacy-Preserving Revocation Disclosure](../../build/site/catalogue.html#GR-09), [GR-12 — Agent Delegation Scope Constraint](../../build/site/catalogue.html#GR-12) |
+| Assurance tests | [AT-05 — IDVP DID not in trust registry with correct role → VTA rejects IDVC presentation](../../build/site/catalogue.html#AT-05), [AT-08 — Revocation notice delivered to member within SLA; appeals path accessible within 24 hours](../../build/site/catalogue.html#AT-08), [AT-09 — Default revocation status disclosure does not expose member real-world identity](../../build/site/catalogue.html#AT-09), [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../build/site/catalogue.html#AT-12) |
 
 **Evidence**
 
@@ -189,10 +189,10 @@ Define a normative lifecycle/status contract or a mandatory profile hook: how st
 | Status | open |
 | Primary disposition | Specification |
 | Secondary dispositions | — |
-| Risks | `RK-SC04`, `RK-ID05` |
-| Controls | `CT-15`, `CT-50` |
-| Guardrails | `GR-06`, `GR-09`, `GR-18` |
-| Assurance tests | `AT-06`, `AT-09`, `AT-18` |
+| Risks | [RK-SC04 — M-DID Bootstrapping Exception Undermines R-DID Privacy](../../build/site/catalogue.html#RK-SC04), [RK-ID05 — M-DID Linkability Across VTCs](../../build/site/catalogue.html#RK-ID05) |
+| Controls | [CT-15 — Pseudonymous Per-VTC M-DID Design](../../build/site/catalogue.html#CT-15), [CT-50 — M-DID to R-DID Migration Trigger](../../build/site/catalogue.html#CT-50) |
+| Guardrails | [GR-06 — Privacy-Preserving Proofing Option](../../build/site/catalogue.html#GR-06), [GR-09 — Privacy-Preserving Revocation Disclosure](../../build/site/catalogue.html#GR-09), [GR-18 — R-DID Migration Phase Gate](../../build/site/catalogue.html#GR-18) |
+| Assurance tests | [AT-06 — At least one ZKP / selective disclosure path is available and functional in Phase 4 UX](../../build/site/catalogue.html#AT-06), [AT-09 — Default revocation status disclosure does not expose member real-world identity](../../build/site/catalogue.html#AT-09), [AT-18 — VTC trust registry records a migration trigger date for R-DID adoption; all VRCs issued af…](../../build/site/catalogue.html#AT-18) |
 
 **Evidence**
 
@@ -221,10 +221,10 @@ Define when the bootstrap exception applies, what event ends it, whether new rel
 | Status | open |
 | Primary disposition | Companion Specification |
 | Secondary dispositions | Implementation Guidance |
-| Risks | `RK-CY01` |
-| Controls | `CT-27`, `CT-28` |
-| Guardrails | `GR-06`, `GR-07` |
-| Assurance tests | `AT-06`, `AT-07` |
+| Risks | [RK-CY01 — ZKP Implementation Failure](../../build/site/catalogue.html#RK-CY01) |
+| Controls | [CT-27 — Audited ZKP Library Requirement](../../build/site/catalogue.html#CT-27), [CT-28 — ZKP Conformance Testing](../../build/site/catalogue.html#CT-28) |
+| Guardrails | [GR-06 — Privacy-Preserving Proofing Option](../../build/site/catalogue.html#GR-06), [GR-07 — Uniqueness Enforcement Mechanism](../../build/site/catalogue.html#GR-07) |
+| Assurance tests | [AT-06 — At least one ZKP / selective disclosure path is available and functional in Phase 4 UX](../../build/site/catalogue.html#AT-06), [AT-07 — Uniqueness enforcement mechanism is documented; if none exists, risk acceptance is signed …](../../build/site/catalogue.html#AT-07) |
 
 **Evidence**
 
@@ -253,10 +253,10 @@ Keep the credential specification proof-format agnostic, but normatively referen
 | Status | open |
 | Primary disposition | Governance |
 | Secondary dispositions | Specification |
-| Risks | `RK-G05`, `RK-SC02` |
-| Controls | `CT-18`, `CT-19`, `CT-56` |
-| Guardrails | `GR-01`, `GR-02` |
-| Assurance tests | `AT-01`, `AT-02` |
+| Risks | [RK-G05 — Governanceless VTC Claiming Credential Compliance](../../build/site/catalogue.html#RK-G05), [RK-SC02 — Credential Schema Ambiguity](../../build/site/catalogue.html#RK-SC02) |
+| Controls | [CT-18 — Normative Credential Schema Publication](../../build/site/catalogue.html#CT-18), [CT-19 — Conformance Test Suite](../../build/site/catalogue.html#CT-19), [CT-56 — VTC Governance Conformance Class](../../build/site/catalogue.html#CT-56) |
+| Guardrails | [GR-01 — Genesis Policy Documentation](../../build/site/catalogue.html#GR-01), [GR-02 — Time-Bounded Initiator Authority](../../build/site/catalogue.html#GR-02) |
+| Assurance tests | [AT-01 — Genesis policy artefact exists, is version-controlled, and was committed before any Phase …](../../build/site/catalogue.html#AT-01), [AT-02 — VTA PEP rejects Phase 2 invitation attempts after documented initiator authority expiry](../../build/site/catalogue.html#AT-02) |
 
 **Evidence**
 
@@ -285,10 +285,10 @@ Define conformance claim levels or terminology that separates schema/protocol co
 | Status | open |
 | Primary disposition | Companion Specification |
 | Secondary dispositions | Specification, Governance |
-| Risks | `RK-HX05`, `RK-SC05` |
-| Controls | `CT-57`, `CT-58`, `CT-59`, `CT-60`, `CT-66` |
-| Guardrails | `GR-19` |
-| Assurance tests | `AT-19` |
+| Risks | [RK-HX05 — Legal Capacity Architecture Gap — LPA / Guardianship Not Representable](../../build/site/catalogue.html#RK-HX05), [RK-SC05 — Credential Schema Gap — Supported Consent and LPA Not Representable](../../build/site/catalogue.html#RK-SC05) |
+| Controls | [CT-57 — Supported Decision-Making Credential Extension](../../build/site/catalogue.html#CT-57), [CT-58 — Accessible Trust Task Ceremony UX for Cognitive Differences](../../build/site/catalogue.html#CT-58), [CT-59 — LPA Delegation Credential Type](../../build/site/catalogue.html#CT-59), [CT-60 — Secondary Notification Recipient Registration](../../build/site/catalogue.html#CT-60), [CT-66 — Children's Data Processing Impact Assessment Requirement](../../build/site/catalogue.html#CT-66) |
+| Guardrails | [GR-19 — Supported Decision-Making and Legal Delegation Pathway](../../build/site/catalogue.html#GR-19) |
+| Assurance tests | [AT-19 — For any VTC that has admitted or intends to admit participants under supported or substitu…](../../build/site/catalogue.html#AT-19) |
 
 **Evidence**
 
@@ -317,10 +317,10 @@ Assign representation and supported-consent semantics to a named companion speci
 | Status | open |
 | Primary disposition | Specification |
 | Secondary dispositions | Governance |
-| Risks | `RK-EX05` |
-| Controls | `CT-63`, `CT-64` |
-| Guardrails | `GR-21` |
-| Assurance tests | `AT-21` |
+| Risks | [RK-EX05 — Organisational Identity Architecture Gap](../../build/site/catalogue.html#RK-EX05) |
+| Controls | [CT-63 — Organisational Credential Type Definition](../../build/site/catalogue.html#CT-63), [CT-64 — Organisational Governance Conformance Mapping](../../build/site/catalogue.html#CT-64) |
+| Guardrails | [GR-21 — Organisational Identity Governance Mapping](../../build/site/catalogue.html#GR-21) |
+| Assurance tests | [AT-21 — For any regulated organisation admitted as a VTC member: (1) legal identifier and regulato…](../../build/site/catalogue.html#AT-21) |
 
 **Evidence**
 

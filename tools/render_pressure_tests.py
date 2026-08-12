@@ -21,6 +21,33 @@ except ImportError:  # pragma: no cover
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 BEGIN = "<!-- BEGIN GENERATED PRESSURE TEST -->"
 END = "<!-- END GENERATED PRESSURE TEST -->"
+CATALOGUE_RELATIVE = "../../build/site/catalogue.html"
+
+REFERENCE_FILES = {
+    "risks": "risks.yaml",
+    "controls": "controls.yaml",
+    "guardrails": "guardrails.yaml",
+    "assurance_tests": "assurance-tests.yaml",
+}
+
+
+def load_reference_index() -> dict[str, dict[str, str]]:
+    index: dict[str, dict[str, str]] = {}
+    for kind, filename in REFERENCE_FILES.items():
+        doc = load_yaml(ROOT / "data" / filename)
+        for rec in doc.get("records") or []:
+            rid = str(rec.get("id") or "")
+            if not rid:
+                continue
+            title = rec.get("name") or rec.get("title")
+            if not title and kind == "assurance_tests":
+                criterion = str(rec.get("pass_criterion") or "").strip()
+                title = criterion[:90] + ("…" if len(criterion) > 90 else "") if criterion else "Assurance test"
+            index[rid] = {"title": str(title or rid), "kind": kind}
+    return index
+
+
+REFERENCE_INDEX: dict[str, dict[str, str]] = {}
 
 
 def load_yaml(path: pathlib.Path) -> dict[str, Any]:
@@ -36,6 +63,21 @@ def md_cell(value: Any) -> str:
     text = str(value).replace("\n", " ").strip()
     text = re.sub(r"\s+", " ", text)
     return text.replace("|", "\\|") or "—"
+
+
+def ref_link(value: Any) -> str:
+    rid = md_cell(value)
+    rec = REFERENCE_INDEX.get(rid)
+    if not rec:
+        return f"`{rid}`"
+    title = md_cell(rec["title"])
+    return f"[{rid} — {title}]({CATALOGUE_RELATIVE}#{rid})"
+
+
+def ref_list(values: list[Any] | None) -> str:
+    if not values:
+        return "—"
+    return ", ".join(ref_link(v) for v in values)
 
 
 def code_list(values: list[Any] | None) -> str:
@@ -134,7 +176,7 @@ def render_review(review: dict[str, Any]) -> str:
         lines.append(
             f"| `{md_cell(finding.get('id'))}` | {md_cell(finding.get('title'))} | "
             f"{md_cell(finding.get('severity'))} | {md_cell(finding.get('status'))} | "
-            f"{disposition(finding.get('primary_disposition'))} | {code_list(finding.get('risks'))} |"
+            f"{disposition(finding.get('primary_disposition'))} | {ref_list(finding.get('risks'))} |"
         )
     lines += [""]
 
@@ -150,10 +192,10 @@ def render_review(review: dict[str, Any]) -> str:
             f"| Status | {md_cell(finding.get('status'))} |",
             f"| Primary disposition | {disposition(finding.get('primary_disposition'))} |",
             f"| Secondary dispositions | {', '.join(disposition(v) for v in (finding.get('secondary_dispositions') or [])) or '—'} |",
-            f"| Risks | {code_list(finding.get('risks'))} |",
-            f"| Controls | {code_list(finding.get('controls'))} |",
-            f"| Guardrails | {code_list(finding.get('guardrails'))} |",
-            f"| Assurance tests | {code_list(finding.get('assurance_tests'))} |",
+            f"| Risks | {ref_list(finding.get('risks'))} |",
+            f"| Controls | {ref_list(finding.get('controls'))} |",
+            f"| Guardrails | {ref_list(finding.get('guardrails'))} |",
+            f"| Assurance tests | {ref_list(finding.get('assurance_tests'))} |",
             "",
         ]
 
@@ -241,6 +283,8 @@ def process(yaml_path: pathlib.Path, check: bool) -> bool:
 
 
 def main() -> int:
+    global REFERENCE_INDEX
+    REFERENCE_INDEX = load_reference_index()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="fail if a README generated block is missing or stale")
     args = parser.parse_args()

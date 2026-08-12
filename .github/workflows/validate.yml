@@ -20,6 +20,8 @@ jobs:
         run: python3 tools/validate_pressure_tests.py
       - name: Build derived views
         run: python3 tools/build.py
+      - name: Validate RAHP reference links
+        run: python3 tools/validate_reference_links.py
       - name: Fail if build/ differs from committed state
         run: |
           if [ -n "$(git status --porcelain build/ 2>/dev/null)" ]; then
