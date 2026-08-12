@@ -8,7 +8,7 @@ Start with [Concepts](concepts.md) and [How RAHP works](how-rahp-works.md) to un
 
 ## Apply
 
-Use [Pressure-testing a specification](pressure-testing-a-spec.md), then [Interpreting results](interpreting-results.md) and [Governance boundaries](governance-boundaries.md).
+Use [Pressure-testing a specification](pressure-testing-a-spec.md), then [Interpreting results](interpreting-results.md) and [Governance boundaries](governance-boundaries.md). A complete worked review is available under `examples/dtg-credential-spec/`, with a reusable starter at `examples/pressure-test-template.yaml`.
 
 ## Explore the DTG instance
 

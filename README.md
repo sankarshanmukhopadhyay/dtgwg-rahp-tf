@@ -101,7 +101,7 @@ These counts are checked by `tools/validate.py` and cannot silently drift.
 
 ## Pressure-testing specifications
 
-RAHP is more than a risk register. A specification review should create a traceable chain from target/version → affected personas/scenarios → triggered risks → controls/guardrails/evidence → finding disposition → standards action. Start with [the pressure-testing workflow](docs/pressure-testing-a-spec.md), then use the [worked DTG Credential Specification example](examples/dtg-credential-spec/README.md).
+RAHP is more than a risk register. A specification review should create a traceable chain from target/version → affected personas/scenarios → triggered risks → controls/guardrails/evidence → finding disposition → standards action. Start with [the pressure-testing workflow](docs/pressure-testing-a-spec.md), then use the [worked DTG Credential Specification example](examples/dtg-credential-spec/README.md). The reusable starter is [`examples/pressure-test-template.yaml`](examples/pressure-test-template.yaml), and `python3 tools/validate_pressure_tests.py` checks review records against the canonical RAHP corpus.
 
 A finding does **not** imply that every mitigation belongs in the reviewed specification. RAHP explicitly routes findings to the correct control plane: core specification, companion specification, governance, implementation guidance, runtime control, operational policy, formal risk acceptance, or no action when already addressed/out of scope.
 

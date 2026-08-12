@@ -5,7 +5,9 @@
 - Reorganized the repository into the documented `method/`, `data/`, `tools/`, `context/`, `build/`, `docs/`, `examples/`, and `archive/` architecture.
 - Reframed the README around task-oriented adoption paths and added repository, lifecycle, artefact-relationship, and disposition diagrams.
 - Added first-class guidance for specification pressure testing, result interpretation, governance boundaries, and minimum viable RAHP adoption.
-- Added illustrative DTG Credential Specification and minimal-instance review records to make the review workflow concrete and reproducible.
+- Replaced the illustrative DTG Credential Specification placeholder with a substantive Working Draft 01 pressure test containing eight traceable findings and explicit re-test triggers.
+- Added `tools/validate_pressure_tests.py` and `examples/pressure-test-template.yaml` so worked reviews are reproducible, commit-pinned, disposition-controlled and referentially valid against the canonical RAHP corpus.
+- Retained the minimal-instance review record as the smallest adoption pattern.
 - Added a controlled finding-disposition vocabulary so review findings can be routed to the correct control plane.
 - Moved legacy spreadsheets/documents and historical generated outputs out of the primary navigation path while preserving provenance.
 - Moved GitHub workflow/templates to `.github/` and made CI fail when committed generated evidence is stale.

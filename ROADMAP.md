@@ -145,6 +145,7 @@ counts. Added:
 - [x] `standards_status` / `normative_language` fields, all `unassigned`
 - [x] Lifecycle and gaps as data
 - [x] CI, issue and PR templates, CONTRIBUTING, CHANGELOG, this roadmap
+- [x] Reproducible specification pressure-test records with a reusable template and canonical-reference validator
 - [ ] **Task force: triage the 87 unassigned controls and guardrails** ← the real work
 - [ ] **Task force: resolve the 31 asymmetries and 3 orphaned controls**
 - [ ] Ratify GP-001 to GP-003 as precedent

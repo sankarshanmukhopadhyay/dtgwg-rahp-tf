@@ -1,0 +1,41 @@
+# Copy this file into examples/<target>/pressure-test.yaml and replace all placeholders.
+review:
+  id: SR-XXX
+  status: in-progress
+  title: <target specification> pressure test
+  reviewed_on: YYYY-MM-DD
+  target:
+    repository: owner/repository
+    document: https://example.org/rendered-spec/
+    version: <human-readable version>
+    commit: <full commit SHA>
+    source_paths: []
+  reviewed_against:
+    repository: owner/rahp-repository
+    rahp_version: <tag or development version>
+    corpus_date: YYYY-MM-DD
+  scope:
+    included: []
+    excluded: []
+  method:
+    workflow: docs/pressure-testing-a-spec.md
+  summary:
+    finding_count: 1
+    open_count: 1
+  findings:
+    - id: F-001
+      title: <concise finding>
+      status: open
+      severity: High
+      primary_disposition: specification
+      risks: [RK-XXX]
+      controls: []
+      guardrails: []
+      assurance_tests: []
+      evidence:
+        - source: path/to/spec.md#section
+          observation: <what the reviewed text permits, omits or contradicts>
+      harm: <who can be harmed and how>
+      recommendation: <actionable change at the chosen control plane>
+      retest_when:
+        - <observable condition that should trigger re-review>

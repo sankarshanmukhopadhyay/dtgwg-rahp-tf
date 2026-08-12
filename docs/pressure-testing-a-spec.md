@@ -40,29 +40,45 @@ Use the disposition model in [Governance boundaries](governance-boundaries.md). 
 
 ## 7. Record the finding
 
-Use this minimum record shape:
+Use this minimum record shape. The reusable starter file is `examples/pressure-test-template.yaml`:
 
 ```yaml
 review:
   id: SR-001
+  status: complete
+  reviewed_on: YYYY-MM-DD
   target:
     repository: trustoverip/dtgwg-cred-spec
-    version: WD-01
-    commit: abc123
+    version: Working Draft 01
+    commit: <full-40-character-commit-sha>
   reviewed_against:
-    rahp_version: v0.3
+    rahp_version: v0.3-dev
   findings:
-    - finding: F-001
-      risks: [RK-CR01, RK-CR02]
-      disposition: specification
+    - id: F-001
+      title: Concise finding
       status: open
-    - finding: F-002
+      severity: High
+      primary_disposition: specification
       risks: [RK-SC02]
-      disposition: resolved-by-pr
-      reference: trustoverip/dtgwg-cred-spec#12
+      controls: [CT-18]
+      guardrails: [GR-01]
+      assurance_tests: [AT-01]
+      evidence:
+        - source: spec/body.md#relevant-section
+          observation: What the reviewed text permits, omits or contradicts.
+      harm: Who can be harmed and how.
+      recommendation: Action at the selected control plane.
+      retest_when:
+        - Observable condition that should trigger re-review.
 ```
 
-The example above is an **illustrative record shape** from the adoption proposal, not a new normative claim about the target specification.
+A completed review is expected to pin the target to a full commit SHA and preserve enough evidence to explain why each canonical RAHP risk was triggered. Validate worked records with:
+
+```bash
+python3 tools/validate_pressure_tests.py
+```
+
+The validator checks target pinning, required finding metadata, controlled dispositions, summary counts, and that every referenced risk, control, guardrail and assurance test resolves in the canonical corpus.
 
 ## 8. Re-run after change
 

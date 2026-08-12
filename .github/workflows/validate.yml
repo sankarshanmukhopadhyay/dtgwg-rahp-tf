@@ -16,6 +16,8 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Validate RAHP artefacts
         run: python3 tools/validate.py
+      - name: Validate pressure-test records
+        run: python3 tools/validate_pressure_tests.py
       - name: Build derived views
         run: python3 tools/build.py
       - name: Fail if build/ differs from committed state

@@ -14,6 +14,7 @@ Use this path when you want useful output before learning every artefact type.
 ```bash
 pip install -r requirements.txt
 python3 tools/validate.py
+python3 tools/validate_pressure_tests.py
 python3 tools/build.py
 ```
 
