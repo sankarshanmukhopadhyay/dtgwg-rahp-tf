@@ -106,7 +106,7 @@ RAHP is more than a risk register. A specification review should create a tracea
 
 A finding does **not** imply that every mitigation belongs in the reviewed specification. RAHP explicitly routes findings to the correct control plane: core specification, companion specification, governance, implementation guidance, runtime control, operational policy, formal risk acceptance, or no action when already addressed/out of scope.
 
-For deeper adversarial review, RAHP now also provides a [security-hardening workflow](docs/security-hardening-review.md) with coordinated worked reviews for [Trust Tasks](examples/security-hardening/trust-tasks/SECURITY_REVIEW.md), [DTG Core Credentials](examples/security-hardening/credential-spec/SECURITY_REVIEW.md), and their [cross-spec composition](examples/security-hardening/cross-spec/COMPOSITION_THREAT_MODEL.md). These records add exploitability, impact, detectability, propagation, attack preconditions, existing mitigations, residual gaps, control-plane routing and closure tests while retaining deep links to the canonical RAHP catalogue.
+For deeper adversarial review, RAHP provides a [security-hardening workflow](docs/security-hardening-review.md), a structured [external standards-alignment model](docs/standards-alignment.md), and coordinated worked reviews for [Trust Tasks](examples/security-hardening/trust-tasks/SECURITY_REVIEW.md), [DTG Core Credentials](examples/security-hardening/credential-spec/SECURITY_REVIEW.md), and their [cross-spec composition](examples/security-hardening/cross-spec/COMPOSITION_THREAT_MODEL.md). These records add exploitability, impact, detectability, propagation, attack preconditions, existing mitigations, residual gaps, control-plane routing and closure tests while retaining deep links to the canonical RAHP catalogue.
 
 ## Known method gaps
 
@@ -124,3 +124,16 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). In short: edit canonical sources, preser
 
 *Maintained by the Risk Assessment & Harms Prevention Task Force, DTGWG.*  
 *CC-BY 4.0 — reuse with attribution.*
+
+## Unified review modes
+
+The toolkit now exposes one review entry point:
+
+```bash
+python3 tools/review.py --help
+```
+
+A reviewer can scaffold and run a **RAHP pressure test**, a **security-hardening review**, or a **combined review** that preserves both analytical lenses and generates a cross-lens synthesis. See [`docs/review-modes.md`](docs/review-modes.md).
+
+`tools/review.py` is an orchestration tool, not a static vulnerability scanner: the findings must be produced from examination of the target specification or document, while the repository tooling handles canonical records, rendering, validation, reference resolution, and combined reporting.
+

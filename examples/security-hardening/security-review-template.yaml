@@ -1,9 +1,8 @@
-# Canonical security-hardening review template.
 review:
   id: SEC-XXX
   status: in-progress
   title: Example security-hardening review
-  reviewed_on: 'YYYY-MM-DD'
+  reviewed_on: YYYY-MM-DD
   target:
     repository: owner/repo
     version: version label
@@ -17,29 +16,49 @@ review:
     open_count: 1
     overall_assessment: Replace with a short assessment.
   findings:
-    - id: SEC-EX-001
-      title: Example finding
-      status: open
-      severity: High
-      exploitability: plausible
-      impact: high
-      detectability: medium
-      propagation: contained
-      primary_control_plane: SPEC
-      secondary_control_planes: [TEST]
-      attack_surface: [consumer]
-      preconditions: [Describe what must already be true.]
-      security_properties: [authorization]
-      evidence:
-        - source: SPEC.md#section
-          observation: Describe the normative behavior that makes the path reachable.
-      attack: Describe the exploit or failure sequence.
-      existing_mitigations: [Describe protections already present.]
-      residual_gap: Describe what remains after those mitigations.
-      recommendation: Describe the narrowest hardening action.
-      verification: [Describe an objective test that closes the finding.]
-      rahp:
-        risks: [RK-SC02]
-        controls: [CT-19]
-        guardrails: [GR-16]
-        assurance_tests: [AT-16]
+  - id: SEC-EX-001
+    title: Example finding
+    status: open
+    severity: High
+    exploitability: plausible
+    impact: high
+    detectability: medium
+    propagation: contained
+    primary_control_plane: SPEC
+    secondary_control_planes:
+    - TEST
+    attack_surface:
+    - consumer
+    preconditions:
+    - Describe what must already be true.
+    security_properties:
+    - authorization
+    evidence:
+    - source: SPEC.md#section
+      observation: Describe the normative behavior that makes the path reachable.
+    attack: Describe the exploit or failure sequence.
+    existing_mitigations:
+    - Describe protections already present.
+    residual_gap: Describe what remains after those mitigations.
+    recommendation: Describe the narrowest hardening action.
+    verification:
+    - Describe an objective test that closes the finding.
+    rahp:
+      risks:
+      - RK-SC02
+      controls:
+      - CT-19
+      guardrails:
+      - GR-16
+      assurance_tests:
+      - AT-16
+    external_alignment:
+    - ref: NIST-SP-800-53-R5
+      clause: AC-3 Access Enforcement
+      relationship: supports
+      rationale: Explain precisely how the external control supports the recommended hardening without implying
+        that NIST evaluated this protocol.
+    - ref: OWASP-API-2023
+      clause: API5:2023 — Broken Function Level Authorization
+      relationship: analogous
+      rationale: Use analogous when the external threat class is similar but was not written for this protocol.

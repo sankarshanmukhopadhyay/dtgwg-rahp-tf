@@ -18,6 +18,24 @@
 
 The credential draft already distinguishes cryptographic validity from issuer authorization, defines R-DID privacy requirements, pins VWC digest canonicalization, and separates credential validity from task completion. The remaining hardening work is concentrated in optional or governance-derived semantics: membership consent, lifecycle/status, exact witness binding, presentation replay, ZKP profiles, invitation redemption and verifier non-inference rules.
 
+## External standards coverage
+
+External mappings are evidence links, not claims that the cited organization reviewed or endorsed this RAHP finding. The relationship label distinguishes direct coverage from supporting, analogous, or contextual guidance.
+
+| External source | Findings mapped |
+|---|---|
+| [NIST — Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final) | 2 |
+| [NIST — A Zero Trust Architecture Model for Access Control in Cloud-Native Applications in Multi-Cloud Environments](https://csrc.nist.gov/pubs/sp/800/207/a/final) | 1 |
+| [NIST — Security and Privacy Controls for Information Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/53/r5/final) | 4 |
+| [NIST — Digital Identity Guidelines](https://csrc.nist.gov/pubs/sp/800/63/4/final) | 2 |
+| [NIST — Digital Identity Guidelines: Authentication and Authenticator Management](https://csrc.nist.gov/pubs/sp/800/63/b/4/final) | 1 |
+| [NIST — Digital Identity Guidelines: Federation and Assertions](https://csrc.nist.gov/pubs/sp/800/63/c/4/final) | 3 |
+| [OWASP — Agentic AI – Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/) | 1 |
+| [OWASP — OWASP API Security Top 10 – 2023](https://owasp.org/API-Security/editions/2023/en/0x11-t10/) | 2 |
+| [W3C — Bitstring Status List v1.0](https://www.w3.org/TR/vc-bitstring-status-list/) | 2 |
+| [W3C — Verifiable Credential Data Integrity 1.0](https://www.w3.org/TR/vc-data-integrity/) | 3 |
+| [W3C — Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) | 10 |
+
 ## Security controls already present
 
 - Every credential proof must be cryptographically verified before reliance.
@@ -65,6 +83,13 @@ The credential draft already distinguishes cryptographic validity from issuer au
 | RAHP controls | [CT-18 — Normative Credential Schema Publication](../../../build/site/catalogue.html#CT-18), [CT-19 — Conformance Test Suite](../../../build/site/catalogue.html#CT-19) |
 | RAHP guardrails | [GR-04 — Reciprocal VRC Requirement](../../../build/site/catalogue.html#GR-04), [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-04 — VMC issuance fails when only one-directional VRC exists](../../../build/site/catalogue.html#AT-04), [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
+
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [W3C — Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) | Data model and verification model | `supports` | VC processing depends on unambiguous issuer, subject, and credential semantics; a normative schema that cannot express one required direction undermines interoperable verification. |
+| [NIST — Security and Privacy Controls for Information Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/53/r5/final) | SA-11 Developer Testing and Evaluation | `supports` | Developer testing and evaluation controls support negative/conformance tests for security-relevant schema invariants. |
 
 **Preconditions**
 
@@ -118,6 +143,14 @@ Resolve the contradiction normatively and add conformance tests for grant-only, 
 | RAHP guardrails | [GR-12 — Agent Delegation Scope Constraint](../../../build/site/catalogue.html#GR-12), [GR-13 — Agent Audit Logging](../../../build/site/catalogue.html#GR-13) |
 | RAHP assurance tests | [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../../build/site/catalogue.html#AT-12), [AT-13 — Agent credential operations visible in operator audit log with all required fields](../../../build/site/catalogue.html#AT-13) |
 
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [NIST — Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final) | Authentication and authorization are discrete functions | `direct` | Zero trust explicitly separates identity authentication from authorization, directly supporting the rule that membership identity must not be treated as delegated authority. |
+| [NIST — A Zero Trust Architecture Model for Access Control in Cloud-Native Applications in Multi-Cloud Environments](https://csrc.nist.gov/pubs/sp/800/207/a/final) | Application/service identity policies | `direct` | Application/service identity must be combined with granular authorization policy before access is granted. |
+| [OWASP — Agentic AI – Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/) | — | `supports` | Agentic threat guidance reinforces explicit scope and permission constraints for autonomous actors. |
+
 **Preconditions**
 
 - An agent/device is the subject of a valid VMC.
@@ -169,6 +202,14 @@ Add an explicit rule that agent/device membership alone MUST NOT establish deleg
 | RAHP controls | [CT-23 — Mandatory Pre-Revocation Notice](../../../build/site/catalogue.html#CT-23), [CT-24 — Privacy-Preserving Revocation Disclosure](../../../build/site/catalogue.html#CT-24), [CT-25 — Credential Renewal Workflow](../../../build/site/catalogue.html#CT-25), [CT-26 — VTC-Scoped Revocation](../../../build/site/catalogue.html#CT-26), [CT-56 — VTC Governance Conformance Class](../../../build/site/catalogue.html#CT-56) |
 | RAHP guardrails | [GR-08 — Revocation Due Process](../../../build/site/catalogue.html#GR-08), [GR-09 — Privacy-Preserving Revocation Disclosure](../../../build/site/catalogue.html#GR-09), [GR-17 — Open Issues Risk Acceptance](../../../build/site/catalogue.html#GR-17) |
 | RAHP assurance tests | [AT-08 — Revocation notice delivered to member within SLA; appeals path accessible within 24 hours](../../../build/site/catalogue.html#AT-08), [AT-09 — Default revocation status disclosure does not expose member real-world identity](../../../build/site/catalogue.html#AT-09), [AT-17 — All four open issues have documented mitigations or risk acceptances signed by governing b…](../../../build/site/catalogue.html#AT-17) |
+
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [W3C — Bitstring Status List v1.0](https://www.w3.org/TR/vc-bitstring-status-list/) | Credential status, Privacy Considerations, 7.2 Validity Periods | `direct` | Bitstring Status List defines interoperable status purposes such as revocation and suspension, plus status validity, caching, privacy, and integrity considerations. |
+| [W3C — Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) | Credential Status and Verification | `direct` | VC Data Model defines credential status as an extensibility point and requires verifiers to apply the applicable status mechanism during verification. |
+| [NIST — Digital Identity Guidelines: Federation and Assertions](https://csrc.nist.gov/pubs/sp/800/63/c/4/final) | — | `supports` | Assertion lifecycle and relying-party processing reinforce explicit validity and status handling for security assertions. |
 
 **Preconditions**
 
@@ -222,6 +263,13 @@ Define or normatively reference a DTG status/lifecycle profile covering suspensi
 | RAHP guardrails | [GR-04 — Reciprocal VRC Requirement](../../../build/site/catalogue.html#GR-04), [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-04 — VMC issuance fails when only one-directional VRC exists](../../../build/site/catalogue.html#AT-04), [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
 
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [W3C — Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) | Trust Model | `supports` | The VC trust model warns that cryptographic verification does not create transitive trust or establish broader semantics beyond the issuer's claim. |
+| [NIST — Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final) | — | `supports` | Least-privilege/resource-specific authorization principles support avoiding inference of bilateral completeness from one authenticated assertion. |
+
 **Preconditions**
 
 - Holder possesses one valid directional VRC.
@@ -273,6 +321,13 @@ Define verifier semantics for unilateral VRC, complete edge and community-anchor
 | RAHP controls | [CT-15 — Pseudonymous Per-VTC M-DID Design](../../../build/site/catalogue.html#CT-15), [CT-50 — M-DID to R-DID Migration Trigger](../../../build/site/catalogue.html#CT-50) |
 | RAHP guardrails | [GR-18 — R-DID Migration Phase Gate](../../../build/site/catalogue.html#GR-18) |
 | RAHP assurance tests | [AT-18 — VTC trust registry records a migration trigger date for R-DID adoption; all VRCs issued af…](../../../build/site/catalogue.html#AT-18) |
+
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [W3C — Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) | Privacy Considerations | `direct` | VC privacy considerations address identifier-based correlation and data minimization across credential use. |
+| [W3C — Verifiable Credential Data Integrity 1.0](https://www.w3.org/TR/vc-data-integrity/) | 6.1 Unlinkability; 6.4 Fingerprinting Network Requests | `direct` | Data Integrity explicitly addresses unlinkability and fingerprinting/correlation risks. |
 
 **Preconditions**
 
@@ -326,6 +381,14 @@ Adopt a governance/profile migration trigger tied to phase, membership count or 
 | RAHP guardrails | [GR-06 — Privacy-Preserving Proofing Option](../../../build/site/catalogue.html#GR-06), [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-06 — At least one ZKP / selective disclosure path is available and functional in Phase 4 UX](../../../build/site/catalogue.html#AT-06), [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
 
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [W3C — Verifiable Credential Data Integrity 1.0](https://www.w3.org/TR/vc-data-integrity/) | 6.1 Unlinkability; 6.2 Selective Disclosure | `direct` | Data Integrity explicitly addresses selective disclosure and unlinkability, making it the closest normative baseline for interoperable privacy-preserving proof behavior. |
+| [W3C — Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) | Securing and presenting credentials | `supports` | VC Data Model permits derived/selectively disclosed presentations but requires ecosystem agreement on verification semantics. |
+| [NIST — Digital Identity Guidelines: Federation and Assertions](https://csrc.nist.gov/pubs/sp/800/63/c/4/final) | — | `supports` | Federation/assertion interoperability guidance reinforces agreeing on assurance and verifier processing requirements. |
+
 **Preconditions**
 
 - Holder and verifier both support privacy-preserving presentation but choose different proof systems or predicate semantics.
@@ -376,6 +439,14 @@ Define one or more named DTG ZKP profiles with proof format, freshness challenge
 | RAHP controls | [CT-19 — Conformance Test Suite](../../../build/site/catalogue.html#CT-19), [CT-27 — Audited ZKP Library Requirement](../../../build/site/catalogue.html#CT-27), [CT-28 — ZKP Conformance Testing](../../../build/site/catalogue.html#CT-28) |
 | RAHP guardrails | [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
+
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [NIST — Digital Identity Guidelines: Authentication and Authenticator Management](https://csrc.nist.gov/pubs/sp/800/63/b/4/final) | Replay-resistant authentication | `direct` | Replay resistance is a core authentication property; credential presentations used for authentication need equivalent verifier challenge/freshness protection. |
+| [NIST — Digital Identity Guidelines: Federation and Assertions](https://csrc.nist.gov/pubs/sp/800/63/c/4/final) | Assertion protection and relying-party processing | `direct` | Federation assertions rely on relying-party, audience, and lifecycle restrictions to prevent assertion replay/misuse. |
+| [W3C — Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) | — | `supports` | The VC presentation model provides the container but leaves challenge/domain binding to securing mechanisms and application profiles. |
 
 **Preconditions**
 
@@ -428,6 +499,13 @@ Require replay-resistant presentation profiles for interactive verification, wit
 | RAHP guardrails | [GR-07 — Uniqueness Enforcement Mechanism](../../../build/site/catalogue.html#GR-07), [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-07 — Uniqueness enforcement mechanism is documented; if none exists, risk acceptance is signed …](../../../build/site/catalogue.html#AT-07), [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
 
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [OWASP — OWASP API Security Top 10 – 2023](https://owasp.org/API-Security/editions/2023/en/0xa6-unrestricted-access-to-sensitive-business-flows/) | API6:2023 — Unrestricted Access to Sensitive Business Flows | `analogous` | API6 addresses abuse of a valid sensitive business flow through repeated automated use; invitation reuse is an analogous flow-abuse problem. |
+| [NIST — Security and Privacy Controls for Information Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/53/r5/final) | AC-3 Access Enforcement; SC-23 Session Authenticity | `supports` | Access enforcement and replay/session controls support one-time acceptance semantics for invitation-like authorization artifacts. |
+
 **Preconditions**
 
 - Attacker obtains a valid VIC before or after first use.
@@ -479,6 +557,13 @@ Make single-use redemption normative for invitation profiles that create members
 | RAHP controls | [CT-18 — Normative Credential Schema Publication](../../../build/site/catalogue.html#CT-18), [CT-19 — Conformance Test Suite](../../../build/site/catalogue.html#CT-19) |
 | RAHP guardrails | [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
+
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [W3C — Verifiable Credential Data Integrity 1.0](https://www.w3.org/TR/vc-data-integrity/) | Authenticity and integrity of secured data | `direct` | Data Integrity's purpose is cryptographic binding of proof to exact secured data; an optional digest weakens equivalent binding between a witness assertion and the specific VRC. |
+| [NIST — Security and Privacy Controls for Information Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/53/r5/final) | SI-7 Software, Firmware, and Information Integrity | `supports` | Information-integrity controls support cryptographic binding and verification of referenced evidence. |
 
 **Preconditions**
 
@@ -533,6 +618,13 @@ Require digest for any VWC that attests a specific VRC. Reserve digest omission 
 | RAHP guardrails | [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
 
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [NIST — Digital Identity Guidelines](https://csrc.nist.gov/pubs/sp/800/63/4/final) | Digital identity assurance model | `supports` | Digital identity assurance requires defined evidence/verification processes; a free-form method label should not be treated as an assurance level without an associated validated process. |
+| [W3C — Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) | Trust Model and verification semantics | `supports` | VC verification establishes provenance/integrity of a claim, not the factual truth or assurance strength of an unconstrained claim value. |
+
 **Preconditions**
 
 - VWC contains witnessContext.method such as biometric-liveness or in-person-proximity.
@@ -584,6 +676,13 @@ Define governed witness-method profiles with stable identifiers, issuer eligibil
 | RAHP controls | [CT-18 — Normative Credential Schema Publication](../../../build/site/catalogue.html#CT-18), [CT-56 — VTC Governance Conformance Class](../../../build/site/catalogue.html#CT-56) |
 | RAHP guardrails | [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
+
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [W3C — Bitstring Status List v1.0](https://www.w3.org/TR/vc-bitstring-status-list/) | Revocation, suspension, validity periods | `analogous` | Credential status mechanisms provide the closest standard lifecycle pattern for preventing reliance on credentials whose standing has changed. |
+| [W3C — Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) | Trust Model | `supports` | The verifier remains responsible for deciding which issuers and claims are trusted for a purpose; endorsement meaning must not become transitively trusted across governance contexts. |
 
 **Preconditions**
 
@@ -637,6 +736,13 @@ Define governance/profile rules for endorsement scope, issuer accreditation, val
 | RAHP guardrails | [GR-07 — Uniqueness Enforcement Mechanism](../../../build/site/catalogue.html#GR-07), [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-07 — Uniqueness enforcement mechanism is documented; if none exists, risk acceptance is signed …](../../../build/site/catalogue.html#AT-07), [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
 
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [W3C — Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) | Trust Model | `direct` | VC type/proof validity does not establish that a semantic claim is true or trusted for a relying party's purpose; authoritative personhood must come from the relevant trust/governance context. |
+| [NIST — Digital Identity Guidelines](https://csrc.nist.gov/pubs/sp/800/63/4/final) | — | `supports` | Assurance levels are established by defined proofing/authentication processes, not by an unaudited type label. |
+
 **Preconditions**
 
 - VMC includes optional PersonhoodCredential type hint.
@@ -688,6 +794,14 @@ Add a normative verifier rule: the PersonhoodCredential type string MUST NOT sat
 | RAHP controls | [CT-27 — Audited ZKP Library Requirement](../../../build/site/catalogue.html#CT-27), [CT-29 — Algorithm Agility and Migration Pathway](../../../build/site/catalogue.html#CT-29) |
 | RAHP guardrails | [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
+
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [OWASP — OWASP API Security Top 10 – 2023](https://owasp.org/API-Security/editions/2023/en/0xa9-improper-inventory-management/) | API9:2023 — Improper Inventory Management | `analogous` | API9 highlights risks from deployed-version and inventory drift; dual VC generations create an analogous compatibility/downgrade surface. |
+| [W3C — Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) | — | `direct` | VC Data Model 2.0 provides the current Recommendation baseline; supporting older generations requires an explicit compatibility/security policy. |
+| [NIST — Security and Privacy Controls for Information Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/53/r5/final) | CM family; SA-22 Unsupported System Components | `supports` | Configuration management and obsolete-component controls support controlled version baselines and retirement of insecure compatibility paths. |
 
 **Preconditions**
 

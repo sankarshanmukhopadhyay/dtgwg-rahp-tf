@@ -18,6 +18,23 @@
 
 The framework has a comparatively strong security architecture: audience binding, transport/in-band identity cross-checks, explicit ceremony non-authority, content-pinned definitions, receipt truncation defenses, parser/schema DoS recognition, and a thoughtful delegated-consent design. The main hardening gap is that several high-value protections remain profile-, governance-, or SHOULD-level at exactly the points where destructive or authority-bearing execution becomes irreversible.
 
+## External standards coverage
+
+External mappings are evidence links, not claims that the cited organization reviewed or endorsed this RAHP finding. The relationship label distinguishes direct coverage from supporting, analogous, or contextual guidance.
+
+| External source | Findings mapped |
+|---|---|
+| [NIST — Cybersecurity Framework (CSF) 2.0](https://www.nist.gov/cyberframework) | 3 |
+| [NIST — Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final) | 4 |
+| [NIST — A Zero Trust Architecture Model for Access Control in Cloud-Native Applications in Multi-Cloud Environments](https://csrc.nist.gov/pubs/sp/800/207/a/final) | 3 |
+| [NIST — Security and Privacy Controls for Information Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/53/r5/final) | 8 |
+| [NIST — Digital Identity Guidelines](https://csrc.nist.gov/pubs/sp/800/63/4/final) | 1 |
+| [NIST — Digital Identity Guidelines: Authentication and Authenticator Management](https://csrc.nist.gov/pubs/sp/800/63/b/4/final) | 3 |
+| [OWASP — Agentic AI – Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/) | 2 |
+| [OWASP — OWASP API Security Top 10 – 2023](https://owasp.org/API-Security/editions/2023/en/0x11-t10/) | 8 |
+| [W3C — Verifiable Credential Data Integrity 1.0](https://www.w3.org/TR/vc-data-integrity/) | 2 |
+| [W3C — Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) | 1 |
+
 ## Security controls already present
 
 - Proof-carrying non-bearer documents require an in-band recipient, preventing cross-recipient replay.
@@ -65,6 +82,14 @@ The framework has a comparatively strong security architecture: audience binding
 | RAHP controls | [CT-19 — Conformance Test Suite](../../../build/site/catalogue.html#CT-19), [CT-30 — Cryptographic Delegation Scope Constraints](../../../build/site/catalogue.html#CT-30), [CT-48 — Threat Model Maintenance](../../../build/site/catalogue.html#CT-48) |
 | RAHP guardrails | [GR-12 — Agent Delegation Scope Constraint](../../../build/site/catalogue.html#GR-12), [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../../build/site/catalogue.html#AT-12), [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
+
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [NIST — Digital Identity Guidelines: Authentication and Authenticator Management](https://csrc.nist.gov/pubs/sp/800/63/b/4/final) | Replay resistance and verifier requirements | `supports` | Replay-resistant authentication and verifier processing reinforce the need to prevent reuse of previously accepted security-sensitive requests. |
+| [OWASP — OWASP API Security Top 10 – 2023](https://owasp.org/API-Security/editions/2023/en/0xa6-unrestricted-access-to-sensitive-business-flows/) | API6:2023 — Unrestricted Access to Sensitive Business Flows | `analogous` | API6 treats unrestricted automation of sensitive business flows as a security risk; duplicate execution of a destructive Trust Task is the protocol-level analogue. |
+| [NIST — Security and Privacy Controls for Information Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/53/r5/final) | AC-3 Access Enforcement; SC-23 Session Authenticity | `supports` | Access enforcement and session/integrity controls support one-time or idempotent enforcement for state-changing operations. |
 
 **Preconditions**
 
@@ -119,6 +144,14 @@ Require duplicate suppression for mutating, destructive and actsAsSubject reques
 | RAHP guardrails | [GR-12 — Agent Delegation Scope Constraint](../../../build/site/catalogue.html#GR-12), [GR-17 — Open Issues Risk Acceptance](../../../build/site/catalogue.html#GR-17) |
 | RAHP assurance tests | [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../../build/site/catalogue.html#AT-12), [AT-17 — All four open issues have documented mitigations or risk acceptances signed by governing b…](../../../build/site/catalogue.html#AT-17) |
 
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [NIST — Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final) | Continuous evaluation and per-resource authorization | `supports` | Zero trust requires access decisions to be evaluated for the current request rather than inheriting trust from a previously valid state. |
+| [NIST — Digital Identity Guidelines: Authentication and Authenticator Management](https://csrc.nist.gov/pubs/sp/800/63/b/4/final) | Authentication and session lifecycle | `supports` | Authentication/session lifetime concepts support bounded freshness for high-impact actions. |
+| [NIST — Security and Privacy Controls for Information Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/53/r5/final) | AC-3 Access Enforcement; SC-23 Session Authenticity | `supports` | Access enforcement and time/replay-related controls support rejecting stale authorization-bearing requests. |
+
 **Preconditions**
 
 - A valid request has no expiresAt, or issuedAt is absent/old.
@@ -172,6 +205,14 @@ Require a bounded freshness rule for destructive and actsAsSubject requests, wit
 | RAHP guardrails | [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
 
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [NIST — Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final) | Zero-trust tenets | `supports` | Zero trust treats authentication and authorization as explicit functions at each protected resource boundary, supporting re-establishment of assurance when transport context changes. |
+| [W3C — Verifiable Credential Data Integrity 1.0](https://www.w3.org/TR/vc-data-integrity/) | Cryptographic proofs and verification | `analogous` | Data Integrity makes authenticity and integrity portable with the secured document; this is analogous to requiring in-band proof when transport assurances no longer travel with the bytes. |
+| [NIST — Security and Privacy Controls for Information Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/53/r5/final) | SC-8 Transmission Confidentiality and Integrity; SC-23 Session Authenticity | `supports` | Transmission confidentiality/integrity and session authenticity controls support explicit channel-to-message assurance boundaries. |
+
 **Preconditions**
 
 - Producer and consumer use a binding said to provide end-to-end integrity/authentication.
@@ -223,6 +264,14 @@ Define named transport security profiles and require bindings to declare whether
 | RAHP controls | [CT-14 — DID Document Integrity Verification](../../../build/site/catalogue.html#CT-14), [CT-19 — Conformance Test Suite](../../../build/site/catalogue.html#CT-19) |
 | RAHP guardrails | [GR-10 — Multi-Party Registry Write Authorisation](../../../build/site/catalogue.html#GR-10), [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-10 — Registry write with single-party authorisation rejected](../../../build/site/catalogue.html#AT-10), [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
+
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [NIST — Digital Identity Guidelines](https://csrc.nist.gov/pubs/sp/800/63/4/final) | Digital identity assurance model | `supports` | Digital identity assurance depends on defined identity proofing, authentication, federation, and identifier handling rather than assuming representations are equivalent. |
+| [NIST — A Zero Trust Architecture Model for Access Control in Cloud-Native Applications in Multi-Cloud Environments](https://csrc.nist.gov/pubs/sp/800/207/a/final) | Application and service identity policies | `supports` | Application/service authorization policies are identity-aware and therefore require stable, policy-relevant identity bindings. |
+| [OWASP — OWASP API Security Top 10 – 2023](https://owasp.org/API-Security/editions/2023/en/0x11-t10/) | API2:2023 and API5:2023 | `analogous` | Broken authentication and authorization categories illustrate the risk when identity representations and authorization state are not consistently bound. |
 
 **Preconditions**
 
@@ -276,6 +325,13 @@ Publish an identity-resolution profile for deployments that accept multiple VID 
 | RAHP guardrails | [GR-12 — Agent Delegation Scope Constraint](../../../build/site/catalogue.html#GR-12), [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../../build/site/catalogue.html#AT-12), [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
 
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [OWASP — OWASP API Security Top 10 – 2023](https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/) | API8:2023 — Security Misconfiguration | `analogous` | Security misconfiguration is the closest API analogue to ecosystem participants silently ignoring a security-relevant extension they do not understand. |
+| [NIST — Security and Privacy Controls for Information Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/53/r5/final) | CM family; AC-3 Access Enforcement | `supports` | Configuration management and access-enforcement controls support fail-safe handling of security-relevant policy inputs. |
+
 **Preconditions**
 
 - A producer uses ext.* to carry a security-relevant constraint or mechanism.
@@ -327,6 +383,14 @@ Define a companion critical-extension convention or require security-relevant pr
 | RAHP controls | [CT-18 — Normative Credential Schema Publication](../../../build/site/catalogue.html#CT-18), [CT-47 — Formal Open Issues Mitigation Plan](../../../build/site/catalogue.html#CT-47), [CT-48 — Threat Model Maintenance](../../../build/site/catalogue.html#CT-48) |
 | RAHP guardrails | [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16), [GR-17 — Open Issues Risk Acceptance](../../../build/site/catalogue.html#GR-17) |
 | RAHP assurance tests | [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16), [AT-17 — All four open issues have documented mitigations or risk acceptances signed by governing b…](../../../build/site/catalogue.html#AT-17) |
+
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [OWASP — OWASP API Security Top 10 – 2023](https://owasp.org/API-Security/editions/2023/en/0xa9-improper-inventory-management/) | API9:2023 — Improper Inventory Management | `analogous` | Improper inventory management explicitly calls out deployed API/version drift; mutable draft semantics create a similar inability to know what contract governed a historical exchange. |
+| [NIST — Security and Privacy Controls for Information Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/53/r5/final) | CM-8 System Component Inventory; SA-10 Developer Configuration Management | `supports` | Configuration management, system-component inventory, and developer configuration management support immutable or traceable baselines. |
+| [NIST — Cybersecurity Framework (CSF) 2.0](https://www.nist.gov/cyberframework) | — | `supports` | Identify and Govern outcomes support maintaining authoritative inventories, change governance, and traceability of cybersecurity-relevant assets. |
 
 **Preconditions**
 
@@ -380,6 +444,14 @@ For documents emitted against draft specifications, support an immutable revisio
 | RAHP guardrails | [GR-10 — Multi-Party Registry Write Authorisation](../../../build/site/catalogue.html#GR-10), [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-10 — Registry write with single-party authorisation rejected](../../../build/site/catalogue.html#AT-10), [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
 
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [OWASP — OWASP API Security Top 10 – 2023](https://owasp.org/API-Security/editions/2023/en/0xaa-unsafe-consumption-of-apis/) | API10:2023 — Unsafe Consumption of APIs | `analogous` | API10 warns against implicitly trusting integrated external services; a registry/schema resolver is exactly such an upstream security dependency. |
+| [NIST — Security and Privacy Controls for Information Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/53/r5/final) | SA-9 External System Services; SI-7 Software, Firmware, and Information Integrity | `supports` | External-system-services, information-integrity, and contingency controls support authenticating, pinning, monitoring, and surviving failure of registry dependencies. |
+| [NIST — Cybersecurity Framework (CSF) 2.0](https://www.nist.gov/cyberframework) | — | `supports` | Protect and resilience outcomes support maintaining critical operation when external dependencies fail. |
+
 **Preconditions**
 
 - Consumer resolves framework/schema/ceremony artifacts at runtime.
@@ -431,6 +503,14 @@ Publish an operational hardening profile for authenticated artifact pinning, imm
 | RAHP controls | [CT-19 — Conformance Test Suite](../../../build/site/catalogue.html#CT-19), [CT-27 — Audited ZKP Library Requirement](../../../build/site/catalogue.html#CT-27), [CT-29 — Algorithm Agility and Migration Pathway](../../../build/site/catalogue.html#CT-29) |
 | RAHP guardrails | [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
+
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [NIST — A Zero Trust Architecture Model for Access Control in Cloud-Native Applications in Multi-Cloud Environments](https://csrc.nist.gov/pubs/sp/800/207/a/final) | Application/service identity and access-control policy | `supports` | Granular application-level authorization requires identity and policy attributes that are actually enforceable at runtime; task-name discovery alone is insufficient. |
+| [OWASP — OWASP API Security Top 10 – 2023](https://owasp.org/API-Security/editions/2023/en/0x11-t10/) | API8:2023; API9:2023 | `analogous` | Security misconfiguration and API inventory risks support explicit negotiation/documentation of the security properties an endpoint actually supports. |
+| [NIST — Security and Privacy Controls for Information Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/53/r5/final) | SA and CM control families | `supports` | System-and-services acquisition and configuration controls support explicit, testable security capabilities at integration boundaries. |
 
 **Preconditions**
 
@@ -484,6 +564,14 @@ Define a security-capability profile for discovery with explicit anti-downgrade 
 | RAHP guardrails | [GR-12 — Agent Delegation Scope Constraint](../../../build/site/catalogue.html#GR-12), [GR-19 — Supported Decision-Making and Legal Delegation Pathway](../../../build/site/catalogue.html#GR-19) |
 | RAHP assurance tests | [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../../build/site/catalogue.html#AT-12), [AT-19 — For any VTC that has admitted or intends to admit participants under supported or substitu…](../../../build/site/catalogue.html#AT-19) |
 
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [NIST — Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final) | Zero-trust tenets | `direct` | Zero trust explicitly separates authentication from authorization and requires policy-based access decisions rather than implicit trust. |
+| [NIST — A Zero Trust Architecture Model for Access Control in Cloud-Native Applications in Multi-Cloud Environments](https://csrc.nist.gov/pubs/sp/800/207/a/final) | Application-level access-control policy | `direct` | Application/service identities require granular authorization policies at the application layer, directly supporting fail-closed delegated execution. |
+| [OWASP — Agentic AI – Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/) | — | `supports` | Agentic threat guidance treats excessive or insufficiently constrained agency as a core risk and recommends explicit policy/permission boundaries. |
+
 **Preconditions**
 
 - A deployment exposes delegated execution.
@@ -535,6 +623,13 @@ Define a governance/security deployment profile for delegated execution. High-im
 | RAHP controls | [CT-31 — Short-Lived Agent Credentials](../../../build/site/catalogue.html#CT-31), [CT-32 — Agent Liveness Check on Operator VMC](../../../build/site/catalogue.html#CT-32) |
 | RAHP guardrails | [GR-12 — Agent Delegation Scope Constraint](../../../build/site/catalogue.html#GR-12) |
 | RAHP assurance tests | [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../../build/site/catalogue.html#AT-12) |
+
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [NIST — Digital Identity Guidelines: Authentication and Authenticator Management](https://csrc.nist.gov/pubs/sp/800/63/b/4/final) | Authenticator lifecycle management | `direct` | Authenticator-management guidance covers lifecycle events such as revocation and replacement; approval evidence should not remain effective after the authenticating device/credential is invalidated. |
+| [NIST — Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final) | — | `supports` | Continuous evaluation supports re-checking device/subject state before privileged execution rather than relying only on an earlier approval. |
 
 **Preconditions**
 
@@ -588,6 +683,13 @@ Bind approvals to a revocable approver credential/device identifier and revalida
 | RAHP guardrails | [GR-14 — Non-Human Actor Detection](../../../build/site/catalogue.html#GR-14), [GR-15 — Complaint and Appeals Rate-Limiting](../../../build/site/catalogue.html#GR-15) |
 | RAHP assurance tests | [AT-14 — Rate-limiting triggers on high-frequency non-human credential presentation; legitimate age…](../../../build/site/catalogue.html#AT-14), [AT-15 — Complaint rate-limiting active; legitimate single-member complaint receives response withi…](../../../build/site/catalogue.html#AT-15) |
 
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [OWASP — Agentic AI – Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/) | — | `supports` | Agentic threat modelling recognizes risks from autonomous repetition, manipulation of agent/human decision loops, and excessive agency. |
+| [OWASP — OWASP API Security Top 10 – 2023](https://owasp.org/API-Security/editions/2023/en/0xa6-unrestricted-access-to-sensitive-business-flows/) | API6:2023 — Unrestricted Access to Sensitive Business Flows | `analogous` | API6 addresses abuse of legitimate sensitive business flows through excessive automated use; prompt flooding is the human-approval analogue. |
+
 **Preconditions**
 
 - Attacker can submit many distinct payloads that each require consent.
@@ -637,6 +739,14 @@ Implement per-origin/task-family prompt budgets, exponential backoff and abuse t
 | RAHP controls | [CT-15 — Pseudonymous Per-VTC M-DID Design](../../../build/site/catalogue.html#CT-15), [CT-16 — Minimum-Necessary IDVC Attribute Set](../../../build/site/catalogue.html#CT-16), [CT-27 — Audited ZKP Library Requirement](../../../build/site/catalogue.html#CT-27) |
 | RAHP guardrails | [GR-06 — Privacy-Preserving Proofing Option](../../../build/site/catalogue.html#GR-06), [GR-09 — Privacy-Preserving Revocation Disclosure](../../../build/site/catalogue.html#GR-09) |
 | RAHP assurance tests | [AT-06 — At least one ZKP / selective disclosure path is available and functional in Phase 4 UX](../../../build/site/catalogue.html#AT-06), [AT-09 — Default revocation status disclosure does not expose member real-world identity](../../../build/site/catalogue.html#AT-09) |
+
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [W3C — Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) | Privacy Considerations | `supports` | The VC privacy model emphasizes minimizing correlation across presentations and ecosystem interactions; durable bearer evidence can become a correlation surface. |
+| [W3C — Verifiable Credential Data Integrity 1.0](https://www.w3.org/TR/vc-data-integrity/) | 6.1 Unlinkability; 6.4 Fingerprinting Network Requests | `supports` | Unlinkability and fingerprinting considerations directly reinforce minimizing stable correlation handles in portable evidence. |
+| [NIST — Cybersecurity Framework (CSF) 2.0](https://www.nist.gov/cyberframework) | — | `contextual` | Protect outcomes provide broader confidentiality/privacy-risk framing for durable evidence artifacts. |
 
 **Preconditions**
 
@@ -689,6 +799,13 @@ Define a receipt privacy profile covering blinded enactments, selective disclosu
 | RAHP controls | [CT-19 — Conformance Test Suite](../../../build/site/catalogue.html#CT-19), [CT-48 — Threat Model Maintenance](../../../build/site/catalogue.html#CT-48) |
 | RAHP guardrails | [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16), [GR-17 — Open Issues Risk Acceptance](../../../build/site/catalogue.html#GR-17) |
 | RAHP assurance tests | [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16), [AT-17 — All four open issues have documented mitigations or risk acceptances signed by governing b…](../../../build/site/catalogue.html#AT-17) |
+
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [OWASP — OWASP API Security Top 10 – 2023](https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/) | API4:2023 — Unrestricted Resource Consumption | `direct` | API4 explicitly covers CPU, memory, bandwidth, and other resource exhaustion from API requests; unconstrained parsing/schema validation is a direct instance of this class. |
+| [NIST — Security and Privacy Controls for Information Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/53/r5/final) | SC-5 Denial-of-Service Protection; SI-10 Information Input Validation | `supports` | Denial-of-service protection and input-validation controls support explicit bounds for parser and validator resource use. |
 
 **Preconditions**
 

@@ -64,7 +64,7 @@ def main() -> int:
             errors.append(f"{rel}: missing review mapping")
             continue
 
-        for field in ("id", "status", "title", "reviewed_on", "target", "reviewed_against", "findings"):
+        for field in ("id", "status", "title", "reviewed_on", "target", "reviewed_against"):
             if not review.get(field):
                 errors.append(f"{rel}: review.{field} is required")
 
@@ -83,9 +83,16 @@ def main() -> int:
         if not against.get("rahp_version"):
             errors.append(f"{rel}: review.reviewed_against.rahp_version is required")
 
-        findings = review.get("findings") or []
-        if not isinstance(findings, list) or not findings:
-            errors.append(f"{rel}: review.findings must be a non-empty list")
+        if "findings" not in review:
+            errors.append(f"{rel}: review.findings is required")
+            findings = []
+        else:
+            findings = review.get("findings")
+        if not isinstance(findings, list):
+            errors.append(f"{rel}: review.findings must be a list")
+            continue
+        if not findings and review.get("status") != "in-progress":
+            errors.append(f"{rel}: completed/non-draft review.findings must be non-empty")
             continue
 
         local_ids: set[str] = set()

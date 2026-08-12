@@ -16,3 +16,10 @@ The canonical records are the sibling `findings.yaml` files. Generated Markdown 
 python3 tools/render_security_reviews.py
 python3 tools/validate_security_reviews.py
 ```
+
+
+## Standards-backed crosswalk
+
+Each security finding now carries structured external alignment to the relevant NIST, W3C, or OWASP source where the relationship is defensible. The mapping distinguishes `direct`, `supports`, `analogous`, and `contextual` relationships so a reader can tell whether an external source actually covers the same requirement or merely supplies a useful analogue.
+
+The publication metadata and authoritative URLs live in [`data/external-standards.yaml`](../../data/external-standards.yaml); review records cite those stable IDs and the renderer supplies the hyperlinks.

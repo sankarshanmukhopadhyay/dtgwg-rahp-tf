@@ -19,6 +19,24 @@
 
 Composition is the highest-risk surface because each component can verify successfully while the end-to-end action is still unauthorized, stale, incorrectly scoped, privacy-leaking or based on the wrong evidence boundary. The most important program-level hardening work is a shared delegation profile, deterministic task/ceremony provenance binding, status/as-of registry semantics, issuance idempotency, and verifier APIs that preserve separate validity/authorization/completion outcomes.
 
+## External standards coverage
+
+External mappings are evidence links, not claims that the cited organization reviewed or endorsed this RAHP finding. The relationship label distinguishes direct coverage from supporting, analogous, or contextual guidance.
+
+| External source | Findings mapped |
+|---|---|
+| [NIST — Cybersecurity Framework (CSF) 2.0](https://www.nist.gov/cyberframework) | 1 |
+| [NIST — Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final) | 5 |
+| [NIST — A Zero Trust Architecture Model for Access Control in Cloud-Native Applications in Multi-Cloud Environments](https://csrc.nist.gov/pubs/sp/800/207/a/final) | 2 |
+| [NIST — Security and Privacy Controls for Information Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/53/r5/final) | 4 |
+| [NIST — Digital Identity Guidelines](https://csrc.nist.gov/pubs/sp/800/63/4/final) | 1 |
+| [NIST — Digital Identity Guidelines: Federation and Assertions](https://csrc.nist.gov/pubs/sp/800/63/c/4/final) | 1 |
+| [OWASP — Agentic AI – Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/) | 3 |
+| [OWASP — OWASP API Security Top 10 – 2023](https://owasp.org/API-Security/editions/2023/en/0x11-t10/) | 2 |
+| [W3C — Bitstring Status List v1.0](https://www.w3.org/TR/vc-bitstring-status-list/) | 3 |
+| [W3C — Verifiable Credential Data Integrity 1.0](https://www.w3.org/TR/vc-data-integrity/) | 2 |
+| [W3C — Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) | 6 |
+
 ## Security controls already present
 
 - Both specifications explicitly distinguish authentication/cryptographic validity from authorization.
@@ -63,6 +81,14 @@ Composition is the highest-risk surface because each component can verify succes
 | RAHP controls | [CT-30 — Cryptographic Delegation Scope Constraints](../../../build/site/catalogue.html#CT-30), [CT-31 — Short-Lived Agent Credentials](../../../build/site/catalogue.html#CT-31), [CT-32 — Agent Liveness Check on Operator VMC](../../../build/site/catalogue.html#CT-32), [CT-52 — Agent Delegation Credential Requirement](../../../build/site/catalogue.html#CT-52) |
 | RAHP guardrails | [GR-12 — Agent Delegation Scope Constraint](../../../build/site/catalogue.html#GR-12), [GR-13 — Agent Audit Logging](../../../build/site/catalogue.html#GR-13) |
 | RAHP assurance tests | [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../../build/site/catalogue.html#AT-12), [AT-13 — Agent credential operations visible in operator audit log with all required fields](../../../build/site/catalogue.html#AT-13) |
+
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [NIST — Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final) | — | `direct` | Authentication and authorization are explicitly discrete functions; combining an authenticated task with a membership credential still does not establish task-specific authorization. |
+| [NIST — A Zero Trust Architecture Model for Access Control in Cloud-Native Applications in Multi-Cloud Environments](https://csrc.nist.gov/pubs/sp/800/207/a/final) | — | `direct` | Application/service identity must be evaluated against granular access policy before action is permitted. |
+| [OWASP — Agentic AI – Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/) | — | `supports` | Agentic threat guidance reinforces bounded delegation and prevention of excessive agency. |
 
 **Preconditions**
 
@@ -116,6 +142,13 @@ Define a DTG delegation/capability profile consumable by Trust Tasks and credent
 | RAHP guardrails | [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16), [GR-17 — Open Issues Risk Acceptance](../../../build/site/catalogue.html#GR-17) |
 | RAHP assurance tests | [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16), [AT-17 — All four open issues have documented mitigations or risk acceptances signed by governing b…](../../../build/site/catalogue.html#AT-17) |
 
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [W3C — Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) | — | `supports` | Credential verification is about the credential and its securing/status mechanisms; external workflow completion is a distinct evidentiary fact. |
+| [NIST — Security and Privacy Controls for Information Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/53/r5/final) | AU family; SI-7 | `supports` | Audit/evidence integrity controls support distinguishing a completed process record from an individual artifact within that process. |
+
 **Preconditions**
 
 - A credential carries taskContext.
@@ -167,6 +200,13 @@ Define a credential provenance binding that can reference the innermost task out
 | RAHP controls | [CT-15 — Pseudonymous Per-VTC M-DID Design](../../../build/site/catalogue.html#CT-15), [CT-16 — Minimum-Necessary IDVC Attribute Set](../../../build/site/catalogue.html#CT-16), [CT-27 — Audited ZKP Library Requirement](../../../build/site/catalogue.html#CT-27) |
 | RAHP guardrails | [GR-06 — Privacy-Preserving Proofing Option](../../../build/site/catalogue.html#GR-06), [GR-09 — Privacy-Preserving Revocation Disclosure](../../../build/site/catalogue.html#GR-09) |
 | RAHP assurance tests | [AT-06 — At least one ZKP / selective disclosure path is available and functional in Phase 4 UX](../../../build/site/catalogue.html#AT-06), [AT-09 — Default revocation status disclosure does not expose member real-world identity](../../../build/site/catalogue.html#AT-09) |
+
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [W3C — Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) | — | `direct` | VC privacy considerations emphasize correlation risks across presentations and ecosystem interactions. |
+| [W3C — Verifiable Credential Data Integrity 1.0](https://www.w3.org/TR/vc-data-integrity/) | 6.1 Unlinkability; 6.4 Fingerprinting Network Requests | `direct` | Unlinkability and network-fingerprinting sections directly support avoiding stable cross-context identifiers in privacy-preserving presentations. |
 
 **Preconditions**
 
@@ -220,6 +260,13 @@ Add a privacy profile for provenance references: selective disclosure by default
 | RAHP guardrails | [GR-07 — Uniqueness Enforcement Mechanism](../../../build/site/catalogue.html#GR-07), [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-07 — Uniqueness enforcement mechanism is documented; if none exists, risk acceptance is signed …](../../../build/site/catalogue.html#AT-07), [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
 
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [OWASP — OWASP API Security Top 10 – 2023](https://owasp.org/API-Security/editions/2023/en/0xa6-unrestricted-access-to-sensitive-business-flows/) | API6:2023 — Unrestricted Access to Sensitive Business Flows | `analogous` | Repeated invocation of a sensitive issuance flow is an instance of automated business-flow abuse. |
+| [NIST — Security and Privacy Controls for Information Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/53/r5/final) | AC-3; SC-23 | `supports` | Access enforcement and session/replay controls support end-to-end idempotency for authority-changing operations. |
+
 **Preconditions**
 
 - A credential-issuance Trust Task is retried or replayed.
@@ -271,6 +318,14 @@ For credential-issuance tasks, require operation-level idempotency keyed to the 
 | RAHP controls | [CT-25 — Credential Renewal Workflow](../../../build/site/catalogue.html#CT-25), [CT-31 — Short-Lived Agent Credentials](../../../build/site/catalogue.html#CT-31), [CT-32 — Agent Liveness Check on Operator VMC](../../../build/site/catalogue.html#CT-32), [CT-56 — VTC Governance Conformance Class](../../../build/site/catalogue.html#CT-56) |
 | RAHP guardrails | [GR-12 — Agent Delegation Scope Constraint](../../../build/site/catalogue.html#GR-12), [GR-17 — Open Issues Risk Acceptance](../../../build/site/catalogue.html#GR-17) |
 | RAHP assurance tests | [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../../build/site/catalogue.html#AT-12), [AT-17 — All four open issues have documented mitigations or risk acceptances signed by governing b…](../../../build/site/catalogue.html#AT-17) |
+
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [NIST — Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final) | — | `direct` | Zero trust calls for current-state policy evaluation rather than implicit trust inherited from a prior decision. |
+| [W3C — Bitstring Status List v1.0](https://www.w3.org/TR/vc-bitstring-status-list/) | — | `direct` | Credential status and validity-period mechanisms directly address later changes in credential standing. |
+| [NIST — Digital Identity Guidelines: Federation and Assertions](https://csrc.nist.gov/pubs/sp/800/63/c/4/final) | — | `supports` | Assertion lifecycle processing reinforces checking current validity at the relying party. |
 
 **Preconditions**
 
@@ -324,6 +379,14 @@ Define a registry query/status profile with current and as-of semantics; issuanc
 | RAHP guardrails | [GR-12 — Agent Delegation Scope Constraint](../../../build/site/catalogue.html#GR-12) |
 | RAHP assurance tests | [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../../build/site/catalogue.html#AT-12) |
 
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [OWASP — Agentic AI – Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/) | — | `supports` | Agentic security guidance treats excessive/stale agent authority as a major threat and emphasizes bounded permissions and revocation. |
+| [NIST — Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final) | — | `direct` | Continuous, policy-based authorization supports propagating changed subject/service state into subsequent access decisions. |
+| [W3C — Bitstring Status List v1.0](https://www.w3.org/TR/vc-bitstring-status-list/) | — | `analogous` | Credential revocation/suspension provides the closest standardized pattern for propagating changed standing to durable credentials. |
+
 **Preconditions**
 
 - Agent has acted under a valid operator mandate.
@@ -376,6 +439,13 @@ Define dependency/status semantics for delegated agents, including invalidation 
 | RAHP guardrails | [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
 
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [W3C — Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) | — | `direct` | A verifier evaluates a credential's proof/status and trust context; completion of an external ceremony is a separate assertion. |
+| [NIST — Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final) | — | `supports` | Resource authorization must be based on the policy-relevant evidence for that resource, not on unrelated successful process participation. |
+
 **Preconditions**
 
 - Application receives both a valid credential and some ceremony evidence.
@@ -426,6 +496,13 @@ Define verifier outcome types that separately report credential validity, issuer
 | RAHP controls | [CT-15 — Pseudonymous Per-VTC M-DID Design](../../../build/site/catalogue.html#CT-15), [CT-27 — Audited ZKP Library Requirement](../../../build/site/catalogue.html#CT-27), [CT-28 — ZKP Conformance Testing](../../../build/site/catalogue.html#CT-28) |
 | RAHP guardrails | [GR-06 — Privacy-Preserving Proofing Option](../../../build/site/catalogue.html#GR-06), [GR-09 — Privacy-Preserving Revocation Disclosure](../../../build/site/catalogue.html#GR-09) |
 | RAHP assurance tests | [AT-06 — At least one ZKP / selective disclosure path is available and functional in Phase 4 UX](../../../build/site/catalogue.html#AT-06), [AT-09 — Default revocation status disclosure does not expose member real-world identity](../../../build/site/catalogue.html#AT-09) |
+
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [W3C — Verifiable Credential Data Integrity 1.0](https://www.w3.org/TR/vc-data-integrity/) | 6.1 Unlinkability; 6.2 Selective Disclosure | `direct` | Selective disclosure and unlinkability are explicit privacy properties; composing credential proofs with external workflow evidence must preserve them. |
+| [W3C — Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) | — | `supports` | VC privacy guidance supports data minimization and avoiding unnecessary correlation across presentations. |
 
 **Preconditions**
 
@@ -478,6 +555,14 @@ Define a composition proof profile that can prove required outcome predicates an
 | RAHP guardrails | [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16), [GR-17 — Open Issues Risk Acceptance](../../../build/site/catalogue.html#GR-17) |
 | RAHP assurance tests | [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16), [AT-17 — All four open issues have documented mitigations or risk acceptances signed by governing b…](../../../build/site/catalogue.html#AT-17) |
 
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [W3C — Bitstring Status List v1.0](https://www.w3.org/TR/vc-bitstring-status-list/) | — | `direct` | Status-list processing specifies validity, caching, integrity, and privacy properties that a shared registry contract should preserve. |
+| [OWASP — OWASP API Security Top 10 – 2023](https://owasp.org/API-Security/editions/2023/en/0xaa-unsafe-consumption-of-apis/) | API10:2023 — Unsafe Consumption of APIs | `analogous` | Unsafe consumption of external APIs maps closely to blindly depending on trust-registry responses without a shared validation/failure contract. |
+| [NIST — Security and Privacy Controls for Information Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/53/r5/final) | SA-9; SI-7 | `supports` | External-service and integrity controls support authenticated registry dependencies and explicit failure handling. |
+
 **Preconditions**
 
 - Consumer/verifier needs issuer role, community qualification, credential status, or delegation standing.
@@ -528,6 +613,13 @@ Adopt a DTG trust-registry query profile for role/authorization/status evidence,
 | RAHP controls | [CT-18 — Normative Credential Schema Publication](../../../build/site/catalogue.html#CT-18), [CT-19 — Conformance Test Suite](../../../build/site/catalogue.html#CT-19), [CT-47 — Formal Open Issues Mitigation Plan](../../../build/site/catalogue.html#CT-47) |
 | RAHP guardrails | [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16), [GR-17 — Open Issues Risk Acceptance](../../../build/site/catalogue.html#GR-17) |
 | RAHP assurance tests | [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16), [AT-17 — All four open issues have documented mitigations or risk acceptances signed by governing b…](../../../build/site/catalogue.html#AT-17) |
+
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [NIST — Security and Privacy Controls for Information Systems and Organizations](https://csrc.nist.gov/pubs/sp/800/53/r5/final) | AU-2; AU-6; AU-10 | `supports` | Audit-generation, audit-review, and non-repudiation controls support preserving refusal/failure evidence across a multi-step authority-changing workflow. |
+| [NIST — Cybersecurity Framework (CSF) 2.0](https://www.nist.gov/cyberframework) | — | `supports` | Detect/Respond outcomes support retaining security-significant failures and using them in later decision and incident handling. |
 
 **Preconditions**
 
@@ -580,6 +672,14 @@ Define issuance preconditions per credential type and a machine-verifiable Trust
 | RAHP guardrails | [GR-19 — Supported Decision-Making and Legal Delegation Pathway](../../../build/site/catalogue.html#GR-19) |
 | RAHP assurance tests | [AT-19 — For any VTC that has admitted or intends to admit participants under supported or substitu…](../../../build/site/catalogue.html#AT-19) |
 
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [NIST — Digital Identity Guidelines](https://csrc.nist.gov/pubs/sp/800/63/4/final) | — | `supports` | Digital identity systems distinguish subjects, authenticators, and relying-party decisions but do not imply exclusive legal capacity; representation needs explicit policy/evidence. |
+| [NIST — Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final) | — | `supports` | Access decisions should evaluate the actual authorized subject/delegate and policy rather than infer authority from identity alone. |
+| [W3C — Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) | — | `contextual` | The VC data model can carry representation/delegation claims but leaves their legal/governance meaning to ecosystem profiles. |
+
 **Preconditions**
 
 - Participant requires a supporter, guardian, attorney, deputy or co-decision-maker.
@@ -630,6 +730,14 @@ Define a shared representation profile with distinct principal, representative/s
 | RAHP controls | [CT-56 — VTC Governance Conformance Class](../../../build/site/catalogue.html#CT-56), [CT-63 — Organisational Credential Type Definition](../../../build/site/catalogue.html#CT-63), [CT-64 — Organisational Governance Conformance Mapping](../../../build/site/catalogue.html#CT-64), [CT-30 — Cryptographic Delegation Scope Constraints](../../../build/site/catalogue.html#CT-30) |
 | RAHP guardrails | [GR-21 — Organisational Identity Governance Mapping](../../../build/site/catalogue.html#GR-21), [GR-12 — Agent Delegation Scope Constraint](../../../build/site/catalogue.html#GR-12) |
 | RAHP assurance tests | [AT-21 — For any regulated organisation admitted as a VTC member: (1) legal identifier and regulato…](../../../build/site/catalogue.html#AT-21), [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../../build/site/catalogue.html#AT-12) |
+
+**External standards alignment**
+
+| External source | Clause / control | Relationship | Rationale |
+|---|---|---|---|
+| [NIST — A Zero Trust Architecture Model for Access Control in Cloud-Native Applications in Multi-Cloud Environments](https://csrc.nist.gov/pubs/sp/800/207/a/final) | — | `direct` | Application/service identities need granular authorization policies and cannot be treated as sufficient evidence of accountable control relationships. |
+| [OWASP — Agentic AI – Threats and Mitigations](https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/) | — | `supports` | Agentic security guidance highlights accountability, excessive agency, and the need to bound autonomous actors to accountable principals. |
+| [W3C — Verifiable Credentials Data Model v2.0](https://www.w3.org/TR/vc-data-model-2.0/) | — | `supports` | The VC trust model makes relying-party trust decisions separate from syntactic credential validity or issuer identity. |
 
 **Preconditions**
 

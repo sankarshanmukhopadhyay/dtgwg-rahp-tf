@@ -1,0 +1,13 @@
+review:
+  id: COMB-TT-001
+  status: complete
+  title: Trust Tasks Framework combined RAHP + security review
+  reviewed_on: '2026-08-12'
+  target:
+    repository: trustoverip/dtgwg-trust-tasks-tf
+    version: Editor's Draft 0.3 (2026-08-07)
+    commit: fbe196a8a17ba3f99d0657a64be5ac58621023a1
+  rahp_review: ../../trust-tasks-spec/pressure-test.yaml
+  security_review: ../../security-hardening/trust-tasks/findings.yaml
+  summary: Cross-lens synthesis of the risks-and-harms pressure test and adversarial security-hardening review.
+  notes: []

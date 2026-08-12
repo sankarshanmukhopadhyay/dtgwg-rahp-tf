@@ -1,0 +1,13 @@
+review:
+  id: COMB-CR-001
+  status: complete
+  title: DTG Core Credential Specification combined RAHP + security review
+  reviewed_on: '2026-08-12'
+  target:
+    repository: trustoverip/dtgwg-cred-spec
+    version: Working Draft 01
+    commit: d19f7c9cac364fab8e50cf434513ef53fef80e37
+  rahp_review: ../../dtg-credential-spec/pressure-test.yaml
+  security_review: ../../security-hardening/credential-spec/findings.yaml
+  summary: Cross-lens synthesis of the risks-and-harms pressure test and adversarial security-hardening review.
+  notes: []

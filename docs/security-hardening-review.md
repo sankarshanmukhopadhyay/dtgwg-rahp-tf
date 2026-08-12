@@ -16,7 +16,8 @@ Every review is pinned to a full upstream commit. Each finding records:
 - severity plus exploitability, impact, detectability and propagation;
 - a primary control plane (`SPEC`, `PROFILE`, `GOV`, `IMPL`, `OPS`, or `TEST`);
 - a recommended hardening action and verification condition; and
-- links back to canonical RAHP risks, controls, guardrails and assurance tests where applicable.
+- links back to canonical RAHP risks, controls, guardrails and assurance tests where applicable; and
+- structured external standards alignment where an authoritative or widely used security source materially reinforces the finding.
 
 ## Severity dimensions
 
@@ -57,3 +58,21 @@ A finding gets one primary control plane. Secondary work may span several layers
 ## Canonical and rendered records
 
 `findings.yaml` is canonical. `tools/render_security_reviews.py` renders the human-readable review beside it. `tools/validate_security_reviews.py` validates structure, controlled vocabularies, commit pinning, RAHP references and generated Markdown freshness.
+
+
+## External standards alignment
+
+Security findings may be cross-referenced to authoritative standards and widely used security guidance. The canonical source registry is [`data/external-standards.yaml`](../data/external-standards.yaml). The initial corpus deliberately stays small and high-confidence: NIST CSF 2.0, NIST SP 800-53 Rev. 5, the current SP 800-63 Revision 4 family, NIST SP 800-207/207A, W3C Verifiable Credentials Data Model 2.0, W3C Verifiable Credential Data Integrity 1.0, W3C Bitstring Status List 1.0, OWASP API Security Top 10 2023, and OWASP Agentic AI threat guidance.
+
+An external mapping is **not** an assertion that the cited organization reviewed, endorsed, or intended its material to govern DTG. Every mapping therefore declares one relationship:
+
+| Relationship | Meaning |
+|---|---|
+| `direct` | The external source explicitly addresses substantially the same requirement or mechanism. |
+| `supports` | The source provides a control, principle, or assurance objective supporting the proposed hardening. |
+| `analogous` | The source describes a closely analogous attack/control class but was written for a different technical context. |
+| `contextual` | The source provides relevant background but is not independent evidence for the finding. |
+
+A mapping must include a short rationale. Prefer a clause, control identifier, or named section where one can be cited defensibly. Do not force a cross-reference merely to increase standards coverage, and do not convert informative OWASP guidance into a purported normative requirement.
+
+The rendered security reviews expose these mappings as hyperlinks so specification authors can move directly from a RAHP finding to the relevant external source.

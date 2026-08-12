@@ -19,3 +19,7 @@ The generated site is a drill-down evidence surface; the guided documentation is
 ## Security hardening
 
 For adversarial protocol review beyond the general risks-and-harms workflow, use [Security and hardening review workflow](security-hardening-review.md). The coordinated DTG example set covers [Trust Tasks](../examples/security-hardening/trust-tasks/SECURITY_REVIEW.md), [DTG Core Credentials](../examples/security-hardening/credential-spec/SECURITY_REVIEW.md), and [cross-spec composition](../examples/security-hardening/cross-spec/COMPOSITION_THREAT_MODEL.md).
+## Review modes
+
+Use [Review modes](review-modes.md) for the unified `tools/review.py` entry point. A checkout can scaffold a risks-and-harms RAHP review, an adversarial security-hardening review, or both together. Combined mode retains the two canonical records and generates a cross-lens synthesis rather than collapsing the methodologies into one finding type. Worked combined reports are available for the [DTG Credential Specification](../examples/combined/dtg-credential-spec/COMBINED_REVIEW.md) and [Trust Tasks](../examples/combined/trust-tasks-spec/COMBINED_REVIEW.md).
+

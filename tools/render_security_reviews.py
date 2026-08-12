@@ -29,6 +29,15 @@ def ref_index():
     return out
 IDX=ref_index()
 
+def external_index():
+    out={}
+    for r in load_yaml(ROOT/'data'/'external-standards.yaml').get('records') or []:
+        rid=str(r.get('id') or '')
+        if rid:
+            out[rid]=r
+    return out
+EXT=external_index()
+
 def cell(v:Any)->str:
     if v is None:return '—'
     if isinstance(v,list): v=', '.join(str(x) for x in v)
@@ -48,6 +57,22 @@ def refs(values):
 def bullets(values):
     return [f'- {para(v)}' for v in (values or [])]
 
+def external_alignment_rows(values):
+    rows=[]
+    for a in values or []:
+        ref=str(a.get('ref') or '')
+        std=EXT.get(ref,{})
+        title=cell(std.get('title') or ref)
+        org=cell(std.get('organization') or '—')
+        url=a.get('url') or std.get('url')
+        label=f'{org} — {title}'
+        source=f'[{label}]({url})' if url else label
+        clause=cell(a.get('clause'))
+        relationship=cell(a.get('relationship'))
+        rationale=cell(a.get('rationale'))
+        rows.append(f'| {source} | {clause} | `{relationship}` | {rationale} |')
+    return rows
+
 def destination(path:pathlib.Path)->pathlib.Path:
     return path.with_name('COMPOSITION_THREAT_MODEL.md' if path.parent.name=='cross-spec' else 'SECURITY_REVIEW.md')
 
@@ -60,6 +85,22 @@ def render(review):
     if target.get('secondary_commit'): lines.append(f"| Secondary target commit | `{cell(target.get('secondary_commit'))}` |")
     lines += [f"| Source paths | {', '.join(f'`{cell(x)}`' for x in target.get('source_paths') or []) or '—'} |",'',
               '## Overall assessment','',para(summary.get('overall_assessment')),'']
+    standards={}
+    for f in findings:
+        for a in f.get('external_alignment') or []:
+            ref=str(a.get('ref') or '')
+            if ref: standards[ref]=standards.get(ref,0)+1
+    if standards:
+        lines += ['## External standards coverage','',
+                  'External mappings are evidence links, not claims that the cited organization reviewed or endorsed this RAHP finding. The relationship label distinguishes direct coverage from supporting, analogous, or contextual guidance.','',
+                  '| External source | Findings mapped |','|---|---|']
+        for ref,count in sorted(standards.items()):
+            std=EXT.get(ref,{})
+            label=f"{cell(std.get('organization') or '—')} — {cell(std.get('title') or ref)}"
+            url=std.get('url')
+            source=f'[{label}]({url})' if url else label
+            lines.append(f'| {source} | {count} |')
+        lines += ['']
     positives=review.get('positive_controls') or []
     if positives:
         lines += ['## Security controls already present',''] + bullets(positives) + ['']
@@ -71,6 +112,10 @@ def render(review):
         rahp=f.get('rahp') or {}
         lines += [f"### {cell(f.get('id'))} — {cell(f.get('title'))}",'', '| Field | Value |','|---|---|',
                   f"| Status | {cell(f.get('status'))} |",f"| Severity | {cell(f.get('severity'))} |",f"| Exploitability | {cell(f.get('exploitability'))} |",f"| Impact | {cell(f.get('impact'))} |",f"| Detectability | {cell(f.get('detectability'))} |",f"| Propagation | {cell(f.get('propagation'))} |",f"| Primary control plane | `{cell(f.get('primary_control_plane'))}` |",f"| Secondary planes | {', '.join(f'`{cell(x)}`' for x in f.get('secondary_control_planes') or []) or '—'} |",f"| Attack surface | {cell(f.get('attack_surface'))} |",f"| Security properties | {cell(f.get('security_properties'))} |",f"| RAHP risks | {refs(rahp.get('risks'))} |",f"| RAHP controls | {refs(rahp.get('controls'))} |",f"| RAHP guardrails | {refs(rahp.get('guardrails'))} |",f"| RAHP assurance tests | {refs(rahp.get('assurance_tests'))} |",'']
+        if f.get('external_alignment'):
+            lines += ['**External standards alignment**','',
+                      '| External source | Clause / control | Relationship | Rationale |',
+                      '|---|---|---|---|'] + external_alignment_rows(f.get('external_alignment')) + ['']
         lines += ['**Preconditions**',''] + bullets(f.get('preconditions')) + ['']
         if f.get('evidence'):
             lines += ['**Evidence**','', '| Source | Observation |','|---|---|']

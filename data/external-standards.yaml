@@ -1,0 +1,111 @@
+records:
+- id: NIST-CSF-2.0
+  organization: NIST
+  title: Cybersecurity Framework (CSF) 2.0
+  version: '2.0'
+  status: Final
+  published: '2024-02-26'
+  url: https://www.nist.gov/cyberframework
+  scope: Outcome-based cybersecurity risk management across Govern, Identify, Protect,
+    Detect, Respond, and Recover.
+- id: NIST-SP-800-53-R5
+  organization: NIST
+  title: Security and Privacy Controls for Information Systems and Organizations
+  version: SP 800-53 Rev. 5
+  status: Final
+  published: 2020-09
+  url: https://csrc.nist.gov/pubs/sp/800/53/r5/final
+  scope: Granular security and privacy control catalogue covering access control,
+    audit, identification/authentication, integrity, resilience, and system protection.
+- id: NIST-SP-800-63-4
+  organization: NIST
+  title: Digital Identity Guidelines
+  version: SP 800-63-4
+  status: Final
+  published: 2025-07
+  url: https://csrc.nist.gov/pubs/sp/800/63/4/final
+  scope: Digital identity assurance covering proofing, authentication, federation,
+    assertions, privacy, and lifecycle requirements.
+- id: NIST-SP-800-63B-4
+  organization: NIST
+  title: 'Digital Identity Guidelines: Authentication and Authenticator Management'
+  version: SP 800-63B-4
+  status: Final
+  published: 2025-07
+  url: https://csrc.nist.gov/pubs/sp/800/63/b/4/final
+  scope: Authentication assurance, authenticator lifecycle, replay resistance, session
+    management, and verifier requirements.
+- id: NIST-SP-800-63C-4
+  organization: NIST
+  title: 'Digital Identity Guidelines: Federation and Assertions'
+  version: SP 800-63C-4
+  status: Final
+  published: 2025-07
+  url: https://csrc.nist.gov/pubs/sp/800/63/c/4/final
+  scope: Federation and assertion security, relying-party processing, audience restrictions,
+    trust agreements, and assertion lifecycle.
+- id: NIST-SP-800-207
+  organization: NIST
+  title: Zero Trust Architecture
+  version: SP 800-207
+  status: Final
+  published: 2020-08
+  url: https://csrc.nist.gov/pubs/sp/800/207/final
+  scope: Zero-trust principles including discrete authentication and authorization,
+    least privilege, resource-focused policy, and continuous evaluation.
+- id: NIST-SP-800-207A
+  organization: NIST
+  title: A Zero Trust Architecture Model for Access Control in Cloud-Native Applications
+    in Multi-Cloud Environments
+  version: SP 800-207A
+  status: Final
+  published: 2023-09
+  url: https://csrc.nist.gov/pubs/sp/800/207/a/final
+  scope: Granular application/service identity and authorization policy enforcement
+    for distributed services.
+- id: W3C-VC-DM-2.0
+  organization: W3C
+  title: Verifiable Credentials Data Model v2.0
+  version: '2.0'
+  status: Recommendation
+  published: '2025-05-15'
+  url: https://www.w3.org/TR/vc-data-model-2.0/
+  scope: Data model, ecosystem roles, credential status, verification, trust model,
+    privacy, and security considerations for Verifiable Credentials.
+- id: W3C-VC-DI-1.0
+  organization: W3C
+  title: Verifiable Credential Data Integrity 1.0
+  version: '1.0'
+  status: Recommendation
+  published: '2025-05-15'
+  url: https://www.w3.org/TR/vc-data-integrity/
+  scope: Cryptographic proof processing, authenticity/integrity, proof sets/chains,
+    selective disclosure, unlinkability, and privacy considerations.
+- id: W3C-BSL-1.0
+  organization: W3C
+  title: Bitstring Status List v1.0
+  version: '1.0'
+  status: Recommendation
+  published: '2025-05-15'
+  url: https://www.w3.org/TR/vc-bitstring-status-list/
+  scope: Privacy-preserving credential status publication, including revocation, suspension,
+    caching, correlation, status integrity, and validity periods.
+- id: OWASP-API-2023
+  organization: OWASP
+  title: OWASP API Security Top 10 – 2023
+  version: '2023'
+  status: Published
+  published: '2023'
+  url: https://owasp.org/API-Security/editions/2023/en/0x11-t10/
+  scope: Common API attack classes including broken authorization, resource exhaustion,
+    sensitive-flow abuse, misconfiguration, inventory/version drift, and unsafe dependency
+    consumption.
+- id: OWASP-AGENTIC-2025
+  organization: OWASP
+  title: Agentic AI – Threats and Mitigations
+  version: '2025'
+  status: Published
+  published: '2025-02-17'
+  url: https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/
+  scope: Threat-model-based guidance for autonomous/agentic systems, including excessive
+    agency, delegated action, tool use, trust boundaries, and mitigation patterns.

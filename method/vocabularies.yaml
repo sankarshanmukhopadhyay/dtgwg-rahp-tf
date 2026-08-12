@@ -1,115 +1,176 @@
-# RAHP controlled vocabularies.
-#
-# These are part of the METHOD, not the DTG instance. Another working group
-# adopting RAHP keeps this file and replaces everything under data/.
-#
-# Changing a vocabulary is a breaking change: run tools/validate.py afterwards
-# and record the change in CHANGELOG.md.
-
 severity:
-  description: >-
-    Worst credible consequence if the risk is realised. Critical is not a higher
-    number on the same scale — it marks a risk whose non-zero incidence is
-    unacceptable regardless of likelihood, and which therefore must be addressed
-    by a guardrail rather than scored and tolerated.
+  description: Worst credible consequence if the risk is realised. Critical is not
+    a higher number on the same scale — it marks a risk whose non-zero incidence is
+    unacceptable regardless of likelihood, and which therefore must be addressed by
+    a guardrail rather than scored and tolerated.
   values:
-    - {value: Critical, score: null, absolute: true,
-       definition: "Non-zero incidence is unacceptable. Legal, criminal or safeguarding
-                    consequence. MUST be gated by a guardrail; may not be risk-accepted."}
-    - {value: High,   score: 3, definition: "Serious, difficult-to-reverse harm to people or to trust graph integrity."}
-    - {value: Medium, score: 2, definition: "Material harm, recoverable with governance effort."}
-    - {value: Low,    score: 1, definition: "Limited or readily reversible harm."}
-
+  - value: Critical
+    score: null
+    absolute: true
+    definition: Non-zero incidence is unacceptable. Legal, criminal or safeguarding
+      consequence. MUST be gated by a guardrail; may not be risk-accepted.
+  - value: High
+    score: 3
+    definition: Serious, difficult-to-reverse harm to people or to trust graph integrity.
+  - value: Medium
+    score: 2
+    definition: Material harm, recoverable with governance effort.
+  - value: Low
+    score: 1
+    definition: Limited or readily reversible harm.
 likelihood:
-  description: Probability of occurrence over the assessed lifecycle phase, absent controls.
+  description: Probability of occurrence over the assessed lifecycle phase, absent
+    controls.
   values:
-    - {value: High,   score: 3, definition: "Expected to occur in normal operation."}
-    - {value: Medium, score: 2, definition: "Plausible; has occurred in analogous systems."}
-    - {value: Low,    score: 1, definition: "Requires unusual conditions or capability."}
-
+  - value: High
+    score: 3
+    definition: Expected to occur in normal operation.
+  - value: Medium
+    score: 2
+    definition: Plausible; has occurred in analogous systems.
+  - value: Low
+    score: 1
+    definition: Requires unusual conditions or capability.
 risk_score:
   formula: severity.score * likelihood.score
   range: 1-9
-  note: Risks with severity Critical have no numeric score by design. Do not coerce them to 9.
-
+  note: Risks with severity Critical have no numeric score by design. Do not coerce
+    them to 9.
 standards_priority:
   values:
-    - {value: must_address,   display: "Must address",   definition: "Requires a normative provision or an explicit, signed risk acceptance before the affected phase opens."}
-    - {value: should_address, display: "Should address", definition: "Requires a recommendation or documented rationale for omission."}
-    - {value: monitor,        display: "Monitor",        definition: "Tracked via metrics; no immediate specification action."}
-    - {value: unassigned,     display: "Unassigned",     definition: "Not yet triaged. Validator reports these; it does not fail on them."}
-
-# Applies to controls (CT-xx) and guardrails (GR-xx). This field is the machine-readable
-# form of the normative pathway that currently exists only in the Analysis & Conclusions
-# sheet. Populating it is a task force decision, not an editorial one — hence the
-# deliberate 'unassigned' default on every record after the v0.3 import.
+  - value: must_address
+    display: Must address
+    definition: Requires a normative provision or an explicit, signed risk acceptance
+      before the affected phase opens.
+  - value: should_address
+    display: Should address
+    definition: Requires a recommendation or documented rationale for omission.
+  - value: monitor
+    display: Monitor
+    definition: Tracked via metrics; no immediate specification action.
+  - value: unassigned
+    display: Unassigned
+    definition: Not yet triaged. Validator reports these; it does not fail on them.
 standards_status:
   values:
-    - {value: normative_candidate,   definition: "Proposed for normative text in the target specification."}
-    - {value: recommended_practice,  definition: "Proposed as a SHOULD or as non-normative recommended practice."}
-    - {value: informative_guidance,  definition: "Explanatory or implementation guidance only."}
-    - {value: open_question,         definition: "Requires a working group decision before status can be assigned."}
-    - {value: deferred,              definition: "Deliberately out of scope for the current specification version."}
-    - {value: unassigned,            definition: "Not yet triaged."}
-
+  - value: normative_candidate
+    definition: Proposed for normative text in the target specification.
+  - value: recommended_practice
+    definition: Proposed as a SHOULD or as non-normative recommended practice.
+  - value: informative_guidance
+    definition: Explanatory or implementation guidance only.
+  - value: open_question
+    definition: Requires a working group decision before status can be assigned.
+  - value: deferred
+    definition: Deliberately out of scope for the current specification version.
+  - value: unassigned
+    definition: Not yet triaged.
 normative_language:
-  description: RFC 2119 / RFC 8174 keyword proposed for this item, where a status has been assigned.
-  values: [MUST, MUST NOT, SHOULD, SHOULD NOT, MAY, null]
-
+  description: RFC 2119 / RFC 8174 keyword proposed for this item, where a status
+    has been assigned.
+  values:
+  - MUST
+  - MUST NOT
+  - SHOULD
+  - SHOULD NOT
+  - MAY
+  - null
 control_type:
-  values: [Technical, Governance, Procedural, UX, Legal]
-
+  values:
+  - Technical
+  - Governance
+  - Procedural
+  - UX
+  - Legal
 persona_type:
   values:
-    - {value: legitimate_user, definition: "A participant the system is intended to serve."}
-    - {value: machine_agent,   definition: "A non-human actor operating under delegated authority — benign or adversarial."}
-    - {value: bad_actor,       definition: "An adversary whose capability must be calibrated to what is realistic, not maximal."}
-    - {value: edge_case,       definition: "An extreme user whose participation pathway is materially harder than the mainstream case. Extreme users define requirements; middle cases do not."}
-
+  - value: legitimate_user
+    definition: A participant the system is intended to serve.
+  - value: machine_agent
+    definition: A non-human actor operating under delegated authority — benign or
+      adversarial.
+  - value: bad_actor
+    definition: An adversary whose capability must be calibrated to what is realistic,
+      not maximal.
+  - value: edge_case
+    definition: An extreme user whose participation pathway is materially harder than
+      the mainstream case. Extreme users define requirements; middle cases do not.
 risk_acceptance_decision:
   values:
-    - {value: accepted,            definition: "Residual risk accepted as it stands."}
-    - {value: accepted_with_conditions, definition: "Accepted subject to named conditions with a review date."}
-    - {value: rejected,            definition: "Not accepted; mitigation required before the phase gate opens."}
-    - {value: pending,             definition: "Recorded as requiring a decision; no authority has yet ruled. Not an acceptance."}
-
+  - value: accepted
+    definition: Residual risk accepted as it stands.
+  - value: accepted_with_conditions
+    definition: Accepted subject to named conditions with a review date.
+  - value: rejected
+    definition: Not accepted; mitigation required before the phase gate opens.
+  - value: pending
+    definition: Recorded as requiring a decision; no authority has yet ruled. Not
+      an acceptance.
 governance_precedent_status:
-  values: [proposed, active, superseded, reversed]
-
-
-finding_disposition:
-  description: Primary control plane or resolution state for a specification-review finding.
   values:
-    - specification
-    - companion-specification
-    - governance
-    - implementation-guidance
-    - runtime-control
-    - operational-policy
-    - out-of-scope
-    - risk-accepted
-    - already-addressed
-    - resolved-by-pr
-
+  - proposed
+  - active
+  - superseded
+  - reversed
+finding_disposition:
+  description: Primary control plane or resolution state for a specification-review
+    finding.
+  values:
+  - specification
+  - companion-specification
+  - governance
+  - implementation-guidance
+  - runtime-control
+  - operational-policy
+  - out-of-scope
+  - risk-accepted
+  - already-addressed
+  - resolved-by-pr
 security_control_plane:
   description: Primary destination for a security-hardening finding.
   values:
-    - SPEC
-    - PROFILE
-    - GOV
-    - IMPL
-    - OPS
-    - TEST
-
+  - SPEC
+  - PROFILE
+  - GOV
+  - IMPL
+  - OPS
+  - TEST
 security_exploitability:
-  values: [easy, plausible, difficult]
-
+  values:
+  - easy
+  - plausible
+  - difficult
 security_impact:
-  values: [severe, high, moderate, low]
-
+  values:
+  - severe
+  - high
+  - moderate
+  - low
 security_detectability:
   description: How readily successful exploitation is likely to be detected.
-  values: [low, medium, high]
-
+  values:
+  - low
+  - medium
+  - high
 security_propagation:
-  values: [contained, cross-party, community, systemic]
+  values:
+  - contained
+  - cross-party
+  - community
+  - systemic
+external_alignment_relationship:
+  description: Strength of the relationship between a RAHP security finding and an
+    external standard or guidance source.
+  values:
+  - value: direct
+    description: The external source explicitly addresses substantially the same security
+      requirement or mechanism.
+  - value: supports
+    description: The external source supplies a control, principle, or assurance objective
+      that supports the recommended hardening.
+  - value: analogous
+    description: The external threat/control is a close analogue but was not written
+      for the DTG/Trust Tasks context.
+  - value: contextual
+    description: The source provides useful background or framing but does not independently
+      support the finding.
