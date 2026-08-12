@@ -24,3 +24,13 @@ For the complete process, see [ADOPTION.md](ADOPTION.md) and [docs/pressure-test
 
 
 Worked pressure tests: [`examples/dtg-credential-spec/`](examples/dtg-credential-spec/README.md) and [`examples/trust-tasks-spec/`](examples/trust-tasks-spec/README.md).
+
+
+## Security-hardening reviews
+
+The coordinated Trust Tasks / DTG Credentials adversarial reviews are under [`examples/security-hardening/`](examples/security-hardening/README.md). Canonical findings are YAML; rendered reports are generated and checked:
+
+```bash
+python3 tools/render_security_reviews.py
+python3 tools/validate_security_reviews.py
+```

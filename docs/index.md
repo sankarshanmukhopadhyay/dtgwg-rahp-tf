@@ -15,3 +15,7 @@ Use [Pressure-testing a specification](pressure-testing-a-spec.md), then [Interp
 Canonical records live under `data/`. Generated risk, control, matrix, lifecycle, normative and governance views are built under `build/site/` with `python3 tools/build.py`.
 
 The generated site is a drill-down evidence surface; the guided documentation is the entry point.
+
+## Security hardening
+
+For adversarial protocol review beyond the general risks-and-harms workflow, use [Security and hardening review workflow](security-hardening-review.md). The coordinated DTG example set covers [Trust Tasks](../examples/security-hardening/trust-tasks/SECURITY_REVIEW.md), [DTG Core Credentials](../examples/security-hardening/credential-spec/SECURITY_REVIEW.md), and [cross-spec composition](../examples/security-hardening/cross-spec/COMPOSITION_THREAT_MODEL.md).

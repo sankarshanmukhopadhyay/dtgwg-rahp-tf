@@ -18,6 +18,8 @@ jobs:
         run: python3 tools/validate.py
       - name: Validate pressure-test records
         run: python3 tools/validate_pressure_tests.py
+      - name: Validate security-hardening reviews
+        run: python3 tools/validate_security_reviews.py
       - name: Build derived views
         run: python3 tools/build.py
       - name: Validate RAHP reference links

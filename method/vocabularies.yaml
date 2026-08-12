@@ -90,3 +90,26 @@ finding_disposition:
     - risk-accepted
     - already-addressed
     - resolved-by-pr
+
+security_control_plane:
+  description: Primary destination for a security-hardening finding.
+  values:
+    - SPEC
+    - PROFILE
+    - GOV
+    - IMPL
+    - OPS
+    - TEST
+
+security_exploitability:
+  values: [easy, plausible, difficult]
+
+security_impact:
+  values: [severe, high, moderate, low]
+
+security_detectability:
+  description: How readily successful exploitation is likely to be detected.
+  values: [low, medium, high]
+
+security_propagation:
+  values: [contained, cross-party, community, systemic]

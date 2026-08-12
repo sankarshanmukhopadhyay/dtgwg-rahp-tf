@@ -2,7 +2,7 @@
 """Validate the generated RAHP reference catalogue and deep links.
 
 Ensures every canonical RAHP record has a stable catalogue anchor and every
-catalogue deep-link emitted into pressure-test Markdown resolves to a known ID.
+catalogue deep-link emitted into generated review Markdown resolves to a known ID.
 Run after tools/build.py.
 """
 from __future__ import annotations
@@ -50,9 +50,10 @@ def main() -> int:
     if missing:
         errors.append(f"catalogue is missing {len(missing)} canonical anchor(s): {', '.join(missing[:20])}")
 
-    link_re = re.compile(r'\]\(\.\./\.\./build/site/catalogue\.html#([A-Za-z0-9_-]+)\)')
+    link_re = re.compile(r'\]\((?:\.\./)+build/site/catalogue\.html#([A-Za-z0-9_-]+)\)')
     links_checked = 0
-    for readme in sorted(ROOT.glob("examples/**/README.md")):
+    review_files = sorted(set(ROOT.glob("examples/**/*.md")))
+    for readme in review_files:
         text = readme.read_text(encoding="utf-8")
         for rid in link_re.findall(text):
             links_checked += 1
@@ -67,7 +68,7 @@ def main() -> int:
         print(f"\nRAHP reference-link validation failed: {len(errors)} error(s).")
         return 1
 
-    print(f"RAHP reference links clean: {len(known)} catalogue anchors, {links_checked} pressure-test links checked.")
+    print(f"RAHP reference links clean: {len(known)} catalogue anchors, {links_checked} generated review links checked.")
     return 0
 
 

@@ -1,0 +1,612 @@
+review:
+  id: SEC-X-001
+  status: complete
+  title: Trust Tasks + DTG Credentials composition threat model
+  reviewed_on: '2026-08-12'
+  target:
+    repository: trustoverip/dtgwg-trust-tasks-tf + trustoverip/dtgwg-cred-spec
+    version: Composition of Trust Tasks fbe196a8 and Credentials WD01 d19f7c9
+    commit: fbe196a8a17ba3f99d0657a64be5ac58621023a1
+    secondary_commit: d19f7c9cac364fab8e50cf434513ef53fef80e37
+    source_paths:
+    - Trust Tasks SPEC.md and ceremony/delegation artifacts
+    - DTG Credential Spec spec/body.md
+  reviewed_against:
+    repository: sankarshanmukhopadhyay/dtgwg-rahp-tf
+    rahp_version: v0.3-dev
+  summary:
+    finding_count: 12
+    open_count: 12
+    overall_assessment: Composition is the highest-risk surface because each component can verify successfully while the end-to-end action is still unauthorized, stale, incorrectly scoped, privacy-leaking or based on the wrong evidence boundary. The most important program-level hardening work is a shared delegation profile, deterministic task/ceremony provenance binding, status/as-of registry semantics, issuance idempotency, and verifier APIs that preserve separate validity/authorization/completion outcomes.
+  positive_controls:
+  - Both specifications explicitly distinguish authentication/cryptographic validity from authorization.
+  - Trust Tasks ceremony evidence is not treated as authorization.
+  - Credential taskContext rules explicitly reject interpreting a context-bearing credential as completion evidence without outcome evidence.
+  - Both architectures are designed to allow companion profiles rather than forcing all semantics into core wire formats.
+  findings:
+  - id: SEC-X-001
+    title: Valid task authentication plus valid credential membership does not establish delegated authority
+    status: open
+    severity: Critical
+    exploitability: easy
+    impact: severe
+    detectability: low
+    propagation: systemic
+    primary_control_plane: PROFILE
+    secondary_control_planes:
+    - SPEC
+    - TEST
+    attack_surface:
+    - Trust Task authorization
+    - VMC/agent credentials
+    preconditions:
+    - Producer is authenticated and holds a valid VMC.
+    - Task asks the consumer to act for a principal or exercise a capability.
+    security_properties:
+    - authorization
+    - agency
+    evidence:
+    - source: Trust Tasks SPEC §4.11.4 / §7.2
+      observation: Ceremony participation confers no authority and consumers rely on issuer/proof/local policy.
+    - source: DTG Credential Spec VMC
+      observation: A VMC can name an agent/device/person as a member but does not carry principal/capability semantics.
+    attack: 'A consumer combines two true facts—authenticated task issuer and valid community membership—and infers a third fact that neither proves: authority to perform this action for this principal.'
+    existing_mitigations:
+    - Both specifications independently distinguish authenticity from authorization.
+    - RAHP already defines agent delegation controls.
+    residual_gap: No shared delegation artifact/profile binds principal, delegate, task type, scope, constraints, validity and revocation across both layers.
+    recommendation: Define a DTG delegation/capability profile consumable by Trust Tasks and credential verifiers. Require high-impact agent actions to present and validate it separately from membership.
+    verification:
+    - 'End-to-end negative test: authenticated agent + valid VMC + no delegation must fail authorization.'
+    rahp:
+      risks:
+      - RK-AI01
+      - RK-AI02
+      controls:
+      - CT-30
+      - CT-31
+      - CT-32
+      - CT-52
+      guardrails:
+      - GR-12
+      - GR-13
+      assurance_tests:
+      - AT-12
+      - AT-13
+  - id: SEC-X-002
+    title: taskContext identifies a task exchange, not a ceremony completion event
+    status: open
+    severity: Critical
+    exploitability: plausible
+    impact: severe
+    detectability: low
+    propagation: community
+    primary_control_plane: SPEC
+    secondary_control_planes:
+    - PROFILE
+    - TEST
+    attack_surface:
+    - credential issuance
+    - task/ceremony evidence
+    preconditions:
+    - A credential carries taskContext.
+    - The credential was issued inside a larger or nested ceremony.
+    security_properties:
+    - provenance
+    - integrity
+    evidence:
+    - source: DTG Credential Spec Trust Task Context Binding
+      observation: taskContext contains the originating Trust Task threadId and verifiers need outcome evidence before inferring completion.
+    - source: Trust Tasks SPEC §4.9.1 and §4.11
+      observation: An exchange and a ceremony enactment are different scopes; recent ceremony guidance warns external specs to choose the correct evidence reference.
+    attack: A verifier locates evidence for the wrong enclosing exchange or treats task-level completion as completion of the broader ceremony that governed credential issuance.
+    existing_mitigations:
+    - Credential spec explicitly says taskContext alone is not completion evidence.
+    - Trust Tasks distinguishes innermost exchange ids and ceremony enactments.
+    residual_gap: There is no common cross-spec reference structure that unambiguously identifies both the task exchange and, when needed, the ceremony evidence/definition commitment.
+    recommendation: Define a credential provenance binding that can reference the innermost task outcome and optionally a privacy-preserving commitment to ceremony completion without embedding a durable raw enactment identifier.
+    verification:
+    - Nested-ceremony vectors prove a verifier cannot satisfy completion using evidence from the wrong scope.
+    rahp:
+      risks:
+      - RK-SC02
+      - RK-SY03
+      controls:
+      - CT-18
+      - CT-19
+      - CT-48
+      guardrails:
+      - GR-16
+      - GR-17
+      assurance_tests:
+      - AT-16
+      - AT-17
+  - id: SEC-X-003
+    title: Durable taskContext/thread identifiers can become cross-presentation correlation handles
+    status: open
+    severity: High
+    exploitability: easy
+    impact: high
+    detectability: low
+    propagation: cross-party
+    primary_control_plane: PROFILE
+    secondary_control_planes:
+    - SPEC
+    - TEST
+    attack_surface:
+    - credential presentation
+    - task correlation
+    preconditions:
+    - Same credential is presented to multiple verifiers.
+    - taskContext carries a stable thread identifier from issuance.
+    security_properties:
+    - unlinkability
+    - confidentiality
+    evidence:
+    - source: DTG Credential Spec Base Structure
+      observation: taskContext is an ordinary string property on the credential.
+    - source: Trust Tasks ceremony guidance §10.1
+      observation: A durable credential embedding an enactment identifier is called out as a worse correlation handle; selective commitments are recommended for ceremony references.
+    attack: Multiple verifiers correlate presentations of the same credential or link it back to protocol logs using the stable task identifier, defeating otherwise privacy-preserving R-DIDs/ZKPs.
+    existing_mitigations:
+    - taskContext is optional except where credential type requires it.
+    - ZKP/selective disclosure is encouraged.
+    residual_gap: No explicit rule requires taskContext to be hidden/selectively disclosed or replaced by an unlinkable commitment during privacy-preserving presentation.
+    recommendation: 'Add a privacy profile for provenance references: selective disclosure by default, holder-bindable commitments, pairwise disclosure where necessary, and explicit verifier justification for raw task identifiers.'
+    verification:
+    - Two unlinkable presentations do not reveal a common taskContext unless intentionally disclosed.
+    rahp:
+      risks:
+      - RK-ID05
+      - RK-SC01
+      controls:
+      - CT-15
+      - CT-16
+      - CT-27
+      guardrails:
+      - GR-06
+      - GR-09
+      assurance_tests:
+      - AT-06
+      - AT-09
+  - id: SEC-X-004
+    title: One accepted issuance task can mint multiple durable credentials without a shared idempotency invariant
+    status: open
+    severity: Critical
+    exploitability: easy
+    impact: severe
+    detectability: medium
+    propagation: community
+    primary_control_plane: SPEC
+    secondary_control_planes:
+    - TEST
+    attack_surface:
+    - credential issuance task
+    - credential issuer
+    preconditions:
+    - A credential-issuance Trust Task is retried or replayed.
+    - Issuer lacks durable operation-level idempotency or the credential has no deterministic issuance correlation.
+    security_properties:
+    - integrity
+    - authorization
+    evidence:
+    - source: Trust Tasks replay guidance
+      observation: Same-recipient idempotency is SHOULD, not mandatory.
+    - source: DTG Credential Spec Base Structure
+      observation: Credential id is not listed as a required base field; issuance semantics do not bind one task instance to one resulting credential.
+    attack: A valid issuance request is processed more than once, minting duplicate membership/invitation/witness/endorsement credentials or inconsistent edge artifacts. Each credential can be individually valid.
+    existing_mitigations:
+    - Trust Task ids are globally unique.
+    - Credential proofs individually authenticate issuers.
+    residual_gap: No cross-spec invariant says how many credentials a task may mint or how duplicate issuance is detected/reconciled.
+    recommendation: For credential-issuance tasks, require operation-level idempotency keyed to the task instance and define deterministic duplicate response semantics; record resulting credential identifiers/digests in outcome evidence.
+    verification:
+    - Replay the same issuance task through retries/restarts and prove exactly one logical issuance result exists.
+    rahp:
+      risks:
+      - RK-ID01
+      - RK-SC02
+      controls:
+      - CT-08
+      - CT-19
+      guardrails:
+      - GR-07
+      - GR-16
+      assurance_tests:
+      - AT-07
+      - AT-16
+  - id: SEC-X-005
+    title: Authorization and registry state can change between task approval, issuance, and later verification
+    status: open
+    severity: Critical
+    exploitability: plausible
+    impact: severe
+    detectability: low
+    propagation: systemic
+    primary_control_plane: PROFILE
+    secondary_control_planes:
+    - SPEC
+    - OPS
+    - TEST
+    attack_surface:
+    - policy engine
+    - issuer authorization
+    - registry status
+    preconditions:
+    - Task is approved at time T0.
+    - Issuer/agent/community authority changes before issuance or later verification.
+    security_properties:
+    - authorization
+    - freshness
+    - provenance
+    evidence:
+    - source: Trust Tasks delegated execution note
+      observation: Policy and state are re-evaluated immediately before execution to reduce TOCTOU.
+    - source: DTG Credential Spec Security Considerations
+      observation: Verifier must evaluate current issuer authorization and applicable revocation/status through governance/trust registries.
+    attack: A task approved under one authority state produces a credential after that authority is revoked, or a credential remains cryptographically valid after the issuer/member status changes. Without historical semantics, disputes cannot establish which state governed which step.
+    existing_mitigations:
+    - Trust Tasks design already rechecks policy at execution.
+    - Credential verification checks issuer authorization/status.
+    residual_gap: The two layers lack a shared as-of/historical authority-state reference and freshness contract.
+    recommendation: Define a registry query/status profile with current and as-of semantics; issuance outcome should bind the relevant authority decision/version so later audits can reconstruct legitimacy at T0/T1.
+    verification:
+    - TOCTOU tests revoke authority between consent, execution and verification and produce deterministic expected outcomes.
+    rahp:
+      risks:
+      - RK-AI02
+      - RK-CR02
+      - RK-G05
+      controls:
+      - CT-25
+      - CT-31
+      - CT-32
+      - CT-56
+      guardrails:
+      - GR-12
+      - GR-17
+      assurance_tests:
+      - AT-12
+      - AT-17
+  - id: SEC-X-006
+    title: Agent revocation does not automatically invalidate credentials or outstanding tasks derived from its former mandate
+    status: open
+    severity: Critical
+    exploitability: plausible
+    impact: severe
+    detectability: low
+    propagation: systemic
+    primary_control_plane: PROFILE
+    secondary_control_planes:
+    - GOV
+    - OPS
+    - TEST
+    attack_surface:
+    - agent delegation
+    - credential lifecycle
+    - pending tasks
+    preconditions:
+    - Agent has acted under a valid operator mandate.
+    - Operator VMC/delegation is revoked while tasks or derived credentials remain live.
+    security_properties:
+    - authorization
+    - freshness
+    evidence:
+    - source: RAHP GR-12 / CT-32
+      observation: Existing RAHP model requires operator revocation to propagate to agent invalidation within an SLA.
+    - source: Trust Tasks and DTG Credential specs
+      observation: Neither core format defines a common dependency graph from operator mandate to pending task and derived credential status.
+    attack: A revoked agent continues executing queued tasks or presents credentials issued under the old mandate because each artifact verifies independently and its dependency on the operator is not machine-enforced.
+    existing_mitigations:
+    - Local policy can recheck authorization.
+    - Credential registries can revoke individual credentials.
+    residual_gap: There is no standardized revocation propagation relationship or latency SLA across mandate, tasks and derived credentials.
+    recommendation: Define dependency/status semantics for delegated agents, including invalidation of pending execution grants and policy for credentials issued under the revoked mandate.
+    verification:
+    - Revoking the principal-agent mandate causes pending high-impact tasks to fail and makes dependent credential status deterministically evaluable within the declared SLA.
+    rahp:
+      risks:
+      - RK-AI02
+      - RK-CR03
+      controls:
+      - CT-31
+      - CT-32
+      - CT-52
+      guardrails:
+      - GR-12
+      assurance_tests:
+      - AT-12
+  - id: SEC-X-007
+    title: Ceremony completion evidence and credential validity can be conflated by relying applications
+    status: open
+    severity: High
+    exploitability: easy
+    impact: high
+    detectability: low
+    propagation: cross-party
+    primary_control_plane: SPEC
+    secondary_control_planes:
+    - IMPL
+    - TEST
+    attack_surface:
+    - application verifier
+    - ceremony receipt
+    - credential
+    preconditions:
+    - Application receives both a valid credential and some ceremony evidence.
+    - Application uses completion as evidence of claim truth or uses claim validity as evidence the ceremony completed.
+    security_properties:
+    - provenance
+    - authorization
+    evidence:
+    - source: Trust Ceremony Receipt spec
+      observation: Receipt attests completeness and ordering, not content or authorization.
+    - source: DTG Credential Spec Trust Task Context Binding
+      observation: Credential validity and task/ceremony completion are distinct; outcome evidence is separately required for completion claims.
+    attack: A verifier upgrades the meaning of one artifact with the semantics of the other, for example treating a completed onboarding ceremony as proof that every credential claim is true or treating a valid VMC as proof that onboarding completed correctly.
+    existing_mitigations:
+    - Both source specifications explicitly state the distinction.
+    residual_gap: The distinction is prose-level across separate documents and is not represented as typed verification outcomes/API contracts.
+    recommendation: Define verifier outcome types that separately report credential validity, issuer authorization, task completion, ceremony completion and governance qualification. Applications should never receive a single ambiguous boolean.
+    verification:
+    - Reference verifier test exposes separate outcome fields and fails applications/tests that collapse them into one success flag.
+    rahp:
+      risks:
+      - RK-SC02
+      - RK-G05
+      controls:
+      - CT-19
+      - CT-56
+      guardrails:
+      - GR-16
+      assurance_tests:
+      - AT-16
+  - id: SEC-X-008
+    title: ZKP credential proofs do not yet compose with Trust Task outcome evidence without privacy or semantic leakage
+    status: open
+    severity: High
+    exploitability: plausible
+    impact: high
+    detectability: low
+    propagation: cross-party
+    primary_control_plane: PROFILE
+    secondary_control_planes:
+    - SPEC
+    - TEST
+    attack_surface:
+    - ZKP presentation
+    - task outcome evidence
+    preconditions:
+    - Holder uses ZKP/selective disclosure for a credential.
+    - Verifier also requires evidence that an issuance/relationship ceremony completed.
+    security_properties:
+    - confidentiality
+    - unlinkability
+    - provenance
+    evidence:
+    - source: DTG Credential Spec ZKP sections
+      observation: Relationship and community-anchored proofs are defined conceptually but detailed protocols are future work.
+    - source: Trust Tasks ceremony receipt
+      observation: Receipts are bearer evidence and reveal ordered step digests unless a blinded ceremony design is used.
+    attack: The holder proves the private credential predicate but must disclose a correlatable task/receipt identifier to establish process provenance, undoing the privacy benefit or exposing ceremony metadata.
+    existing_mitigations:
+    - Credential ZKP support and blinded ceremony design both exist conceptually.
+    residual_gap: There is no joint proof construction for credential predicate + outcome/ceremony provenance with selective disclosure.
+    recommendation: Define a composition proof profile that can prove required outcome predicates and pinned ceremony semantics without revealing raw R-DIDs, thread ids, enactment ids or unrelated steps.
+    verification:
+    - Proof vectors demonstrate community-anchored relationship plus ceremony-completion predicate with no stable cross-verifier identifier.
+    rahp:
+      risks:
+      - RK-CY01
+      - RK-ID05
+      - RK-SC01
+      controls:
+      - CT-15
+      - CT-27
+      - CT-28
+      guardrails:
+      - GR-06
+      - GR-09
+      assurance_tests:
+      - AT-06
+      - AT-09
+  - id: SEC-X-009
+    title: Both layers depend on trust-registry semantics without a shared query/failure contract
+    status: open
+    severity: Critical
+    exploitability: plausible
+    impact: severe
+    detectability: low
+    propagation: systemic
+    primary_control_plane: PROFILE
+    secondary_control_planes:
+    - SPEC
+    - OPS
+    - TEST
+    attack_surface:
+    - trust registry
+    - authorization
+    - status
+    preconditions:
+    - Consumer/verifier needs issuer role, community qualification, credential status, or delegation standing.
+    - Different registry implementations expose different freshness/history/failure semantics.
+    security_properties:
+    - authorization
+    - availability
+    - provenance
+    evidence:
+    - source: Trust Tasks terminology/authorization model
+      observation: Consumers apply their own trust framework to VID resolution and authorization.
+    - source: DTG Credential Spec Security/Governance Considerations
+      observation: Issuer authorization, PHC qualification, membership policies and revocation depend on applicable trust registries/governance frameworks.
+    attack: Two conforming implementations receive the same artifacts but reach different authorization outcomes because one treats missing registry data as unknown, another as valid-cache, and another as revoked/not-found.
+    existing_mitigations:
+    - Both specifications correctly keep cryptographic validity distinct from governance authorization.
+    residual_gap: The common dependency is not bound to a shared protocol profile, freshness rule, historical-state semantics or error taxonomy.
+    recommendation: Adopt a DTG trust-registry query profile for role/authorization/status evidence, including historical as-of queries, signed responses, cache/freshness rules and fail-indeterminate semantics.
+    verification:
+    - Interoperability test drives identical registry states/failures through multiple implementations and obtains the same authorization classification.
+    rahp:
+      risks:
+      - RK-EX02
+      - RK-G05
+      - RK-CR02
+      controls:
+      - CT-39
+      - CT-56
+      - CT-48
+      guardrails:
+      - GR-16
+      - GR-17
+      assurance_tests:
+      - AT-16
+      - AT-17
+  - id: SEC-X-010
+    title: Failure and refusal states can be lost before durable credential issuance
+    status: open
+    severity: High
+    exploitability: plausible
+    impact: high
+    detectability: medium
+    propagation: cross-party
+    primary_control_plane: SPEC
+    secondary_control_planes:
+    - PROFILE
+    - TEST
+    attack_surface:
+    - task terminal state
+    - credential issuer
+    preconditions:
+    - Multi-step credential workflow contains error, refusal, or next-step states.
+    - Credential issuer receives an intermediate artifact but not authoritative terminal outcome evidence.
+    security_properties:
+    - integrity
+    - consent
+    - provenance
+    evidence:
+    - source: Trust Tasks §8 / trust-task-next-step
+      observation: Error, success and next-step are distinct dispositions; next-step leaves the task open.
+    - source: DTG Credential Spec Trust Task Context Binding
+      observation: A credential artifact can be valid while the ceremony/task did not reach the intended terminal state.
+    attack: An intermediate successful-looking artifact escapes the exchange and triggers credential issuance even though the task was refused, failed, or remains blocked.
+    existing_mitigations:
+    - taskContext-bearing credentials cannot be interpreted as completion without outcome evidence.
+    residual_gap: The credential spec does not define the exact terminal outcome artifact/profile credential issuers must verify before issuing each context-dependent credential type.
+    recommendation: Define issuance preconditions per credential type and a machine-verifiable Trust Task outcome artifact/profile. Issuers must distinguish success, blocked, refusal and failure before minting durable claims.
+    verification:
+    - End-to-end fixtures inject blocked/refused/error paths and prove no context-dependent credential is issued.
+    rahp:
+      risks:
+      - RK-SC02
+      - RK-SY03
+      controls:
+      - CT-18
+      - CT-19
+      - CT-47
+      guardrails:
+      - GR-16
+      - GR-17
+      assurance_tests:
+      - AT-16
+      - AT-17
+  - id: SEC-X-011
+    title: Supported decision-making and legal delegation are not consistently representable across task and credential layers
+    status: open
+    severity: Critical
+    exploitability: plausible
+    impact: severe
+    detectability: low
+    propagation: community
+    primary_control_plane: PROFILE
+    secondary_control_planes:
+    - SPEC
+    - GOV
+    - TEST
+    attack_surface:
+    - consent ceremony
+    - credential subject/issuer
+    - representation
+    preconditions:
+    - Participant requires a supporter, guardian, attorney, deputy or co-decision-maker.
+    - Workflow uses generic issuer/recipient and existing DTG credential types without a representation profile.
+    security_properties:
+    - authorization
+    - consent
+    - accessibility
+    evidence:
+    - source: Trust Tasks bilateral document model
+      observation: A document names at most one issuer and one recipient; additional representation semantics are task-specific.
+    - source: DTG Credential Spec credential taxonomy
+      observation: No dedicated supported-consent/legal-delegation binding is defined in the core types.
+    attack: Implementations either impersonate the represented person, exclude them, or invent incompatible payload/credential conventions. Security checks may validate the wrong controller and treat substitute decision-making as ordinary self-action.
+    existing_mitigations:
+    - RAHP already defines GR-19 and controls for supported decision-making/legal delegation.
+    residual_gap: The existing safeguards are not yet bound into interoperable Trust Task + credential profiles.
+    recommendation: Define a shared representation profile with distinct principal, representative/supporter, legal basis, scope, co-signature requirements, notification and revocation semantics.
+    verification:
+    - Reference flows cover supported decision, power-of-attorney and guardian cases without collapsing representative identity into subject identity.
+    rahp:
+      risks:
+      - RK-HX04
+      - RK-HX05
+      - RK-SC05
+      controls:
+      - CT-57
+      - CT-58
+      - CT-59
+      - CT-60
+      guardrails:
+      - GR-19
+      assurance_tests:
+      - AT-19
+  - id: SEC-X-012
+    title: Organisational and agent identities can satisfy syntactic roles without proving accountable human/control relationships
+    status: open
+    severity: High
+    exploitability: plausible
+    impact: high
+    detectability: low
+    propagation: community
+    primary_control_plane: GOV
+    secondary_control_planes:
+    - PROFILE
+    - TEST
+    attack_surface:
+    - organizational VMC
+    - Trust Task issuer
+    - agent operator
+    preconditions:
+    - Task or credential names an organization/agent VID that verifies cryptographically.
+    - Relying party needs accountable officer/operator information or regulated standing.
+    security_properties:
+    - authorization
+    - accountability
+    - provenance
+    evidence:
+    - source: Trust Tasks VID model
+      observation: Any accepted verifiable identifier can occupy issuer/recipient roles under the consumer trust framework.
+    - source: DTG Credential Spec VMC
+      observation: Members can include non-human entities; governance determines role/standing.
+    attack: A syntactically valid organizational or agent identity is accepted for a role whose real security requirement is regulated entity standing plus accountable officers/operators. Cryptographic controller verification substitutes for governance accountability.
+    existing_mitigations:
+    - Trust registry/governance authorization is explicitly separate from proof verification.
+    - RAHP GR-21 defines organizational governance mapping requirements.
+    residual_gap: No shared cross-spec profile requires accountable control relationships to accompany high-risk organizational/agent actions.
+    recommendation: Bind organizational/agent role authorization to governance-qualified registry evidence identifying legal entity, responsible officers/operators and permitted credential/task operations.
+    verification:
+    - High-risk organizational action fails when cryptographic identity verifies but governance/accountability mapping is absent or stale.
+    rahp:
+      risks:
+      - RK-G05
+      - RK-AI01
+      controls:
+      - CT-56
+      - CT-63
+      - CT-64
+      - CT-30
+      guardrails:
+      - GR-21
+      - GR-12
+      assurance_tests:
+      - AT-21
+      - AT-12

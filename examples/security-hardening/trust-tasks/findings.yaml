@@ -1,0 +1,654 @@
+review:
+  id: SEC-TT-001
+  status: complete
+  title: Trust Tasks security and protocol-hardening review
+  reviewed_on: '2026-08-12'
+  target:
+    repository: trustoverip/dtgwg-trust-tasks-tf
+    version: Framework editor's draft at current main
+    commit: fbe196a8a17ba3f99d0657a64be5ac58621023a1
+    source_paths:
+    - SPEC.md
+    - docs/design-notes/delegated-trust-task-execution.md
+    - docs/design-notes/trust-ceremonies.md
+    - specs/trust-task-discovery/0.1/spec.md
+    - specs/trust-ceremony-receipt/0.1/spec.md
+  reviewed_against:
+    repository: sankarshanmukhopadhyay/dtgwg-rahp-tf
+    rahp_version: v0.3-dev
+  summary:
+    finding_count: 13
+    open_count: 13
+    overall_assessment: 'The framework has a comparatively strong security architecture: audience binding, transport/in-band identity cross-checks, explicit ceremony non-authority, content-pinned definitions, receipt truncation defenses, parser/schema DoS recognition, and a thoughtful delegated-consent design. The main hardening gap is that several high-value protections remain profile-, governance-, or SHOULD-level at exactly the points where destructive or authority-bearing execution becomes irreversible.'
+  positive_controls:
+  - Proof-carrying non-bearer documents require an in-band recipient, preventing cross-recipient replay.
+  - In-band and transport-derived identities must agree when both are present.
+  - Ceremony membership and receipts explicitly confer no authority.
+  - Ceremony definitions are content-pinned and receipts defend against truncation.
+  - Delegated-consent design binds exact payload/type, rechecks policy, pins state and uses single-use grants.
+  - Parser and dynamic-schema DoS are explicitly recognized.
+  findings:
+  - id: SEC-TT-001
+    title: Duplicate execution remains possible for state-changing Trust Tasks
+    status: open
+    severity: Critical
+    exploitability: easy
+    impact: severe
+    detectability: low
+    propagation: cross-party
+    primary_control_plane: SPEC
+    secondary_control_planes:
+    - TEST
+    - IMPL
+    attack_surface:
+    - consumer
+    - task replay
+    preconditions:
+    - A valid mutating, destructive, or actsAsSubject request has already been accepted.
+    - The same recipient receives the identical document again while it is still relevant.
+    security_properties:
+    - authorization
+    - integrity
+    - freshness
+    evidence:
+    - source: SPEC.md#101-cross-recipient-replay
+      observation: Same-recipient replay is acknowledged, but consumers handling persistent effects only SHOULD maintain an idempotency cache keyed on id.
+    - source: SPEC.md#73-specification-requirements
+      observation: Specifications already classify sideEffects as none/mutating/destructive and exposure.actsAsSubject independently.
+    attack: An attacker, retrying intermediary, or reconnecting transport redelivers a previously accepted request. The proof and recipient binding still verify, so a consumer without durable duplicate suppression can perform the mutation or authority-bearing action again.
+    existing_mitigations:
+    - Producers MUST mint globally unique document ids.
+    - The security considerations recommend an idempotency cache.
+    residual_gap: The safeguard is non-mandatory exactly where the framework can already identify high-impact task classes.
+    recommendation: Require duplicate suppression for mutating, destructive and actsAsSubject requests; define minimum replay-record lifetime and duplicate disposition. Permit operation-level idempotency keys where document id is insufficient.
+    verification:
+    - Conformance test delivers the identical destructive request twice and proves only one state transition occurs.
+    - Restart/reconnect tests show replay memory survives for the task-defined relevance window.
+    rahp:
+      risks:
+      - RK-SC02
+      - RK-AI01
+      controls:
+      - CT-19
+      - CT-30
+      - CT-48
+      guardrails:
+      - GR-12
+      - GR-16
+      assurance_tests:
+      - AT-12
+      - AT-16
+  - id: SEC-TT-002
+    title: High-impact requests can be authentic but stale
+    status: open
+    severity: High
+    exploitability: plausible
+    impact: high
+    detectability: low
+    propagation: cross-party
+    primary_control_plane: SPEC
+    secondary_control_planes:
+    - PROFILE
+    - TEST
+    attack_surface:
+    - producer
+    - consumer
+    - freshness
+    preconditions:
+    - A valid request has no expiresAt, or issuedAt is absent/old.
+    - The action is destructive or exercises the subject's authority.
+    security_properties:
+    - freshness
+    - authorization
+    evidence:
+    - source: SPEC.md#42-top-level-members
+      observation: issuedAt is SHOULD and expiresAt is MAY; expiry is enforced only when present.
+    - source: SPEC.md#73-specification-requirements
+      observation: High-impact side-effect/exposure classifications do not impose a freshness profile.
+    attack: A previously valid instruction is delayed, captured, queued, or intentionally replayed after the principal's intent, mandate, policy, or operational context has changed.
+    existing_mitigations:
+    - Consumers MUST honor expiresAt when supplied.
+    - Transport bindings describe freshness guarantees.
+    residual_gap: No framework floor requires high-impact tasks to carry a bounded validity window or maximum age.
+    recommendation: Require a bounded freshness rule for destructive and actsAsSubject requests, with task/profile-defined maximum age and fail-closed behavior when freshness cannot be established.
+    verification:
+    - Negative test rejects a correctly signed high-impact request outside its maximum age.
+    - Test missing issuedAt/expiresAt against a profile that requires bounded freshness.
+    rahp:
+      risks:
+      - RK-CR02
+      - RK-AI02
+      controls:
+      - CT-25
+      - CT-31
+      - CT-32
+      guardrails:
+      - GR-12
+      - GR-17
+      assurance_tests:
+      - AT-12
+      - AT-17
+  - id: SEC-TT-003
+    title: Transport-based proof omission can create security-profile downgrade ambiguity
+    status: open
+    severity: High
+    exploitability: plausible
+    impact: high
+    detectability: medium
+    propagation: cross-party
+    primary_control_plane: PROFILE
+    secondary_control_planes:
+    - SPEC
+    - TEST
+    attack_surface:
+    - transport binding
+    - proof policy
+    preconditions:
+    - Producer and consumer use a binding said to provide end-to-end integrity/authentication.
+    - A document is later forwarded, retained, transformed, or relied on outside that transport session.
+    security_properties:
+    - authentication
+    - integrity
+    - non-repudiation
+    evidence:
+    - source: SPEC.md#471-when-to-include-a-proof
+      observation: proof MAY be omitted when the transport provides end-to-end integrity and authentication; retained or third-party evidence requires proof.
+    - source: SPEC.md#91-what-a-transport-binding-specifies
+      observation: A binding SHOULD state its transport security profile, including freshness and authentication guarantees.
+    attack: An implementation treats a transport-authenticated request as portable evidence or forwards it into a context where transport assurances no longer travel with the bytes. The receiving component cannot distinguish a document that was intentionally portable from one whose authenticity depended on the original channel.
+    existing_mitigations:
+    - In-band and transport identities are cross-checked.
+    - The framework requires proof for transport-independent retained/replayed evidence.
+    residual_gap: Binding security profiles and portability boundaries are SHOULD-level and may be interpreted differently across implementations.
+    recommendation: Define named transport security profiles and require bindings to declare whether integrity, party identity, confidentiality and freshness survive forwarding/retention. Require proof before a document crosses a boundary where transport assurance is lost.
+    verification:
+    - Binding conformance test demonstrates identical framework behavior with and without in-band proof across forwarding/retention cases.
+    rahp:
+      risks:
+      - RK-SC02
+      - RK-CY01
+      controls:
+      - CT-19
+      - CT-29
+      guardrails:
+      - GR-16
+      assurance_tests:
+      - AT-16
+  - id: SEC-TT-004
+    title: VID scheme agility can produce authorization-equivalence confusion
+    status: open
+    severity: High
+    exploitability: plausible
+    impact: high
+    detectability: low
+    propagation: cross-party
+    primary_control_plane: PROFILE
+    secondary_control_planes:
+    - IMPL
+    - TEST
+    attack_surface:
+    - identity resolution
+    - authorization
+    preconditions:
+    - Two implementations accept different VID schemes or canonical forms for the same real-world principal.
+    - Authorization policy is keyed to identifier strings or resolver output.
+    security_properties:
+    - authentication
+    - authorization
+    - identity binding
+    evidence:
+    - source: SPEC.md#2-terminology
+      observation: VID may be a DID, X.509 subject, OIDC subject, key thumbprint, or other identifier accepted by the consumer trust framework.
+    - source: SPEC.md#48-the-issuer-and-recipient-members
+      observation: Framework comparisons use exact string equality and consumers may accept non-canonical forms without normalization.
+    attack: An attacker or integration mismatch presents a logically equivalent but differently encoded identifier, or pivots between accepted schemes, so authentication succeeds under one representation while authorization state is attached to another.
+    existing_mitigations:
+    - Exact-string comparison prevents silent normalization.
+    - Consumers choose accepted VID schemes under their trust framework.
+    residual_gap: The framework intentionally does not define cross-scheme equivalence or a minimum identity-resolution profile, leaving authorization aliases ecosystem-specific.
+    recommendation: 'Publish an identity-resolution profile for deployments that accept multiple VID schemes: canonicalization, equivalence rules, resolver trust, alias management, key rotation and policy-keying requirements.'
+    verification:
+    - Tests prove alternate textual or cross-scheme identities cannot inherit authorization without an explicit alias/equivalence record.
+    rahp:
+      risks:
+      - RK-ID04
+      - RK-SC02
+      controls:
+      - CT-14
+      - CT-19
+      guardrails:
+      - GR-10
+      - GR-16
+      assurance_tests:
+      - AT-10
+      - AT-16
+  - id: SEC-TT-005
+    title: Security-critical extension semantics can be ignored across ecosystem boundaries
+    status: open
+    severity: High
+    exploitability: plausible
+    impact: high
+    detectability: medium
+    propagation: cross-party
+    primary_control_plane: PROFILE
+    secondary_control_planes:
+    - SPEC
+    - TEST
+    attack_surface:
+    - payload extensions
+    - forwarding
+    preconditions:
+    - A producer uses ext.* to carry a security-relevant constraint or mechanism.
+    - A downstream consumer does not recognize that namespace.
+    security_properties:
+    - authorization
+    - integrity
+    - policy binding
+    evidence:
+    - source: SPEC.md#451-the-ext-extension-member
+      observation: Consumers MUST ignore ext namespaces they do not recognize and producers MUST NOT rely on framework-level meaning for them.
+    - source: docs/design-notes/trust-ceremonies.md
+      observation: The ceremony design uses ext for protocol-specific mechanism claims while deliberately denying them framework semantics.
+    attack: A document is accepted by an intermediary that understands a security extension and then forwarded or re-evaluated by one that ignores it, causing a constraint that mattered to the producer to disappear from the decision path.
+    existing_mitigations:
+    - Specifications must opt into ext explicitly.
+    - Consumers may require their own namespace under local policy.
+    residual_gap: There is no standard way to declare that a particular extension is critical-to-process or that forwarding must fail if it is not understood.
+    recommendation: Define a companion critical-extension convention or require security-relevant profiles to move mandatory semantics into the task schema. Do not use ignorable ext as the sole carrier of authorization or safety constraints.
+    verification:
+    - Interoperability test shows an unknown security-critical extension cannot be silently downgraded during forwarding.
+    rahp:
+      risks:
+      - RK-SC02
+      - RK-AI01
+      controls:
+      - CT-18
+      - CT-19
+      - CT-30
+      guardrails:
+      - GR-12
+      - GR-16
+      assurance_tests:
+      - AT-12
+      - AT-16
+  - id: SEC-TT-006
+    title: Mutable draft specifications weaken reproducible security validation
+    status: open
+    severity: High
+    exploitability: plausible
+    impact: high
+    detectability: low
+    propagation: systemic
+    primary_control_plane: SPEC
+    secondary_control_planes:
+    - OPS
+    - TEST
+    attack_surface:
+    - registry
+    - versioning
+    - retained evidence
+    preconditions:
+    - A producer emits against a draft task specification.
+    - The draft is edited in place or a wire-identical normalization changes interpretation/documentation.
+    security_properties:
+    - integrity
+    - provenance
+    - auditability
+    evidence:
+    - source: SPEC.md#52-compatibility-rules
+      observation: Draft artifacts may receive in-place editorial/normalization changes and breaking changes may use minor increments.
+    - source: SPEC.md#53-maturity-levels
+      observation: Draft specifications and schemas may change without notice while producers may still emit documents against them.
+    attack: A retained document is later validated against registry material whose exact prose/schema state differs from the state used at issuance, weakening forensic reconstruction or dispute resolution.
+    existing_mitigations:
+    - Candidate and standard maturity levels provide stronger stability.
+    - Ceremony definitions use definitionDigest to pin mutable external semantics.
+    residual_gap: Ordinary Trust Task documents do not have an equivalent immutable revision pin for draft task definitions.
+    recommendation: For documents emitted against draft specifications, support an immutable revision digest or snapshot reference; require archival retrieval rules for evidence-bearing deployments.
+    verification:
+    - A retained draft document can be validated years later against the exact schema/spec revision originally used.
+    rahp:
+      risks:
+      - RK-SY03
+      - RK-SC02
+      controls:
+      - CT-18
+      - CT-47
+      - CT-48
+      guardrails:
+      - GR-16
+      - GR-17
+      assurance_tests:
+      - AT-16
+      - AT-17
+  - id: SEC-TT-007
+    title: Dynamic registry resolution remains an availability and semantic-integrity dependency
+    status: open
+    severity: High
+    exploitability: plausible
+    impact: high
+    detectability: medium
+    propagation: systemic
+    primary_control_plane: OPS
+    secondary_control_planes:
+    - SPEC
+    - TEST
+    attack_surface:
+    - registry resolution
+    - schema validation
+    preconditions:
+    - Consumer resolves framework/schema/ceremony artifacts at runtime.
+    - Registry, DNS, CDN, or network path is unavailable, stale, or compromised.
+    security_properties:
+    - availability
+    - integrity
+    - provenance
+    evidence:
+    - source: SPEC.md#103-schema-validation-dos
+      observation: Dynamic schemas must be authenticated and can become a validation DoS surface; build-embedded schemas are explicitly safer.
+    - source: specs/trust-ceremony-receipt/0.1/spec.md
+      observation: An unresolvable definition makes a receipt unverifiable, not invalid.
+    attack: An attacker or outage prevents resolution of security-critical definitions, or serves divergent content where immutability is not locally pinned, causing fail-open behavior, inconsistent validation, or loss of evidence availability.
+    existing_mitigations:
+    - Candidate/standard registry artifacts are intended to be stable.
+    - Definition digests pin ceremony semantics.
+    residual_gap: Caching, offline verification, multi-origin availability and failure disposition remain largely deployment-specific.
+    recommendation: Publish an operational hardening profile for authenticated artifact pinning, immutable caches, offline verification, mirror/fallback strategy and explicit fail-closed behavior where authorization depends on unresolved material.
+    verification:
+    - Chaos test removes registry/network access and confirms expected behavior for cached, uncached and mismatched artifacts.
+    rahp:
+      risks:
+      - RK-EX02
+      - RK-ID04
+      controls:
+      - CT-14
+      - CT-39
+      - CT-48
+      guardrails:
+      - GR-10
+      - GR-16
+      assurance_tests:
+      - AT-10
+      - AT-16
+  - id: SEC-TT-008
+    title: Capability discovery does not fully negotiate a mutually secure execution profile
+    status: open
+    severity: High
+    exploitability: plausible
+    impact: high
+    detectability: medium
+    propagation: cross-party
+    primary_control_plane: PROFILE
+    secondary_control_planes:
+    - SPEC
+    - TEST
+    attack_surface:
+    - discovery
+    - downgrade
+    preconditions:
+    - Both parties support the same Type URI.
+    - They differ in VID methods, proof suites, transport security, freshness, authorization or required extensions.
+    security_properties:
+    - authentication
+    - authorization
+    - integrity
+    evidence:
+    - source: SPEC.md#11-discovery-and-capability-negotiation
+      observation: Discovery advertises supported Type URIs and is advisory.
+    - source: specs/trust-task-discovery/0.1/spec.md
+      observation: Expanded responses may advertise requiredExt, but proof requirement is optional because transport authentication is assumed.
+    attack: A producer treats task support as executable compatibility and falls back to a weaker identity/proof/binding combination when the preferred security profile is unavailable.
+    existing_mitigations:
+    - Every actual request still runs the consumer validation pipeline.
+    - Discovery may advertise requiredExt policy.
+    residual_gap: There is no general anti-downgrade negotiation of VID schemes, proof suites, transport profiles, freshness profiles or delegation requirements.
+    recommendation: Define a security-capability profile for discovery with explicit anti-downgrade rules. Keep Type URI discovery advisory, but let parties determine a mutually acceptable verification profile before sending high-impact work.
+    verification:
+    - Negotiation tests show no fallback to a weaker profile without explicit policy authorization.
+    rahp:
+      risks:
+      - RK-CY01
+      - RK-SC02
+      controls:
+      - CT-19
+      - CT-27
+      - CT-29
+      guardrails:
+      - GR-16
+      assurance_tests:
+      - AT-16
+  - id: SEC-TT-009
+    title: Delegated execution is fail-open unless deployments opt into policy enforcement
+    status: open
+    severity: Critical
+    exploitability: easy
+    impact: severe
+    detectability: low
+    propagation: systemic
+    primary_control_plane: GOV
+    secondary_control_planes:
+    - PROFILE
+    - TEST
+    attack_surface:
+    - delegated executor
+    - policy engine
+    preconditions:
+    - A deployment exposes delegated execution.
+    - policy.enforcement remains at its default false or no requireConsent policy covers the task.
+    security_properties:
+    - authorization
+    - consent
+    - agency
+    evidence:
+    - source: docs/design-notes/delegated-trust-task-execution.md#3-the-invariant
+      observation: The note states the safety invariant is conditional, enforcement is opt-in, and the default baseline allows everything.
+    - source: SPEC.md#73-specification-requirements
+      observation: sideEffects and exposure classifications are descriptive and MUST NOT themselves derive a consent requirement.
+    attack: A relying party or agent submits a destructive or actsAsSubject task to a deployment that is technically conforming but has not enabled the policy layer. The executor performs it without human approval because no framework requirement establishes a minimum safety floor.
+    existing_mitigations:
+    - High-impact task classifications exist.
+    - The reference design supports requireConsent, exact payload digests, state pins and policy re-evaluation.
+    residual_gap: The safe path is deployment-conditional rather than a named conformance/deployment profile.
+    recommendation: Define a governance/security deployment profile for delegated execution. High-impact delegated actions should fail closed unless explicitly pre-authorized or covered by a live human-consent policy.
+    verification:
+    - A deployment claiming the profile cannot start with enforcement disabled and cannot execute destructive/actsAsSubject work without a matching authorization rule.
+    rahp:
+      risks:
+      - RK-AI01
+      - RK-HX04
+      controls:
+      - CT-30
+      - CT-52
+      - CT-58
+      guardrails:
+      - GR-12
+      - GR-19
+      assurance_tests:
+      - AT-12
+      - AT-19
+  - id: SEC-TT-010
+    title: Revoked consent devices can remain effective for in-flight approvals
+    status: open
+    severity: High
+    exploitability: plausible
+    impact: high
+    detectability: low
+    propagation: cross-party
+    primary_control_plane: IMPL
+    secondary_control_planes:
+    - PROFILE
+    - TEST
+    attack_surface:
+    - consent surface
+    - approver revocation
+    preconditions:
+    - A consent device signs an approval.
+    - The device is revoked before the pending action executes.
+    security_properties:
+    - authorization
+    - freshness
+    - consent
+    evidence:
+    - source: docs/design-notes/delegated-trust-task-execution.md#15-threat-model
+      observation: 'The design explicitly marks revoked-device handling for in-flight approval as partial: the named approver set is rechecked but device-enrolment revocation is not wired to it.'
+    - source: docs/design-notes/delegated-trust-task-execution.md#7
+      observation: Policy and approver set are re-evaluated before execution.
+    attack: An attacker retains or obtains a valid approval from a device that has since been removed. If the device remains inside the logical approver set, execution can proceed even though the concrete authorization endpoint was revoked.
+    existing_mitigations:
+    - Single-use grants, payload digest and state pinning prevent reuse/substitution.
+    - Policy and approver-set membership are rechecked.
+    residual_gap: Concrete device enrollment/revocation is not part of the final execution-time authorization check.
+    recommendation: Bind approvals to a revocable approver credential/device identifier and revalidate that credential immediately before execution.
+    verification:
+    - Test revokes a device after approval but before apply; execution must fail and require a fresh approval path.
+    rahp:
+      risks:
+      - RK-AI02
+      - RK-CR02
+      controls:
+      - CT-31
+      - CT-32
+      guardrails:
+      - GR-12
+      assurance_tests:
+      - AT-12
+  - id: SEC-TT-011
+    title: Consent anti-fatigue controls do not bound distinct-payload prompt floods
+    status: open
+    severity: High
+    exploitability: easy
+    impact: moderate
+    detectability: high
+    propagation: contained
+    primary_control_plane: IMPL
+    secondary_control_planes:
+    - OPS
+    - TEST
+    attack_surface:
+    - consent surface
+    - prompt routing
+    preconditions:
+    - Attacker can submit many distinct payloads that each require consent.
+    - Per-origin denial budgets are not enforced.
+    security_properties:
+    - availability
+    - consent
+    - human factors
+    evidence:
+    - source: docs/design-notes/delegated-trust-task-execution.md#13-consent-fatigue
+      observation: Replay prompts are deduplicated, but a one-byte payload change creates a fresh push; per-origin budgets on denial are noted as not yet built.
+    attack: An attacker varies otherwise equivalent payloads to generate repeated legitimate-looking prompts, conditioning the user to approve mechanically or degrading availability of the consent channel.
+    existing_mitigations:
+    - Replay deduplication, idempotent rejection and cross-device digest matching exist.
+    residual_gap: Distinct-payload flood control is not complete and the remaining risk directly targets human approval quality.
+    recommendation: Implement per-origin/task-family prompt budgets, exponential backoff and abuse telemetry while preserving an emergency path for legitimate high-priority requests.
+    verification:
+    - Adversarial test sends many unique payloads from one origin and demonstrates bounded prompt volume without suppressing explicit recovery flows.
+    rahp:
+      risks:
+      - RK-AI04
+      - RK-G04
+      controls:
+      - CT-33
+      - CT-34
+      guardrails:
+      - GR-14
+      - GR-15
+      assurance_tests:
+      - AT-14
+      - AT-15
+  - id: SEC-TT-012
+    title: Bearer ceremony receipts create durable correlation and disclosure risk
+    status: open
+    severity: High
+    exploitability: plausible
+    impact: high
+    detectability: low
+    propagation: cross-party
+    primary_control_plane: PROFILE
+    secondary_control_planes:
+    - GOV
+    - TEST
+    attack_surface:
+    - ceremony receipt
+    - evidence distribution
+    preconditions:
+    - A ceremony receipt is issued and later presented to multiple verifiers.
+    - The enactment or step pattern is sensitive or linkable.
+    security_properties:
+    - confidentiality
+    - unlinkability
+    - privacy
+    evidence:
+    - source: specs/trust-ceremony-receipt/0.1/spec.md#bearer-semantics
+      observation: Receipts are intentionally bearer evidence; any holder may rely on them.
+    - source: specs/trust-ceremony-receipt/0.1/spec.md#security--privacy
+      observation: 'The salt is visible to receipt holders, who can confirm guessed low-entropy step payloads; sensitive ceremonies are expected to use enactmentPrivacy: blinded.'
+    attack: A receipt holder correlates the same enactment across contexts or confirms likely low-entropy steps. Because audience binding is deliberately absent, later presentations create a reusable correlation handle.
+    existing_mitigations:
+    - Blinded enactment privacy is available by ceremony design.
+    - Receipt claim is deliberately limited to completeness and ordering.
+    residual_gap: There is no general selective-disclosure presentation profile for receipts or minimum privacy guidance by ceremony sensitivity.
+    recommendation: Define a receipt privacy profile covering blinded enactments, selective disclosure/derived proofs, retention and disclosure minimization.
+    verification:
+    - Privacy test demonstrates two unrelated verifiers cannot correlate a blinded receipt presentation unless the holder intentionally reveals the link.
+    rahp:
+      risks:
+      - RK-ID05
+      - RK-SC01
+      controls:
+      - CT-15
+      - CT-16
+      - CT-27
+      guardrails:
+      - GR-06
+      - GR-09
+      assurance_tests:
+      - AT-06
+      - AT-09
+  - id: SEC-TT-013
+    title: Parser and validation resource limits are advisory for network-facing consumers
+    status: open
+    severity: High
+    exploitability: easy
+    impact: high
+    detectability: high
+    propagation: contained
+    primary_control_plane: SPEC
+    secondary_control_planes:
+    - PROFILE
+    - TEST
+    attack_surface:
+    - JSON parser
+    - schema validator
+    preconditions:
+    - Consumer accepts untrusted network input.
+    - Transport/body/depth/time limits are absent or overly generous.
+    security_properties:
+    - availability
+    evidence:
+    - source: SPEC.md#102-parser-hardening
+      observation: Body size and parse-depth limits are SHOULD recommendations with deployment-dependent defaults.
+    - source: SPEC.md#103-schema-validation-dos
+      observation: Per-validation timeout is SHOULD for consumers compiling schemas from arbitrary authorities.
+    attack: An unauthenticated producer sends deeply nested/large JSON or payloads selected to trigger pathological schema evaluation, consuming memory/CPU before authorization is reached.
+    existing_mitigations:
+    - The specification explicitly identifies both parser and schema-validation DoS.
+    - Dynamic schemas must be authenticated before trust.
+    residual_gap: Critical resource bounds remain advisory and therefore cannot be relied on across conforming network-facing deployments.
+    recommendation: Require every transport binding or deployment profile to state enforceable maximum document size, nesting depth, schema compilation policy and validation budget.
+    verification:
+    - Fuzz/DoS tests demonstrate bounded CPU/memory for oversized, deeply nested and regex-pathological inputs.
+    rahp:
+      risks:
+      - RK-EX02
+      - RK-SY03
+      controls:
+      - CT-19
+      - CT-48
+      guardrails:
+      - GR-16
+      - GR-17
+      assurance_tests:
+      - AT-16
+      - AT-17

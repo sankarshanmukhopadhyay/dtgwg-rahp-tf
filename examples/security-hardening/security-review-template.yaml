@@ -1,0 +1,45 @@
+# Canonical security-hardening review template.
+review:
+  id: SEC-XXX
+  status: in-progress
+  title: Example security-hardening review
+  reviewed_on: 'YYYY-MM-DD'
+  target:
+    repository: owner/repo
+    version: version label
+    commit: 0123456789abcdef0123456789abcdef01234567
+    source_paths: []
+  reviewed_against:
+    repository: sankarshanmukhopadhyay/dtgwg-rahp-tf
+    rahp_version: v0.3-dev
+  summary:
+    finding_count: 1
+    open_count: 1
+    overall_assessment: Replace with a short assessment.
+  findings:
+    - id: SEC-EX-001
+      title: Example finding
+      status: open
+      severity: High
+      exploitability: plausible
+      impact: high
+      detectability: medium
+      propagation: contained
+      primary_control_plane: SPEC
+      secondary_control_planes: [TEST]
+      attack_surface: [consumer]
+      preconditions: [Describe what must already be true.]
+      security_properties: [authorization]
+      evidence:
+        - source: SPEC.md#section
+          observation: Describe the normative behavior that makes the path reachable.
+      attack: Describe the exploit or failure sequence.
+      existing_mitigations: [Describe protections already present.]
+      residual_gap: Describe what remains after those mitigations.
+      recommendation: Describe the narrowest hardening action.
+      verification: [Describe an objective test that closes the finding.]
+      rahp:
+        risks: [RK-SC02]
+        controls: [CT-19]
+        guardrails: [GR-16]
+        assurance_tests: [AT-16]

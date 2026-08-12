@@ -10,6 +10,7 @@ RAHP is a repeatable assurance method for pressure-testing standards against ris
 | Goal | Start here |
 |---|---|
 | Review a specification for risks and harms | [Pressure-testing a specification](docs/pressure-testing-a-spec.md) |
+| Perform an adversarial protocol/security review | [Security and hardening review](docs/security-hardening-review.md) |
 | Understand the RAHP method | [How RAHP works](docs/how-rahp-works.md) |
 | Explore the DTG instance | [DTG instance](docs/index.md#explore-the-dtg-instance) |
 | Adopt RAHP for another Working Group | [Adoption guide](ADOPTION.md) |
@@ -104,6 +105,8 @@ These counts are checked by `tools/validate.py` and cannot silently drift.
 RAHP is more than a risk register. A specification review should create a traceable chain from target/version → affected personas/scenarios → triggered risks → controls/guardrails/evidence → finding disposition → standards action. Start with [the pressure-testing workflow](docs/pressure-testing-a-spec.md), then compare the [worked DTG Credential Specification example](examples/dtg-credential-spec/README.md) and the [Trust Tasks Framework example](examples/trust-tasks-spec/README.md). The two examples show both direct specification findings and findings deliberately routed to companion specifications, governance, runtime controls, and operational policy. The reusable starter is [`examples/pressure-test-template.yaml`](examples/pressure-test-template.yaml). `pressure-test.yaml` is the source of truth; `python3 tools/render_pressure_tests.py` renders its review metadata, finding index, evidence, harms, recommendations and retest triggers into the example README. Every cited RAHP artefact is rendered as an ID + title hyperlink to the generated [Reference catalogue](build/site/catalogue.html), where each canonical record has a stable deep-link anchor. `python3 tools/validate_pressure_tests.py` checks both the canonical RAHP references and that the rendered Markdown is current; `python3 tools/validate_reference_links.py` checks that generated deep links resolve.
 
 A finding does **not** imply that every mitigation belongs in the reviewed specification. RAHP explicitly routes findings to the correct control plane: core specification, companion specification, governance, implementation guidance, runtime control, operational policy, formal risk acceptance, or no action when already addressed/out of scope.
+
+For deeper adversarial review, RAHP now also provides a [security-hardening workflow](docs/security-hardening-review.md) with coordinated worked reviews for [Trust Tasks](examples/security-hardening/trust-tasks/SECURITY_REVIEW.md), [DTG Core Credentials](examples/security-hardening/credential-spec/SECURITY_REVIEW.md), and their [cross-spec composition](examples/security-hardening/cross-spec/COMPOSITION_THREAT_MODEL.md). These records add exploitability, impact, detectability, propagation, attack preconditions, existing mitigations, residual gaps, control-plane routing and closure tests while retaining deep links to the canonical RAHP catalogue.
 
 ## Known method gaps
 
