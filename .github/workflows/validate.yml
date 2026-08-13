@@ -16,6 +16,8 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Validate RAHP artefacts
         run: python3 tools/validate.py
+      - name: Validate scenario corpora
+        run: python3 tools/validate_scenario_corpora.py
       - name: Validate pressure-test records
         run: python3 tools/validate_pressure_tests.py
       - name: Validate security-hardening reviews

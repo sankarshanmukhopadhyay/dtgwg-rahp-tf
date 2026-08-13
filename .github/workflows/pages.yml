@@ -1,0 +1,95 @@
+name: Build and deploy RAHP documentation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Validate RAHP artefacts
+        run: python3 tools/validate.py
+
+      - name: Validate scenario corpora
+        run: python3 tools/validate_scenario_corpora.py
+
+      - name: Validate pressure-test records
+        run: python3 tools/validate_pressure_tests.py
+
+      - name: Validate security-hardening reviews
+        run: python3 tools/validate_security_reviews.py
+
+      - name: Validate combined reviews
+        run: python3 tools/validate_combined_reviews.py
+
+      - name: Rebuild generated evidence
+        run: python3 tools/build.py
+
+      - name: Validate RAHP reference links
+        run: python3 tools/validate_reference_links.py
+
+      - name: Fail if generated evidence is stale
+        run: |
+          if [ -n "$(git status --porcelain build/ 2>/dev/null)" ]; then
+            echo "::error::build/ is out of date — run 'python3 tools/build.py' and commit generated evidence"
+            git status --short build/
+            exit 1
+          fi
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build Just the Docs site
+        env:
+          JEKYLL_ENV: production
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+
+      - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+      contents: read
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
