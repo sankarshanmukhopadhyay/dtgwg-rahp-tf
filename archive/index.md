@@ -10,7 +10,7 @@ has_toc: true
 RAHP retains earlier personas, requirements, registers, workbooks, generated views, and migration artefacts because they explain **how the framework evolved and what earlier analysis contained**.
 
 {: .warning }
-> **Historical, not current.** Material under `archive/` is retained for provenance, research, and migration history. Do not treat it as the current canonical RAHP method or instance. Current records live under [`data/`](../data/), portable method material under [`method/`](../method/), corpora under [`corpora/`](../corpora/), and current guidance under [`docs/`](../docs/).
+> **Historical, not current.** Material under `archive/` is retained for provenance, research, and migration history. Do not treat it as the current canonical RAHP method or instance. Current records are indexed from the [`data/instance.yaml`](../data/instance.yaml) projection, portable scenario patterns are published from [`method/scenario-patterns.yaml`](../method/scenario-patterns.yaml), corpora are explained in [Scenario corpora](../docs/scenario-corpora.html), and current guidance starts at the [Documentation](../docs/) home page.
 
 ## Start with the historical personas
 

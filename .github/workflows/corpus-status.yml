@@ -27,7 +27,7 @@ jobs:
           python3 tools/corpus_status.py \
             --json build/corpus-status.json \
             --markdown build/corpus-status.md \
-            --fail-on-review
+            --fail-on-error
           rc=$?
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
           cat build/corpus-status.md >> "$GITHUB_STEP_SUMMARY"
@@ -40,9 +40,25 @@ jobs:
           path: |
             build/corpus-status.json
             build/corpus-status.md
-      - name: Flag corpus review requirement
+      - name: Surface corpus review requirement
+        if: always()
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('build/corpus-status.json').read_text())
+          review = {'UNPINNED_REVIEW_REQUIRED', 'CORPUS_REVIEW_REQUIRED', 'DEPENDENCY_REVIEW_REQUIRED'}
+          items = [r for r in report.get('results', report if isinstance(report, list) else []) if r.get('status') in review]
+          if items:
+              names = ', '.join(f"{r.get('corpus_id')}: {r.get('status')}" for r in items)
+              print(f'::warning::Corpus maintenance review is required: {names}. See the workflow summary/artifact.')
+          else:
+              print('No corpus semantic/provenance review is currently required.')
+          PY
+      - name: Fail on corpus status operational error
         if: steps.corpus_status.outputs.rc != '0'
         run: |
-          echo 'One or more corpora require provenance or semantic review. See the workflow summary/artifact.'
+          echo 'Corpus status could not be evaluated reliably because of an operational or portfolio-configuration error.'
           exit 1
 

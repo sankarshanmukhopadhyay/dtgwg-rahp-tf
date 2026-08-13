@@ -124,6 +124,7 @@ def main():
     ap.add_argument('--json',dest='json_path',help='Write machine-readable report to this path.')
     ap.add_argument('--markdown',dest='md_path',help='Write human-readable report to this path.')
     ap.add_argument('--fail-on-review',action='store_true',help='Exit 2 when any corpus requires review.')
+    ap.add_argument('--fail-on-error',action='store_true',help='Exit 3 only for operational/configuration failures (for CI health checks).')
     args=ap.parse_args()
     manifest,byid=entries(); results=[]; portfolio=None; portfolio_error=None
     if not args.offline:
@@ -160,6 +161,8 @@ def main():
         print(md,end='')
     review={'UNPINNED_REVIEW_REQUIRED','CORPUS_REVIEW_REQUIRED','DEPENDENCY_REVIEW_REQUIRED','CHECK_FAILED','PORTFOLIO_SCOPE_MISMATCH'}
     if args.fail_on_review and any(r['status'] in review for r in results): return 2
+    operational={'CHECK_FAILED','PORTFOLIO_SCOPE_MISMATCH'}
+    if args.fail_on_error and any(r['status'] in operational for r in results): return 3
     return 0
 
 if __name__=='__main__': raise SystemExit(main())
