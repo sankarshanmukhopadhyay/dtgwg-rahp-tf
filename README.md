@@ -58,12 +58,22 @@ The mental model is simple: **people and contexts surface scenarios; scenarios s
 | `data/` | Canonical DTG RAHP instance. This is the source of truth for risks, controls, personas, scenarios and related records. |
 | `tools/` | Validation and build automation. Produces machine-verifiable evidence and generated views. |
 | `context/` | JSON-LD context used by generated linked-data outputs. |
-| `docs/` | Guided narrative for understanding and applying RAHP. |
+| `docs/` | Just the Docs source for understanding and applying RAHP; published through GitHub Pages. |
+| `corpora/` | Domain scenario adapters used to exercise specifications against portable `SP-*` patterns. |
 | `examples/` | Worked pressure tests and minimum viable adoption patterns. |
 | `build/` | Generated output. Do not hand-edit. |
 | `archive/` | Historical source artefacts and old generated views retained for provenance. Do not edit. |
 
 See the [full repository map](docs/diagrams/repository-map.md) and [artefact relationship model](docs/diagrams/artefact-relationships.md).
+
+
+## Scenario corpora
+
+RAHP now includes four scenario adapters: DTG ZKP, Trust Tasks, DTG Core Credentials, and a composed Trust Tasks × Credential Spec corpus. The adapters provide **74 concrete scenario test vectors** while the reusable failure classes remain RAHP-owned `SP-*` patterns. See [Scenario corpora](docs/scenario-corpora.md), [Scenario coverage](docs/scenario-coverage.md), and [Cross-specification pressure testing](docs/cross-spec-pressure-testing.md).
+
+## Documentation site
+
+The repository is configured for a Just the Docs site deployed by GitHub Actions to GitHub Pages. The build/deploy workflow validates RAHP and all scenario corpora before publication. See [Publishing the RAHP site](docs/publishing.md) for the one-time Pages source setting and local build commands.
 
 ## Quick start
 

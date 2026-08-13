@@ -1,0 +1,133 @@
+corpus:
+  id: CORPUS-TT-CREDSPEC-COMPOSED
+  title: "Trust Tasks \xD7 Credential Spec composed scenario corpus"
+  source_repository: trustoverip/dtgwg-trust-tasks-tf + trustoverip/dtgwg-cred-spec
+  source_path: SPEC.md + spec/body.md
+  source_commit: archive-snapshot
+  adapter_version: '1.0'
+  description: RAHP-authored cross-specification scenarios that pressure-test the seam where Trust Tasks consume,
+    convey, contextualize or rely upon DTG credentials. XSP-* identifiers are owned by this RAHP adapter.
+  scenarios:
+  - id: XSP-001
+    title: Credential issued in a Trust Task is later presented without its outcome evidence
+    domain: Cross-spec / context
+    primary_goal: Prevent taskContext from becoming a free-standing assurance claim
+    primary_pressure: Context detachment
+    priority: P0
+    scenario_patterns:
+    - SP-COMP-01
+    - SP-OPS-01
+    source_anchor: "Trust Tasks \xA74.9 + CredSpec Trust Task Context Binding"
+  - id: XSP-002
+    title: Credential authority changes after task authorization but before execution
+    domain: Cross-spec / lifecycle
+    primary_goal: Re-evaluate authority at the action boundary
+    primary_pressure: Stale authorization
+    priority: P0
+    scenario_patterns:
+    - SP-GOV-01
+    - SP-AGENT-02
+    source_anchor: Trust Tasks expiry/consumer rules + CredSpec Trust Registries
+  - id: XSP-003
+    title: Task is replayed with a still-valid credential to repeat a side effect
+    domain: Cross-spec / replay
+    primary_goal: Bind credential use to a single task/action scope
+    primary_pressure: Composite replay
+    priority: P0
+    scenario_patterns:
+    - SP-REPLAY-01
+    - SP-COMP-01
+    source_anchor: Trust Tasks retry/audience rules + CredSpec credential presentation
+  - id: XSP-004
+    title: Trust Task issuer identity and credential issuer/holder semantics are conflated
+    domain: Cross-spec / identity
+    primary_goal: Keep task party identity distinct from credential roles
+    primary_pressure: Role confusion
+    priority: P0
+    scenario_patterns:
+    - SP-AUTH-01
+    - SP-INTEROP-01
+    source_anchor: "Trust Tasks \xA74.8 + CredSpec Base Structure"
+  - id: XSP-005
+    title: Bearer task carries a credential whose disclosure should be recipient-scoped
+    domain: Cross-spec / privacy
+    primary_goal: Prevent bearer transport semantics from broadening credential audience
+    primary_pressure: Audience expansion
+    priority: P0
+    scenario_patterns:
+    - SP-PRIV-01
+    - SP-REPLAY-01
+    source_anchor: Trust Tasks bearer specifications + CredSpec Privacy Considerations
+  - id: XSP-006
+    title: Two individually minimal credentials become identifying when composed in one task
+    domain: Cross-spec / privacy
+    primary_goal: Detect emergent correlation from proof composition
+    primary_pressure: Composition fingerprinting
+    priority: P0
+    scenario_patterns:
+    - SP-COMP-01
+    - SP-PRIV-02
+    source_anchor: Trust Tasks payload/proof + CredSpec selective disclosure
+  - id: XSP-007
+    title: Agent continues using a credential after human delegation is withdrawn
+    domain: Cross-spec / agents
+    primary_goal: Bind credential use to current delegated mandate
+    primary_pressure: Delegation drift
+    priority: P0
+    scenario_patterns:
+    - SP-AGENT-01
+    - SP-AGENT-02
+    source_anchor: Trust Tasks exposure/authorization + CredSpec holder presentation
+  - id: XSP-008
+    title: Transport-level identity conflicts with credential subject or relationship identity
+    domain: Cross-spec / identity
+    primary_goal: Resolve identity layers without substitution
+    primary_pressure: Cross-layer misbinding
+    priority: P0
+    scenario_patterns:
+    - SP-AUTH-01
+    - SP-COMP-01
+    source_anchor: Trust Tasks identity precedence + CredSpec credentialSubject
+  - id: XSP-009
+    title: Offline task processing relies on stale credential or registry state
+    domain: Cross-spec / operations
+    primary_goal: Define safe offline behavior and later reconciliation
+    primary_pressure: Offline stale state
+    priority: P1
+    scenario_patterns:
+    - SP-OPS-01
+    - SP-OPS-02
+    source_anchor: Trust Tasks transport processing + CredSpec Trust Registries
+  - id: XSP-010
+    title: Framework or credential version migration occurs on only one side of the interaction
+    domain: Cross-spec / interoperability
+    primary_goal: Coordinate semantic migration across dependent specs
+    primary_pressure: Asymmetric version migration
+    priority: P1
+    scenario_patterns:
+    - SP-GOV-02
+    - SP-INTEROP-01
+    - SP-CRYPTO-01
+    source_anchor: "Trust Tasks \xA75 + CredSpec VC Version Support"
+  - id: XSP-011
+    title: Error response exposes details derived from a sensitive credential
+    domain: Cross-spec / privacy
+    primary_goal: Keep failure reporting from becoming a disclosure channel
+    primary_pressure: Derived-data leakage
+    priority: P1
+    scenario_patterns:
+    - SP-PRIV-01
+    source_anchor: Trust Tasks error responses + CredSpec Privacy Considerations
+  - id: XSP-012
+    title: A cross-spec adverse decision cannot be explained or appealed because responsibility is split
+    domain: Cross-spec / governance
+    primary_goal: Provide accountable redress across specification boundaries
+    primary_pressure: Responsibility fragmentation
+    priority: P0
+    scenario_patterns:
+    - SP-GOV-03
+    - SP-FED-01
+    source_anchor: Trust Tasks consumer policy + CredSpec Governance Considerations
+  source_urls:
+  - https://github.com/trustoverip/dtgwg-trust-tasks-tf
+  - https://github.com/trustoverip/dtgwg-cred-spec

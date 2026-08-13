@@ -10,10 +10,14 @@ has_toc: true
 
 - Added portable scenario patterns and a validated external scenario-corpus adapter model.
 - Added the DTG ZKP 30-use-case corpus as the first scenario-driven RAHP reference adapter.
+- Added a 16-scenario Trust Tasks corpus grounded in framework proof, identity, replay, versioning, transport, privacy and delegation semantics.
+- Added a 16-scenario DTG Credential Specification corpus grounded in relationship, lifecycle, registry, privacy, task-context, interoperability and accessibility semantics.
+- Added a 12-scenario RAHP-owned Trust Tasks × Credential Spec composition corpus for emergent cross-specification failure modes.
+- Added scenario coverage and cross-specification pressure-testing documentation.
 - Extended pressure-test findings with optional scenario, scenario-pattern and persona traceability.
-- Added corpus validation and integrated it into CI.
-- Added Just the Docs configuration and a GitHub Pages build/deploy workflow for the RAHP documentation.
-- Added rendered-site link validation and scenario-driven documentation.
+- Added corpus validation to the standard validation workflow.
+- Added Just the Docs configuration and an official GitHub Pages artifact build/deploy workflow using `configure-pages`, `upload-pages-artifact` and `deploy-pages`.
+- Added publishing guidance and retained Mermaid rendering for the JTD site.
 
 
 ## Unreleased

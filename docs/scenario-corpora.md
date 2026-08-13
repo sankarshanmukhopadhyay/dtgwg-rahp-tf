@@ -6,31 +6,94 @@ has_toc: true
 ---
 # Scenario corpora
 
-Scenario corpora connect domain-specific use cases to portable RAHP pressure-test patterns.
+Scenario corpora connect domain-specific use cases to portable RAHP pressure-test patterns. They are **adapters**, not normative forks: source projects retain authority over their own scenario meaning and identifiers.
 
-## DTG ZKP reference corpus
+## Available corpora
 
-[`corpora/dtg-zkp.yaml`](../corpora/dtg-zkp.yaml) is the first reference adapter. It maps 30 DTG ZKP implementation-guide use cases to portable RAHP scenario patterns without taking ownership of the `UC-*` identifiers.
+| Corpus | Source | Purpose | Scenario count |
+|---|---|---|---:|
+| [DTG ZKP](../corpora/dtg-zkp.yaml) | `sankarshanmukhopadhyay/dtgwg-zkp-tf` | ZKP implementation and governance stress cases | 30 |
+| [Trust Tasks](../corpora/trust-tasks.yaml) | `trustoverip/dtgwg-trust-tasks-tf` | Task identity, proof, replay, transport, versioning, delegation and privacy | 16 |
+| [DTG Credential Spec](../corpora/credential-spec.yaml) | `trustoverip/dtgwg-cred-spec` | Credential lifecycle, relationship semantics, privacy, authority and task context | 16 |
+| [Trust Tasks × CredSpec](../corpora/trust-tasks-credspec-composed.yaml) | RAHP-authored cross-spec adapter | Emergent failure modes at the task/credential seam | 12 |
 
-| Coverage area | Representative source scenarios | Portable RAHP patterns |
-|---|---|---|
-| Privacy and correlation | UC-002, UC-023, UC-024 | `SP-PRIV-01`, `SP-PRIV-02` |
-| Recovery and controller compromise | UC-005, UC-021 | `SP-RECOV-01`, `SP-AUTH-01` |
-| Agent delegation | UC-009, UC-010, UC-011 | `SP-AGENT-01`, `SP-AGENT-02` |
-| Governance and lifecycle | UC-012, UC-013, UC-027 | `SP-GOV-01`…`03` |
-| Offline and resilience | UC-014, UC-018, UC-028 | `SP-OPS-01`…`03` |
-| Inclusion | UC-017, UC-020 | `SP-INCL-01`, `SP-INCL-02` |
-| Cryptographic migration | UC-026 | `SP-CRYPTO-01` |
-| Interoperability | UC-030 | `SP-INTEROP-01` |
+Together these adapters expose **74 scenario test vectors** to the RAHP pressure-testing workflow.
+
+## Why separate corpora from patterns?
+
+A source scenario such as `TT-002` or `CS-007` describes a concrete domain condition. A portable `SP-*` pattern describes the reusable failure class. This separation lets RAHP ask the same harms question across specifications without taking ownership of another project's identifiers.
+
+```mermaid
+flowchart LR
+  SRC[Source specification] --> CORPUS[Domain corpus]
+  CORPUS --> PATTERN[Portable SP-* pattern]
+  PATTERN --> RISK[Risk / harm]
+  RISK --> CTRL[Control / guardrail]
+  CTRL --> TEST[Assurance test]
+  TEST --> FIND[Finding]
+```
+
+## Trust Tasks corpus
+
+The Trust Tasks adapter is grounded in the current framework text and covers, among other things:
+
+- proof omission and transport/security boundaries;
+- audience binding and cross-recipient replay;
+- in-band versus transport-derived identity;
+- expiry and retry semantics;
+- thread and ceremony composition;
+- bearer task semantics;
+- capability-discovery privacy;
+- framework/version migration;
+- transport-binding downgrade;
+- error-channel leakage;
+- resource-exhaustion paths;
+- delegated-agent intent drift and exposure classification.
+
+## Credential Spec corpus
+
+The Credential Spec adapter focuses on:
+
+- completeness and directionality of relationship edges;
+- pairwise identifier reuse and correlation;
+- selective-disclosure metadata leakage;
+- issuer authority and registry status changes;
+- unavailable status/governance dependencies;
+- VC v1.1/v2.0 migration;
+- `taskContext` overclaim and outcome-evidence availability;
+- witness-to-edge binding;
+- invitation replay;
+- personhood assurance interpretation;
+- proof-suite agility;
+- holder/controller compromise;
+- accessibility and cross-community recognition.
+
+## Cross-spec composed corpus
+
+Some of the most consequential failures are not owned by either specification alone. The composed corpus therefore tests conditions such as:
+
+- credential authority changing between task authorization and execution;
+- replaying a task with a still-valid credential;
+- task party identity being conflated with credential roles;
+- bearer task semantics broadening credential disclosure;
+- two minimal credentials becoming identifying when composed;
+- an agent continuing to use a credential after human intent changes;
+- offline task processing against stale credential or registry state;
+- asymmetric version migration;
+- responsibility fragmentation during appeal or redress.
+
+The `XSP-*` identifiers are RAHP-owned because these are deliberately synthesized interaction scenarios rather than copied source use cases.
 
 ## Adding another corpus
 
-1. Keep scenario identifiers and normative meaning owned by the source project.
-2. Create an adapter under `corpora/`.
-3. Record source repository and path.
-4. Map every imported scenario to at least one portable pattern.
-5. Run `python3 tools/validate_scenario_corpora.py`.
-6. Use scenario IDs and pattern IDs in pressure-test findings where they materially contributed to the finding.
+1. Keep source-owned identifiers and normative meaning with the source project.
+2. Add a YAML adapter under `corpora/`.
+3. Record repository, source path, snapshot/commit and adapter version.
+4. Give every scenario a domain, goal, pressure, priority and at least one `SP-*` mapping.
+5. Prefer a `source_anchor` that tells a reviewer where the scenario was derived.
+6. Run `python3 tools/validate_scenario_corpora.py`.
+7. Use scenario IDs and pattern IDs in pressure-test findings only when they materially contributed to the finding.
+8. Re-run affected reviews when the upstream semantics change.
 
 {: .warning }
-An adapter is a review aid, not a normative fork. If the source scenario meaning changes, update the adapter and re-run affected reviews.
+A corpus broadens review coverage; it does not establish that the target specification is safe or conformant.

@@ -1,6 +1,6 @@
 title: DTG RAHP Toolkit
 description: Risk Assessment & Harms Prevention toolkit for scenario-driven pressure testing of digital trust specifications.
-remote_theme: just-the-docs/just-the-docs@v0.10.1
+theme: just-the-docs
 url: "https://sankarshanmukhopadhyay.github.io"
 baseurl: "/dtgwg-rahp-tf"
 repository: sankarshanmukhopadhyay/dtgwg-rahp-tf
@@ -25,7 +25,6 @@ callouts:
     title: Review decision
     color: green
 plugins:
-  - jekyll-remote-theme
   - jekyll-relative-links
 relative_links:
   enabled: true
