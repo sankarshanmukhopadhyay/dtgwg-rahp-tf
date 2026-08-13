@@ -1,3 +1,9 @@
+---
+layout: default
+title: "Adopting RAHP"
+nav_order: 20
+has_toc: true
+---
 # Adopting RAHP outside DTG
 
 RAHP v0.5 is adopted through configuration. A Working Group, developer, standards project, or reviewer should not fork the DTG instance data merely to use the framework.
