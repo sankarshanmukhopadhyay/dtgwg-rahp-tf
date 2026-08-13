@@ -322,14 +322,16 @@ def check_orphans(by_type, instance, referenced, rep: Report):
     rep.check("orphans", not orphans, f"{sum(len(v) for v in orphans.values())} orphan(s)")
 
 
-def check_readme_counts(counts, rep: Report):
-    """Counts are read from the identifier table in README.md, matched by the
-    namespace code in the first cell. Prose elsewhere in the README is ignored —
-    counting bare numbers in prose produces false positives ('3 risk acceptances'
-    is not a claim about the number of risks)."""
-    readme = ROOT / "README.md"
-    if not readme.exists():
-        rep.check("readme counts", True, "no README")
+def check_readme_counts(counts, rep: Report, readme=None):
+    """Check an instance-specific identifier table when a README is available.
+
+    Portability rule: an external ``--data`` root must not be coupled to the DTG
+    repository README. The caller resolves the appropriate README for the selected
+    instance; if none exists, the count check is skipped.
+    """
+    readme = pathlib.Path(readme) if readme else None
+    if readme is None or not readme.exists():
+        rep.check("readme counts", True, "no instance README; skipped")
         return
     ns_alias = {"D/M/B/EC": "PERSONA"}
     bad = checked = 0
@@ -421,12 +423,24 @@ def check_coverage_stats(by_type, rep: Report):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data", default=str(ROOT / "data"))
+    ap.add_argument("--readme", default=None,
+                    help="instance README used for identifier-count checks; defaults to repository README for canonical data, or sibling README for external data")
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--summary", action="store_true")
     ap.add_argument("--strict", action="store_true", help="treat warnings as errors")
     a = ap.parse_args()
 
-    data_dir = pathlib.Path(a.data)
+    data_dir = pathlib.Path(a.data).resolve()
+    canonical_data = (ROOT / "data").resolve()
+    if a.readme:
+        readme_path = pathlib.Path(a.readme).resolve()
+    elif data_dir == canonical_data:
+        readme_path = ROOT / "README.md"
+    elif (data_dir.parent / "README.md").exists():
+        readme_path = data_dir.parent / "README.md"
+    else:
+        readme_path = None
+
     instance = load_yaml(data_dir / "instance.yaml")
     vocab = load_yaml(ROOT / "method" / "vocabularies.yaml")
 
@@ -440,7 +454,7 @@ def main():
     check_symmetry(by_type, rep)
     check_invariants(by_type, instance, rep)
     check_orphans(by_type, instance, referenced, rep)
-    check_readme_counts(counts, rep)
+    check_readme_counts(counts, rep, readme_path)
     check_operational_assurance(by_type, instance, rep)
     check_coverage_stats(by_type, rep)
     rep.stats.pop("_referenced", None)

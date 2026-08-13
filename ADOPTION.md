@@ -46,3 +46,25 @@ See `examples/minimal-instance/` for a compact pattern and `examples/dtg-credent
 ## Forking for another Working Group
 
 Keep `method/`, `tools/`, `context/`, and the documentation scaffolding. Replace the contents of `data/` with a new `instance.yaml` and records for the target domain. Preserve identifiers once published, record provenance, and run the validator as a conformance gate.
+
+
+## v0.5 portability contract
+
+RAHP now distinguishes **target-repository portability** from **independent-instance
+portability**. The engine already operates across multiple configured repositories.
+An independent adopter must go further: it owns its own `data/` root, governance
+profile, personas, risks, controls and evidence decisions.
+
+A synthetic portability fixture lives under `examples/portable-instance/` and is
+validated in CI:
+
+```bash
+python3 tools/validate_portability.py
+```
+
+The fixture proves that the validator can operate against a separate instance without
+coupling to DTG data or the root DTG README. It is not evidence of external adoption.
+
+For assessment reporting, use `method/conformance-claim-template.yaml` to state that
+a target was **assessed using RAHP** without implying that the target conforms to
+DTG-specific instance content.

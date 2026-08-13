@@ -1,0 +1,8 @@
+record_type: assurance_test
+records:
+- id: AT-01
+  guardrail: GR-01
+  pass_criterion: The implementation rejects an automated irreversible action outside
+    the declared authority boundary.
+  risks_covered:
+  - RK-P01

@@ -51,3 +51,11 @@ including `data/rule-profiles.yaml`, `data/evidence-artifacts.yaml`,
 `method/non-human-actors.yaml`, and `method/schema/delegation-scope.schema.json`.
 Reader guides for normative triage, operational assurance, agent delegation governance,
 and the v0.4.0 release are part of the required Pages coverage contract.
+
+
+## v0.5 development surfaces
+
+The required Pages coverage now also includes the generated Task Force Action Register,
+portability/adoption guidance, assessment-claim guidance, and the portable conformance
+claim template under `method/`. These surfaces make the v0.5 development contract
+inspectable without turning derived action queues into new canonical sources.

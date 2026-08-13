@@ -1,0 +1,18 @@
+record_type: risk
+records:
+- id: RK-P01
+  name: Unbounded automated decision
+  category: Governance
+  severity: High
+  likelihood: Medium
+  description: A conforming implementation permits an automated actor to make an irreversible
+    decision without a bounded authority signal.
+  affected_metrics:
+  - M-01
+  guardrails:
+  - GR-01
+  controls:
+  - CT-01
+  assurance_tests:
+  - AT-01
+  standards_priority: must_address

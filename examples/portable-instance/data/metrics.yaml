@@ -1,0 +1,9 @@
+record_type: metric
+records:
+- id: M-01
+  name: Out-of-scope irreversible actions
+  description: Count of irreversible automated actions executed outside the declared
+    authority boundary.
+  risks_measured:
+  - RK-P01
+  monitoring: null

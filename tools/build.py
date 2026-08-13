@@ -24,6 +24,8 @@ import pathlib
 import sys
 from collections import defaultdict
 
+from tf_actions import derive_tf_actions, load_manual_actions, render_markdown as render_tf_actions_markdown, summary as summarize_tf_actions
+
 try:
     import yaml
 except ImportError:  # pragma: no cover
@@ -342,6 +344,7 @@ NAV = [
     ("lifecycle.html", "Lifecycle & gaps", "var(--amber)"),
     ("governance.html", "Decisions & acceptances", "var(--green)"),
     ("assurance.html", "Operational assurance", "var(--teal)"),
+    ("task-force-actions.html", "Task Force actions", "var(--amber)"),
 ]
 
 
@@ -799,6 +802,44 @@ def build_site(records, derived, meta, out):
     (site / "assurance.html").write_text(page("assurance.html", ptitle, psub, body, meta), encoding="utf-8")
     pages.append(("assurance", ptitle, psub, body))
 
+    # ---- Task Force action register (v0.5-dev) --------------------------
+    tf_actions = derived["tf_actions"]
+    tf_summary = summarize_tf_actions(tf_actions)
+    tf_rows = []
+    for action in tf_actions:
+        blocked = ", ".join(action.get("blocked_by") or []) or "—"
+        tf_rows.append(
+            "<tr>"
+            f"<td><code>{html.escape(action['action_key'])}</code></td>"
+            f"<td>{pill(action['subject_id']) if not action['subject_id'].startswith('ROADMAP-') else '<code>' + html.escape(action['subject_id']) + '</code>'}</td>"
+            f"<td>{html.escape(action['category'].replace('_', ' '))}</td>"
+            f"<td>{html.escape(action['priority'])}</td>"
+            f"<td>{html.escape(action['current_state'])}</td>"
+            f"<td>{html.escape(action['requested_decision'])}</td>"
+            f"<td>{html.escape(blocked)}</td>"
+            "</tr>"
+        )
+    cat_rows = "".join(
+        f"<tr><td>{html.escape(k.replace('_', ' '))}</td><td>{v}</td></tr>"
+        for k, v in sorted(tf_summary["by_category"].items(), key=lambda kv: (-kv[1], kv[0]))
+    )
+    body = (
+        '<div class="warnbox"><strong>Generated governance queue, not a decision record.</strong> '
+        'Items appear here because their canonical RAHP record is still in a state that requires '
+        'Task Force action. Record the decision in canonical YAML; the next build removes or updates '
+        'the corresponding queue item automatically.</div>'
+        f'<div class="sh2"><h2>Open decisions</h2><span class="cnt">{tf_summary["waiting_on_tf"]} items</span></div>'
+        '<div class="card"><table><thead><tr><th>Category</th><th>Open</th></tr></thead>'
+        f'<tbody>{cat_rows}</tbody></table></div>'
+        '<div class="sh2"><h2>Itemized register</h2></div>'
+        '<div class="card"><table><thead><tr><th>Action</th><th>Subject</th><th>Category</th>'
+        '<th>Priority</th><th>Current state</th><th>Decision required</th><th>Blocked by</th></tr></thead>'
+        f'<tbody>{"".join(tf_rows)}</tbody></table></div>'
+    )
+    ptitle, psub = "Task Force action register", "A derived, itemized queue of canonical RAHP records waiting on accountable Task Force decisions."
+    (site / "task-force-actions.html").write_text(page("task-force-actions.html", ptitle, psub, body, meta), encoding="utf-8")
+    pages.append(("task-force-actions", ptitle, psub, body))
+
     return site, pages
 
 
@@ -885,6 +926,7 @@ def main():
         "normative": derive_normative_set(records),
         "normative_triage": derive_normative_triage(records),
         "operational_assurance": derive_operational_assurance(records),
+        "tf_actions": derive_tf_actions(records, load_manual_actions(data_dir)),
         "lifecycle": lifecycle,
     }
 
@@ -900,7 +942,7 @@ def main():
     (out / "rahp.json").write_text(json.dumps({
         "instance": instance["instance"], "records": records}, indent=2, ensure_ascii=False), encoding="utf-8")
 
-    for name in ("persona_xrefs", "coverage", "normative", "normative_triage", "operational_assurance"):
+    for name in ("persona_xrefs", "coverage", "normative", "normative_triage", "operational_assurance", "tf_actions"):
         (out / "derived" / f"{name}.json").write_text(
             json.dumps(derived[name], indent=2, ensure_ascii=False), encoding="utf-8")
 
@@ -916,6 +958,8 @@ def main():
     build_normative_md(records, derived, out)
     build_normative_triage_md(derived["normative_triage"], out)
     build_operational_assurance_md(derived["operational_assurance"], out)
+    (out / "task-force-actions.md").write_text(
+        render_tf_actions_markdown(derived["tf_actions"]) + "\n", encoding="utf-8")
 
     print("Built:")
     print(f"  {out/'rahp.json'}")
@@ -926,6 +970,7 @@ def main():
     print(f"  {out/'normative.md'}")
     print(f"  {out/'normative-triage.md'}")
     print(f"  {out/'operational-assurance.md'}")
+    print(f"  {out/'task-force-actions.md'}")
     print(f"  {counts}")
 
 

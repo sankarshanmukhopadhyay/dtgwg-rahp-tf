@@ -6,6 +6,38 @@ has_toc: true
 ---
 # Changelog
 
+
+## [Unreleased] — v0.5-dev
+
+### Added
+
+- Generated **Task Force Action Register** that itemizes unresolved governance decisions
+  directly from canonical record state, including all 87 unassigned controls/guardrails,
+  proposed `RP-*` profiles, proposed governance precedents, pending risk acceptances, and
+  proposed monitoring activations.
+- Synthetic second-instance fixture under `examples/portable-instance/` to test mechanical
+  portability without claiming independent Working Group adoption.
+- `tools/validate_portability.py` and CI coverage for validating an external instance data
+  root against the portable RAHP method.
+- Portable assessment-method claim template for reporting that a target was assessed using
+  a pinned RAHP method/version without implying certification or DTG-specific conformance.
+- Portability, independent-adoption, assessment-claim, and Task Force work-queue guidance.
+
+### Changed
+
+- Roadmap now distinguishes repository-target portability, already demonstrated by the
+  multi-repository engine/corpus model, from the stronger independent-instance adoption
+  proof still required for v0.5.
+- `tools/validate.py` no longer couples an external `--data` root to the DTG repository
+  README; instance-specific count checking uses an explicit or sibling README.
+- Current development toolkit version is `v0.5-dev`; `v0.4.0` remains the latest release.
+
+### Removed
+
+- `RELEASE_CHECKLIST_v0.4.0.md`. Release readiness remains enforced by CI, validation,
+  release notes, immutable tags, and repository history rather than a persistent checklist.
+
+
 ## [v0.4.0] — 2026-08-13
 
 ### Added

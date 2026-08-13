@@ -1,0 +1,14 @@
+record_type: guardrail
+records:
+- id: GR-01
+  name: Human-review boundary
+  requirement: An irreversible automated action must expose a reviewable authority
+    boundary.
+  risks_addressed:
+  - RK-P01
+  controls:
+  - CT-01
+  assurance_tests:
+  - AT-01
+  standards_status: unassigned
+  normative_language: null

@@ -1,0 +1,12 @@
+record_type: control
+records:
+- id: CT-01
+  name: Bounded automated authority
+  type: Governance
+  description: Require automated decision authority to be explicitly scoped and reviewable.
+  guardrails:
+  - GR-01
+  linked_risks:
+  - RK-P01
+  standards_status: unassigned
+  normative_language: null

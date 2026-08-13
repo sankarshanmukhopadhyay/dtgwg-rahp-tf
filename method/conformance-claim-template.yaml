@@ -1,0 +1,37 @@
+# Portable template for an assessment-method claim.
+# A claim says that an assessment used RAHP; it does not certify the target system
+# or imply conformance to DTG instance content.
+claim:
+  id: CLAIM-EXAMPLE
+  claim_type: assessed_using_rahp
+  status: draft
+
+rahp:
+  version: v0.5-dev
+  method_repository: https://github.com/trustoverip/dtgwg-rahp-tf
+  method_commit: "<immutable commit SHA>"
+  instance_id: "<adopter instance id>"
+  rule_profile: "<RP-* or adopter-defined profile, if applicable>"
+
+target:
+  name: "<specification or system>"
+  repository: "<repository URL>"
+  commit: "<immutable target SHA>"
+  assessed_at: "<ISO-8601 date/time>"
+
+assessment:
+  modes:
+    - rahp
+  corpus_ids: []
+  finding_record: "<URI/path to canonical findings>"
+  evidence_manifest: "<URI/path if applicable>"
+
+governance:
+  decision_authority: "<body or role>"
+  unresolved_actions: []
+  accepted_risks: []
+
+statement: >-
+  This target was assessed using the identified RAHP method version and instance.
+  The claim describes the assessment process and evidence; it is not a general
+  certification of the target and does not imply adoption of DTG-specific RAHP content.

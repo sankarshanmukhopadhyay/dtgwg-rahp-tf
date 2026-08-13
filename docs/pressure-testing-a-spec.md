@@ -70,7 +70,7 @@ review:
     version: Working Draft 01
     commit: <full-40-character-commit-sha>
   reviewed_against:
-    rahp_version: v0.4.0
+    rahp_version: v0.5-dev
   findings:
     - id: F-001
       title: Concise finding

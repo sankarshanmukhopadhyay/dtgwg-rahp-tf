@@ -6,7 +6,7 @@ has_toc: true
 ---
 # RAHP Toolkit Roadmap
 
-Status: v0.4.0 release baseline; governance decisions marked proposed remain subject to task force review
+Status: v0.5 development baseline; v0.4.0 remains the latest release and unresolved governance decisions remain subject to Task Force review
 Supersedes: the roadmap proposal in DTGWG discussion #3 (April 2026), which it
 largely adopts. Where it departs, the reasoning is stated.
 
@@ -187,14 +187,46 @@ specific deployment or governance body has adopted the proposed operating profil
 The distinction is deliberate: **v0.4.0 delivers the mechanism and proposed profile;
 ratification and runtime evidence remain accountable human/implementation work.**
 
-### v0.5 — portability and field evidence
+### Task Force governance queue — generated, not hidden in roadmap prose
 
-- [ ] A second RAHP instance under a different working group, proving `method/` is portable
-- [ ] Method documentation as a standalone deliverable
-- [ ] Conformance claim template for "assessed using RAHP v0.x"
+Starting with v0.5 development, unresolved governance work is maintained as an
+**itemized generated register** rather than as aggregate roadmap reminders. The
+register is derived from canonical record state and published at
+`build/site/task-force-actions.html`.
+
+It currently includes every control/guardrail awaiting standards triage, proposed
+rule profiles such as `RP-001`, proposed governance precedents, pending risk
+acceptances, and proposed monitoring contracts. A record disappears from the queue
+only when its canonical state is changed through an accountable decision.
+
+This means the roadmap can describe **milestones**, while the generated Task Force
+Action Register carries the live decision inventory.
+
+### v0.5 — portability, independent adoption, and field evidence · **in development**
+
+RAHP already demonstrates **repository-target portability**: one engine can run
+pressure tests, security reviews, combined reviews, corpora and source-drift
+monitoring across multiple configured repositories. v0.5 therefore narrows the
+remaining portability claim to something stronger: can another Working Group adopt
+`method/` and `tools/`, supply its own instance data and governance, and use RAHP
+without inheriting DTG-specific assumptions?
+
+- [x] Distinguish repository-target portability from independent-instance portability
+- [x] Remove validator coupling between an external `--data` root and the DTG root README
+- [x] Add a synthetic second-instance fixture proving mechanical instance portability
+- [x] Add CI validation for the portable-instance fixture
+- [x] Add standalone portability/adoption documentation
+- [x] Add a portable assessment-method claim template for "assessed using RAHP v0.x"
+- [x] Add a generated, itemized Task Force Action Register for unresolved governance decisions
+- [ ] **Independent adoption:** a real second Working Group owns and governs its own RAHP instance
 - [ ] Practitioner trial report with evidence artefacts from an actual assessment
+- [ ] Populate real evidence URI/digest/timestamp fields from field use
 - [ ] At least one ratified rule profile and one active monitoring profile
-- [ ] Cross-instance comparison of what remains method-level versus adopter-specific
+- [ ] Cross-instance comparison of method-level versus adopter-specific decisions after independent adoption
+
+The synthetic fixture deliberately does **not** close the independent-adoption item.
+It proves that the software and data contract are portable; only a real external
+Working Group can prove that the governance model is independently adoptable.
 
 ## Open questions
 
@@ -244,7 +276,7 @@ drafted by an assistant — not as a warning label, but so a reviewer can calibr
 how much independent verification a record needs. Risk scoring, guardrail
 verification and governance decisions remain out of scope for assistants, per the
 existing AI-assisted process guide. Reviewing this with the ToIP AI & Human Trust
-WG and the DIF agents work, as suggested in the thread, is worth doing before v0.4.
+WG and the DIF agents work remains useful before an external v0.5 adoption claim is made.
 
 ## Relationship to the object model proposed in the thread
 
@@ -258,11 +290,10 @@ as follows:
 | control | `data/controls.yaml` — with the control/guardrail distinction preserved rather than collapsed |
 | assurance test | `data/assurance-tests.yaml` |
 | decision record | split into `risk-acceptances.yaml` (what was decided about a risk) and `governance-precedents.yaml` (why the toolkit is shaped as it is) |
-| evidence artefact | **not yet implemented** — the missing piece |
+| evidence artefact | `data/evidence-artifacts.yaml` — implemented in v0.4 as `EV-*` contracts and linked to operational pilot metrics |
 
 The evidence artefact record (URI/hash, collector, timestamp, retention class,
-sensitivity label) is the right idea and is deferred to v0.4, where it belongs
-alongside the monitoring layer: an assurance test result is only meaningful if the
-evidence it was based on is addressable. The three-layer rule profile — core object
-rules, working-group adoption rules, runtime-readiness rules — is a good frame for
-Q4 and is reflected in the instance-level rule profile proposed above.
+sensitivity label) is implemented in v0.4 as `EV-*` contracts. v0.5 field work now
+needs to populate those contracts with real assessment evidence. The three-layer
+rule profile — core object rules, working-group adoption rules, runtime-readiness
+rules — remains the frame for Q4 and for future independent adopters.

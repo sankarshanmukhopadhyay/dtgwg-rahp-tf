@@ -1,7 +1,7 @@
 # DTG RAHP Toolkit
 
 **Risk Assessment & Harms Prevention Task Force · Decentralised Trust Graph Working Group**  
-Release v0.4.0 · CC-BY 4.0
+Development baseline v0.5-dev · Latest release v0.4.0 · CC-BY 4.0
 
 RAHP is a repeatable assurance method for pressure-testing standards against risks and human harms, tracing findings to controls and evidence, and feeding actionable changes back into specification development. This repository contains both the **portable RAHP method** and a **DTG-specific worked instance**.
 
@@ -17,8 +17,9 @@ RAHP is a repeatable assurance method for pressure-testing standards against ris
 | Design runtime assurance/evidence contracts | [Operational assurance](docs/operational-assurance.md) |
 | Understand the RAHP method | [How RAHP works](docs/how-rahp-works.md) |
 | Explore the DTG instance | [DTG instance](docs/index.md#explore-the-dtg-instance) |
-| Adopt RAHP for another Working Group | [Adoption guide](ADOPTION.md) |
+| Adopt RAHP for another Working Group | [Adoption guide](ADOPTION.md) and [portability contract](docs/portability.md) |
 | Make a small first assessment | [Minimum viable RAHP](examples/minimal-instance/README.md) |
+| See what is waiting on the Task Force | [Task Force action register](docs/task-force-actions.md) |
 | Contribute risks, controls, or evidence | [Contributing](CONTRIBUTING.md) |
 | Understand where a remediation belongs | [Governance boundaries](docs/governance-boundaries.md) |
 
@@ -92,6 +93,24 @@ without auto-assigning standards status.
 
 See [Operational assurance](docs/operational-assurance.md), [Normative triage](docs/normative-triage.md),
 and the [v0.4.0 release notes](docs/releases/v0.4.0.md).
+
+
+
+## v0.5 development: portability and accountable adoption
+
+v0.5 development sharpens the portability claim. RAHP already operates across multiple
+configured repositories; the remaining proof is **independent instance adoption** by
+another Working Group using its own data and governance rather than DTG-specific content.
+
+The repository now includes a synthetic portable-instance fixture and CI test that exercise
+`tools/validate.py` against an independent `data/` root. This proves mechanical portability
+without pretending that a real external Working Group has adopted RAHP. See
+[Portability and independent adoption](docs/portability.md).
+
+The live governance backlog is now a generated **Task Force Action Register** rather than
+an aggregate roadmap note. It itemizes each unresolved control/guardrail standards decision,
+`RP-001`, proposed precedents, pending risk acceptances and proposed monitoring activations.
+See [Task Force action register](docs/task-force-actions.md).
 
 ## Quick start
 

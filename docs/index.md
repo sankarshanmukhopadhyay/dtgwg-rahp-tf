@@ -42,10 +42,17 @@ For adversarial protocol review beyond the general risks-and-harms workflow, use
 Use [Review modes](review-modes.md) for the unified `tools/review.py` entry point. A checkout can scaffold a risks-and-harms RAHP review, an adversarial security-hardening review, or both together. Combined mode retains the two canonical records and generates a cross-lens synthesis rather than collapsing the methodologies into one finding type. Worked combined reports are available for the [DTG Credential Specification](../examples/combined/dtg-credential-spec/COMBINED_REVIEW.md) and [Trust Tasks](../examples/combined/trust-tasks-spec/COMBINED_REVIEW.md).
 
 
-## v0.4 governance and assurance
+## Governance and assurance
 
+- [Task Force action register](task-force-actions.md)
 - [Normative triage](normative-triage.md)
 - [Operational assurance](operational-assurance.md)
 - [Agent delegation governance](agent-delegation-governance.md)
 - [Roadmap](../ROADMAP.md)
 - [v0.4.0 release notes](releases/v0.4.0.md)
+
+## v0.5 portability development
+
+- [Portability and independent adoption](portability.md)
+- [Assessment claims](conformance-claims.md)
+- [Adoption guide](../ADOPTION.md)

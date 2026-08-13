@@ -1,0 +1,17 @@
+# Non-derivable Task Force decisions.
+#
+# Do not duplicate actions that can be inferred from canonical state in controls,
+# guardrails, rule profiles, precedents, risk acceptances, or monitoring contracts.
+# tools/tf_actions.py merges these entries into the generated action register.
+actions:
+  - action_key: TF-Q2
+    subject_id: ROADMAP-Q2
+    category: governance_question
+    priority: high
+    status: waiting_on_tf
+    title: Normative scope of a RAHP assessment claim
+    current_state: proposed answer in ROADMAP.md
+    requested_decision: >-
+      Ratify, revise, defer, or reject the proposed position that RAHP conformance
+      applies to the assessment method/process rather than certifying a target or
+      importing DTG instance content.
