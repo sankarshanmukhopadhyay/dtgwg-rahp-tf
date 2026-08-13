@@ -18,8 +18,8 @@ REQUIRED_DOCS = [
     'docs/using-an-ai-agent.html',
     'docs/pages-coverage.html',
     'README.md',
-    'QUICKSTART.md',
-    'ADOPTION.md',
+    'QUICKSTART.html',
+    'ADOPTION.html',
     'examples/dtg-credential-spec/README.md',
     'examples/security-hardening/credential-spec/SECURITY_REVIEW.md',
 ]
@@ -41,8 +41,23 @@ if not htmls:
     print(f'ERROR {SITE} contains no HTML')
     raise SystemExit(1)
 
+def resolve_site_target(path_text):
+    target = SITE / path_text
+    candidates = [target]
+    # Jekyll may materialize explicit permalinks either exactly, as an HTML
+    # sibling, or as an index page depending on the source/output extension.
+    candidates.extend([
+        Path(str(target) + '.html'),
+        target.with_suffix('.html') if target.suffix else target,
+        target / 'index.html',
+    ])
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    return target
+
 for required in REQUIRED_DOCS + REQUIRED_PROJECTIONS:
-    target = SITE / required
+    target = resolve_site_target(required)
     if not target.exists():
         errors.append(f'missing required Pages projection: {required}')
     elif required.endswith(('.yaml', '.yml', '.json', '.jsonld')):
@@ -71,7 +86,14 @@ for page in htmls:
             target = page.parent / path
         if target.is_dir():
             target = target / 'index.html'
-        if target.suffix == '':
+        if target.suffix.lower() == '.md':
+            html_target = target.with_suffix('.html')
+            md_html_target = Path(str(target) + '.html')
+            if html_target.exists():
+                target = html_target
+            elif md_html_target.exists():
+                target = md_html_target
+        elif target.suffix == '':
             a = target.with_suffix('.html')
             b = target / 'index.html'
             if a.exists():

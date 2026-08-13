@@ -348,12 +348,16 @@ def record_title(rec):
 
 
 def single_file_body(body):
-    """Rewrite catalogue deep links for the self-contained toolkit.
+    """Rewrite multi-page links for the self-contained toolkit.
 
-    Multi-page site links target catalogue.html#ID. In the standalone toolkit
-    the catalogue is embedded in the same document, so retain only the fragment.
+    Catalogue and evidence views are embedded as panes in the standalone file,
+    while documentation remains a sibling Pages surface one level above build/.
     """
-    return body.replace('href="catalogue.html#', 'href="#')
+    return (body
+            .replace('href="catalogue.html#', 'href="#')
+            .replace('href="risks.html"', 'href="#pane-risks"')
+            .replace('href="../../docs/', 'href="../docs/')
+            .replace('.md"', '.html"'))
 
 
 def build_single_file(pages, meta, out):
@@ -406,6 +410,18 @@ document.addEventListener('click', function(e){{
   const id=a.getAttribute('href').slice(1);
   const target=document.getElementById(id);
   if(!target) return;
+  if(id.startsWith('pane-')){{
+    document.querySelectorAll('.pane').forEach(p=>p.classList.remove('on'));
+    document.querySelectorAll('.tabbtn').forEach(b=>b.classList.remove('on'));
+    target.classList.add('on');
+    const paneKey=id.slice(5);
+    const buttons=[...document.querySelectorAll('.tabbtn')];
+    const paneButton=buttons.find(b=>b.getAttribute('onclick')?.includes("'"+paneKey+"'"));
+    if(paneButton) paneButton.classList.add('on');
+    window.scrollTo(0,0);
+    e.preventDefault();
+    return;
+  }}
   const catalogue=document.getElementById('pane-catalogue');
   if(catalogue && catalogue.contains(target)){{
     document.querySelectorAll('.pane').forEach(p=>p.classList.remove('on'));
@@ -461,8 +477,8 @@ def build_site(records, derived, meta, out):
 </div>""")
     guide = """<div class="sh2"><h2>Start here</h2></div>
 <div class="pgrid" style="margin-bottom:24px">
-  <div class="pcard"><h3>Understand</h3><div class="role">Why RAHP → people and power → risks and harms → controls, guardrails and assurance</div><a href="../../docs/how-rahp-works.md">Read the method guide</a></div>
-  <div class="pcard"><h3>Apply</h3><div class="role">Choose a specification → pressure-test → analyse findings → determine the control layer → publish recommendations</div><a href="../../docs/pressure-testing-a-spec.md">Run a pressure test</a></div>
+  <div class="pcard"><h3>Understand</h3><div class="role">Why RAHP → people and power → risks and harms → controls, guardrails and assurance</div><a href="../../docs/how-rahp-works.html">Read the method guide</a></div>
+  <div class="pcard"><h3>Apply</h3><div class="role">Choose a specification → pressure-test → analyse findings → determine the control layer → publish recommendations</div><a href="../../docs/pressure-testing-a-spec.html">Run a pressure test</a></div>
   <div class="pcard"><h3>Explore</h3><div class="role">Personas → scenarios → risks → controls → metrics → standards actions</div><a href="risks.html">Explore generated evidence</a></div>
 </div>"""
     body = (guide + '<p style="margin-bottom:18px;color:var(--muted);max-width:760px">Personas are analytical '
