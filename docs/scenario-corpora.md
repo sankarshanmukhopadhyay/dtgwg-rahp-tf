@@ -3,6 +3,7 @@ layout: default
 title: "Scenario corpora"
 nav_order: 5
 has_toc: true
+has_children: true
 ---
 # Scenario corpora
 
@@ -83,6 +84,24 @@ Some of the most consequential failures are not owned by either specification al
 - responsibility fragmentation during appeal or redress.
 
 The `XSP-*` identifiers are RAHP-owned because these are deliberately synthesized interaction scenarios rather than copied source use cases.
+
+## Corpus lifecycle
+
+A corpus adapter has its own maintenance lifecycle even though scenario ownership stays with the source project.
+
+```mermaid
+stateDiagram-v2
+    [*] --> Sourced
+    Sourced --> Adapted: map source scenarios to SP-* patterns
+    Adapted --> Validated: run corpus validator
+    Validated --> Consumed: use in pressure tests
+    Consumed --> ReviewNeeded: source specification changes
+    ReviewNeeded --> Adapted: update snapshot + mappings
+    Validated --> Deprecated: source scenario retired
+    Deprecated --> [*]
+```
+
+The adapter version and source snapshot make that lifecycle visible without transferring ownership of source identifiers into RAHP.
 
 ## Adding another corpus
 

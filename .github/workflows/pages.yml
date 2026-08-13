@@ -72,6 +72,9 @@ jobs:
           JEKYLL_ENV: production
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
 
+      - name: Validate rendered Pages coverage
+        run: python3 tools/validate_jtd_site.py _site
+
       - name: Upload Pages artifact
         if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v4

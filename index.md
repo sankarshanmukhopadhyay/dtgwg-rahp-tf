@@ -18,9 +18,11 @@ RAHP now supports **scenario-driven pressure testing**: a specification can be t
 - [Scenario-driven pressure testing](docs/scenario-driven-pressure-testing.md)
 - [Scenario corpora](docs/scenario-corpora.md)
 - [Review modes](docs/review-modes.md)
+- [Use an AI agent to run a pressure test](docs/using-an-ai-agent.md)
 - [Security-hardening review](docs/security-hardening-review.md)
 - [Adoption guide](ADOPTION.md)
 - [Quick start](QUICKSTART.md)
+- [GitHub Pages coverage](docs/pages-coverage.md)
 
 ## Assurance chain
 

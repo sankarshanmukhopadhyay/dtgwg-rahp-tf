@@ -19,7 +19,7 @@ flowchart LR
   ARTIFACT --> DEPLOY[Deploy to github-pages environment]
 ```
 
-The workflow also runs manually with `workflow_dispatch`.
+The workflow also runs manually with `workflow_dispatch`. Structured YAML/JSON artefacts are rendered by `_plugins/structured_data_pages.rb` at their original Pages paths, while canonical machine-readable source remains in GitHub. See [GitHub Pages coverage](pages-coverage.md).
 
 ## One-time repository setting
 

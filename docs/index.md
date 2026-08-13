@@ -6,7 +6,7 @@ has_toc: true
 ---
 # RAHP documentation
 
-RAHP has three primary paths:
+RAHP has four primary paths:
 
 ## Understand
 
@@ -15,6 +15,10 @@ Start with [Concepts](concepts.md) and [How RAHP works](how-rahp-works.md) to un
 ## Apply
 
 Use [Pressure-testing a specification](pressure-testing-a-spec.md), then [Interpreting results](interpreting-results.md) and [Governance boundaries](governance-boundaries.md). Complete worked reviews are available under `examples/dtg-credential-spec/` and `examples/trust-tasks-spec/`. Together they demonstrate pressure testing of both a credential schema specification and a protocol/framework specification, including cross-layer finding disposition. In each example, `pressure-test.yaml` is canonical and the structured review section in `README.md` is generated with `tools/render_pressure_tests.py`. A reusable starter is available at `examples/pressure-test-template.yaml`. Generated RAHP citations resolve to `build/site/catalogue.html#<ID>`, which provides a stable, deep-linkable definition and cross-reference context for every canonical artefact.
+
+## Delegate repeatable work to an AI agent
+
+Use [Use an AI agent to run a pressure test](using-an-ai-agent.md) for an agent-friendly operating model, prompt contract, command path, evidence rules, and explicit human accountability checkpoints.
 
 ## Explore the DTG instance
 

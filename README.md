@@ -12,6 +12,7 @@ RAHP is a repeatable assurance method for pressure-testing standards against ris
 | Review a specification for risks and harms | [Pressure-testing a specification](docs/pressure-testing-a-spec.md) |
 | Exercise a specification against scenario corpora | [Scenario-driven pressure testing](docs/scenario-driven-pressure-testing.md) |
 | Perform an adversarial protocol/security review | [Security and hardening review](docs/security-hardening-review.md) |
+| Have an AI agent prepare and run the review workflow | [AI-agent pressure testing](docs/using-an-ai-agent.md) |
 | Understand the RAHP method | [How RAHP works](docs/how-rahp-works.md) |
 | Explore the DTG instance | [DTG instance](docs/index.md#explore-the-dtg-instance) |
 | Adopt RAHP for another Working Group | [Adoption guide](ADOPTION.md) |
@@ -73,7 +74,7 @@ RAHP now includes four scenario adapters: DTG ZKP, Trust Tasks, DTG Core Credent
 
 ## Documentation site
 
-The repository is configured for a Just the Docs site deployed by GitHub Actions to GitHub Pages. The build/deploy workflow validates RAHP and all scenario corpora before publication. See [Publishing the RAHP site](docs/publishing.md) for the one-time Pages source setting and local build commands.
+The repository is configured for a Just the Docs site deployed by GitHub Actions to GitHub Pages. The build/deploy workflow validates RAHP and all scenario corpora before publication. See [Publishing the RAHP site](docs/publishing.md) for the deployment pipeline and [GitHub Pages coverage](docs/pages-coverage.md) for what is rendered, including structured YAML/JSON projections at their repository paths.
 
 ## Quick start
 

@@ -32,6 +32,11 @@ For the complete process, see [ADOPTION.md](ADOPTION.md) and [docs/pressure-test
 Worked pressure tests: [`examples/dtg-credential-spec/`](examples/dtg-credential-spec/README.md) and [`examples/trust-tasks-spec/`](examples/trust-tasks-spec/README.md).
 
 
+## Using an AI agent
+
+An AI coding or repository agent can perform the repeatable mechanics above, select relevant scenario corpora, draft evidence-backed candidate findings, render the outputs, and run the validators. Keep final scoring, risk acceptance, assurance claims, and governance dispositions under accountable human review. See [Use an AI agent to run a pressure test](docs/using-an-ai-agent.md) for the prompt contract and end-to-end workflow.
+
+
 ## Security-hardening reviews
 
 The coordinated Trust Tasks / DTG Credentials adversarial reviews are under [`examples/security-hardening/`](examples/security-hardening/README.md). Canonical findings are YAML; rendered reports are generated and checked:
