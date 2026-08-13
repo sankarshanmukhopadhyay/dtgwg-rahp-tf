@@ -1,0 +1,28 @@
+version: 1
+profile:
+  id: example-wg
+  title: Example Working Group
+  description: A non-DTG example showing a working group assessing multiple repositories.
+assessment:
+  default_mode: combined
+repositories:
+  - id: protocol
+    repository: example-wg/protocol
+    branch: main
+    commit: "2222222222222222222222222222222222222222"
+    context:
+      title: Example Protocol
+      type: specification
+    scope:
+      include: ["spec/**", "schemas/**"]
+    reviews: [rahp, security, combined]
+  - id: implementation-guide
+    repository: example-wg/implementation-guide
+    branch: main
+    commit: "3333333333333333333333333333333333333333"
+    context:
+      title: Example Implementation Guide
+      type: implementation-guidance
+    scope:
+      include: ["docs/**"]
+    reviews: [rahp]

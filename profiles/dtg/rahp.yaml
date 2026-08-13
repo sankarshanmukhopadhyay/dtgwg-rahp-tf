@@ -1,0 +1,54 @@
+version: 1
+profile:
+  id: dtg
+  title: ToIP Digital Trust Ecosystem Governance RAHP deployment
+  description: >-
+    Bundled exemplar showing the portable RAHP engine applied across DTG-related repositories.
+    DTG portfolio metadata, corpora and governance records are deployment-specific and are not
+    required by the RAHP engine.
+  owner: ToIP Digital Trust Ecosystem Governance community
+assessment:
+  default_mode: combined
+  rahp_repository: sankarshanmukhopadhyay/dtgwg-rahp-tf
+  rahp_version: v0.5.0
+repositories:
+  - id: dtg-zkp
+    repository: sankarshanmukhopadhyay/dtgwg-zkp-tf
+    branch: main
+    upstream: trustoverip/dtgwg-zkp-tf
+    context:
+      title: DTG Zero-Knowledge Proof Task Force
+      type: specification
+      description: Zero-knowledge proof requirements and implementation guidance.
+    scope:
+      include: ["*.md", "docs/**", "schemas/**"]
+      exclude: ["archive/**"]
+    reviews: [rahp, security, combined]
+  - id: credential-spec
+    repository: trustoverip/dtgwg-cred-spec
+    branch: main
+    context:
+      title: DTG Credential Specification
+      type: specification
+    scope:
+      include: ["spec/**", "schemas/**", "docs/**"]
+    reviews: [rahp, security, combined]
+  - id: trust-tasks
+    repository: trustoverip/dtgwg-trust-tasks-tf
+    branch: main
+    context:
+      title: DTG Trust Tasks
+      type: specification
+    scope:
+      include: ["SPEC.md", "specs/**", "schemas/**", "docs/**"]
+    reviews: [rahp, security, combined]
+output:
+  directory: build/targets
+governance:
+  namespace: dtg
+extensions:
+  portfolio_registry:
+    repository: sankarshanmukhopadhyay/dtg-portfolio-monitor
+    branch: main
+    path: config/repositories.yaml
+    purpose: DTG discovery and portfolio scope metadata only; optional to RAHP core.

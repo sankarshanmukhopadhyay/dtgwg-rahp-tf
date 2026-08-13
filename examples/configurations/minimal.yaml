@@ -1,0 +1,17 @@
+version: 1
+profile:
+  id: example-project
+  title: Example project RAHP assessment
+assessment:
+  default_mode: combined
+repositories:
+  - id: example-spec
+    repository: example-org/example-spec
+    branch: main
+    commit: "1111111111111111111111111111111111111111"
+    context:
+      title: Example Specification
+      type: specification
+    scope:
+      include: ["spec/**", "docs/**"]
+    reviews: [rahp, security, combined]

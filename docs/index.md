@@ -51,8 +51,10 @@ Use [Review modes](review-modes.md) for the unified `tools/review.py` entry poin
 - [Roadmap](../ROADMAP.md)
 - [v0.4.0 release notes](releases/v0.4.0.md)
 
-## v0.5 portability development
+## v0.5 configuration-driven portability
 
-- [Portability and independent adoption](portability.md)
+- [Configuration-driven adoption](configuration.md)
+- [Portability](portability.md)
 - [Assessment claims](conformance-claims.md)
 - [Adoption guide](../ADOPTION.md)
+- [v0.5.0 release notes](releases/v0.5.0.md)

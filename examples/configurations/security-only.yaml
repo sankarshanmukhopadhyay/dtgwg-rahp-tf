@@ -1,0 +1,15 @@
+version: 1
+profile:
+  id: security-example
+  title: Security-only RAHP configuration example
+assessment:
+  default_mode: security
+repositories:
+  - id: target-spec
+    repository: example-org/target-spec
+    branch: main
+    commit: "4444444444444444444444444444444444444444"
+    context:
+      title: Target Specification
+      type: specification
+    reviews: [security]

@@ -6,7 +6,7 @@ has_toc: true
 ---
 # RAHP Toolkit Roadmap
 
-Status: v0.5 development baseline; v0.4.0 remains the latest release and unresolved governance decisions remain subject to Task Force review
+Status: v0.5.0 release baseline; unresolved DTG governance decisions remain subject to Task Force review
 Supersedes: the roadmap proposal in DTGWG discussion #3 (April 2026), which it
 largely adopts. Where it departs, the reasoning is stated.
 
@@ -202,31 +202,36 @@ only when its canonical state is changed through an accountable decision.
 This means the roadmap can describe **milestones**, while the generated Task Force
 Action Register carries the live decision inventory.
 
-### v0.5 — portability, independent adoption, and field evidence · **in development**
+### v0.5 — configuration-driven portable assessment · **release scope complete**
 
-RAHP already demonstrates **repository-target portability**: one engine can run
-pressure tests, security reviews, combined reviews, corpora and source-drift
-monitoring across multiple configured repositories. v0.5 therefore narrows the
-remaining portability claim to something stronger: can another Working Group adopt
-`method/` and `tools/`, supply its own instance data and governance, and use RAHP
-without inheriting DTG-specific assumptions?
+v0.5 changes the portability boundary. An adopter no longer proves portability by
+copying `method/` and `tools/` into a separately governed RAHP instance. Instead, the
+portable engine accepts a schema-validated YAML profile listing one or more target
+repositories, their assessment context and scope, and the review modes permitted for
+each target. The DTG deployment is the bundled exemplar of this engine.
 
-- [x] Distinguish repository-target portability from independent-instance portability
-- [x] Remove validator coupling between an external `--data` root and the DTG root README
-- [x] Add a synthetic second-instance fixture proving mechanical instance portability
-- [x] Add CI validation for the portable-instance fixture
-- [x] Add standalone portability/adoption documentation
-- [x] Add a portable assessment-method claim template for "assessed using RAHP v0.x"
-- [x] Add a generated, itemized Task Force Action Register for unresolved governance decisions
-- [ ] **Independent adoption:** a real second Working Group owns and governs its own RAHP instance
-- [ ] Practitioner trial report with evidence artefacts from an actual assessment
+- [x] Define `method/schema/rahp-config.schema.json` as the portable configuration contract
+- [x] Add `tools/rahp.py` as the neutral configuration-driven CLI
+- [x] Support one or many configured repository targets
+- [x] Support pinned commits, local Git checkouts, and remote branch resolution
+- [x] Support per-target `rahp`, `security`, and `combined` modes
+- [x] Support target include/exclude scope and contextual metadata
+- [x] Add `profiles/dtg/rahp.yaml` so DTG is an exemplar deployment, not an engine dependency
+- [x] Keep DTG Portfolio Monitor integration optional under deployment extensions
+- [x] Add non-DTG minimal, multi-repository, and security-only examples
+- [x] Add a synthetic non-DTG portability fixture and CI validation
+- [x] Prove the portable fixture does not require DTG corpora, governance issues, `RP-001`, or DTG instance data
+- [x] Add a generic configured-review GitHub Actions workflow
+- [x] Preserve existing DTG validators/renderers and evidence without a disruptive migration
+- [ ] Capture an external Working Group adoption as field evidence
+- [ ] Publish a practitioner trial report with real evidence artefacts
 - [ ] Populate real evidence URI/digest/timestamp fields from field use
-- [ ] At least one ratified rule profile and one active monitoring profile
-- [ ] Cross-instance comparison of method-level versus adopter-specific decisions after independent adoption
+- [ ] Ratify at least one rule profile and activate at least one monitoring profile in a deployment that chooses to use those RAHP governance features
 
-The synthetic fixture deliberately does **not** close the independent-adoption item.
-It proves that the software and data contract are portable; only a real external
-Working Group can prove that the governance model is independently adoptable.
+The unchecked items are **field-evidence objectives**, not blockers to the v0.5
+software portability claim. Architectural portability is proven by configuration: a
+non-DTG adopter can checkout RAHP, add one YAML file, and use the review machinery
+without modifying or running DTG-specific instance material.
 
 ## Open questions
 

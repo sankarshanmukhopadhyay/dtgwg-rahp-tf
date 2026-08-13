@@ -1,14 +1,15 @@
 # DTG RAHP Toolkit
 
 **Risk Assessment & Harms Prevention Task Force · Decentralised Trust Graph Working Group**  
-Development baseline v0.5-dev · Latest release v0.4.0 · CC-BY 4.0
+Release v0.5.0 · CC-BY 4.0
 
-RAHP is a repeatable assurance method for pressure-testing standards against risks and human harms, tracing findings to controls and evidence, and feeding actionable changes back into specification development. This repository contains both the **portable RAHP method** and a **DTG-specific worked instance**.
+RAHP is a repeatable assurance framework for pressure-testing standards against risks and human harms, running adversarial security-hardening reviews, tracing findings to controls and evidence, and feeding actionable changes back into specification development. **v0.5 makes the YAML configuration the portability boundary:** a Working Group, developer, or reviewer can list one or more repositories and run RAHP, security, or combined review workflows without inheriting DTG-specific corpora, issues, governance records, or portfolio metadata. The bundled DTG material is an exemplar deployment of the neutral engine.
 
 ## What do you want to do?
 
 | Goal | Start here |
 |---|---|
+| Configure one or more repositories | [Configuration-driven adoption](docs/configuration.md) |
 | Review a specification for risks and harms | [Pressure-testing a specification](docs/pressure-testing-a-spec.md) |
 | Exercise a specification against scenario corpora | [Scenario-driven pressure testing](docs/scenario-driven-pressure-testing.md) |
 | Perform an adversarial protocol/security review | [Security and hardening review](docs/security-hardening-review.md) |
@@ -61,8 +62,9 @@ The mental model is simple: **people and contexts surface scenarios; scenarios s
 
 | Path | Authority and editability |
 |---|---|
-| `method/` | Portable RAHP mechanics: lifecycle, controlled vocabularies, schemas. Change deliberately because adopters inherit it. |
-| `data/` | Canonical DTG RAHP instance. This is the source of truth for risks, controls, personas, scenarios and related records. |
+| `method/` | Portable RAHP mechanics: lifecycle, controlled vocabularies, schemas, including the v0.5 configuration contract. |
+| `profiles/` | Deployment configurations. `profiles/dtg/rahp.yaml` is the bundled DTG exemplar; adopters can supply their own YAML anywhere. |
+| `data/` | Canonical records for the bundled DTG exemplar. These are not required merely to configure another repository target. |
 | `tools/` | Validation and build automation. Produces machine-verifiable evidence and generated views. |
 | `context/` | JSON-LD context used by generated linked-data outputs. |
 | `docs/` | Just the Docs source for understanding and applying RAHP; published through GitHub Pages. |
@@ -96,29 +98,22 @@ and the [v0.4.0 release notes](docs/releases/v0.4.0.md).
 
 
 
-## v0.5 development: portability and accountable adoption
+## v0.5: configuration-driven portability
 
-v0.5 development sharpens the portability claim. RAHP already operates across multiple
-configured repositories; the remaining proof is **independent instance adoption** by
-another Working Group using its own data and governance rather than DTG-specific content.
+v0.5 turns portability into an operator-facing capability rather than a repository-copying convention. `tools/rahp.py` accepts a schema-validated YAML profile that lists one or many target repositories, their context and scope, and the permitted `rahp`, `security`, or `combined` review modes. A non-DTG adopter can use that configuration without loading DTG corpora, the DTG Portfolio Monitor, DTG governance issues, or the DTG Task Force action register.
 
-The repository now includes a synthetic portable-instance fixture and CI test that exercise
-`tools/validate.py` against an independent `data/` root. This proves mechanical portability
-without pretending that a real external Working Group has adopted RAHP. See
-[Portability and independent adoption](docs/portability.md).
+The bundled [`profiles/dtg/rahp.yaml`](profiles/dtg/rahp.yaml) is therefore an **exemplar deployment**, not part of the engine contract. A synthetic non-DTG fixture in `tests/fixtures/portable-project/` proves the same CLI can resolve targets and all three review modes without DTG coupling. See [Configuration-driven adoption](docs/configuration.md), [Portability](docs/portability.md), and [v0.5.0 release notes](docs/releases/v0.5.0.md).
 
-The live governance backlog is now a generated **Task Force Action Register** rather than
-an aggregate roadmap note. It itemizes each unresolved control/guardrail standards decision,
-`RP-001`, proposed precedents, pending risk acceptances and proposed monitoring activations.
-See [Task Force action register](docs/task-force-actions.md).
+DTG's unresolved governance work remains visible through the generated **Task Force Action Register**. It is instance-specific evidence, not a requirement imposed on other RAHP adopters.
 
 ## Quick start
 
 ```bash
 pip install -r requirements.txt
+python3 tools/rahp.py config-validate --config examples/configurations/minimal.yaml
+python3 tools/rahp.py targets --config profiles/dtg/rahp.yaml
 python3 tools/validate.py
 python3 tools/build.py
-open build/site/index.html
 ```
 
 `tools/validate.py` checks schema conformance, vocabularies, identifiers, references, symmetry, invariants, orphans and README counts. A clean exit is the minimum evidence that the instance is internally coherent.

@@ -1,62 +1,47 @@
 ---
 layout: default
-title: "Portability and independent adoption"
+title: "Portability"
 nav_order: 16
 has_toc: true
 ---
-# Portability and independent adoption
+# Portability
 
-RAHP v0.5 development distinguishes two different claims that were previously easy
-to conflate.
-
-## 1. Repository-target portability — already demonstrated
-
-The RAHP engine already pressure-tests and monitors multiple configured repositories
-through corpora, source provenance, drift detection, security review and combined
-review modes. This demonstrates that one RAHP engine can operate across different
-target specifications.
-
-## 2. Independent-instance portability — the remaining proof
-
-A stronger claim is that another Working Group can keep `method/` and `tools/`, supply
-its **own** instance data, personas, risks, controls, governance profile and evidence
-model, and use RAHP without inheriting DTG-specific assumptions.
+RAHP v0.5 defines portability operationally: **the adopter supplies configuration, not a replacement copy of the DTG instance**.
 
 ```mermaid
 flowchart TD
-    M[Portable method/ + tools/] --> D[DTG instance]
-    M --> X[Synthetic portability fixture]
-    M --> W[Future independently governed WG instance]
-    D --> R1[Multiple DTG-related repository targets]
-    X --> R2[Mechanical portability test]
-    W --> R3[Independent adoption proof]
+    E[Portable RAHP engine<br/>method + schemas + tools] --> C1[DTG profile YAML]
+    E --> C2[Another WG profile YAML]
+    E --> C3[Developer/project profile YAML]
+    C1 --> D[DTG repository targets<br/>optional DTG corpora and governance]
+    C2 --> W[WG-owned repository targets]
+    C3 --> P[Project-owned repository targets]
 ```
 
-## v0.5 portability fixture
+## v0.5 portability contract
 
-`examples/portable-instance/` is deliberately synthetic. It contains an independent
-minimal `data/` root and proves that the validator can operate without reading DTG
-records or comparing the instance against the root DTG README.
+An adopter must be able to:
 
-Run:
+1. checkout RAHP without deleting or editing DTG exemplar material;
+2. create one YAML file listing one or more repositories and their context;
+3. validate the file against the portable RAHP configuration schema;
+4. resolve target revisions with pinned commits, local Git checkouts, or configured remote branches;
+5. select RAHP, security, or combined review mode per target;
+6. scaffold assessment records without loading DTG corpora, DTG issues, DTG governance records, or the DTG Portfolio Monitor; and
+7. retain full commit-level provenance for each assessment.
+
+## Mechanical proof
+
+`tests/fixtures/portable-project/rahp.yaml` is deliberately non-DTG. CI runs:
 
 ```bash
 python3 tools/validate_portability.py
 ```
 
-Passing this test proves **mechanical portability only**. The v0.5 roadmap remains open
-until a real external Working Group owns and governs a second instance.
+The fixture must validate, list its targets, and resolve dry-run scaffolding for all three review modes while containing no DTG repository, corpus, portfolio-monitor, governance-issue, or `RP-001` dependency.
 
-## Portability contract
+Passing this test proves **configuration and workflow portability**. A real external Working Group adoption remains valuable field evidence, but it is no longer required to make the software architecture portable.
 
-An adopter should be able to:
+## Deployment-specific extensions
 
-1. retain the portable `method/`, schemas and tooling;
-2. provide a separate `data/instance.yaml`;
-3. use its own record corpus and governance decisions;
-4. validate that instance with `tools/validate.py --data <instance-data>`;
-5. generate assessment evidence without importing DTG instance semantics; and
-6. make an assessment-method claim using the portable conformance-claim template.
-
-The distinction protects RAHP from claiming adoption merely because the engine can
-read another repository.
+An adopter may add integrations under `extensions`. The bundled DTG profile uses this mechanism to describe its Portfolio Monitor relationship. The core schema intentionally treats extension content as adopter-owned metadata: the RAHP engine does not require it.

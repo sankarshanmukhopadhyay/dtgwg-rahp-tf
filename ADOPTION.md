@@ -1,70 +1,68 @@
----
-layout: default
-title: "Adoption"
-nav_order: 20
-has_toc: true
----
-# Adopting RAHP
+# Adopting RAHP outside DTG
 
-RAHP can be adopted incrementally. You do **not** need to populate the entire model before it produces useful assurance evidence.
+RAHP v0.5 is adopted through configuration. A Working Group, developer, standards project, or reviewer should not fork the DTG instance data merely to use the framework.
 
-## Step 1 — Establish context
-
-Identify the target specification or system, expected participants, decision points, trust assumptions, power asymmetries, known governance constraints, and the authority able to act on findings.
-
-## Step 2 — Reuse before inventing
-
-Search existing personas, scenarios, risks and controls before creating records. Reuse preserves comparability and prevents the corpus from fragmenting into near-duplicates.
-
-## Step 3 — Pressure-test
-
-Ask what can go wrong, who is harmed, what harmful inference an implementation can make, what remains cryptographically valid but governance-invalid, and what assumptions fail under adversarial or exceptional conditions.
-
-## Step 4 — Determine the correct control layer
-
-A valid risk is not automatically a requirement for the core specification. Route remediation to the narrowest layer with legitimate authority and effective enforcement: specification, companion specification, governance, implementation guidance, runtime control, operational policy, or formal risk acceptance.
-
-## Step 5 — Publish actionable findings
-
-Each finding should capture the finding and harm, affected persona, relevant RAHP risks, linked controls/guardrails, proposed resolution, disposition, status, target version/commit, and evidence or issue/PR reference.
-
-## Minimum viable assessment
-
-A practical first pass can be limited to:
-
-```text
-1 specification scope
-3–6 relevant personas
-5–15 risk hypotheses
-controls only where necessary
-guardrails only for hard-stop conditions
-recommendations as the primary output
-```
-
-See `examples/minimal-instance/` for a compact pattern and `examples/dtg-credential-spec/` for a worked specification-review structure.
-
-## Forking for another Working Group
-
-Keep `method/`, `tools/`, `context/`, and the documentation scaffolding. Replace the contents of `data/` with a new `instance.yaml` and records for the target domain. Preserve identifiers once published, record provenance, and run the validator as a conformance gate.
-
-
-## v0.5 portability contract
-
-RAHP now distinguishes **target-repository portability** from **independent-instance
-portability**. The engine already operates across multiple configured repositories.
-An independent adopter must go further: it owns its own `data/` root, governance
-profile, personas, risks, controls and evidence decisions.
-
-A synthetic portability fixture lives under `examples/portable-instance/` and is
-validated in CI:
+## 1. Checkout and install
 
 ```bash
-python3 tools/validate_portability.py
+git clone <rahp-repository>
+cd dtgwg-rahp-tf
+pip install -r requirements.txt
 ```
 
-The fixture proves that the validator can operate against a separate instance without
-coupling to DTG data or the root DTG README. It is not evidence of external adoption.
+## 2. Create `rahp.yaml`
 
-For assessment reporting, use `method/conformance-claim-template.yaml` to state that
-a target was **assessed using RAHP** without implying that the target conforms to
-DTG-specific instance content.
+Start from `examples/configurations/minimal.yaml` and replace the target metadata with your own repository or repositories.
+
+```yaml
+version: 1
+profile:
+  id: my-project
+  title: My Project
+assessment:
+  default_mode: combined
+repositories:
+  - id: specification
+    repository: my-org/my-spec
+    branch: main
+    context:
+      title: My Specification
+    scope:
+      include: ["spec/**", "docs/**"]
+    reviews: [rahp, security, combined]
+```
+
+## 3. Validate and inspect targets
+
+```bash
+python3 tools/rahp.py config-validate --config rahp.yaml
+python3 tools/rahp.py targets --config rahp.yaml
+```
+
+## 4. Prepare source material
+
+Either pin a full `commit`, provide a Git `local_path`, or let RAHP resolve the configured remote branch. To checkout configured remotes:
+
+```bash
+python3 tools/rahp.py prepare --config rahp.yaml --all
+```
+
+## 5. Select a review lens
+
+```bash
+python3 tools/rahp.py review --config rahp.yaml --target specification --mode rahp
+python3 tools/rahp.py review --config rahp.yaml --target specification --mode security
+python3 tools/rahp.py review --config rahp.yaml --target specification --mode combined
+```
+
+The CLI scaffolds canonical review records with repository and commit provenance. It does not infer findings. Inspect the target, populate evidence-backed findings, then use the existing renderers and validators described in `docs/review-modes.md`.
+
+## What you do not inherit
+
+A non-DTG adopter does not need the DTG Portfolio Monitor, DTG scenario corpora, DTG Task Force issues, `RP-001`, the DTG action register, or the canonical DTG `data/` records. Those remain part of the bundled DTG exemplar deployment.
+
+## Optional richer use
+
+Once a project needs recurring scenarios, governed risk/control catalogues, evidence contracts, or source-drift monitoring, it can adopt those RAHP capabilities deliberately. They are not prerequisites for the first configured assessment.
+
+See `docs/configuration.md` for the complete configuration model and `docs/portability.md` for the v0.5 portability contract.

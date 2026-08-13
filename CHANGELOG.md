@@ -1,3 +1,19 @@
+# Changelog
+
+## v0.5.0 — 2026-08-13
+
+### Added
+- Configuration-driven `tools/rahp.py` entry point for validating profiles, listing targets, preparing repositories, and scaffolding configured reviews.
+- Portable `rahp-config` JSON Schema under `method/schema/`.
+- DTG exemplar profile plus non-DTG minimal, multi-repository, security-only, and CI portability profiles.
+- Generic configured-review GitHub Actions workflow.
+- Configuration/adoption and v0.5 portability documentation.
+
+### Changed
+- Redefined portability around a YAML deployment profile rather than copying/replacing DTG instance data.
+- Reframed DTG corpora, Portfolio Monitor metadata, Task Force actions and governance records as deployment-specific exemplar assets rather than core requirements.
+- Made real external WG adoption a field-evidence objective rather than a blocker to the software portability claim.
+
 ---
 layout: default
 title: "Changelog"
