@@ -1,3 +1,9 @@
+---
+layout: default
+title: "Security hardening"
+nav_order: 8
+has_toc: true
+---
 # Security and hardening review workflow
 
 RAHP pressure testing asks whether a specification leaves people, governance or system integrity exposed to harm. A **security and hardening review** is a narrower adversarial companion: it asks how an attacker, compromised participant, stale authority, ambiguous verifier or failing dependency could exploit the specification as written.

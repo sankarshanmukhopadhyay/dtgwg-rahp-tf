@@ -1,3 +1,9 @@
+---
+layout: default
+title: "AI-assisted process"
+nav_order: 12
+has_toc: true
+---
 # Using Claude with the RAHP Toolkit — a worked example
 
 **Risk Assessment & Harms Prevention Task Force · LFDT / ToIP / DIF · CC-BY 4.0 · April 2026**

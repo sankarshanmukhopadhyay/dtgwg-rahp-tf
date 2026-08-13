@@ -1,3 +1,9 @@
+---
+layout: default
+title: "Pressure-testing a specification"
+nav_order: 6
+has_toc: true
+---
 # Pressure-testing a specification
 
 Specification pressure testing is a first-class RAHP workflow. The goal is to produce reproducible, traceable findings that can be re-run after a specification changes.
@@ -13,6 +19,18 @@ flowchart LR
   G --> H[8. Feed decisions back into RAHP]
   H -. new evidence .-> C
 ```
+
+## Scenario-driven review pass
+
+After establishing scope, select applicable scenarios from a domain corpus and map them to portable patterns in `method/scenario-patterns.yaml`. Exercise the target text under those conditions before finalising findings. Record relevant `scenarios`, `scenario_patterns`, and `personas` in each finding. This is especially useful for collusion, accessibility, degraded operation, policy transitions, delegation and cross-implementation ambiguity that may not be obvious from a clause-by-clause reading.
+
+Validate corpus adapters with:
+
+```bash
+python3 tools/validate_scenario_corpora.py
+```
+
+See [Scenario-driven pressure testing](scenario-driven-pressure-testing.md) and [Scenario corpora](scenario-corpora.md).
 
 ## 1. Select the target
 

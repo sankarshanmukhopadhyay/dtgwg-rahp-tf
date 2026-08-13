@@ -28,6 +28,7 @@ REFERENCE_FILES = {
     "controls": "controls.yaml",
     "guardrails": "guardrails.yaml",
     "assurance_tests": "assurance-tests.yaml",
+    "personas": "personas.yaml",
 }
 
 
@@ -192,6 +193,9 @@ def render_review(review: dict[str, Any]) -> str:
             f"| Status | {md_cell(finding.get('status'))} |",
             f"| Primary disposition | {disposition(finding.get('primary_disposition'))} |",
             f"| Secondary dispositions | {', '.join(disposition(v) for v in (finding.get('secondary_dispositions') or [])) or '—'} |",
+            f"| Scenarios | {code_list(finding.get('scenarios'))} |",
+            f"| Scenario patterns | {code_list(finding.get('scenario_patterns'))} |",
+            f"| Personas | {ref_list(finding.get('personas'))} |",
             f"| Risks | {ref_list(finding.get('risks'))} |",
             f"| Controls | {ref_list(finding.get('controls'))} |",
             f"| Guardrails | {ref_list(finding.get('guardrails'))} |",

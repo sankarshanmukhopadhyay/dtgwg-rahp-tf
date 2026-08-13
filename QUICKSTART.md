@@ -1,3 +1,9 @@
+---
+layout: default
+title: "Quick start"
+nav_order: 21
+has_toc: true
+---
 # RAHP Quickstart
 
 Use this path when you want useful output before learning every artefact type.

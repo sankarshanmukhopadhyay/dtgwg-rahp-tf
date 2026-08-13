@@ -1,4 +1,20 @@
+---
+layout: default
+title: "Changelog"
+nav_order: 24
+has_toc: true
+---
 # Changelog
+
+## Unreleased — scenario-driven RAHP and JTD documentation
+
+- Added portable scenario patterns and a validated external scenario-corpus adapter model.
+- Added the DTG ZKP 30-use-case corpus as the first scenario-driven RAHP reference adapter.
+- Extended pressure-test findings with optional scenario, scenario-pattern and persona traceability.
+- Added corpus validation and integrated it into CI.
+- Added Just the Docs configuration and a GitHub Pages build/deploy workflow for the RAHP documentation.
+- Added rendered-site link validation and scenario-driven documentation.
+
 
 ## Unreleased
 

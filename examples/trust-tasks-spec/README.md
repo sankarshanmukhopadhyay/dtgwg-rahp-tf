@@ -94,6 +94,9 @@ The Trust Tasks framework has unusually strong separation between transport iden
 | Status | open |
 | Primary disposition | Specification |
 | Secondary dispositions | Runtime Control, Implementation Guidance |
+| Scenarios | — |
+| Scenario patterns | — |
+| Personas | — |
 | Risks | [RK-SC02 — Credential Schema Ambiguity](../../build/site/catalogue.html#RK-SC02), [RK-AI01 — Agent Credential Scope Creep](../../build/site/catalogue.html#RK-AI01) |
 | Controls | [CT-19 — Conformance Test Suite](../../build/site/catalogue.html#CT-19), [CT-30 — Cryptographic Delegation Scope Constraints](../../build/site/catalogue.html#CT-30), [CT-48 — Threat Model Maintenance](../../build/site/catalogue.html#CT-48) |
 | Guardrails | [GR-12 — Agent Delegation Scope Constraint](../../build/site/catalogue.html#GR-12), [GR-16 — Formal Threat Model Publication](../../build/site/catalogue.html#GR-16) |
@@ -126,6 +129,9 @@ Make duplicate suppression normative for mutating, destructive and actsAsSubject
 | Status | open |
 | Primary disposition | Specification |
 | Secondary dispositions | Operational Policy |
+| Scenarios | — |
+| Scenario patterns | — |
+| Personas | — |
 | Risks | [RK-AI02 — Stale Agent After Operator Revocation](../../build/site/catalogue.html#RK-AI02), [RK-CR02 — Stale Credential / Expiry Without Renewal Path](../../build/site/catalogue.html#RK-CR02), [RK-SC02 — Credential Schema Ambiguity](../../build/site/catalogue.html#RK-SC02) |
 | Controls | [CT-19 — Conformance Test Suite](../../build/site/catalogue.html#CT-19), [CT-25 — Credential Renewal Workflow](../../build/site/catalogue.html#CT-25), [CT-31 — Short-Lived Agent Credentials](../../build/site/catalogue.html#CT-31), [CT-32 — Agent Liveness Check on Operator VMC](../../build/site/catalogue.html#CT-32) |
 | Guardrails | [GR-12 — Agent Delegation Scope Constraint](../../build/site/catalogue.html#GR-12), [GR-17 — Open Issues Risk Acceptance](../../build/site/catalogue.html#GR-17) |
@@ -158,6 +164,9 @@ Require bounded freshness for destructive and actsAsSubject tasks, either in the
 | Status | open |
 | Primary disposition | Companion Specification |
 | Secondary dispositions | Governance, Specification |
+| Scenarios | — |
+| Scenario patterns | — |
+| Personas | — |
 | Risks | [RK-AI01 — Agent Credential Scope Creep](../../build/site/catalogue.html#RK-AI01), [RK-AI02 — Stale Agent After Operator Revocation](../../build/site/catalogue.html#RK-AI02), [RK-G05 — Governanceless VTC Claiming Credential Compliance](../../build/site/catalogue.html#RK-G05) |
 | Controls | [CT-30 — Cryptographic Delegation Scope Constraints](../../build/site/catalogue.html#CT-30), [CT-31 — Short-Lived Agent Credentials](../../build/site/catalogue.html#CT-31), [CT-32 — Agent Liveness Check on Operator VMC](../../build/site/catalogue.html#CT-32), [CT-52 — Agent Delegation Credential Requirement](../../build/site/catalogue.html#CT-52), [CT-56 — VTC Governance Conformance Class](../../build/site/catalogue.html#CT-56) |
 | Guardrails | [GR-12 — Agent Delegation Scope Constraint](../../build/site/catalogue.html#GR-12), [GR-13 — Agent Audit Logging](../../build/site/catalogue.html#GR-13) |
@@ -191,6 +200,9 @@ Preserve the framework's identity/authority separation, but normatively bind a c
 | Status | open |
 | Primary disposition | Specification |
 | Secondary dispositions | Operational Policy |
+| Scenarios | — |
+| Scenario patterns | — |
+| Personas | — |
 | Risks | [RK-SC02 — Credential Schema Ambiguity](../../build/site/catalogue.html#RK-SC02), [RK-SY03 — Open Issues Left Unresolved at Scale](../../build/site/catalogue.html#RK-SY03) |
 | Controls | [CT-18 — Normative Credential Schema Publication](../../build/site/catalogue.html#CT-18), [CT-19 — Conformance Test Suite](../../build/site/catalogue.html#CT-19), [CT-47 — Formal Open Issues Mitigation Plan](../../build/site/catalogue.html#CT-47), [CT-48 — Threat Model Maintenance](../../build/site/catalogue.html#CT-48) |
 | Guardrails | [GR-16 — Formal Threat Model Publication](../../build/site/catalogue.html#GR-16), [GR-17 — Open Issues Risk Acceptance](../../build/site/catalogue.html#GR-17) |
@@ -223,6 +235,9 @@ Add immutable revision pinning for emitted documents that target draft specifica
 | Status | open |
 | Primary disposition | Operational Policy |
 | Secondary dispositions | Specification, Implementation Guidance |
+| Scenarios | — |
+| Scenario patterns | — |
+| Personas | — |
 | Risks | [RK-EX02 — Registry Censorship / Denial of Service](../../build/site/catalogue.html#RK-EX02), [RK-SC02 — Credential Schema Ambiguity](../../build/site/catalogue.html#RK-SC02) |
 | Controls | [CT-18 — Normative Credential Schema Publication](../../build/site/catalogue.html#CT-18), [CT-19 — Conformance Test Suite](../../build/site/catalogue.html#CT-19), [CT-39 — Distributed Registry Architecture](../../build/site/catalogue.html#CT-39), [CT-48 — Threat Model Maintenance](../../build/site/catalogue.html#CT-48) |
 | Guardrails | [GR-16 — Formal Threat Model Publication](../../build/site/catalogue.html#GR-16) |
@@ -255,6 +270,9 @@ Publish an operational profile for authenticated schema pinning, caching and off
 | Status | open |
 | Primary disposition | Companion Specification |
 | Secondary dispositions | Specification, Implementation Guidance |
+| Scenarios | — |
+| Scenario patterns | — |
+| Personas | — |
 | Risks | [RK-CY01 — ZKP Implementation Failure](../../build/site/catalogue.html#RK-CY01), [RK-ID04 — DID Document Manipulation](../../build/site/catalogue.html#RK-ID04), [RK-SC02 — Credential Schema Ambiguity](../../build/site/catalogue.html#RK-SC02) |
 | Controls | [CT-14 — DID Document Integrity Verification](../../build/site/catalogue.html#CT-14), [CT-19 — Conformance Test Suite](../../build/site/catalogue.html#CT-19), [CT-27 — Audited ZKP Library Requirement](../../build/site/catalogue.html#CT-27), [CT-28 — ZKP Conformance Testing](../../build/site/catalogue.html#CT-28), [CT-29 — Algorithm Agility and Migration Pathway](../../build/site/catalogue.html#CT-29) |
 | Guardrails | [GR-16 — Formal Threat Model Publication](../../build/site/catalogue.html#GR-16) |
@@ -287,6 +305,9 @@ Extend discovery through a companion capability profile that can advertise the s
 | Status | open |
 | Primary disposition | Governance |
 | Secondary dispositions | Companion Specification, Runtime Control |
+| Scenarios | — |
+| Scenario patterns | — |
+| Personas | — |
 | Risks | [RK-AI01 — Agent Credential Scope Creep](../../build/site/catalogue.html#RK-AI01), [RK-HX04 — Incapacity / Unsupported Decision-Making Exclusion](../../build/site/catalogue.html#RK-HX04) |
 | Controls | [CT-30 — Cryptographic Delegation Scope Constraints](../../build/site/catalogue.html#CT-30), [CT-52 — Agent Delegation Credential Requirement](../../build/site/catalogue.html#CT-52), [CT-58 — Accessible Trust Task Ceremony UX for Cognitive Differences](../../build/site/catalogue.html#CT-58) |
 | Guardrails | [GR-12 — Agent Delegation Scope Constraint](../../build/site/catalogue.html#GR-12), [GR-19 — Supported Decision-Making and Legal Delegation Pathway](../../build/site/catalogue.html#GR-19) |
@@ -319,6 +340,9 @@ Keep consent policy out of generic payload schemas, but define a governance/safe
 | Status | open |
 | Primary disposition | Specification |
 | Secondary dispositions | Companion Specification, Governance |
+| Scenarios | — |
+| Scenario patterns | — |
+| Personas | — |
 | Risks | [RK-HX04 — Incapacity / Unsupported Decision-Making Exclusion](../../build/site/catalogue.html#RK-HX04), [RK-HX05 — Legal Capacity Architecture Gap — LPA / Guardianship Not Representable](../../build/site/catalogue.html#RK-HX05), [RK-SC05 — Credential Schema Gap — Supported Consent and LPA Not Representable](../../build/site/catalogue.html#RK-SC05) |
 | Controls | [CT-57 — Supported Decision-Making Credential Extension](../../build/site/catalogue.html#CT-57), [CT-58 — Accessible Trust Task Ceremony UX for Cognitive Differences](../../build/site/catalogue.html#CT-58), [CT-59 — LPA Delegation Credential Type](../../build/site/catalogue.html#CT-59), [CT-60 — Secondary Notification Recipient Registration](../../build/site/catalogue.html#CT-60), [CT-66 — Children's Data Processing Impact Assessment Requirement](../../build/site/catalogue.html#CT-66) |
 | Guardrails | [GR-19 — Supported Decision-Making and Legal Delegation Pathway](../../build/site/catalogue.html#GR-19) |

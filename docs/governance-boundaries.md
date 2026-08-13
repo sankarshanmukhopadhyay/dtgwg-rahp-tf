@@ -1,3 +1,9 @@
+---
+layout: default
+title: "Governance boundaries"
+nav_order: 9
+has_toc: true
+---
 # Governance boundaries and finding disposition
 
 Every finding needs a control plane. Use exactly one primary disposition, plus references where applicable.

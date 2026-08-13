@@ -32,6 +32,9 @@ review:
       status: open
       severity: High
       primary_disposition: specification
+      scenarios: []
+      scenario_patterns: []
+      personas: []
       risks: [RK-XXX]
       controls: []
       guardrails: []

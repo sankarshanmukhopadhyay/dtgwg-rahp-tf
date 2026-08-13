@@ -1,0 +1,314 @@
+corpus:
+  id: CORPUS-DTG-ZKP
+  title: DTG ZKP pressure-test use-case corpus
+  source_repository: sankarshanmukhopadhyay/dtgwg-zkp-tf
+  source_path: docs/implementation-guide/scenarios/pressure-test-corpus-summary.md
+  source_commit: archive-snapshot
+  adapter_version: '1.0'
+  description: RAHP adapter for the DTG ZKP implementation-guide scenario corpus. Domain scenario IDs remain owned by the
+    source corpus.
+  scenarios:
+  - id: UC-001
+    title: Privacy-Preserving Account Creation
+    domain: Identity
+    primary_goal: One account/person
+    core_predicates: L,P,U,H,F
+    primary_pressure: Sybil resistance
+    dependencies: Registry, Issuer
+    priority: P0
+    scenario_patterns:
+    - SP-REPLAY-01
+  - id: UC-002
+    title: Anonymous Community Participation
+    domain: Social
+    primary_goal: Anonymous participation
+    core_predicates: P,U,F
+    primary_pressure: Unlinkability
+    dependencies: Wallet
+    priority: P0
+    scenario_patterns:
+    - SP-PRIV-01
+  - id: UC-003
+    title: Age Verification
+    domain: Commerce
+    primary_goal: Threshold proof
+    core_predicates: R,F
+    primary_pressure: Selective disclosure
+    dependencies: Attribute issuer
+    priority: P1
+    scenario_patterns:
+    - SP-PRIV-01
+  - id: UC-004
+    title: High-Value Transaction
+    domain: Finance
+    primary_goal: Step-up auth
+    core_predicates: L,H,F
+    primary_pressure: Replay
+    dependencies: Wallet
+    priority: P0
+    scenario_patterns:
+    - SP-REPLAY-01
+  - id: UC-005
+    title: Account Recovery
+    domain: Identity
+    primary_goal: Safe recovery
+    core_predicates: L,P,U,F
+    primary_pressure: Continuity
+    dependencies: Recovery service
+    priority: P0
+    scenario_patterns:
+    - SP-RECOV-01
+  - id: UC-006
+    title: Same Human Login
+    domain: Identity
+    primary_goal: Continuity
+    core_predicates: L,H,F
+    primary_pressure: Account takeover
+    dependencies: Wallet
+    priority: P0
+    scenario_patterns:
+    - SP-AUTH-01
+  - id: UC-007
+    title: Benefit Claims
+    domain: Government
+    primary_goal: One claim
+    core_predicates: P,U
+    primary_pressure: Duplicate claims
+    dependencies: Registry
+    priority: P1
+    scenario_patterns:
+    - SP-REPLAY-01
+  - id: UC-008
+    title: Anonymous Ballot
+    domain: Civic
+    primary_goal: One vote
+    core_predicates: P,U
+    primary_pressure: Privacy
+    dependencies: Governance
+    priority: P1
+    scenario_patterns:
+    - SP-PRIV-01
+    - SP-REPLAY-01
+  - id: UC-009
+    title: Human Authorises Agent
+    domain: AI
+    primary_goal: Delegation
+    core_predicates: L,H,F
+    primary_pressure: Delegation
+    dependencies: Trust Tasks
+    priority: P0
+    scenario_patterns:
+    - SP-AGENT-01
+  - id: UC-010
+    title: Agent Step-up
+    domain: AI
+    primary_goal: Intent confirmation
+    core_predicates: L,H,F
+    primary_pressure: Intent drift
+    dependencies: Trust Tasks
+    priority: P0
+    scenario_patterns:
+    - SP-AGENT-02
+  - id: UC-011
+    title: Agent Presentation
+    domain: AI
+    primary_goal: Delegated proof
+    core_predicates: H
+    primary_pressure: Delegation
+    dependencies: Credentials
+    priority: P1
+    scenario_patterns:
+    - SP-AGENT-01
+  - id: UC-012
+    title: Issuer Suspension
+    domain: Governance
+    primary_goal: Status semantics
+    core_predicates: Status
+    primary_pressure: Lifecycle
+    dependencies: Registry
+    priority: P0
+    scenario_patterns:
+    - SP-GOV-01
+  - id: UC-013
+    title: Policy Version Change
+    domain: Governance
+    primary_goal: Versioning
+    core_predicates: Policy
+    primary_pressure: Migration
+    dependencies: Registry
+    priority: P0
+    scenario_patterns:
+    - SP-GOV-02
+  - id: UC-014
+    title: Registry Offline
+    domain: Infrastructure
+    primary_goal: Offline verify
+    core_predicates: Status
+    primary_pressure: Resilience
+    dependencies: Registry
+    priority: P1
+    scenario_patterns:
+    - SP-OPS-01
+  - id: UC-015
+    title: Registry Conflict
+    domain: Federation
+    primary_goal: Recognition
+    core_predicates: Accreditation
+    primary_pressure: Governance
+    dependencies: Registries
+    priority: P1
+    scenario_patterns:
+    - SP-FED-01
+  - id: UC-016
+    title: Cross-border Recognition
+    domain: Federation
+    primary_goal: Mutual trust
+    core_predicates: Liveness
+    primary_pressure: Mapping
+    dependencies: Governance
+    priority: P1
+    scenario_patterns:
+    - SP-FED-01
+  - id: UC-017
+    title: Low-end Devices
+    domain: Runtime
+    primary_goal: Deployability
+    core_predicates: Any
+    primary_pressure: Performance
+    dependencies: Wallet
+    priority: P0
+    scenario_patterns:
+    - SP-INCL-02
+  - id: UC-018
+    title: Offline Presentation
+    domain: Runtime
+    primary_goal: Disconnected use
+    core_predicates: Any
+    primary_pressure: Replay
+    dependencies: Wallet
+    priority: P1
+    scenario_patterns:
+    - SP-OPS-02
+    - SP-REPLAY-01
+  - id: UC-019
+    title: Shared Device
+    domain: Consumer
+    primary_goal: Isolation
+    core_predicates: Holder
+    primary_pressure: Leakage
+    dependencies: Wallet
+    priority: P1
+    scenario_patterns:
+    - SP-AUTH-01
+    - SP-PRIV-01
+  - id: UC-020
+    title: Accessibility
+    domain: Inclusion
+    primary_goal: Alternative liveness
+    core_predicates: Liveness
+    primary_pressure: Accessibility
+    dependencies: Provider
+    priority: P0
+    scenario_patterns:
+    - SP-INCL-01
+  - id: UC-021
+    title: Compromised Wallet
+    domain: Security
+    primary_goal: Separate key/human
+    core_predicates: L,H
+    primary_pressure: Theft
+    dependencies: Recovery
+    priority: P0
+    scenario_patterns:
+    - SP-AUTH-01
+    - SP-RECOV-01
+  - id: UC-022
+    title: Malicious Provider
+    domain: Governance
+    primary_goal: Assurance boundary
+    core_predicates: Liveness
+    primary_pressure: Trust
+    dependencies: Accreditation
+    priority: P0
+    scenario_patterns:
+    - SP-GOV-01
+  - id: UC-023
+    title: Malicious Verifier
+    domain: Privacy
+    primary_goal: Correlation
+    core_predicates: Nullifier
+    primary_pressure: Linkability
+    dependencies: Wallet
+    priority: P0
+    scenario_patterns:
+    - SP-PRIV-01
+  - id: UC-024
+    title: Issuer+Verifier Collusion
+    domain: Privacy
+    primary_goal: Collusion
+    core_predicates: Any
+    primary_pressure: Correlation
+    dependencies: Governance
+    priority: P0
+    scenario_patterns:
+    - SP-PRIV-02
+  - id: UC-025
+    title: Composite Proofs
+    domain: Architecture
+    primary_goal: Composition
+    core_predicates: Multiple
+    primary_pressure: Fingerprinting
+    dependencies: Trust Tasks
+    priority: P0
+    scenario_patterns:
+    - SP-COMP-01
+  - id: UC-026
+    title: Algorithm Upgrade
+    domain: Crypto
+    primary_goal: Migration
+    core_predicates: Any
+    primary_pressure: Downgrade
+    dependencies: Profiles
+    priority: P0
+    scenario_patterns:
+    - SP-CRYPTO-01
+  - id: UC-027
+    title: Appeals
+    domain: Governance
+    primary_goal: Redress
+    core_predicates: Any
+    primary_pressure: Explainability
+    dependencies: Policy
+    priority: P0
+    scenario_patterns:
+    - SP-GOV-03
+  - id: UC-028
+    title: Emergency Mode
+    domain: Resilience
+    primary_goal: Degraded ops
+    core_predicates: Any
+    primary_pressure: Exception handling
+    dependencies: Governance
+    priority: P2
+    scenario_patterns:
+    - SP-OPS-03
+  - id: UC-029
+    title: Batch Verification
+    domain: Scale
+    primary_goal: Throughput
+    core_predicates: Any
+    primary_pressure: Logging
+    dependencies: Infrastructure
+    priority: P1
+    scenario_patterns:
+    - SP-SCALE-01
+  - id: UC-030
+    title: Interoperability
+    domain: Conformance
+    primary_goal: Cross-vendor
+    core_predicates: All
+    primary_pressure: Spec ambiguity
+    dependencies: All
+    priority: P0
+    scenario_patterns:
+    - SP-INTEROP-01

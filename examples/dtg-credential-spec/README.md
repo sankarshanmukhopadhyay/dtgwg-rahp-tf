@@ -88,6 +88,9 @@ Working Draft 01 is materially stronger than the earlier credential draft in pri
 | Status | open |
 | Primary disposition | Specification |
 | Secondary dispositions | — |
+| Scenarios | — |
+| Scenario patterns | — |
+| Personas | — |
 | Risks | [RK-SC02 — Credential Schema Ambiguity](../../build/site/catalogue.html#RK-SC02) |
 | Controls | [CT-18 — Normative Credential Schema Publication](../../build/site/catalogue.html#CT-18), [CT-19 — Conformance Test Suite](../../build/site/catalogue.html#CT-19) |
 | Guardrails | [GR-01 — Genesis Policy Documentation](../../build/site/catalogue.html#GR-01) |
@@ -125,6 +128,9 @@ Define both VMC directions normatively, including issuer/subject rules, binding 
 | Status | open |
 | Primary disposition | Specification |
 | Secondary dispositions | Companion Specification, Governance |
+| Scenarios | — |
+| Scenario patterns | — |
+| Personas | — |
 | Risks | [RK-AI01 — Agent Credential Scope Creep](../../build/site/catalogue.html#RK-AI01), [RK-AI02 — Stale Agent After Operator Revocation](../../build/site/catalogue.html#RK-AI02), [RK-G05 — Governanceless VTC Claiming Credential Compliance](../../build/site/catalogue.html#RK-G05) |
 | Controls | [CT-30 — Cryptographic Delegation Scope Constraints](../../build/site/catalogue.html#CT-30), [CT-31 — Short-Lived Agent Credentials](../../build/site/catalogue.html#CT-31), [CT-32 — Agent Liveness Check on Operator VMC](../../build/site/catalogue.html#CT-32), [CT-56 — VTC Governance Conformance Class](../../build/site/catalogue.html#CT-56) |
 | Guardrails | [GR-12 — Agent Delegation Scope Constraint](../../build/site/catalogue.html#GR-12), [GR-13 — Agent Audit Logging](../../build/site/catalogue.html#GR-13) |
@@ -157,6 +163,9 @@ Add an explicit semantic non-inference rule: a VMC may establish membership of a
 | Status | open |
 | Primary disposition | Specification |
 | Secondary dispositions | Companion Specification, Governance |
+| Scenarios | — |
+| Scenario patterns | — |
+| Personas | — |
 | Risks | [RK-ID03 — IDVP Breach / Cascading Invalidation](../../build/site/catalogue.html#RK-ID03), [RK-CR01 — Credential Revocation Without Due Process](../../build/site/catalogue.html#RK-CR01), [RK-CR02 — Stale Credential / Expiry Without Renewal Path](../../build/site/catalogue.html#RK-CR02), [RK-CR03 — Revocation Cascade / Cross-VTC Contamination](../../build/site/catalogue.html#RK-CR03), [RK-AI02 — Stale Agent After Operator Revocation](../../build/site/catalogue.html#RK-AI02) |
 | Controls | [CT-12 — IDVP Security Approval Criteria](../../build/site/catalogue.html#CT-12), [CT-13 — IDVP Deregistration Handling Protocol](../../build/site/catalogue.html#CT-13), [CT-23 — Mandatory Pre-Revocation Notice](../../build/site/catalogue.html#CT-23), [CT-24 — Privacy-Preserving Revocation Disclosure](../../build/site/catalogue.html#CT-24), [CT-25 — Credential Renewal Workflow](../../build/site/catalogue.html#CT-25), [CT-26 — VTC-Scoped Revocation](../../build/site/catalogue.html#CT-26), [CT-32 — Agent Liveness Check on Operator VMC](../../build/site/catalogue.html#CT-32) |
 | Guardrails | [GR-05 — IDVP Registry Standing](../../build/site/catalogue.html#GR-05), [GR-08 — Revocation Due Process](../../build/site/catalogue.html#GR-08), [GR-09 — Privacy-Preserving Revocation Disclosure](../../build/site/catalogue.html#GR-09), [GR-12 — Agent Delegation Scope Constraint](../../build/site/catalogue.html#GR-12) |
@@ -189,6 +198,9 @@ Define a normative lifecycle/status contract or a mandatory profile hook: how st
 | Status | open |
 | Primary disposition | Specification |
 | Secondary dispositions | — |
+| Scenarios | — |
+| Scenario patterns | — |
+| Personas | — |
 | Risks | [RK-SC04 — M-DID Bootstrapping Exception Undermines R-DID Privacy](../../build/site/catalogue.html#RK-SC04), [RK-ID05 — M-DID Linkability Across VTCs](../../build/site/catalogue.html#RK-ID05) |
 | Controls | [CT-15 — Pseudonymous Per-VTC M-DID Design](../../build/site/catalogue.html#CT-15), [CT-50 — M-DID to R-DID Migration Trigger](../../build/site/catalogue.html#CT-50) |
 | Guardrails | [GR-06 — Privacy-Preserving Proofing Option](../../build/site/catalogue.html#GR-06), [GR-09 — Privacy-Preserving Revocation Disclosure](../../build/site/catalogue.html#GR-09), [GR-18 — R-DID Migration Phase Gate](../../build/site/catalogue.html#GR-18) |
@@ -221,6 +233,9 @@ Define when the bootstrap exception applies, what event ends it, whether new rel
 | Status | open |
 | Primary disposition | Companion Specification |
 | Secondary dispositions | Implementation Guidance |
+| Scenarios | — |
+| Scenario patterns | — |
+| Personas | — |
 | Risks | [RK-CY01 — ZKP Implementation Failure](../../build/site/catalogue.html#RK-CY01) |
 | Controls | [CT-27 — Audited ZKP Library Requirement](../../build/site/catalogue.html#CT-27), [CT-28 — ZKP Conformance Testing](../../build/site/catalogue.html#CT-28) |
 | Guardrails | [GR-06 — Privacy-Preserving Proofing Option](../../build/site/catalogue.html#GR-06), [GR-07 — Uniqueness Enforcement Mechanism](../../build/site/catalogue.html#GR-07) |
@@ -253,6 +268,9 @@ Keep the credential specification proof-format agnostic, but normatively referen
 | Status | open |
 | Primary disposition | Governance |
 | Secondary dispositions | Specification |
+| Scenarios | — |
+| Scenario patterns | — |
+| Personas | — |
 | Risks | [RK-G05 — Governanceless VTC Claiming Credential Compliance](../../build/site/catalogue.html#RK-G05), [RK-SC02 — Credential Schema Ambiguity](../../build/site/catalogue.html#RK-SC02) |
 | Controls | [CT-18 — Normative Credential Schema Publication](../../build/site/catalogue.html#CT-18), [CT-19 — Conformance Test Suite](../../build/site/catalogue.html#CT-19), [CT-56 — VTC Governance Conformance Class](../../build/site/catalogue.html#CT-56) |
 | Guardrails | [GR-01 — Genesis Policy Documentation](../../build/site/catalogue.html#GR-01), [GR-02 — Time-Bounded Initiator Authority](../../build/site/catalogue.html#GR-02) |
@@ -285,6 +303,9 @@ Define conformance claim levels or terminology that separates schema/protocol co
 | Status | open |
 | Primary disposition | Companion Specification |
 | Secondary dispositions | Specification, Governance |
+| Scenarios | — |
+| Scenario patterns | — |
+| Personas | — |
 | Risks | [RK-HX05 — Legal Capacity Architecture Gap — LPA / Guardianship Not Representable](../../build/site/catalogue.html#RK-HX05), [RK-SC05 — Credential Schema Gap — Supported Consent and LPA Not Representable](../../build/site/catalogue.html#RK-SC05) |
 | Controls | [CT-57 — Supported Decision-Making Credential Extension](../../build/site/catalogue.html#CT-57), [CT-58 — Accessible Trust Task Ceremony UX for Cognitive Differences](../../build/site/catalogue.html#CT-58), [CT-59 — LPA Delegation Credential Type](../../build/site/catalogue.html#CT-59), [CT-60 — Secondary Notification Recipient Registration](../../build/site/catalogue.html#CT-60), [CT-66 — Children's Data Processing Impact Assessment Requirement](../../build/site/catalogue.html#CT-66) |
 | Guardrails | [GR-19 — Supported Decision-Making and Legal Delegation Pathway](../../build/site/catalogue.html#GR-19) |
@@ -317,6 +338,9 @@ Assign representation and supported-consent semantics to a named companion speci
 | Status | open |
 | Primary disposition | Specification |
 | Secondary dispositions | Governance |
+| Scenarios | — |
+| Scenario patterns | — |
+| Personas | — |
 | Risks | [RK-EX05 — Organisational Identity Architecture Gap](../../build/site/catalogue.html#RK-EX05) |
 | Controls | [CT-63 — Organisational Credential Type Definition](../../build/site/catalogue.html#CT-63), [CT-64 — Organisational Governance Conformance Mapping](../../build/site/catalogue.html#CT-64) |
 | Guardrails | [GR-21 — Organisational Identity Governance Mapping](../../build/site/catalogue.html#GR-21) |

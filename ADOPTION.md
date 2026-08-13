@@ -1,3 +1,9 @@
+---
+layout: default
+title: "Adoption"
+nav_order: 20
+has_toc: true
+---
 # Adopting RAHP
 
 RAHP can be adopted incrementally. You do **not** need to populate the entire model before it produces useful assurance evidence.

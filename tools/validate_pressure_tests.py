@@ -38,11 +38,18 @@ def dispositions() -> set[str]:
 
 
 def main() -> int:
+    pattern_doc = load_yaml(ROOT / "method" / "scenario-patterns.yaml")
+    known_patterns = {str(p.get("id")) for p in pattern_doc.get("patterns", []) if p.get("id")}
+    corpus_scenarios = set()
+    for corpus_path in sorted((ROOT / "corpora").glob("*.yaml")):
+        cdoc = load_yaml(corpus_path).get("corpus") or {}
+        corpus_scenarios.update(str(s.get("id")) for s in cdoc.get("scenarios", []) if s.get("id"))
     known = {
         "risks": ids("risks.yaml"),
         "controls": ids("controls.yaml"),
         "guardrails": ids("guardrails.yaml"),
         "assurance_tests": ids("assurance-tests.yaml"),
+        "personas": ids("personas.yaml"),
     }
     allowed_dispositions = dispositions()
     allowed_status = {"in-progress", "complete", "open", "monitoring", "resolved", "superseded"}
@@ -130,6 +137,13 @@ def main() -> int:
                 for ref in refs:
                     if ref not in valid:
                         errors.append(f"{prefix}: {field} reference {ref!r} does not resolve")
+
+            for ref in finding.get("scenario_patterns") or []:
+                if ref not in known_patterns:
+                    errors.append(f"{prefix}: scenario_patterns reference {ref!r} does not resolve")
+            for ref in finding.get("scenarios") or []:
+                if ref not in corpus_scenarios:
+                    errors.append(f"{prefix}: scenarios reference {ref!r} does not resolve in corpora/")
 
             evidence = finding.get("evidence") or []
             if not isinstance(evidence, list):

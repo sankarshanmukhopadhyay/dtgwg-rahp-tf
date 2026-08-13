@@ -1,0 +1,103 @@
+version: '1.0'
+record_type: scenario_pattern
+patterns:
+- id: SP-AUTH-01
+  name: Compromised controller
+  category: Authority
+  description: A controller, wallet, key or device is compromised and possession risks
+    being mistaken for legitimate human control.
+- id: SP-PRIV-01
+  name: Malicious verifier
+  category: Privacy
+  description: A verifier intentionally exceeds the minimum information or interaction
+    necessary and attempts correlation, coercion or secondary use.
+- id: SP-PRIV-02
+  name: Cross-party collusion
+  category: Privacy
+  description: Actors that are normally assumed independent share observations, identifiers
+    or metadata and defeat privacy or governance separation.
+- id: SP-INCL-01
+  name: Accessibility constraint
+  category: Inclusion
+  description: A legitimate participant cannot use the primary interaction path because
+    of disability, accessibility or modality constraints.
+- id: SP-INCL-02
+  name: Resource-constrained participant
+  category: Inclusion
+  description: A legitimate participant is disadvantaged by device, bandwidth, compute,
+    storage, power or digital-literacy assumptions.
+- id: SP-GOV-01
+  name: Authority status changes
+  category: Governance
+  description: An issuer, provider, registry, verifier or other authority becomes
+    suspended, revoked, unrecognised or otherwise changes status.
+- id: SP-GOV-02
+  name: Policy changes over time
+  category: Governance
+  description: A policy, profile or rule changes while artefacts or delegations created
+    under an earlier version remain in circulation.
+- id: SP-GOV-03
+  name: Appeal and redress
+  category: Governance
+  description: An adverse or failed outcome requires explanation, contestability,
+    correction and an accountable remedy path.
+- id: SP-OPS-01
+  name: Dependency unavailable
+  category: Operations
+  description: A registry, status service, issuer, network or other required dependency
+    is unavailable or returns stale information.
+- id: SP-OPS-02
+  name: Offline operation
+  category: Operations
+  description: Issuance, presentation or verification occurs without live connectivity
+    and must manage freshness, replay and later reconciliation.
+- id: SP-OPS-03
+  name: Emergency or degraded mode
+  category: Operations
+  description: Normal safeguards are bypassed, weakened or substituted during exceptional
+    or degraded operation.
+- id: SP-AGENT-01
+  name: Delegated agent exceeds mandate
+  category: Agentic systems
+  description: An agent acts beyond the authority, scope, purpose, time or transaction
+    bounds granted by its principal.
+- id: SP-AGENT-02
+  name: Human intent changes after delegation
+  category: Agentic systems
+  description: A principal changes or withdraws intent after delegation, testing revocation
+    propagation and step-up confirmation.
+- id: SP-CRYPTO-01
+  name: Algorithm or profile migration
+  category: Cryptography
+  description: Algorithms, circuits, profiles or parameters change and migration creates
+    downgrade, incompatibility or verification ambiguity.
+- id: SP-INTEROP-01
+  name: Cross-implementation ambiguity
+  category: Interoperability
+  description: Independent implementations interpret a requirement or proof differently,
+    producing divergent acceptance or security behaviour.
+- id: SP-REPLAY-01
+  name: Replay or duplicate action
+  category: Security
+  description: A valid proof, presentation, transaction or entitlement is reused outside
+    its intended freshness or uniqueness scope.
+- id: SP-RECOV-01
+  name: Recovery and continuity
+  category: Lifecycle
+  description: A participant loses a device, key or credential and recovery must restore
+    access without enabling takeover or identity duplication.
+- id: SP-FED-01
+  name: Cross-domain recognition conflict
+  category: Federation
+  description: Two trust domains, registries or jurisdictions disagree about recognition,
+    authority or assurance equivalence.
+- id: SP-SCALE-01
+  name: Scale changes observability
+  category: Operations
+  description: Batching, high throughput or aggregation changes logging, privacy,
+    audit or failure-propagation characteristics.
+- id: SP-COMP-01
+  name: Composite assurance interaction
+  category: Architecture
+  description: Individually reasonable proofs or controls are combined and create
+    fingerprinting, contradictory semantics or emergent failure modes.

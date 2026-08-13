@@ -1,3 +1,9 @@
+---
+layout: default
+title: "Review modes"
+nav_order: 7
+has_toc: true
+---
 # Review modes
 
 RAHP exposes three coordinated review modes through `tools/review.py`.

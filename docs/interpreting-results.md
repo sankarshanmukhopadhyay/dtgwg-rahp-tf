@@ -1,3 +1,9 @@
+---
+layout: default
+title: "Interpreting results"
+nav_order: 11
+has_toc: true
+---
 # Interpreting RAHP results
 
 A RAHP finding is evidence that a harm pathway or assurance gap deserves treatment. It is **not** by itself evidence that the reviewed specification must contain the mitigation.

@@ -1,3 +1,9 @@
+---
+layout: default
+title: "Concepts"
+nav_order: 3
+has_toc: true
+---
 # RAHP concepts
 
 RAHP treats harm prevention as an assurance chain rather than a standalone risk register.
@@ -7,6 +13,8 @@ RAHP treats harm prevention as an assurance chain rather than a standalone risk 
 | Persona | Who may be affected |
 | User Story | What that participant is trying to achieve |
 | Scenario | What happens in a concrete context |
+| Scenario Pattern | A reusable failure or stress condition that can apply across domains |
+| Scenario Corpus | A domain-owned collection of concrete scenarios mapped to portable patterns |
 | Risk | What can go wrong |
 | Harm | Who bears the consequence and how |
 | Control | What reduces likelihood or impact |

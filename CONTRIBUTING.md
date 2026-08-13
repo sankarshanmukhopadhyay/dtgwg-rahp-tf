@@ -1,3 +1,9 @@
+---
+layout: default
+title: "Contributing"
+nav_order: 22
+has_toc: true
+---
 # Contributing to the RAHP Toolkit
 
 The toolkit improves through use. This document tells you where things live, how

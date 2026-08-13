@@ -1,3 +1,9 @@
+---
+layout: default
+title: "DTG instance"
+nav_order: 13
+has_toc: true
+---
 # RAHP documentation
 
 RAHP has three primary paths:

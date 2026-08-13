@@ -1,3 +1,9 @@
+---
+layout: default
+title: "Standards alignment"
+nav_order: 10
+has_toc: true
+---
 # External standards alignment
 
 RAHP uses external standards alignment to show where a security-hardening finding is reinforced by established security controls, credential standards, or threat models.
