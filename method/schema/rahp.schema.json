@@ -115,15 +115,18 @@
         "user_stories": { "$ref": "#/$defs/idList" },
         "scenarios": { "$ref": "#/$defs/idList" },
         "epics": { "$ref": "#/$defs/idList" },
+        "evidence_artefacts": { "$ref": "#/$defs/idList" },
         "monitoring": {
           "description": "v0.4 runtime governance hook. Null until the monitoring layer is specified.",
           "oneOf": [
             { "type": "null" },
             {
               "type": "object",
-              "required": ["signal", "responsible_role"],
+              "required": ["status", "signal", "threshold_rule", "responsible_role", "evidence_captured"],
               "properties": {
+                "status": { "type": "string" },
                 "signal": { "type": "string" },
+                "threshold_rule": { "type": "string", "minLength": 10 },
                 "threshold_warn": { "type": ["number", "null"] },
                 "threshold_critical": { "type": ["number", "null"] },
                 "triage_workflow": { "type": ["string", "null"] },
@@ -259,6 +262,7 @@
       "properties": {
         "id": { "type": "string" },
         "risk_id": { "type": "string" },
+        "rule_profile": { "type": ["string", "null"] },
         "title": { "type": ["string", "null"] },
         "decision": { "type": "string" },
         "authority": { "type": ["string", "null"] },
@@ -270,6 +274,66 @@
         "review_date": { "type": ["string", "null"] },
         "evidence": { "type": ["string", "null"] },
         "blocked_by": { "type": "array", "items": { "type": "string" } },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      },
+      "additionalProperties": false
+    },
+
+    "rule_profile": {
+      "type": "object",
+      "required": ["id", "name", "status", "scope", "description", "critical_risk", "risk_acceptance_bands", "required_acceptance_fields"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "status": { "type": "string" },
+        "scope": { "type": "string" },
+        "description": { "type": "string", "minLength": 20 },
+        "critical_risk": {
+          "type": "object",
+          "required": ["acceptance_permitted", "required_action"],
+          "properties": {
+            "acceptance_permitted": { "type": "boolean" },
+            "required_action": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "risk_acceptance_bands": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["match", "authority", "review_period", "evidence_threshold"],
+            "properties": {
+              "match": { "type": "string" },
+              "authority": { "type": "string" },
+              "review_period": { "type": "string" },
+              "evidence_threshold": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required_acceptance_fields": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "provenance": { "$ref": "#/$defs/provenance" }
+      },
+      "additionalProperties": false
+    },
+
+    "evidence_artifact": {
+      "type": "object",
+      "required": ["id", "metric", "name", "status", "description", "source_kind", "collector_role", "retention_class", "sensitivity"],
+      "properties": {
+        "id": { "type": "string" },
+        "metric": { "type": "string" },
+        "name": { "type": "string" },
+        "status": { "type": "string" },
+        "description": { "type": "string", "minLength": 20 },
+        "source_kind": { "type": "string" },
+        "uri": { "type": ["string", "null"] },
+        "digest": { "type": ["string", "null"] },
+        "collector_role": { "type": "string" },
+        "collected_at": { "type": ["string", "null"] },
+        "retention_class": { "type": "string" },
+        "sensitivity": { "type": "string" },
+        "assurance_tests": { "$ref": "#/$defs/idList" },
         "provenance": { "$ref": "#/$defs/provenance" }
       },
       "additionalProperties": false

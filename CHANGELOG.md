@@ -6,6 +6,46 @@ has_toc: true
 ---
 # Changelog
 
+## [v0.4.0] — 2026-08-13
+
+### Added
+
+- `RP-*` governance rule profiles, with `RP-001` encoding the proposed ROADMAP Q3/Q4
+  risk-acceptance authority and review model while remaining explicitly unratified.
+- `EV-*` evidence artefacts, providing first-class contracts for evidence source,
+  collector role, collection time, URI/hash, retention and sensitivity.
+- Five proposed operational-monitoring contracts for `M-02`, `M-04`, `M-06`, `M-08`
+  and `M-27`, each linked to an evidence contract and triage responsibility.
+- Operational assurance documentation with assurance-chain, triage-state and responsibility
+  diagrams.
+- Deterministic normative-triage workbench generated from canonical data without
+  auto-assigning standards status.
+- Portable non-human actor taxonomy for autonomous agents, supervised agents, and
+  automated pipelines.
+- Machine-validatable delegation-scope schema and worked example, keeping delegated
+  authority separate from liveness, identity, and key control.
+- v0.4.0 release notes and release navigation.
+
+### Changed
+
+- Toolkit version is now `v0.4.0`; historical worked reviews retain the RAHP version
+  against which they were originally performed.
+- The canonical reference catalogue and JSON-LD build now include rule profiles and
+  evidence artefacts.
+- Validation now checks operational assurance consistency and reports pilot/evidence/profile
+  coverage as part of the task-force work queue.
+- All 31 asymmetric risk/control/guardrail references have been reconciled bidirectionally.
+- `CT-51`, `CT-52`, and `CT-53` are no longer orphaned: their existing declared risk and
+  guardrail relationships are now mirrored by the corresponding canonical records.
+
+### Governance status
+
+- `RP-001` remains `proposed`.
+- The five monitoring contracts remain `pilot_proposed`.
+- The 87 control/guardrail standards-status decisions remain human Task Force work.
+  v0.4 provides decision support rather than inventing those decisions.
+
+
 ## Unreleased — scenario-driven RAHP and JTD documentation
 
 - Added portable scenario patterns and a validated external scenario-corpus adapter model.

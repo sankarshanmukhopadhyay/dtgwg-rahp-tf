@@ -10,7 +10,7 @@ review:
     source_paths: []
   reviewed_against:
     repository: sankarshanmukhopadhyay/dtgwg-rahp-tf
-    rahp_version: v0.3-dev
+    rahp_version: v0.4.0
   summary:
     finding_count: 1
     open_count: 1

@@ -140,6 +140,8 @@ def check_vocabularies(by_type, vocab, rep: Report):
         ("persona", "type"): "persona_type",
         ("risk_acceptance", "decision"): "risk_acceptance_decision",
         ("governance_precedent", "status"): "governance_precedent_status",
+        ("rule_profile", "status"): "rule_profile_status",
+        ("evidence_artifact", "status"): "evidence_status",
     }
     bad = 0
     for (rtype, field), vkey in field_vocab.items():
@@ -160,6 +162,11 @@ def check_vocabularies(by_type, vocab, rep: Report):
                 rep.error(f"vocab   {rtype}/{rid}: {field}={val!r} not in {vkey} "
                           f"({', '.join(str(p) for p in permitted if p)})")
                 bad += 1
+    for rid, rec in by_type.get("metric", {}).items():
+        mon = rec.get("monitoring")
+        if isinstance(mon, dict) and mon.get("status") not in allowed("monitoring_status"):
+            rep.error(f"vocab   metric/{rid}: monitoring.status={mon.get('status')!r} not in monitoring_status")
+            bad += 1
     rep.check("vocabulary", bad == 0, f"{bad} violation(s)")
 
 
@@ -344,6 +351,43 @@ def check_readme_counts(counts, rep: Report):
     rep.check("readme counts", bad == 0, f"{checked} row(s) checked, {bad} mismatch(es)")
 
 
+
+def check_operational_assurance(by_type, instance, rep: Report):
+    """v0.4 checks: monitoring contracts, evidence links and proposed governance profile."""
+    bad = 0
+    evidence = by_type.get("evidence_artifact", {})
+    metrics = by_type.get("metric", {})
+    profiles = by_type.get("rule_profile", {})
+
+    declared = ((instance.get("instance") or {}).get("governance") or {}).get("rule_profile")
+    if declared and declared not in profiles:
+        rep.error(f"ops     instance governance rule_profile {declared} does not resolve")
+        bad += 1
+
+    for mid, metric in metrics.items():
+        mon = metric.get("monitoring")
+        if not isinstance(mon, dict):
+            continue
+        canonical = set(metric.get("evidence_artefacts") or [])
+        embedded = set(mon.get("evidence_captured") or [])
+        if canonical != embedded:
+            rep.error(f"ops     metric/{mid}: evidence_artefacts {sorted(canonical)} "
+                      f"does not match monitoring.evidence_captured {sorted(embedded)}")
+            bad += 1
+        for eid in canonical:
+            ev = evidence.get(eid)
+            if ev and ev.get("metric") != mid:
+                rep.error(f"ops     metric/{mid}: {eid} declares metric {ev.get('metric')}")
+                bad += 1
+
+    for eid, ev in evidence.items():
+        mid = ev.get("metric")
+        if mid in metrics and eid not in set(metrics[mid].get("evidence_artefacts") or []):
+            rep.error(f"ops     evidence/{eid}: metric {mid} does not cite it back")
+            bad += 1
+
+    rep.check("operational assurance", bad == 0, f"{bad} problem(s)")
+
 def check_coverage_stats(by_type, rep: Report):
     """Not pass/fail — visibility. These are the numbers the task force needs."""
     controls = by_type.get("control", {})
@@ -362,6 +406,13 @@ def check_coverage_stats(by_type, rep: Report):
                                    if a.get("decision") == "pending"),
         "metrics_without_monitoring": sum(1 for m in by_type.get("metric", {}).values()
                                           if not m.get("monitoring")),
+        "metrics_in_operational_pilot": sum(1 for m in by_type.get("metric", {}).values()
+                                            if isinstance(m.get("monitoring"), dict)),
+        "evidence_contracts": len(by_type.get("evidence_artifact", {})),
+        "active_rule_profiles": sum(1 for r in by_type.get("rule_profile", {}).values()
+                                    if r.get("status") == "active"),
+        "proposed_rule_profiles": sum(1 for r in by_type.get("rule_profile", {}).values()
+                                      if r.get("status") == "proposed"),
     }
 
 
@@ -390,6 +441,7 @@ def main():
     check_invariants(by_type, instance, rep)
     check_orphans(by_type, instance, referenced, rep)
     check_readme_counts(counts, rep)
+    check_operational_assurance(by_type, instance, rep)
     check_coverage_stats(by_type, rep)
     rep.stats.pop("_referenced", None)
 

@@ -78,6 +78,8 @@ records:
   standards_status: unassigned
   normative_language: null
   rationale: null
+  guardrails:
+  - GR-03
   provenance:
     source: workbook:RiskRegister_v5.xlsx
     imported: '2026-08-05'
@@ -120,10 +122,11 @@ records:
     approaches include ZKP personhood proofs, trusted IDVP attestation, or social recovery quorum. Absence
     must be formally risk-accepted.
   guardrails:
+  - GR-04
   - GR-07
   linked_risks:
-  - RK-ID01
   - RK-AI03
+  - RK-ID01
   - RK-SY03
   standards_relevance: High
   standards_status: unassigned
@@ -158,8 +161,8 @@ records:
   guardrails:
   - GR-06
   linked_risks:
-  - RK-ID02
   - RK-HX02
+  - RK-ID02
   standards_relevance: High
   standards_status: unassigned
   normative_language: null
@@ -208,6 +211,7 @@ records:
     include member notification within an agreed SLA.'
   guardrails: []
   linked_risks:
+  - RK-EX06
   - RK-ID03
   standards_relevance: High
   standards_status: unassigned
@@ -240,10 +244,11 @@ records:
     exposure should be minimised to prevent cross-community profiling. This should be a normative design
     requirement in the DTG credential specification.
   guardrails:
+  - GR-06
   - GR-09
   linked_risks:
-  - RK-ID05
   - RK-HX01
+  - RK-ID05
   standards_relevance: High
   standards_status: unassigned
   normative_language: null
@@ -260,6 +265,7 @@ records:
   guardrails:
   - GR-06
   linked_risks:
+  - RK-ID06
   - RK-SC01
   standards_relevance: High
   standards_status: unassigned
@@ -275,6 +281,7 @@ records:
     to identify and remove attributes no longer required by policy.
   guardrails: []
   linked_risks:
+  - RK-ID06
   - RK-SC01
   standards_relevance: Medium
   standards_status: unassigned
@@ -411,6 +418,8 @@ records:
   standards_status: unassigned
   normative_language: null
   rationale: null
+  guardrails:
+  - GR-08
   provenance:
     source: workbook:RiskRegister_v5.xlsx
     imported: '2026-08-05'
@@ -438,8 +447,10 @@ records:
     a major focus area.
   guardrails:
   - GR-06
+  - GR-20
   linked_risks:
   - RK-CY01
+  - RK-EX04
   standards_relevance: High
   standards_status: unassigned
   normative_language: null
@@ -454,8 +465,10 @@ records:
     specification, covering soundness, completeness, and zero-knowledge properties.
   guardrails:
   - GR-07
+  - GR-20
   linked_risks:
   - RK-CY01
+  - RK-EX04
   standards_relevance: High
   standards_status: unassigned
   normative_language: null
@@ -504,6 +517,7 @@ records:
     with automated renewal tied to operator membership liveness checks, reducing the window of exposure
     for compromised agent credentials.'
   guardrails:
+  - GR-12
   - GR-13
   linked_risks:
   - RK-AI01
@@ -542,6 +556,7 @@ records:
   linked_risks:
   - RK-AI03
   - RK-AI04
+  - RK-EX04
   standards_relevance: High
   standards_status: unassigned
   normative_language: null
@@ -736,8 +751,8 @@ records:
   guardrails:
   - GR-10
   linked_risks:
-  - RK-SY01
   - RK-EX01
+  - RK-SY01
   standards_relevance: High
   standards_status: unassigned
   normative_language: null
@@ -788,8 +803,8 @@ records:
   guardrails:
   - GR-16
   linked_risks:
-  - RK-SY03
   - RK-CY02
+  - RK-SY03
   standards_relevance: High
   standards_status: unassigned
   normative_language: null
@@ -809,9 +824,9 @@ records:
   guardrails:
   - GR-06
   linked_risks:
-  - RK-SC03
   - RK-HX01
   - RK-ID05
+  - RK-SC03
   standards_relevance: High
   standards_status: unassigned
   normative_language: null
@@ -831,9 +846,9 @@ records:
   guardrails:
   - GR-18
   linked_risks:
-  - RK-SC04
-  - RK-ID05
   - RK-HX01
+  - RK-ID05
+  - RK-SC04
   standards_relevance: High
   standards_status: unassigned
   normative_language: null
@@ -956,10 +971,11 @@ records:
     v0.3 §9 (Trust Registries) — gap identified in commentary §2.9, recommendation R8.'
   guardrails:
   - GR-01
+  - GR-21
   linked_risks:
-  - RK-G05
   - RK-G01
   - RK-G02
+  - RK-G05
   standards_relevance: High
   standards_status: unassigned
   normative_language: null
@@ -1001,6 +1017,7 @@ records:
   linked_risks:
   - RK-HX04
   - RK-NM01
+  - RK-SC05
   standards_relevance: High
   standards_status: unassigned
   normative_language: null
@@ -1043,8 +1060,10 @@ records:
   - GR-08
   - GR-19
   linked_risks:
-  - RK-HX05
   - RK-CR01
+  - RK-HX05
+  - RK-HX06
+  - RK-SC05
   standards_relevance: High
   standards_status: unassigned
   normative_language: null
@@ -1169,8 +1188,9 @@ records:
   - GR-06
   - GR-19
   linked_risks:
-  - RK-ID06
   - RK-EX03
+  - RK-ID06
+  - RK-SC05
   standards_relevance: High
   standards_status: unassigned
   normative_language: null

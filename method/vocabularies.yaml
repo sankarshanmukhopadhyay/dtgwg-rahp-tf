@@ -174,3 +174,22 @@ external_alignment_relationship:
   - value: contextual
     description: The source provides useful background or framing but does not independently
       support the finding.
+
+rule_profile_status:
+  values:
+  - proposed
+  - active
+  - superseded
+evidence_status:
+  values:
+  - planned
+  - collecting
+  - available
+  - expired
+  - invalidated
+monitoring_status:
+  values:
+  - pilot_proposed
+  - active
+  - suspended
+  - retired

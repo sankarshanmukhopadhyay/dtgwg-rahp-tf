@@ -1,0 +1,92 @@
+record_type: evidence_artifact
+records:
+- id: EV-001
+  metric: M-02
+  name: Revocation notification timing evidence
+  status: planned
+  description: Timestamped record linking a revocation decision to the corresponding
+    formal notification event.
+  source_kind: governance-event-log
+  uri: null
+  digest: null
+  collector_role: instance-defined operator
+  collected_at: null
+  retention_class: P1Y
+  sensitivity: restricted
+  assurance_tests: []
+  provenance:
+    source: RAHP v0.4 operational assurance pilot
+    contributor: RAHP v0.4 release work (AI-assisted)
+    note: Evidence contract/template; no runtime evidence is asserted by this record.
+- id: EV-002
+  metric: M-04
+  name: IDVP issuer verification evidence
+  status: planned
+  description: Admission-time evidence that the IDVP DID and authorisation state were
+    verified before VMC issuance.
+  source_kind: admission-verification-log
+  uri: null
+  digest: null
+  collector_role: instance-defined operator
+  collected_at: null
+  retention_class: P1Y
+  sensitivity: restricted
+  assurance_tests: []
+  provenance:
+    source: RAHP v0.4 operational assurance pilot
+    contributor: RAHP v0.4 release work (AI-assisted)
+    note: Evidence contract/template; no runtime evidence is asserted by this record.
+- id: EV-003
+  metric: M-06
+  name: Registry write authorisation rejection evidence
+  status: planned
+  description: Audit evidence for attempted registry writes and the authorisation
+    decision applied to each attempt.
+  source_kind: registry-authorisation-log
+  uri: null
+  digest: null
+  collector_role: instance-defined operator
+  collected_at: null
+  retention_class: P1Y
+  sensitivity: restricted
+  assurance_tests: []
+  provenance:
+    source: RAHP v0.4 operational assurance pilot
+    contributor: RAHP v0.4 release work (AI-assisted)
+    note: Evidence contract/template; no runtime evidence is asserted by this record.
+- id: EV-004
+  metric: M-08
+  name: Agent scope violation evidence
+  status: planned
+  description: Structured event evidence for attempted or successful actions outside
+    an agent's delegated credential scope.
+  source_kind: agent-policy-enforcement-log
+  uri: null
+  digest: null
+  collector_role: instance-defined operator
+  collected_at: null
+  retention_class: P1Y
+  sensitivity: restricted
+  assurance_tests: []
+  provenance:
+    source: RAHP v0.4 operational assurance pilot
+    contributor: RAHP v0.4 release work (AI-assisted)
+    note: Evidence contract/template; no runtime evidence is asserted by this record.
+- id: EV-005
+  metric: M-27
+  name: Agent liveness compliance evidence
+  status: planned
+  description: Timestamped liveness-check records sufficient to establish whether
+    the required operator/agent liveness interval was met.
+  source_kind: agent-liveness-log
+  uri: null
+  digest: null
+  collector_role: instance-defined operator
+  collected_at: null
+  retention_class: P1Y
+  sensitivity: restricted
+  assurance_tests: []
+  provenance:
+    source: RAHP v0.4 operational assurance pilot
+    contributor: RAHP v0.4 release work (AI-assisted)
+    note: Evidence contract/template; no runtime evidence is asserted by this record.

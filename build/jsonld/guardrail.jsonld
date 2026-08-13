@@ -11,12 +11,15 @@
       "owner": "Initiator / Governing Body",
       "risksAddressed": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-NM02"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-NM02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC02"
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-18"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-18",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-53",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-56"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-01"
@@ -37,7 +40,8 @@
       "owner": "VTA PEP / Governing Body",
       "risksAddressed": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G02"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G05"
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-03"
@@ -60,13 +64,15 @@
       "applies_to_phase": "Phase 2",
       "owner": "Governing Body",
       "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR04",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G03",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX02",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY01"
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-05"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-55"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-03"
@@ -109,10 +115,13 @@
       "applies_to_phase": "Phase 4",
       "owner": "VTA PEP / Governing Body",
       "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX06",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID03"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-12"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-12",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-65"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-05"
@@ -132,14 +141,17 @@
       "applies_to_phase": "Phase 4",
       "owner": "VTA PEP / DPO",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-NM01",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY01",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX04",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX02"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-NM01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC03"
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-10",
@@ -148,7 +160,9 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-16",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-20",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-27",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-40"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-40",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-49",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-66"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06"
@@ -168,9 +182,10 @@
       "applies_to_phase": "Phase 4 (open issue)",
       "owner": "Governing Body / Security",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY01",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID01",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY01",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY03"
       ],
@@ -196,14 +211,19 @@
       "applies_to_phase": "Revocation",
       "owner": "Governing Body / VTA",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G04",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR01",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX03"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX06"
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-23",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-25"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-25",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-59",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-60",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-61"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-08"
@@ -223,14 +243,15 @@
       "applies_to_phase": "Revocation",
       "owner": "VTA PEP / DPO",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC01",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR01",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR03",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX03",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX03"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC03"
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-15",
@@ -256,13 +277,14 @@
       "applies_to_phase": "All phases",
       "owner": "Registry Operator / Governing Body",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID04",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX01",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID04",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY01"
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-14",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-39",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-45"
       ],
       "assuranceTests": [
@@ -283,8 +305,8 @@
       "applies_to_phase": "Phase 2–4 (ongoing)",
       "owner": "Governing Body",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX01"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G03"
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-37"
@@ -313,7 +335,9 @@
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-30",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-31",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-32"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-32",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-51",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-52"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-12"
@@ -362,7 +386,8 @@
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-33",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-34"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-34",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-54"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-14"
@@ -412,6 +437,7 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY02"
       ],
       "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-29",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-48"
       ],
       "assuranceTests": [
@@ -437,6 +463,7 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY03"
       ],
       "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-29",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-41",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-47"
       ],
@@ -458,9 +485,9 @@
       "applies_to_phase": "Pre-Phase 4",
       "owner": "VTA PEP / Governing Body",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX01",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX01"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC04"
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-50"
@@ -485,6 +512,7 @@
       "risksAddressed": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX04",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX06",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID06",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC05"
       ],
@@ -513,9 +541,9 @@
       "applies_to_phase": "Phase 4 (pre-condition for age-restricted relying party operations)",
       "owner": "Governing Body / IDVP",
       "risksAddressed": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY01",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY01"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX06"
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-27",
@@ -544,9 +572,9 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX05"
       ],
       "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-56",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-63",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-64",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-56"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-64"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-21"

@@ -10,14 +10,18 @@
       "review_date": "2026-03",
       "repository": "https://github.com/trustoverip/dtgwg-cred-spec"
     },
-    "toolkit_version": "v0.3-dev",
+    "toolkit_version": "v0.4.0",
     "source_artefacts": {
       "user_stories_framework": "DTG_RAHP_User_Stories_Framework_v6.xlsx",
       "risk_register": "DTG_RAHP_Risk_Register_v5.xlsx",
       "personas": "DTG RAHP - Personas.docx, DTG_RAHP_Personas_Edge_Cases.docx"
     },
     "licence": "CC-BY-4.0",
-    "maintainer": "Risk Assessment & Harms Prevention Task Force, DTGWG"
+    "maintainer": "Risk Assessment & Harms Prevention Task Force, DTGWG",
+    "governance": {
+      "rule_profile": "RP-001",
+      "note": "RP-001 is a proposed v0.4 operating profile. It makes the acceptance authority model machine-readable without implying Task Force ratification."
+    }
   },
   "records": {
     "risk": [
@@ -49,7 +53,9 @@
         ],
         "controls": [
           "CT-01",
-          "CT-02"
+          "CT-02",
+          "CT-53",
+          "CT-56"
         ],
         "assurance_tests": [
           "AT-01",
@@ -93,7 +99,8 @@
           "GR-02"
         ],
         "controls": [
-          "CT-03"
+          "CT-03",
+          "CT-56"
         ],
         "assurance_tests": [
           "AT-02"
@@ -231,7 +238,8 @@
         ],
         "controls": [
           "CT-08",
-          "CT-09"
+          "CT-09",
+          "CT-54"
         ],
         "assurance_tests": [
           "AT-04",
@@ -322,7 +330,8 @@
         ],
         "controls": [
           "CT-12",
-          "CT-13"
+          "CT-13",
+          "CT-65"
         ],
         "assurance_tests": [
           "AT-05",
@@ -405,11 +414,13 @@
           "SC-09"
         ],
         "guardrails": [
+          "GR-06",
           "GR-09",
-          "GR-06"
+          "GR-18"
         ],
         "controls": [
           "CT-15",
+          "CT-49",
           "CT-50"
         ],
         "assurance_tests": [
@@ -501,7 +512,8 @@
         ],
         "controls": [
           "CT-18",
-          "CT-19"
+          "CT-19",
+          "CT-53"
         ],
         "assurance_tests": [
           "AT-01"
@@ -552,7 +564,8 @@
         ],
         "controls": [
           "CT-20",
-          "CT-21"
+          "CT-21",
+          "CT-58"
         ],
         "assurance_tests": [
           "AT-06"
@@ -639,7 +652,8 @@
         ],
         "controls": [
           "CT-23",
-          "CT-24"
+          "CT-24",
+          "CT-60"
         ],
         "assurance_tests": [
           "AT-08",
@@ -766,7 +780,8 @@
         ],
         "guardrails": [
           "GR-06",
-          "GR-07"
+          "GR-07",
+          "GR-20"
         ],
         "controls": [
           "CT-27",
@@ -814,7 +829,8 @@
           "GR-17"
         ],
         "controls": [
-          "CT-29"
+          "CT-29",
+          "CT-48"
         ],
         "assurance_tests": [
           "AT-16",
@@ -861,7 +877,9 @@
         ],
         "controls": [
           "CT-30",
-          "CT-31"
+          "CT-31",
+          "CT-51",
+          "CT-52"
         ],
         "assurance_tests": [
           "AT-12",
@@ -904,7 +922,8 @@
           "GR-12"
         ],
         "controls": [
-          "CT-32"
+          "CT-32",
+          "CT-52"
         ],
         "assurance_tests": [
           "AT-12"
@@ -944,12 +963,14 @@
           "SC-07"
         ],
         "guardrails": [
-          "GR-14",
-          "GR-07"
+          "GR-07",
+          "GR-14"
         ],
         "controls": [
+          "CT-08",
           "CT-33",
-          "CT-34"
+          "CT-34",
+          "CT-51"
         ],
         "assurance_tests": [
           "AT-14",
@@ -994,6 +1015,7 @@
           "GR-14"
         ],
         "controls": [
+          "CT-33",
           "CT-35",
           "CT-36",
           "CT-54"
@@ -1036,12 +1058,13 @@
           "SC-09"
         ],
         "guardrails": [
-          "GR-11",
-          "GR-10"
+          "GR-10",
+          "GR-11"
         ],
         "controls": [
           "CT-37",
-          "CT-38"
+          "CT-38",
+          "CT-45"
         ],
         "assurance_tests": [
           "AT-11",
@@ -1135,7 +1158,8 @@
         ],
         "controls": [
           "CT-40",
-          "CT-41"
+          "CT-41",
+          "CT-66"
         ],
         "assurance_tests": [
           "AT-06",
@@ -1178,12 +1202,15 @@
           "SC-09"
         ],
         "guardrails": [
+          "GR-06",
           "GR-09",
-          "GR-06"
+          "GR-18"
         ],
         "controls": [
           "CT-15",
-          "CT-42"
+          "CT-42",
+          "CT-49",
+          "CT-50"
         ],
         "assurance_tests": [
           "AT-09",
@@ -1373,7 +1400,8 @@
         ],
         "controls": [
           "CT-07",
-          "CT-46"
+          "CT-46",
+          "CT-55"
         ],
         "assurance_tests": [
           "AT-15",
@@ -1418,6 +1446,7 @@
           "GR-17"
         ],
         "controls": [
+          "CT-08",
           "CT-47",
           "CT-48"
         ],
@@ -1803,9 +1832,10 @@
           "GR-19"
         ],
         "controls": [
-          "CT-57",
           "CT-16",
-          "CT-17"
+          "CT-17",
+          "CT-57",
+          "CT-66"
         ],
         "assurance_tests": [
           "AT-06",
@@ -2007,6 +2037,7 @@
           "CT-58",
           "CT-59",
           "CT-60",
+          "CT-61",
           "CT-66"
         ],
         "assurance_tests": [
@@ -2109,7 +2140,9 @@
         "name": "Anchor Clustering Metric Monitoring",
         "type": "Technical",
         "description": "The VTA tracks an anchor clustering metric (e.g. organisational or jurisdictional Herfindahl index). Breaches of the diversity floor trigger a governance alert before additional anchors are admitted.",
-        "guardrails": [],
+        "guardrails": [
+          "GR-03"
+        ],
         "linked_risks": [
           "RK-G03"
         ],
@@ -2167,11 +2200,12 @@
         "type": "Technical",
         "description": "A documented uniqueness enforcement mechanism must be in place before Phase 4 opens. Acceptable approaches include ZKP personhood proofs, trusted IDVP attestation, or social recovery quorum. Absence must be formally risk-accepted.",
         "guardrails": [
+          "GR-04",
           "GR-07"
         ],
         "linked_risks": [
-          "RK-ID01",
           "RK-AI03",
+          "RK-ID01",
           "RK-SY03"
         ],
         "standards_relevance": "High",
@@ -2211,8 +2245,8 @@
           "GR-06"
         ],
         "linked_risks": [
-          "RK-ID02",
-          "RK-HX02"
+          "RK-HX02",
+          "RK-ID02"
         ],
         "standards_relevance": "High",
         "standards_status": "unassigned",
@@ -2270,6 +2304,7 @@
         "description": "The governing body must define how member VMCs issued via a deregistered IDVP's IDVCs are handled: whether they remain valid, require re-verification, or are revoked. The protocol must include member notification within an agreed SLA.",
         "guardrails": [],
         "linked_risks": [
+          "RK-EX06",
           "RK-ID03"
         ],
         "standards_relevance": "High",
@@ -2307,11 +2342,12 @@
         "type": "Technical",
         "description": "Personal network managers should generate a distinct M-DID per VTC, and registry metadata exposure should be minimised to prevent cross-community profiling. This should be a normative design requirement in the DTG credential specification.",
         "guardrails": [
+          "GR-06",
           "GR-09"
         ],
         "linked_risks": [
-          "RK-ID05",
-          "RK-HX01"
+          "RK-HX01",
+          "RK-ID05"
         ],
         "standards_relevance": "High",
         "standards_status": "unassigned",
@@ -2331,6 +2367,7 @@
           "GR-06"
         ],
         "linked_risks": [
+          "RK-ID06",
           "RK-SC01"
         ],
         "standards_relevance": "High",
@@ -2349,6 +2386,7 @@
         "description": "An annual data minimisation audit of all credential schemas (VRC, VMC, IDVC) must be conducted to identify and remove attributes no longer required by policy.",
         "guardrails": [],
         "linked_risks": [
+          "RK-ID06",
           "RK-SC01"
         ],
         "standards_relevance": "Medium",
@@ -2500,7 +2538,9 @@
         "name": "Credential Renewal Workflow",
         "type": "Technical",
         "description": "A defined credential renewal workflow — including advance expiry notification (recommended: 30 days) and a grace period — must be implemented before Phase 4. Autonomous agent renewal (US-08) addresses this for agent-managed credentials.",
-        "guardrails": [],
+        "guardrails": [
+          "GR-08"
+        ],
         "linked_risks": [
           "RK-CR02"
         ],
@@ -2539,10 +2579,12 @@
         "type": "Technical",
         "description": "Only ZKP implementations that have undergone formal security review or are from audited open-source libraries may be used in VTC credential workflows. The DTGWG charter identifies ZKP as a major focus area.",
         "guardrails": [
-          "GR-06"
+          "GR-06",
+          "GR-20"
         ],
         "linked_risks": [
-          "RK-CY01"
+          "RK-CY01",
+          "RK-EX04"
         ],
         "standards_relevance": "High",
         "standards_status": "unassigned",
@@ -2559,10 +2601,12 @@
         "type": "Technical",
         "description": "A conformance test suite for ZKP implementations must be developed as part of the DTG credential specification, covering soundness, completeness, and zero-knowledge properties.",
         "guardrails": [
-          "GR-07"
+          "GR-07",
+          "GR-20"
         ],
         "linked_risks": [
-          "RK-CY01"
+          "RK-CY01",
+          "RK-EX04"
         ],
         "standards_relevance": "High",
         "standards_status": "unassigned",
@@ -2620,6 +2664,7 @@
         "type": "Technical",
         "description": "AI agent delegation credentials should be short-lived (recommended: maximum 24-hour validity) with automated renewal tied to operator membership liveness checks, reducing the window of exposure for compromised agent credentials.",
         "guardrails": [
+          "GR-12",
           "GR-13"
         ],
         "linked_risks": [
@@ -2664,7 +2709,8 @@
         ],
         "linked_risks": [
           "RK-AI03",
-          "RK-AI04"
+          "RK-AI04",
+          "RK-EX04"
         ],
         "standards_relevance": "High",
         "standards_status": "unassigned",
@@ -2895,8 +2941,8 @@
           "GR-10"
         ],
         "linked_risks": [
-          "RK-SY01",
-          "RK-EX01"
+          "RK-EX01",
+          "RK-SY01"
         ],
         "standards_relevance": "High",
         "standards_status": "unassigned",
@@ -2956,8 +3002,8 @@
           "GR-16"
         ],
         "linked_risks": [
-          "RK-SY03",
-          "RK-CY02"
+          "RK-CY02",
+          "RK-SY03"
         ],
         "standards_relevance": "High",
         "standards_status": "unassigned",
@@ -2977,9 +3023,9 @@
           "GR-06"
         ],
         "linked_risks": [
-          "RK-SC03",
           "RK-HX01",
-          "RK-ID05"
+          "RK-ID05",
+          "RK-SC03"
         ],
         "standards_relevance": "High",
         "standards_status": "unassigned",
@@ -2999,9 +3045,9 @@
           "GR-18"
         ],
         "linked_risks": [
-          "RK-SC04",
+          "RK-HX01",
           "RK-ID05",
-          "RK-HX01"
+          "RK-SC04"
         ],
         "standards_relevance": "High",
         "standards_status": "unassigned",
@@ -3123,12 +3169,13 @@
         "type": "Governance",
         "description": "A VTC claiming DTG credential specification compliance MUST publish a version-controlled governance framework satisfying the requirements of the DTG VTC Governance Specification (forthcoming). At minimum this must include: a genesis policy record (GR-01), a time-bounded initiator authority mechanism (GR-02), and a trust anchor diversity policy (GR-03). The trust registry entry for a DTG-compliant VTC SHOULD include a resolvable reference to its published governance framework. Without this, technical credential compliance provides false assurance to relying parties. **Source:** DTG Credential Spec v0.3 §9 (Trust Registries) — gap identified in commentary §2.9, recommendation R8.",
         "guardrails": [
-          "GR-01"
+          "GR-01",
+          "GR-21"
         ],
         "linked_risks": [
-          "RK-G05",
           "RK-G01",
-          "RK-G02"
+          "RK-G02",
+          "RK-G05"
         ],
         "standards_relevance": "High",
         "standards_status": "unassigned",
@@ -3171,7 +3218,8 @@
         ],
         "linked_risks": [
           "RK-HX04",
-          "RK-NM01"
+          "RK-NM01",
+          "RK-SC05"
         ],
         "standards_relevance": "High",
         "standards_status": "unassigned",
@@ -3215,8 +3263,10 @@
           "GR-19"
         ],
         "linked_risks": [
+          "RK-CR01",
           "RK-HX05",
-          "RK-CR01"
+          "RK-HX06",
+          "RK-SC05"
         ],
         "standards_relevance": "High",
         "standards_status": "unassigned",
@@ -3341,8 +3391,9 @@
           "GR-19"
         ],
         "linked_risks": [
+          "RK-EX03",
           "RK-ID06",
-          "RK-EX03"
+          "RK-SC05"
         ],
         "standards_relevance": "High",
         "standards_status": "unassigned",
@@ -3364,12 +3415,15 @@
         "owner": "Initiator / Governing Body",
         "risks_addressed": [
           "RK-G01",
-          "RK-SC02",
-          "RK-NM02"
+          "RK-G05",
+          "RK-NM02",
+          "RK-SC02"
         ],
         "controls": [
           "CT-01",
-          "CT-18"
+          "CT-18",
+          "CT-53",
+          "CT-56"
         ],
         "assurance_tests": [
           "AT-01"
@@ -3390,7 +3444,8 @@
         "owner": "VTA PEP / Governing Body",
         "risks_addressed": [
           "RK-G01",
-          "RK-G02"
+          "RK-G02",
+          "RK-G05"
         ],
         "controls": [
           "CT-03"
@@ -3413,13 +3468,15 @@
         "applies_to_phase": "Phase 2",
         "owner": "Governing Body",
         "risks_addressed": [
+          "RK-CR04",
           "RK-G03",
           "RK-HX02",
           "RK-SY01"
         ],
         "controls": [
           "CT-04",
-          "CT-05"
+          "CT-05",
+          "CT-55"
         ],
         "assurance_tests": [
           "AT-03"
@@ -3462,10 +3519,13 @@
         "applies_to_phase": "Phase 4",
         "owner": "VTA PEP / Governing Body",
         "risks_addressed": [
+          "RK-EX04",
+          "RK-EX06",
           "RK-ID03"
         ],
         "controls": [
-          "CT-12"
+          "CT-12",
+          "CT-65"
         ],
         "assurance_tests": [
           "AT-05"
@@ -3485,14 +3545,17 @@
         "applies_to_phase": "Phase 4",
         "owner": "VTA PEP / DPO",
         "risks_addressed": [
-          "RK-ID02",
-          "RK-ID05",
-          "RK-SC01",
-          "RK-NM01",
           "RK-CY01",
           "RK-EX03",
+          "RK-EX04",
           "RK-HX01",
-          "RK-HX02"
+          "RK-HX02",
+          "RK-ID02",
+          "RK-ID05",
+          "RK-ID06",
+          "RK-NM01",
+          "RK-SC01",
+          "RK-SC03"
         ],
         "controls": [
           "CT-10",
@@ -3501,7 +3564,9 @@
           "CT-16",
           "CT-20",
           "CT-27",
-          "CT-40"
+          "CT-40",
+          "CT-49",
+          "CT-66"
         ],
         "assurance_tests": [
           "AT-06"
@@ -3521,9 +3586,10 @@
         "applies_to_phase": "Phase 4 (open issue)",
         "owner": "Governing Body / Security",
         "risks_addressed": [
-          "RK-ID01",
-          "RK-CY01",
           "RK-AI03",
+          "RK-CY01",
+          "RK-EX04",
+          "RK-ID01",
           "RK-SY01",
           "RK-SY03"
         ],
@@ -3549,14 +3615,19 @@
         "applies_to_phase": "Revocation",
         "owner": "Governing Body / VTA",
         "risks_addressed": [
-          "RK-G04",
           "RK-CR01",
           "RK-CR02",
-          "RK-HX03"
+          "RK-G04",
+          "RK-HX03",
+          "RK-HX05",
+          "RK-HX06"
         ],
         "controls": [
           "CT-23",
-          "CT-25"
+          "CT-25",
+          "CT-59",
+          "CT-60",
+          "CT-61"
         ],
         "assurance_tests": [
           "AT-08"
@@ -3576,14 +3647,15 @@
         "applies_to_phase": "Revocation",
         "owner": "VTA PEP / DPO",
         "risks_addressed": [
-          "RK-ID03",
-          "RK-ID05",
-          "RK-SC01",
           "RK-CR01",
           "RK-CR03",
           "RK-EX03",
           "RK-HX01",
-          "RK-HX03"
+          "RK-HX03",
+          "RK-ID03",
+          "RK-ID05",
+          "RK-SC01",
+          "RK-SC03"
         ],
         "controls": [
           "CT-15",
@@ -3609,13 +3681,14 @@
         "applies_to_phase": "All phases",
         "owner": "Registry Operator / Governing Body",
         "risks_addressed": [
-          "RK-ID04",
           "RK-EX01",
           "RK-EX02",
+          "RK-ID04",
           "RK-SY01"
         ],
         "controls": [
           "CT-14",
+          "CT-39",
           "CT-45"
         ],
         "assurance_tests": [
@@ -3636,8 +3709,8 @@
         "applies_to_phase": "Phase 2–4 (ongoing)",
         "owner": "Governing Body",
         "risks_addressed": [
-          "RK-G03",
-          "RK-EX01"
+          "RK-EX01",
+          "RK-G03"
         ],
         "controls": [
           "CT-37"
@@ -3666,7 +3739,9 @@
         "controls": [
           "CT-30",
           "CT-31",
-          "CT-32"
+          "CT-32",
+          "CT-51",
+          "CT-52"
         ],
         "assurance_tests": [
           "AT-12"
@@ -3715,7 +3790,8 @@
         ],
         "controls": [
           "CT-33",
-          "CT-34"
+          "CT-34",
+          "CT-54"
         ],
         "assurance_tests": [
           "AT-14"
@@ -3765,6 +3841,7 @@
           "RK-SY02"
         ],
         "controls": [
+          "CT-29",
           "CT-48"
         ],
         "assurance_tests": [
@@ -3790,6 +3867,7 @@
           "RK-SY03"
         ],
         "controls": [
+          "CT-29",
           "CT-41",
           "CT-47"
         ],
@@ -3811,9 +3889,9 @@
         "applies_to_phase": "Pre-Phase 4",
         "owner": "VTA PEP / Governing Body",
         "risks_addressed": [
-          "RK-SC04",
+          "RK-HX01",
           "RK-ID05",
-          "RK-HX01"
+          "RK-SC04"
         ],
         "controls": [
           "CT-50"
@@ -3838,6 +3916,7 @@
         "risks_addressed": [
           "RK-HX04",
           "RK-HX05",
+          "RK-HX06",
           "RK-ID06",
           "RK-SC05"
         ],
@@ -3866,9 +3945,9 @@
         "applies_to_phase": "Phase 4 (pre-condition for age-restricted relying party operations)",
         "owner": "Governing Body / IDVP",
         "risks_addressed": [
+          "RK-CY01",
           "RK-EX04",
-          "RK-EX06",
-          "RK-CY01"
+          "RK-EX06"
         ],
         "controls": [
           "CT-27",
@@ -3897,9 +3976,9 @@
           "RK-EX05"
         ],
         "controls": [
+          "CT-56",
           "CT-63",
-          "CT-64",
-          "CT-56"
+          "CT-64"
         ],
         "assurance_tests": [
           "AT-21"
@@ -4378,7 +4457,24 @@
           "EPIC-5",
           "EPIC-11"
         ],
-        "monitoring": null
+        "monitoring": {
+          "status": "pilot_proposed",
+          "signal": "Elapsed hours from revocation decision timestamp to formal notification timestamp.",
+          "threshold_warn": null,
+          "threshold_critical": null,
+          "threshold_rule": "Instance target must be defined before activation; any breach of the adopted revocation-notification SLA enters triage.",
+          "triage_workflow": "docs/operational-assurance.md#triage-state-flow",
+          "responsible_role": "VTC governance operations",
+          "evidence_captured": [
+            "EV-001"
+          ],
+          "notification_sla_hours": 24,
+          "appeals_pathway": "instance governance appeal pathway",
+          "revocation_trigger": false
+        },
+        "evidence_artefacts": [
+          "EV-001"
+        ]
       },
       {
         "id": "M-03",
@@ -4467,7 +4563,24 @@
           "EPIC-9",
           "EPIC-13"
         ],
-        "monitoring": null
+        "monitoring": {
+          "status": "pilot_proposed",
+          "signal": "Percentage of Phase 4 admissions with IDVP DID and authority verified before VMC issuance.",
+          "threshold_warn": null,
+          "threshold_critical": null,
+          "threshold_rule": "Target is 100%; any unverified admission is a triage event.",
+          "triage_workflow": "docs/operational-assurance.md#triage-state-flow",
+          "responsible_role": "VTC admission authority",
+          "evidence_captured": [
+            "EV-002"
+          ],
+          "notification_sla_hours": 4,
+          "appeals_pathway": "instance governance appeal pathway",
+          "revocation_trigger": true
+        },
+        "evidence_artefacts": [
+          "EV-002"
+        ]
       },
       {
         "id": "M-05",
@@ -4561,7 +4674,24 @@
           "EPIC-7",
           "EPIC-13"
         ],
-        "monitoring": null
+        "monitoring": {
+          "status": "pilot_proposed",
+          "signal": "Percentage of unauthorised single-party registry write attempts rejected by policy enforcement.",
+          "threshold_warn": null,
+          "threshold_critical": null,
+          "threshold_rule": "Target is 100% rejection; any successful unauthorised write is a critical triage event.",
+          "triage_workflow": "docs/operational-assurance.md#triage-state-flow",
+          "responsible_role": "registry operations and governance",
+          "evidence_captured": [
+            "EV-003"
+          ],
+          "notification_sla_hours": 1,
+          "appeals_pathway": "registry governance incident review",
+          "revocation_trigger": true
+        },
+        "evidence_artefacts": [
+          "EV-003"
+        ]
       },
       {
         "id": "M-07",
@@ -4635,7 +4765,24 @@
           "EPIC-6",
           "EPIC-7"
         ],
-        "monitoring": null
+        "monitoring": {
+          "status": "pilot_proposed",
+          "signal": "Rate of agent actions attempted or executed outside the delegated credential scope.",
+          "threshold_warn": null,
+          "threshold_critical": null,
+          "threshold_rule": "Target is zero successful out-of-scope actions; attempted violations are retained for trend review.",
+          "triage_workflow": "docs/operational-assurance.md#triage-state-flow",
+          "responsible_role": "delegation policy operator",
+          "evidence_captured": [
+            "EV-004"
+          ],
+          "notification_sla_hours": 4,
+          "appeals_pathway": "operator/delegator review pathway",
+          "revocation_trigger": true
+        },
+        "evidence_artefacts": [
+          "EV-004"
+        ]
       },
       {
         "id": "M-09",
@@ -5356,7 +5503,24 @@
           "EPIC-16"
         ],
         "risks_measured": [],
-        "monitoring": null
+        "monitoring": {
+          "status": "pilot_proposed",
+          "signal": "Percentage of required operator/agent liveness checks completed within the adopted interval.",
+          "threshold_warn": null,
+          "threshold_critical": null,
+          "threshold_rule": "Target is 100% interval compliance; missed liveness checks suspend reliance until re-established.",
+          "triage_workflow": "docs/operational-assurance.md#triage-state-flow",
+          "responsible_role": "agent operator",
+          "evidence_captured": [
+            "EV-005"
+          ],
+          "notification_sla_hours": 4,
+          "appeals_pathway": "operator/delegator review pathway",
+          "revocation_trigger": true
+        },
+        "evidence_artefacts": [
+          "EV-005"
+        ]
       },
       {
         "id": "M-28",
@@ -9253,6 +9417,7 @@
       {
         "id": "RA-001",
         "risk_id": "RK-G05",
+        "rule_profile": "RP-001",
         "title": "Governanceless VTC claiming credential compliance",
         "decision": "pending",
         "authority": null,
@@ -9273,6 +9438,7 @@
       {
         "id": "RA-002",
         "risk_id": "RK-ID01",
+        "rule_profile": "RP-001",
         "title": "Sybil identity proliferation — uniqueness enforcement absent from spec v0.3",
         "decision": "pending",
         "authority": null,
@@ -9292,6 +9458,7 @@
       {
         "id": "RA-003",
         "risk_id": "RK-SY03",
+        "rule_profile": "RP-001",
         "title": "Open issues left unresolved at scale",
         "decision": "pending",
         "authority": null,
@@ -9366,6 +9533,155 @@
         ],
         "evidence": "DTG Credential Specification v0.3 review, March 2026 (risk register v5, section 6b)",
         "superseded_by": null
+      }
+    ],
+    "rule_profile": [
+      {
+        "id": "RP-001",
+        "name": "DTGWG RAHP v0.4 proposed operating profile",
+        "status": "proposed",
+        "scope": "DTG RAHP instance",
+        "description": "A machine-readable starting profile for risk acceptance authority, review cadence and non-acceptability rules. Proposed for Task Force ratification; it does not itself confer authority.",
+        "critical_risk": {
+          "acceptance_permitted": false,
+          "required_action": "guardrail_required"
+        },
+        "risk_acceptance_bands": [
+          {
+            "match": "High severity × High likelihood",
+            "authority": "full_working_group",
+            "review_period": "P6M",
+            "evidence_threshold": "documented rationale plus current assurance evidence"
+          },
+          {
+            "match": "High severity (score 3–6)",
+            "authority": "task_force_co_chairs",
+            "review_period": "P12M",
+            "evidence_threshold": "documented rationale plus current assurance evidence"
+          },
+          {
+            "match": "Medium or Low severity",
+            "authority": "task_force",
+            "review_period": "P12M",
+            "evidence_threshold": "documented rationale and proportionate evidence"
+          }
+        ],
+        "required_acceptance_fields": [
+          "authority",
+          "decided_by",
+          "decision_date",
+          "rationale",
+          "residual_risk",
+          "review_date",
+          "evidence"
+        ],
+        "provenance": {
+          "source": "ROADMAP.md Q3/Q4 proposed profile",
+          "contributor": "RAHP v0.4 release work (AI-assisted)",
+          "note": "Proposed profile; requires human ratification before use for real acceptance decisions."
+        }
+      }
+    ],
+    "evidence_artifact": [
+      {
+        "id": "EV-001",
+        "metric": "M-02",
+        "name": "Revocation notification timing evidence",
+        "status": "planned",
+        "description": "Timestamped record linking a revocation decision to the corresponding formal notification event.",
+        "source_kind": "governance-event-log",
+        "uri": null,
+        "digest": null,
+        "collector_role": "instance-defined operator",
+        "collected_at": null,
+        "retention_class": "P1Y",
+        "sensitivity": "restricted",
+        "assurance_tests": [],
+        "provenance": {
+          "source": "RAHP v0.4 operational assurance pilot",
+          "contributor": "RAHP v0.4 release work (AI-assisted)",
+          "note": "Evidence contract/template; no runtime evidence is asserted by this record."
+        }
+      },
+      {
+        "id": "EV-002",
+        "metric": "M-04",
+        "name": "IDVP issuer verification evidence",
+        "status": "planned",
+        "description": "Admission-time evidence that the IDVP DID and authorisation state were verified before VMC issuance.",
+        "source_kind": "admission-verification-log",
+        "uri": null,
+        "digest": null,
+        "collector_role": "instance-defined operator",
+        "collected_at": null,
+        "retention_class": "P1Y",
+        "sensitivity": "restricted",
+        "assurance_tests": [],
+        "provenance": {
+          "source": "RAHP v0.4 operational assurance pilot",
+          "contributor": "RAHP v0.4 release work (AI-assisted)",
+          "note": "Evidence contract/template; no runtime evidence is asserted by this record."
+        }
+      },
+      {
+        "id": "EV-003",
+        "metric": "M-06",
+        "name": "Registry write authorisation rejection evidence",
+        "status": "planned",
+        "description": "Audit evidence for attempted registry writes and the authorisation decision applied to each attempt.",
+        "source_kind": "registry-authorisation-log",
+        "uri": null,
+        "digest": null,
+        "collector_role": "instance-defined operator",
+        "collected_at": null,
+        "retention_class": "P1Y",
+        "sensitivity": "restricted",
+        "assurance_tests": [],
+        "provenance": {
+          "source": "RAHP v0.4 operational assurance pilot",
+          "contributor": "RAHP v0.4 release work (AI-assisted)",
+          "note": "Evidence contract/template; no runtime evidence is asserted by this record."
+        }
+      },
+      {
+        "id": "EV-004",
+        "metric": "M-08",
+        "name": "Agent scope violation evidence",
+        "status": "planned",
+        "description": "Structured event evidence for attempted or successful actions outside an agent's delegated credential scope.",
+        "source_kind": "agent-policy-enforcement-log",
+        "uri": null,
+        "digest": null,
+        "collector_role": "instance-defined operator",
+        "collected_at": null,
+        "retention_class": "P1Y",
+        "sensitivity": "restricted",
+        "assurance_tests": [],
+        "provenance": {
+          "source": "RAHP v0.4 operational assurance pilot",
+          "contributor": "RAHP v0.4 release work (AI-assisted)",
+          "note": "Evidence contract/template; no runtime evidence is asserted by this record."
+        }
+      },
+      {
+        "id": "EV-005",
+        "metric": "M-27",
+        "name": "Agent liveness compliance evidence",
+        "status": "planned",
+        "description": "Timestamped liveness-check records sufficient to establish whether the required operator/agent liveness interval was met.",
+        "source_kind": "agent-liveness-log",
+        "uri": null,
+        "digest": null,
+        "collector_role": "instance-defined operator",
+        "collected_at": null,
+        "retention_class": "P1Y",
+        "sensitivity": "restricted",
+        "assurance_tests": [],
+        "provenance": {
+          "source": "RAHP v0.4 operational assurance pilot",
+          "contributor": "RAHP v0.4 release work (AI-assisted)",
+          "note": "Evidence contract/template; no runtime evidence is asserted by this record."
+        }
       }
     ]
   }

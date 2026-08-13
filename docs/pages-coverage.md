@@ -43,3 +43,11 @@ flowchart TB
 "Maximum coverage" does not mean publishing every file as first-class documentation. Build scripts, dependencies and workflow internals remain in GitHub. Historical artefacts are published through the clearly labelled Historical Library because earlier personas, registers and analysis can materially help a reader understand how RAHP evolved, while current and historical authority remain explicitly separated.
 
 The deployment pipeline fails before publication when canonical validation fails or generated evidence is stale. This keeps Pages a projection of a coherent repository state rather than a separate documentation fork.
+
+## v0.4 operational assurance
+
+The Pages projection also renders the v0.4 structured method and instance additions,
+including `data/rule-profiles.yaml`, `data/evidence-artifacts.yaml`,
+`method/non-human-actors.yaml`, and `method/schema/delegation-scope.schema.json`.
+Reader guides for normative triage, operational assurance, agent delegation governance,
+and the v0.4.0 release are part of the required Pages coverage contract.

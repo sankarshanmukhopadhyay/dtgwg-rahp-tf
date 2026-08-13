@@ -131,6 +131,64 @@ def derive_normative_set(records):
     return out
 
 
+
+def derive_normative_triage(records):
+    """Generate non-authoritative candidate classifications for human triage.
+
+    This output is a work queue, never a canonical standards decision. It deliberately
+    leaves data/controls.yaml and data/guardrails.yaml unchanged.
+    """
+    risks = {r["id"]: r for r in records["risk"]}
+    rows = []
+    for kind in ("control", "guardrail"):
+        for it in records[kind]:
+            if it.get("standards_status") not in (None, "unassigned"):
+                continue
+            linked = it.get("linked_risks") if kind == "control" else it.get("risks_addressed")
+            linked = linked or []
+            critical = any(risks.get(r, {}).get("severity") == "Critical" for r in linked)
+            high = sum(1 for r in linked if risks.get(r, {}).get("severity") == "High")
+            relevance = it.get("standards_relevance")
+            wording = (it.get("description") or it.get("requirement") or "").upper()
+            candidate = "informative_guidance"
+            language = None
+            reason = "No strong normative signal inferred; human review required."
+            if critical or relevance == "High" or any(k in wording for k in (" MUST ", " REQUIRED", "MUST ", " SHALL ")):
+                candidate = "normative_candidate"
+                language = "MUST"
+                reason = "High/critical risk linkage, high standards relevance, or mandatory source wording."
+            elif relevance == "Medium" or high:
+                candidate = "recommended_practice"
+                language = "SHOULD"
+                reason = "Material risk linkage or medium standards relevance."
+            rows.append({
+                "id": it["id"], "kind": kind, "name": it.get("name"),
+                "current_status": it.get("standards_status") or "unassigned",
+                "candidate_status": candidate, "candidate_language": language,
+                "linked_risks": linked, "reason": reason,
+            })
+    rows.sort(key=lambda r: (0 if r["candidate_status"] == "normative_candidate" else 1,
+                             r["kind"], r["id"]))
+    return rows
+
+
+def derive_operational_assurance(records):
+    metrics = []
+    evidence = {e["id"]: e for e in records.get("evidence_artifact", [])}
+    for m in records["metric"]:
+        mon = m.get("monitoring")
+        if not isinstance(mon, dict):
+            continue
+        metrics.append({
+            "id": m["id"], "name": m["name"], "status": mon.get("status"),
+            "signal": mon.get("signal"), "threshold_rule": mon.get("threshold_rule"),
+            "responsible_role": mon.get("responsible_role"),
+            "evidence": [evidence.get(x, {"id": x}) for x in (m.get("evidence_artefacts") or [])],
+        })
+    return {"pilot_metrics": metrics, "rule_profiles": records.get("rule_profile", []),
+            "evidence_contracts": records.get("evidence_artifact", [])}
+
+
 # ---------------------------------------------------------------------------
 # JSON-LD
 # ---------------------------------------------------------------------------
@@ -141,6 +199,7 @@ TYPE_MAP = {
     "scenario": "Scenario", "epic": "Epic", "persona": "Persona",
     "recommendation": "Recommendation", "risk_acceptance": "RiskAcceptance",
     "governance_precedent": "GovernancePrecedent",
+    "rule_profile": "RuleProfile", "evidence_artifact": "EvidenceArtifact",
 }
 
 CAMEL = {
@@ -152,7 +211,8 @@ CAMEL = {
     "harm_types": "harmType", "personas_want_high": "personasWantHigh",
     "personas_want_suppressed": "personasWantSuppressed", "risk_id": "riskId",
     "decision_date": "decisionDate", "review_date": "reviewDate",
-    "superseded_by": "supersededBy",
+    "superseded_by": "supersededBy", "rule_profile": "ruleProfile",
+    "evidence_artefacts": "evidenceArtefacts", "assurance_tests": "assuranceTests",
 }
 
 IRI_FIELDS = {
@@ -160,7 +220,8 @@ IRI_FIELDS = {
     "risksAddressed", "risksMeasured", "userStories", "scenarios", "epics",
     "personas", "personasWantHigh", "personasWantSuppressed", "riskId",
     "supersededBy", "linked_guardrails", "linked_controls", "metrics", "persona",
-    "legitimate_personas", "adversarial_personas",
+    "legitimate_personas", "adversarial_personas", "ruleProfile",
+    "evidenceArtefacts", "metric",
 }
 
 
@@ -280,6 +341,7 @@ NAV = [
     ("matrix.html", "Cross-reference matrix", "var(--teal)"),
     ("lifecycle.html", "Lifecycle & gaps", "var(--amber)"),
     ("governance.html", "Decisions & acceptances", "var(--green)"),
+    ("assurance.html", "Operational assurance", "var(--teal)"),
 ]
 
 
@@ -537,6 +599,7 @@ def build_site(records, derived, meta, out):
         ("epic", "EPICs"), ("persona", "Personas"),
         ("recommendation", "Recommendations"), ("risk_acceptance", "Risk acceptances"),
         ("governance_precedent", "Governance precedents"),
+        ("rule_profile", "Rule profiles"), ("evidence_artifact", "Evidence artefacts"),
     ]
     sections = []
     for kind, label in catalogue_kinds:
@@ -668,10 +731,13 @@ def build_site(records, derived, meta, out):
 <div style="font-size:12px;color:var(--muted);margin-top:3px">{html.escape(g['rationale'][:300])}</div></td>
 <td>{pills((g.get('linked_risks') or []) + (g.get('linked_guardrails') or []))}</td>
 <td><span class="pill sev-Medium">{html.escape(g['status'])}</span></td></tr>""" for g in records["governance_precedent"])
-    body = ('<div class="warnbox"><strong>No risk has been formally accepted.</strong> Every acceptance record '
-            'below is <code>pending</code> because the working group has not yet decided who may accept a risk, '
-            'under what authority, or against what evidence threshold. That decision (roadmap Q3 and Q4) blocks '
-            'assurance test AT-17 from ever passing.</div>'
+    profiles = records.get("rule_profile") or []
+    profile_note = ('<div class="warnbox"><strong>Governance authority remains proposed.</strong> '
+                    'RAHP v0.4 makes the ROADMAP Q3/Q4 starting profile machine-readable as '
+                    '<code>RP-001</code>, but it remains <code>proposed</code>. No risk has therefore '
+                    'been formally accepted, and the pending records below do not become acceptances '
+                    'until an authorised human governance decision is recorded.</div>')
+    body = (profile_note +
             f'<div class="sh2"><h2>Risk acceptances</h2><span class="cnt">{len(records["risk_acceptance"])} records</span></div>'
             '<div class="card"><table><thead><tr><th>ID</th><th>Risk</th><th>Decision</th><th>Authority</th>'
             f'<th>Rationale</th><th>Review</th></tr></thead><tbody>{ra}</tbody></table></div>'
@@ -681,6 +747,57 @@ def build_site(records, derived, meta, out):
     ptitle, psub = "Decisions & acceptances", "Formal risk acceptances and the governance precedents that explain why the toolkit looks the way it does."
     (site / "governance.html").write_text(page("governance.html", ptitle, psub, body, meta), encoding="utf-8")
     pages.append(("governance", ptitle, psub, body))
+
+    # ---- operational assurance (v0.4) ----------------------------------
+    op = derived["operational_assurance"]
+    metric_rows = []
+    for m in op["pilot_metrics"]:
+        evidence_ids = [e.get("id") for e in m.get("evidence") or [] if e.get("id")]
+        metric_rows.append(
+            f'<tr><td>{pill(m["id"])}</td><td><strong>{html.escape(m["name"])}</strong></td>'
+            f'<td><span class="pill sev-Medium">{html.escape(m.get("status") or "")}</span></td>'
+            f'<td>{html.escape(m.get("signal") or "")}</td>'
+            f'<td>{html.escape(m.get("threshold_rule") or "")}</td>'
+            f'<td>{pills(evidence_ids)}</td>'
+            f'<td>{html.escape(m.get("responsible_role") or "")}</td></tr>'
+        )
+    ev_rows = []
+    for e in op["evidence_contracts"]:
+        ev_rows.append(
+            f'<tr><td>{pill(e["id"])}</td><td>{pill(e["metric"])}</td>'
+            f'<td><strong>{html.escape(e["name"])}</strong><div style="font-size:11px;color:var(--muted)">'
+            f'{html.escape(e.get("description") or "")}</div></td>'
+            f'<td>{html.escape(e.get("source_kind") or "")}</td>'
+            f'<td>{html.escape(e.get("retention_class") or "")}</td>'
+            f'<td>{html.escape(e.get("sensitivity") or "")}</td>'
+            f'<td><span class="pill sev-Medium">{html.escape(e.get("status") or "")}</span></td></tr>'
+        )
+    rp_rows = []
+    for r in op["rule_profiles"]:
+        rp_rows.append(
+            f'<tr><td>{pill(r["id"])}</td><td><strong>{html.escape(r["name"])}</strong></td>'
+            f'<td><span class="pill sev-Medium">{html.escape(r.get("status") or "")}</span></td>'
+            f'<td>{html.escape(r.get("description") or "")}</td></tr>'
+        )
+    body = (
+        '<div class="warnbox"><strong>Proposed operating contracts, not deployment claims.</strong> '
+        'These monitoring and governance records demonstrate the v0.4 assurance model. '
+        'They remain pilot/proposed until human governance ratification and practitioner evidence exist.</div>'
+        f'<div class="sh2"><h2>Pilot monitoring contracts</h2><span class="cnt">{len(metric_rows)} metrics</span></div>'
+        '<div class="card"><table><thead><tr><th>Metric</th><th>Name</th><th>Status</th><th>Signal</th>'
+        '<th>Threshold rule</th><th>Evidence</th><th>Responsible</th></tr></thead>'
+        f'<tbody>{"".join(metric_rows)}</tbody></table></div>'
+        f'<div class="sh2"><h2>Evidence contracts</h2><span class="cnt">{len(ev_rows)} records</span></div>'
+        '<div class="card"><table><thead><tr><th>ID</th><th>Metric</th><th>Evidence</th><th>Source kind</th>'
+        '<th>Retention</th><th>Sensitivity</th><th>Status</th></tr></thead>'
+        f'<tbody>{"".join(ev_rows)}</tbody></table></div>'
+        f'<div class="sh2"><h2>Rule profiles</h2><span class="cnt">{len(rp_rows)} records</span></div>'
+        '<div class="card"><table><thead><tr><th>ID</th><th>Profile</th><th>Status</th><th>Description</th></tr></thead>'
+        f'<tbody>{"".join(rp_rows)}</tbody></table></div>'
+    )
+    ptitle, psub = "Operational assurance", "Proposed monitoring contracts, evidence artefacts, and governance rule profiles introduced in RAHP v0.4."
+    (site / "assurance.html").write_text(page("assurance.html", ptitle, psub, body, meta), encoding="utf-8")
+    pages.append(("assurance", ptitle, psub, body))
 
     return site, pages
 
@@ -702,6 +819,54 @@ def build_normative_md(records, derived, out):
     (out / "normative.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+
+def build_normative_triage_md(rows, out):
+    lines = [
+        "# Normative triage workbench",
+        "",
+        "> **Decision support only.** Candidate classifications below are generated heuristically",
+        "> to make human Task Force triage manageable. They do not change canonical status and",
+        "> MUST NOT be cited as Task Force decisions.",
+        "",
+        f"Items awaiting human triage: **{len(rows)}**.",
+        "",
+        "| ID | Type | Candidate | Language | Linked risks | Why surfaced |",
+        "|---|---|---|---|---|---|",
+    ]
+    for r in rows:
+        risks = ", ".join(r["linked_risks"]) or "—"
+        lang = r["candidate_language"] or "—"
+        reason = r["reason"].replace("|", "\\|")
+        lines.append(f"| {r['id']} | {r['kind']} | {r['candidate_status']} | {lang} | {risks} | {reason} |")
+    lines += [
+        "",
+        "## Human decision protocol",
+        "",
+        "For each item, reviewers should confirm the target control plane, decide whether the item",
+        "is normative/recommended/informative/deferred/open, select RFC 2119/8174 language only",
+        "where justified, record a rationale, and then update the canonical YAML.",
+        "",
+    ]
+    (out / "normative-triage.md").write_text("\n".join(lines), encoding="utf-8")
+
+
+def build_operational_assurance_md(op, out):
+    lines = [
+        "# Operational assurance pilot",
+        "",
+        "RAHP v0.4 introduces five **proposed pilot monitoring contracts**. They are implementation",
+        "scaffolds, not claims that any DTG deployment is currently collecting this evidence.",
+        "",
+        "| Metric | Status | Signal | Threshold rule | Evidence | Responsible role |",
+        "|---|---|---|---|---|---|",
+    ]
+    for m in op["pilot_metrics"]:
+        ev = ", ".join(e.get("id","") for e in m["evidence"]) or "—"
+        lines.append(f"| {m['id']} {m['name']} | {m['status']} | {m['signal']} | {m['threshold_rule']} | {ev} | {m['responsible_role']} |")
+    lines += ["", "Rule profiles and evidence contracts remain canonical under `data/`.", ""]
+    (out / "operational-assurance.md").write_text("\n".join(lines), encoding="utf-8")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=str(ROOT / "build"))
@@ -718,6 +883,8 @@ def main():
         "persona_xrefs": derive_persona_xrefs(records),
         "coverage": derive_coverage(records),
         "normative": derive_normative_set(records),
+        "normative_triage": derive_normative_triage(records),
+        "operational_assurance": derive_operational_assurance(records),
         "lifecycle": lifecycle,
     }
 
@@ -733,7 +900,7 @@ def main():
     (out / "rahp.json").write_text(json.dumps({
         "instance": instance["instance"], "records": records}, indent=2, ensure_ascii=False), encoding="utf-8")
 
-    for name in ("persona_xrefs", "coverage", "normative"):
+    for name in ("persona_xrefs", "coverage", "normative", "normative_triage", "operational_assurance"):
         (out / "derived" / f"{name}.json").write_text(
             json.dumps(derived[name], indent=2, ensure_ascii=False), encoding="utf-8")
 
@@ -747,6 +914,8 @@ def main():
     site, pages = build_site(records, derived, meta, out)
     single = build_single_file(pages, meta, out)
     build_normative_md(records, derived, out)
+    build_normative_triage_md(derived["normative_triage"], out)
+    build_operational_assurance_md(derived["operational_assurance"], out)
 
     print("Built:")
     print(f"  {out/'rahp.json'}")
@@ -755,6 +924,8 @@ def main():
     print(f"  {site}/ ({len(NAV)} pages)")
     print(f"  {single}")
     print(f"  {out/'normative.md'}")
+    print(f"  {out/'normative-triage.md'}")
+    print(f"  {out/'operational-assurance.md'}")
     print(f"  {counts}")
 
 

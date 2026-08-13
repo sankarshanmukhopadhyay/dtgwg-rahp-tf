@@ -181,3 +181,10 @@ The agent may compare the reviewed source pin with the observed HEAD, inspect ch
 An agent does not need a proprietary integration. It needs filesystem access, a shell/Python runtime, and read access to the target material. The repository deliberately exposes stable commands, structured YAML, scenario adapters, canonical IDs, generated Markdown, and validators so that coding agents, CI agents, or local personal agents can use the same workflow.
 
 For the three review modes and output locations, see [Review modes](review-modes.md). For scenario selection, see [Scenario-driven pressure testing](scenario-driven-pressure-testing.md). For interpretation and governance, see [Interpreting results](interpreting-results.md) and [Governance boundaries](governance-boundaries.md).
+
+## Agent systems being reviewed
+
+This guide explains how an AI agent can assist the **RAHP review process**. If the target
+specification itself governs non-human agents or delegated execution, also use
+[Agent delegation governance](agent-delegation-governance.md). RAHP v0.4 deliberately
+keeps reviewer-agent permissions separate from the delegated authority being analysed.

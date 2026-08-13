@@ -27,6 +27,8 @@ records:
   controls:
   - CT-01
   - CT-02
+  - CT-53
+  - CT-56
   assurance_tests:
   - AT-01
   - AT-02
@@ -63,6 +65,7 @@ records:
   - GR-02
   controls:
   - CT-03
+  - CT-56
   assurance_tests:
   - AT-02
   epics:
@@ -175,6 +178,7 @@ records:
   controls:
   - CT-08
   - CT-09
+  - CT-54
   assurance_tests:
   - AT-04
   - AT-07
@@ -248,6 +252,7 @@ records:
   controls:
   - CT-12
   - CT-13
+  - CT-65
   assurance_tests:
   - AT-05
   - AT-09
@@ -317,10 +322,12 @@ records:
   scenarios:
   - SC-09
   guardrails:
-  - GR-09
   - GR-06
+  - GR-09
+  - GR-18
   controls:
   - CT-15
+  - CT-49
   - CT-50
   assurance_tests:
   - AT-09
@@ -399,6 +406,7 @@ records:
   controls:
   - CT-18
   - CT-19
+  - CT-53
   assurance_tests:
   - AT-01
   epics:
@@ -442,6 +450,7 @@ records:
   controls:
   - CT-20
   - CT-21
+  - CT-58
   assurance_tests:
   - AT-06
   epics:
@@ -511,6 +520,7 @@ records:
   controls:
   - CT-23
   - CT-24
+  - CT-60
   assurance_tests:
   - AT-08
   - AT-09
@@ -612,6 +622,7 @@ records:
   guardrails:
   - GR-06
   - GR-07
+  - GR-20
   controls:
   - CT-27
   - CT-28
@@ -653,6 +664,7 @@ records:
   - GR-17
   controls:
   - CT-29
+  - CT-48
   assurance_tests:
   - AT-16
   - AT-17
@@ -691,6 +703,8 @@ records:
   controls:
   - CT-30
   - CT-31
+  - CT-51
+  - CT-52
   assurance_tests:
   - AT-12
   - AT-13
@@ -725,6 +739,7 @@ records:
   - GR-12
   controls:
   - CT-32
+  - CT-52
   assurance_tests:
   - AT-12
   epics:
@@ -756,11 +771,13 @@ records:
   - SC-11
   - SC-07
   guardrails:
-  - GR-14
   - GR-07
+  - GR-14
   controls:
+  - CT-08
   - CT-33
   - CT-34
+  - CT-51
   assurance_tests:
   - AT-14
   - AT-07
@@ -800,6 +817,7 @@ records:
   guardrails:
   - GR-14
   controls:
+  - CT-33
   - CT-35
   - CT-36
   - CT-54
@@ -834,11 +852,12 @@ records:
   scenarios:
   - SC-09
   guardrails:
-  - GR-11
   - GR-10
+  - GR-11
   controls:
   - CT-37
   - CT-38
+  - CT-45
   assurance_tests:
   - AT-11
   - AT-10
@@ -915,6 +934,7 @@ records:
   controls:
   - CT-40
   - CT-41
+  - CT-66
   assurance_tests:
   - AT-06
   - AT-09
@@ -949,11 +969,14 @@ records:
   scenarios:
   - SC-09
   guardrails:
-  - GR-09
   - GR-06
+  - GR-09
+  - GR-18
   controls:
   - CT-15
   - CT-42
+  - CT-49
+  - CT-50
   assurance_tests:
   - AT-09
   - AT-06
@@ -1108,6 +1131,7 @@ records:
   controls:
   - CT-07
   - CT-46
+  - CT-55
   assurance_tests:
   - AT-15
   - AT-16
@@ -1144,6 +1168,7 @@ records:
   - GR-07
   - GR-17
   controls:
+  - CT-08
   - CT-47
   - CT-48
   assurance_tests:
@@ -1514,9 +1539,10 @@ records:
   - GR-06
   - GR-19
   controls:
-  - CT-57
   - CT-16
   - CT-17
+  - CT-57
+  - CT-66
   assurance_tests:
   - AT-06
   - AT-19
@@ -1721,6 +1747,7 @@ records:
   - CT-58
   - CT-59
   - CT-60
+  - CT-61
   - CT-66
   assurance_tests:
   - AT-19

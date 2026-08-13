@@ -1,0 +1,38 @@
+record_type: rule_profile
+records:
+- id: RP-001
+  name: DTGWG RAHP v0.4 proposed operating profile
+  status: proposed
+  scope: DTG RAHP instance
+  description: A machine-readable starting profile for risk acceptance authority,
+    review cadence and non-acceptability rules. Proposed for Task Force ratification;
+    it does not itself confer authority.
+  critical_risk:
+    acceptance_permitted: false
+    required_action: guardrail_required
+  risk_acceptance_bands:
+  - match: High severity × High likelihood
+    authority: full_working_group
+    review_period: P6M
+    evidence_threshold: documented rationale plus current assurance evidence
+  - match: High severity (score 3–6)
+    authority: task_force_co_chairs
+    review_period: P12M
+    evidence_threshold: documented rationale plus current assurance evidence
+  - match: Medium or Low severity
+    authority: task_force
+    review_period: P12M
+    evidence_threshold: documented rationale and proportionate evidence
+  required_acceptance_fields:
+  - authority
+  - decided_by
+  - decision_date
+  - rationale
+  - residual_risk
+  - review_date
+  - evidence
+  provenance:
+    source: ROADMAP.md Q3/Q4 proposed profile
+    contributor: RAHP v0.4 release work (AI-assisted)
+    note: Proposed profile; requires human ratification before use for real acceptance
+      decisions.

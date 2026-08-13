@@ -17,13 +17,18 @@ instance:
     version_assessed: v0.3
     review_date: 2026-03
     repository: https://github.com/trustoverip/dtgwg-cred-spec
-  toolkit_version: v0.3-dev
+  toolkit_version: v0.4.0
   source_artefacts:
     user_stories_framework: DTG_RAHP_User_Stories_Framework_v6.xlsx
     risk_register: DTG_RAHP_Risk_Register_v5.xlsx
     personas: DTG RAHP - Personas.docx, DTG_RAHP_Personas_Edge_Cases.docx
   licence: CC-BY-4.0
   maintainer: Risk Assessment & Harms Prevention Task Force, DTGWG
+  governance:
+    rule_profile: RP-001
+    note: >-
+      RP-001 is a proposed v0.4 operating profile. It makes the acceptance
+      authority model machine-readable without implying Task Force ratification.
 
 # Identifier namespaces used by this instance. The validator enforces that every
 # record ID matches its namespace pattern and that no ID is defined twice.
@@ -40,6 +45,8 @@ namespaces:
   REC:     {pattern: '^REC-\d+$',            record_type: recommendation,      file: recommendations.yaml}
   RA:      {pattern: '^RA-\d{3}$',           record_type: risk_acceptance,     file: risk-acceptances.yaml}
   GP:      {pattern: '^GP-\d{3}$',           record_type: governance_precedent, file: governance-precedents.yaml}
+  RP:      {pattern: '^RP-\d{3}$',           record_type: rule_profile,          file: rule-profiles.yaml}
+  EV:      {pattern: '^EV-\d{3}$',           record_type: evidence_artifact,     file: evidence-artifacts.yaml}
 
 # Cross-reference edges the validator checks. Each entry says: in this record
 # type, this field must contain identifiers that resolve in this namespace.
@@ -48,12 +55,13 @@ references:
   control:            {guardrails: GR, linked_risks: RK}
   guardrail:          {risks_addressed: RK, controls: CT, assurance_tests: AT}
   assurance_test:     {guardrail: GR, risks_covered: RK}
-  metric:             {risks_measured: RK, user_stories: US, scenarios: SC, epics: EPIC, personas_want_high: PERSONA, personas_want_suppressed: PERSONA}
+  metric:             {risks_measured: RK, user_stories: US, scenarios: SC, epics: EPIC, personas_want_high: PERSONA, personas_want_suppressed: PERSONA, evidence_artefacts: EV}
   user_story:         {persona: PERSONA, scenarios: SC, epics: EPIC, metrics: M}
   scenario:           {user_stories: US, metrics: M, legitimate_personas: PERSONA, adversarial_personas: PERSONA}
   epic:               {personas: PERSONA, user_stories: US, metrics: M}
   recommendation:     {linked_guardrails: GR, linked_controls: CT, linked_risks: RK}
-  risk_acceptance:    {risk_id: RK}
+  risk_acceptance:    {risk_id: RK, rule_profile: RP}
+  evidence_artifact:  {metric: M, assurance_tests: AT}
   governance_precedent: {linked_risks: RK, linked_controls: CT, linked_guardrails: GR}
 
 # Invariants that express the method's own rules (see method/lifecycle.yaml,

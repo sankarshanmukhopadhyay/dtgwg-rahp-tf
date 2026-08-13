@@ -1,0 +1,1147 @@
+[
+  {
+    "id": "CT-01",
+    "kind": "control",
+    "name": "Version-Controlled Public Genesis Policy",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-G01"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-02",
+    "kind": "control",
+    "name": "Independent Governance Review at Genesis",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-G01"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-03",
+    "kind": "control",
+    "name": "Governance Transition Milestones",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-G02"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-04",
+    "kind": "control",
+    "name": "Trust Anchor Diversity Policy",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-G03",
+      "RK-SY01"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-06",
+    "kind": "control",
+    "name": "Governance Capacity Planning",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-G04"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-07",
+    "kind": "control",
+    "name": "Complaint / Appeals Rate-Limiting",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-G04",
+      "RK-SY02"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-08",
+    "kind": "control",
+    "name": "Uniqueness Enforcement Mechanism",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI03",
+      "RK-ID01",
+      "RK-SY03"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-09",
+    "kind": "control",
+    "name": "Vouching Pattern Anomaly Detection",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-ID01",
+      "RK-SY01"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-10",
+    "kind": "control",
+    "name": "Non-Discriminatory Admission Criteria",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-HX02",
+      "RK-ID02"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-11",
+    "kind": "control",
+    "name": "Alternative Identity Proofing Paths",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-ID02"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-12",
+    "kind": "control",
+    "name": "IDVP Security Approval Criteria",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-ID03"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-13",
+    "kind": "control",
+    "name": "IDVP Deregistration Handling Protocol",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-EX06",
+      "RK-ID03"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-14",
+    "kind": "control",
+    "name": "DID Document Integrity Verification",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-ID04"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-15",
+    "kind": "control",
+    "name": "Pseudonymous Per-VTC M-DID Design",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-HX01",
+      "RK-ID05"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-16",
+    "kind": "control",
+    "name": "Minimum-Necessary IDVC Attribute Set",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-ID06",
+      "RK-SC01"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-17",
+    "kind": "control",
+    "name": "Data Minimisation Audit",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-ID06",
+      "RK-SC01"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-18",
+    "kind": "control",
+    "name": "Normative Credential Schema Publication",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-SC02"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-19",
+    "kind": "control",
+    "name": "Conformance Test Suite",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-SC02"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-20",
+    "kind": "control",
+    "name": "Sovereign Wallet UX Design Principles",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-NM01"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-21",
+    "kind": "control",
+    "name": "Non-Technical User Onboarding Testing",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-NM01"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-22",
+    "kind": "control",
+    "name": "Key Recovery Mechanism",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-NM02"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-23",
+    "kind": "control",
+    "name": "Mandatory Pre-Revocation Notice",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-CR01"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-24",
+    "kind": "control",
+    "name": "Privacy-Preserving Revocation Disclosure",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-CR01",
+      "RK-HX03"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-25",
+    "kind": "control",
+    "name": "Credential Renewal Workflow",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-CR02"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-26",
+    "kind": "control",
+    "name": "VTC-Scoped Revocation",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-CR03"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-27",
+    "kind": "control",
+    "name": "Audited ZKP Library Requirement",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-CY01",
+      "RK-EX04"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-28",
+    "kind": "control",
+    "name": "ZKP Conformance Testing",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-CY01",
+      "RK-EX04"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-29",
+    "kind": "control",
+    "name": "Algorithm Agility and Migration Pathway",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-CY02"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-30",
+    "kind": "control",
+    "name": "Cryptographic Delegation Scope Constraints",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI01"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-31",
+    "kind": "control",
+    "name": "Short-Lived Agent Credentials",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI01"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-32",
+    "kind": "control",
+    "name": "Agent Liveness Check on Operator VMC",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI02"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-33",
+    "kind": "control",
+    "name": "Non-Human Activity Rate-Limiting",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI03",
+      "RK-AI04",
+      "RK-EX04"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-34",
+    "kind": "control",
+    "name": "Behavioural Anomaly Detection for Non-Human Actors",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI03",
+      "RK-SY01"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-35",
+    "kind": "control",
+    "name": "Anchor Awareness of AI Social Engineering",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI04"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-37",
+    "kind": "control",
+    "name": "Jurisdictional Diversity of Key Parties",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-EX01"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-38",
+    "kind": "control",
+    "name": "Legal Coercion Response Protocol",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-EX01"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-39",
+    "kind": "control",
+    "name": "Distributed Registry Architecture",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-EX02"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-40",
+    "kind": "control",
+    "name": "Legal Review of Credential Schemas",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-EX03"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-41",
+    "kind": "control",
+    "name": "Open Issues Regulatory Risk Acceptance",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-EX03"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-43",
+    "kind": "control",
+    "name": "Governing Body Accountability for Systematic Exclusion",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-HX02"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-44",
+    "kind": "control",
+    "name": "Remediation Pathway After Overturned Revocation",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-HX03"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-45",
+    "kind": "control",
+    "name": "Multi-Party Registry Write Authorisation",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-EX01",
+      "RK-SY01"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-46",
+    "kind": "control",
+    "name": "Coordinated Behaviour Detection in Governance",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-SY02"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-47",
+    "kind": "control",
+    "name": "Formal Open Issues Mitigation Plan",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-SY03"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-48",
+    "kind": "control",
+    "name": "Threat Model Maintenance",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-CY02",
+      "RK-SY03"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-49",
+    "kind": "control",
+    "name": "VRC Data Minimisation Clause",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-HX01",
+      "RK-ID05",
+      "RK-SC03"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-50",
+    "kind": "control",
+    "name": "M-DID to R-DID Migration Trigger",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-HX01",
+      "RK-ID05",
+      "RK-SC04"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-51",
+    "kind": "control",
+    "name": "Non-Human DID Designation in DID Document",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI01",
+      "RK-AI03"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-52",
+    "kind": "control",
+    "name": "Agent Delegation Credential Requirement",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI01",
+      "RK-AI02"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-53",
+    "kind": "control",
+    "name": "VIC Role Embedding (membershipRole field)",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-G01",
+      "RK-SC02"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-54",
+    "kind": "control",
+    "name": "VWC Requirement for High-Stakes Anchor Admission",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI04",
+      "RK-ID01"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-56",
+    "kind": "control",
+    "name": "VTC Governance Conformance Class",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-G01",
+      "RK-G02",
+      "RK-G05"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-57",
+    "kind": "control",
+    "name": "Supported Decision-Making Credential Extension",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-HX04",
+      "RK-ID06",
+      "RK-SC05"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-58",
+    "kind": "control",
+    "name": "Accessible Trust Task Ceremony UX for Cognitive Differences",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-HX04",
+      "RK-NM01",
+      "RK-SC05"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-59",
+    "kind": "control",
+    "name": "LPA Delegation Credential Type",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-HX05",
+      "RK-HX06",
+      "RK-SC05"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-60",
+    "kind": "control",
+    "name": "Secondary Notification Recipient Registration",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-CR01",
+      "RK-HX05",
+      "RK-HX06",
+      "RK-SC05"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-61",
+    "kind": "control",
+    "name": "M-DID Closure and Death Notification Pathway",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-HX06",
+      "RK-SC05"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-62",
+    "kind": "control",
+    "name": "Age Assurance Compliance Verification Requirement",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-EX04",
+      "RK-EX06"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-63",
+    "kind": "control",
+    "name": "Organisational Credential Type Definition",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-EX05"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-64",
+    "kind": "control",
+    "name": "Organisational Governance Conformance Mapping",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-EX05"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-65",
+    "kind": "control",
+    "name": "Cross-Jurisdiction IDVP Standing Verification",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-EX06",
+      "RK-ID03"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-66",
+    "kind": "control",
+    "name": "Children's Data Processing Impact Assessment Requirement",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-EX03",
+      "RK-ID06",
+      "RK-SC05"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-01",
+    "kind": "guardrail",
+    "name": "Genesis Policy Documentation",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-G01",
+      "RK-G05",
+      "RK-NM02",
+      "RK-SC02"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-02",
+    "kind": "guardrail",
+    "name": "Time-Bounded Initiator Authority",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-G01",
+      "RK-G02",
+      "RK-G05"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-03",
+    "kind": "guardrail",
+    "name": "Trust Anchor Diversity Policy",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-CR04",
+      "RK-G03",
+      "RK-HX02",
+      "RK-SY01"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-04",
+    "kind": "guardrail",
+    "name": "Reciprocal VRC Requirement",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-ID01"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-05",
+    "kind": "guardrail",
+    "name": "IDVP Registry Standing",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-EX04",
+      "RK-EX06",
+      "RK-ID03"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-06",
+    "kind": "guardrail",
+    "name": "Privacy-Preserving Proofing Option",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-CY01",
+      "RK-EX03",
+      "RK-EX04",
+      "RK-HX01",
+      "RK-HX02",
+      "RK-ID02",
+      "RK-ID05",
+      "RK-ID06",
+      "RK-NM01",
+      "RK-SC01",
+      "RK-SC03"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-07",
+    "kind": "guardrail",
+    "name": "Uniqueness Enforcement Mechanism",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI03",
+      "RK-CY01",
+      "RK-EX04",
+      "RK-ID01",
+      "RK-SY01",
+      "RK-SY03"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-08",
+    "kind": "guardrail",
+    "name": "Revocation Due Process",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-CR01",
+      "RK-CR02",
+      "RK-G04",
+      "RK-HX03",
+      "RK-HX05",
+      "RK-HX06"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-09",
+    "kind": "guardrail",
+    "name": "Privacy-Preserving Revocation Disclosure",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-CR01",
+      "RK-CR03",
+      "RK-EX03",
+      "RK-HX01",
+      "RK-HX03",
+      "RK-ID03",
+      "RK-ID05",
+      "RK-SC01",
+      "RK-SC03"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-10",
+    "kind": "guardrail",
+    "name": "Multi-Party Registry Write Authorisation",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-EX01",
+      "RK-EX02",
+      "RK-ID04",
+      "RK-SY01"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-11",
+    "kind": "guardrail",
+    "name": "Jurisdictional Diversity for Key Parties",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-EX01",
+      "RK-G03"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-12",
+    "kind": "guardrail",
+    "name": "Agent Delegation Scope Constraint",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI01",
+      "RK-AI02"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-13",
+    "kind": "guardrail",
+    "name": "Agent Audit Logging",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI01"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-14",
+    "kind": "guardrail",
+    "name": "Non-Human Actor Detection",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI03",
+      "RK-AI04",
+      "RK-SY01"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-15",
+    "kind": "guardrail",
+    "name": "Complaint and Appeals Rate-Limiting",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-G04",
+      "RK-SY02"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-16",
+    "kind": "guardrail",
+    "name": "Formal Threat Model Publication",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-CY02",
+      "RK-EX02",
+      "RK-SY02"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-17",
+    "kind": "guardrail",
+    "name": "Open Issues Risk Acceptance",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-CY02",
+      "RK-EX03",
+      "RK-SY03"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-18",
+    "kind": "guardrail",
+    "name": "R-DID Migration Phase Gate",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-HX01",
+      "RK-ID05",
+      "RK-SC04"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-20",
+    "kind": "guardrail",
+    "name": "Age Assurance Architecture Readiness",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-CY01",
+      "RK-EX04",
+      "RK-EX06"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-05",
+    "kind": "control",
+    "name": "Anchor Clustering Metric Monitoring",
+    "current_status": "unassigned",
+    "candidate_status": "recommended_practice",
+    "candidate_language": "SHOULD",
+    "linked_risks": [
+      "RK-G03"
+    ],
+    "reason": "Material risk linkage or medium standards relevance."
+  },
+  {
+    "id": "CT-36",
+    "kind": "control",
+    "name": "Out-of-Band Verification for High-Stakes Vouching",
+    "current_status": "unassigned",
+    "candidate_status": "recommended_practice",
+    "candidate_language": "SHOULD",
+    "linked_risks": [
+      "RK-AI04"
+    ],
+    "reason": "Material risk linkage or medium standards relevance."
+  },
+  {
+    "id": "CT-42",
+    "kind": "control",
+    "name": "Anonymous Membership Option",
+    "current_status": "unassigned",
+    "candidate_status": "recommended_practice",
+    "candidate_language": "SHOULD",
+    "linked_risks": [
+      "RK-HX01"
+    ],
+    "reason": "Material risk linkage or medium standards relevance."
+  },
+  {
+    "id": "CT-55",
+    "kind": "control",
+    "name": "VEC Issuer Co-Membership Requirement",
+    "current_status": "unassigned",
+    "candidate_status": "recommended_practice",
+    "candidate_language": "SHOULD",
+    "linked_risks": [
+      "RK-CR04",
+      "RK-SY02"
+    ],
+    "reason": "Material risk linkage or medium standards relevance."
+  },
+  {
+    "id": "GR-19",
+    "kind": "guardrail",
+    "name": "Supported Decision-Making and Legal Delegation Pathway",
+    "current_status": "unassigned",
+    "candidate_status": "recommended_practice",
+    "candidate_language": "SHOULD",
+    "linked_risks": [
+      "RK-HX04",
+      "RK-HX05",
+      "RK-HX06",
+      "RK-ID06",
+      "RK-SC05"
+    ],
+    "reason": "Material risk linkage or medium standards relevance."
+  },
+  {
+    "id": "GR-21",
+    "kind": "guardrail",
+    "name": "Organisational Identity Governance Mapping",
+    "current_status": "unassigned",
+    "candidate_status": "recommended_practice",
+    "candidate_language": "SHOULD",
+    "linked_risks": [
+      "RK-EX05"
+    ],
+    "reason": "Material risk linkage or medium standards relevance."
+  }
+]

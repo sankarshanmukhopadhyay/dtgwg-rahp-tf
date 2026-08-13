@@ -1,0 +1,303 @@
+{
+  "pilot_metrics": [
+    {
+      "id": "M-02",
+      "name": "Time to Revocation Notice (SLA)",
+      "status": "pilot_proposed",
+      "signal": "Elapsed hours from revocation decision timestamp to formal notification timestamp.",
+      "threshold_rule": "Instance target must be defined before activation; any breach of the adopted revocation-notification SLA enters triage.",
+      "responsible_role": "VTC governance operations",
+      "evidence": [
+        {
+          "id": "EV-001",
+          "metric": "M-02",
+          "name": "Revocation notification timing evidence",
+          "status": "planned",
+          "description": "Timestamped record linking a revocation decision to the corresponding formal notification event.",
+          "source_kind": "governance-event-log",
+          "uri": null,
+          "digest": null,
+          "collector_role": "instance-defined operator",
+          "collected_at": null,
+          "retention_class": "P1Y",
+          "sensitivity": "restricted",
+          "assurance_tests": [],
+          "provenance": {
+            "source": "RAHP v0.4 operational assurance pilot",
+            "contributor": "RAHP v0.4 release work (AI-assisted)",
+            "note": "Evidence contract/template; no runtime evidence is asserted by this record."
+          }
+        }
+      ]
+    },
+    {
+      "id": "M-04",
+      "name": "IDVC Issuer Verification Rate",
+      "status": "pilot_proposed",
+      "signal": "Percentage of Phase 4 admissions with IDVP DID and authority verified before VMC issuance.",
+      "threshold_rule": "Target is 100%; any unverified admission is a triage event.",
+      "responsible_role": "VTC admission authority",
+      "evidence": [
+        {
+          "id": "EV-002",
+          "metric": "M-04",
+          "name": "IDVP issuer verification evidence",
+          "status": "planned",
+          "description": "Admission-time evidence that the IDVP DID and authorisation state were verified before VMC issuance.",
+          "source_kind": "admission-verification-log",
+          "uri": null,
+          "digest": null,
+          "collector_role": "instance-defined operator",
+          "collected_at": null,
+          "retention_class": "P1Y",
+          "sensitivity": "restricted",
+          "assurance_tests": [],
+          "provenance": {
+            "source": "RAHP v0.4 operational assurance pilot",
+            "contributor": "RAHP v0.4 release work (AI-assisted)",
+            "note": "Evidence contract/template; no runtime evidence is asserted by this record."
+          }
+        }
+      ]
+    },
+    {
+      "id": "M-06",
+      "name": "Registry Write Authorisation Failure Rate",
+      "status": "pilot_proposed",
+      "signal": "Percentage of unauthorised single-party registry write attempts rejected by policy enforcement.",
+      "threshold_rule": "Target is 100% rejection; any successful unauthorised write is a critical triage event.",
+      "responsible_role": "registry operations and governance",
+      "evidence": [
+        {
+          "id": "EV-003",
+          "metric": "M-06",
+          "name": "Registry write authorisation rejection evidence",
+          "status": "planned",
+          "description": "Audit evidence for attempted registry writes and the authorisation decision applied to each attempt.",
+          "source_kind": "registry-authorisation-log",
+          "uri": null,
+          "digest": null,
+          "collector_role": "instance-defined operator",
+          "collected_at": null,
+          "retention_class": "P1Y",
+          "sensitivity": "restricted",
+          "assurance_tests": [],
+          "provenance": {
+            "source": "RAHP v0.4 operational assurance pilot",
+            "contributor": "RAHP v0.4 release work (AI-assisted)",
+            "note": "Evidence contract/template; no runtime evidence is asserted by this record."
+          }
+        }
+      ]
+    },
+    {
+      "id": "M-08",
+      "name": "Agent Credential Scope Violation Rate",
+      "status": "pilot_proposed",
+      "signal": "Rate of agent actions attempted or executed outside the delegated credential scope.",
+      "threshold_rule": "Target is zero successful out-of-scope actions; attempted violations are retained for trend review.",
+      "responsible_role": "delegation policy operator",
+      "evidence": [
+        {
+          "id": "EV-004",
+          "metric": "M-08",
+          "name": "Agent scope violation evidence",
+          "status": "planned",
+          "description": "Structured event evidence for attempted or successful actions outside an agent's delegated credential scope.",
+          "source_kind": "agent-policy-enforcement-log",
+          "uri": null,
+          "digest": null,
+          "collector_role": "instance-defined operator",
+          "collected_at": null,
+          "retention_class": "P1Y",
+          "sensitivity": "restricted",
+          "assurance_tests": [],
+          "provenance": {
+            "source": "RAHP v0.4 operational assurance pilot",
+            "contributor": "RAHP v0.4 release work (AI-assisted)",
+            "note": "Evidence contract/template; no runtime evidence is asserted by this record."
+          }
+        }
+      ]
+    },
+    {
+      "id": "M-27",
+      "name": "Agent Liveness Check Interval Compliance Rate",
+      "status": "pilot_proposed",
+      "signal": "Percentage of required operator/agent liveness checks completed within the adopted interval.",
+      "threshold_rule": "Target is 100% interval compliance; missed liveness checks suspend reliance until re-established.",
+      "responsible_role": "agent operator",
+      "evidence": [
+        {
+          "id": "EV-005",
+          "metric": "M-27",
+          "name": "Agent liveness compliance evidence",
+          "status": "planned",
+          "description": "Timestamped liveness-check records sufficient to establish whether the required operator/agent liveness interval was met.",
+          "source_kind": "agent-liveness-log",
+          "uri": null,
+          "digest": null,
+          "collector_role": "instance-defined operator",
+          "collected_at": null,
+          "retention_class": "P1Y",
+          "sensitivity": "restricted",
+          "assurance_tests": [],
+          "provenance": {
+            "source": "RAHP v0.4 operational assurance pilot",
+            "contributor": "RAHP v0.4 release work (AI-assisted)",
+            "note": "Evidence contract/template; no runtime evidence is asserted by this record."
+          }
+        }
+      ]
+    }
+  ],
+  "rule_profiles": [
+    {
+      "id": "RP-001",
+      "name": "DTGWG RAHP v0.4 proposed operating profile",
+      "status": "proposed",
+      "scope": "DTG RAHP instance",
+      "description": "A machine-readable starting profile for risk acceptance authority, review cadence and non-acceptability rules. Proposed for Task Force ratification; it does not itself confer authority.",
+      "critical_risk": {
+        "acceptance_permitted": false,
+        "required_action": "guardrail_required"
+      },
+      "risk_acceptance_bands": [
+        {
+          "match": "High severity × High likelihood",
+          "authority": "full_working_group",
+          "review_period": "P6M",
+          "evidence_threshold": "documented rationale plus current assurance evidence"
+        },
+        {
+          "match": "High severity (score 3–6)",
+          "authority": "task_force_co_chairs",
+          "review_period": "P12M",
+          "evidence_threshold": "documented rationale plus current assurance evidence"
+        },
+        {
+          "match": "Medium or Low severity",
+          "authority": "task_force",
+          "review_period": "P12M",
+          "evidence_threshold": "documented rationale and proportionate evidence"
+        }
+      ],
+      "required_acceptance_fields": [
+        "authority",
+        "decided_by",
+        "decision_date",
+        "rationale",
+        "residual_risk",
+        "review_date",
+        "evidence"
+      ],
+      "provenance": {
+        "source": "ROADMAP.md Q3/Q4 proposed profile",
+        "contributor": "RAHP v0.4 release work (AI-assisted)",
+        "note": "Proposed profile; requires human ratification before use for real acceptance decisions."
+      }
+    }
+  ],
+  "evidence_contracts": [
+    {
+      "id": "EV-001",
+      "metric": "M-02",
+      "name": "Revocation notification timing evidence",
+      "status": "planned",
+      "description": "Timestamped record linking a revocation decision to the corresponding formal notification event.",
+      "source_kind": "governance-event-log",
+      "uri": null,
+      "digest": null,
+      "collector_role": "instance-defined operator",
+      "collected_at": null,
+      "retention_class": "P1Y",
+      "sensitivity": "restricted",
+      "assurance_tests": [],
+      "provenance": {
+        "source": "RAHP v0.4 operational assurance pilot",
+        "contributor": "RAHP v0.4 release work (AI-assisted)",
+        "note": "Evidence contract/template; no runtime evidence is asserted by this record."
+      }
+    },
+    {
+      "id": "EV-002",
+      "metric": "M-04",
+      "name": "IDVP issuer verification evidence",
+      "status": "planned",
+      "description": "Admission-time evidence that the IDVP DID and authorisation state were verified before VMC issuance.",
+      "source_kind": "admission-verification-log",
+      "uri": null,
+      "digest": null,
+      "collector_role": "instance-defined operator",
+      "collected_at": null,
+      "retention_class": "P1Y",
+      "sensitivity": "restricted",
+      "assurance_tests": [],
+      "provenance": {
+        "source": "RAHP v0.4 operational assurance pilot",
+        "contributor": "RAHP v0.4 release work (AI-assisted)",
+        "note": "Evidence contract/template; no runtime evidence is asserted by this record."
+      }
+    },
+    {
+      "id": "EV-003",
+      "metric": "M-06",
+      "name": "Registry write authorisation rejection evidence",
+      "status": "planned",
+      "description": "Audit evidence for attempted registry writes and the authorisation decision applied to each attempt.",
+      "source_kind": "registry-authorisation-log",
+      "uri": null,
+      "digest": null,
+      "collector_role": "instance-defined operator",
+      "collected_at": null,
+      "retention_class": "P1Y",
+      "sensitivity": "restricted",
+      "assurance_tests": [],
+      "provenance": {
+        "source": "RAHP v0.4 operational assurance pilot",
+        "contributor": "RAHP v0.4 release work (AI-assisted)",
+        "note": "Evidence contract/template; no runtime evidence is asserted by this record."
+      }
+    },
+    {
+      "id": "EV-004",
+      "metric": "M-08",
+      "name": "Agent scope violation evidence",
+      "status": "planned",
+      "description": "Structured event evidence for attempted or successful actions outside an agent's delegated credential scope.",
+      "source_kind": "agent-policy-enforcement-log",
+      "uri": null,
+      "digest": null,
+      "collector_role": "instance-defined operator",
+      "collected_at": null,
+      "retention_class": "P1Y",
+      "sensitivity": "restricted",
+      "assurance_tests": [],
+      "provenance": {
+        "source": "RAHP v0.4 operational assurance pilot",
+        "contributor": "RAHP v0.4 release work (AI-assisted)",
+        "note": "Evidence contract/template; no runtime evidence is asserted by this record."
+      }
+    },
+    {
+      "id": "EV-005",
+      "metric": "M-27",
+      "name": "Agent liveness compliance evidence",
+      "status": "planned",
+      "description": "Timestamped liveness-check records sufficient to establish whether the required operator/agent liveness interval was met.",
+      "source_kind": "agent-liveness-log",
+      "uri": null,
+      "digest": null,
+      "collector_role": "instance-defined operator",
+      "collected_at": null,
+      "retention_class": "P1Y",
+      "sensitivity": "restricted",
+      "assurance_tests": [],
+      "provenance": {
+        "source": "RAHP v0.4 operational assurance pilot",
+        "contributor": "RAHP v0.4 release work (AI-assisted)",
+        "note": "Evidence contract/template; no runtime evidence is asserted by this record."
+      }
+    }
+  ]
+}

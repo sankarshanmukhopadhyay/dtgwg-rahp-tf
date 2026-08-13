@@ -30,7 +30,9 @@
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-02"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-53",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-56"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-01",
@@ -76,7 +78,8 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-02"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-03"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-56"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-02"
@@ -220,7 +223,8 @@
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-08",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-09"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-09",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-54"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-04",
@@ -315,7 +319,8 @@
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-12",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-13"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-13",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-65"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-05",
@@ -402,11 +407,13 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-09"
       ],
       "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-18"
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-15",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-49",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-50"
       ],
       "assuranceTests": [
@@ -502,7 +509,8 @@
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-18",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-19"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-19",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-53"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-01"
@@ -555,7 +563,8 @@
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-20",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-21"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-21",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-58"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06"
@@ -646,7 +655,8 @@
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-23",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-24"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-24",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-60"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-08",
@@ -779,7 +789,8 @@
       ],
       "guardrails": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-07"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-20"
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-27",
@@ -829,7 +840,8 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-17"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-29"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-29",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-48"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-16",
@@ -878,7 +890,9 @@
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-30",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-31"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-31",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-51",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-52"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-12",
@@ -923,7 +937,8 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-12"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-32"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-32",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-52"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-12"
@@ -965,12 +980,14 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-07"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-14",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-07"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-14"
       ],
       "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-08",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-33",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-34"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-34",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-51"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-14",
@@ -1017,6 +1034,7 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-14"
       ],
       "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-33",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-35",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-36",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-54"
@@ -1061,12 +1079,13 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-09"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-11",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-10"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-10",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-11"
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-37",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-38"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-38",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-45"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-11",
@@ -1164,7 +1183,8 @@
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-40",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-41"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-41",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-66"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06",
@@ -1209,12 +1229,15 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-09"
       ],
       "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-18"
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-15",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-42"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-42",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-49",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-50"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-09",
@@ -1412,7 +1435,8 @@
       ],
       "controls": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-07",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-46"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-46",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-55"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-15",
@@ -1459,6 +1483,7 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-17"
       ],
       "controls": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-08",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-47",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-48"
       ],
@@ -1860,9 +1885,10 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-19"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-57",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-16",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-17"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-17",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-57",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-66"
       ],
       "assuranceTests": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06",
@@ -2071,6 +2097,7 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-58",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-59",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-60",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-61",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-66"
       ],
       "assuranceTests": [

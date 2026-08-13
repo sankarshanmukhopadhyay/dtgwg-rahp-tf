@@ -1,7 +1,7 @@
 # DTG RAHP Toolkit
 
 **Risk Assessment & Harms Prevention Task Force · Decentralised Trust Graph Working Group**  
-Working Draft · toolkit v0.3-dev · CC-BY 4.0
+Release v0.4.0 · CC-BY 4.0
 
 RAHP is a repeatable assurance method for pressure-testing standards against risks and human harms, tracing findings to controls and evidence, and feeding actionable changes back into specification development. This repository contains both the **portable RAHP method** and a **DTG-specific worked instance**.
 
@@ -13,6 +13,8 @@ RAHP is a repeatable assurance method for pressure-testing standards against ris
 | Exercise a specification against scenario corpora | [Scenario-driven pressure testing](docs/scenario-driven-pressure-testing.md) |
 | Perform an adversarial protocol/security review | [Security and hardening review](docs/security-hardening-review.md) |
 | Have an AI agent prepare and run the review workflow | [AI-agent pressure testing](docs/using-an-ai-agent.md) |
+| Govern delegated AI/agent authority in a target system | [Agent delegation governance](docs/agent-delegation-governance.md) |
+| Design runtime assurance/evidence contracts | [Operational assurance](docs/operational-assurance.md) |
 | Understand the RAHP method | [How RAHP works](docs/how-rahp-works.md) |
 | Explore the DTG instance | [DTG instance](docs/index.md#explore-the-dtg-instance) |
 | Adopt RAHP for another Working Group | [Adoption guide](ADOPTION.md) |
@@ -41,7 +43,10 @@ flowchart TB
     R --> G[Guardrails]
     G --> T[Assurance Tests]
     C --> ME[Metrics]
+    ME --> EV[Evidence artefacts]
     R --> REC[Recommendations]
+    R --> RA[Risk acceptance]
+    RA --> RP[Rule profile]
   end
   I --> X[Target Specification]
   M --> TOOLS[Validator and build system]
@@ -76,6 +81,18 @@ RAHP now includes four scenario adapters: DTG ZKP, Trust Tasks, DTG Core Credent
 
 The repository is configured for a Just the Docs site deployed by GitHub Actions to GitHub Pages. The build/deploy workflow validates RAHP and all scenario corpora before publication. See [Publishing the RAHP site](docs/publishing.md) for the deployment pipeline and [GitHub Pages coverage](docs/pages-coverage.md) for what is rendered, including structured YAML/JSON projections at their repository paths.
 
+## v0.4 operational assurance
+
+v0.4 moves RAHP beyond repeatable review into a bounded **governed assurance** model.
+Five metrics now carry proposed monitoring contracts, `EV-*` records define the evidence
+needed to support assurance conclusions, and `RP-001` expresses a proposed risk-acceptance
+authority profile without pretending that the Task Force has ratified it. A generated
+normative-triage workbench helps reviewers progress the 87 unassigned controls/guardrails
+without auto-assigning standards status.
+
+See [Operational assurance](docs/operational-assurance.md), [Normative triage](docs/normative-triage.md),
+and the [v0.4.0 release notes](docs/releases/v0.4.0.md).
+
 ## Quick start
 
 ```bash
@@ -103,6 +120,8 @@ open build/site/index.html
 | `REC-x` | Standards recommendation | 9 recommendations |
 | `RA-xxx` | Risk acceptance | 3 risk acceptances (all `pending`) |
 | `GP-xxx` | Governance precedent | 3 governance precedents |
+| `RP-xxx` | Governance rule profile | 1 proposed rule profile |
+| `EV-xxx` | Evidence artefact | 5 operational assurance evidence contracts |
 
 These counts are checked by `tools/validate.py` and cannot silently drift.
 

@@ -1,0 +1,40 @@
+version: 0.4.0
+title: RAHP non-human actor classification taxonomy
+status: release
+classes:
+- id: NHA-AUTONOMOUS
+  name: Autonomous agent
+  definition: A non-human actor that can select and execute actions within delegated scope without per-action
+    human approval.
+  minimum_governance:
+  - named accountable operator or principal
+  - bounded capability scope
+  - revocation mechanism
+  - liveness/continuity policy
+  - auditable action provenance
+- id: NHA-SUPERVISED
+  name: Supervised agent
+  definition: A non-human actor that can prepare or execute actions but remains subject to defined human
+    checkpoints or confirmation rules.
+  minimum_governance:
+  - named accountable operator or principal
+  - explicit confirmation boundaries
+  - bounded capability scope
+  - revocation mechanism
+  - auditable action provenance
+- id: NHA-PIPELINE
+  name: Automated pipeline
+  definition: Deterministic or preconfigured automation that executes a bounded workflow without adaptive
+    agent decision-making.
+  minimum_governance:
+  - named system owner
+  - declared workflow scope
+  - change-control process
+  - failure handling
+  - auditable execution provenance
+principles:
+- Classification describes operating authority, not intelligence or implementation technology.
+- A system may change class by context; the applied class MUST describe the authority exercised in the
+  reviewed transaction.
+- Human accountability is not inferred from a DID, key, credential, or model identity.
+- Delegation scope and revocation are separate from liveness and personhood evidence.

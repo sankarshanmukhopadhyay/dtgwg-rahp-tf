@@ -29,6 +29,7 @@ records:
 
 - id: RA-001
   risk_id: RK-G05
+  rule_profile: RP-001
   title: Governanceless VTC claiming credential compliance
   decision: pending
   authority: null
@@ -48,6 +49,7 @@ records:
 
 - id: RA-002
   risk_id: RK-ID01
+  rule_profile: RP-001
   title: Sybil identity proliferation — uniqueness enforcement absent from spec v0.3
   decision: pending
   authority: null
@@ -67,6 +69,7 @@ records:
 
 - id: RA-003
   risk_id: RK-SY03
+  rule_profile: RP-001
   title: Open issues left unresolved at scale
   decision: pending
   authority: null

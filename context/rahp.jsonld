@@ -2,13 +2,11 @@
   "@context": {
     "@version": 1.1,
     "@protected": true,
-
     "rahp": "https://trustoverip.github.io/dtgwg-rahp-tf/vocab#",
     "id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/",
     "schema": "https://schema.org/",
     "skos": "http://www.w3.org/2004/02/skos/core#",
     "dct": "http://purl.org/dc/terms/",
-
     "Risk": "rahp:Risk",
     "Control": "rahp:Control",
     "Guardrail": "rahp:Guardrail",
@@ -21,47 +19,154 @@
     "Recommendation": "rahp:Recommendation",
     "RiskAcceptance": "rahp:RiskAcceptance",
     "GovernancePrecedent": "rahp:GovernancePrecedent",
-
     "name": "schema:name",
     "description": "schema:description",
     "category": "skos:broader",
     "rationale": "rahp:rationale",
     "requirement": "rahp:requirement",
     "statement": "rahp:statement",
-
-    "severity": { "@id": "rahp:severity", "@type": "@vocab" },
-    "likelihood": { "@id": "rahp:likelihood", "@type": "@vocab" },
-    "riskScore": { "@id": "rahp:riskScore", "@type": "http://www.w3.org/2001/XMLSchema#integer" },
-    "standardsPriority": { "@id": "rahp:standardsPriority", "@type": "@vocab" },
-    "standardsStatus": { "@id": "rahp:standardsStatus", "@type": "@vocab" },
-    "normativeLanguage": { "@id": "rahp:normativeLanguage", "@type": "@vocab" },
+    "severity": {
+      "@id": "rahp:severity",
+      "@type": "@vocab"
+    },
+    "likelihood": {
+      "@id": "rahp:likelihood",
+      "@type": "@vocab"
+    },
+    "riskScore": {
+      "@id": "rahp:riskScore",
+      "@type": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "standardsPriority": {
+      "@id": "rahp:standardsPriority",
+      "@type": "@vocab"
+    },
+    "standardsStatus": {
+      "@id": "rahp:standardsStatus",
+      "@type": "@vocab"
+    },
+    "normativeLanguage": {
+      "@id": "rahp:normativeLanguage",
+      "@type": "@vocab"
+    },
     "lifecyclePhase": "rahp:lifecyclePhase",
     "harmType": "rahp:harmType",
-
-    "affectedMetrics": { "@id": "rahp:affectedMetric", "@type": "@id", "@container": "@set" },
-    "guardrails": { "@id": "rahp:guardrail", "@type": "@id", "@container": "@set" },
-    "controls": { "@id": "rahp:control", "@type": "@id", "@container": "@set" },
-    "assuranceTests": { "@id": "rahp:assuranceTest", "@type": "@id", "@container": "@set" },
-    "linkedRisks": { "@id": "rahp:addressesRisk", "@type": "@id", "@container": "@set" },
-    "risksAddressed": { "@id": "rahp:addressesRisk", "@type": "@id", "@container": "@set" },
-    "risksMeasured": { "@id": "rahp:measuresRisk", "@type": "@id", "@container": "@set" },
-    "userStories": { "@id": "rahp:userStory", "@type": "@id", "@container": "@set" },
-    "scenarios": { "@id": "rahp:scenario", "@type": "@id", "@container": "@set" },
-    "epics": { "@id": "rahp:epic", "@type": "@id", "@container": "@set" },
-    "personas": { "@id": "rahp:persona", "@type": "@id", "@container": "@set" },
-    "personasWantHigh": { "@id": "rahp:personaWantsHigh", "@type": "@id", "@container": "@set" },
-    "personasWantSuppressed": { "@id": "rahp:personaWantsSuppressed", "@type": "@id", "@container": "@set" },
-    "riskId": { "@id": "rahp:acceptsRisk", "@type": "@id" },
-    "supersededBy": { "@id": "rahp:supersededBy", "@type": "@id" },
-
-    "decision": { "@id": "rahp:decision", "@type": "@vocab" },
+    "affectedMetrics": {
+      "@id": "rahp:affectedMetric",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "guardrails": {
+      "@id": "rahp:guardrail",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "controls": {
+      "@id": "rahp:control",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "assuranceTests": {
+      "@id": "rahp:assuranceTest",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "linkedRisks": {
+      "@id": "rahp:addressesRisk",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "risksAddressed": {
+      "@id": "rahp:addressesRisk",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "risksMeasured": {
+      "@id": "rahp:measuresRisk",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "userStories": {
+      "@id": "rahp:userStory",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "scenarios": {
+      "@id": "rahp:scenario",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "epics": {
+      "@id": "rahp:epic",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "personas": {
+      "@id": "rahp:persona",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "personasWantHigh": {
+      "@id": "rahp:personaWantsHigh",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "personasWantSuppressed": {
+      "@id": "rahp:personaWantsSuppressed",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "riskId": {
+      "@id": "rahp:acceptsRisk",
+      "@type": "@id"
+    },
+    "supersededBy": {
+      "@id": "rahp:supersededBy",
+      "@type": "@id"
+    },
+    "decision": {
+      "@id": "rahp:decision",
+      "@type": "@vocab"
+    },
     "authority": "rahp:authority",
-    "decisionDate": { "@id": "dct:date", "@type": "http://www.w3.org/2001/XMLSchema#date" },
-    "reviewDate": { "@id": "rahp:reviewDate", "@type": "http://www.w3.org/2001/XMLSchema#date" },
+    "decisionDate": {
+      "@id": "dct:date",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "reviewDate": {
+      "@id": "rahp:reviewDate",
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
     "evidence": "rahp:evidence",
-    "status": { "@id": "rahp:status", "@type": "@vocab" },
+    "status": {
+      "@id": "rahp:status",
+      "@type": "@vocab"
+    },
     "provenance": "dct:provenance",
     "source": "dct:source",
-    "url": { "@id": "schema:url", "@type": "@id" }
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "RuleProfile": "rahp:RuleProfile",
+    "EvidenceArtifact": "rahp:EvidenceArtifact",
+    "ruleProfile": {
+      "@id": "rahp:ruleProfile",
+      "@type": "@id"
+    },
+    "evidenceArtefacts": {
+      "@id": "rahp:evidenceArtifact",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "metric": {
+      "@id": "rahp:metric",
+      "@type": "@id"
+    },
+    "retention_class": "rahp:retentionClass",
+    "sensitivity": "rahp:sensitivity",
+    "source_kind": "rahp:sourceKind",
+    "collector_role": "rahp:collectorRole",
+    "collected_at": "rahp:collectedAt"
   }
 }

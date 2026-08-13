@@ -1,14 +1,37 @@
 {
   "controls": [
     {
+      "id": "CT-60",
+      "name": "Secondary Notification Recipient Registration",
+      "total_risks": 4,
+      "high_risks": 3,
+      "risks": [
+        "RK-CR01",
+        "RK-HX05",
+        "RK-HX06",
+        "RK-SC05"
+      ]
+    },
+    {
       "id": "CT-08",
       "name": "Uniqueness Enforcement Mechanism",
       "total_risks": 3,
       "high_risks": 3,
       "risks": [
-        "RK-ID01",
         "RK-AI03",
+        "RK-ID01",
         "RK-SY03"
+      ]
+    },
+    {
+      "id": "CT-33",
+      "name": "Non-Human Activity Rate-Limiting",
+      "total_risks": 3,
+      "high_risks": 3,
+      "risks": [
+        "RK-AI03",
+        "RK-AI04",
+        "RK-EX04"
       ]
     },
     {
@@ -23,14 +46,25 @@
       ]
     },
     {
+      "id": "CT-58",
+      "name": "Accessible Trust Task Ceremony UX for Cognitive Differences",
+      "total_risks": 3,
+      "high_risks": 3,
+      "risks": [
+        "RK-HX04",
+        "RK-NM01",
+        "RK-SC05"
+      ]
+    },
+    {
       "id": "CT-56",
       "name": "VTC Governance Conformance Class",
       "total_risks": 3,
       "high_risks": 2,
       "risks": [
-        "RK-G05",
         "RK-G01",
-        "RK-G02"
+        "RK-G02",
+        "RK-G05"
       ]
     },
     {
@@ -41,6 +75,17 @@
       "risks": [
         "RK-HX05",
         "RK-HX06",
+        "RK-SC05"
+      ]
+    },
+    {
+      "id": "CT-66",
+      "name": "Children's Data Processing Impact Assessment Requirement",
+      "total_risks": 3,
+      "high_risks": 2,
+      "risks": [
+        "RK-EX03",
+        "RK-ID06",
         "RK-SC05"
       ]
     },
@@ -70,8 +115,18 @@
       "total_risks": 2,
       "high_risks": 2,
       "risks": [
-        "RK-ID02",
-        "RK-HX02"
+        "RK-HX02",
+        "RK-ID02"
+      ]
+    },
+    {
+      "id": "CT-13",
+      "name": "IDVP Deregistration Handling Protocol",
+      "total_risks": 2,
+      "high_risks": 2,
+      "risks": [
+        "RK-EX06",
+        "RK-ID03"
       ]
     },
     {
@@ -85,13 +140,23 @@
       ]
     },
     {
-      "id": "CT-33",
-      "name": "Non-Human Activity Rate-Limiting",
+      "id": "CT-27",
+      "name": "Audited ZKP Library Requirement",
       "total_risks": 2,
       "high_risks": 2,
       "risks": [
-        "RK-AI03",
-        "RK-AI04"
+        "RK-CY01",
+        "RK-EX04"
+      ]
+    },
+    {
+      "id": "CT-28",
+      "name": "ZKP Conformance Testing",
+      "total_risks": 2,
+      "high_risks": 2,
+      "risks": [
+        "RK-CY01",
+        "RK-EX04"
       ]
     },
     {
@@ -110,8 +175,8 @@
       "total_risks": 2,
       "high_risks": 2,
       "risks": [
-        "RK-SY01",
-        "RK-EX01"
+        "RK-EX01",
+        "RK-SY01"
       ]
     },
     {
@@ -145,26 +210,6 @@
       ]
     },
     {
-      "id": "CT-58",
-      "name": "Accessible Trust Task Ceremony UX for Cognitive Differences",
-      "total_risks": 2,
-      "high_risks": 2,
-      "risks": [
-        "RK-HX04",
-        "RK-NM01"
-      ]
-    },
-    {
-      "id": "CT-60",
-      "name": "Secondary Notification Recipient Registration",
-      "total_risks": 2,
-      "high_risks": 2,
-      "risks": [
-        "RK-HX05",
-        "RK-CR01"
-      ]
-    },
-    {
       "id": "CT-62",
       "name": "Age Assurance Compliance Verification Requirement",
       "total_risks": 2,
@@ -195,13 +240,33 @@
       ]
     },
     {
+      "id": "CT-16",
+      "name": "Minimum-Necessary IDVC Attribute Set",
+      "total_risks": 2,
+      "high_risks": 1,
+      "risks": [
+        "RK-ID06",
+        "RK-SC01"
+      ]
+    },
+    {
+      "id": "CT-17",
+      "name": "Data Minimisation Audit",
+      "total_risks": 2,
+      "high_risks": 1,
+      "risks": [
+        "RK-ID06",
+        "RK-SC01"
+      ]
+    },
+    {
       "id": "CT-48",
       "name": "Threat Model Maintenance",
       "total_risks": 2,
       "high_risks": 1,
       "risks": [
-        "RK-SY03",
-        "RK-CY02"
+        "RK-CY02",
+        "RK-SY03"
       ]
     },
     {
@@ -232,16 +297,6 @@
       "risks": [
         "RK-HX06",
         "RK-SC05"
-      ]
-    },
-    {
-      "id": "CT-66",
-      "name": "Children's Data Processing Impact Assessment Requirement",
-      "total_risks": 2,
-      "high_risks": 1,
-      "risks": [
-        "RK-ID06",
-        "RK-EX03"
       ]
     },
     {
@@ -299,15 +354,6 @@
       ]
     },
     {
-      "id": "CT-13",
-      "name": "IDVP Deregistration Handling Protocol",
-      "total_risks": 1,
-      "high_risks": 1,
-      "risks": [
-        "RK-ID03"
-      ]
-    },
-    {
       "id": "CT-14",
       "name": "DID Document Integrity Verification",
       "total_risks": 1,
@@ -341,24 +387,6 @@
       "high_risks": 1,
       "risks": [
         "RK-CR01"
-      ]
-    },
-    {
-      "id": "CT-27",
-      "name": "Audited ZKP Library Requirement",
-      "total_risks": 1,
-      "high_risks": 1,
-      "risks": [
-        "RK-CY01"
-      ]
-    },
-    {
-      "id": "CT-28",
-      "name": "ZKP Conformance Testing",
-      "total_risks": 1,
-      "high_risks": 1,
-      "risks": [
-        "RK-CY01"
       ]
     },
     {
@@ -484,9 +512,9 @@
       "total_risks": 3,
       "high_risks": 0,
       "risks": [
-        "RK-SC03",
         "RK-HX01",
-        "RK-ID05"
+        "RK-ID05",
+        "RK-SC03"
       ]
     },
     {
@@ -495,9 +523,9 @@
       "total_risks": 3,
       "high_risks": 0,
       "risks": [
-        "RK-SC04",
+        "RK-HX01",
         "RK-ID05",
-        "RK-HX01"
+        "RK-SC04"
       ]
     },
     {
@@ -506,8 +534,8 @@
       "total_risks": 2,
       "high_risks": 0,
       "risks": [
-        "RK-ID05",
-        "RK-HX01"
+        "RK-HX01",
+        "RK-ID05"
       ]
     },
     {
@@ -517,24 +545,6 @@
       "high_risks": 0,
       "risks": [
         "RK-G04"
-      ]
-    },
-    {
-      "id": "CT-16",
-      "name": "Minimum-Necessary IDVC Attribute Set",
-      "total_risks": 1,
-      "high_risks": 0,
-      "risks": [
-        "RK-SC01"
-      ]
-    },
-    {
-      "id": "CT-17",
-      "name": "Data Minimisation Audit",
-      "total_risks": 1,
-      "high_risks": 0,
-      "risks": [
-        "RK-SC01"
       ]
     },
     {
@@ -630,42 +640,47 @@
   ],
   "guardrails": [
     {
+      "id": "GR-06",
+      "name": "Privacy-Preserving Proofing Option",
+      "total_risks": 11,
+      "high_risks": 6,
+      "risks": [
+        "RK-CY01",
+        "RK-EX03",
+        "RK-EX04",
+        "RK-HX01",
+        "RK-HX02",
+        "RK-ID02",
+        "RK-ID05",
+        "RK-ID06",
+        "RK-NM01",
+        "RK-SC01",
+        "RK-SC03"
+      ]
+    },
+    {
       "id": "GR-07",
       "name": "Uniqueness Enforcement Mechanism",
-      "total_risks": 5,
-      "high_risks": 5,
+      "total_risks": 6,
+      "high_risks": 6,
       "risks": [
-        "RK-ID01",
-        "RK-CY01",
         "RK-AI03",
+        "RK-CY01",
+        "RK-EX04",
+        "RK-ID01",
         "RK-SY01",
         "RK-SY03"
       ]
     },
     {
-      "id": "GR-06",
-      "name": "Privacy-Preserving Proofing Option",
-      "total_risks": 8,
-      "high_risks": 4,
-      "risks": [
-        "RK-ID02",
-        "RK-ID05",
-        "RK-SC01",
-        "RK-NM01",
-        "RK-CY01",
-        "RK-EX03",
-        "RK-HX01",
-        "RK-HX02"
-      ]
-    },
-    {
       "id": "GR-19",
       "name": "Supported Decision-Making and Legal Delegation Pathway",
-      "total_risks": 4,
+      "total_risks": 5,
       "high_risks": 4,
       "risks": [
         "RK-HX04",
         "RK-HX05",
+        "RK-HX06",
         "RK-ID06",
         "RK-SC05"
       ]
@@ -673,17 +688,44 @@
     {
       "id": "GR-09",
       "name": "Privacy-Preserving Revocation Disclosure",
-      "total_risks": 8,
+      "total_risks": 9,
       "high_risks": 3,
       "risks": [
-        "RK-ID03",
-        "RK-ID05",
-        "RK-SC01",
         "RK-CR01",
         "RK-CR03",
         "RK-EX03",
         "RK-HX01",
-        "RK-HX03"
+        "RK-HX03",
+        "RK-ID03",
+        "RK-ID05",
+        "RK-SC01",
+        "RK-SC03"
+      ]
+    },
+    {
+      "id": "GR-08",
+      "name": "Revocation Due Process",
+      "total_risks": 6,
+      "high_risks": 3,
+      "risks": [
+        "RK-CR01",
+        "RK-CR02",
+        "RK-G04",
+        "RK-HX03",
+        "RK-HX05",
+        "RK-HX06"
+      ]
+    },
+    {
+      "id": "GR-03",
+      "name": "Trust Anchor Diversity Policy",
+      "total_risks": 4,
+      "high_risks": 3,
+      "risks": [
+        "RK-CR04",
+        "RK-G03",
+        "RK-HX02",
+        "RK-SY01"
       ]
     },
     {
@@ -692,21 +734,21 @@
       "total_risks": 4,
       "high_risks": 3,
       "risks": [
-        "RK-ID04",
         "RK-EX01",
         "RK-EX02",
+        "RK-ID04",
         "RK-SY01"
       ]
     },
     {
-      "id": "GR-03",
-      "name": "Trust Anchor Diversity Policy",
+      "id": "GR-05",
+      "name": "IDVP Registry Standing",
       "total_risks": 3,
       "high_risks": 3,
       "risks": [
-        "RK-G03",
-        "RK-HX02",
-        "RK-SY01"
+        "RK-EX04",
+        "RK-EX06",
+        "RK-ID03"
       ]
     },
     {
@@ -726,31 +768,20 @@
       "total_risks": 3,
       "high_risks": 3,
       "risks": [
+        "RK-CY01",
         "RK-EX04",
-        "RK-EX06",
-        "RK-CY01"
-      ]
-    },
-    {
-      "id": "GR-08",
-      "name": "Revocation Due Process",
-      "total_risks": 4,
-      "high_risks": 2,
-      "risks": [
-        "RK-G04",
-        "RK-CR01",
-        "RK-CR02",
-        "RK-HX03"
+        "RK-EX06"
       ]
     },
     {
       "id": "GR-02",
       "name": "Time-Bounded Initiator Authority",
-      "total_risks": 2,
+      "total_risks": 3,
       "high_risks": 2,
       "risks": [
         "RK-G01",
-        "RK-G02"
+        "RK-G02",
+        "RK-G05"
       ]
     },
     {
@@ -759,8 +790,8 @@
       "total_risks": 2,
       "high_risks": 2,
       "risks": [
-        "RK-G03",
-        "RK-EX01"
+        "RK-EX01",
+        "RK-G03"
       ]
     },
     {
@@ -776,12 +807,13 @@
     {
       "id": "GR-01",
       "name": "Genesis Policy Documentation",
-      "total_risks": 3,
+      "total_risks": 4,
       "high_risks": 1,
       "risks": [
         "RK-G01",
-        "RK-SC02",
-        "RK-NM02"
+        "RK-G05",
+        "RK-NM02",
+        "RK-SC02"
       ]
     },
     {
@@ -826,15 +858,6 @@
       ]
     },
     {
-      "id": "GR-05",
-      "name": "IDVP Registry Standing",
-      "total_risks": 1,
-      "high_risks": 1,
-      "risks": [
-        "RK-ID03"
-      ]
-    },
-    {
       "id": "GR-13",
       "name": "Agent Audit Logging",
       "total_risks": 1,
@@ -858,9 +881,9 @@
       "total_risks": 3,
       "high_risks": 0,
       "risks": [
-        "RK-SC04",
+        "RK-HX01",
         "RK-ID05",
-        "RK-HX01"
+        "RK-SC04"
       ]
     }
   ]

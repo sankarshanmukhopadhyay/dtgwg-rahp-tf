@@ -11,11 +11,14 @@ records:
   owner: Initiator / Governing Body
   risks_addressed:
   - RK-G01
-  - RK-SC02
+  - RK-G05
   - RK-NM02
+  - RK-SC02
   controls:
   - CT-01
   - CT-18
+  - CT-53
+  - CT-56
   assurance_tests:
   - AT-01
   standards_status: unassigned
@@ -34,6 +37,7 @@ records:
   risks_addressed:
   - RK-G01
   - RK-G02
+  - RK-G05
   controls:
   - CT-03
   assurance_tests:
@@ -52,12 +56,14 @@ records:
   applies_to_phase: Phase 2
   owner: Governing Body
   risks_addressed:
+  - RK-CR04
   - RK-G03
   - RK-HX02
   - RK-SY01
   controls:
   - CT-04
   - CT-05
+  - CT-55
   assurance_tests:
   - AT-03
   standards_status: unassigned
@@ -91,9 +97,12 @@ records:
   applies_to_phase: Phase 4
   owner: VTA PEP / Governing Body
   risks_addressed:
+  - RK-EX04
+  - RK-EX06
   - RK-ID03
   controls:
   - CT-12
+  - CT-65
   assurance_tests:
   - AT-05
   standards_status: unassigned
@@ -110,14 +119,17 @@ records:
   applies_to_phase: Phase 4
   owner: VTA PEP / DPO
   risks_addressed:
-  - RK-ID02
-  - RK-ID05
-  - RK-SC01
-  - RK-NM01
   - RK-CY01
   - RK-EX03
+  - RK-EX04
   - RK-HX01
   - RK-HX02
+  - RK-ID02
+  - RK-ID05
+  - RK-ID06
+  - RK-NM01
+  - RK-SC01
+  - RK-SC03
   controls:
   - CT-10
   - CT-11
@@ -126,6 +138,8 @@ records:
   - CT-20
   - CT-27
   - CT-40
+  - CT-49
+  - CT-66
   assurance_tests:
   - AT-06
   standards_status: unassigned
@@ -142,9 +156,10 @@ records:
   applies_to_phase: Phase 4 (open issue)
   owner: Governing Body / Security
   risks_addressed:
-  - RK-ID01
-  - RK-CY01
   - RK-AI03
+  - RK-CY01
+  - RK-EX04
+  - RK-ID01
   - RK-SY01
   - RK-SY03
   controls:
@@ -166,13 +181,18 @@ records:
   applies_to_phase: Revocation
   owner: Governing Body / VTA
   risks_addressed:
-  - RK-G04
   - RK-CR01
   - RK-CR02
+  - RK-G04
   - RK-HX03
+  - RK-HX05
+  - RK-HX06
   controls:
   - CT-23
   - CT-25
+  - CT-59
+  - CT-60
+  - CT-61
   assurance_tests:
   - AT-08
   standards_status: unassigned
@@ -189,14 +209,15 @@ records:
   applies_to_phase: Revocation
   owner: VTA PEP / DPO
   risks_addressed:
-  - RK-ID03
-  - RK-ID05
-  - RK-SC01
   - RK-CR01
   - RK-CR03
   - RK-EX03
   - RK-HX01
   - RK-HX03
+  - RK-ID03
+  - RK-ID05
+  - RK-SC01
+  - RK-SC03
   controls:
   - CT-15
   - CT-24
@@ -217,12 +238,13 @@ records:
   applies_to_phase: All phases
   owner: Registry Operator / Governing Body
   risks_addressed:
-  - RK-ID04
   - RK-EX01
   - RK-EX02
+  - RK-ID04
   - RK-SY01
   controls:
   - CT-14
+  - CT-39
   - CT-45
   assurance_tests:
   - AT-10
@@ -240,8 +262,8 @@ records:
   applies_to_phase: Phase 2–4 (ongoing)
   owner: Governing Body
   risks_addressed:
-  - RK-G03
   - RK-EX01
+  - RK-G03
   controls:
   - CT-37
   assurance_tests:
@@ -266,6 +288,8 @@ records:
   - CT-30
   - CT-31
   - CT-32
+  - CT-51
+  - CT-52
   assurance_tests:
   - AT-12
   standards_status: unassigned
@@ -306,6 +330,7 @@ records:
   controls:
   - CT-33
   - CT-34
+  - CT-54
   assurance_tests:
   - AT-14
   standards_status: unassigned
@@ -347,6 +372,7 @@ records:
   - RK-EX02
   - RK-SY02
   controls:
+  - CT-29
   - CT-48
   assurance_tests:
   - AT-16
@@ -368,6 +394,7 @@ records:
   - RK-EX03
   - RK-SY03
   controls:
+  - CT-29
   - CT-41
   - CT-47
   assurance_tests:
@@ -390,9 +417,9 @@ records:
   applies_to_phase: Pre-Phase 4
   owner: VTA PEP / Governing Body
   risks_addressed:
-  - RK-SC04
-  - RK-ID05
   - RK-HX01
+  - RK-ID05
+  - RK-SC04
   controls:
   - CT-50
   assurance_tests:
@@ -417,6 +444,7 @@ records:
   risks_addressed:
   - RK-HX04
   - RK-HX05
+  - RK-HX06
   - RK-ID06
   - RK-SC05
   controls:
@@ -445,9 +473,9 @@ records:
   applies_to_phase: Phase 4 (pre-condition for age-restricted relying party operations)
   owner: Governing Body / IDVP
   risks_addressed:
+  - RK-CY01
   - RK-EX04
   - RK-EX06
-  - RK-CY01
   controls:
   - CT-27
   - CT-28
@@ -475,9 +503,9 @@ records:
   risks_addressed:
   - RK-EX05
   controls:
+  - CT-56
   - CT-63
   - CT-64
-  - CT-56
   assurance_tests:
   - AT-21
   standards_status: unassigned

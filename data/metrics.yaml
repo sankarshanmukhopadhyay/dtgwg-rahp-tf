@@ -70,7 +70,21 @@ records:
   epics:
   - EPIC-5
   - EPIC-11
-  monitoring: null
+  monitoring:
+    status: pilot_proposed
+    signal: Elapsed hours from revocation decision timestamp to formal notification timestamp.
+    threshold_warn: null
+    threshold_critical: null
+    threshold_rule: Instance target must be defined before activation; any breach of the adopted revocation-notification SLA enters triage.
+    triage_workflow: docs/operational-assurance.md#triage-state-flow
+    responsible_role: VTC governance operations
+    evidence_captured:
+    - EV-001
+    notification_sla_hours: 24
+    appeals_pathway: instance governance appeal pathway
+    revocation_trigger: false
+  evidence_artefacts:
+  - EV-001
 - id: M-03
   name: VRC Reciprocity Rate
   category: Identity
@@ -143,7 +157,21 @@ records:
   - EPIC-4
   - EPIC-9
   - EPIC-13
-  monitoring: null
+  monitoring:
+    status: pilot_proposed
+    signal: Percentage of Phase 4 admissions with IDVP DID and authority verified before VMC issuance.
+    threshold_warn: null
+    threshold_critical: null
+    threshold_rule: Target is 100%; any unverified admission is a triage event.
+    triage_workflow: docs/operational-assurance.md#triage-state-flow
+    responsible_role: VTC admission authority
+    evidence_captured:
+    - EV-002
+    notification_sla_hours: 4
+    appeals_pathway: instance governance appeal pathway
+    revocation_trigger: true
+  evidence_artefacts:
+  - EV-002
 - id: M-05
   name: Anomaly Detection Hit Rate (Vouching Patterns)
   category: Security
@@ -221,7 +249,21 @@ records:
   epics:
   - EPIC-7
   - EPIC-13
-  monitoring: null
+  monitoring:
+    status: pilot_proposed
+    signal: Percentage of unauthorised single-party registry write attempts rejected by policy enforcement.
+    threshold_warn: null
+    threshold_critical: null
+    threshold_rule: Target is 100% rejection; any successful unauthorised write is a critical triage event.
+    triage_workflow: docs/operational-assurance.md#triage-state-flow
+    responsible_role: registry operations and governance
+    evidence_captured:
+    - EV-003
+    notification_sla_hours: 1
+    appeals_pathway: registry governance incident review
+    revocation_trigger: true
+  evidence_artefacts:
+  - EV-003
 - id: M-07
   name: Appeals Process Response Time
   category: Human Experience
@@ -279,7 +321,21 @@ records:
   epics:
   - EPIC-6
   - EPIC-7
-  monitoring: null
+  monitoring:
+    status: pilot_proposed
+    signal: Rate of agent actions attempted or executed outside the delegated credential scope.
+    threshold_warn: null
+    threshold_critical: null
+    threshold_rule: Target is zero successful out-of-scope actions; attempted violations are retained for trend review.
+    triage_workflow: docs/operational-assurance.md#triage-state-flow
+    responsible_role: delegation policy operator
+    evidence_captured:
+    - EV-004
+    notification_sla_hours: 4
+    appeals_pathway: operator/delegator review pathway
+    revocation_trigger: true
+  evidence_artefacts:
+  - EV-004
 - id: M-09
   name: ZKP / Selective Disclosure Uptake Rate
   category: Privacy
@@ -862,7 +918,21 @@ records:
   epics:
   - EPIC-16
   risks_measured: []
-  monitoring: null
+  monitoring:
+    status: pilot_proposed
+    signal: Percentage of required operator/agent liveness checks completed within the adopted interval.
+    threshold_warn: null
+    threshold_critical: null
+    threshold_rule: Target is 100% interval compliance; missed liveness checks suspend reliance until re-established.
+    triage_workflow: docs/operational-assurance.md#triage-state-flow
+    responsible_role: agent operator
+    evidence_captured:
+    - EV-005
+    notification_sla_hours: 4
+    appeals_pathway: operator/delegator review pathway
+    revocation_trigger: true
+  evidence_artefacts:
+  - EV-005
 - id: M-28
   name: Behavioural Commitment Breach Rate
   category: AI Agents

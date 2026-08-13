@@ -81,6 +81,9 @@
       "name": "Anchor Clustering Metric Monitoring",
       "type": "Technical",
       "description": "The VTA tracks an anchor clustering metric (e.g. organisational or jurisdictional Herfindahl index). Breaches of the diversity floor trigger a governance alert before additional anchors are admitted.",
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-03"
+      ],
       "linkedRisks": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G03"
       ],
@@ -134,11 +137,12 @@
       "type": "Technical",
       "description": "A documented uniqueness enforcement mechanism must be in place before Phase 4 opens. Acceptable approaches include ZKP personhood proofs, trusted IDVP attestation, or social recovery quorum. Absence must be formally risk-accepted.",
       "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-04",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-07"
       ],
       "linkedRisks": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID01",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI03",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID01",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY03"
       ],
       "standards_relevance": "High",
@@ -175,8 +179,8 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06"
       ],
       "linkedRisks": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX02"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID02"
       ],
       "standards_relevance": "High",
       "standardsStatus": "unassigned",
@@ -230,6 +234,7 @@
       "type": "Procedural",
       "description": "The governing body must define how member VMCs issued via a deregistered IDVP's IDVCs are handled: whether they remain valid, require re-verification, or are revoked. The protocol must include member notification within an agreed SLA.",
       "linkedRisks": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX06",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID03"
       ],
       "standards_relevance": "High",
@@ -265,11 +270,12 @@
       "type": "Technical",
       "description": "Personal network managers should generate a distinct M-DID per VTC, and registry metadata exposure should be minimised to prevent cross-community profiling. This should be a normative design requirement in the DTG credential specification.",
       "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09"
       ],
       "linkedRisks": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX01"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID05"
       ],
       "standards_relevance": "High",
       "standardsStatus": "unassigned",
@@ -288,6 +294,7 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06"
       ],
       "linkedRisks": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID06",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC01"
       ],
       "standards_relevance": "High",
@@ -304,6 +311,7 @@
       "type": "Procedural",
       "description": "An annual data minimisation audit of all credential schemas (VRC, VMC, IDVC) must be conducted to identify and remove attributes no longer required by policy.",
       "linkedRisks": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID06",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC01"
       ],
       "standards_relevance": "Medium",
@@ -444,6 +452,9 @@
       "name": "Credential Renewal Workflow",
       "type": "Technical",
       "description": "A defined credential renewal workflow — including advance expiry notification (recommended: 30 days) and a grace period — must be implemented before Phase 4. Autonomous agent renewal (US-08) addresses this for agent-managed credentials.",
+      "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-08"
+      ],
       "linkedRisks": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR02"
       ],
@@ -480,10 +491,12 @@
       "type": "Technical",
       "description": "Only ZKP implementations that have undergone formal security review or are from audited open-source libraries may be used in VTC credential workflows. The DTGWG charter identifies ZKP as a major focus area.",
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-20"
       ],
       "linkedRisks": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY01"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX04"
       ],
       "standards_relevance": "High",
       "standardsStatus": "unassigned",
@@ -499,10 +512,12 @@
       "type": "Technical",
       "description": "A conformance test suite for ZKP implementations must be developed as part of the DTG credential specification, covering soundness, completeness, and zero-knowledge properties.",
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-07"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-07",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-20"
       ],
       "linkedRisks": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY01"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX04"
       ],
       "standards_relevance": "High",
       "standardsStatus": "unassigned",
@@ -557,6 +572,7 @@
       "type": "Technical",
       "description": "AI agent delegation credentials should be short-lived (recommended: maximum 24-hour validity) with automated renewal tied to operator membership liveness checks, reducing the window of exposure for compromised agent credentials.",
       "guardrails": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-12",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-13"
       ],
       "linkedRisks": [
@@ -599,7 +615,8 @@
       ],
       "linkedRisks": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI04"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX04"
       ],
       "standards_relevance": "High",
       "standardsStatus": "unassigned",
@@ -813,8 +830,8 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-10"
       ],
       "linkedRisks": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX01"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY01"
       ],
       "standards_relevance": "High",
       "standardsStatus": "unassigned",
@@ -871,8 +888,8 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-16"
       ],
       "linkedRisks": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY02"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY03"
       ],
       "standards_relevance": "High",
       "standardsStatus": "unassigned",
@@ -891,9 +908,9 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06"
       ],
       "linkedRisks": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC03",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID05"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID05",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC03"
       ],
       "standards_relevance": "High",
       "standardsStatus": "unassigned",
@@ -912,9 +929,9 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-18"
       ],
       "linkedRisks": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC04",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX01",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX01"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC04"
       ],
       "standards_relevance": "High",
       "standardsStatus": "unassigned",
@@ -1030,12 +1047,13 @@
       "type": "Governance",
       "description": "A VTC claiming DTG credential specification compliance MUST publish a version-controlled governance framework satisfying the requirements of the DTG VTC Governance Specification (forthcoming). At minimum this must include: a genesis policy record (GR-01), a time-bounded initiator authority mechanism (GR-02), and a trust anchor diversity policy (GR-03). The trust registry entry for a DTG-compliant VTC SHOULD include a resolvable reference to its published governance framework. Without this, technical credential compliance provides false assurance to relying parties. **Source:** DTG Credential Spec v0.3 §9 (Trust Registries) — gap identified in commentary §2.9, recommendation R8.",
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-01"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-21"
       ],
       "linkedRisks": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G05",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G02"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G02",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G05"
       ],
       "standards_relevance": "High",
       "standardsStatus": "unassigned",
@@ -1077,7 +1095,8 @@
       ],
       "linkedRisks": [
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-NM01"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-NM01",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC05"
       ],
       "standards_relevance": "High",
       "standardsStatus": "unassigned",
@@ -1121,8 +1140,10 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-19"
       ],
       "linkedRisks": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR01",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR01"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX06",
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC05"
       ],
       "standards_relevance": "High",
       "standardsStatus": "unassigned",
@@ -1247,8 +1268,9 @@
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-19"
       ],
       "linkedRisks": [
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX03",
         "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX03"
+        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC05"
       ],
       "standards_relevance": "High",
       "standardsStatus": "unassigned",

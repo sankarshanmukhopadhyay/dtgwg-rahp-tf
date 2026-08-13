@@ -16,6 +16,9 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Validate RAHP artefacts
         run: python3 tools/validate.py
+      - name: Validate v0.4 portable method
+        run: python3 tools/validate_v04_method.py
+
       - name: Validate scenario corpora
         run: python3 tools/validate_scenario_corpora.py
       - name: Validate corpus source registry

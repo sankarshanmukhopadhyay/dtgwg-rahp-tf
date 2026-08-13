@@ -6,7 +6,7 @@ has_toc: true
 ---
 # RAHP Toolkit Roadmap
 
-Status: draft for task force review
+Status: v0.4.0 release baseline; governance decisions marked proposed remain subject to task force review
 Supersedes: the roadmap proposal in DTGWG discussion #3 (April 2026), which it
 largely adopts. Where it departs, the reasoning is stated.
 
@@ -141,42 +141,60 @@ counts. Added:
 
 ## Milestones
 
-### v0.3 — machine-readable model, validation, contributor readiness · **delivered as draft**
+### v0.3 — machine-readable model, validation, contributor readiness · **delivered**
 
-- [x] YAML data model for nine artefact types; `method/` vs `data/` split
-- [x] Three new record types: recommendations, risk acceptances, governance precedents
-- [x] `validate.py` with eight check classes, driven by `instance.yaml`
-- [x] `build.py` producing the site, JSON-LD, JSON bundle and normative action set
-- [x] JSON-LD context with resolvable identifiers
-- [x] `standards_status` / `normative_language` fields, all `unassigned`
-- [x] Lifecycle and gaps as data
-- [x] CI, issue and PR templates, CONTRIBUTING, CHANGELOG, this roadmap
-- [x] Reproducible specification pressure-test records with a reusable template and canonical-reference validator
-- [ ] **Task force: triage the 87 unassigned controls and guardrails** ← the real work
-- [ ] **Task force: resolve the 31 asymmetries and 3 orphaned controls**
-- [ ] Ratify GP-001 to GP-003 as precedent
-- [ ] Publish the site to GitHub Pages from `build/`
+- [x] YAML data model and `method/` vs `data/` split
+- [x] Recommendations, risk acceptances, and governance precedents as records
+- [x] Schema, vocabulary, identifier, reference, symmetry, invariant, orphan, and count validation
+- [x] Generated HTML, JSON, JSON-LD, normative action set, and stable reference catalogue
+- [x] Reproducible pressure-test records and review rendering
+- [x] Security-hardening and combined-review lenses
+- [x] Scenario corpora and portable scenario patterns
+- [x] GitHub Pages / Just the Docs publication
+- [x] AI-agent pressure-test guidance
+- [x] Corpus provenance and related-repository drift detection
+- [x] Historical Library published as explicitly non-canonical reference material
+- [x] Resolve the 31 asymmetric cross-references
+- [x] Resolve the 3 orphaned controls
+- [ ] **Task force: decide canonical standards status for the 87 controls/guardrails**
+- [ ] Ratify or revise GP-001 to GP-003 as precedent
 
-### v0.4 — operational governance layer
+v0.4 keeps the last two items visible as governance work rather than blocking the
+toolkit's operational-assurance machinery.
 
-Blocked on Q3/Q4 for the acceptance half; blocked on practitioner trial input for
-the monitoring half, as the proposal correctly noted.
+### v0.4.0 — governed and observable assurance · **release**
 
-- [ ] Risk acceptance authority model → unblocks `data/risk-acceptances.yaml` and AT-17
-- [ ] `monitoring` populated for the five highest-priority metrics, with thresholds,
-      triage workflow references, responsible roles and notification SLAs
-- [ ] Triage workflow specifications for those five
-- [ ] AI agent delegation scope constraint schema (moved from v0.4 per above, if agreed)
-- [ ] Non-human actor classification taxonomy: autonomous / supervised / automated pipeline
-- [ ] Operator VMC liveness check protocol
-- [ ] Revocation and notification SLA structures
-- [ ] Practitioner trial report
+The v0.4 release establishes the first operational layer without claiming that a
+specific deployment or governance body has adopted the proposed operating profile.
 
-### v0.5 — reuse
+- [x] Add `RP-*` governance rule-profile records
+- [x] Encode the Q3/Q4 proposed risk-acceptance authority model as `RP-001`
+- [x] Keep `RP-001` explicitly `proposed` until human ratification
+- [x] Add first-class `EV-*` evidence artefact records
+- [x] Add five proposed metric monitoring contracts (`M-02`, `M-04`, `M-06`, `M-08`, `M-27`)
+- [x] Link pilot metrics to explicit evidence contracts
+- [x] Add operational-assurance validation and generated evidence views
+- [x] Add deterministic normative-triage decision support without auto-assigning status
+- [x] Add state-flow and swimlane documentation for runtime triage
+- [x] Add portable non-human actor classification taxonomy
+- [x] Add machine-validatable delegation scope constraint schema and worked example
+- [x] Publish v0.4.0 release notes and update reader navigation
+- [ ] **Task force: ratify/revise `RP-001`**
+- [ ] **Task force: activate or revise the five pilot monitoring contracts**
+- [ ] Practitioner trial of the operational-assurance loop
+- [ ] Populate real `uri`, `digest`, and `collected_at` fields from trial evidence
 
-- [ ] A second instance under a different working group, proving `method/` is portable
+The distinction is deliberate: **v0.4.0 delivers the mechanism and proposed profile;
+ratification and runtime evidence remain accountable human/implementation work.**
+
+### v0.5 — portability and field evidence
+
+- [ ] A second RAHP instance under a different working group, proving `method/` is portable
 - [ ] Method documentation as a standalone deliverable
 - [ ] Conformance claim template for "assessed using RAHP v0.x"
+- [ ] Practitioner trial report with evidence artefacts from an actual assessment
+- [ ] At least one ratified rule profile and one active monitoring profile
+- [ ] Cross-instance comparison of what remains method-level versus adopter-specific
 
 ## Open questions
 
@@ -200,8 +218,9 @@ discussion thread — while giving the core something checkable. The normative c
 is the *process obligation*: every risk is either controlled or formally accepted,
 every guardrail has a test, every control has a signal.
 
-**Q3 — Evidence thresholds for risk acceptance.** Yes, this is a DTGWG risk
-appetite decision. Proposed starting profile, for the task force to amend:
+**Q3 — Evidence thresholds for risk acceptance.** *Mechanism implemented in v0.4; governance decision remains open.*
+The proposed starting profile below is now machine-readable as `RP-001`. It remains
+`proposed`, not ratified:
 
 | Risk score | Acceptance requires |
 |---|---|
@@ -210,12 +229,14 @@ appetite decision. Proposed starting profile, for the task force to amend:
 | High severity (3–6) | Task force co-chair sign-off, 12-month review |
 | Medium and below | Task force decision, recorded, 12-month review |
 
-**Q4 — Acceptance authority.** Follows from Q3. The useful framing from the thread
+**Q4 — Acceptance authority.** *Mechanism implemented in v0.4; authority remains unratified.*
+`RP-001` now makes the proposed authority/review cadence explicit and machine-readable.
+The useful framing from the thread
 is the lightweight *rule profile* a working group adopts when it picks up the
 toolkit: which controls are mandatory, optional or context-dependent for its own
 risk appetite; who signs. That profile belongs in `data/instance.yaml` as an
 instance-level declaration, so it is machine-readable and differs legitimately
-between adopters. Proposed as a v0.4 schema addition.
+between adopters. Implemented as the v0.4 `RP-*` schema; adoption remains a human governance decision.
 
 **Q5 — AI agents as contributors to RAHP itself.** Yes. `CONTRIBUTING.md` now
 requires `provenance.contributor: "<name> (AI-assisted)"` on records substantially
