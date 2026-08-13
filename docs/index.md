@@ -24,6 +24,10 @@ Use [Use an AI agent to run a pressure test](using-an-ai-agent.md) for an agent-
 
 Use [Corpus synchronization and provenance](corpus-synchronization.md) to understand how RAHP detects changes in related repositories, consumes DTG Portfolio Monitor scope metadata, preserves immutable source provenance, and prepares review packets without silently rewriting corpus semantics.
 
+## Explore historical personas and earlier RAHP material
+
+Use the [Historical Library](../archive/) to read the retained persona set, priority requirements, historical risk register, user-stories workbook, structured JSON-LD records, and earlier generated RAHP views. Archive pages are deliberately labelled as historical so useful context remains accessible without being confused with current canonical material.
+
 ## Explore the DTG instance
 
 Canonical records live under `data/`. Generated risk, control, matrix, lifecycle, normative and governance views are built under `build/site/` with `python3 tools/build.py`.

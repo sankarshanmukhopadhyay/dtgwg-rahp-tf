@@ -33,6 +33,5 @@ exclude:
   - vendor
   - "*.zip"
   - Gemfile.lock
-  - archive
   - tools
   - requirements.txt

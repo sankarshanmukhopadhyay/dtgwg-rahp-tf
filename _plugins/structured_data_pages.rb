@@ -4,9 +4,9 @@ require "yaml"
 require "json"
 
 module RahpPagesProjection
-  STRUCTURED_ROOTS = %w[corpora method data build/derived build/jsonld examples].freeze
+  STRUCTURED_ROOTS = %w[corpora method data build/derived build/jsonld examples archive/historical-builds].freeze
   STRUCTURED_EXTENSIONS = %w[.yaml .yml .json .jsonld].freeze
-  MARKDOWN_ROOTS = %w[examples build].freeze
+  MARKDOWN_ROOTS = %w[examples build archive].freeze
   TOP_LEVEL_MARKDOWN = %w[README.md ADOPTION.md QUICKSTART.md CONTRIBUTING.md ROADMAP.md CHANGELOG.md].freeze
 
   class ProjectionPage < Jekyll::Page
@@ -127,12 +127,20 @@ module RahpPagesProjection
       lines = []
       lines << "# #{structured_title(path, parsed)}"
       lines << ""
-      lines << "> This is a human-readable GitHub Pages projection of the canonical structured source at `#{path}`. The repository source remains the authoritative machine-readable record."
+      if path.start_with?("archive/")
+        lines << "> **Historical artefact.** This page renders retained RAHP history for research and provenance. It is not a current normative or canonical RAHP source. Current material is under `data/`, `method/`, `corpora/`, and `docs/`."
+      else
+        lines << "> This is a human-readable GitHub Pages projection of the canonical structured source at `#{path}`. The repository source remains the authoritative machine-readable record."
+      end
       lines << ""
       lines << source_button(site, path)
       lines << ""
       if parsed.is_a?(Hash) && parsed["corpus"].is_a?(Hash)
         lines.concat(corpus_summary(parsed["corpus"]))
+      elsif path.end_with?("persona.jsonld") && parsed.is_a?(Hash)
+        lines.concat(persona_summary(parsed))
+      elsif parsed.is_a?(Hash) && parsed["@graph"].is_a?(Array)
+        lines.concat(jsonld_graph_summary(parsed))
       else
         lines.concat(generic_summary(parsed))
       end
@@ -163,6 +171,85 @@ module RahpPagesProjection
         end
       end
       out
+    end
+
+
+    def persona_summary(parsed)
+      personas = Array(parsed["@graph"]).select { |item| item.is_a?(Hash) }
+      out = ["## Historical personas", "", "This historical persona set contains **#{personas.length}** records. Each section below is a reader-oriented projection of the retained JSON-LD; the complete source remains available at the bottom of this page.", ""]
+      personas.each do |persona|
+        id = persona["@id"].to_s.split("/").last
+        name = persona["name"] || id
+        role = persona["role"]
+        out << "### #{id}: #{name}"
+        out << ""
+        out << "**Role:** #{escape_cell(role)}" if role
+        out << ""
+        out << "> #{persona['quote']}" if persona["quote"]
+        out << "" if persona["quote"]
+        %w[type adversarial safeguarding safeguarding_note co_persona].each do |key|
+          next unless persona.key?(key)
+          out << "- **#{key.tr('_', ' ').capitalize}:** #{format_value(persona[key])}"
+        end
+        context = persona["context"]
+        if context.is_a?(Hash) && !context.empty?
+          out += ["", "#### Context", ""]
+          context.each { |key, value| out << "- **#{key.tr('_', ' ').capitalize}:** #{format_value(value)}" }
+        end
+        %w[lifecycle_phases goals needs frustrations risk_context exploits inclusion_drivers exclusion_risks].each do |key|
+          values = persona[key]
+          next unless values.is_a?(Array) && !values.empty?
+          out += ["", "#### #{key.tr('_', ' ').split.map(&:capitalize).join(' ')}", ""]
+          values.each { |value| out << "- #{format_value(value)}" }
+        end
+        evidence = persona["evidence"]
+        if evidence.is_a?(Array) && !evidence.empty?
+          out += ["", "#### Evidence", ""]
+          evidence.each do |entry|
+            if entry.is_a?(Hash)
+              claim = entry["claim"] || "Evidence item"
+              source = entry["source"]
+              url = entry["url"]
+              suffix = source ? " — #{source}" : ""
+              suffix += url ? " ([source](#{url}))" : ""
+              out << "- #{claim}#{suffix}"
+            else
+              out << "- #{format_value(entry)}"
+            end
+          end
+        end
+        out << ""
+      end
+      out
+    end
+
+    def jsonld_graph_summary(parsed)
+      entries = Array(parsed["@graph"]).select { |item| item.is_a?(Hash) }
+      out = ["## Historical record overview", "", "This JSON-LD graph contains **#{entries.length}** records.", ""]
+      unless entries.empty?
+        out += ["| ID | Type | Name / title |", "|---|---|---|"]
+        entries.each do |entry|
+          id = entry["@id"].to_s.split("/").last
+          type = entry["@type"]
+          label = entry["name"] || entry["title"] || entry["label"] || entry["description"]
+          out << "| `#{escape_cell(id)}` | #{escape_cell(type)} | #{escape_cell(label)} |"
+        end
+      end
+      out
+    end
+
+    def format_value(value)
+      case value
+      when Array
+        value.map { |v| format_value(v) }.join(", ")
+      when Hash
+        value.map { |k, v| "#{k}: #{format_value(v)}" }.join("; ")
+      when TrueClass, FalseClass
+        value ? "yes" : "no"
+      else
+        value.to_s.gsub("
+", " ")
+      end
     end
 
     def generic_summary(parsed)

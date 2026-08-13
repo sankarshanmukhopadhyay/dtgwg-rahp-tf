@@ -158,3 +158,8 @@ A reviewer can scaffold and run a **RAHP pressure test**, a **security-hardening
 
 Scenario corpora are maintained as curated, versioned adapters rather than live mirrors. `corpora/sources.yaml` declares tracked source repositories, portfolio relationships and update policy; `tools/corpus_status.py` detects source drift; and the DTG Portfolio Monitor repository registry supplies portfolio-scope metadata without overriding corpus provenance. See [`docs/corpus-synchronization.md`](docs/corpus-synchronization.md).
 
+
+
+## Historical Library
+
+Earlier personas, requirements, registers, spreadsheets and generated RAHP views remain available as a reader-oriented [Historical Library](archive/index.md). The archive is published on GitHub Pages with explicit historical labeling; current canonical sources remain under `data/`, `method/`, `corpora/` and `docs/`.

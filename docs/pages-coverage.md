@@ -16,7 +16,7 @@ The Pages site is intended to expose the **maximum useful human-readable surface
 | Canonical YAML/JSON/JSON-LD under `corpora/`, `method/`, `data/`, `build/derived/`, `build/jsonld/`, and `examples/` | Rendered at the original file path as a readable structured-data page, with a link back to canonical GitHub source. |
 | Generated evidence views under `build/site/` | Published as generated HTML drill-down surfaces. |
 | Top-level guides and worked example Markdown without Jekyll front matter | Rendered at their original `.md` paths as JTD pages, with canonical-source links. |
-| Repository archive/legacy material | Intentionally excluded from Pages to avoid presenting superseded artefacts as current guidance. |
+| Repository archive/legacy material | Published through a clearly labelled Historical Library. Structured records receive readable projections; frozen legacy HTML is served intact; retained DOCX/XLSX files have committed reading companions while the original binaries remain downloadable. |
 | Tooling and Python source | Kept in GitHub rather than duplicated into the documentation site. |
 
 {: .evidence }
@@ -40,6 +40,6 @@ flowchart TB
 
 ## Coverage is intentionally selective
 
-"Maximum coverage" does not mean publishing every file as first-class documentation. Build scripts, dependencies, workflow internals and archived source documents remain accessible in GitHub, while Pages prioritises material a reader may need to **understand, apply, inspect, or audit** RAHP.
+"Maximum coverage" does not mean publishing every file as first-class documentation. Build scripts, dependencies and workflow internals remain in GitHub. Historical artefacts are published through the clearly labelled Historical Library because earlier personas, registers and analysis can materially help a reader understand how RAHP evolved, while current and historical authority remain explicitly separated.
 
 The deployment pipeline fails before publication when canonical validation fails or generated evidence is stale. This keeps Pages a projection of a coherent repository state rather than a separate documentation fork.
