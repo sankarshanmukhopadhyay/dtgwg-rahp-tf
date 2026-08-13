@@ -9,7 +9,7 @@ has_toc: true
 
 > **Historical artefact.** This is a reading projection of a retained RAHP document. It is preserved for provenance and is not a current canonical RAHP source.
 
-[Download the original document](DTG%20RAHP%20%23U2014%20Priority%20Requirements%20for%20Standards%20Development.docx){: .btn .btn-primary }
+[Download the original document](priority-requirements-standards-development.docx){: .btn .btn-primary }
 
 ## Risk Assessment & Harms Prevention: Priority Requirements for DTG Standards Development
 
