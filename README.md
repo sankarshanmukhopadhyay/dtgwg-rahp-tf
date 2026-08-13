@@ -154,4 +154,7 @@ python3 tools/review.py --help
 A reviewer can scaffold and run a **RAHP pressure test**, a **security-hardening review**, or a **combined review** that preserves both analytical lenses and generates a cross-lens synthesis. See [`docs/review-modes.md`](docs/review-modes.md).
 
 `tools/review.py` is an orchestration tool, not a static vulnerability scanner: the findings must be produced from examination of the target specification or document, while the repository tooling handles canonical records, rendering, validation, reference resolution, and combined reporting.
+## Corpus synchronization
+
+Scenario corpora are maintained as curated, versioned adapters rather than live mirrors. `corpora/sources.yaml` declares tracked source repositories, portfolio relationships and update policy; `tools/corpus_status.py` detects source drift; and the DTG Portfolio Monitor repository registry supplies portfolio-scope metadata without overriding corpus provenance. See [`docs/corpus-synchronization.md`](docs/corpus-synchronization.md).
 

@@ -101,18 +101,19 @@ stateDiagram-v2
     Deprecated --> [*]
 ```
 
-The adapter version and source snapshot make that lifecycle visible without transferring ownership of source identifiers into RAHP.
+The adapter version and source snapshot make that lifecycle visible without transferring ownership of source identifiers into RAHP. See [Corpus synchronization and provenance](corpus-synchronization.md) for the automated drift-detection and review model.
 
 ## Adding another corpus
 
 1. Keep source-owned identifiers and normative meaning with the source project.
 2. Add a YAML adapter under `corpora/`.
-3. Record repository, source path, snapshot/commit and adapter version.
-4. Give every scenario a domain, goal, pressure, priority and at least one `SP-*` mapping.
-5. Prefer a `source_anchor` that tells a reviewer where the scenario was derived.
-6. Run `python3 tools/validate_scenario_corpora.py`.
-7. Use scenario IDs and pattern IDs in pressure-test findings only when they materially contributed to the finding.
-8. Re-run affected reviews when the upstream semantics change.
+3. Register the adapter in `corpora/sources.yaml`, including its tracked repository/path and portfolio relationship.
+4. Record an immutable reviewed source commit and adapter version; never advance a source pin merely because upstream HEAD changed.
+5. Give every scenario a domain, goal, pressure, priority and at least one `SP-*` mapping.
+6. Prefer a `source_anchor` that tells a reviewer where the scenario was derived.
+7. Run `python3 tools/validate_scenario_corpora.py` and `python3 tools/corpus_status.py --offline`.
+8. Use scenario IDs and pattern IDs in pressure-test findings only when they materially contributed to the finding.
+9. Re-run affected reviews when the upstream semantics change.
 
 {: .warning }
 A corpus broadens review coverage; it does not establish that the target specification is safe or conformant.

@@ -1,0 +1,36 @@
+name: Prepare corpus review packet
+
+on:
+  workflow_dispatch:
+    inputs:
+      corpus_id:
+        description: Corpus identifier to review
+        required: true
+        type: choice
+        options:
+          - CORPUS-DTG-ZKP
+          - CORPUS-TRUST-TASKS
+          - CORPUS-DTG-CREDSPEC
+          - CORPUS-TT-CREDSPEC-COMPOSED
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - name: Prepare review packet
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 tools/corpus_review.py "${{ inputs.corpus_id }}" --output build/corpus-review.md
+      - run: cat build/corpus-review.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: corpus-review-${{ inputs.corpus_id }}
+          path: build/corpus-review.md

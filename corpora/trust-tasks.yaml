@@ -5,8 +5,8 @@ corpus:
   source_path: SPEC.md
   source_commit: archive-snapshot
   adapter_version: '1.0'
-  description: Scenario adapter derived from the current Trust Tasks Framework, emphasizing identity, proof, replay,
-    versioning, transport, privacy, delegation and error semantics.
+  description: Scenario adapter derived from the current Trust Tasks Framework, emphasizing identity, proof, replay, versioning,
+    transport, privacy, delegation and error semantics.
   scenarios:
   - id: TT-001
     title: Proof omitted because transport is assumed sufficient
@@ -167,3 +167,6 @@ corpus:
     - SP-FED-01
     source_anchor: SPEC.md#65-private-and-unpublished-trust-task-specifications
   source_url: https://github.com/trustoverip/dtgwg-trust-tasks-tf
+  source_branch: main
+  provenance_status: unverified-archive-snapshot
+  provenance_note: Existing adapter predates commit pinning. Review against a concrete source commit before replacing source_commit.

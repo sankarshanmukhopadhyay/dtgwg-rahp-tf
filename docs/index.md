@@ -20,6 +20,10 @@ Use [Pressure-testing a specification](pressure-testing-a-spec.md), then [Interp
 
 Use [Use an AI agent to run a pressure test](using-an-ai-agent.md) for an agent-friendly operating model, prompt contract, command path, evidence rules, and explicit human accountability checkpoints.
 
+## Maintain synchronized corpora
+
+Use [Corpus synchronization and provenance](corpus-synchronization.md) to understand how RAHP detects changes in related repositories, consumes DTG Portfolio Monitor scope metadata, preserves immutable source provenance, and prepares review packets without silently rewriting corpus semantics.
+
 ## Explore the DTG instance
 
 Canonical records live under `data/`. Generated risk, control, matrix, lifecycle, normative and governance views are built under `build/site/` with `python3 tools/build.py`.

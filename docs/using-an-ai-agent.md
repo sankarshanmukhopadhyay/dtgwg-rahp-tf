@@ -165,6 +165,17 @@ Human review is mandatory before:
 | Normative recommendation | May change implementer obligations and interoperability. |
 | Final publication | The reviewer must stand behind the review record. |
 
+
+## Use an agent to maintain a corpus
+
+The same accountability model applies when related repositories evolve. Start with `python3 tools/corpus_status.py` or the scheduled **Corpus source status** workflow. When a corpus is flagged, generate a bounded review packet:
+
+```bash
+python3 tools/corpus_review.py CORPUS-DTG-CREDSPEC --output build/corpus-review.md
+```
+
+The agent may compare the reviewed source pin with the observed HEAD, inspect changed tracked paths, identify scenarios or `SP-*` mappings that may need revision, and propose cited edits. It must not silently advance `source_commit`. The immutable pin is advanced only after a human confirms that the adapter accurately represents the reviewed source state. See [Corpus synchronization and provenance](corpus-synchronization.md).
+
 ## Agent-friendly repository contract
 
 An agent does not need a proprietary integration. It needs filesystem access, a shell/Python runtime, and read access to the target material. The repository deliberately exposes stable commands, structured YAML, scenario adapters, canonical IDs, generated Markdown, and validators so that coding agents, CI agents, or local personal agents can use the same workflow.

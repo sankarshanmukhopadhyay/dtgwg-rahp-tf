@@ -16,4 +16,4 @@ These are the currently packaged scenario adapters. Each link opens a human-read
 | DTG Credential Spec | [Open corpus](credential-spec.yaml) |
 | Trust Tasks × CredSpec | [Open composed corpus](trust-tasks-credspec-composed.yaml) |
 
-For ownership, adaptation rules, and scenario semantics, return to [Scenario corpora](../docs/scenario-corpora.md).
+For ownership, adaptation rules, and scenario semantics, return to [Scenario corpora](../docs/scenario-corpora.md). For source drift, immutable pins, the DTG portfolio registry relationship, and review workflows, see [Corpus synchronization and provenance](../docs/corpus-synchronization.md).

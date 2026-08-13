@@ -1,0 +1,59 @@
+version: 1
+portfolio_registry:
+  repository: sankarshanmukhopadhyay/dtg-portfolio-monitor
+  branch: main
+  path: config/repositories.yaml
+  pages_url: https://sankarshanmukhopadhyay.github.io/dtg-portfolio-monitor/repositories/
+  purpose: Discovery and DTG portfolio scope metadata only; corpus semantics and provenance remain controlled by
+    RAHP source pins.
+sources:
+- corpus_id: CORPUS-DTG-ZKP
+  corpus_file: corpora/dtg-zkp.yaml
+  update_mode: assisted
+  source:
+    repository: sankarshanmukhopadhyay/dtgwg-zkp-tf
+    branch: main
+    paths:
+    - docs/implementation-guide/scenarios/pressure-test-corpus-summary.md
+    portfolio_repository: trustoverip/dtgwg-zkp-tf
+    relationship_to_portfolio: fork
+    observed_head_at_bootstrap: 9a1ae81465e1da9f5c06ccd500a70708eb2511a6
+    observed_portfolio_head_at_bootstrap: b37d52fca4ab64ef759d4952b13757f3b23cb20b
+  review_policy: Semantic changes require human approval before source_commit is advanced.
+- corpus_id: CORPUS-TRUST-TASKS
+  corpus_file: corpora/trust-tasks.yaml
+  update_mode: assisted
+  source:
+    repository: trustoverip/dtgwg-trust-tasks-tf
+    branch: main
+    paths:
+    - SPEC.md
+    - specs/**
+    - schemas/**
+    - docs/**
+    portfolio_repository: trustoverip/dtgwg-trust-tasks-tf
+    relationship_to_portfolio: direct
+    observed_head_at_bootstrap: fbe196a8a17ba3f99d0657a64be5ac58621023a1
+  review_policy: Semantic changes require human approval before source_commit is advanced.
+- corpus_id: CORPUS-DTG-CREDSPEC
+  corpus_file: corpora/credential-spec.yaml
+  update_mode: assisted
+  source:
+    repository: trustoverip/dtgwg-cred-spec
+    branch: main
+    paths:
+    - spec/body.md
+    - spec/**
+    - schemas/**
+    - docs/**
+    portfolio_repository: trustoverip/dtgwg-cred-spec
+    relationship_to_portfolio: direct
+    observed_head_at_bootstrap: b89f389abbdae77ba60b673c0836c781c2b54169
+  review_policy: Semantic changes require human approval before source_commit is advanced.
+- corpus_id: CORPUS-TT-CREDSPEC-COMPOSED
+  corpus_file: corpora/trust-tasks-credspec-composed.yaml
+  update_mode: derived
+  dependencies:
+  - CORPUS-TRUST-TASKS
+  - CORPUS-DTG-CREDSPEC
+  review_policy: Recomposition is required whenever either dependency is semantically re-baselined.

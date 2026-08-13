@@ -312,3 +312,6 @@ corpus:
     priority: P0
     scenario_patterns:
     - SP-INTEROP-01
+  source_branch: main
+  provenance_status: unverified-archive-snapshot
+  provenance_note: Existing adapter predates commit pinning. Review against a concrete source commit before replacing source_commit.

@@ -18,6 +18,10 @@ has_toc: true
 - Added corpus validation to the standard validation workflow.
 - Added Just the Docs configuration and an official GitHub Pages artifact build/deploy workflow using `configure-pages`, `upload-pages-artifact` and `deploy-pages`.
 - Added publishing guidance and retained Mermaid rendering for the JTD site.
+- Added a corpus source registry (`corpora/sources.yaml`) with explicit source, portfolio relationship, update mode and provenance policy.
+- Added scheduled source-drift detection and manual corpus review-packet workflows, including live cross-checks against the DTG Portfolio Monitor repository registry.
+- Added immutable-pin and composed-corpus dependency semantics without falsely rebasing legacy `archive-snapshot` corpora.
+- Added corpus synchronization/provenance documentation and an AI-agent corpus-maintenance workflow.
 
 
 ## Unreleased

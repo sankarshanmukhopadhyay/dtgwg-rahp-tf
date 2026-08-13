@@ -1,0 +1,48 @@
+name: Corpus source status
+
+on:
+  schedule:
+    - cron: '17 3 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - name: Check corpus source drift
+        id: corpus_status
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set +e
+          python3 tools/corpus_status.py \
+            --json build/corpus-status.json \
+            --markdown build/corpus-status.md \
+            --fail-on-review
+          rc=$?
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          cat build/corpus-status.md >> "$GITHUB_STEP_SUMMARY"
+          exit 0
+      - name: Upload status report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: corpus-source-status
+          path: |
+            build/corpus-status.json
+            build/corpus-status.md
+      - name: Flag corpus review requirement
+        if: steps.corpus_status.outputs.rc != '0'
+        run: |
+          echo 'One or more corpora require provenance or semantic review. See the workflow summary/artifact.'
+          exit 1
+

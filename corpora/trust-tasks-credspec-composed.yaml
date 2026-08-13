@@ -5,8 +5,8 @@ corpus:
   source_path: SPEC.md + spec/body.md
   source_commit: archive-snapshot
   adapter_version: '1.0'
-  description: RAHP-authored cross-specification scenarios that pressure-test the seam where Trust Tasks consume,
-    convey, contextualize or rely upon DTG credentials. XSP-* identifiers are owned by this RAHP adapter.
+  description: RAHP-authored cross-specification scenarios that pressure-test the seam where Trust Tasks consume, convey,
+    contextualize or rely upon DTG credentials. XSP-* identifiers are owned by this RAHP adapter.
   scenarios:
   - id: XSP-001
     title: Credential issued in a Trust Task is later presented without its outcome evidence
@@ -131,3 +131,12 @@ corpus:
   source_urls:
   - https://github.com/trustoverip/dtgwg-trust-tasks-tf
   - https://github.com/trustoverip/dtgwg-cred-spec
+  provenance_status: derived-unpinned-dependencies
+  depends_on:
+  - corpus_id: CORPUS-TRUST-TASKS
+    source_commit: archive-snapshot
+    adapter_version: '1.0'
+  - corpus_id: CORPUS-DTG-CREDSPEC
+    source_commit: archive-snapshot
+    adapter_version: '1.0'
+  provenance_note: Derived corpus must be recomposed after either dependency is semantically re-baselined.
