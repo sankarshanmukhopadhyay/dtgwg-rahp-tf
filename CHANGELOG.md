@@ -7,6 +7,9 @@
 - Portable `rahp-config` JSON Schema under `method/schema/`.
 - DTG exemplar profile plus non-DTG minimal, multi-repository, security-only, and CI portability profiles.
 - Generic configured-review GitHub Actions workflow.
+- DTG instance portfolio discovery from `dtg-portfolio-monitor`, including relevant forks discovered by GitHub parent relationship.
+- Scheduled/manual DTG material-change detection and detailed `assessment-required` issue queue.
+- Durable DTG instance perimeter/state/review structure under `instances/dtg/`, kept separate from the portable toolkit.
 - Configuration/adoption and v0.5 portability documentation.
 
 ### Changed

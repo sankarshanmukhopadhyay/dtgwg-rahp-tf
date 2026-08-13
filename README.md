@@ -17,7 +17,7 @@ RAHP is a repeatable assurance framework for pressure-testing standards against 
 | Govern delegated AI/agent authority in a target system | [Agent delegation governance](docs/agent-delegation-governance.md) |
 | Design runtime assurance/evidence contracts | [Operational assurance](docs/operational-assurance.md) |
 | Understand the RAHP method | [How RAHP works](docs/how-rahp-works.md) |
-| Explore the DTG instance | [DTG instance](docs/index.md#explore-the-dtg-instance) |
+| Explore the DTG instance | [DTG instance](docs/dtg-instance.md) |
 | Adopt RAHP for another Working Group | [Adoption guide](ADOPTION.md) and [portability contract](docs/portability.md) |
 | Make a small first assessment | [Minimum viable RAHP](examples/minimal-instance/README.md) |
 | See what is waiting on the Task Force | [Task Force action register](docs/task-force-actions.md) |
@@ -57,6 +57,17 @@ flowchart TB
 ```
 
 The mental model is simple: **people and contexts surface scenarios; scenarios surface risks; risks drive controls and guardrails; guardrails become testable; findings feed back into specification development.**
+
+
+## DTG operational deployment
+
+The portable toolkit and the bundled DTG deployment are intentionally separated. `instances/dtg/`
+discovers the current DTG portfolio from the Portfolio Monitor, adds relevant forks by GitHub parent
+relationship, tracks observed revisions, and can create detailed `assessment-required` issues when
+material paths change. Review artefacts for that deployment live under `instances/dtg/reviews/`.
+
+See [DTG RAHP instance](docs/dtg-instance.md). None of these DTG-specific files are required for
+another adopter to use `tools/rahp.py` with its own YAML configuration.
 
 ## Repository architecture
 

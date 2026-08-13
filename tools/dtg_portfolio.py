@@ -1,0 +1,263 @@
+#!/usr/bin/env python3
+"""DTG RAHP instance portfolio discovery and material-change assessment queue.
+
+This module is instance-specific. The portable RAHP engine in tools/rahp.py does not
+import or depend on it.
+"""
+from __future__ import annotations
+import argparse, fnmatch, json, os, pathlib, re, sys, urllib.request
+from datetime import datetime, timezone
+from typing import Any
+import yaml
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+DEFAULT_CFG = ROOT / "instances/dtg/instance.yaml"
+
+def load_yaml(path: pathlib.Path) -> dict[str, Any]:
+    return yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+
+def api_json(url: str) -> Any:
+    req = urllib.request.Request(url, headers={
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "dtg-rahp-instance/0.5",
+        **({"Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}"} if os.environ.get("GITHUB_TOKEN") else {}),
+    })
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return json.load(r)
+
+def raw_text(repo: str, branch: str, path: str) -> str:
+    url=f"https://raw.githubusercontent.com/{repo}/{branch}/{path}"
+    req=urllib.request.Request(url, headers={"User-Agent":"dtg-rahp-instance/0.5"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return r.read().decode()
+
+def slug(repo: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", repo.lower()).strip("-")
+
+def discover(cfg: dict[str,Any]) -> list[dict[str,Any]]:
+    p=cfg["portfolio"]
+    registry=yaml.safe_load(raw_text(p["registry_repository"], p.get("registry_branch","main"), p["registry_path"]))
+    base=[]
+    for r in registry.get("repositories", []):
+        base.append({
+            "id": slug(r["repo"]), "repository": r["repo"],
+            "branch": r.get("default_branch","main"),
+            "source": "portfolio-monitor",
+            "upstream": None,
+            "workstream": r.get("workstream"),
+            "role": r.get("role"),
+            "lifecycle": r.get("lifecycle","active"),
+            "reporting_weight": r.get("reporting_weight","medium"),
+            "material_paths": r.get("material_paths", []),
+            "reviews": ["rahp","security","combined"],
+        })
+    base_names={x["repository"] for x in base}
+    owner=p.get("fork_owner")
+    if owner:
+        page=1
+        while True:
+            repos=api_json(f"https://api.github.com/users/{owner}/repos?per_page=100&page={page}&type=owner")
+            if not repos: break
+            for r in repos:
+                if not r.get("fork"): continue
+                detail=api_json(r["url"])
+                parent=(detail.get("parent") or {}).get("full_name")
+                if parent in base_names:
+                    upstream=next(x for x in base if x["repository"]==parent)
+                    base.append({
+                        **upstream,
+                        "id": slug(r["full_name"]),
+                        "repository": r["full_name"],
+                        "branch": r.get("default_branch","main"),
+                        "source": "portfolio-fork",
+                        "upstream": parent,
+                    })
+            if len(repos)<100: break
+            page+=1
+    # This RAHP repo is a deployment host, not a target for recursive review.
+    review_repo=cfg["instance"].get("review_repository")
+    for x in base:
+        x["self_hosted_instance"] = x["repository"] == review_repo
+    return base
+
+def head_sha(repo: str, branch: str) -> str:
+    return api_json(f"https://api.github.com/repos/{repo}/commits/{branch}")["sha"]
+
+def compare(repo: str, base: str, head: str) -> dict[str,Any]:
+    return api_json(f"https://api.github.com/repos/{repo}/compare/{base}...{head}")
+
+def path_matches(path: str, patterns: list[str]) -> bool:
+    return any(fnmatch.fnmatch(path,p) or pathlib.PurePosixPath(path).match(p) for p in patterns)
+
+def classify(target: dict[str,Any], files: list[dict[str,Any]], cfg: dict[str,Any]) -> tuple[bool,list[str],list[str]]:
+    mc=cfg["assessment"]["materiality"]
+    configured=target.get("material_paths",[])
+    always=mc.get("always_material_paths",[])
+    matched=[]
+    reasons=[]
+    for f in files:
+        p=f["filename"]
+        if path_matches(p, configured + always):
+            matched.append(p)
+    if matched:
+        reasons.append(f"{len(matched)} changed file(s) match the target's material assessment scope")
+    if target.get("reporting_weight") in mc.get("review_weights",[]) and files:
+        reasons.append(f"portfolio reporting weight is {target.get('reporting_weight')}")
+    if target.get("lifecycle")=="transitional" and not mc.get("include_transitional",True):
+        return False, matched, ["transitional repository excluded by DTG instance policy"]
+    return bool(matched), matched, reasons
+
+def issue_mark(repo: str, sha: str) -> str:
+    return f"<!-- rahp-dtg-change:{repo}@{sha} -->"
+
+def issue_body(target:dict[str,Any], old:str, new:str, comp:dict[str,Any], matched:list[str], reasons:list[str]) -> str:
+    files=comp.get("files",[])
+    commits=comp.get("commits",[])
+    rows="\n".join(f"| `{f['filename']}` | {f.get('status','')} | +{f.get('additions',0)} / -{f.get('deletions',0)} | {'yes' if f['filename'] in matched else 'no'} |" for f in files[:100])
+    commit_rows="\n".join(f"- `{c['sha'][:12]}` {c['commit']['message'].splitlines()[0]}" for c in commits[:50])
+    why="\n".join(f"- {r}" for r in reasons) or "- Change intersects configured material paths."
+    return f"""# DTG RAHP assessment required
+
+{issue_mark(target['repository'],new)}
+
+A change in a repository tracked by the DTG Portfolio Monitor has crossed the DTG
+RAHP instance's configured materiality boundary. This issue is an **assessment queue
+record**, not a finding and not evidence that the change is unsafe.
+
+## Target
+
+| Field | Value |
+|---|---|
+| Repository | `{target['repository']}` |
+| Upstream | `{target.get('upstream') or 'n/a'}` |
+| Portfolio source | `{target['source']}` |
+| Workstream | `{target.get('workstream') or 'n/a'}` |
+| Role | `{target.get('role') or 'n/a'}` |
+| Lifecycle | `{target.get('lifecycle')}` |
+| Reporting weight | `{target.get('reporting_weight')}` |
+| Previous assessed/observed SHA | `{old}` |
+| Current SHA | `{new}` |
+| Compare | https://github.com/{target['repository']}/compare/{old}...{new} |
+
+## Why review is required
+
+{why}
+
+The change is therefore queued for **combined RAHP + security review** by default.
+A reviewer may narrow the mode if the evidence shows that only one lens is relevant.
+
+## Material files
+
+| File | Status | Delta | In material scope |
+|---|---|---:|---|
+{rows or '| _No file metadata returned_ | | | |'}
+
+## Commits in the change window
+
+{commit_rows or '- No commit metadata returned.'}
+
+## Required review actions
+
+1. Inspect the revision delta rather than reassessing unrelated repository content.
+2. Determine whether changed requirements, schemas, workflows or implementation guidance
+   alter existing risks, harms, controls, guardrails, threat assumptions or assurance evidence.
+3. Run the appropriate RAHP, security or combined workflow using the target revision.
+4. Store durable review artefacts under `instances/dtg/reviews/`.
+5. Link findings to the affected specification text and existing RAHP catalogue entries.
+6. Record the disposition: no material assurance impact, finding(s) raised, remediation
+   requested, or risk accepted by the relevant governance authority.
+7. Close this issue only when the assessment record identifies the reviewed SHA `{new}`.
+
+## Reproduce the workspace
+
+```bash
+python3 tools/rahp.py review --config instances/dtg/generated/repositories.yaml --mode combined --target {target['id']}
+```
+
+For dynamically discovered DTG targets, use the repository and SHA above when creating
+the canonical review record.
+
+## Governance note
+
+This issue was raised by the **DTG instance automation**. It is deliberately separate
+from the portable RAHP toolkit. Other adopters do not inherit this portfolio, queue,
+or DTG governance state.
+"""
+
+def main():
+    ap=argparse.ArgumentParser()
+    ap.add_argument("command", choices=["sync","check"])
+    ap.add_argument("--config", type=pathlib.Path, default=DEFAULT_CFG)
+    ap.add_argument("--initialize", action="store_true", help="record current heads without raising review events")
+    args=ap.parse_args()
+    cfg=load_yaml(args.config)
+    targets=discover(cfg)
+    manifest=ROOT/cfg["generated"]["manifest"]
+    manifest.parent.mkdir(parents=True,exist_ok=True)
+    portable_targets=[]
+    for t in targets:
+        portable_targets.append({
+            "id": t["id"],
+            "repository": t["repository"],
+            "branch": t["branch"],
+            **({"upstream": t["upstream"]} if t.get("upstream") else {}),
+            "context": {
+                "title": t["repository"],
+                "type": t.get("role") or "repository",
+                "description": f"DTG instance target discovered from {t['source']}; workstream={t.get('workstream') or 'n/a'}; lifecycle={t.get('lifecycle') or 'n/a'}; reporting_weight={t.get('reporting_weight') or 'n/a'}."
+            },
+            "scope": {"include": t.get("material_paths") or ["README.md","docs/**","specs/**","schemas/**","**/*spec*.md",".github/workflows/**"]},
+            "reviews": ["rahp","security","combined"],
+        })
+    generated_profile={
+        "version":1,
+        "profile":{
+            "id":"dtg-discovered",
+            "title":"DTG RAHP discovered portfolio",
+            "description":"Generated DTG Working Group RAHP deployment profile. Do not hand edit.",
+            "owner":"DTG RAHP instance",
+        },
+        "assessment":{"default_mode":cfg["assessment"].get("default_mode","combined")},
+        "repositories":portable_targets,
+        "output":{"directory":"build/targets"},
+        "governance":{"namespace":"dtg"},
+        "extensions":{
+            "generated_at":datetime.now(timezone.utc).isoformat(),
+            "source_registry":cfg["portfolio"]["registry_repository"],
+            "fork_owner":cfg["portfolio"].get("fork_owner"),
+        },
+    }
+    manifest.write_text(yaml.safe_dump(generated_profile,sort_keys=False),encoding="utf-8")
+    print(f"discovered {len(targets)} DTG instance target(s)")
+    if args.command=="sync":
+        return
+    state_path=ROOT/cfg["state"]["file"]
+    state_path.parent.mkdir(parents=True,exist_ok=True)
+    state=json.loads(state_path.read_text()) if state_path.exists() else {"version":1,"repositories":{}}
+    events=[]
+    for t in targets:
+        # avoid self-recursive assessment issue storms for this deployment host
+        if t.get("self_hosted_instance"):
+            continue
+        repo=t["repository"]; new=head_sha(repo,t["branch"]); old=state["repositories"].get(repo,{}).get("sha")
+        if not old or args.initialize:
+            state["repositories"][repo]={"sha":new,"observed_at":datetime.now(timezone.utc).isoformat()}
+            continue
+        if old==new: continue
+        try:
+            comp=compare(repo,old,new)
+            material,matched,reasons=classify(t,comp.get("files",[]),cfg)
+        except Exception as exc:
+            material=True; matched=[]; reasons=[f"unable to compare prior SHA cleanly; conservative review required ({exc})"]
+            comp={"files":[],"commits":[]}
+        if material:
+            events.append({"target":t,"old":old,"new":new,"matched":matched,"reasons":reasons,
+                           "title":f"[RAHP review required] {repo}: {old[:7]} → {new[:7]}",
+                           "body":issue_body(t,old,new,comp,matched,reasons)})
+        state["repositories"][repo]={"sha":new,"observed_at":datetime.now(timezone.utc).isoformat()}
+    state_path.write_text(json.dumps(state,indent=2)+"\n")
+    events_path=ROOT/"instances/dtg/generated/review-events.json"
+    events_path.write_text(json.dumps(events,indent=2)+"\n")
+    print(f"material review event(s): {len(events)}")
+if __name__=="__main__":
+    main()

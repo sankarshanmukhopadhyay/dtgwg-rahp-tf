@@ -1,0 +1,36 @@
+version: 1
+instance:
+  id: dtg
+  title: DTG Working Group RAHP instance
+  description: >
+    DTG deployment of the portable RAHP toolkit. Repository scope is discovered
+    from the DTG Portfolio Monitor and augmented with forks owned by the configured
+    fork owner whose GitHub parent is one of the monitored repositories.
+  review_repository: sankarshanmukhopadhyay/dtgwg-rahp-tf
+portfolio:
+  registry_repository: sankarshanmukhopadhyay/dtg-portfolio-monitor
+  registry_branch: main
+  registry_path: config/repositories.yaml
+  fork_owner: sankarshanmukhopadhyay
+assessment:
+  default_mode: combined
+  materiality:
+    review_weights: [critical, high]
+    include_transitional: true
+    always_material_paths:
+      - "schemas/**"
+      - "specs/**"
+      - "**/*spec*.md"
+      - ".github/workflows/**"
+    documentation_paths:
+      - "README.md"
+      - "docs/**"
+  issue:
+    repository: sankarshanmukhopadhyay/dtgwg-rahp-tf
+    labels: [assessment-required, dtg-instance]
+reviews:
+  root: instances/dtg/reviews
+state:
+  file: instances/dtg/state/repositories.json
+generated:
+  manifest: instances/dtg/generated/repositories.yaml
