@@ -1,0 +1,103 @@
+review:
+  id: CAWG-SR-011
+  status: complete
+  title: CAWG Identity vLEI experiment pressure test
+  reviewed_on: '2026-08-14'
+  target:
+    repository: decentralized-identity/cawg-identity-assertion
+    document: https://cawg.io/identity/1.3-draft+vlei/
+    version: 1.3 vLEI experiment
+    commit: 1fbff9683fb692667a81206274d4b24d17078c0b
+    source_paths: []
+  reviewed_against:
+    repository: sankarshanmukhopadhyay/rahp-toolkit
+    rahp_version: v0.7.0
+    corpus_date: '2026-08-14'
+  scope:
+    included:
+    - Normative and draft semantics relevant to the named composition or experiment.
+    - Cross-specification failure states that can remain hidden when each component is reviewed independently.
+    excluded:
+    - Legal opinion on enforceability in a particular jurisdiction.
+    - Claims that upstream CAWG, DIF, C2PA, GLEIF or W3C endorsed this RAHP assessment.
+  method:
+    workflow: docs/pressure-testing-a-spec.md
+    rule: Separate cryptographic validity, identity, authority, consent, lifecycle and relying-party trust; test both isolated
+      and composed failure states.
+  summary:
+    finding_count: 3
+    open_count: 3
+    by_primary_disposition:
+      specification: 1
+      companion-specification: 1
+      implementation-guidance: 1
+    overall_assessment: The vLEI branch provides a strong organizational credential path but archival KERI evidence and cross-lane
+      interpretation remain central assurance questions.
+  findings:
+  - id: F-001
+    title: Role credentials need durable as-of validation
+    status: open
+    severity: High
+    primary_disposition: specification
+    risks:
+    - CRK-21
+    evidence:
+    - source: https://github.com/decentralized-identity/cawg-identity-assertion/commits/1fbff9683fb692667a81206274d4b24d17078c0b
+      observation: The branch contains an explicit TODO about archival-quality validation material and issuer signatures over
+        historical validity.
+    harm: A later-revoked OOR/ECR credential can make historically legitimate content ambiguous, or current verification can
+      misstate historical authority.
+    recommendation: Specify archival evidence for role credential status at signing time, including issuer/key lifecycle and
+      retained validation material.
+    retest_when:
+    - Normative semantics and interoperable test vectors close this failure path.
+    scenarios:
+    - CAWG-033
+    - CAWG-034
+    scenario_patterns:
+    - SP-GOV-02
+    - SP-RECOV-01
+  - id: F-002
+    title: KERI dependency retention becomes part of content durability
+    status: open
+    severity: High
+    primary_disposition: companion-specification
+    risks:
+    - CRK-02
+    evidence:
+    - source: https://cawg.io/identity/1.3-draft+vlei/
+      observation: vLEI verification relies on KERI key-state and credential chains whose long-term availability is distinct
+        from the asset itself.
+    harm: Long-lived media can outlive accessible KEL/key-state evidence needed to validate the signer and delegation chain.
+    recommendation: Define minimum retained KERI evidence, resolver-independent verification requirements, and failure semantics
+      when historical KEL material is unavailable.
+    retest_when:
+    - Normative semantics and interoperable test vectors close this failure path.
+    scenarios:
+    - CAWG-034
+    scenario_patterns:
+    - SP-OPS-01
+    - SP-RECOV-01
+  - id: F-003
+    title: Multiple identity trust lanes need explicit equivalence boundaries
+    status: open
+    severity: High
+    primary_disposition: implementation-guidance
+    risks:
+    - CRK-20
+    evidence:
+    - source: https://github.com/decentralized-identity/cawg-identity-assertion/issues/274
+      observation: CAWG discussions describe X.509, vLEI and W3C credential lanes with materially different trust roots and
+        governance.
+    harm: Relying parties may render vLEI, X.509 and VC-backed assertions as equivalent even though their assurance, governance
+      and lifecycle semantics differ.
+    recommendation: Require trust-lane-specific result codes/metadata and prohibit UX from collapsing mechanisms into an undifferentiated
+      verified identity state.
+    retest_when:
+    - Normative semantics and interoperable test vectors close this failure path.
+    scenarios:
+    - CAWG-006
+    - CAWG-028
+    scenario_patterns:
+    - SP-INTEROP-01
+    - SP-COMP-01

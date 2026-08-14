@@ -1,0 +1,15 @@
+review:
+  id: COMB-CW-002
+  status: complete
+  title: C2PA + CAWG portfolio combined review
+  reviewed_on: '2026-08-14'
+  target:
+    repository: c2pa-org/specifications
+    version: 2.4 / tracked main
+    commit: b1703dc0a0420088d3f8b0e5fb11866d0fe931cb
+  rahp_review: ../../cawg-c2pa/compositions/portfolio-stack/pressure-test.yaml
+  security_review: ../../security-hardening/cawg-c2pa-stack/findings.yaml
+  summary: Cross-lens synthesis of RAHP harms/governance and adversarial security findings.
+  notes:
+  - 'The principal portfolio risk is semantic downgrade: lower-layer cryptographic validity can survive removal, conflict
+    or non-evaluation of higher-layer evidence.'

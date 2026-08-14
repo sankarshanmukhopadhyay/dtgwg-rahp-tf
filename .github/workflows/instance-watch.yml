@@ -29,6 +29,11 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: python3 tools/instance_monitor.py check --config instances/cawg/instance.yaml
 
+      - name: Watch selected CAWG architecture issues
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 tools/cawg_issue_watch.py
+
       - name: Publish DTG assessment issues
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -45,6 +50,14 @@ jobs:
           --events instances/cawg/generated/review-events.json
           --repository sankarshanmukhopadhyay/rahp-toolkit
 
+      - name: Publish CAWG architecture-issue assessment triggers
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: >-
+          python3 tools/publish_assessment_issues.py
+          --events instances/cawg/state/issue-events.json
+          --repository sankarshanmukhopadhyay/rahp-toolkit
+
       - name: Persist observed revisions
         shell: bash
         run: |
@@ -54,7 +67,9 @@ jobs:
             instances/dtg/state/repositories.json \
             instances/dtg/generated/repositories.yaml \
             instances/cawg/state/repositories.json \
-            instances/cawg/generated/repositories.yaml
+            instances/cawg/generated/repositories.yaml \
+            instances/cawg/state/issues.json \
+            instances/cawg/state/issue-events.json
           if git diff --cached --quiet; then
             echo "No instance state changes to persist."
           else

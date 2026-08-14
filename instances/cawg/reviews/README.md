@@ -1,7 +1,7 @@
 # CAWG/C2PA assessment reviews
 
 This directory is the operational review surface for the external CAWG/C2PA RAHP instance.
-The initial v0.6.0 worked pressure tests are published under `examples/cawg-c2pa/` so they are
+The v0.6.0 baseline and v0.7.0 expanded worked pressure tests are published under `examples/cawg-c2pa/` so they are
 validated and rendered by the existing worked-review toolchain. Change-monitor issues link future
 upstream revisions back to this instance and trigger re-review.
 

@@ -9,7 +9,7 @@ profile:
 assessment:
   default_mode: combined
   rahp_repository: sankarshanmukhopadhyay/rahp-toolkit
-  rahp_version: v0.6.0
+  rahp_version: v0.7.0
 repositories:
 - id: trustoverip-dtgwg-trust-tasks-tf
   repository: trustoverip/dtgwg-trust-tasks-tf

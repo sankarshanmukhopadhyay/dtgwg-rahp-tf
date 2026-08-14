@@ -6,7 +6,11 @@ has_toc: true
 ---
 # RAHP Toolkit Roadmap
 
-Status: v0.6.0 release baseline; RAHP Toolkit is portable, with DTG and CAWG/C2PA maintained as independently governed deployments
+## v0.7.0 — Composition and Situational Assurance (complete)
+
+CAWG/C2PA now exercises scenario-driven, cross-specification, security and combined review modes with issue-aware situational monitoring and mandate-readiness evidence.
+
+Status: v0.7.0 release baseline; RAHP Toolkit operates independently governed DTG and CAWG/C2PA deployments, with CAWG exercising scenario, composition, security, combined and situational-assurance workflows
 Supersedes: the roadmap proposal in DTGWG discussion #3 (April 2026), which it
 largely adopts. Where it departs, the reasoning is stated.
 

@@ -17,8 +17,9 @@ Scenario corpora connect domain-specific use cases to portable RAHP pressure-tes
 | [Trust Tasks](../corpora/trust-tasks.yaml) | `trustoverip/dtgwg-trust-tasks-tf` | Task identity, proof, replay, transport, versioning, delegation and privacy | 16 |
 | [DTG Credential Spec](../corpora/credential-spec.yaml) | `trustoverip/dtgwg-cred-spec` | Credential lifecycle, relationship semantics, privacy, authority and task context | 16 |
 | [Trust Tasks × CredSpec](../corpora/trust-tasks-credspec-composed.yaml) | RAHP-authored cross-spec adapter | Emergent failure modes at the task/credential seam | 12 |
+| [CAWG/C2PA](../corpora/cawg.yaml) | Multi-source external CAWG/C2PA portfolio | Identity, governance, consent, delegation, metadata, privacy, UX, security and mandate-readiness interactions | 36 |
 
-Together these adapters expose **74 scenario test vectors** to the RAHP pressure-testing workflow.
+Together these adapters expose **110 scenario test vectors** to the RAHP pressure-testing workflow. The CAWG/C2PA corpus is intentionally multi-source: its primary source and additional specification repositories are declared without inventing a DTG Portfolio Monitor relationship.
 
 ## Why separate corpora from patterns?
 
@@ -85,6 +86,10 @@ Some of the most consequential failures are not owned by either specification al
 
 The `XSP-*` identifiers are RAHP-owned because these are deliberately synthesized interaction scenarios rather than copied source use cases.
 
+## CAWG/C2PA corpus
+
+The v0.7 CAWG/C2PA adapter contributes 36 RAHP-owned scenario vectors across identity and authority, trust registries/TRQP, consent and rights, delegation and agents, metadata composition, privacy, UX, credential mechanisms, historical verification and mandate exclusion. These scenario IDs are assessment artefacts rather than upstream CAWG identifiers. They are used by the experimental-branch and cross-specification pressure tests to make composition failures reproducible.
+
 ## Corpus lifecycle
 
 A corpus adapter has its own maintenance lifecycle even though scenario ownership stays with the source project.
@@ -107,7 +112,7 @@ The adapter version and source snapshot make that lifecycle visible without tran
 
 1. Keep source-owned identifiers and normative meaning with the source project.
 2. Add a YAML adapter under `corpora/`.
-3. Register the adapter in `corpora/sources.yaml`, including its tracked repository/path and portfolio relationship.
+3. Register the adapter in `corpora/sources.yaml`, including its tracked repository/path. Add portfolio metadata only when that deployment actually has a portfolio registry; multi-source adapters may declare `additional_repositories`.
 4. Record an immutable reviewed source commit and adapter version; never advance a source pin merely because upstream HEAD changed.
 5. Give every scenario a domain, goal, pressure, priority and at least one `SP-*` mapping.
 6. Prefer a `source_anchor` that tells a reviewer where the scenario was derived.

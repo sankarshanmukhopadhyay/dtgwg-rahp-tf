@@ -1,0 +1,101 @@
+review:
+  id: CAWG-SR-009
+  status: complete
+  title: CAWG Identity governance experiment pressure test
+  reviewed_on: '2026-08-14'
+  target:
+    repository: decentralized-identity/cawg-identity-assertion
+    document: https://cawg.io/identity/1.3-draft+governance/
+    version: 1.3 governance experiment
+    commit: 5f1908d4f5bf6c89d02d671ae5051f893df92dc9
+    source_paths: []
+  reviewed_against:
+    repository: sankarshanmukhopadhyay/rahp-toolkit
+    rahp_version: v0.7.0
+    corpus_date: '2026-08-14'
+  scope:
+    included:
+    - Normative and draft semantics relevant to the named composition or experiment.
+    - Cross-specification failure states that can remain hidden when each component is reviewed independently.
+    excluded:
+    - Legal opinion on enforceability in a particular jurisdiction.
+    - Claims that upstream CAWG, DIF, C2PA, GLEIF or W3C endorsed this RAHP assessment.
+  method:
+    workflow: docs/pressure-testing-a-spec.md
+    rule: Separate cryptographic validity, identity, authority, consent, lifecycle and relying-party trust; test both isolated
+      and composed failure states.
+  summary:
+    finding_count: 3
+    open_count: 3
+    by_primary_disposition:
+      specification: 1
+      companion-specification: 1
+      governance: 1
+    overall_assessment: High-value direction, but governance, historical-state and entity-binding semantics remain mandate
+      blockers.
+  findings:
+  - id: F-001
+    title: Credential-to-registry entity binding is a new high-value trust junction
+    status: open
+    severity: High
+    primary_disposition: specification
+    risks:
+    - CRK-14
+    evidence:
+    - source: https://github.com/decentralized-identity/cawg-identity-assertion/issues/274
+      observation: The proposed X.509 + TRQP model requires a reliable linkage between certificate identity and the registry
+        entity_id.
+    harm: A valid credential can be associated with the wrong registry entity, producing a false authorization result.
+    recommendation: Normatively bind entity identifiers to credential subjects, define rotation/migration semantics, and add
+      negative conformance vectors.
+    retest_when:
+    - Normative semantics and interoperable test vectors close this failure path.
+    scenarios:
+    - CAWG-007
+    - CAWG-008
+    scenario_patterns:
+    - SP-AUTH-01
+    - SP-FED-01
+  - id: F-002
+    title: Current-state TRQP alone cannot answer historical authority
+    status: open
+    severity: High
+    primary_disposition: companion-specification
+    risks:
+    - CRK-02
+    evidence:
+    - source: https://github.com/decentralized-identity/cawg-identity-assertion/issues/274
+      observation: The issue explicitly identifies current-vs-publication-time membership as an unresolved design choice.
+    harm: Content can be judged using present membership rather than authority at publication time.
+    recommendation: Define as-of query semantics or stapled signed authorization evidence with retention and verification
+      requirements.
+    retest_when:
+    - Normative semantics and interoperable test vectors close this failure path.
+    scenarios:
+    - CAWG-011
+    - CAWG-012
+    scenario_patterns:
+    - SP-GOV-02
+    - SP-OPS-02
+  - id: F-003
+    title: Registry governance can become a participation gate
+    status: open
+    severity: High
+    primary_disposition: governance
+    risks:
+    - CRK-10
+    evidence:
+    - source: https://github.com/decentralized-identity/cawg-identity-assertion/issues/263
+      observation: Governance proposals explicitly contemplate governing authorities and trusted registries controlling who
+        may make particular assertions.
+    harm: Mandated adoption can concentrate effective publication legitimacy in a narrow CA and governing-authority set.
+    recommendation: Define federation, portability, appeal, alternate trust paths, and relying-party choice before treating
+      registry membership as mandate-grade authority.
+    retest_when:
+    - Normative semantics and interoperable test vectors close this failure path.
+    scenarios:
+    - CAWG-010
+    - CAWG-036
+    scenario_patterns:
+    - SP-GOV-03
+    - SP-FED-01

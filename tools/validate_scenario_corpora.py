@@ -31,8 +31,13 @@ for path in sorted((ROOT/'corpora').glob('*.yaml')):
             if not c.get(f): errors.append(f'{path.relative_to(ROOT)}: corpus.{f} is required')
         if source_cfg:
             src=source_cfg.get('source') or {}
-            for f in ('repository','portfolio_repository','relationship_to_portfolio','paths'):
+            for f in ('repository','paths'):
                 if not src.get(f): errors.append(f'{path.relative_to(ROOT)}: sources.yaml source.{f} is required')
+            extra=src.get('additional_repositories') or []
+            if extra and not isinstance(extra,list): errors.append(f'{path.relative_to(ROOT)}: sources.yaml source.additional_repositories must be a list')
+            for i,item in enumerate(extra,1):
+                if not isinstance(item,dict) or not item.get('repository') or not item.get('paths'):
+                    errors.append(f'{path.relative_to(ROOT)}: sources.yaml source.additional_repositories[{i}] requires repository and paths')
             if src.get('repository') and c.get('source_repository') != src.get('repository'):
                 errors.append(f'{path.relative_to(ROOT)}: source_repository differs from corpora/sources.yaml')
     seen=set()

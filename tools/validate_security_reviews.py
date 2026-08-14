@@ -10,7 +10,11 @@ ROOT=pathlib.Path(__file__).resolve().parent.parent
 
 def load(p):
     with p.open(encoding='utf-8') as f:return yaml.safe_load(f) or {}
-def ids(fn):return {str(r.get('id')) for r in load(ROOT/'data'/fn).get('records') or [] if r.get('id')}
+def ids(fn):
+    vals=set()
+    for path in [ROOT/'data'/fn, *sorted((ROOT/'instances').glob(f'*/data/{fn}'))]:
+        if path.exists(): vals.update(str(r.get('id')) for r in load(path).get('records') or [] if r.get('id'))
+    return vals
 def vocab(name):
     v=load(ROOT/'method'/'vocabularies.yaml').get(name,{}).get('values',[])
     return {str(x.get('value')) if isinstance(x,dict) else str(x) for x in v}
@@ -51,7 +55,7 @@ def main():
             errors.append(f'{rel}: completed/non-draft review.findings must be non-empty')
         for f in fs:
             total+=1; fid=str(f.get('id') or ''); p=f'{rel}:{fid or "<no-id>"}'
-            if not re.fullmatch(r'SEC-(TT|CR|X)-[0-9]{3}',fid): errors.append(f'{p}: invalid id')
+            if not re.fullmatch(r'SEC-(TT|CR|X|CW)-[0-9]{3}',fid): errors.append(f'{p}: invalid id')
             if fid in seen: errors.append(f'{p}: duplicate id')
             seen.add(fid)
             req=['title','status','severity','exploitability','impact','detectability','propagation','primary_control_plane','attack_surface','preconditions','security_properties','evidence','attack','existing_mitigations','residual_gap','recommendation','verification','rahp','external_alignment']

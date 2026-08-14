@@ -1,0 +1,77 @@
+review:
+  id: CAWG-SR-012
+  status: complete
+  title: CAWG Organizational Identity Profile 1.1 draft pressure test
+  reviewed_on: '2026-08-14'
+  target:
+    repository: decentralized-identity/cawg-organizational-identity-profile
+    document: https://cawg.io/organizational-identity-profile/1.1-draft/
+    version: 1.1 draft
+    commit: ad951176b1d428e027c3c20c48506b2b780a8f77
+    source_paths: []
+  reviewed_against:
+    repository: sankarshanmukhopadhyay/rahp-toolkit
+    rahp_version: v0.7.0
+    corpus_date: '2026-08-14'
+  scope:
+    included:
+    - Normative and draft semantics relevant to the named composition or experiment.
+    - Cross-specification failure states that can remain hidden when each component is reviewed independently.
+    excluded:
+    - Legal opinion on enforceability in a particular jurisdiction.
+    - Claims that upstream CAWG, DIF, C2PA, GLEIF or W3C endorsed this RAHP assessment.
+  method:
+    workflow: docs/pressure-testing-a-spec.md
+    rule: Separate cryptographic validity, identity, authority, consent, lifecycle and relying-party trust; test both isolated
+      and composed failure states.
+  summary:
+    finding_count: 2
+    open_count: 2
+    by_primary_disposition:
+      companion-specification: 1
+      governance: 1
+    overall_assessment: The 1.1 profile is a strong deployment surface but should pair implementation conformance with explicit
+      authority and cross-version behavior.
+  findings:
+  - id: F-001
+    title: Generator and validator profiles can diverge across supported C2PA versions
+    status: open
+    severity: High
+    primary_disposition: companion-specification
+    risks:
+    - CRK-28
+    evidence:
+    - source: https://github.com/decentralized-identity/cawg-organizational-identity-profile/commits/ad951176b1d428e027c3c20c48506b2b780a8f77
+      observation: Version 1.1 separates generator and validator requirements while spanning multiple C2PA versions.
+    harm: Content may be generated under capabilities a validator nominally conforming to the profile does not interpret identically.
+    recommendation: Add paired generator/validator conformance vectors and explicit version-negotiation/failure semantics.
+    retest_when:
+    - Normative semantics and interoperable test vectors close this failure path.
+    scenarios:
+    - CAWG-028
+    scenario_patterns:
+    - SP-INTEROP-01
+    - SP-COMP-01
+  - id: F-002
+    title: Profile conformance still does not establish organization authority
+    status: open
+    severity: High
+    primary_disposition: governance
+    risks:
+    - CRK-01
+    evidence:
+    - source: https://cawg.io/organizational-identity-profile/1.1-draft/
+      observation: The profile standardizes implementation capabilities, while relying-party trust in an organization remains
+        external.
+    harm: A conformant product can validate organizational identity without proving authorization for a particular domain
+      claim.
+    recommendation: Bind profile deployment to explicit trust-policy and authority semantics; expose these separately from
+      conformance.
+    retest_when:
+    - Normative semantics and interoperable test vectors close this failure path.
+    scenarios:
+    - CAWG-001
+    - CAWG-003
+    scenario_patterns:
+    - SP-GOV-01
+    - SP-FED-01

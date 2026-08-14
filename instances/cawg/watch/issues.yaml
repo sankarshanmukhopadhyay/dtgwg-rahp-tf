@@ -1,0 +1,85 @@
+version: 1
+instance: cawg
+repository: decentralized-identity/cawg-identity-assertion
+policy: Only selected architecture, governance, security, privacy, lifecycle and composition issues are watched. Issue activity
+  is an assessment trigger, never normative input by itself.
+issues:
+- number: 274
+  theme: trust-registry
+  title: Identity governance/TRQP architecture
+  affected_reviews:
+  - identity-governance
+  - identity
+  - organizational-identity
+  status: assessment-relevant
+- number: 275
+  theme: trust-registry
+  title: TRQP parameterization and authority queries
+  affected_reviews:
+  - identity-governance
+  - identity
+  status: assessment-relevant
+- number: 263
+  theme: governance
+  title: Governance assertion and authorization
+  affected_reviews:
+  - identity-governance
+  - identity-metadata
+  - identity-endorsement
+  status: assessment-relevant
+- number: 236
+  theme: delegation
+  title: Delegation including AI agents
+  affected_reviews:
+  - identity-endorsement
+  status: assessment-relevant
+- number: 245
+  theme: trust-model
+  title: Generalized credential/restatement trust model
+  affected_reviews:
+  - identity-vc-vp
+  status: assessment-relevant
+- number: 260
+  theme: lifecycle
+  title: Archival-quality identifiers
+  affected_reviews:
+  - identity
+  - identity-vlei
+  status: assessment-relevant
+- number: 242
+  theme: lifecycle
+  title: Timestamp requirements
+  affected_reviews:
+  - identity
+  - identity-vlei
+  status: assessment-relevant
+- number: 258
+  theme: consent
+  title: Broader consent assertions
+  affected_reviews:
+  - consent-tdm
+  status: assessment-relevant
+- number: 259
+  theme: consent
+  title: External consent-state verification
+  affected_reviews:
+  - consent-tdm
+  status: assessment-relevant
+- number: 213
+  theme: assurance
+  title: Level of Assurance fields
+  affected_reviews:
+  - identity
+  status: assessment-relevant
+- number: 216
+  theme: privacy
+  title: Identity hooks and privacy
+  affected_reviews:
+  - identity-vc-vp
+  status: assessment-relevant
+- number: 277
+  theme: trust-method
+  title: DNSSEC/DANE signer trust
+  affected_reviews:
+  - identity
+  status: assessment-relevant

@@ -18,14 +18,16 @@ def load_yaml(path):
 def ref_index():
     out={}
     for kind,fn in REFERENCE_FILES.items():
-        for r in load_yaml(ROOT/'data'/fn).get('records') or []:
+        for path in [ROOT/'data'/fn, *sorted((ROOT/'instances').glob(f'*/data/{fn}'))]:
+          if not path.exists(): continue
+          for r in load_yaml(path).get('records') or []:
             rid=str(r.get('id') or '')
             if not rid: continue
             title=r.get('name') or r.get('title')
             if not title and kind=='assurance_tests':
                 c=str(r.get('pass_criterion') or '').strip()
                 title=(c[:90]+'…' if len(c)>90 else c) if c else 'Assurance test'
-            out[rid]=str(title or rid)
+            out[rid]={'title':str(title or rid),'href':str(r.get('link') or '')}
     return out
 IDX=ref_index()
 
@@ -50,8 +52,12 @@ def refs(values):
     if not values:return '—'
     bits=[]
     for rid in values:
-        rid=str(rid); title=cell(IDX.get(rid,rid))
-        bits.append(f'[{rid} — {title}]({CATALOGUE_RELATIVE}#{rid})' if rid in IDX else f'`{rid}`')
+        rid=str(rid); rec=IDX.get(rid); title=cell(rec.get('title') if rec else rid)
+        if rec:
+            href=rec.get('href') or f'{CATALOGUE_RELATIVE}#{rid}'
+            bits.append(f'[{rid} — {title}]({href})')
+        else:
+            bits.append(f'`{rid}`')
     return ', '.join(bits)
 
 def bullets(values):

@@ -1,55 +1,141 @@
 version: 1
 instance: cawg
 records:
-  - id: CRK-01
-    title: Identity-validity and authority conflation
-    description: A relying party treats successful identity or credential validation as proof that the actor is authoritative for the role, claim, right, or decision at issue.
-    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-01
-  - id: CRK-02
-    title: Historical verification continuity loss
-    description: Later revocation, issuer/key rotation, registry loss, or policy change makes it impossible to determine whether evidence was valid at the time an action occurred.
-    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-02
-  - id: CRK-03
-    title: Integrity and factual truth conflation
-    description: Tamper-evident or authenticated metadata is interpreted as factually correct or authoritative merely because its integrity can be verified.
-    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-03
-  - id: CRK-04
-    title: Conflicting authoritative assertions
-    description: Multiple valid actors, namespaces, registries, or assertions provide incompatible claims and relying parties lack deterministic conflict handling.
-    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-04
-  - id: CRK-05
-    title: Rights signal and legal-effect ambiguity
-    description: A machine-readable permission or prohibition signal is treated either as universally enforceable authorization or as legally irrelevant without a deployment-specific rights/governance interpretation.
-    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-05
-  - id: CRK-06
-    title: Permission precedence and lifecycle conflict
-    description: Embedded, external, older, newer, withdrawn, or superseding permission signals disagree and consumers choose inconsistent effective states.
-    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-06
-  - id: CRK-07
-    title: Consent authority and representation ambiguity
-    description: A consent assertion is accepted from an actor whose rights, legal capacity, representative authority, or relationship to other affected parties has not been established.
-    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-07
-  - id: CRK-08
-    title: Endorsement or delegation scope creep
-    description: Approval for bounded actions is interpreted as broader, transitive, onward-delegable, or indefinite authority.
-    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-08
-  - id: CRK-09
-    title: Stale delegated or organizational authority
-    description: An endorsement, role, credential, or organizational signing relationship remains apparently valid after employment, role, key-control, or mandate changes.
-    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-09
-  - id: CRK-10
-    title: Trust-anchor concentration and participation exclusion
-    description: A mandate makes a narrow set of credential issuers, certificate roots, or trust registries effective gatekeepers for participation without adequate alternatives, appeal, or portability.
-    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-10
-  - id: CRK-11
-    title: Verification UX overclaim
-    description: Human-facing presentation causes users to infer truth, safety, legitimacy, or endorsement from a narrower cryptographic, provenance, or identity verification result.
-    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-11
-  - id: CRK-12
-    title: Required-evidence downgrade ambiguity
-    description: A relying party accepts content after expected higher-layer assertions are absent, removed, unsupported, or unavailable because policy cannot distinguish missing evidence from acceptable evidence.
-    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-12
-  - id: CRK-13
-    title: Accessibility and failure-state exclusion
-    description: Mandatory provenance/identity interfaces or ambiguous unknown/error states prevent people using assistive technology or constrained contexts from understanding or exercising equivalent choices.
-    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-13
+- id: CRK-01
+  title: Identity-validity and authority conflation
+  description: A relying party treats successful identity or credential validation as proof that the actor is authoritative
+    for the role, claim, right, or decision at issue.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-01
+- id: CRK-02
+  title: Historical verification continuity loss
+  description: Later revocation, issuer/key rotation, registry loss, or policy change makes it impossible to determine whether
+    evidence was valid at the time an action occurred.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-02
+- id: CRK-03
+  title: Integrity and factual truth conflation
+  description: Tamper-evident or authenticated metadata is interpreted as factually correct or authoritative merely because
+    its integrity can be verified.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-03
+- id: CRK-04
+  title: Conflicting authoritative assertions
+  description: Multiple valid actors, namespaces, registries, or assertions provide incompatible claims and relying parties
+    lack deterministic conflict handling.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-04
+- id: CRK-05
+  title: Rights signal and legal-effect ambiguity
+  description: A machine-readable permission or prohibition signal is treated either as universally enforceable authorization
+    or as legally irrelevant without a deployment-specific rights/governance interpretation.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-05
+- id: CRK-06
+  title: Permission precedence and lifecycle conflict
+  description: Embedded, external, older, newer, withdrawn, or superseding permission signals disagree and consumers choose
+    inconsistent effective states.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-06
+- id: CRK-07
+  title: Consent authority and representation ambiguity
+  description: A consent assertion is accepted from an actor whose rights, legal capacity, representative authority, or relationship
+    to other affected parties has not been established.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-07
+- id: CRK-08
+  title: Endorsement or delegation scope creep
+  description: Approval for bounded actions is interpreted as broader, transitive, onward-delegable, or indefinite authority.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-08
+- id: CRK-09
+  title: Stale delegated or organizational authority
+  description: An endorsement, role, credential, or organizational signing relationship remains apparently valid after employment,
+    role, key-control, or mandate changes.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-09
+- id: CRK-10
+  title: Trust-anchor concentration and participation exclusion
+  description: A mandate makes a narrow set of credential issuers, certificate roots, or trust registries effective gatekeepers
+    for participation without adequate alternatives, appeal, or portability.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-10
+- id: CRK-11
+  title: Verification UX overclaim
+  description: Human-facing presentation causes users to infer truth, safety, legitimacy, or endorsement from a narrower cryptographic,
+    provenance, or identity verification result.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-11
+- id: CRK-12
+  title: Required-evidence downgrade ambiguity
+  description: A relying party accepts content after expected higher-layer assertions are absent, removed, unsupported, or
+    unavailable because policy cannot distinguish missing evidence from acceptable evidence.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-12
+- id: CRK-13
+  title: Accessibility and failure-state exclusion
+  description: Mandatory provenance/identity interfaces or ambiguous unknown/error states prevent people using assistive technology
+    or constrained contexts from understanding or exercising equivalent choices.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-13
+- id: CRK-14
+  title: Trust-registry identity binding failure
+  description: A trust-registry entity identifier is incorrectly bound, ambiguously rebound, or insufficiently linked to the
+    credential subject used by a relying party.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-14
+- id: CRK-15
+  title: Registry and governing-authority availability dependency
+  description: A relying party cannot complete authorization because a trust registry, governing-authority endpoint, or registry-of-registries
+    is unavailable or operationally degraded.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-15
+- id: CRK-16
+  title: Trust-framework policy drift
+  description: A credential or assertion remains cryptographically valid while the governance framework, membership criteria,
+    assurance rules, or relying-party policy that gave it meaning changes.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-16
+- id: CRK-17
+  title: Credential restatement and transitive trust amplification
+  description: A restating issuer or intermediary transforms upstream credentials into a stronger or broader downstream trust
+    signal than the original evidence supports.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-17
+- id: CRK-18
+  title: Holder and custodian authority ambiguity
+  description: A custodian, wallet, claims aggregator, or service can exercise signing capability without sufficiently proving
+    that the named actor authorized the specific content-binding act.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-18
+- id: CRK-19
+  title: Selective-disclosure correlation leakage
+  description: Credential presentation or repeated stable identifiers enable cross-context correlation, deanonymization, or
+    linkage beyond the holder’s intended disclosure.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-19
+- id: CRK-20
+  title: Alternative trust-method inconsistency
+  description: Different signature, DID, PKI, DNSSEC, KERI, or credential mechanisms produce materially different security
+    and lifecycle guarantees while appearing equivalent to consumers.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-20
+- id: CRK-21
+  title: Timestamp or status evidence insufficiency
+  description: A timestamp, status token, or archival bundle fails to establish the historical validity state needed for durable
+    verification.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-21
+- id: CRK-22
+  title: Unsafe external-resource resolution
+  description: A validator follows attacker-controlled or insufficiently constrained URIs, redirects, schemas, logos, status
+    endpoints, or registry references during verification.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-22
+- id: CRK-23
+  title: Assertion stripping and downgrade
+  description: An intermediary removes an optional higher-layer assertion and a downstream verifier cannot distinguish intentional
+    absence from unsupported or stripped evidence.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-23
+- id: CRK-24
+  title: Autonomous-agent attribution ambiguity
+  description: A software or AI actor is presented as creator, signer, delegate, or named actor without a clear boundary between
+    machine operation and human or organizational accountability.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-24
+- id: CRK-25
+  title: Onward delegation and sub-agent escalation
+  description: Delegated authority is passed to another actor or agent without an explicit, bounded, verifiable right to sub-delegate.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-25
+- id: CRK-26
+  title: Assurance-level miscomparison
+  description: Relying parties compare or map identity assurance levels from different schemes as if they were directly equivalent
+    or sufficient for the same decision.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-26
+- id: CRK-27
+  title: Rights-holder and affected-party conflict
+  description: Creator, rights holder, subject, performer, employer, licensee, or other affected parties have conflicting
+    authority or consent states and the system lacks deterministic resolution.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-27
+- id: CRK-28
+  title: Implementation/specification semantic collapse
+  description: SDKs, validators, products, or UX collapse distinct specification states such as signature-valid, identity-valid,
+    authorized, current, truthful, or trusted into a single result.
+  link: /rahp-toolkit/docs/cawg-risk-register.html#crk-28

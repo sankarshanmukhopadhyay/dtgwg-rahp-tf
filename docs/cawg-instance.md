@@ -81,3 +81,11 @@ RAHP routes recommendations to the narrowest effective control plane. A CAWG/C2P
 best addressed in an upstream specification, a companion profile, governance policy, implementation
 guidance, runtime controls, procurement requirements, or no upstream change at all. The assessment
 must preserve that boundary rather than treating every harm as a defect in the specification text.
+
+## v0.7 coverage expansion
+
+v0.7 adds a 36-scenario CAWG/C2PA corpus, independent reviews of active Identity experiments, five cross-specification composition reviews, CAWG-local security and combined reviews, selected upstream architecture-issue monitoring, and a machine-readable mandate-readiness register. Repository/branch monitoring remains authoritative for source drift; issue monitoring is an early-warning trigger only and never treats discussion text as normative specification content.
+
+See [CAWG/C2PA mandate readiness](cawg-mandate-readiness.md).
+
+For the two-channel repository/issue early-warning model, see [CAWG/C2PA situational monitoring](cawg-situational-monitoring.md).

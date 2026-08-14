@@ -1,6 +1,6 @@
 # CAWG/C2PA RAHP pressure-test portfolio
 
-RAHP v0.6.0 uses CAWG/C2PA as its first substantial external deployment proof. The eight worked reviews below are intentionally bounded: they identify mandate-readiness and composition risks without claiming upstream governance authority.
+RAHP v0.6.0 introduced CAWG/C2PA as the first substantial external deployment proof. v0.7.0 retains those baseline reviews and expands them with scenario-driven, experimental-branch, cross-specification, security and combined assurance evidence without claiming upstream governance authority.
 
 | Review | Primary pressure |
 |---|---|
@@ -18,3 +18,7 @@ RAHP v0.6.0 uses CAWG/C2PA as its first substantial external deployment proof. T
 The CAWG/C2PA stack is strongest when treated as layered evidence: C2PA provides integrity/provenance machinery; CAWG assertions add identity, metadata, use signals and authorization-like semantics; deployment governance determines which issuers and actors are authoritative for which decisions. The pressure tests therefore recommend against using a single “valid/verified” state as a mandate boundary. Mandate-grade profiles need explicit trust, lifecycle, conflict, accessibility and required-assertion policy.
 
 The instance monitor under `instances/cawg/` tracks upstream repository/branch changes and raises `assessment-required` issues when configured material paths change.
+
+## v0.7 coverage
+
+The CAWG/C2PA deployment now includes a 36-scenario corpus, experimental Identity branch reviews, five cross-specification composition reviews, CAWG-specific security-hardening reviews and combined syntheses. See the rendered [mandate-readiness view](../../docs/cawg-mandate-readiness.md).

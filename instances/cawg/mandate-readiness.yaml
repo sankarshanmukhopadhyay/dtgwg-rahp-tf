@@ -1,0 +1,130 @@
+version: 1
+instance: cawg
+assessment_date: '2026-08-14'
+scale:
+  ready: Evidence supports bounded mandate use with an explicit deployment trust policy.
+  conditional: Technically usable but mandate depends on unresolved governance/composition/assurance constraints.
+  pilot: Suitable for controlled experimentation; significant semantics remain unsettled.
+  not-ready: Material normative or lifecycle semantics are unresolved.
+records:
+- id: MR-IDENTITY
+  title: Identity Assertion 1.3
+  technical: high
+  governance: medium
+  security: medium
+  composition: medium
+  mandate_readiness: conditional
+  blocking_risks:
+  - CRK-01
+  - CRK-02
+  - CRK-14
+  - CRK-16
+- id: MR-METADATA
+  title: Metadata Assertion 1.2 draft
+  technical: high
+  governance: medium
+  security: medium
+  composition: medium
+  mandate_readiness: conditional
+  blocking_risks:
+  - CRK-03
+  - CRK-04
+- id: MR-TDM
+  title: Training and Data Mining 1.1
+  technical: high
+  governance: medium
+  security: medium
+  composition: low
+  mandate_readiness: conditional
+  blocking_risks:
+  - CRK-05
+  - CRK-06
+  - CRK-12
+- id: MR-CONSENT
+  title: Consent Assertion 1.0 draft
+  technical: low
+  governance: low
+  security: low
+  composition: low
+  mandate_readiness: not-ready
+  blocking_risks:
+  - CRK-06
+  - CRK-07
+  - CRK-27
+- id: MR-ENDORSEMENT
+  title: Endorsement Assertion 1.0 draft
+  technical: medium
+  governance: low
+  security: medium
+  composition: low
+  mandate_readiness: pilot
+  blocking_risks:
+  - CRK-08
+  - CRK-09
+  - CRK-25
+- id: MR-ORG
+  title: Organizational Identity Profile 1.1 draft
+  technical: high
+  governance: medium
+  security: medium
+  composition: medium
+  mandate_readiness: conditional
+  blocking_risks:
+  - CRK-01
+  - CRK-10
+  - CRK-28
+- id: MR-UX
+  title: UX Guidance 1.0
+  technical: medium
+  governance: medium
+  security: medium
+  composition: medium
+  mandate_readiness: conditional
+  blocking_risks:
+  - CRK-11
+  - CRK-13
+  - CRK-28
+- id: MR-GOV
+  title: Identity governance/TRQP experiment
+  technical: medium
+  governance: low
+  security: medium
+  composition: low
+  mandate_readiness: pilot
+  blocking_risks:
+  - CRK-14
+  - CRK-15
+  - CRK-16
+  - CRK-10
+- id: MR-VC
+  title: Identity VC/VP experiment
+  technical: medium
+  governance: medium
+  security: medium
+  composition: low
+  mandate_readiness: pilot
+  blocking_risks:
+  - CRK-17
+  - CRK-18
+  - CRK-19
+- id: MR-VLEI
+  title: Identity vLEI experiment
+  technical: medium
+  governance: medium
+  security: medium
+  composition: low
+  mandate_readiness: pilot
+  blocking_risks:
+  - CRK-20
+  - CRK-21
+  - CRK-02
+- id: MR-C2PA
+  title: C2PA technical substrate
+  technical: high
+  governance: high
+  security: high
+  composition: medium
+  mandate_readiness: conditional
+  blocking_risks:
+  - CRK-23
+  - CRK-28

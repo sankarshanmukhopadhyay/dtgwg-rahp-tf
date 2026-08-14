@@ -4,8 +4,8 @@ portfolio_registry:
   branch: main
   path: config/repositories.yaml
   pages_url: https://sankarshanmukhopadhyay.github.io/dtg-portfolio-monitor/repositories/
-  purpose: Discovery and DTG portfolio scope metadata only; corpus semantics and provenance remain controlled by
-    RAHP source pins.
+  purpose: Discovery and DTG portfolio scope metadata only; corpus semantics and provenance remain controlled by RAHP source
+    pins.
 sources:
 - corpus_id: CORPUS-DTG-ZKP
   corpus_file: corpora/dtg-zkp.yaml
@@ -57,3 +57,43 @@ sources:
   - CORPUS-TRUST-TASKS
   - CORPUS-DTG-CREDSPEC
   review_policy: Recomposition is required whenever either dependency is semantically re-baselined.
+- corpus_id: CORPUS-CAWG
+  corpus_file: corpora/cawg.yaml
+  update_mode: assisted
+  source:
+    repository: decentralized-identity/cawg-identity-assertion
+    paths:
+    - docs/**
+    - README.md
+    additional_repositories:
+    - repository: decentralized-identity/cawg-metadata-assertion
+      paths:
+      - docs/**
+      - README.md
+    - repository: decentralized-identity/cawg-training-and-data-mining-assertion
+      paths:
+      - docs/**
+      - README.md
+    - repository: decentralized-identity/cawg-consent-assertion
+      paths:
+      - docs/**
+      - README.md
+    - repository: decentralized-identity/cawg-endorsement-assertion
+      paths:
+      - docs/**
+      - README.md
+    - repository: decentralized-identity/cawg-organizational-identity-profile
+      paths:
+      - docs/**
+      - README.md
+    - repository: decentralized-identity/cawg-ux-guidance
+      paths:
+      - docs/**
+      - README.md
+    - repository: c2pa-org/specifications
+      paths:
+      - specifications/**
+      - README.md
+    observed_on: '2026-08-14'
+  review_policy: Scenario semantics are RAHP-owned. Upstream specification or tracked architecture-issue changes require review
+    before re-baselining.

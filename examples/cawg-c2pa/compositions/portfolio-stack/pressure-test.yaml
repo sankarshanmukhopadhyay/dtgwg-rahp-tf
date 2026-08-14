@@ -1,0 +1,79 @@
+review:
+  id: CAWG-COMP-005
+  status: complete
+  title: "C2PA \xD7 CAWG portfolio stack composition pressure test"
+  reviewed_on: '2026-08-14'
+  target:
+    repository: c2pa-org/specifications
+    document: https://spec.c2pa.org/specifications/specifications/2.4/index.html
+    version: 2.4 / tracked main
+    commit: b1703dc0a0420088d3f8b0e5fb11866d0fe931cb
+    source_paths: []
+  reviewed_against:
+    repository: sankarshanmukhopadhyay/rahp-toolkit
+    rahp_version: v0.7.0
+    corpus_date: '2026-08-14'
+  scope:
+    included:
+    - Normative and draft semantics relevant to the named composition or experiment.
+    - Cross-specification failure states that can remain hidden when each component is reviewed independently.
+    excluded:
+    - Legal opinion on enforceability in a particular jurisdiction.
+    - Claims that upstream CAWG, DIF, C2PA, GLEIF or W3C endorsed this RAHP assessment.
+  method:
+    workflow: docs/pressure-testing-a-spec.md
+    rule: Separate cryptographic validity, identity, authority, consent, lifecycle and relying-party trust; test both isolated
+      and composed failure states.
+  summary:
+    finding_count: 2
+    open_count: 2
+    by_primary_disposition:
+      implementation-guidance: 1
+      companion-specification: 1
+    overall_assessment: 'Cross-specification RAHP review: individually valid components are tested for unsafe composed conclusions
+      and downgrade behaviour.'
+  findings:
+  - id: F-001
+    title: All cryptographic layers can validate while the trust decision is still unjustified
+    status: open
+    severity: High
+    primary_disposition: implementation-guidance
+    risks:
+    - CRK-28
+    evidence:
+    - source: https://cawg.io/specs/
+      observation: CAWG layers identity, metadata, permission and endorsement semantics over C2PA provenance, each with distinct
+        trust meaning.
+    harm: A product can show a single success state even though provenance, identity, authority, consent and factual truth
+      answer different questions.
+    recommendation: Define a portfolio-level verifier result model and mandate UX separation of each independently evaluated
+      proposition.
+    retest_when:
+    - Normative semantics and interoperable test vectors close this failure path.
+    scenarios:
+    - CAWG-024
+    - CAWG-028
+    scenario_patterns:
+    - SP-COMP-01
+    - SP-INCL-01
+  - id: F-002
+    title: Optional higher-layer assertion stripping is not distinguishable from legitimate absence
+    status: open
+    severity: High
+    primary_disposition: companion-specification
+    risks:
+    - CRK-23
+    evidence:
+    - source: https://spec.c2pa.org/specifications/specifications/2.4/index.html
+      observation: C2PA provides the container/provenance substrate while CAWG gathered assertions can remain optional at
+        the portfolio level.
+    harm: Intermediaries can remove consent, endorsement or identity evidence while preserving a valid lower-layer C2PA asset.
+    recommendation: Define deployment profiles that declare expected/required assertion classes and produce explicit downgrade
+      status when missing.
+    retest_when:
+    - Normative semantics and interoperable test vectors close this failure path.
+    scenarios:
+    - CAWG-027
+    scenario_patterns:
+    - SP-COMP-01
+    - SP-REPLAY-01

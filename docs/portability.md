@@ -6,7 +6,7 @@ has_toc: true
 ---
 # Portability
 
-RAHP is portable by construction: **the adopter supplies deployment configuration and owns deployment state; the method and engine remain shared**. v0.5 introduced this configuration boundary and v0.6 demonstrates it with two materially different deployments, DTG and CAWG/C2PA.
+RAHP is portable by construction: **the adopter supplies deployment configuration and owns deployment state; the method and engine remain shared**. v0.5 introduced this configuration boundary, v0.6 demonstrated it with DTG and CAWG/C2PA, and v0.7 extends portability to multi-source corpora, deployment-local security vocabularies and independent situational monitoring.
 
 ```mermaid
 flowchart TD

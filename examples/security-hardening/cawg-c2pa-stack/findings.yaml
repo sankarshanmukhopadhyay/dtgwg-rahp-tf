@@ -1,0 +1,153 @@
+review:
+  id: SEC-CW-002
+  status: complete
+  title: C2PA + CAWG composition security-hardening review
+  reviewed_on: '2026-08-14'
+  target:
+    repository: c2pa-org/specifications
+    version: 2.4 / tracked main
+    commit: b1703dc0a0420088d3f8b0e5fb11866d0fe931cb
+    source_paths: []
+  reviewed_against:
+    repository: sankarshanmukhopadhyay/rahp-toolkit
+    rahp_version: v0.7.0
+  summary:
+    finding_count: 3
+    open_count: 3
+    overall_assessment: Adversarial review of validation, resolution, downgrade and trust-boundary behavior. Findings are
+      RAHP assessment artefacts, not upstream vulnerability determinations.
+  positive_controls:
+  - Cryptographic binding and signed C2PA/CAWG structures provide a strong integrity substrate when validators preserve layer-specific
+    semantics.
+  findings:
+  - id: SEC-CW-004
+    title: Optional assertion stripping can downgrade a relying-party decision
+    status: open
+    severity: High
+    exploitability: plausible
+    impact: high
+    detectability: medium
+    propagation: cross-party
+    primary_control_plane: PROFILE
+    secondary_control_planes:
+    - TEST
+    attack_surface:
+    - distribution chain
+    - validator
+    preconditions:
+    - Attacker can influence a credential, assertion, external reference, distribution intermediary, or validation dependency.
+    security_properties:
+    - integrity
+    - authorization
+    evidence:
+    - source: https://cawg.io/specs/
+      observation: CAWG assertions layer optional higher-order semantics over the C2PA substrate.
+    attack: An intermediary removes CAWG identity, consent or endorsement assertions but leaves a lower-layer C2PA manifest
+      that validates.
+    existing_mitigations:
+    - Cryptographic integrity and signature validation constrain direct content tampering but do not close this higher-layer
+      failure path.
+    residual_gap: Without a deployment expectation profile, absence is not cryptographic proof of stripping and may be accepted
+      as normal.
+    recommendation: Introduce relying-party profiles declaring required assertion classes and a downgrade/expected-evidence-missing
+      result.
+    verification:
+    - Add a negative interoperability vector reproducing the failure and require a distinct non-success validation result.
+    rahp:
+      risks:
+      - CRK-23
+      controls: []
+      guardrails: []
+      assurance_tests: []
+    external_alignment:
+    - ref: NIST-SP-800-53-R5
+      clause: SI-7 Software, Firmware, and Information Integrity
+      relationship: supports
+      rationale: Provides an external security-control reference for the recommended validation boundary; it does not imply
+        external review of CAWG or this finding.
+  - id: SEC-CW-005
+    title: Single success UX can mask unperformed authority or consent checks
+    status: open
+    severity: High
+    exploitability: plausible
+    impact: high
+    detectability: medium
+    propagation: cross-party
+    primary_control_plane: IMPL
+    secondary_control_planes:
+    - TEST
+    attack_surface:
+    - validator UX
+    preconditions:
+    - Attacker can influence a credential, assertion, external reference, distribution intermediary, or validation dependency.
+    security_properties:
+    - integrity
+    - authorization
+    evidence:
+    - source: https://github.com/decentralized-identity/cawg-endorsement-assertion/issues/5
+      observation: CAWG has separate UX guidance needs for interpreting higher-layer assertions.
+    attack: A product renders verified after signature validation even when higher-layer authority, registry or consent checks
+      were not performed or were unavailable.
+    existing_mitigations:
+    - Cryptographic integrity and signature validation constrain direct content tampering but do not close this higher-layer
+      failure path.
+    residual_gap: Cryptographic result codes do not themselves guarantee that UI semantics preserve every trust layer.
+    recommendation: Define machine-readable layer-specific validation results and test product UX for partial, unknown and
+      failed higher-layer checks.
+    verification:
+    - Add a negative interoperability vector reproducing the failure and require a distinct non-success validation result.
+    rahp:
+      risks:
+      - CRK-28
+      controls: []
+      guardrails: []
+      assurance_tests: []
+    external_alignment:
+    - ref: NIST-SP-800-53-R5
+      clause: SI-11 Error Handling
+      relationship: supports
+      rationale: Provides an external security-control reference for the recommended validation boundary; it does not imply
+        external review of CAWG or this finding.
+  - id: SEC-CW-006
+    title: Conflicting valid assertions can be exploited as policy confusion
+    status: open
+    severity: High
+    exploitability: plausible
+    impact: high
+    detectability: medium
+    propagation: cross-party
+    primary_control_plane: SPEC
+    secondary_control_planes:
+    - TEST
+    attack_surface:
+    - validator
+    - policy engine
+    preconditions:
+    - Attacker can influence a credential, assertion, external reference, distribution intermediary, or validation dependency.
+    security_properties:
+    - authorization
+    evidence:
+    - source: https://github.com/decentralized-identity/cawg-training-and-data-mining-assertion/issues/8
+      observation: Missing/undefined semantics demonstrate how verifier-specific interpretation can emerge around permission
+        data.
+    attack: An attacker supplies multiple individually valid assertions and relies on verifier-specific precedence to obtain
+      the favorable outcome.
+    existing_mitigations:
+    - Cryptographic integrity and signature validation constrain direct content tampering but do not close this higher-layer
+      failure path.
+    residual_gap: Portfolio-level conflict rules are incomplete across metadata, consent, identity and endorsement layers.
+    recommendation: Define deterministic conflict handling and adversarial vectors with contradictory valid assertions.
+    verification:
+    - Add a negative interoperability vector reproducing the failure and require a distinct non-success validation result.
+    rahp:
+      risks:
+      - CRK-04
+      controls: []
+      guardrails: []
+      assurance_tests: []
+    external_alignment:
+    - ref: NIST-SP-800-53-R5
+      clause: AC-3 Access Enforcement
+      relationship: supports
+      rationale: Provides an external security-control reference for the recommended validation boundary; it does not imply
+        external review of CAWG or this finding.

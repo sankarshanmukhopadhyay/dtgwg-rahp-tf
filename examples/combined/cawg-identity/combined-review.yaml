@@ -1,0 +1,14 @@
+review:
+  id: COMB-CW-001
+  status: complete
+  title: CAWG Identity Assertion combined RAHP + security review
+  reviewed_on: '2026-08-14'
+  target:
+    repository: decentralized-identity/cawg-identity-assertion
+    version: 1.3 WG-approved draft
+    commit: 8a9c4925df7e8ccbcabce9d754fc27739e11dc12
+  rahp_review: ../../cawg-c2pa/identity/pressure-test.yaml
+  security_review: ../../security-hardening/cawg-identity/findings.yaml
+  summary: Cross-lens synthesis of RAHP harms/governance and adversarial security findings.
+  notes:
+  - Identity validity, authority and historical status are both harms/governance and adversarial trust-boundary concerns.

@@ -1,0 +1,367 @@
+corpus:
+  id: CORPUS-CAWG
+  title: CAWG/C2PA specification-assurance scenario corpus
+  source_repository: decentralized-identity/cawg-identity-assertion
+  source_path: CAWG specification portfolio and tracked architecture/security issues
+  source_commit: multi-source-snapshot-2026-08-14
+  adapter_version: '1.0'
+  description: RAHP-owned scenario adapter exercising CAWG/C2PA identity, governance, consent, delegation, metadata, privacy,
+    UX, security and mandate-readiness interactions. Scenario IDs are RAHP assessment identifiers and do not imply CAWG endorsement.
+  scenarios:
+  - id: CAWG-001
+    title: Valid identity, unauthorized role
+    domain: Identity
+    primary_goal: Authority claim
+    primary_pressure: Authority
+    dependencies: Trust framework
+    priority: P0
+    scenario_patterns:
+    - SP-GOV-01
+    - SP-FED-01
+  - id: CAWG-002
+    title: Former employee signs for organization
+    domain: Organization
+    primary_goal: Role lifecycle
+    primary_pressure: Stale authority
+    dependencies: Org credential
+    priority: P0
+    scenario_patterns:
+    - SP-GOV-02
+    - SP-RECOV-01
+  - id: CAWG-003
+    title: Credential valid but registry membership expired
+    domain: Governance
+    primary_goal: Current authority
+    primary_pressure: Lifecycle
+    dependencies: Trust registry
+    priority: P0
+    scenario_patterns:
+    - SP-GOV-02
+  - id: CAWG-004
+    title: Identity claims aggregator compromised
+    domain: Identity
+    primary_goal: Actor consent
+    primary_pressure: Custody compromise
+    dependencies: Aggregator
+    priority: P0
+    scenario_patterns:
+    - SP-AUTH-01
+    - SP-RECOV-01
+  - id: CAWG-005
+    title: Named actor is an autonomous AI service
+    domain: Agents
+    primary_goal: Attribution
+    primary_pressure: Accountability
+    dependencies: Identity assertion
+    priority: P0
+    scenario_patterns:
+    - SP-AGENT-01
+    - SP-GOV-01
+  - id: CAWG-006
+    title: Cross-scheme Level of Assurance comparison
+    domain: Identity
+    primary_goal: Assurance
+    primary_pressure: Miscomparison
+    dependencies: LoA schemes
+    priority: P1
+    scenario_patterns:
+    - SP-INTEROP-01
+    - SP-GOV-01
+  - id: CAWG-007
+    title: TRQP entity ID bound to wrong certificate subject
+    domain: Registry
+    primary_goal: Authority resolution
+    primary_pressure: Binding mismatch
+    dependencies: TRQP, X.509
+    priority: P0
+    scenario_patterns:
+    - SP-AUTH-01
+    - SP-FED-01
+  - id: CAWG-008
+    title: Governing authority rotates registry identifier
+    domain: Registry
+    primary_goal: Continuity
+    primary_pressure: Identifier migration
+    dependencies: TRQP
+    priority: P1
+    scenario_patterns:
+    - SP-GOV-02
+    - SP-RECOV-01
+  - id: CAWG-009
+    title: Trust registry unavailable during validation
+    domain: Infrastructure
+    primary_goal: Authorization
+    primary_pressure: Availability
+    dependencies: Registry
+    priority: P0
+    scenario_patterns:
+    - SP-OPS-01
+  - id: CAWG-010
+    title: Two governing authorities disagree
+    domain: Federation
+    primary_goal: Recognition
+    primary_pressure: Conflict
+    dependencies: Registries
+    priority: P0
+    scenario_patterns:
+    - SP-FED-01
+    - SP-COMP-01
+  - id: CAWG-011
+    title: Historical registry membership queried after withdrawal
+    domain: Governance
+    primary_goal: As-of verification
+    primary_pressure: Historical state
+    dependencies: Registry archive
+    priority: P0
+    scenario_patterns:
+    - SP-GOV-02
+    - SP-OPS-02
+  - id: CAWG-012
+    title: CA trust-list removal after publication
+    domain: PKI
+    primary_goal: Historical validity
+    primary_pressure: Trust-anchor lifecycle
+    dependencies: CA trust list
+    priority: P0
+    scenario_patterns:
+    - SP-GOV-02
+    - SP-RECOV-01
+  - id: CAWG-013
+    title: Consent granted by creator but not performer
+    domain: Consent
+    primary_goal: Permission
+    primary_pressure: Multi-party conflict
+    dependencies: Consent assertion
+    priority: P0
+    scenario_patterns:
+    - SP-COMP-01
+    - SP-GOV-01
+  - id: CAWG-014
+    title: Consent withdrawn after model-training ingestion
+    domain: Consent
+    primary_goal: Withdrawal
+    primary_pressure: Temporal effect
+    dependencies: Consent registry
+    priority: P0
+    scenario_patterns:
+    - SP-GOV-02
+    - SP-OPS-02
+  - id: CAWG-015
+    title: TDM prohibits use while Consent permits it
+    domain: Consent
+    primary_goal: Precedence
+    primary_pressure: Signal conflict
+    dependencies: TDM, Consent
+    priority: P0
+    scenario_patterns:
+    - SP-COMP-01
+    - SP-INTEROP-01
+  - id: CAWG-016
+    title: Embedded consent conflicts with external registry
+    domain: Consent
+    primary_goal: Effective state
+    primary_pressure: Freshness conflict
+    dependencies: Registry
+    priority: P0
+    scenario_patterns:
+    - SP-COMP-01
+    - SP-OPS-01
+  - id: CAWG-017
+    title: Consent endpoint cached beyond revocation
+    domain: Consent
+    primary_goal: Current state
+    primary_pressure: Stale cache
+    dependencies: Registry cache
+    priority: P0
+    scenario_patterns:
+    - SP-OPS-01
+    - SP-GOV-02
+  - id: CAWG-018
+    title: Rights holder changes after asset transfer
+    domain: Rights
+    primary_goal: Authority lifecycle
+    primary_pressure: Transfer
+    dependencies: Rights system
+    priority: P1
+    scenario_patterns:
+    - SP-GOV-02
+    - SP-COMP-01
+  - id: CAWG-019
+    title: Endorsement reused outside intended asset
+    domain: Delegation
+    primary_goal: Scope
+    primary_pressure: Replay
+    dependencies: Endorsement
+    priority: P0
+    scenario_patterns:
+    - SP-REPLAY-01
+    - SP-GOV-01
+  - id: CAWG-020
+    title: CDN endorsement interpreted as publication authority
+    domain: Delegation
+    primary_goal: Bounded delegation
+    primary_pressure: Scope creep
+    dependencies: Endorsement
+    priority: P0
+    scenario_patterns:
+    - SP-GOV-01
+    - SP-COMP-01
+  - id: CAWG-021
+    title: Agent receives authority from employee
+    domain: Agents
+    primary_goal: Delegation
+    primary_pressure: Principal authority
+    dependencies: Identity, Endorsement
+    priority: P0
+    scenario_patterns:
+    - SP-AGENT-01
+    - SP-GOV-01
+  - id: CAWG-022
+    title: AI agent delegates to sub-agent
+    domain: Agents
+    primary_goal: Onward delegation
+    primary_pressure: Escalation
+    dependencies: Delegation chain
+    priority: P0
+    scenario_patterns:
+    - SP-AGENT-02
+    - SP-COMP-01
+  - id: CAWG-023
+    title: Delegation revoked while agent remains online
+    domain: Agents
+    primary_goal: Revocation
+    primary_pressure: Stale authority
+    dependencies: Runtime agent
+    priority: P0
+    scenario_patterns:
+    - SP-AGENT-02
+    - SP-GOV-02
+  - id: CAWG-024
+    title: Metadata integrity mistaken for factual accuracy
+    domain: Metadata
+    primary_goal: Truth interpretation
+    primary_pressure: Semantic overclaim
+    dependencies: Metadata assertion
+    priority: P0
+    scenario_patterns:
+    - SP-GOV-01
+    - SP-COMP-01
+  - id: CAWG-025
+    title: Two authoritative metadata sources conflict
+    domain: Metadata
+    primary_goal: Conflict handling
+    primary_pressure: Authority collision
+    dependencies: Metadata assertions
+    priority: P1
+    scenario_patterns:
+    - SP-FED-01
+    - SP-COMP-01
+  - id: CAWG-026
+    title: CAWG inception action conflicts with C2PA provenance
+    domain: Metadata
+    primary_goal: Provenance composition
+    primary_pressure: Inception ambiguity
+    dependencies: C2PA actions
+    priority: P1
+    scenario_patterns:
+    - SP-COMP-01
+    - SP-INTEROP-01
+  - id: CAWG-027
+    title: Optional assertion stripped by intermediary
+    domain: Composition
+    primary_goal: Evidence completeness
+    primary_pressure: Downgrade
+    dependencies: Distribution chain
+    priority: P0
+    scenario_patterns:
+    - SP-COMP-01
+    - SP-REPLAY-01
+  - id: CAWG-028
+    title: Cryptographically valid asset shown with misleading green state
+    domain: UX
+    primary_goal: Human interpretation
+    primary_pressure: Overclaim
+    dependencies: Validator UX
+    priority: P0
+    scenario_patterns:
+    - SP-INCL-01
+    - SP-COMP-01
+  - id: CAWG-029
+    title: Assistive technology cannot distinguish unknown from invalid
+    domain: UX
+    primary_goal: Accessibility
+    primary_pressure: Failure-state exclusion
+    dependencies: UX
+    priority: P0
+    scenario_patterns:
+    - SP-INCL-01
+  - id: CAWG-030
+    title: Verified identity correlates pseudonymous contexts
+    domain: Privacy
+    primary_goal: Unlinkability
+    primary_pressure: Correlation
+    dependencies: Identity credentials
+    priority: P0
+    scenario_patterns:
+    - SP-PRIV-01
+    - SP-PRIV-02
+  - id: CAWG-031
+    title: VC holder selectively discloses stale credential
+    domain: VC/VP
+    primary_goal: Selective disclosure
+    primary_pressure: Status freshness
+    dependencies: VC status
+    priority: P1
+    scenario_patterns:
+    - SP-PRIV-01
+    - SP-GOV-02
+  - id: CAWG-032
+    title: Restating issuer amplifies weak upstream evidence
+    domain: VC/VP
+    primary_goal: Trust chain
+    primary_pressure: Transitive amplification
+    dependencies: Issuer chain
+    priority: P0
+    scenario_patterns:
+    - SP-FED-01
+    - SP-COMP-01
+  - id: CAWG-033
+    title: vLEI role credential revoked after signing
+    domain: vLEI
+    primary_goal: Role validity
+    primary_pressure: Historical state
+    dependencies: KERI/vLEI
+    priority: P0
+    scenario_patterns:
+    - SP-GOV-02
+    - SP-RECOV-01
+  - id: CAWG-034
+    title: KERI validation material unavailable years later
+    domain: vLEI
+    primary_goal: Archival verification
+    primary_pressure: Dependency loss
+    dependencies: KEL infrastructure
+    priority: P1
+    scenario_patterns:
+    - SP-OPS-01
+    - SP-RECOV-01
+  - id: CAWG-035
+    title: Validator follows attacker-controlled identity URI
+    domain: Security
+    primary_goal: Safe resolution
+    primary_pressure: SSRF/resource attack
+    dependencies: Network resolver
+    priority: P0
+    scenario_patterns:
+    - SP-AUTH-01
+    - SP-OPS-03
+  - id: CAWG-036
+    title: Mandatory trust anchor excludes independent creator
+    domain: Mandate
+    primary_goal: Participation
+    primary_pressure: Gatekeeper exclusion
+    dependencies: Trust list
+    priority: P0
+    scenario_patterns:
+    - SP-INCL-02
+    - SP-GOV-03

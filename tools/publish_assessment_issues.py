@@ -10,7 +10,7 @@ def request(method: str, url: str, token: str, payload=None):
     req = urllib.request.Request(url, data=data, method=method, headers={
         "Accept": "application/vnd.github+json",
         "Authorization": f"Bearer {token}",
-        "User-Agent": "rahp-assessment-issue-publisher/0.6",
+        "User-Agent": "rahp-assessment-issue-publisher/0.7",
         "X-GitHub-Api-Version": "2022-11-28",
     })
     try:

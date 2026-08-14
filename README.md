@@ -1,7 +1,7 @@
 # RAHP Toolkit
 
 **Risk Assessment & Harms Prevention**  
-Release v0.6.0 · CC-BY 4.0
+Release v0.7.0 · CC-BY 4.0
 
 RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-testing standards and technical specifications against risks, human harms, governance weaknesses and adversarial/security failure conditions. It provides a reusable method, configuration contract, review tooling, scenario patterns, source-change monitoring, validators and evidence rendering.
 
@@ -21,9 +21,9 @@ RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-test
 | Understand portability and deployment boundaries | [Portability](docs/portability.md) |
 | Inspect the CAWG/C2PA external deployment | [CAWG/C2PA instance](docs/cawg-instance.md) |
 | Inspect the bundled DTG exemplar | [DTG instance](docs/dtg-instance.md) |
-| Read the v0.6 release | [v0.6.0 release notes](docs/releases/v0.6.0.md) |
+| Read the current release | [v0.7.0 release notes](docs/releases/v0.7.0.md) |
 
-## The v0.6 architecture
+## The v0.7 architecture
 
 ```mermaid
 flowchart TB
@@ -121,6 +121,10 @@ The bundled DTG catalogue currently contains:
 | `EV-xxx` | Evidence artefact | 5 operational assurance evidence contracts |
 
 These counts are checked by `tools/validate.py`. DTG governance work such as `RP-001`, normative triage and its action queue remains scoped to that deployment unless another adopter explicitly chooses equivalent governance structures.
+
+## v0.7: composition and situational assurance
+
+v0.7 deepens the external CAWG/C2PA deployment with a 36-scenario corpus, experimental-branch and cross-specification reviews, CAWG-local security/combined reviews, issue-aware situational monitoring, and a rendered mandate-readiness view. The deployment remains independent of DTG governance and identifiers. See [v0.7.0 release notes](docs/releases/v0.7.0.md), [CAWG/C2PA mandate readiness](docs/cawg-mandate-readiness.md), and [CAWG instance](docs/cawg-instance.md).
 
 ## Quick start
 

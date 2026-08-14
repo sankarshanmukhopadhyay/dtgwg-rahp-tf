@@ -12,6 +12,8 @@ REQUIRED_PROJECTIONS = [
     'corpora/trust-tasks.yaml',
     'corpora/credential-spec.yaml',
     'corpora/trust-tasks-credspec-composed.yaml',
+    'corpora/cawg.yaml',
+    'instances/cawg/mandate-readiness.yaml',
     'data/rule-profiles.yaml',
     'data/evidence-artifacts.yaml',
     'method/non-human-actors.yaml',
@@ -36,6 +38,9 @@ REQUIRED_DOCS = [
     'docs/task-force-actions.html',
     'docs/portability.html',
     'docs/conformance-claims.html',
+    'docs/cawg-mandate-readiness.html',
+    'docs/cawg-situational-monitoring.html',
+    'docs/releases/v0.7.0.html',
     'build/site/task-force-actions.html',
     'README.md',
     'QUICKSTART.html',
@@ -115,6 +120,7 @@ for page in htmls:
             continue
         if path.startswith('/rahp-toolkit/'):
             path = path[len('/rahp-toolkit/'):]
+            target = SITE / path
         elif path.startswith('/dtgwg-rahp-tf/'):
             path = path[len('/dtgwg-rahp-tf/'):]  # legacy published prefix
             target = SITE / path

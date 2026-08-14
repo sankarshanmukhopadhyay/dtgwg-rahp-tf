@@ -31,6 +31,10 @@ The DTG Portfolio Monitor repository registry is used as a **discovery and portf
 
 It does **not** decide which source a RAHP corpus must use. `corpora/sources.yaml` records that choice explicitly. This matters for forks: `CORPUS-DTG-ZKP` currently tracks `sankarshanmukhopadhyay/dtgwg-zkp-tf`, while mapping it to the portfolio entry `trustoverip/dtgwg-zkp-tf` as its upstream portfolio relationship.
 
+## Multi-source external corpora
+
+v0.7 removes a remaining DTG assumption from corpus validation. A corpus source must declare its primary repository and tracked paths, but `portfolio_repository` and `relationship_to_portfolio` are required only when the deployment actually uses a portfolio registry. External adapters may declare `additional_repositories` for composed or portfolio-wide scenario sources. The CAWG/C2PA corpus uses this form; normative repository drift is independently covered by the CAWG deployment profile monitor.
+
 ## Source of truth hierarchy
 
 | Question | Authority |

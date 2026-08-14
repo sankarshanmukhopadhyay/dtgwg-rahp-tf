@@ -6,6 +6,12 @@ has_toc: true
 ---
 # Changelog
 
+## v0.7.0 — 2026-08-14
+
+- Deepen CAWG/C2PA coverage with scenario, composition, experimental-branch, security and combined review evidence.
+- Add CAWG issue-aware situational monitoring and mandate-readiness rendering.
+- Fix Pages base-URL link validation and add regression coverage.
+
 ## v0.6.0 — 2026-08-14
 
 ### Added
