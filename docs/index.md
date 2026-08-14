@@ -1,60 +1,57 @@
 ---
 layout: default
-title: "DTG instance"
-nav_order: 13
+title: "RAHP Toolkit documentation"
+nav_order: 1
 has_toc: true
 ---
-# RAHP documentation
+# RAHP Toolkit documentation
 
-RAHP has four primary paths:
+RAHP Toolkit is a **portable specification-assurance toolkit**. It provides a method, configuration contract, review tooling, scenario patterns, validation and evidence rendering for pressure-testing standards and technical specifications against risks, harms and adversarial failure conditions.
 
-## Understand
+The repository contains deployments and examples, but **RAHP is not the DTG deployment and it is not the CAWG/C2PA deployment**. DTG is the historical origin and a bundled exemplar; CAWG/C2PA is the first substantial external deployment proving that the same method and engine can operate with independent scope, risks, state and governance.
 
-Start with [Concepts](concepts.md) and [How RAHP works](how-rahp-works.md) to understand people and power, risks and harms, controls and guardrails, and assurance evidence.
+## Start here
 
-## Apply
+### Understand the portable method
 
-Use [Pressure-testing a specification](pressure-testing-a-spec.md), then [Interpreting results](interpreting-results.md) and [Governance boundaries](governance-boundaries.md). Complete worked reviews are available under `examples/dtg-credential-spec/` and `examples/trust-tasks-spec/`. Together they demonstrate pressure testing of both a credential schema specification and a protocol/framework specification, including cross-layer finding disposition. In each example, `pressure-test.yaml` is canonical and the structured review section in `README.md` is generated with `tools/render_pressure_tests.py`. A reusable starter is available at `examples/pressure-test-template.yaml`. Generated RAHP citations resolve to `build/site/catalogue.html#<ID>`, which provides a stable, deep-linkable definition and cross-reference context for every canonical artefact.
+Read [Concepts](concepts.md), [How RAHP works](how-rahp-works.md), and [Portability](portability.md). These pages describe the parts that belong to RAHP itself rather than to a particular deployment.
 
-## Delegate repeatable work to an AI agent
+### Apply RAHP to your own target
 
-Use [Use an AI agent to run a pressure test](using-an-ai-agent.md) for an agent-friendly operating model, prompt contract, command path, evidence rules, and explicit human accountability checkpoints.
+Use [Configuration-driven adoption](configuration.md) and [Adopting RAHP](../ADOPTION.md), then follow [Pressure-testing a specification](pressure-testing-a-spec.md). The minimum path is: declare target repositories in YAML, pin review provenance, record evidence-backed findings, render, validate and re-test after change.
 
-## Maintain synchronized corpora
+### Choose the analytical lens
 
-Use [Corpus synchronization and provenance](corpus-synchronization.md) to understand how RAHP detects changes in related repositories, consumes DTG Portfolio Monitor scope metadata, preserves immutable source provenance, and prepares review packets without silently rewriting corpus semantics.
+- [RAHP pressure testing](pressure-testing-a-spec.md) focuses on people, harms, governance boundaries and assurance.
+- [Security and hardening review](security-hardening-review.md) focuses on adversarial protocol and implementation failure.
+- [Review modes](review-modes.md) explains `rahp`, `security`, and `combined` operation.
+- [Scenario-driven pressure testing](scenario-driven-pressure-testing.md) applies reusable stress patterns and domain corpora.
 
-## Explore historical personas and earlier RAHP material
+### Examine independent deployments
 
-Use the [Historical Library](../archive/) to read the retained persona set, priority requirements, historical risk register, user-stories workbook, structured JSON-LD records, and earlier generated RAHP views. Archive pages are deliberately labelled as historical so useful context remains accessible without being confused with current canonical material.
+- [CAWG/C2PA deployment](cawg-instance.md) — external portfolio, branch-aware source monitoring, instance-local risk vocabulary and eight worked pressure tests.
+- [DTG exemplar deployment](dtg-instance.md) — historical origin, portfolio discovery, DTG scenario corpora, operational assurance and governance queue.
 
-## Explore the DTG instance
+These deployments are **evidence of portability**, not prerequisites for adoption.
 
-Canonical records live under `data/`. Generated risk, control, matrix, lifecycle, normative and governance views are built under `build/site/` with `python3 tools/build.py`.
+### Worked assessments
 
-The generated site is a drill-down evidence surface; the guided documentation is the entry point.
+The [CAWG/C2PA assessment pack](../examples/cawg-c2pa/README.md) demonstrates v0.6 multi-specification pressure testing. Earlier DTG examples remain useful regression fixtures for credential and protocol/framework reviews: [DTG Credential Specification](../examples/dtg-credential-spec/README.md) and [Trust Tasks](../examples/trust-tasks-spec/README.md).
 
-## Security hardening
+### AI-assisted review
 
-For adversarial protocol review beyond the general risks-and-harms workflow, use [Security and hardening review workflow](security-hardening-review.md). The coordinated DTG example set covers [Trust Tasks](../examples/security-hardening/trust-tasks/SECURITY_REVIEW.md), [DTG Core Credentials](../examples/security-hardening/credential-spec/SECURITY_REVIEW.md), and [cross-spec composition](../examples/security-hardening/cross-spec/COMPOSITION_THREAT_MODEL.md).
-## Review modes
+Use [AI-assisted RAHP](ai-assisted-process.md) and [Use an AI agent to run a pressure test](using-an-ai-agent.md). AI may prepare, synthesize and cross-reference evidence; accountable humans remain responsible for findings, risk judgements, acceptance and governance decisions.
 
-Use [Review modes](review-modes.md) for the unified `tools/review.py` entry point. A checkout can scaffold a risks-and-harms RAHP review, an adversarial security-hardening review, or both together. Combined mode retains the two canonical records and generates a cross-lens synthesis rather than collapsing the methodologies into one finding type. Worked combined reports are available for the [DTG Credential Specification](../examples/combined/dtg-credential-spec/COMBINED_REVIEW.md) and [Trust Tasks](../examples/combined/trust-tasks-spec/COMBINED_REVIEW.md).
+### Evidence, governance and maintenance
 
-
-## Governance and assurance
-
-- [Task Force action register](task-force-actions.md)
-- [Normative triage](normative-triage.md)
+- [Interpreting results](interpreting-results.md)
+- [Governance boundaries](governance-boundaries.md)
 - [Operational assurance](operational-assurance.md)
-- [Agent delegation governance](agent-delegation-governance.md)
-- [Roadmap](../ROADMAP.md)
-- [v0.4.0 release notes](releases/v0.4.0.md)
-
-## v0.5 configuration-driven portability
-
-- [Configuration-driven adoption](configuration.md)
-- [Portability](portability.md)
 - [Assessment claims](conformance-claims.md)
-- [Adoption guide](../ADOPTION.md)
-- [v0.5.0 release notes](releases/v0.5.0.md)
+- [Corpus synchronization and provenance](corpus-synchronization.md)
+- [DTG exemplar governance action register](task-force-actions.md)
+- [Roadmap](../ROADMAP.md)
+
+## Historical material
+
+The [Historical Library](../archive/) retains earlier personas, requirements, registers, spreadsheets and generated views. It is provenance, not the portable RAHP method and not current deployment state.

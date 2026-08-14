@@ -11,25 +11,25 @@ to change them safely, and what a reviewable contribution looks like.
 
 ## The one rule
 
-**`data/` is canonical. Everything in `build/` is generated.**
+**Edit the canonical source for the layer you are changing; never hand-edit `build/`.**
 
-If a fact is wrong on the website, in the JSON-LD, or in a spreadsheet export,
-the fix goes in `data/` and you re-run `python3 tools/build.py`. Never edit a
-generated file — your change will be silently destroyed by the next build.
+RAHP has more than one authority boundary. `method/` is portable method authority. Root `data/` is the bundled DTG exemplar catalogue retained for compatibility and generated evidence. A deployment may own assessment vocabulary and state under `instances/<id>/`. Profiles under `profiles/<id>/` declare deployment targets. Generated material under `build/` is derived and must be regenerated, never edited directly.
 
 ## Repository layout
 
 ```
-method/            The RAHP method. Portable. Another working group keeps this.
+method/            Portable RAHP method: lifecycle, vocabulary and schemas.
   lifecycle.yaml     Five lifecycle stages, their evidence requirements, and every known gap
   vocabularies.yaml  Controlled vocabularies (severity, standards status, persona type, …)
   schema/            JSON Schema for every record type
-data/              The DTG instance. Another working group replaces this.
+data/              Bundled DTG exemplar catalogue; not the portable RAHP method.
   instance.yaml      Namespaces, cross-reference edges, invariants — drives the validator
   risks.yaml  controls.yaml  guardrails.yaml  assurance-tests.yaml
   metrics.yaml  user-stories.yaml  scenarios.yaml  epics.yaml  personas.yaml
   recommendations.yaml  risk-acceptances.yaml  governance-precedents.yaml
-tools/             validate.py · build.py · import_xlsx.py (migration only)
+profiles/          Deployment configuration (for example dtg/ and cawg/).
+instances/         Deployment-owned state, reviews and optional local vocabularies.
+tools/             Portable orchestration, validation, monitoring and build tooling.
 context/           JSON-LD context
 build/             Generated. Do not hand-edit; regenerate after canonical changes.
 ```
@@ -43,12 +43,12 @@ python3 tools/validate.py     # must exit 0 before you start
 
 ## Making a change
 
-1. Edit the relevant file in `data/`.
+1. Edit the authoritative source for the change: `method/` for method semantics, root `data/` for the bundled DTG exemplar, `instances/<id>/data/` for deployment-local assessment vocabulary, or `profiles/<id>/` for target configuration.
 2. Add a `provenance` block to every record you add or materially change:
 
    ```yaml
    provenance:
-     source: "DTG Credential Spec v0.4 §5.2"   # what you were reading
+     source: "Target Specification v1.2 §5.2"   # what you were reading
      triggered_by: "spec-review-2026-09"        # the activity that surfaced it
      contributor: "your name or handle"
      imported: 2026-09-14
@@ -68,7 +68,7 @@ python3 tools/validate.py     # must exit 0 before you start
 
 ## Adding each record type
 
-**A risk (`RK-xx`)** needs: a category, a lifecycle phase, a description that
+**A risk** (for example bundled DTG `RK-*`, or a deployment-local namespace such as CAWG `CRK-*`) needs: a category, a lifecycle phase, a description that
 says what goes wrong, a harm description that says who is hurt, severity and
 likelihood, and at least one metric that would move if it happened. A risk you
 cannot measure is an opinion.
@@ -100,9 +100,7 @@ Set `class` to `normative`, `recommended` or `process`, and `status` truthfully.
 before adding one. There is currently no agreed acceptance authority, so every
 record is `pending`. Do not invent one.
 
-**A governance precedent (`GP-xxx`)** records *why* a decision was made, so a
-future contributor does not silently reverse it. Add one whenever a working group
-decision changes the shape of the toolkit.
+**A governance precedent (`GP-xxx`)** records *why* a decision was made inside a deployment, so a future contributor does not silently reverse it. A governance decision in one deployment does not automatically change the portable RAHP method or another deployment.
 
 ## Severity and Critical
 

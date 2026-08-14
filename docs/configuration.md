@@ -6,7 +6,7 @@ has_toc: true
 ---
 # Configuration-driven adoption
 
-RAHP v0.5 makes a YAML file the boundary between the portable engine and a deployment. An adopter does **not** need to copy the DTG instance, import DTG issues, use DTG corpora, or connect to the DTG Portfolio Monitor.
+RAHP uses a YAML file as the boundary between the portable engine and a deployment. v0.6 proves this contract with independent DTG and CAWG/C2PA deployments. An adopter does **not** need to copy the DTG instance, import DTG issues, use DTG corpora, or connect to the DTG Portfolio Monitor.
 
 ## Minimal configuration
 

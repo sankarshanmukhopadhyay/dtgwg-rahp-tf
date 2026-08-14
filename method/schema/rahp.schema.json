@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://trustoverip.github.io/dtgwg-rahp-tf/schema/rahp.schema.json",
+  "$id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/schema/rahp.schema.json",
   "title": "RAHP record schemas",
   "description": "Structural schemas for RAHP artefact records. Controlled vocabulary values are checked separately by tools/validate.py against method/vocabularies.yaml, so that changing a vocabulary does not require editing this file.",
 

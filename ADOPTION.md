@@ -4,15 +4,15 @@ title: "Adopting RAHP"
 nav_order: 20
 has_toc: true
 ---
-# Adopting RAHP outside DTG
+# Adopting RAHP
 
-RAHP v0.5 is adopted through configuration. A Working Group, developer, standards project, or reviewer should not fork the DTG instance data merely to use the framework.
+RAHP is adopted through configuration. A Working Group, developer, standards project, assurance team, or independent reviewer can use the toolkit without inheriting either bundled deployment. DTG and CAWG/C2PA are examples of the same portable contract, not parent environments that a new adopter must copy.
 
 ## 1. Checkout and install
 
 ```bash
 git clone <rahp-repository>
-cd dtgwg-rahp-tf
+cd rahp-toolkit
 pip install -r requirements.txt
 ```
 
@@ -65,10 +65,12 @@ The CLI scaffolds canonical review records with repository and commit provenance
 
 ## What you do not inherit
 
-A non-DTG adopter does not need the DTG Portfolio Monitor, DTG scenario corpora, DTG Task Force issues, `RP-001`, the DTG action register, or the canonical DTG `data/` records. Those remain part of the bundled DTG exemplar deployment.
+A new deployment does not inherit another deployment's governance or assessment state. You do not need the DTG Portfolio Monitor, DTG scenario corpora, DTG governance queue, `RP-001`, canonical DTG `data/` records, CAWG `CRK-*` risks, or CAWG/C2PA monitoring state. Adopt only the method and capabilities your deployment needs.
+
+This separation is a core v0.6 invariant: **shared engine, independent deployment context**.
 
 ## Optional richer use
 
 Once a project needs recurring scenarios, governed risk/control catalogues, evidence contracts, or source-drift monitoring, it can adopt those RAHP capabilities deliberately. They are not prerequisites for the first configured assessment.
 
-See `docs/configuration.md` for the complete configuration model and `docs/portability.md` for the v0.5 portability contract.
+See `docs/configuration.md` for the complete configuration model and `docs/portability.md` for the portability contract demonstrated by the independent DTG and CAWG/C2PA deployments.

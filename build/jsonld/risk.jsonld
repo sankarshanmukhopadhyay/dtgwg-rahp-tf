@@ -2,7 +2,7 @@
   "@context": "../../context/rahp.jsonld",
   "@graph": [
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G01",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-G01",
       "@type": "Risk",
       "name": "Genesis Policy Capture",
       "category": "Governance",
@@ -15,32 +15,32 @@
       "likelihood": "Medium",
       "harm_description": "Biased or discriminatory membership criteria embedded permanently; initiator retains unchecked authority; downstream decisions tainted by flawed genesis assumptions.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-16"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-16"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-01"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-01"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-01"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-01"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-02"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-02"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-53",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-56"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-02",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-53",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-56"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-02"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-02"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-1",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-1",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-13"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -50,7 +50,7 @@
       "riskScore": 6
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G02",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-G02",
       "@type": "Risk",
       "name": "Governance Transition Failure",
       "category": "Governance",
@@ -63,29 +63,29 @@
       "likelihood": "Low",
       "harm_description": "Single point of governance failure; community paralysed or captured if initiator unavailable, coerced, or acting in bad faith.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-16"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-16"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-02"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-02"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-02"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-02"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-02"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-02"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-56"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-56"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-02"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-02"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-13"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -95,7 +95,7 @@
       "riskScore": 3
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G03",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-G03",
       "@type": "Risk",
       "name": "Anchor Homogeneity / Collusion Cluster",
       "category": "Governance",
@@ -108,33 +108,33 @@
       "likelihood": "Medium",
       "harm_description": "Coordinated anchor collusion enables mass fraudulent admissions; single-jurisdiction anchors vulnerable to state coercion; cultural bias embedded in vouching practices.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-10"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-05",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-10"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-03"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-02",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-03"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-02",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-09"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-11"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-11"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-05"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-05"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-11"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-11"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-2",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-2",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-13"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -144,7 +144,7 @@
       "riskScore": 6
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G04",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-G04",
       "@type": "Risk",
       "name": "Governance Bandwidth Exhaustion",
       "category": "Governance",
@@ -157,32 +157,32 @@
       "likelihood": "Medium",
       "harm_description": "Backlogs in admission, appeals, revocation; legitimate members denied timely due process; community trust in governance erodes.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-07",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-11"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-07",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-11"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-12"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-12"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-12"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-12"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-08",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-15"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-08",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-15"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-07"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-07"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-08",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-15"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-08",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-15"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-11",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-11",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-13"
       ],
       "standardsPriority": "should_address",
       "provenance": {
@@ -192,7 +192,7 @@
       "riskScore": 4
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID01",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-ID01",
       "@type": "Risk",
       "name": "Sybil Identity Proliferation",
       "category": "Identity",
@@ -206,34 +206,34 @@
       "likelihood": "High",
       "harm_description": "Adversary gains disproportionate influence; voting and governance captured; legitimate members outvoted or silenced.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-14"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-05",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-14"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-07",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-10"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-07",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-10"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-07"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-07"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-07"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-07"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-08",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-09",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-54"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-08",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-09",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-54"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-07"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-07"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-8",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-3"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-7",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-8",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-3"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -243,7 +243,7 @@
       "riskScore": 9
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID02",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-ID02",
       "@type": "Risk",
       "name": "Social Graph Privilege Exclusion",
       "category": "Identity",
@@ -257,29 +257,29 @@
       "likelihood": "High",
       "harm_description": "Marginalised individuals unable to obtain required VRCs; VTC becomes homogeneous; human rights implications where VTC access enables civic or economic participation.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-12"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-09",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-12"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-04"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-04"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-04"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-04"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-06"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-10",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-11"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-10",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-11"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-06"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-10",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-12"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-10",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-12"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -289,7 +289,7 @@
       "riskScore": 9
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID03",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-ID03",
       "@type": "Risk",
       "name": "IDVP Breach / Cascading Invalidation",
       "category": "Identity",
@@ -304,31 +304,31 @@
       "likelihood": "Medium",
       "harm_description": "Mass credential invalidation; personal identity data exposed; fraud ring may have obtained IDVCs through compromised IDVP; re-verification creates accessibility barriers.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-13"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-13"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-05"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-05"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-05"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-05"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-05",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-09"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-12",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-13",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-65"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-12",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-13",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-65"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-05",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-09"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-4",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-4",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-9"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -338,7 +338,7 @@
       "riskScore": 6
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID04",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-ID04",
       "@type": "Risk",
       "name": "DID Document Manipulation",
       "category": "Identity",
@@ -352,27 +352,27 @@
       "likelihood": "Low",
       "harm_description": "Fraudulent credential presentations accepted as genuine; impersonated anchors used to admit sybil members; member credentials stolen and replayed.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-15",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-06"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-15",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-06"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-07"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-07"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-08"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-08"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-10"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-10"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-14"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-14"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-10"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-10"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-8"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-7",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-8"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -382,7 +382,7 @@
       "riskScore": 3
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID05",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-ID05",
       "@type": "Risk",
       "name": "M-DID Linkability Across VTCs",
       "category": "Identity",
@@ -396,32 +396,32 @@
       "likelihood": "Low",
       "harm_description": "Member's full community participation graph exposed; surveillance by state actors; chilling effect on membership in politically sensitive VTCs.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-17"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-09",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-17"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-06"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-06"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-09"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-18"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-09",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-18"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-15",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-49",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-50"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-15",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-49",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-50"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-09",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-09",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-06"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-9"
       ],
       "standardsPriority": "should_address",
       "provenance": {
@@ -431,7 +431,7 @@
       "riskScore": 2
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC01",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SC01",
       "@type": "Risk",
       "name": "Over-Disclosure in IDVC Schema",
       "category": "Schemas",
@@ -445,30 +445,30 @@
       "likelihood": "Medium",
       "harm_description": "Excessive personal data collected; breach exposes more than necessary; correlation with external databases enables de-anonymisation.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-04"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-09",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-04"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-05"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-05"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-04"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-04"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-09"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-16",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-17"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-16",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-17"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-09"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-4",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-4",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-9"
       ],
       "standardsPriority": "should_address",
       "provenance": {
@@ -478,7 +478,7 @@
       "riskScore": 4
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC02",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SC02",
       "@type": "Risk",
       "name": "Credential Schema Ambiguity",
       "category": "Schemas",
@@ -492,33 +492,33 @@
       "likelihood": "Medium",
       "harm_description": "VTA rejects valid credentials due to schema mismatch; non-compliant implementations admit members who should be rejected; community trust damaged.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-15"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-15"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-07"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-05",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-07"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-04"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-04"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-01"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-01"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-18",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-19",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-53"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-18",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-19",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-53"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-01"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-01"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-1",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-4",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-1",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-4",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-13"
       ],
       "standardsPriority": "should_address",
       "provenance": {
@@ -528,7 +528,7 @@
       "riskScore": 4
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-NM01",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-NM01",
       "@type": "Risk",
       "name": "Personal Network Manager UX Failure",
       "category": "Network Managers",
@@ -543,34 +543,34 @@
       "likelihood": "High",
       "harm_description": "Members generate unsafe keys; incorrect M-DID selection creates linkability; members abandon onboarding; trust task ceremonies not completed correctly.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-12",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-03"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-12",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-03"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-04"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-02",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-04"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-04"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-02",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-04"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-06"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-20",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-21",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-58"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-20",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-21",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-58"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-06"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-12"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-12"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -580,7 +580,7 @@
       "riskScore": 9
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-NM02",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-NM02",
       "@type": "Risk",
       "name": "Key Loss / Recovery Failure",
       "category": "Network Managers",
@@ -594,28 +594,28 @@
       "likelihood": "Medium",
       "harm_description": "Member locked out permanently; trust graph has orphaned nodes; key recovery attempts create identity fraud risk if not properly gated.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-13"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-13"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-04"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-04"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-04"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-04"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-01"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-01"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-22"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-22"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-01"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-01"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-12",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-12",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-13"
       ],
       "standardsPriority": "should_address",
       "provenance": {
@@ -625,7 +625,7 @@
       "riskScore": 4
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR01",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-CR01",
       "@type": "Risk",
       "name": "Credential Revocation Without Due Process",
       "category": "Credentials",
@@ -639,32 +639,32 @@
       "likelihood": "Medium",
       "harm_description": "Member unjustly excluded; professional or reputational harm; no remedy available; chilling effect on participation for other members.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-07",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-02",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-07",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-09"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-06"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-06"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-06"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-06"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-08",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-08",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-09"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-23",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-24",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-60"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-23",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-24",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-60"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-08",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-08",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-09"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-5",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-11"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-5",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-11"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -674,7 +674,7 @@
       "riskScore": 6
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR02",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-CR02",
       "@type": "Risk",
       "name": "Stale Credential / Expiry Without Renewal Path",
       "category": "Credentials",
@@ -688,27 +688,27 @@
       "likelihood": "Medium",
       "harm_description": "Active members locked out through administrative failure; valuable contributors excluded; trust in credential infrastructure eroded.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-13",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-02"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-13",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-02"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-06"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-05",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-06"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-05"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-05"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-08"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-08"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-25"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-25"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-08"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-08"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-5"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-5"
       ],
       "standardsPriority": "should_address",
       "provenance": {
@@ -718,7 +718,7 @@
       "riskScore": 4
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR03",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-CR03",
       "@type": "Risk",
       "name": "Revocation Cascade / Cross-VTC Contamination",
       "category": "Credentials",
@@ -732,27 +732,27 @@
       "likelihood": "Low",
       "harm_description": "Member penalised across multiple communities for a single community's decision; effective blacklisting without cross-community due process.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-17",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-17",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-09"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-06"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-06"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-06"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-06"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-09"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-26"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-26"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-09"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-5",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-5",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-9"
       ],
       "standardsPriority": "should_address",
       "provenance": {
@@ -762,7 +762,7 @@
       "riskScore": 2
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY01",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-CY01",
       "@type": "Risk",
       "name": "ZKP Implementation Failure",
       "category": "Cryptography",
@@ -777,32 +777,32 @@
       "likelihood": "Low",
       "harm_description": "Member identity data exposed despite expectation of privacy; forged ZKP proofs used to pass admission checks with invalid credentials.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-15"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-09",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-15"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-05"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-05"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-04"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-04"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-07",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-20"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-07",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-20"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-27",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-28"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-27",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-28"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-07"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-07"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-9",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-7"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -812,7 +812,7 @@
       "riskScore": 3
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY02",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-CY02",
       "@type": "Risk",
       "name": "Quantum / Algorithm Obsolescence",
       "category": "Cryptography",
@@ -826,30 +826,30 @@
       "likelihood": "Low",
       "harm_description": "All existing credentials become cryptographically untrustworthy; mass re-issuance required; members without updated tooling excluded during transition.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-15",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-16"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-15",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-16"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-07"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-07"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-08"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-08"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-16",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-17"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-16",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-17"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-29",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-48"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-29",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-48"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-16",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-17"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-16",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-17"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-8"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-7",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-8"
       ],
       "standardsPriority": "should_address",
       "provenance": {
@@ -859,7 +859,7 @@
       "riskScore": 2
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI01",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI01",
       "@type": "Risk",
       "name": "Agent Credential Scope Creep",
       "category": "AI Agents",
@@ -873,34 +873,34 @@
       "likelihood": "Medium",
       "harm_description": "Agent performs unauthorised credential operations; if compromised, attacker gains persistent trusted access with full operator permissions.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-08",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-18"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-08",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-18"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-08",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-08",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-09"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-10",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-11"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-10",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-11"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-12",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-13"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-12",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-13"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-30",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-31",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-51",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-52"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-30",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-31",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-51",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-52"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-12",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-13"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-12",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-13"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-6",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-6",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-7"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -910,7 +910,7 @@
       "riskScore": 6
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI02",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI02",
       "@type": "Risk",
       "name": "Stale Agent After Operator Revocation",
       "category": "AI Agents",
@@ -924,27 +924,27 @@
       "likelihood": "Medium",
       "harm_description": "Revoked member's agent maintains unauthorised VTC access; governance decisions may be influenced by a member no longer legitimate.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-08",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-13"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-08",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-13"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-08"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-08"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-10"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-10"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-12"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-12"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-32",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-52"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-32",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-52"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-12"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-12"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-6"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-6"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -954,7 +954,7 @@
       "riskScore": 6
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI03",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI03",
       "@type": "Risk",
       "name": "AI-Mediated Sybil Generation at Scale",
       "category": "AI Agents",
@@ -968,35 +968,35 @@
       "likelihood": "Medium",
       "harm_description": "VTC trust graph flooded with synthetic members; governance capture by AI-controlled fake identities; admission controls rendered ineffective.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-14",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-18"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-14",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-18"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-09",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-10"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-09",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-10"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-11",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-07"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-11",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-07"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-07",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-14"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-07",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-14"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-08",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-33",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-34",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-51"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-08",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-33",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-34",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-51"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-14",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-07"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-14",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-07"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-6",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-8"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-6",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-7",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-8"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -1006,7 +1006,7 @@
       "riskScore": 6
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI04",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI04",
       "@type": "Risk",
       "name": "LLM-Powered Social Engineering of Anchors",
       "category": "AI Agents",
@@ -1020,31 +1020,31 @@
       "likelihood": "Medium",
       "harm_description": "Fraudulent members admitted through compromised anchor vouching; anchor reputation and liability implicated; trust graph integrity undermined.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-18"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-05",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-18"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-09"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-11"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-11"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-14"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-14"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-33",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-35",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-36",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-54"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-33",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-35",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-36",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-54"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-14"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-14"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-6",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-2"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-6",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-2"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -1054,7 +1054,7 @@
       "riskScore": 6
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX01",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-EX01",
       "@type": "Risk",
       "name": "State-Level Coercion of Anchors / IDVPs",
       "category": "External",
@@ -1069,31 +1069,31 @@
       "likelihood": "Medium",
       "harm_description": "Dissidents identified and targeted via VTC membership data; members forced out under political pressure; VTC becomes instrument of state surveillance.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-10"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-10"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-11"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-11"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-09"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-10",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-11"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-10",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-11"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-37",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-38",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-45"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-37",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-38",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-45"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-11",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-10"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-11",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-10"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-13",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-7"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -1103,7 +1103,7 @@
       "riskScore": 6
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX02",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-EX02",
       "@type": "Risk",
       "name": "Registry Censorship / Denial of Service",
       "category": "External",
@@ -1117,31 +1117,31 @@
       "likelihood": "Medium",
       "harm_description": "VTC operations halted; members unable to verify credentials or be admitted; VTA unavailability cascades to relying parties.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-15"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-15"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-07",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-11"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-07",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-11"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-08",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-08",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-09"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-10",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-16"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-10",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-16"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-39"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-39"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-10",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-16"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-10",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-16"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-7",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-13"
       ],
       "standardsPriority": "should_address",
       "provenance": {
@@ -1151,7 +1151,7 @@
       "riskScore": 4
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX03",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-EX03",
       "@type": "Risk",
       "name": "Legal / Regulatory Framework Conflict",
       "category": "External",
@@ -1165,35 +1165,35 @@
       "likelihood": "Medium",
       "harm_description": "Governing body exposed to regulatory fines; members' data processed unlawfully; IDVP faces licence revocation; VTC forced to suspend operations.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-04"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-09",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-04"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-05"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-05"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-04"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-04"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-17"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-09",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-17"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-40",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-41",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-66"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-40",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-41",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-66"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-09",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-17"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-09",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-17"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-9",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-13"
       ],
       "standardsPriority": "should_address",
       "provenance": {
@@ -1203,7 +1203,7 @@
       "riskScore": 4
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX01",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-HX01",
       "@type": "Risk",
       "name": "Chilling Effect on Community Participation",
       "category": "Human Experience",
@@ -1218,34 +1218,34 @@
       "likelihood": "Medium",
       "harm_description": "Community loses diversity and candour; whistle-blowers and dissidents avoid participation; community loses the genuine peer relationship value that DTG is designed to enable.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-12"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-09",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-12"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-06"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-06"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-09"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-18"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-09",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-18"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-15",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-42",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-49",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-50"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-15",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-42",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-49",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-50"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-09",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-09",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-06"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-10"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-9",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-10"
       ],
       "standardsPriority": "should_address",
       "provenance": {
@@ -1255,7 +1255,7 @@
       "riskScore": 4
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX02",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-HX02",
       "@type": "Risk",
       "name": "Discriminatory Vouching Practices",
       "category": "Human Experience",
@@ -1269,31 +1269,31 @@
       "likelihood": "Medium",
       "harm_description": "Marginalised groups excluded through informal practices; VTC replicates existing social inequalities; legal exposure for governing body.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-12",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-12",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-05"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-04"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-04"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-03"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-03"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-06"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-10",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-43"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-10",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-43"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-06"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-10",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-2"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-10",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-2"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -1303,7 +1303,7 @@
       "riskScore": 6
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX03",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-HX03",
       "@type": "Risk",
       "name": "Reputational Harm from Public Revocation",
       "category": "Human Experience",
@@ -1317,30 +1317,30 @@
       "likelihood": "Medium",
       "harm_description": "Member suffers professional consequences before appeal is resolved; reputational harm not remedied even if appeal succeeds; chilling effect on participation for others.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-17"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-02",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-17"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-06"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-06"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-06"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-06"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-08",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-08",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-09"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-24",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-44"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-24",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-44"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-08",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-08",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-09"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-5",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-11"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-5",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-11"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -1350,7 +1350,7 @@
       "riskScore": 6
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY01",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SY01",
       "@type": "Risk",
       "name": "Trust Graph Capture by Coordinated Actor",
       "category": "Systemic",
@@ -1364,39 +1364,39 @@
       "likelihood": "Medium",
       "harm_description": "VTC governance captured by malicious actors; legitimate members outvoted or silenced; community used as infrastructure for further attacks; DTG ecosystem integrity undermined.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-14"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-05",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-14"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-10",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-10",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-09"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-07",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-11"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-07",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-11"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-07",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-10",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-14"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-07",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-10",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-14"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-09",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-34",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-45"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-09",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-34",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-45"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-07",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-10",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-14"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-07",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-10",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-14"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-8"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-7",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-8"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -1406,7 +1406,7 @@
       "riskScore": 6
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY02",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SY02",
       "@type": "Risk",
       "name": "Coordinated Inauthentic Behaviour (CIB) in Governance",
       "category": "Systemic",
@@ -1420,31 +1420,31 @@
       "likelihood": "Medium",
       "harm_description": "Trust anchors resign or make poor decisions under attack; governance bandwidth consumed; VTC unable to function as intended.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-11",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-11",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-05"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-12"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-12"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-12"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-12"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-15",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-16"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-15",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-16"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-07",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-46",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-55"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-07",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-46",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-55"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-15",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-16"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-15",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-16"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-11",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-11",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-7"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -1454,7 +1454,7 @@
       "riskScore": 6
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY03",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SY03",
       "@type": "Risk",
       "name": "Open Issues Left Unresolved at Scale",
       "category": "Systemic",
@@ -1468,33 +1468,33 @@
       "likelihood": "High",
       "harm_description": "Uniqueness enforcement fails at scale; revocation mechanisms fail under load; DID documents become irresolvable; trust task protocols incompatible across implementations.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-14",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-16"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-14",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-16"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-07"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-07"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-07",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-08"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-07",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-08"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-07",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-17"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-07",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-17"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-08",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-47",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-48"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-08",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-47",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-48"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-07",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-17"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-07",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-17"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-8",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-7",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-8",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-13"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -1504,7 +1504,7 @@
       "riskScore": 9
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC03",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SC03",
       "@type": "Risk",
       "name": "VRC Over-Disclosure — Rich Data in Core Edge",
       "category": "Schemas",
@@ -1518,30 +1518,30 @@
       "likelihood": "Medium",
       "harm_description": "Members inadvertently commit to more personal data than intended in bilateral VRCs; ZKP selective disclosure is undermined because the data is in the core credential, not an annotation; relationship graphs become richer surveillance targets than necessary.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-09"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-06"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-06"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-04"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-04"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-09"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-49"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-49"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-09"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-12"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-9",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-12"
       ],
       "standardsPriority": "should_address",
       "provenance": {
@@ -1551,7 +1551,7 @@
       "riskScore": 4
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC04",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SC04",
       "@type": "Risk",
       "name": "M-DID Bootstrapping Exception Undermines R-DID Privacy",
       "category": "Schemas",
@@ -1565,31 +1565,31 @@
       "likelihood": "High",
       "harm_description": "The R-DID architecture's privacy guarantee is contingent on migration actually happening. Without a normative trigger, the bootstrapping exception becomes the permanent operating mode for many implementations. State actors and registry observers can reconstruct trust graphs from the pre-migration VRC corpus.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-17"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-09",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-17"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-11"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-11"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-02",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-09"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-18"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-18"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-50"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-50"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-18"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-18"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-9",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-13"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -1599,7 +1599,7 @@
       "riskScore": 6
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR04",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-CR04",
       "@type": "Risk",
       "name": "Endorsement Credential (VEC) Manipulation",
       "category": "Credentials",
@@ -1613,31 +1613,31 @@
       "likelihood": "Medium",
       "harm_description": "Synthetic personas receive artificially inflated reputation scores via coordinated VEC issuance; governance decisions influenced by reputational signals that are manufactured rather than earned; admission thresholds gamed via endorsement proxies.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-14"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-05",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-14"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-10",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-12"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-10",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-12"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-07",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-12"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-07",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-12"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-03"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-03"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-55"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-55"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-03"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-03"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-2",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-11"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-2",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-7",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-11"
       ],
       "standardsPriority": "should_address",
       "provenance": {
@@ -1647,7 +1647,7 @@
       "riskScore": 4
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G05",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-G05",
       "@type": "Risk",
       "name": "Governanceless VTC Claiming Credential Compliance",
       "category": "Governance",
@@ -1661,30 +1661,30 @@
       "likelihood": "High",
       "harm_description": "Relying parties accept VMCs from VTCs with no governance backing; DTG compliance signals trustworthiness that does not exist at the governance layer; a single actor controls a 'compliant' VTC indefinitely with no accountability.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-16"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-16"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-04"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-04"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-01"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-01"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-02"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-02"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-56"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-56"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-02"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-02"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-1",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-13"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-1",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-13"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -1694,7 +1694,7 @@
       "riskScore": 6
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX04",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-HX04",
       "@type": "Risk",
       "name": "Incapacity / Unsupported Decision-Making Exclusion",
       "category": "Human Experience",
@@ -1708,37 +1708,37 @@
       "likelihood": "High",
       "harm_description": "Persons requiring support are excluded from VTC participation entirely, or their participation is mediated through impersonation-equivalent workarounds (a guardian using their own DID on behalf of the member). Admission denials fall disproportionately on disabled people, older adults with declining capacity, and minors — groups with legal protection against discrimination. Governance decisions affecting these members lack due process adapted to their situation.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-07",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-12",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-19",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-31",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-32"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-07",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-12",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-19",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-31",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-32"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-26",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-27",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-28",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-29"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-26",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-27",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-28",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-29"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-26",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-27",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-28"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-26",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-27",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-28"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-19"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-19"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-57",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-58"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-57",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-58"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-19"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-19"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-10",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-17",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-18"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-10",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-17",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-18"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -1748,7 +1748,7 @@
       "riskScore": 9
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX05",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-HX05",
       "@type": "Risk",
       "name": "Legal Capacity Architecture Gap — LPA / Guardianship Not Representable",
       "category": "Human Experience",
@@ -1762,39 +1762,39 @@
       "likelihood": "Medium",
       "harm_description": "A person who has lost capacity loses their VTC membership by default because no one can operate their credentials lawfully. Legitimate LPA holders are treated as unauthorised actors. Revocation due process rights (GR-08) are forfeited because notices reach an inaccessible account. The governing body cannot involve the LPA holder in governance processes. On death, the M-DID is abandoned rather than formally closed, leaving a ghost node in the trust graph and no tamper-evident record of the credential lifecycle end.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-07",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-26",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-30",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-33"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-02",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-07",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-26",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-30",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-33"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-29",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-30",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-31",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-32"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-29",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-30",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-31",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-32"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-28",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-29"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-28",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-29"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-08",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-19"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-08",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-19"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-59",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-60"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-59",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-60"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-08",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-19"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-08",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-19"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-5",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-11",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-17",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-19"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-5",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-11",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-17",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-19"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -1804,7 +1804,7 @@
       "riskScore": 6
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX06",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-HX06",
       "@type": "Risk",
       "name": "Credential Lifecycle Abandonment on Capacity Loss or Death",
       "category": "Human Experience",
@@ -1818,34 +1818,34 @@
       "likelihood": "High",
       "harm_description": "Ghost nodes accumulate in the trust graph: members who have lost capacity or died appear as active participants. Trust graph topology calculations (anchor diversity, reciprocity rates) are distorted by stale nodes. Relying parties may accept credentials from a deceased member's DID. Family members or attorneys have no recognised pathway to close the account, creating distress and potential identity misuse risk. The absence of a death-closure pathway also means a malicious actor could continue operating a deceased member's DID without detection.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-13",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-30",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-32",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-33"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-13",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-30",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-32",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-33"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-32"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-32"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-29"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-29"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-08",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-19"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-08",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-19"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-59",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-60",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-61"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-59",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-60",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-61"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-08",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-19"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-08",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-19"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-5",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-17",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-19"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-5",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-17",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-19"
       ],
       "standardsPriority": "should_address",
       "provenance": {
@@ -1855,7 +1855,7 @@
       "riskScore": 6
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID06",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-ID06",
       "@type": "Risk",
       "name": "Minor Data Exposure via Co-Signatory Inference",
       "category": "Identity",
@@ -1869,35 +1869,35 @@
       "likelihood": "High",
       "harm_description": "A minor's SEN profile, disability status, or reduced capacity is disclosed without their consent to any party that can observe the credential structure. This constitutes processing of special-category data under UK GDPR without a lawful basis. The VTC governing body becomes subject to Online Safety Act 2023 children's data obligations without necessarily having the governance structures to comply. Failure to protect this inferred data creates regulatory exposure and reputational harm to the minor.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-12",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-31"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-09",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-12",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-31"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-26",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-27"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-26",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-27"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-26"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-26"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-19"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-19"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-16",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-17",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-57",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-66"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-16",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-17",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-57",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-66"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-19"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-19"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-9",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-17",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-18"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-9",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-17",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-18"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -1907,7 +1907,7 @@
       "riskScore": 9
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX04",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-EX04",
       "@type": "Risk",
       "name": "Child Safety Non-Compliance — Age Assurance Failure",
       "category": "External",
@@ -1921,39 +1921,39 @@
       "likelihood": "Medium",
       "harm_description": "A minor accesses age-restricted content due to a false-positive age assurance outcome. The relying party faces Ofcom enforcement action including fines up to £18 million or 10% of global qualifying revenue. Criminal liability for platform operators is possible under OSA 2023. The IDVP that issued the compromised credential faces deregistration and regulatory action. The DTG architecture's fitness for age-assurance use cases is brought into question, with potential for wider loss of trust in the ecosystem. The harm to the child is primary and irreversible.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-36",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-37"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-36",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-37"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-35",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-36"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-35",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-36"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-32",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-33"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-32",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-33"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-07",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-20"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-05",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-07",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-20"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-27",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-28",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-33",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-62"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-27",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-28",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-33",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-62"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-07",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-20"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-05",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-07",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-20"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-7",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-21"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-7",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-21"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -1962,7 +1962,7 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX05",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-EX05",
       "@type": "Risk",
       "name": "Organisational Identity Architecture Gap",
       "category": "External",
@@ -1976,32 +1976,32 @@
       "likelihood": "High",
       "harm_description": "Regulated organisations cannot participate in the DTG ecosystem in a compliant way. NHS Trusts cannot issue VMCs interoperable with the NHS Digital Staff Passport. The absence of an organisational identity model means the DTG ecosystem remains limited to individual participants, excluding the institutional sector that would drive adoption at scale. Organisations that attempt to participate using workarounds (an individual holding a C-DID on behalf of an institution) create unrecognised personal liability and governance gaps.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-10",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-34",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-35"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-10",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-34",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-35"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-33",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-34"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-33",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-34"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-30",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-31"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-30",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-31"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-21"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-21"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-63",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-64"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-63",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-64"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-21"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-21"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-4",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-20"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-4",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-20"
       ],
       "standardsPriority": "must_address",
       "provenance": {
@@ -2011,7 +2011,7 @@
       "riskScore": 9
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX06",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-EX06",
       "@type": "Risk",
       "name": "IDVP Regulatory Cascade — Cross-Jurisdiction Age Assurance",
       "category": "External",
@@ -2025,33 +2025,33 @@
       "likelihood": "Medium",
       "harm_description": "A relying party accepts an IDVC from a subscriber whose IDVP has been deregistered or was never compliant with UK Ofcom standards. Ofcom finds the age assurance technically inadequate regardless of the relying party's good faith. The relying party faces enforcement action. The DTG trust registry does not have a defined mechanism for propagating IDVP deregistration to relying parties in near-real-time across jurisdictions. The broader IDVP ecosystem loses confidence in the DTG trust registry as a reliable source of IDVP standing.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-17",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-34",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-36"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-17",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-34",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-36"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-35"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-35"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-32"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-32"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-20"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-05",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-20"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-13",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-62",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-65"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-13",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-62",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-65"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-20"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-05",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-20"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-4",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-21"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-4",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-21"
       ],
       "standardsPriority": "should_address",
       "provenance": {
@@ -2061,7 +2061,7 @@
       "riskScore": 6
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC05",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SC05",
       "@type": "Risk",
       "name": "Credential Schema Gap — Supported Consent and LPA Not Representable",
       "category": "Schemas",
@@ -2075,38 +2075,38 @@
       "likelihood": "High",
       "harm_description": "The credential architecture cannot serve a large class of legitimate participants without introducing impersonation-equivalent workarounds. Any attempt to accommodate these users without schema changes creates governance ambiguity, audit trail corruption (Margaret's actions appear as Arthur's), and potential violations of the Mental Capacity Act 2005 (which requires clear records of attorney decision-making). Standards bodies that adopt the DTG spec without addressing this gap will produce a credential ecosystem that is legally non-compliant in the UK, EU, and any jurisdiction with equivalent incapacity law.",
       "affectedMetrics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-09",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-31",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-32",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-33"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-09",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-31",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-32",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-33"
       ],
       "userStories": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-26",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-29",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/US-30"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-26",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-29",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-30"
       ],
       "scenarios": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-26",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/SC-28"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-26",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-28"
       ],
       "guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-19"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-19"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-57",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-58",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-59",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-60",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-61",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-66"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-57",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-58",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-59",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-60",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-61",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-66"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-19"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-19"
       ],
       "epics": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-17",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-18",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/EPIC-19"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-17",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-18",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-19"
       ],
       "standardsPriority": "must_address",
       "provenance": {

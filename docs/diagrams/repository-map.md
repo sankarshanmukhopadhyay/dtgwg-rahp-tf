@@ -2,22 +2,29 @@
 
 ```mermaid
 flowchart TB
-  U[Working Group / Spec Author] --> M[method/ · portable lifecycle, vocabularies, schemas]
-  U --> D[data/ · canonical RAHP instance]
-  M --> T[tools/ · validate and build]
-  D --> T
-  C[context/ · JSON-LD semantics] --> T
-  T --> B[build/ · generated site, JSON/JSON-LD, derived views]
-  D --> E[examples/ · applied pressure tests]
-  M --> DOC[docs/ · understand and apply]
-  D --> DOC
-  A[archive/ · historical provenance only] -. not canonical .-> U
+  U[Adopter / Standards WG / Reviewer] --> P[profiles/<id>/ · target configuration]
+  M[method/ · portable lifecycle, vocabularies, schemas] --> T[tools/ · orchestration, validation, monitoring, build]
+  P --> T
+  I[instances/<id>/ · deployment state, reviews, optional local vocabulary] --> T
+  D[data/ · bundled DTG exemplar catalogue] --> T
+  C[corpora/ · optional scenario adapters] --> T
+  X[context/ · JSON-LD semantics] --> T
+  T --> B[build/ · generated evidence and catalogue]
+  T --> E[examples/ · worked assessments]
+  M --> DOC[docs/ · portable guidance and deployment documentation]
+  P --> DOC
+  I --> DOC
+  A[archive/ · historical provenance only] -. not current authority .-> DOC
 ```
 
-## Edit contract
+## Authority boundaries
 
-- Edit `data/` for DTG facts and findings.
-- Edit `method/` only for portable method changes.
-- Edit `tools/` to change validation/build behaviour.
+- Edit `method/` only when changing **portable RAHP semantics**.
+- Edit `profiles/<id>/` when changing a deployment's configured target repositories, branches, scope or allowed review modes.
+- Edit `instances/<id>/` for deployment-owned state, reviews and local assurance vocabulary.
+- Root `data/` is the **bundled DTG exemplar catalogue retained for compatibility**; it is not the universal RAHP data model that every adopter must inherit.
+- `corpora/` contains optional domain adapters. A deployment may use none, some, or its own.
 - Never hand-edit `build/`.
-- Treat `archive/` as read-only provenance.
+- Treat `archive/` as historical provenance, not current RAHP authority.
+
+The v0.6 architecture is therefore **one portable method and engine, many independently governed deployments**.

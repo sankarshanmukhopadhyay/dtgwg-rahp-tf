@@ -16,7 +16,7 @@ review:
       - specs/trust-task-discovery/
       - specs/trust-ceremony-receipt/
   reviewed_against:
-    repository: sankarshanmukhopadhyay/dtgwg-rahp-tf
+    repository: sankarshanmukhopadhyay/rahp-toolkit
     rahp_version: v0.3-dev
     corpus_date: '2026-08-12'
   scope:

@@ -35,16 +35,20 @@ REFERENCE_FILES = {
 def load_reference_index() -> dict[str, dict[str, str]]:
     index: dict[str, dict[str, str]] = {}
     for kind, filename in REFERENCE_FILES.items():
-        doc = load_yaml(ROOT / "data" / filename)
-        for rec in doc.get("records") or []:
-            rid = str(rec.get("id") or "")
-            if not rid:
+        paths = [ROOT / "data" / filename, *sorted((ROOT / "instances").glob(f"*/data/{filename}"))]
+        for path in paths:
+            if not path.exists():
                 continue
-            title = rec.get("name") or rec.get("title")
-            if not title and kind == "assurance_tests":
-                criterion = str(rec.get("pass_criterion") or "").strip()
-                title = criterion[:90] + ("…" if len(criterion) > 90 else "") if criterion else "Assurance test"
-            index[rid] = {"title": str(title or rid), "kind": kind}
+            doc = load_yaml(path)
+            for rec in doc.get("records") or []:
+                rid = str(rec.get("id") or "")
+                if not rid:
+                    continue
+                title = rec.get("name") or rec.get("title")
+                if not title and kind == "assurance_tests":
+                    criterion = str(rec.get("pass_criterion") or "").strip()
+                    title = criterion[:90] + ("…" if len(criterion) > 90 else "") if criterion else "Assurance test"
+                index[rid] = {"title": str(title or rid), "kind": kind, "href": str(rec.get("link") or "")}
     return index
 
 
@@ -72,7 +76,8 @@ def ref_link(value: Any) -> str:
     if not rec:
         return f"`{rid}`"
     title = md_cell(rec["title"])
-    return f"[{rid} — {title}]({CATALOGUE_RELATIVE}#{rid})"
+    href = rec.get("href") or f"{CATALOGUE_RELATIVE}#{rid}"
+    return f"[{rid} — {title}]({href})"
 
 
 def ref_list(values: list[Any] | None) -> str:

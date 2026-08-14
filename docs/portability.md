@@ -6,7 +6,7 @@ has_toc: true
 ---
 # Portability
 
-RAHP v0.5 defines portability operationally: **the adopter supplies configuration, not a replacement copy of the DTG instance**.
+RAHP is portable by construction: **the adopter supplies deployment configuration and owns deployment state; the method and engine remain shared**. v0.5 introduced this configuration boundary and v0.6 demonstrates it with two materially different deployments, DTG and CAWG/C2PA.
 
 ```mermaid
 flowchart TD
@@ -45,3 +45,11 @@ Passing this test proves **configuration and workflow portability**. A real exte
 ## Deployment-specific extensions
 
 An adopter may add integrations under `extensions`. The bundled DTG profile uses this mechanism to describe its Portfolio Monitor relationship. The core schema intentionally treats extension content as adopter-owned metadata: the RAHP engine does not require it.
+
+## Instance-local assurance vocabulary
+
+A portable deployment may maintain risks or other assessment vocabulary that belongs to that instance rather than to the bundled DTG exemplar. The CAWG/C2PA deployment demonstrates this with `instances/cawg/data/risks.yaml`: its `CRK-*` identifiers are RAHP assessment artefacts and are not CAWG, DIF, or C2PA normative identifiers. The renderer and pressure-test validator resolve instance-local records without importing them into the portable method or the DTG catalogue.
+
+## Independent change tracking
+
+Portability also applies to operational monitoring. `tools/instance_monitor.py` reads a static deployment profile, tracks each `repository@branch` revision, records material changes, and emits review events. `tools/publish_assessment_issues.py` can turn those events into deduplicated issues in the RAHP review repository. This keeps source monitoring and review workflow reusable without coupling an external deployment to the DTG Portfolio Monitor. A discovered or configured GitHub repository with no commit history is represented as `status: no-commits` and does not abort the wider monitoring run; other HTTP/API failures remain errors so operational faults are not silently hidden.

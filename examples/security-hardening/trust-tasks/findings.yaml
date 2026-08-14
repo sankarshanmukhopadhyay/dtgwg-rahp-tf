@@ -14,7 +14,7 @@ review:
     - specs/trust-task-discovery/0.1/spec.md
     - specs/trust-ceremony-receipt/0.1/spec.md
   reviewed_against:
-    repository: sankarshanmukhopadhyay/dtgwg-rahp-tf
+    repository: sankarshanmukhopadhyay/rahp-toolkit
     rahp_version: v0.3-dev
   summary:
     finding_count: 13

@@ -3,139 +3,105 @@
 **Risk Assessment & Harms Prevention**  
 Release v0.6.0 · CC-BY 4.0
 
-RAHP is a repeatable assurance framework for pressure-testing standards against risks and human harms, running adversarial security-hardening reviews, tracing findings to controls and evidence, and feeding actionable changes back into specification development. **v0.6 keeps the YAML configuration as the portability boundary and proves it with an external CAWG/C2PA deployment:** a Working Group, developer, or reviewer can list one or more repositories and run RAHP, security, or combined review workflows without inheriting DTG-specific corpora, issues, governance records, or portfolio metadata. The bundled DTG material is an exemplar deployment of the neutral engine.
+RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-testing standards and technical specifications against risks, human harms, governance weaknesses and adversarial/security failure conditions. It provides a reusable method, configuration contract, review tooling, scenario patterns, source-change monitoring, validators and evidence rendering.
 
-## What do you want to do?
+> **Project identity:** RAHP Toolkit is the project. DTG and CAWG/C2PA are separately scoped deployments that use it. DTG is the historical origin and bundled exemplar; CAWG/C2PA is the first substantial external deployment. Neither deployment defines the portable method for another adopter.
+
+## Start here
 
 | Goal | Start here |
 |---|---|
-| Configure one or more repositories | [Configuration-driven adoption](docs/configuration.md) |
-| Review a specification for risks and harms | [Pressure-testing a specification](docs/pressure-testing-a-spec.md) |
-| Exercise a specification against scenario corpora | [Scenario-driven pressure testing](docs/scenario-driven-pressure-testing.md) |
-| Perform an adversarial protocol/security review | [Security and hardening review](docs/security-hardening-review.md) |
-| Have an AI agent prepare and run the review workflow | [AI-agent pressure testing](docs/using-an-ai-agent.md) |
-| Govern delegated AI/agent authority in a target system | [Agent delegation governance](docs/agent-delegation-governance.md) |
-| Design runtime assurance/evidence contracts | [Operational assurance](docs/operational-assurance.md) |
-| Understand the RAHP method | [How RAHP works](docs/how-rahp-works.md) |
-| Explore the DTG instance | [DTG instance](docs/dtg-instance.md) |
-| Explore the CAWG/C2PA external instance | [CAWG/C2PA instance](docs/cawg-instance.md) |
-| Read the CAWG/C2PA worked pressure tests | [CAWG/C2PA assessment pack](examples/cawg-c2pa/README.md) |
-| Adopt RAHP for another Working Group | [Adoption guide](ADOPTION.md) and [portability contract](docs/portability.md) |
-| Make a small first assessment | [Minimum viable RAHP](examples/minimal-instance/README.md) |
-| See what is waiting on the Task Force | [Task Force action register](docs/task-force-actions.md) |
-| Contribute risks, controls, or evidence | [Contributing](CONTRIBUTING.md) |
-| Understand where a remediation belongs | [Governance boundaries](docs/governance-boundaries.md) |
+| Understand the method | [How RAHP works](docs/how-rahp-works.md) and [Concepts](docs/concepts.md) |
+| Configure your own repositories | [Configuration-driven adoption](docs/configuration.md) and [Adopting RAHP](ADOPTION.md) |
+| Run a risks-and-harms review | [Pressure-testing a specification](docs/pressure-testing-a-spec.md) |
+| Run a security/adversarial review | [Security and hardening review](docs/security-hardening-review.md) |
+| Run both lenses together | [Review modes](docs/review-modes.md) |
+| Exercise scenario stress conditions | [Scenario-driven pressure testing](docs/scenario-driven-pressure-testing.md) |
+| Use AI assistance with human accountability | [AI-assisted RAHP](docs/ai-assisted-process.md) |
+| Understand portability and deployment boundaries | [Portability](docs/portability.md) |
+| Inspect the CAWG/C2PA external deployment | [CAWG/C2PA instance](docs/cawg-instance.md) |
+| Inspect the bundled DTG exemplar | [DTG instance](docs/dtg-instance.md) |
+| Read the v0.6 release | [v0.6.0 release notes](docs/releases/v0.6.0.md) |
 
-## Operating model
+## The v0.6 architecture
 
 ```mermaid
 flowchart TB
-  A[Standards WG / Spec Author] --> M
-  subgraph M[Portable RAHP Method]
-    L[Lifecycle]
-    V[Controlled vocabularies]
-    S[Schemas and invariants]
-  end
-  M --> I
-  subgraph I[RAHP Instance]
-    P[Personas] --> U[User Stories]
-    P --> SC[Scenarios]
-    U --> R[Risks]
-    SC --> R
-    R --> H[Harms]
-    R --> C[Controls]
-    R --> G[Guardrails]
-    G --> T[Assurance Tests]
-    C --> ME[Metrics]
-    ME --> EV[Evidence artefacts]
-    R --> REC[Recommendations]
-    R --> RA[Risk acceptance]
-    RA --> RP[Rule profile]
-  end
-  I --> X[Target Specification]
-  M --> TOOLS[Validator and build system]
-  I --> TOOLS
-  TOOLS --> OUT[Generated site · JSON/JSON-LD · coverage views · action set]
+  A[Adopter / Standards WG / Reviewer] --> P[Deployment profile YAML]
+  M[Portable RAHP method] --> E[Portable engine and validators]
+  P --> E
+  I[Deployment-owned state / local vocabulary] --> E
+  C[Optional scenario corpora] --> E
+  E --> R[RAHP / Security / Combined review]
+  R --> O[Evidence · findings · retest triggers]
+  E --> W[Source-change monitoring]
+  W --> Q[assessment-required issue queue]
+
+  E --> D1[DTG exemplar deployment]
+  E --> D2[CAWG/C2PA external deployment]
+  E --> D3[Your deployment]
 ```
 
-The mental model is simple: **people and contexts surface scenarios; scenarios surface risks; risks drive controls and guardrails; guardrails become testable; findings feed back into specification development.**
-
-
-## DTG operational deployment
-
-The portable toolkit and the bundled DTG deployment are intentionally separated. `instances/dtg/`
-discovers the current DTG portfolio from the Portfolio Monitor, adds relevant forks by GitHub parent
-relationship, tracks observed revisions, and can create detailed `assessment-required` issues when
-material paths change. Review artefacts for that deployment live under `instances/dtg/reviews/`.
-
-See [DTG RAHP instance](docs/dtg-instance.md). None of these DTG-specific files are required for
-another adopter to use `tools/rahp.py` with its own YAML configuration.
+The portability invariant is **shared method and engine, independent deployment context**. A deployment may own its target repositories, branches, assessment vocabulary, monitoring state, review artefacts and governance decisions without importing another deployment's state.
 
 ## Repository architecture
 
-| Path | Authority and editability |
+| Path | Role |
 |---|---|
-| `method/` | Portable RAHP mechanics: lifecycle, controlled vocabularies, schemas and the configuration contract. |
-| `profiles/` | Deployment configurations. DTG and CAWG/C2PA are separate profiles using the same engine. |
-| `data/` | Canonical records for the bundled DTG exemplar. External deployments may keep instance-local assurance vocabulary under `instances/<id>/data/` without importing it into DTG or the portable method. |
-| `tools/` | Validation and build automation. Produces machine-verifiable evidence and generated views. |
-| `context/` | JSON-LD context used by generated linked-data outputs. |
-| `docs/` | Just the Docs source for understanding and applying RAHP; published through GitHub Pages. |
-| `corpora/` | Domain scenario adapters used to exercise specifications against portable `SP-*` patterns. |
-| `examples/` | Worked pressure tests and minimum viable adoption patterns. |
-| `build/` | Generated output. Do not hand-edit. |
-| `archive/` | Historical source artefacts and old generated views retained for provenance. Do not edit. |
+| `method/` | Portable RAHP lifecycle, controlled vocabularies, schemas and configuration contract. |
+| `tools/` | Portable orchestration, validation, monitoring, rendering and build tooling. |
+| `profiles/<id>/` | Deployment configuration: repositories, branches, scope, context and allowed review modes. |
+| `instances/<id>/` | Deployment-owned state, review records and optional local assurance vocabulary. |
+| `corpora/` | Optional domain scenario adapters mapped to portable `SP-*` stress patterns. |
+| `examples/` | Worked assessments and adoption fixtures. |
+| `data/` | Bundled DTG exemplar catalogue retained for compatibility and generated evidence; **not the portable RAHP method**. |
+| `build/` | Generated evidence and catalogue output. Do not hand-edit. |
+| `docs/` | Guided documentation for the toolkit and bundled deployments. |
+| `archive/` | Historical provenance only; not current authority. |
 
-See the [full repository map](docs/diagrams/repository-map.md) and [artefact relationship model](docs/diagrams/artefact-relationships.md).
+See the [repository map](docs/diagrams/repository-map.md) and [portability contract](docs/portability.md).
 
+## Review model
 
-## Scenario corpora
+A RAHP review should leave a traceable chain:
 
-RAHP now includes four scenario adapters: DTG ZKP, Trust Tasks, DTG Core Credentials, and a composed Trust Tasks × Credential Spec corpus. The adapters provide **74 concrete scenario test vectors** while the reusable failure classes remain RAHP-owned `SP-*` patterns. See [Scenario corpora](docs/scenario-corpora.md), [Scenario coverage](docs/scenario-coverage.md), and [Cross-specification pressure testing](docs/cross-spec-pressure-testing.md).
-
-## Documentation site
-
-The repository is configured for a Just the Docs site deployed by GitHub Actions to GitHub Pages. The build/deploy workflow validates RAHP and all scenario corpora before publication. See [Publishing the RAHP site](docs/publishing.md) for the deployment pipeline and [GitHub Pages coverage](docs/pages-coverage.md) for what is rendered, including structured YAML/JSON projections at their repository paths.
-
-## v0.4 operational assurance
-
-v0.4 moves RAHP beyond repeatable review into a bounded **governed assurance** model.
-Five metrics now carry proposed monitoring contracts, `EV-*` records define the evidence
-needed to support assurance conclusions, and `RP-001` expresses a proposed risk-acceptance
-authority profile without pretending that the Task Force has ratified it. A generated
-normative-triage workbench helps reviewers progress the 87 unassigned controls/guardrails
-without auto-assigning standards status.
-
-See [Operational assurance](docs/operational-assurance.md), [Normative triage](docs/normative-triage.md),
-and the [v0.4.0 release notes](docs/releases/v0.4.0.md).
-
-
-
-## v0.5: configuration-driven portability
-
-v0.5 turns portability into an operator-facing capability rather than a repository-copying convention. `tools/rahp.py` accepts a schema-validated YAML profile that lists one or many target repositories, their context and scope, and the permitted `rahp`, `security`, or `combined` review modes. A non-DTG adopter can use that configuration without loading DTG corpora, the DTG Portfolio Monitor, DTG governance issues, or the DTG Task Force action register.
-
-The bundled [`profiles/dtg/rahp.yaml`](profiles/dtg/rahp.yaml) is therefore an **exemplar deployment**, not part of the engine contract. A synthetic non-DTG fixture in `tests/fixtures/portable-project/` proves the same CLI can resolve targets and all three review modes without DTG coupling. See [Configuration-driven adoption](docs/configuration.md), [Portability](docs/portability.md), and [v0.5.0 release notes](docs/releases/v0.5.0.md).
-
-DTG's unresolved governance work remains visible through the generated **Task Force Action Register**. It is instance-specific evidence, not a requirement imposed on other RAHP adopters.
-
-## v0.6: external deployment proof
-
-v0.6 adds the first substantial non-DTG deployment: a branch-aware CAWG/C2PA profile, eight worked pressure tests, and a reusable repository-change monitor that turns material upstream changes into deduplicated `assessment-required` issues. The same scheduled workflow now maintains DTG and CAWG/C2PA assessment queues while preserving separate scope, state and governance boundaries. See [CAWG/C2PA RAHP instance](docs/cawg-instance.md) and [v0.6.0 release notes](docs/releases/v0.6.0.md).
-
-## Quick start
-
-```bash
-pip install -r requirements.txt
-python3 tools/rahp.py config-validate --config examples/configurations/minimal.yaml
-python3 tools/rahp.py targets --config profiles/cawg/rahp.yaml
-python3 tools/validate.py
-python3 tools/build.py
+```text
+target + pinned revision
+  → affected people / scenarios
+  → triggered deployment risk hypotheses
+  → controls / guardrails / evidence
+  → finding + disposition
+  → recommendation at the correct control plane
+  → observable retest trigger
 ```
 
-`tools/validate.py` checks schema conformance, vocabularies, identifiers, references, symmetry, invariants, orphans and README counts. A clean exit is the minimum evidence that the instance is internally coherent.
+RAHP does **not** assume every finding belongs in the specification being reviewed. A finding may route to a companion specification, governance framework, implementation guidance, runtime control, operational policy, formal risk acceptance, or no change when already addressed/out of scope.
 
-## What is in the DTG instance
+The unified review entry point is:
+
+```bash
+python3 tools/review.py --help
+```
+
+A reviewer may run `rahp`, `security`, or `combined` mode. The tooling scaffolds, validates and renders review evidence; it does not replace the human judgement needed to produce defensible findings.
+
+## v0.6 external deployment proof: CAWG/C2PA
+
+v0.6 demonstrates portability with a branch-aware CAWG/C2PA deployment configured through the same engine as DTG. It includes:
+
+- 12 tracked repository/branch targets across CAWG and the C2PA specification substrate;
+- eight worked CAWG/C2PA pressure tests;
+- an independent `CRK-*` assessment risk namespace under `instances/cawg/data/`;
+- branch-aware material-change detection; and
+- deduplicated `assessment-required` issue creation in this RAHP review repository.
+
+The CAWG/C2PA deployment is independent assurance work. It does not represent CAWG, DIF or C2PA consensus and does not confer authority to modify upstream specifications. See [CAWG/C2PA RAHP instance](docs/cawg-instance.md).
+
+## Bundled DTG exemplar
+
+RAHP originated in DTG Risk Assessment & Harms Prevention work. That provenance is retained, but DTG-specific governance, portfolio discovery and catalogue state are now explicitly an **exemplar deployment**, not a portability requirement.
+
+The bundled DTG catalogue currently contains:
 
 | Prefix | Type | Count |
 |---|---|---|
@@ -154,62 +120,40 @@ python3 tools/build.py
 | `RP-xxx` | Governance rule profile | 1 proposed rule profile |
 | `EV-xxx` | Evidence artefact | 5 operational assurance evidence contracts |
 
-These counts are checked by `tools/validate.py` and cannot silently drift.
+These counts are checked by `tools/validate.py`. DTG governance work such as `RP-001`, normative triage and its action queue remains scoped to that deployment unless another adopter explicitly chooses equivalent governance structures.
 
-## Three distinctions that matter
+## Quick start
 
-**Controls (`CT-xx`)** continuously reduce likelihood or impact. **Guardrails (`GR-xx`)** are hard-stop preconditions before progression. **Assurance tests (`AT-xx`)** are binary evidence that a guardrail has been satisfied.
+```bash
+pip install -r requirements.txt
+python3 tools/rahp.py config-validate --config examples/configurations/minimal.yaml
+python3 tools/rahp.py targets --config examples/configurations/minimal.yaml
+python3 tools/validate_portability.py
+```
 
-`Critical` severity is not simply “very High”. It identifies a risk whose non-zero incidence is unacceptable. Critical risks carry no numeric score, must be gated by a guardrail, and may not be risk-accepted.
+To validate the bundled repository evidence as maintained here:
 
-## Pressure-testing specifications
+```bash
+python3 tools/validate.py
+python3 tools/validate_pressure_tests.py
+python3 tools/validate_project_identity.py
+python3 tools/build.py
+python3 tools/validate_reference_links.py
+```
 
-RAHP is more than a risk register. A specification review should create a traceable chain from target/version → affected personas/scenarios → triggered risks → controls/guardrails/evidence → finding disposition → standards action. Start with [the pressure-testing workflow](docs/pressure-testing-a-spec.md), then compare the [worked DTG Credential Specification example](examples/dtg-credential-spec/README.md) and the [Trust Tasks Framework example](examples/trust-tasks-spec/README.md). The two examples show both direct specification findings and findings deliberately routed to companion specifications, governance, runtime controls, and operational policy. The reusable starter is [`examples/pressure-test-template.yaml`](examples/pressure-test-template.yaml). `pressure-test.yaml` is the source of truth; `python3 tools/render_pressure_tests.py` renders its review metadata, finding index, evidence, harms, recommendations and retest triggers into the example README. Every cited RAHP artefact is rendered as an ID + title hyperlink to the generated [Reference catalogue](build/site/catalogue.html), where each canonical record has a stable deep-link anchor. `python3 tools/validate_pressure_tests.py` checks both the canonical RAHP references and that the rendered Markdown is current; `python3 tools/validate_reference_links.py` checks that generated deep links resolve.
+## Change monitoring
 
-A finding does **not** imply that every mitigation belongs in the reviewed specification. RAHP explicitly routes findings to the correct control plane: core specification, companion specification, governance, implementation guidance, runtime control, operational policy, formal risk acceptance, or no action when already addressed/out of scope.
+`tools/instance_monitor.py` provides reusable `repository@branch` source monitoring for static deployment profiles. `tools/publish_assessment_issues.py` converts material change events into deduplicated review-queue issues. The scheduled `instance-watch.yml` workflow runs both bundled deployments while preserving separate state and governance boundaries.
 
-For deeper adversarial review, RAHP provides a [security-hardening workflow](docs/security-hardening-review.md), a structured [external standards-alignment model](docs/standards-alignment.md), and coordinated worked reviews for [Trust Tasks](examples/security-hardening/trust-tasks/SECURITY_REVIEW.md), [DTG Core Credentials](examples/security-hardening/credential-spec/SECURITY_REVIEW.md), and their [cross-spec composition](examples/security-hardening/cross-spec/COMPOSITION_THREAT_MODEL.md). These records add exploitability, impact, detectability, propagation, attack preconditions, existing mitigations, residual gaps, control-plane routing and closure tests while retaining deep links to the canonical RAHP catalogue.
+A change issue means **the assessment baseline is stale**, not that a specification is defective. A reviewer must inspect the diff and decide whether RAHP, security or combined evidence requires revision.
 
-## Scenario-driven pressure testing
+## Documentation and contribution
 
-RAHP now supports reusable scenario patterns and domain-owned scenario corpora. `method/scenario-patterns.yaml` defines portable stress conditions such as malicious verifier, cross-party collusion, accessibility constraint, delegated-agent overreach, degraded operation, policy transition and cross-implementation ambiguity. `corpora/dtg-zkp.yaml` is the first reference adapter, mapping the 30 DTG ZKP pressure-test use cases to those patterns while preserving source ownership of `UC-*` identifiers. Findings can optionally trace `scenarios`, `scenario_patterns`, and `personas` before linking to risks, controls, guardrails and assurance tests. Validate adapters with `python3 tools/validate_scenario_corpora.py`.
+The human documentation is published with Just the Docs on GitHub Pages. Start at [RAHP Toolkit documentation](docs/index.md). Contributions should preserve layer authority: portable method changes belong in `method/`; deployment configuration belongs in `profiles/<id>/`; deployment state and local vocabularies belong in `instances/<id>/`; generated output belongs in `build/` only through the build tools. See [Contributing](CONTRIBUTING.md).
 
-The human documentation is published with **Just the Docs (JTD) on GitHub Pages**. The Pages workflow validates RAHP artefacts and scenario corpora, builds generated evidence views, builds the JTD site, checks internal rendered links, and deploys `_site`.
-
-## Known method gaps
-
-Known gaps remain machine-readable in `method/lifecycle.yaml`. The blocking gaps include the absence of a formal risk-acceptance authority model (`GAP-3.1`) and contribution/integration governance (`GAP-5.1`). They are visible rather than hidden because assurance requires knowing not only what is controlled, but also where authority and enforcement remain undefined.
-
-## Generated site
-
-The generated site remains the drill-down evidence surface. Its database-oriented pages are generated from canonical YAML; the human entry point is now the guided documentation in this repository. Run `python3 tools/build.py` after canonical data changes.
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md). In short: edit canonical sources, preserve provenance, validate before review, and never hand-edit generated outputs.
+Earlier spreadsheets, personas, requirements and generated views remain available in the [Historical Library](archive/index.md) with explicit historical labeling.
 
 ---
 
-*Maintained by the Risk Assessment & Harms Prevention Task Force, DTGWG.*  
+*RAHP Toolkit preserves its DTG origin as provenance while operating as a portable, independently reusable assurance toolkit.*  
 *CC-BY 4.0 — reuse with attribution.*
-
-## Unified review modes
-
-The toolkit now exposes one review entry point:
-
-```bash
-python3 tools/review.py --help
-```
-
-A reviewer can scaffold and run a **RAHP pressure test**, a **security-hardening review**, or a **combined review** that preserves both analytical lenses and generates a cross-lens synthesis. See [`docs/review-modes.md`](docs/review-modes.md).
-
-`tools/review.py` is an orchestration tool, not a static vulnerability scanner: the findings must be produced from examination of the target specification or document, while the repository tooling handles canonical records, rendering, validation, reference resolution, and combined reporting.
-## Corpus synchronization
-
-Scenario corpora are maintained as curated, versioned adapters rather than live mirrors. `corpora/sources.yaml` declares tracked source repositories, portfolio relationships and update policy; `tools/corpus_status.py` detects source drift; and the DTG Portfolio Monitor repository registry supplies portfolio-scope metadata without overriding corpus provenance. See [`docs/corpus-synchronization.md`](docs/corpus-synchronization.md).
-
-
-
-## Historical Library
-
-Earlier personas, requirements, registers, spreadsheets and generated RAHP views remain available as a reader-oriented [Historical Library](archive/index.md). The archive is published on GitHub Pages with explicit historical labeling; current canonical sources remain under `data/`, `method/`, `corpora/` and `docs/`.

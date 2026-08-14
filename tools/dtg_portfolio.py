@@ -5,7 +5,7 @@ This module is instance-specific. The portable RAHP engine in tools/rahp.py does
 import or depend on it.
 """
 from __future__ import annotations
-import argparse, fnmatch, json, os, pathlib, re, sys, urllib.request
+import argparse, fnmatch, json, os, pathlib, re, sys, urllib.error, urllib.request
 from datetime import datetime, timezone
 from typing import Any
 import yaml
@@ -80,8 +80,20 @@ def discover(cfg: dict[str,Any]) -> list[dict[str,Any]]:
         x["self_hosted_instance"] = x["repository"] == review_repo
     return base
 
-def head_sha(repo: str, branch: str) -> str:
-    return api_json(f"https://api.github.com/repos/{repo}/commits/{branch}")["sha"]
+def head_sha(repo: str, branch: str) -> str | None:
+    """Resolve a branch head, tolerating repositories with no commit history.
+
+    GitHub returns HTTP 409 for an empty/uninitialised Git repository. That is a
+    repository state, not a monitor failure, so callers receive ``None`` and may
+    record the target as not-yet-initialised. Other HTTP failures remain fatal so
+    authentication, permission, or API outages are not silently hidden.
+    """
+    try:
+        return api_json(f"https://api.github.com/repos/{repo}/commits/{branch}")["sha"]
+    except urllib.error.HTTPError as exc:
+        if exc.code == 409:
+            return None
+        raise
 
 def compare(repo: str, base: str, head: str) -> dict[str,Any]:
     return api_json(f"https://api.github.com/repos/{repo}/compare/{base}...{head}")
@@ -239,9 +251,24 @@ def main():
         # avoid self-recursive assessment issue storms for this deployment host
         if t.get("self_hosted_instance"):
             continue
-        repo=t["repository"]; new=head_sha(repo,t["branch"]); old=state["repositories"].get(repo,{}).get("sha")
+        repo=t["repository"]
+        old_entry=state["repositories"].get(repo,{})
+        old=old_entry.get("sha")
+        print(f"checking {repo}@{t['branch']}")
+        new=head_sha(repo,t["branch"])
+        if new is None:
+            # An empty repository is a valid discovered portfolio state. Keep any
+            # last known SHA for provenance, mark the current source condition,
+            # and continue assessing the rest of the portfolio.
+            state["repositories"][repo]={
+                **({"sha": old} if old else {}),
+                "status":"no-commits",
+                "observed_at":datetime.now(timezone.utc).isoformat(),
+            }
+            print(f"warning: {repo}@{t['branch']} has no commit history; skipped until a head revision exists")
+            continue
         if not old or args.initialize:
-            state["repositories"][repo]={"sha":new,"observed_at":datetime.now(timezone.utc).isoformat()}
+            state["repositories"][repo]={"sha":new,"status":"active","observed_at":datetime.now(timezone.utc).isoformat()}
             continue
         if old==new: continue
         try:
@@ -253,8 +280,9 @@ def main():
         if material:
             events.append({"target":t,"old":old,"new":new,"matched":matched,"reasons":reasons,
                            "title":f"[RAHP review required] {repo}: {old[:7]} → {new[:7]}",
-                           "body":issue_body(t,old,new,comp,matched,reasons)})
-        state["repositories"][repo]={"sha":new,"observed_at":datetime.now(timezone.utc).isoformat()}
+                           "body":issue_body(t,old,new,comp,matched,reasons),
+                           "labels": cfg.get("assessment",{}).get("issue",{}).get("labels",["assessment-required","dtg-instance"])})
+        state["repositories"][repo]={"sha":new,"status":"active","observed_at":datetime.now(timezone.utc).isoformat()}
     state_path.write_text(json.dumps(state,indent=2)+"\n")
     events_path=ROOT/"instances/dtg/generated/review-events.json"
     events_path.write_text(json.dumps(events,indent=2)+"\n")

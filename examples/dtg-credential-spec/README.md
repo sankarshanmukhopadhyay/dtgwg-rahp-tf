@@ -23,7 +23,7 @@ The target revision, review scope, RAHP baseline, summary and complete finding r
 | Target version | Working Draft 01 |
 | Target commit | `d19f7c9cac364fab8e50cf434513ef53fef80e37` |
 | Target source paths | `spec/intro.md`, `spec/body.md` |
-| RAHP repository | `sankarshanmukhopadhyay/dtgwg-rahp-tf` |
+| RAHP repository | `sankarshanmukhopadhyay/rahp-toolkit` |
 | RAHP version | `v0.3-dev` |
 | RAHP corpus date | 2026-08-12 |
 

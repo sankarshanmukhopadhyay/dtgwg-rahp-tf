@@ -42,6 +42,6 @@ flowchart LR
   F --> X[Specification / governance action]
 ```
 
-## Reference implementation
+## Deployment model
 
-The bundled DTG scenario corpora remain reference adapters. v0.6 additionally provides the first substantial **external deployment proof**: CAWG/C2PA specifications are configured through the same portable engine, independently pressure-tested, and monitored for material upstream changes without inheriting DTG portfolio or governance state.
+RAHP Toolkit is the portable method and engine. **DTG and CAWG/C2PA are deployments, not the identity of the toolkit.** The bundled DTG material preserves project provenance and provides mature scenario/governance examples; CAWG/C2PA is the first substantial external deployment proof. Each deployment retains independent scope, assessment vocabulary, monitoring state and governance.

@@ -7,7 +7,7 @@ emits assessment-required events when material paths change. This makes change
 tracking reusable by external deployments such as CAWG/C2PA.
 """
 from __future__ import annotations
-import argparse, fnmatch, json, os, pathlib, urllib.request
+import argparse, fnmatch, json, os, pathlib, urllib.error, urllib.request
 from datetime import datetime, timezone
 from typing import Any
 import yaml
@@ -29,8 +29,14 @@ def api_json(url: str) -> Any:
         return json.load(response)
 
 
-def head_sha(repo: str, branch: str) -> str:
-    return api_json(f"https://api.github.com/repos/{repo}/commits/{branch}")["sha"]
+def head_sha(repo: str, branch: str) -> str | None:
+    """Resolve a target branch head; return None for an empty GitHub repository."""
+    try:
+        return api_json(f"https://api.github.com/repos/{repo}/commits/{branch}")["sha"]
+    except urllib.error.HTTPError as exc:
+        if exc.code == 409:
+            return None
+        raise
 
 
 def compare(repo: str, base: str, head: str) -> dict[str, Any]:
@@ -114,10 +120,20 @@ def main() -> int:
         repo = target["repository"]
         branch = target.get("branch", "main")
         key = state_key(target)
+        old_entry = state["targets"].get(key) or {}
+        old = old_entry.get("sha")
+        print(f"checking {key}")
         new = head_sha(repo, branch)
-        old = (state["targets"].get(key) or {}).get("sha")
+        if new is None:
+            state["targets"][key] = {
+                **({"sha": old} if old else {}),
+                "status": "no-commits",
+                "observed_at": datetime.now(timezone.utc).isoformat(),
+            }
+            print(f"warning: {key} has no commit history; skipped until a head revision exists")
+            continue
         if not old or args.initialize:
-            state["targets"][key] = {"sha": new, "observed_at": datetime.now(timezone.utc).isoformat()}
+            state["targets"][key] = {"sha": new, "status": "active", "observed_at": datetime.now(timezone.utc).isoformat()}
             continue
         if old == new:
             continue
@@ -140,7 +156,7 @@ def main() -> int:
                 "body": event_body(instance, target, old, new, comp, matched),
                 "labels": ((cfg.get("assessment") or {}).get("issue") or {}).get("labels") or ["assessment-required"],
             })
-        state["targets"][key] = {"sha": new, "observed_at": datetime.now(timezone.utc).isoformat()}
+        state["targets"][key] = {"sha": new, "status": "active", "observed_at": datetime.now(timezone.utc).isoformat()}
 
     state_path.write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
     events_path = ROOT / cfg["generated"]["events"]

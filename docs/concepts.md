@@ -6,6 +6,8 @@ has_toc: true
 ---
 # RAHP concepts
 
+**RAHP Toolkit is deployment-neutral.** The concepts below belong to the portable method unless a section explicitly labels a DTG, CAWG/C2PA, or other deployment-specific example.
+
 RAHP treats harm prevention as an assurance chain rather than a standalone risk register.
 
 | Artefact | Plain-language meaning |

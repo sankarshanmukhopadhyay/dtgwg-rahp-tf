@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Validate worked RAHP specification pressure-test records.
 
-Checks every examples/**/pressure-test.yaml against the canonical DTG RAHP
-instance. This complements tools/validate.py: the main validator checks the RAHP
-corpus; this validator checks review records that consume that corpus.
+Checks every examples/**/pressure-test.yaml against the catalogues available to
+the repository: the bundled exemplar catalogue plus any deployment-local catalogues
+under instances/*/data/. This is a v0.6 portability invariant: an external
+deployment can own risk identifiers without importing them into DTG data.
 """
 from __future__ import annotations
 
@@ -27,9 +28,20 @@ def load_yaml(path: pathlib.Path):
         return yaml.safe_load(fh) or {}
 
 
+def catalogue_paths(filename: str) -> list[pathlib.Path]:
+    """Return bundled and deployment-local catalogue files in deterministic order."""
+    return [DATA / filename, *sorted((ROOT / "instances").glob(f"*/data/{filename}"))]
+
+
 def ids(filename: str) -> set[str]:
-    doc = load_yaml(DATA / filename)
-    return {str(r.get("id")) for r in doc.get("records", []) if r.get("id")}
+    values: set[str] = set()
+    paths = catalogue_paths(filename)
+    for path in paths:
+        if not path.exists():
+            continue
+        doc = load_yaml(path)
+        values.update(str(r.get("id")) for r in doc.get("records", []) if r.get("id"))
+    return values
 
 
 def dispositions() -> set[str]:
@@ -173,7 +185,9 @@ def main() -> int:
         print("\nPressure-test validation failed: generated Markdown is missing or stale.")
         return 1
 
+    risk_catalogues = [str(p.relative_to(ROOT)) for p in catalogue_paths("risks.yaml") if p.exists()]
     print(f"Pressure-test validation clean: {len(files)} review file(s), {findings_seen} finding(s), all references resolved, Markdown current.")
+    print(f"  risk catalogues: {', '.join(risk_catalogues)}")
     return 0
 
 

@@ -6,7 +6,7 @@ has_toc: true
 ---
 # RAHP Toolkit Roadmap
 
-Status: v0.5.0 release baseline; unresolved DTG governance decisions remain subject to Task Force review
+Status: v0.6.0 release baseline; RAHP Toolkit is portable, with DTG and CAWG/C2PA maintained as independently governed deployments
 Supersedes: the roadmap proposal in DTGWG discussion #3 (April 2026), which it
 largely adopts. Where it departs, the reasoning is stated.
 
@@ -84,10 +84,7 @@ publishing is the *method* — the persona discipline, the control/guardrail/ass
 hierarchy, the lifecycle with its evidence requirements, the invariants. The DTG
 risk register is a worked example of it.
 
-So the repository is split: `method/` is portable and contains no DTG content;
-`data/` is the DTG instance. Adopting RAHP for another specification is `fork, keep
-method/ and tools/, replace data/`. Without this split, "reusable methodology" means
-"read our spreadsheets and infer the method", which is what it currently means.
+The repository therefore separates portable method from deployment state. `method/` contains the reusable semantics; `profiles/<id>/` declares targets; `instances/<id>/` may hold deployment-owned state, reviews and local assurance vocabulary. Root `data/` remains the bundled DTG exemplar catalogue for compatibility, but v0.5 and v0.6 supersede the old "fork and replace data/" adoption model. A new adopter supplies configuration and only adopts deployment data it explicitly chooses.
 
 ### Amendment 3: no auto-assigned normative status
 

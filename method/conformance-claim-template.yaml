@@ -7,8 +7,8 @@ claim:
   status: draft
 
 rahp:
-  version: v0.5-dev
-  method_repository: https://github.com/trustoverip/dtgwg-rahp-tf
+  version: v0.6.0
+  method_repository: https://github.com/sankarshanmukhopadhyay/rahp-toolkit
   method_commit: "<immutable commit SHA>"
   instance_id: "<adopter instance id>"
   rule_profile: "<RP-* or adopter-defined profile, if applicable>"

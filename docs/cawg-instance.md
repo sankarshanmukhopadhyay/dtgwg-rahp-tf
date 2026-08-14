@@ -61,7 +61,7 @@ flowchart LR
   A --> X[Close issue at reviewed revision]
 ```
 
-`tools/instance_monitor.py` implements the portable static-profile monitor. State keys use
+`tools/instance_monitor.py` implements the portable static-profile monitor. Empty or not-yet-initialised repositories are recorded as `status: no-commits` and skipped until a head revision exists; this condition does not stop review of the remaining targets. State keys use
 `repository@branch`, so multiple tracked branches of the same upstream repository are independent.
 `tools/publish_assessment_issues.py` deduplicates GitHub issues by event title and creates the
 configured labels if needed.

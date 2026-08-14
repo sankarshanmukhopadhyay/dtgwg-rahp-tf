@@ -2,9 +2,9 @@
   "@context": "../../context/rahp.jsonld",
   "@graph": [
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EV-001",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EV-001",
       "@type": "EvidenceArtifact",
-      "metric": "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-02",
+      "metric": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-02",
       "name": "Revocation notification timing evidence",
       "status": "planned",
       "description": "Timestamped record linking a revocation decision to the corresponding formal notification event.",
@@ -19,9 +19,9 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EV-002",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EV-002",
       "@type": "EvidenceArtifact",
-      "metric": "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-04",
+      "metric": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-04",
       "name": "IDVP issuer verification evidence",
       "status": "planned",
       "description": "Admission-time evidence that the IDVP DID and authorisation state were verified before VMC issuance.",
@@ -36,9 +36,9 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EV-003",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EV-003",
       "@type": "EvidenceArtifact",
-      "metric": "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-06",
+      "metric": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-06",
       "name": "Registry write authorisation rejection evidence",
       "status": "planned",
       "description": "Audit evidence for attempted registry writes and the authorisation decision applied to each attempt.",
@@ -53,9 +53,9 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EV-004",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EV-004",
       "@type": "EvidenceArtifact",
-      "metric": "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-08",
+      "metric": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-08",
       "name": "Agent scope violation evidence",
       "status": "planned",
       "description": "Structured event evidence for attempted or successful actions outside an agent's delegated credential scope.",
@@ -70,9 +70,9 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EV-005",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EV-005",
       "@type": "EvidenceArtifact",
-      "metric": "https://trustoverip.github.io/dtgwg-rahp-tf/id/M-27",
+      "metric": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-27",
       "name": "Agent liveness compliance evidence",
       "status": "planned",
       "description": "Timestamped liveness-check records sufficient to establish whether the required operator/agent liveness interval was met.",

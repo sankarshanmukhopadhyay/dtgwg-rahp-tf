@@ -113,8 +113,10 @@ for page in htmls:
         path = unquote(u.path)
         if not path:
             continue
-        if path.startswith('/dtgwg-rahp-tf/'):
-            path = path[len('/dtgwg-rahp-tf/'):]
+        if path.startswith('/rahp-toolkit/'):
+            path = path[len('/rahp-toolkit/'):]
+        elif path.startswith('/dtgwg-rahp-tf/'):
+            path = path[len('/dtgwg-rahp-tf/'):]  # legacy published prefix
             target = SITE / path
         elif path.startswith('/'):
             continue

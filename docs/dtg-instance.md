@@ -42,9 +42,9 @@ The automation does not claim that a changed repository contains a defect. It cr
 
 ## Workflows
 
-- `dtg-portfolio-review.yml`: scheduled and manual DTG discovery/change review queue.
+- `instance-watch.yml`: scheduled and manual change-review queue for the DTG and CAWG/C2PA instances; the DTG job still uses the DTG-specific discovery adapter.
 - `configured-review.yml`: generic on-demand RAHP runner for any YAML profile.
 - Existing validation, corpus and Pages workflows remain independent.
 
-For the first deployment run, use `initialize=true`. This records current heads without opening
+For a fresh deployment baseline, run the monitor with `--initialize`. This records current heads without opening
 issues for the entire existing portfolio. Subsequent runs compare from that baseline.

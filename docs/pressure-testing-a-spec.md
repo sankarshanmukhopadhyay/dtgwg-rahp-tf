@@ -42,7 +42,7 @@ Select the participants who exercise power, receive decisions, bear harms, or re
 
 ## 3. Reuse existing risks first
 
-Search `data/risks.yaml` and linked scenarios/controls. Add a new risk only when the existing corpus cannot represent the failure mechanism without distorting its meaning.
+Search the risk vocabulary owned by the deployment. The bundled DTG exemplar uses `data/risks.yaml`; an external deployment may use `instances/<id>/data/risks.yaml` instead. Add a new risk only when the applicable deployment vocabulary cannot represent the failure mechanism without distorting its meaning. Do not import another deployment's risk namespace merely to satisfy the validator.
 
 ## 4. Look for harmful inference and governance-invalid states
 
@@ -66,21 +66,21 @@ review:
   status: complete
   reviewed_on: YYYY-MM-DD
   target:
-    repository: trustoverip/dtgwg-cred-spec
-    version: Working Draft 01
+    repository: example-org/example-spec
+    version: 1.2-draft
     commit: <full-40-character-commit-sha>
   reviewed_against:
-    rahp_version: v0.5-dev
+    rahp_version: v0.6.0
   findings:
     - id: F-001
       title: Concise finding
       status: open
       severity: High
       primary_disposition: specification
-      risks: [RK-SC02]
-      controls: [CT-18]
-      guardrails: [GR-01]
-      assurance_tests: [AT-01]
+      risks: [RISK-LOCAL-01]
+      controls: []
+      guardrails: []
+      assurance_tests: []
       evidence:
         - source: spec/body.md#relevant-section
           observation: What the reviewed text permits, omits or contradicts.
@@ -112,14 +112,15 @@ A pressure test should leave behind enough evidence to answer: what was reviewed
 
 ## Reference-link convention
 
-`pressure-test.yaml` stores RAHP identifiers only. Authors should not maintain URLs in YAML. The renderer resolves each Risk, Control, Guardrail and Assurance Test against the canonical corpus and emits an **ID + title** Markdown link to `build/site/catalogue.html#<ID>`. The catalogue is generated from the same YAML corpus and assigns a stable HTML anchor to every canonical RAHP artefact.
+`pressure-test.yaml` stores RAHP identifiers only. Authors should not maintain URLs in YAML. The renderer resolves each Risk, Control, Guardrail and Assurance Test against the applicable bundled or deployment-local catalogue and emits an **ID + title** Markdown link to `build/site/catalogue.html#<ID>`. The catalogue is generated from the same YAML corpus and assigns a stable HTML anchor to every catalogue artefact.
 
 This creates a repository invariant: **a RAHP identifier in generated human-facing output should not be a dead identifier**. A reader should be able to follow the citation and immediately see its title, scope/description, relevant metadata and related artefacts. Run `python3 tools/validate_reference_links.py` after `tools/build.py` to verify the catalogue anchors and pressure-test links.
 
 ## Worked examples
 
-Two complete reviews are maintained as regression fixtures for the method:
+Worked reviews are maintained as regression fixtures for the method. v0.6 deliberately includes examples from more than one deployment so the documentation does not imply that RAHP's semantics are DTG-specific:
 
+- [`examples/cawg-c2pa/`](../examples/cawg-c2pa/README.md) is the v0.6 external-deployment pack covering eight CAWG/C2PA specification surfaces with an independent `CRK-*` risk namespace.
 - [`examples/dtg-credential-spec/`](../examples/dtg-credential-spec/README.md) pressure-tests a credential specification and demonstrates schema, lifecycle, privacy, governance, agent-authority and representation findings.
 - [`examples/trust-tasks-spec/`](../examples/trust-tasks-spec/README.md) pressure-tests a protocol/framework specification and demonstrates replay, freshness, delegation, registry-dependency, capability-negotiation, consent-policy and supported-representation findings.
 

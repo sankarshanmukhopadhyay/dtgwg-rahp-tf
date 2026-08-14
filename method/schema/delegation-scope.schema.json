@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://sankarshanmukhopadhyay.github.io/dtgwg-rahp-tf/method/schema/delegation-scope.schema.json",
+  "$id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/method/schema/delegation-scope.schema.json",
   "title": "RAHP delegation scope constraint",
   "description": "Portable v0.4 schema for expressing bounded delegated authority without treating liveness, identity, or key control as authority.",
   "type": "object",

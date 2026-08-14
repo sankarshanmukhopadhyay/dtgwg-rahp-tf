@@ -2,7 +2,7 @@
   "@context": "../../context/rahp.jsonld",
   "@graph": [
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-01",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-01",
       "@type": "Guardrail",
       "name": "Genesis Policy Documentation",
       "category": "Governance",
@@ -10,19 +10,19 @@
       "applies_to_phase": "Phase 1 (all subsequent phases)",
       "owner": "Initiator / Governing Body",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-NM02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC02"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-G01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-G05",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-NM02",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SC02"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-18",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-53",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-56"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-18",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-53",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-56"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-01"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-01"
       ],
       "standardsStatus": "unassigned",
       "provenance": {
@@ -31,7 +31,7 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-02",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-02",
       "@type": "Guardrail",
       "name": "Time-Bounded Initiator Authority",
       "category": "Governance",
@@ -39,15 +39,15 @@
       "applies_to_phase": "Phase 1–2",
       "owner": "VTA PEP / Governing Body",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G05"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-G01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-G02",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-G05"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-03"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-03"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-02"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-02"
       ],
       "standardsStatus": "unassigned",
       "provenance": {
@@ -56,7 +56,7 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-03",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-03",
       "@type": "Guardrail",
       "name": "Trust Anchor Diversity Policy",
       "category": "Governance / Human Experience",
@@ -64,18 +64,18 @@
       "applies_to_phase": "Phase 2",
       "owner": "Governing Body",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY01"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-CR04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-G03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-HX02",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SY01"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-55"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-05",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-55"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-03"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-03"
       ],
       "standardsStatus": "unassigned",
       "provenance": {
@@ -84,7 +84,7 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-04",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-04",
       "@type": "Guardrail",
       "name": "Reciprocal VRC Requirement",
       "category": "Technology / Governance",
@@ -92,13 +92,13 @@
       "applies_to_phase": "Phase 2–4",
       "owner": "VTA PEP",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID01"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-ID01"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-08"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-08"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-04"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-04"
       ],
       "standardsStatus": "unassigned",
       "provenance": {
@@ -107,7 +107,7 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-05",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-05",
       "@type": "Guardrail",
       "name": "IDVP Registry Standing",
       "category": "Technology / Governance",
@@ -115,16 +115,16 @@
       "applies_to_phase": "Phase 4",
       "owner": "VTA PEP / Governing Body",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID03"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-EX04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-EX06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-ID03"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-12",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-65"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-12",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-65"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-05"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-05"
       ],
       "standardsStatus": "unassigned",
       "provenance": {
@@ -133,7 +133,7 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-06",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-06",
       "@type": "Guardrail",
       "name": "Privacy-Preserving Proofing Option",
       "category": "Human Experience / Technology",
@@ -141,31 +141,31 @@
       "applies_to_phase": "Phase 4",
       "owner": "VTA PEP / DPO",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-NM01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC03"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-CY01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-EX03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-EX04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-HX01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-HX02",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-ID02",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-ID05",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-ID06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-NM01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SC01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SC03"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-10",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-11",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-15",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-16",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-20",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-27",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-40",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-49",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-66"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-10",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-11",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-15",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-16",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-20",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-27",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-40",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-49",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-66"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-06"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-06"
       ],
       "standardsStatus": "unassigned",
       "provenance": {
@@ -174,7 +174,7 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-07",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-07",
       "@type": "Guardrail",
       "name": "Uniqueness Enforcement Mechanism",
       "category": "Technology / Governance",
@@ -182,19 +182,19 @@
       "applies_to_phase": "Phase 4 (open issue)",
       "owner": "Governing Body / Security",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY03"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-CY01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-EX04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-ID01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SY01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SY03"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-08",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-28"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-08",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-28"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-07"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-07"
       ],
       "standardsStatus": "unassigned",
       "provenance": {
@@ -203,7 +203,7 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-08",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-08",
       "@type": "Guardrail",
       "name": "Revocation Due Process",
       "category": "Governance / Human Experience",
@@ -211,22 +211,22 @@
       "applies_to_phase": "Revocation",
       "owner": "Governing Body / VTA",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX06"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-CR01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-CR02",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-G04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-HX03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-HX05",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-HX06"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-23",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-25",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-59",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-60",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-61"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-23",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-25",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-59",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-60",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-61"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-08"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-08"
       ],
       "standardsStatus": "unassigned",
       "provenance": {
@@ -235,7 +235,7 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-09",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-09",
       "@type": "Guardrail",
       "name": "Privacy-Preserving Revocation Disclosure",
       "category": "Technology / Governance",
@@ -243,24 +243,24 @@
       "applies_to_phase": "Revocation",
       "owner": "VTA PEP / DPO",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CR03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC03"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-CR01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-CR03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-EX03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-HX01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-HX03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-ID03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-ID05",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SC01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SC03"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-15",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-24",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-26",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-42"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-15",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-24",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-26",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-42"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-09"
       ],
       "standardsStatus": "unassigned",
       "provenance": {
@@ -269,7 +269,7 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-10",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-10",
       "@type": "Guardrail",
       "name": "Multi-Party Registry Write Authorisation",
       "category": "Technology / Governance",
@@ -277,18 +277,18 @@
       "applies_to_phase": "All phases",
       "owner": "Registry Operator / Governing Body",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY01"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-EX01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-EX02",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-ID04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SY01"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-14",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-39",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-45"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-14",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-39",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-45"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-10"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-10"
       ],
       "standardsStatus": "unassigned",
       "provenance": {
@@ -297,7 +297,7 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-11",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-11",
       "@type": "Guardrail",
       "name": "Jurisdictional Diversity for Key Parties",
       "category": "Governance",
@@ -305,14 +305,14 @@
       "applies_to_phase": "Phase 2–4 (ongoing)",
       "owner": "Governing Body",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G03"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-EX01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-G03"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-37"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-37"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-11"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-11"
       ],
       "standardsStatus": "unassigned",
       "provenance": {
@@ -321,7 +321,7 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-12",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-12",
       "@type": "Guardrail",
       "name": "Agent Delegation Scope Constraint",
       "category": "Technology / Governance",
@@ -329,18 +329,18 @@
       "applies_to_phase": "Agent Lifecycle",
       "owner": "VTA PEP / Operator",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI02"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI02"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-30",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-31",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-32",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-51",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-52"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-30",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-31",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-32",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-51",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-52"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-12"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-12"
       ],
       "standardsStatus": "unassigned",
       "provenance": {
@@ -349,7 +349,7 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-13",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-13",
       "@type": "Guardrail",
       "name": "Agent Audit Logging",
       "category": "Technology / Governance",
@@ -357,13 +357,13 @@
       "applies_to_phase": "Agent Lifecycle",
       "owner": "VTA / Operator",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI01"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI01"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-31"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-31"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-13"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-13"
       ],
       "standardsStatus": "unassigned",
       "provenance": {
@@ -372,7 +372,7 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-14",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-14",
       "@type": "Guardrail",
       "name": "Non-Human Actor Detection",
       "category": "Technology / Governance",
@@ -380,17 +380,17 @@
       "applies_to_phase": "Phase 4 + Agent Lifecycle",
       "owner": "Security / Governing Body",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY01"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SY01"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-33",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-34",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-54"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-33",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-34",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-54"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-14"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-14"
       ],
       "standardsStatus": "unassigned",
       "provenance": {
@@ -399,7 +399,7 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-15",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-15",
       "@type": "Guardrail",
       "name": "Complaint and Appeals Rate-Limiting",
       "category": "Governance / Human Experience",
@@ -407,15 +407,15 @@
       "applies_to_phase": "Governance Operations",
       "owner": "Governing Body",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-G04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY02"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-G04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SY02"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-07",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-46"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-07",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-46"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-15"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-15"
       ],
       "standardsStatus": "unassigned",
       "provenance": {
@@ -424,7 +424,7 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-16",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-16",
       "@type": "Guardrail",
       "name": "Formal Threat Model Publication",
       "category": "Governance",
@@ -432,16 +432,16 @@
       "applies_to_phase": "Pre-Phase 4 / Ongoing",
       "owner": "Security / Governing Body",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY02"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-CY02",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-EX02",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SY02"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-29",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-48"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-29",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-48"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-16"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-16"
       ],
       "standardsStatus": "unassigned",
       "provenance": {
@@ -450,7 +450,7 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-17",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-17",
       "@type": "Guardrail",
       "name": "Open Issues Risk Acceptance",
       "category": "Governance",
@@ -458,17 +458,17 @@
       "applies_to_phase": "Phase 4 (pre-condition)",
       "owner": "Governing Body",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY02",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SY03"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-CY02",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-EX03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SY03"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-29",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-41",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-47"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-29",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-41",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-47"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-17"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-17"
       ],
       "standardsStatus": "unassigned",
       "provenance": {
@@ -477,7 +477,7 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-18",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-18",
       "@type": "Guardrail",
       "name": "R-DID Migration Phase Gate",
       "category": "Technology / Governance",
@@ -485,15 +485,15 @@
       "applies_to_phase": "Pre-Phase 4",
       "owner": "VTA PEP / Governing Body",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC04"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-HX01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-ID05",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SC04"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-50"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-50"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-18"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-18"
       ],
       "standardsStatus": "unassigned",
       "provenance": {
@@ -502,7 +502,7 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-19",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-19",
       "@type": "Guardrail",
       "name": "Supported Decision-Making and Legal Delegation Pathway",
       "category": "Human Experience / Legal",
@@ -510,21 +510,21 @@
       "applies_to_phase": "Phase 3–4 (pre-condition for admission of in-scope participants)",
       "owner": "Governing Body / VTC Initiator",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX05",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-HX06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID06",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC05"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-HX04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-HX05",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-HX06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-ID06",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SC05"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-57",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-58",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-59",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-60",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-66"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-57",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-58",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-59",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-60",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-66"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-19"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-19"
       ],
       "standardsStatus": "unassigned",
       "provenance": {
@@ -533,7 +533,7 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-20",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-20",
       "@type": "Guardrail",
       "name": "Age Assurance Architecture Readiness",
       "category": "Safeguarding / Technology",
@@ -541,18 +541,18 @@
       "applies_to_phase": "Phase 4 (pre-condition for age-restricted relying party operations)",
       "owner": "Governing Body / IDVP",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-CY01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX04",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX06"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-CY01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-EX04",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-EX06"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-27",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-28",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-62",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-65"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-27",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-28",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-62",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-65"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-20"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-20"
       ],
       "standardsStatus": "unassigned",
       "provenance": {
@@ -561,7 +561,7 @@
       }
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-21",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-21",
       "@type": "Guardrail",
       "name": "Organisational Identity Governance Mapping",
       "category": "Governance / Organisational",
@@ -569,15 +569,15 @@
       "applies_to_phase": "Phase 1–4 (pre-condition for organisational member admission)",
       "owner": "Governing Body",
       "risksAddressed": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-EX05"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-EX05"
       ],
       "controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-56",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-63",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-64"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-56",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-63",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-64"
       ],
       "assuranceTests": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/AT-21"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-21"
       ],
       "standardsStatus": "unassigned",
       "provenance": {

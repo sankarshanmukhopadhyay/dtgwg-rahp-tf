@@ -2,7 +2,7 @@
   "@context": "../../context/rahp.jsonld",
   "@graph": [
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D1",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/D1",
       "@type": "Persona",
       "name": "Daniel Wright",
       "role": "VTC Initiator",
@@ -54,7 +54,7 @@
       ]
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D2",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/D2",
       "@type": "Persona",
       "name": "Laila Hassan",
       "role": "Community Trust Anchor",
@@ -106,7 +106,7 @@
       ]
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D3",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/D3",
       "@type": "Persona",
       "name": "Ahmed Khan",
       "role": "New Member Seeking Inclusion",
@@ -158,7 +158,7 @@
       ]
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D4",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/D4",
       "@type": "Persona",
       "name": "Elena Rossi",
       "role": "Senior Compliance Executive, Identity Verification Provider (IDVP)",
@@ -210,7 +210,7 @@
       ]
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D5",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/D5",
       "@type": "Persona",
       "name": "Sophie Dubois",
       "role": "Member Subject to Revocation",
@@ -262,7 +262,7 @@
       ]
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/D6",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/D6",
       "@type": "Persona",
       "name": "Tomasz Kowalski",
       "role": "Security Researcher / Harm Analyst",
@@ -312,7 +312,7 @@
       ]
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/M1",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M1",
       "@type": "Persona",
       "name": "Aether",
       "role": "Benign AI Agent",
@@ -361,7 +361,7 @@
       ]
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/M2",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M2",
       "@type": "Persona",
       "name": "Phantom",
       "role": "Malign AI Agent",
@@ -408,7 +408,7 @@
       ]
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/B1",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/B1",
       "@type": "Persona",
       "name": "Viktor",
       "role": "Sybil Network Operator",
@@ -457,7 +457,7 @@
       ]
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/B2",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/B2",
       "@type": "Persona",
       "name": "State Security Directorate",
       "role": "State-Level Coercive Actor",
@@ -503,7 +503,7 @@
       ]
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/B3",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/B3",
       "@type": "Persona",
       "name": "The Collective",
       "role": "Community Disruptor",
@@ -550,7 +550,7 @@
       ]
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EC1",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EC1",
       "@type": "Persona",
       "name": "Mia Okafor",
       "role": "Teenager with Special Educational Needs — supported decision-maker",
@@ -606,7 +606,7 @@
       ]
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EC2a",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EC2a",
       "@type": "Persona",
       "name": "Arthur Kowalczyk",
       "role": "Person Living with Dementia — credential holder with progressive capacity loss",
@@ -660,7 +660,7 @@
       ]
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EC2b",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EC2b",
       "@type": "Persona",
       "name": "Margaret Kowalczyk",
       "role": "Partner, Carer and registered LPA holder",
@@ -708,7 +708,7 @@
       ]
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EC3",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EC3",
       "@type": "Persona",
       "name": "Northgate Community Health Trust",
       "role": "Public sector healthcare provider — organisational member",
@@ -768,7 +768,7 @@
       ]
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/EC4",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EC4",
       "@type": "Persona",
       "name": "Velvet Gate Ltd",
       "role": "Age-restricted content service provider — relying party",

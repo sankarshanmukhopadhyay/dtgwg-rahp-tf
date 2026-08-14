@@ -9,7 +9,7 @@ review:
     commit: 0123456789abcdef0123456789abcdef01234567
     source_paths: []
   reviewed_against:
-    repository: sankarshanmukhopadhyay/dtgwg-rahp-tf
+    repository: sankarshanmukhopadhyay/rahp-toolkit
     rahp_version: v0.4.0
   summary:
     finding_count: 1

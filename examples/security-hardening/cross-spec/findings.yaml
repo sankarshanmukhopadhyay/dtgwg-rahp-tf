@@ -12,7 +12,7 @@ review:
     - Trust Tasks SPEC.md and ceremony/delegation artifacts
     - DTG Credential Spec spec/body.md
   reviewed_against:
-    repository: sankarshanmukhopadhyay/dtgwg-rahp-tf
+    repository: sankarshanmukhopadhyay/rahp-toolkit
     rahp_version: v0.3-dev
   summary:
     finding_count: 12

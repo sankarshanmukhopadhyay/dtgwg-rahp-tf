@@ -8,8 +8,8 @@ profile:
   owner: DTG RAHP instance
 assessment:
   default_mode: combined
-  rahp_repository: sankarshanmukhopadhyay/dtgwg-rahp-tf
-  rahp_version: v0.5.0
+  rahp_repository: sankarshanmukhopadhyay/rahp-toolkit
+  rahp_version: v0.6.0
 repositories:
 - id: trustoverip-dtgwg-trust-tasks-tf
   repository: trustoverip/dtgwg-trust-tasks-tf
@@ -249,14 +249,14 @@ repositories:
   - security
   - combined
   upstream: trustoverip/dtgwg-cred-tf
-- id: sankarshanmukhopadhyay-dtgwg-rahp-tf
-  repository: sankarshanmukhopadhyay/dtgwg-rahp-tf
+- id: sankarshanmukhopadhyay-rahp-toolkit
+  repository: sankarshanmukhopadhyay/rahp-toolkit
   branch: main
   context:
-    title: sankarshanmukhopadhyay/dtgwg-rahp-tf
+    title: sankarshanmukhopadhyay/rahp-toolkit
     type: task-force-workspace
-    description: Fork of a DTG Portfolio Monitor repository; included in the DTG RAHP
-      deployment perimeter.
+    description: Portable RAHP toolkit deployment host; retained in the DTG profile
+      for provenance but excluded from recursive DTG instance assessment.
   scope:
     include:
     - README.md

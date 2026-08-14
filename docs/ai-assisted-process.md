@@ -4,15 +4,15 @@ title: "AI-assisted process"
 nav_order: 12
 has_toc: true
 ---
-# Using Claude with the RAHP Toolkit — a worked example
+# AI-assisted RAHP — a worked example
 
-**Risk Assessment & Harms Prevention Task Force · LFDT / ToIP / DIF · CC-BY 4.0 · April 2026**
+**RAHP Toolkit · CC-BY 4.0 · originally developed April 2026; generalized for portable use in v0.6**
 
 ---
 
 ## What this document is
 
-A short, practical walkthrough of how Claude (or any capable general-purpose AI assistant) can be used to accelerate specific steps in the RAHP workflow. It covers five tasks that practitioners have found AI assistance genuinely useful for, with example prompts, the toolkit components each task uses, and honest notes about what requires human judgement regardless.
+A short, practical walkthrough of how a capable general-purpose AI assistant can be used to accelerate specific steps in the RAHP workflow. It covers five tasks that practitioners have found AI assistance genuinely useful for, with example prompts, the toolkit components each task uses, and honest notes about what requires human judgement regardless.
 
 This is deliberately not a comprehensive methodology. Different practitioners will work differently, different AI tools have different strengths, and this area is evolving quickly. Treat this as a starting point, not a prescription.
 
@@ -20,13 +20,13 @@ This is deliberately not a comprehensive methodology. Different practitioners wi
 
 ## Ground rules before you start
 
-**AI assists — it does not decide.** Claude can draft, synthesise, cross-reference, and suggest. It cannot score risk severity, validate that a guardrail is actually met, make governance decisions, or tell you who is missing from your participant map. Every output needs human review before it goes into the toolkit.
+**AI assists — it does not decide.** An assistant can draft, synthesise, cross-reference, and suggest. It cannot score risk severity, validate that a guardrail is actually met, make governance decisions, or tell you who is missing from your participant map. Every output needs human review before it goes into the toolkit.
 
-**Provide context explicitly.** Claude does not have access to your working documents unless you paste them in. The prompts below assume you paste the relevant toolkit artefacts — or the relevant sections — directly into the conversation. Work in a single session where possible so Claude retains the context.
+**Provide context explicitly.** The assistant does not have access to your working documents unless you paste them in. The prompts below assume you paste the relevant toolkit artefacts — or the relevant sections — directly into the conversation. Work in a single session where possible so the assistant retains the context.
 
-**Check sources.** When Claude cites threat intelligence or regulatory context for persona narratives, verify the sources. It will sometimes produce plausible-sounding but inaccurate citations. The RAHP toolkit's sourcing standard is: every empirical claim in a persona narrative should link to a verifiable source.
+**Check sources.** When the assistant cites threat intelligence or regulatory context for persona narratives, verify the sources. It will sometimes produce plausible-sounding but inaccurate citations. The RAHP toolkit's sourcing standard is: every empirical claim in a persona narrative should link to a verifiable source.
 
-**Version your outputs.** Paste Claude's outputs into your working documents and apply your normal version control and provenance tagging. The AI session itself is not a record — the committed artefact is.
+**Version your outputs.** Paste the assistant's outputs into your working documents and apply your normal version control and provenance tagging. The AI session itself is not a record — the committed artefact is.
 
 ---
 
@@ -40,7 +40,7 @@ This is deliberately not a comprehensive methodology. Different practitioners wi
 - Phase B extreme user template (from the workflow reference)
 - Existing persona set (for context on what is already covered)
 
-**Input to Claude:** Paste your raw notes or a summary of the engagement. Include: who you spoke with or whose perspective you reviewed, the context they operate in, what they said about their needs and fears, and what made their situation distinct from the mainstream case.
+**Input to the assistant:** Paste your raw notes or a summary of the engagement. Include: who you spoke with or whose perspective you reviewed, the context they operate in, what they said about their needs and fears, and what made their situation distinct from the mainstream case.
 
 **Example prompt:**
 
@@ -63,7 +63,7 @@ Be specific and grounded in the notes. Do not generalise beyond what the notes
 support. Flag anything where you are extrapolating rather than reporting.
 ```
 
-**Expected output:** A structured extreme user profile draft, 200–350 words, with a flags section noting where Claude has extrapolated. This feeds directly into Phase C persona synthesis.
+**Expected output:** A structured extreme user profile draft, 200–350 words, with a flags section noting where the assistant has extrapolated. This feeds directly into Phase C persona synthesis.
 
 **Human review required:** Check that the profile accurately represents the source material. Assess whether the design implications are correctly derived. Add sourcing notes before committing.
 
@@ -80,7 +80,7 @@ support. Flag anything where you are extrapolating rather than reporting.
 - Phase B extreme user profile (output from Task 1)
 - Phase A raw participant map extract
 
-**Input to Claude:** Paste the extreme user profile from Task 1, the relevant section of the raw participant map, and two or three existing RAHP personas as format references.
+**Input to the assistant:** Paste the extreme user profile from Task 1, the relevant section of the raw participant map, and two or three existing RAHP personas as format references.
 
 **Example prompt:**
 
@@ -119,7 +119,7 @@ a source is accurate, say so and I will verify. Do not invent citations.
 - Risk Register v4 — paste the full RK-xx list with identifiers, titles, categories, and short descriptions
 - The design proposal, described precisely
 
-**Input to Claude:** Paste the risk register and describe the design choice clearly.
+**Input to the assistant:** Paste the risk register and describe the design choice clearly.
 
 **Example prompt:**
 
@@ -148,7 +148,7 @@ Flag any risks where you are uncertain and note why.
 
 **Expected output:** A structured table of all 35 risks with direction and rationale. Likely flags include RK-PV01 (M-DID linkability) and RK-HX03 (reputational harm from public revocation) as increases. The table is a rapid first-pass for working group discussion, not a final assessment.
 
-**Human review required:** Risk scoring (severity × likelihood) is a human judgement, not derivable from description alone. The table identifies which risks to discuss — the group scores any changes. New risks surfaced by the design choice that are not in the existing register need to be identified by a human reading Claude's rationale column.
+**Human review required:** Risk scoring (severity × likelihood) is a human judgement, not derivable from description alone. The table identifies which risks to discuss — the group scores any changes. New risks surfaced by the design choice that are not in the existing register need to be identified by a human reading the assistant's rationale column.
 
 ---
 
@@ -163,7 +163,7 @@ Flag any risks where you are uncertain and note why.
 - Existing user stories — paste US-01 to US-03 as format references
 - Relevant risk register entries for the persona
 
-**Input to Claude:** Paste the objectives map, format reference user stories, and the most relevant risk register entries.
+**Input to the assistant:** Paste the objectives map, format reference user stories, and the most relevant risk register entries.
 
 **Example prompt:**
 
@@ -194,7 +194,7 @@ Include acceptance criteria as a short bulleted list.
 
 **Expected output:** Two user story drafts in RAHP format with acceptance criteria. These feed directly into the User Stories Framework as candidate additions, subject to working group review.
 
-**Human review required:** Check that the acceptance criteria are specific and testable — Claude will sometimes produce acceptance criteria that are aspirational rather than verifiable. Check that the risk linkage is accurate. Working group review required before committing.
+**Human review required:** Check that the acceptance criteria are specific and testable — the assistant will sometimes produce acceptance criteria that are aspirational rather than verifiable. Check that the risk linkage is accurate. Working group review required before committing.
 
 ---
 
@@ -210,7 +210,7 @@ Include acceptance criteria as a short bulleted list.
 - Lifecycle phase map
 - Description of any new working context if checking for a different system
 
-**Input to Claude:** Paste the full persona set with brief summaries, the harm category list, the lifecycle phases, and (optionally) a description of the new system context.
+**Input to the assistant:** Paste the full persona set with brief summaries, the harm category list, the lifecycle phases, and (optionally) a description of the new system context.
 
 **Example prompt:**
 
@@ -240,21 +240,21 @@ participants with low digital literacy, participants in regulated industries
 
 **Expected output:** A coverage matrix (lifecycle phases × risk categories) with gap cells flagged, plus a short prose section identifying the three to five most analytically significant absent participant types. Useful both for Phase D validation and the periodic extreme user review in Stage 5 maintenance.
 
-**Human review required:** The coverage matrix is a mechanical mapping task that Claude does reliably. The gap assessment is more analytical and requires human judgement about which gaps matter most for the specific system being governed. Claude's suggestions about absent participant types are starting points for a conversation, not conclusions.
+**Human review required:** The coverage matrix is a mechanical mapping task that the assistant does reliably. The gap assessment is more analytical and requires human judgement about which gaps matter most for the specific system being governed. the assistant's suggestions about absent participant types are starting points for a conversation, not conclusions.
 
 ---
 
-## What not to use Claude for
+## What not to use the assistant for
 
-**Risk scoring.** Severity and likelihood scores require contextual judgement about the specific system, deployment environment, and threat actors. Claude will produce numbers if asked, but they are not reliable. Score risks in the working group, not with an AI.
+**Risk scoring.** Severity and likelihood scores require contextual judgement about the specific system, deployment environment, and threat actors. the assistant will produce numbers if asked, but they are not reliable. Score risks in the working group, not with an AI.
 
-**Guardrail verification.** An assurance test result — pass or fail — is an evidential claim about an operational system. Claude cannot observe your system. AT-xx results are human-verified or tooling-verified, not AI-assessed.
+**Guardrail verification.** An assurance test result — pass or fail — is an evidential claim about an operational system. the assistant cannot observe your system. AT-xx results are human-verified or tooling-verified, not AI-assessed.
 
-**Governance decisions.** Which risks to formally accept, which design choices to adopt, which personas are representative — these are working group decisions with accountability behind them. Claude can prepare the material for those decisions, not make them.
+**Governance decisions.** Which risks to formally accept, which design choices to adopt, which personas are representative — these are working group decisions with accountability behind them. the assistant can prepare the material for those decisions, not make them.
 
-**Fieldwork.** Claude cannot tell you who is missing from your participant map. It cannot substitute for direct engagement with harm-exposed communities. It can help you structure what you learn from that engagement, but not replace it.
+**Fieldwork.** the assistant cannot tell you who is missing from your participant map. It cannot substitute for direct engagement with harm-exposed communities. It can help you structure what you learn from that engagement, but not replace it.
 
-**Source verification.** Always verify citations that Claude provides in persona insights sections. The practical workflow: ask Claude to flag uncertain citations explicitly (the prompts above do this), then verify before committing.
+**Source verification.** Always verify citations that the assistant provides in persona insights sections. The practical workflow: ask the assistant to flag uncertain citations explicitly (the prompts above do this), then verify before committing.
 
 ---
 
@@ -262,8 +262,8 @@ participants with low digital literacy, participants in regulated industries
 
 This is a first draft, written in April 2026, based on practical experience developing the RAHP v1 toolkit. It will need updating as both the toolkit and AI tooling evolve.
 
-If you have found a useful prompt pattern not covered here, or found that one of these prompts produces poor results in practice, please open an issue or pull request on the DTGWG GitHub repository. The feedback loop between practitioners and the toolkit is one of the most important things we are trying to build. This document is part of that loop.
+If you have found a useful prompt pattern not covered here, or found that one of these prompts produces poor results in practice, please open an issue or pull request on the RAHP Toolkit repository. The feedback loop between practitioners and the toolkit is one of the most important things we are trying to build. This document is part of that loop.
 
 ---
 
-*Risk Assessment & Harms Prevention Task Force · LFDT / ToIP / DIF · CC-BY 4.0 · April 2026*
+*RAHP Toolkit · CC-BY 4.0 · portable guidance*

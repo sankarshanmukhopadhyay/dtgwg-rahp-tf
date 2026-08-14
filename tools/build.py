@@ -32,7 +32,7 @@ except ImportError:  # pragma: no cover
     sys.exit("build.py requires PyYAML: pip install -r requirements.txt")
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-BASE_IRI = "https://trustoverip.github.io/dtgwg-rahp-tf/id/"
+BASE_IRI = "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/"
 
 SEV_SCORE = {"High": 3, "Medium": 2, "Low": 1}
 
@@ -441,7 +441,7 @@ def build_single_file(pages, meta, out):
     doc = f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DTG RAHP Toolkit {html.escape(meta['toolkit_version'])}</title>
+<title>RAHP Toolkit {html.escape(meta['toolkit_version'])}</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>{CSS}
 .tabbar{{display:flex;gap:3px;padding:10px 40px 0;background:var(--surface);
@@ -802,7 +802,7 @@ def build_site(records, derived, meta, out):
     (site / "assurance.html").write_text(page("assurance.html", ptitle, psub, body, meta), encoding="utf-8")
     pages.append(("assurance", ptitle, psub, body))
 
-    # ---- Task Force action register (v0.5-dev) --------------------------
+    # ---- Task Force action register --------------------------
     tf_actions = derived["tf_actions"]
     tf_summary = summarize_tf_actions(tf_actions)
     tf_rows = []

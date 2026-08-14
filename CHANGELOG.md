@@ -12,13 +12,17 @@ has_toc: true
 - First substantial external RAHP deployment under `profiles/cawg/` and `instances/cawg/`, covering CAWG/C2PA specification work without inheriting DTG portfolio governance.
 - Eight completed CAWG/C2PA RAHP pressure tests spanning identity, metadata, training/mining, consent, endorsement, organizational identity, UX, and C2PA substrate boundaries.
 - Portable branch-aware `tools/instance_monitor.py` for static-profile change tracking and materiality detection.
+- Hardened DTG and portable instance monitors so empty/uninitialised repositories do not terminate scheduled assurance monitoring; genuine API failures remain visible.
 - Deduplicated GitHub assessment issue publication and unified `instance-watch.yml` scheduled/manual workflow for DTG and CAWG/C2PA deployments.
 - CAWG/C2PA instance documentation and v0.6.0 release notes.
 
 ### Changed
 - Project identity and Pages/JSON-LD references now use the neutral `sankarshanmukhopadhyay/rahp-toolkit` repository.
-- DTG is retained as an origin/exemplar deployment rather than encoded in the toolkit name.
+- Completed an active-documentation identity audit: navigation, adoption, contribution guidance, repository diagrams, AI-assisted guidance and pressure-test instructions now distinguish the portable toolkit from deployment-owned state.
+- DTG is retained as an origin/exemplar deployment rather than encoded in the toolkit name or treated as the default adoption boundary.
 - External deployment proof is now field evidence rather than an unchecked v0.5 roadmap objective.
+- Pressure-test validation resolves instance-local risk catalogues such as CAWG `CRK-*` alongside the bundled DTG catalogue.
+- Validation workflows now use Node 24-based `actions/checkout@v6` and `actions/setup-python@v6`; active documentation identity is checked in CI by `tools/validate_project_identity.py`.
 
 ### Removed
 - Obsolete root-level release checklist and duplicate root release-note files; `docs/releases/` is the canonical release-note location.

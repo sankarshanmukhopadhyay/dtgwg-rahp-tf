@@ -1,18 +1,16 @@
 ---
 layout: default
-title: "Task Force action register"
+title: "DTG exemplar governance action register"
 nav_order: 15
 has_toc: true
 ---
-# Task Force action register
+# DTG exemplar governance action register
 
-RAHP deliberately separates **mechanism** from **governance decisions**. The repository
-can generate candidate analysis, validation results, monitoring contracts, and decision
-support without silently deciding what the Task Force has not ratified.
+This page belongs to the **bundled DTG exemplar deployment**, not to portable RAHP. RAHP deliberately separates mechanism from deployment governance. The DTG exemplar can generate candidate analysis, validation results, monitoring contracts and decision support without silently deciding what the DTG Task Force has not ratified. Another deployment owns its own decision queue and authority model.
 
 The current itemized queue is generated from canonical record state:
 
-**[Open the generated Task Force Action Register](../build/site/task-force-actions.html).**
+**[Open the generated DTG Task Force Action Register](../build/site/task-force-actions.html).**
 
 ## What appears in the register
 
@@ -52,6 +50,6 @@ python3 tools/build.py
 
 ## Accountability boundary
 
-The generated register can identify and organize decisions. It cannot ratify them.
+The generated register can identify and organize **DTG deployment decisions**. It cannot ratify them, and its entries do not constrain CAWG/C2PA or any other RAHP deployment.
 Meeting minutes, GitHub decisions, resolutions, or other accountable governance evidence
 should be linked from the canonical record when the Task Force acts.

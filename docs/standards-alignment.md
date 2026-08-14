@@ -50,6 +50,6 @@ External alignment serves three purposes:
 
 1. **Defensibility** — show that a recommendation is grounded in recognized security principles rather than only local preference.
 2. **Translation** — let implementers and SDO participants relate RAHP terminology to frameworks they already use.
-3. **Coverage analysis** — reveal where a DTG-specific threat has no close external analogue and therefore needs original standards work.
+3. **Coverage analysis** — reveal where a deployment-specific threat has no close external analogue and therefore needs original standards or governance work.
 
 External alignment does not replace RAHP's own risk/control analysis, and the absence of a mapping does not make a finding invalid.

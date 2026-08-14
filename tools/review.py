@@ -158,7 +158,7 @@ def main():
     ip.add_argument("--commit",required=True); ip.add_argument("--document")
     ip.add_argument("--source-path",action="append",default=[])
     ip.add_argument("--reviewed-on",default=dt.date.today().isoformat())
-    ip.add_argument("--rahp-repository",default="sankarshanmukhopadhyay/dtgwg-rahp-tf")
+    ip.add_argument("--rahp-repository",default="sankarshanmukhopadhyay/rahp-toolkit")
     ip.add_argument("--rahp-version",default="development")
     ip.add_argument("--rahp-id"); ip.add_argument("--security-id"); ip.add_argument("--combined-id")
     ip.add_argument("--force",action="store_true"); ip.set_defaults(func=cmd_init)

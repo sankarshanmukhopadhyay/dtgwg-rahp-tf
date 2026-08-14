@@ -31,7 +31,7 @@ jobs:
       - name: Validate RAHP artefacts
         run: python3 tools/validate.py
 
-      - name: Validate v0.4 portable method
+      - name: Validate portable method invariants
         run: python3 tools/validate_v04_method.py
 
       - name: Validate scenario corpora
@@ -41,6 +41,12 @@ jobs:
 
       - name: Validate pressure-test records
         run: python3 tools/validate_pressure_tests.py
+
+      - name: Validate v0.6 project identity
+        run: python3 tools/validate_project_identity.py
+
+      - name: Test source-monitor resilience
+        run: python3 -m unittest discover -s tests -p 'test_*.py'
 
       - name: Validate security-hardening reviews
         run: python3 tools/validate_security_reviews.py

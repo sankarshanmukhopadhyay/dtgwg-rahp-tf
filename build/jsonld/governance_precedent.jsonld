@@ -2,7 +2,7 @@
   "@context": "../../context/rahp.jsonld",
   "@graph": [
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GP-001",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GP-001",
       "@type": "GovernancePrecedent",
       "title": "Bilateral VRC signatures accepted as partial GR-04 implementation",
       "decisionDate": "2026-03",
@@ -10,20 +10,20 @@
       "context": "DTG Credential Specification v0.3 introduced bilateral VRC signatures. RAHP assessed this as partially implementing GR-04 (Reciprocal VRC Requirement), raising per-edge Sybil cost without requiring full threshold signing.",
       "rationale": "Full threshold signing imposes a UX burden incompatible with EPIC-12 (UX & Human Workflows) at current tooling maturity. Bilateral signing accepted as an interim measure, with GR-04 retained as a future normative candidate rather than closed.",
       "linkedRisks": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID01",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID03",
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-AI03"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-ID01",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-ID03",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI03"
       ],
       "linked_controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-09"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-09"
       ],
       "linked_guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-04"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-04"
       ],
       "evidence": "DTG Credential Specification v0.3 review, March 2026 (risk register v5, section 6a)"
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GP-002",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GP-002",
       "@type": "GovernancePrecedent",
       "title": "R-DID per-relationship requirement reduces linkability risk",
       "decisionDate": "2026-03",
@@ -31,15 +31,15 @@
       "context": "Specification v0.3 made R-DIDs a MUST on a per-relationship basis. RAHP reassessed RK-ID05 (M-DID Linkability Across VTCs) and reduced its likelihood from Medium to Low as a direct result.",
       "rationale": "A specification change that measurably reduces an assessed risk should be recorded as precedent, not merely reflected in a changed score. Without the record, a future revision could reverse the design choice without anyone noticing the risk score was contingent on it.",
       "linkedRisks": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-ID05"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-ID05"
       ],
       "linked_controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-15"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-15"
       ],
       "evidence": "DTG Credential Specification v0.3 review, March 2026 (risk register v5, section 6a)"
     },
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/GP-003",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GP-003",
       "@type": "GovernancePrecedent",
       "title": "M-DID bootstrapping exception permitted without a migration trigger",
       "decisionDate": "2026-03",
@@ -47,13 +47,13 @@
       "context": "Specification v0.3 permits M-DID use during bootstrapping but defines no trigger for migration to R-DIDs. RAHP recorded this as a new risk (RK-SC04) introduced by a specification design choice, scored Medium severity x High likelihood.",
       "rationale": "Recorded as a precedent because it is a decision the working group may not have taken deliberately. The exception is reasonable for bootstrapping; the absence of a migration trigger is what converts a temporary allowance into a permanent weakening of the R-DID privacy model. CT-50 and GR-18 propose the trigger.",
       "linkedRisks": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/RK-SC04"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-SC04"
       ],
       "linked_controls": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/CT-50"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-50"
       ],
       "linked_guardrails": [
-        "https://trustoverip.github.io/dtgwg-rahp-tf/id/GR-18"
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-18"
       ],
       "evidence": "DTG Credential Specification v0.3 review, March 2026 (risk register v5, section 6b)"
     }

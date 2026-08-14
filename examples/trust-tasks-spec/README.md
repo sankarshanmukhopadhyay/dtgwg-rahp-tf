@@ -25,7 +25,7 @@ The target revision, review scope, RAHP baseline, summary and complete finding r
 | Target version | Editor's Draft 0.3 (2026-08-07) |
 | Target commit | `fbe196a8a17ba3f99d0657a64be5ac58621023a1` |
 | Target source paths | `SPEC.md`, `docs/design-notes/delegated-trust-task-execution.md`, `docs/design-notes/trust-ceremonies.md`, `specs/task-consent/`, `specs/trust-task-discovery/`, `specs/trust-ceremony-receipt/` |
-| RAHP repository | `sankarshanmukhopadhyay/dtgwg-rahp-tf` |
+| RAHP repository | `sankarshanmukhopadhyay/rahp-toolkit` |
 | RAHP version | `v0.3-dev` |
 | RAHP corpus date | 2026-08-12 |
 

@@ -2,7 +2,7 @@
   "@context": "../../context/rahp.jsonld",
   "@graph": [
     {
-      "@id": "https://trustoverip.github.io/dtgwg-rahp-tf/id/RP-001",
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RP-001",
       "@type": "RuleProfile",
       "name": "DTGWG RAHP v0.4 proposed operating profile",
       "status": "proposed",
