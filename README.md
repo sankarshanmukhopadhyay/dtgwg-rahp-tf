@@ -147,7 +147,7 @@ python3 tools/validate_reference_links.py
 
 ## Change monitoring
 
-`tools/instance_monitor.py` provides reusable `repository@branch` source monitoring for static deployment profiles. `tools/publish_assessment_issues.py` converts material change events into deduplicated review-queue issues. The scheduled `instance-watch.yml` workflow runs both bundled deployments while preserving separate state and governance boundaries.
+`tools/instance_monitor.py` provides reusable `repository@branch` source monitoring for static deployment profiles, while the DTG adapter additionally discovers its portfolio perimeter. `tools/issue_watch.py` provides a second, allow-listed early-warning channel for upstream architecture/governance issues. Both bundled deployments now use issue-aware monitoring with independent registries and state. `tools/publish_assessment_issues.py` converts material source or selected-issue change events into deduplicated review-queue issues.
 
 A change issue means **the assessment baseline is stale**, not that a specification is defective. A reviewer must inspect the diff and decide whether RAHP, security or combined evidence requires revision.
 

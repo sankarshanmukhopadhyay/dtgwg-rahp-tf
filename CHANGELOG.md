@@ -9,8 +9,9 @@ has_toc: true
 ## v0.7.0 — 2026-08-14
 
 - Deepen CAWG/C2PA coverage with scenario, composition, experimental-branch, security and combined review evidence.
-- Add CAWG issue-aware situational monitoring and mandate-readiness rendering.
-- Fix Pages base-URL link validation and add regression coverage.
+- Add deployment-neutral issue-aware situational monitoring: CAWG/C2PA and DTG maintain separate curated issue registries and state.
+- Add CAWG mandate-readiness rendering.
+- Fix Pages base-URL and structured-data coverage validation, including canonical mandate-readiness projection and assessment-pack links.
 
 ## v0.6.0 — 2026-08-14
 

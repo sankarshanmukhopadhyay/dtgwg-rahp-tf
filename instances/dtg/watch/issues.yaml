@@ -1,0 +1,82 @@
+version: 1
+instance: dtg
+labels:
+- assessment-required
+- dtg-instance
+policy: Only selected upstream DTG issues that can change architecture, normative semantics, security posture, lifecycle,
+  authorization or cross-specification assumptions are watched. Issue activity is an assessment trigger, never normative input
+  by itself.
+issues:
+- repository: trustoverip/dtgwg-trust-tasks-tf
+  number: 173
+  theme: cross-specification
+  title: Credential taskContext binding to Trust Tasks
+  affected_reviews:
+  - trust-tasks-spec
+  - dtg-credential-spec
+  - cross-spec-composition
+- repository: trustoverip/dtgwg-trust-tasks-tf
+  number: 206
+  theme: transport-security
+  title: Proof omission and transport-binding security
+  affected_reviews:
+  - trust-tasks-spec
+  - security-hardening/trust-tasks
+- repository: trustoverip/dtgwg-trust-tasks-tf
+  number: 205
+  theme: authorization
+  title: Identity/proof versus execution authority
+  affected_reviews:
+  - trust-tasks-spec
+  - security-hardening/trust-tasks
+  - cross-spec-composition
+- repository: trustoverip/dtgwg-trust-tasks-tf
+  number: 204
+  theme: corrigibility
+  title: Cancellation, suspension and supersession
+  affected_reviews:
+  - trust-tasks-spec
+  - cross-spec-composition
+- repository: trustoverip/dtgwg-trust-tasks-tf
+  number: 203
+  theme: lifecycle
+  title: Execution-time validity for consequential/delegated tasks
+  affected_reviews:
+  - trust-tasks-spec
+  - security-hardening/trust-tasks
+- repository: trustoverip/dtgwg-trust-tasks-tf
+  number: 202
+  theme: replay
+  title: Duplicate-execution protection
+  affected_reviews:
+  - trust-tasks-spec
+  - security-hardening/trust-tasks
+- repository: trustoverip/dtgwg-cred-spec
+  number: 17
+  theme: standards-alignment
+  title: W3C Data Integrity and multibase alignment
+  affected_reviews:
+  - dtg-credential-spec
+  - security-hardening/credential-spec
+- repository: trustoverip/dtgwg-cred-spec
+  number: 9
+  theme: zkp-linkage
+  title: Identity linkages required by ZKP constructions
+  affected_reviews:
+  - dtg-credential-spec
+  - dtg-zkp
+  - cross-spec-composition
+- repository: trustoverip/dtgwg-cred-spec
+  number: 11
+  theme: cross-specification
+  title: Normative taskContext dependency
+  affected_reviews:
+  - dtg-credential-spec
+  - trust-tasks-spec
+  - cross-spec-composition
+- repository: trustoverip/dtgwg-cred-spec
+  number: 8
+  theme: credential-semantics
+  title: VMC bidirectionality contradiction
+  affected_reviews:
+  - dtg-credential-spec

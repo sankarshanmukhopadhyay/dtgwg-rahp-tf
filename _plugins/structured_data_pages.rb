@@ -5,6 +5,7 @@ require "json"
 
 module RahpPagesProjection
   STRUCTURED_ROOTS = %w[corpora method data build/derived build/jsonld examples archive/historical-builds].freeze
+  STRUCTURED_FILES = %w[instances/cawg/mandate-readiness.yaml instances/cawg/watch/issues.yaml instances/dtg/watch/issues.yaml].freeze
   STRUCTURED_EXTENSIONS = %w[.yaml .yml .json .jsonld].freeze
   MARKDOWN_ROOTS = %w[examples build archive].freeze
   TOP_LEVEL_MARKDOWN = %w[README.md ADOPTION.md QUICKSTART.md CONTRIBUTING.md ROADMAP.md CHANGELOG.md].freeze
@@ -61,13 +62,15 @@ module RahpPagesProjection
     private
 
     def structured_files(site)
-      STRUCTURED_ROOTS.flat_map do |root|
+      rooted = STRUCTURED_ROOTS.flat_map do |root|
         absolute_root = File.join(site.source, root)
         next [] unless Dir.exist?(absolute_root)
         Dir.glob(File.join(absolute_root, "**", "*")).select do |path|
           File.file?(path) && STRUCTURED_EXTENSIONS.include?(File.extname(path).downcase)
         end
       end
+      exact = STRUCTURED_FILES.map { |path| File.join(site.source, path) }.select { |path| File.file?(path) }
+      (rooted + exact).uniq
     end
 
     def markdown_files(site)

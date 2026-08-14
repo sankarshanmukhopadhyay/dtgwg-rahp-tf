@@ -8,9 +8,10 @@ has_toc: true
 
 ## v0.7.0 — Composition and Situational Assurance (complete)
 
-CAWG/C2PA now exercises scenario-driven, cross-specification, security and combined review modes with issue-aware situational monitoring and mandate-readiness evidence.
+CAWG/C2PA now exercises scenario-driven, cross-specification, security and combined review modes with mandate-readiness evidence, while both CAWG/C2PA and DTG use deployment-owned selected-issue situational monitoring alongside repository drift.
 
-Status: v0.7.0 release baseline; RAHP Toolkit operates independently governed DTG and CAWG/C2PA deployments, with CAWG exercising scenario, composition, security, combined and situational-assurance workflows
+Status: v0.7.0 release baseline; RAHP Toolkit operates independently governed DTG and CAWG/C2PA deployments, with CAWG exercising scenario, composition, security and combined assurance and both deployments exercising independent situational-assurance workflows
+
 Supersedes: the roadmap proposal in DTGWG discussion #3 (April 2026), which it
 largely adopts. Where it departs, the reasoning is stated.
 
