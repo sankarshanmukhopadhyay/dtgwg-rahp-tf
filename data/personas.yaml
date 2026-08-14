@@ -673,138 +673,324 @@ records:
   name: Principal / Rights-Bearing Party
   role: Principal, rights holder, represented person, or consent-giving party
   type: portable_role
-  quote: An action may involve me, my rights, my assets, or my authority even when another system performs
-    it.
+  quote: An action may involve me, my rights, my assets, or my authority even when another system performs it.
+  context:
+    operating_context: A person or organization whose rights, interests, assets, consent, or delegated authority can be affected by actions taken directly or through intermediaries and automated systems.
+    authority_position: May grant, withhold, narrow, amend, or withdraw authority where the governing framework permits, but may not control every technical system that acts on that authority.
+    dependencies: Depends on producers, relying parties, intermediaries, delegated services, and trust infrastructure to preserve the meaning and lifecycle of authority.
   lifecycle_phases:
-  - Cross-domain
+  - Establishment / enrolment
+  - Grant or consent
+  - Use / presentation / execution
+  - Amendment / revocation / dispute
   goals:
-  - Ensure actions affecting their rights or interests remain within granted authority
-  - Understand who is acting and on what basis
+  - Ensure actions affecting rights or interests remain within granted authority
+  - Understand who is acting, for whom, for what purpose, and on what basis
   - Withdraw, amend, contest, or constrain authority where applicable
+  - Obtain meaningful notice, explanation, and redress when consequential decisions are made
   risk_context:
   - Authority can be inferred from identity or possession rather than an explicit grant
-  - Consent or delegation can outlive its intended purpose or validity
+  - Consent or delegation can outlive its intended purpose, scope, or validity
   - Multi-party rights may be collapsed into a single actor’s decision
+  - Intermediaries or agents can obscure who initiated or approved a consequential action
+  - Technical success may provide no usable route to explanation, correction, or redress
+  power_and_decisions:
+  - Can grant or refuse consent or delegation where the applicable governance permits
+  - Can define purpose or scope boundaries for represented action
+  - Can challenge, amend, or revoke authority, subject to system and governance support
+  harms_and_externalities:
+  - Loss of autonomy when another actor acts beyond granted purpose or scope
+  - Financial, reputational, privacy, safety, or access harms caused by incorrect or stale authority
+  - Reduced ability to obtain redress when intermediaries or automated actors obscure accountability
   inclusion_drivers:
   - Explicit authority and consent boundaries
   - Revocation and lifecycle semantics
   - Accessible evidence of who acted for whom
+  - Usable notice, contestability, and redress mechanisms
   exclusion_risks:
   - Rights-bearing parties can become invisible behind intermediaries, platforms, credentials, or agents
-  evidence: []
+  - People unable to use the preferred identity, device, language, accessibility, or consent mechanism may be unable to exercise equivalent control
+  - Multi-party or supported-decision contexts may be forced into a single-principal model
+  pressure_test_situations:
+  - A valid credential is presented after the principal withdrew the underlying authority
+  - An agent completes an action that is technically permitted but outside the principal’s stated purpose
+  - Two people have legitimate but conflicting rights in the same asset, content, or transaction
+  - The principal contests an action but cannot determine which intermediary or delegated service made the effective decision
+  evidence:
+  - claim: Digital identity and federation systems require privacy, lifecycle, assertion, and relying-party controls rather than treating successful authentication as unlimited authority.
+    source: NIST SP 800-63-4 Digital Identity Guidelines
+    url: https://csrc.nist.gov/pubs/sp/800/63/4/final
+  - claim: Verifiable credential ecosystems distinguish issuer, holder, verifier, credential status, trust, privacy, and security concerns; verification does not by itself establish every business or governance conclusion.
+    source: W3C Verifiable Credentials Data Model v2.0
+    url: https://www.w3.org/TR/vc-data-model-2.0/
 - id: P2
   name: Producer / Originating Actor
   role: Actor that originates content, metadata, assertions, requests, or signed evidence
   type: portable_role
-  quote: I can produce authentic evidence, but authenticity does not automatically make every statement authoritative
-    for every purpose.
+  quote: I can produce authentic evidence, but authenticity does not automatically make every statement authoritative for every purpose.
+  context:
+    operating_context: An actor that originates content, metadata, assertions, requests, credentials, or other evidence that downstream systems may authenticate, transform, or rely upon.
+    authority_position: Controls creation of an output but may have authority for only some properties, subjects, purposes, or time periods represented by that output.
+    dependencies: Depends on schemas, signing/provenance mechanisms, lifecycle metadata, and downstream interpretation to preserve intended scope.
   lifecycle_phases:
-  - Cross-domain
+  - Origination / issuance
+  - Signing / attestation
+  - Distribution / transformation
+  - Update / withdrawal / supersession
   goals:
   - Produce interoperable and accurately scoped evidence
   - Avoid having assertions interpreted beyond their intended meaning
   - Preserve provenance and accountability for outputs
+  - Make authority, subject, purpose, and lifecycle boundaries discoverable downstream
   risk_context:
   - Signed or integrity-protected output can be over-read as truth or authority
-  - Optional evidence may be stripped or omitted
-  - The producer may lack authority over a represented subject or property
+  - Optional evidence may be stripped, omitted, or transformed downstream
+  - The producer may lack authority over a represented subject, right, property, or purpose
+  - A formerly correct assertion may remain technically verifiable after circumstances change
+  - Ambiguous schemas or UI labels may cause downstream parties to infer stronger claims than the producer intended
+  power_and_decisions:
+  - Chooses what evidence or assertions to originate
+  - Chooses what metadata, provenance, scope, and lifecycle information accompanies an output within the governing format
+  - May update, withdraw, or supersede evidence when supported by the system
+  harms_and_externalities:
+  - Overbroad or ambiguous assertions can cause downstream denial, authorization, attribution, or reputational harm
+  - Missing provenance or lifecycle data can transfer uncertainty to relying parties and affected principals
+  - Incorrect claims about another person, organization, asset, or right can become durable because cryptographic authenticity protects the statement rather than its truth
   inclusion_drivers:
   - Clear assertion semantics
   - Property-specific authority rules
   - Stable provenance and lifecycle metadata
+  - Mechanisms to correct, supersede, or withdraw evidence
   exclusion_risks:
   - Producer identity can overshadow the rights or authority of other affected parties
-  evidence: []
+  - Small or non-standard producers may be rejected when ecosystems privilege a narrow set of issuers, signers, or tooling
+  - Mandatory metadata or assurance requirements may impose costs that exclude legitimate low-resource producers
+  pressure_test_situations:
+  - A producer signs an assertion about a subject for which it has identity evidence but no domain authority
+  - An intermediary strips optional provenance before a relying party receives the object
+  - A claim was correct when issued but is stale when later relied upon
+  - Two authentic producers make conflicting assertions about the same property
+  evidence:
+  - claim: Data Integrity proofs provide authenticity and integrity properties but applications still need explicit semantics, trust decisions, and privacy/security handling.
+    source: W3C Verifiable Credential Data Integrity 1.0
+    url: https://www.w3.org/TR/vc-data-integrity/
+  - claim: Verifiable credential trust depends on ecosystem roles, business rules, status and contextual verification rather than signature validity alone.
+    source: W3C Verifiable Credentials Data Model v2.0
+    url: https://www.w3.org/TR/vc-data-model-2.0/
 - id: P3
   name: Relying Party / Verifier
   role: Actor that consumes evidence and makes a trust, policy, routing, authorization, or presentation decision
   type: portable_role
-  quote: Validation tells me something important, but I still need to know what I am entitled to conclude from
-    it.
+  quote: Validation tells me something important, but I still need to know what I am entitled to conclude from it.
+  context:
+    operating_context: An actor or automated policy component that consumes evidence and converts it into a trust, routing, eligibility, authorization, moderation, or presentation decision.
+    authority_position: Controls the local decision policy and therefore determines what evidence counts, how failures are interpreted, and what consequence follows for affected parties.
+    dependencies: Depends on evidence producers, trust/status services, policy configuration, freshness, conflict handling, and usable presentation of verification results.
   lifecycle_phases:
-  - Cross-domain
+  - Evidence acquisition
+  - Verification / validation
+  - Policy decision
+  - Challenge / appeal / audit
   goals:
   - Make defensible trust and authorization decisions
   - Distinguish integrity, identity, authority, consent, and policy
   - Detect missing, stale, conflicting, or downgraded evidence
+  - Explain and audit consequential decisions without treating technical validation as sufficient justification
   risk_context:
-  - Cryptographic validity can be mistaken for semantic trustworthiness
-  - Failure or absence may silently downgrade decision quality
+  - Cryptographic validity can be mistaken for semantic trustworthiness or legal/business authority
+  - Failure or absence may silently downgrade decision quality or be treated as proof of ineligibility
   - Different trust lanes can be treated as equivalent without policy
+  - Status or registry information may be stale, unavailable, or incapable of answering historical questions
+  - Automation may hide which evidence, threshold, or policy rule actually caused a denial or approval
+  power_and_decisions:
+  - Defines or applies the acceptance policy for evidence
+  - Can approve, deny, route, rank, flag, or condition access based on verification outcomes
+  - Determines whether missing, conflicting, stale, or unfamiliar evidence causes failure, fallback, or escalation
+  harms_and_externalities:
+  - False rejection can exclude legitimate parties from services, markets, speech, transactions, or redress
+  - False acceptance can expose principals and third parties to fraud, impersonation, unauthorized action, or unsafe content
+  - Overcollection and retention of verification evidence can introduce correlation, privacy, and surveillance harms
   inclusion_drivers:
   - Explicit decision policy
   - Freshness and status checks
   - Negative and downgrade-path assurance tests
+  - Human-understandable failure, escalation, and appeal paths
   exclusion_risks:
   - UI or protocol success signals can encourage overconfidence or unjustified exclusion
-  evidence: []
+  - Unfamiliar but valid trust mechanisms may be rejected because policy is coupled to a narrow ecosystem
+  - Absence of optional evidence may be treated as adverse evidence against legitimate edge cases
+  pressure_test_situations:
+  - A credential validates cryptographically but the issuer’s relevant authority has expired
+  - The registry or status service cannot be reached at decision time
+  - Two authoritative evidence sources disagree
+  - A delegated agent presents valid evidence outside the principal’s delegated purpose or scope
+  - Optional higher-assurance evidence disappears through an intermediary before verification
+  evidence:
+  - claim: Federation guidance requires relying parties to validate assertion restrictions, trust agreements and lifecycle conditions rather than equating a valid assertion with unrestricted acceptance.
+    source: NIST SP 800-63C-4 Federation and Assertions
+    url: https://csrc.nist.gov/pubs/sp/800/63/c/4/final
+  - claim: Zero-trust architecture separates authentication from resource-specific authorization and applies least-privilege, continuously evaluated policy.
+    source: NIST SP 800-207 Zero Trust Architecture
+    url: https://csrc.nist.gov/pubs/sp/800/207/final
 - id: P4
   name: Intermediary / Platform Operator
-  role: Platform, publisher, gateway, distributor, transformer, host, or callback service between originator
-    and relying party
+  role: Platform, publisher, gateway, distributor, transformer, host, or callback service between originator and relying party
   type: portable_role
   quote: I move, transform, route, or present evidence. That makes my handling choices part of the trust boundary.
+  context:
+    operating_context: A platform, publisher, gateway, distributor, transformer, host, wallet, broker, or callback service positioned between an originator and relying party.
+    authority_position: Controls transport, transformation, storage, ranking, presentation, or policy enforcement that can materially change what downstream parties observe and conclude.
+    dependencies: Depends on upstream evidence quality and downstream interpretation while also becoming a distinct security, privacy, availability, and governance boundary.
   lifecycle_phases:
-  - Cross-domain
+  - Ingestion
+  - Transformation / routing / storage
+  - Presentation / delivery
+  - Retention / deletion / incident response
   goals:
   - Preserve relevant assurance information across processing
   - Apply policy consistently at scale
-  - Avoid becoming a downgrade, correlation, or redirection point
+  - Avoid becoming a downgrade, correlation, substitution, or redirection point
+  - Make transformations and failure states observable enough for downstream accountability
   risk_context:
   - Transformation can remove optional or higher-layer evidence
   - Presentation can overstate verification meaning
-  - Callback, routing, or storage functions can introduce new security and privacy boundaries
+  - Callback, routing, resolution, or storage functions can introduce new security and privacy boundaries
+  - Retries, caching, or normalization can unintentionally make stale evidence appear current
+  - Platform policy can become de facto governance even when the underlying standard permits more diverse participation
+  power_and_decisions:
+  - Can accept, reject, transform, suppress, enrich, cache, or route evidence
+  - Controls how assurance results and warnings are presented to users or downstream systems
+  - May impose participation, retention, moderation, ranking, or interoperability policies beyond the base protocol
+  harms_and_externalities:
+  - Evidence stripping or transformation can cause downstream parties to make weaker decisions without knowing assurance was lost
+  - Centralized observation of transactions or verification events can enable correlation and surveillance
+  - Opaque platform policy can exclude legitimate participants or amplify particular producers, trust services, or technical implementations
   inclusion_drivers:
   - Evidence-preserving transformation rules
   - Clear failure-state behaviour
   - Auditable policy enforcement
+  - Interoperable export, fallback, and migration paths where practical
   exclusion_risks:
   - Centralized platforms can become participation gates or hidden policy authorities
-  evidence: []
+  - Proprietary transformations may disadvantage participants using otherwise conformant alternative implementations
+  - Accessibility, bandwidth, device, or account requirements introduced by the intermediary can exclude users the underlying protocol could support
+  pressure_test_situations:
+  - A platform removes an optional assertion during media or message transformation
+  - A callback is redirected to an attacker-controlled endpoint while the original request remains valid
+  - Cached registry or credential-status information survives beyond its safe freshness window
+  - The platform presents a binary “verified” signal although only a subset of claims were actually checked
+  evidence:
+  - claim: API ecosystems face broken authorization, unsafe consumption of third-party resources, inventory/version drift, and security misconfiguration at intermediary boundaries.
+    source: OWASP API Security Top 10 – 2023
+    url: https://owasp.org/API-Security/editions/2023/en/0x11-t10/
+  - claim: Security and privacy controls treat audit, access control, integrity, resilience, and system protection as distinct responsibilities across information-system boundaries.
+    source: NIST SP 800-53 Rev. 5
+    url: https://csrc.nist.gov/pubs/sp/800/53/r5/final
 - id: P5
   name: Delegated Service / Agent Operator
   role: Operator of a service or agent acting on behalf of another party or consuming delegated authority
   type: portable_role
-  quote: Being able to perform an action is not the same as being authorised to perform it for this principal,
-    purpose, and scope.
+  quote: Being able to perform an action is not the same as being authorised to perform it for this principal, purpose, and scope.
+  context:
+    operating_context: An organization, service, software agent, or agent operator that performs actions for another party or receives delegated authority to invoke tools, services, transactions, or downstream agents.
+    authority_position: Can exercise delegated capability but should not infer broader authority merely from credential possession, connectivity, technical capability, or prior approval.
+    dependencies: Depends on explicit principal, purpose, scope, expiry, approval, onward-delegation, and revocation semantics remaining intact across service boundaries.
   lifecycle_phases:
-  - Cross-domain
+  - Delegation grant
+  - Delegated execution
+  - Onward delegation / tool use
+  - Expiry / revocation / audit
   goals:
   - Receive only the authority needed for the assigned task
   - Preserve principal, purpose, scope, and approval boundaries
   - Produce accountable evidence of consequential actions
+  - Stop or re-authorize activity when delegation, policy, or principal intent changes
   risk_context:
   - Delegation context can be lost across service or agent hops
   - Secondary credentials can become transitive authority
   - A valid capability may be confused with permission to act
+  - Sub-agents or asynchronous jobs may survive revocation of the originating authorization
+  - Opaque execution can prevent a principal or relying party from reconstructing who decided and performed each consequential step
+  power_and_decisions:
+  - Can invoke tools or services within the technical reach granted to it
+  - May select execution paths, downstream services, or sub-agents unless constrained
+  - May generate new requests, evidence, transactions, or side effects attributed to the principal
+  harms_and_externalities:
+  - Scope creep can cause unauthorized purchases, disclosures, submissions, changes, or commitments
+  - Onward delegation can expose principal data and authority to parties the principal never evaluated
+  - Weak action provenance can leave principals, operators, and affected third parties unable to attribute or contest harmful actions
   inclusion_drivers:
   - Bounded delegation
   - Non-transitive credentials by default
   - Cross-service action provenance
+  - Fast revocation and explicit re-authorization for consequential changes
   exclusion_risks:
   - Opaque delegation chains can make redress and accountability difficult
-  evidence: []
+  - Systems that require continuous human intervention may exclude legitimate users who rely on assistive or autonomous delegation
+  - Overly broad prohibitions on delegated actors can deny equivalent access to people and organizations that cannot interact directly with every service
+  pressure_test_situations:
+  - A sub-agent receives a credential that the original principal never authorized for onward delegation
+  - The principal revokes authority while an asynchronous action is queued
+  - An agent has technical access to a tool but the requested action exceeds the delegated purpose
+  - A downstream service cannot distinguish the agent operator’s authority from the principal’s authority
+  evidence:
+  - claim: Agentic systems introduce excessive-agency, delegated-action, tool-use, and trust-boundary risks that require explicit mitigations.
+    source: OWASP Agentic AI – Threats and Mitigations
+    url: https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/
+  - claim: Zero-trust access-control models require granular service identity and authorization policy rather than inheriting broad trust across distributed services.
+    source: NIST SP 800-207A
+    url: https://csrc.nist.gov/pubs/sp/800/207/a/final
 - id: P6
   name: Registry / Discovery / Trust-Service Operator
-  role: Operator of a registry, directory, discovery service, status service, trust list, or other trust-supporting
-    infrastructure
+  role: Operator of a registry, directory, discovery service, status service, trust list, or other trust-supporting infrastructure
   type: portable_role
-  quote: My service can help establish what is discoverable, valid, current, or recognized, but my governance
-    determines how much that fact should mean.
+  quote: My service can help establish what is discoverable, valid, current, or recognized, but my governance determines how much that fact should mean.
+  context:
+    operating_context: An operator of a registry, directory, resolver, discovery service, trust list, status service, or similar infrastructure used to determine what actors, keys, credentials, policies, or states are discoverable and recognized.
+    authority_position: Controls or strongly influences discoverability, status, freshness, historical state, and therefore practical ecosystem participation, even where it is not the ultimate source of legal or domain authority.
+    dependencies: Depends on trustworthy governance, update authorization, integrity, availability, origin authentication, retention, historical reconstruction, and transparent participation rules.
   lifecycle_phases:
-  - Cross-domain
+  - Registration / admission
+  - Publication / discovery
+  - Status update / suspension / withdrawal
+  - Historical lookup / audit / recovery
   goals:
   - Publish trustworthy, current, and well-governed trust information
   - Make status and historical state recoverable
   - Avoid becoming an opaque or discriminatory participation gate
+  - Preserve integrity, availability, and explainable governance of registry changes
   risk_context:
-  - Discovery metadata can be stale or substituted
+  - Discovery metadata can be stale, substituted, poisoned, or ambiguously sourced
   - Current state may not answer historical authority
   - Registry governance can silently define market or ecosystem access
+  - Availability failures can become authorization failures for otherwise valid parties
+  - Public status or discovery data can create correlation, surveillance, or reputational externalities
+  power_and_decisions:
+  - Can determine which entries are discoverable or recognized by default
+  - Can publish, suspend, remove, or update trust and status information subject to governance
+  - Can define admission, update, retention, query, and historical-access policies
+  harms_and_externalities:
+  - Incorrect removal or stale status can deny legitimate participation across many relying parties at once
+  - Incorrect inclusion can amplify fraudulent or unauthorized actors by giving them ecosystem-wide discoverability
+  - Centralized query logs and public status data can reveal relationships, activity patterns, or sensitive lifecycle events
   inclusion_drivers:
   - Transparent governance and update semantics
   - Origin, integrity, freshness, and withdrawal controls
   - Historical/as-of query support where required
+  - Appeal, correction, portability, and non-discriminatory admission mechanisms
   exclusion_risks:
   - Centralized discovery or trust services can concentrate surveillance, gatekeeping, or policy power
-  evidence: []
+  - High-cost, jurisdiction-specific, or incumbent-controlled admission criteria can exclude otherwise capable participants
+  - Outages or network constraints may exclude users and services that cannot perform online status checks at decision time
+  pressure_test_situations:
+  - A relying party needs to know whether an issuer was authorized at the historical time of an event, not merely now
+  - A valid participant disappears from discovery because of an erroneous or delayed registry update
+  - A registry is unavailable and implementations disagree on fail-open versus fail-closed behavior
+  - An attacker substitutes a discovery endpoint while preserving syntactically valid metadata
+  evidence:
+  - claim: Credential status mechanisms require integrity, validity periods, caching, privacy and correlation controls; status publication itself can create privacy trade-offs.
+    source: W3C Bitstring Status List v1.0
+    url: https://www.w3.org/TR/vc-bitstring-status-list/
+  - claim: Cybersecurity governance should explicitly manage risk, roles, dependencies, protection, detection, response and recovery rather than treating supporting infrastructure as neutral plumbing.
+    source: NIST Cybersecurity Framework 2.0
+    url: https://www.nist.gov/cyberframework

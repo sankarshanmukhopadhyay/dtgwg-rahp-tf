@@ -98,6 +98,8 @@ has_toc: true
 - Add reusable `P1`–`P6` personas for principals/rights-bearing parties, producers, relying parties, intermediaries, delegated service/agent operators, and registry/discovery/trust-service operators.
 - Apply portable personas at finding level across the C2PA/CAWG and A2A worked pressure tests, while retaining machine-agent personas where behaviour is independently relevant.
 - Extend persona namespace validation/import handling and document when portable roles versus DTG-specific personas should be used.
+- Deepen `P1`–`P6` to parity with the established corpus through institutional context, meaningful lifecycle stages, explicit power/decision and harms/externality fields, concrete pressure-test situations, broader inclusion/exclusion analysis, and evidence grounding.
+- Add `method/persona-quality.yaml` and `tools/validate_persona_quality.py` so portable-role richness is machine-verifiable in validation and Pages CI rather than relying on editorial convention.
 
 ### Agent-protocol assurance example
 

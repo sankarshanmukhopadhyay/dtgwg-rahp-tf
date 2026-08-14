@@ -218,6 +218,9 @@
         "risk_context": { "type": "array", "items": { "type": "string" } },
         "inclusion_drivers": { "type": "array", "items": { "type": "string" } },
         "exclusion_risks": { "type": "array", "items": { "type": "string" } },
+        "power_and_decisions": { "type": "array", "items": { "type": "string" } },
+        "harms_and_externalities": { "type": "array", "items": { "type": "string" } },
+        "pressure_test_situations": { "type": "array", "items": { "type": "string" } },
         "exploits": { "type": "array", "items": { "type": "string" } },
         "calibration": { "type": "string" },
         "evidence": {

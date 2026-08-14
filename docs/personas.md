@@ -63,6 +63,31 @@ Portable roles are different. Their purpose is to expose **institutional and tec
 
 Demographic details should only be added when they materially change the assurance question.
 
+## Persona analytical-richness contract
+
+Portable does **not** mean skeletal. A portable persona must be rich enough to drive a repeatable harms and assurance analysis without inventing a fictional demographic profile. `method/persona-quality.yaml` defines the executable minimum for each persona family covered by a quality profile.
+
+For `portable_role`, every persona must currently include:
+
+- at least four goals and five material risk contexts;
+- an institutional `context` describing operating context, authority position, and dependencies;
+- at least three explicit `power_and_decisions` statements;
+- at least three `harms_and_externalities` statements, covering harms borne or imposed through the role;
+- at least three inclusion drivers and three exclusion risks;
+- at least three concrete `pressure_test_situations`;
+- at least two meaningful lifecycle stages rather than `Cross-domain` alone; and
+- at least one evidence source grounding the represented failure, governance, privacy, security, or assurance pattern.
+
+The JSON Schema continues to define what a valid persona record *can contain*. The quality profile separately defines whether that record is sufficiently developed to serve as a RAHP analytical instrument. This separation keeps the base model extensible while preventing valid-but-anaemic personas from entering the portable corpus.
+
+Run the quality gate directly with:
+
+```bash
+python3 tools/validate_persona_quality.py
+```
+
+The standard validation and Pages workflows run the same gate in CI.
+
 ## Machine actors and institutional roles are complementary
 
 `M1` and `M2` describe benign and malign machine-agent behaviour. They do not replace the accountable institutional role around that machine.
@@ -82,8 +107,10 @@ For each finding:
 3. identify who relies on it to make a decision;
 4. identify any intermediary that transforms, routes, stores, or presents it;
 5. identify delegated operators or services;
-6. identify registry, discovery, or status infrastructure; and
-7. add machine or adversarial personas where their behaviour materially changes the finding.
+6. identify registry, discovery, or status infrastructure;
+7. inspect each selected persona's `power_and_decisions` and `harms_and_externalities`;
+8. exercise at least one relevant `pressure_test_situations` vector or explain why the finding needs a different situation; and
+9. add machine or adversarial personas where their behaviour materially changes the finding.
 
 Do not populate personas mechanically. Include a persona only when that role changes the harm, power relationship, decision, or assurance obligation.
 

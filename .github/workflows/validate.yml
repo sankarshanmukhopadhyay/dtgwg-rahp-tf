@@ -19,6 +19,9 @@ jobs:
       - name: Validate portable method invariants
         run: python3 tools/validate_v04_method.py
 
+      - name: Validate persona analytical richness
+        run: python3 tools/validate_persona_quality.py
+
       - name: Validate scenario corpora
         run: python3 tools/validate_scenario_corpora.py
       - name: Validate corpus source registry
