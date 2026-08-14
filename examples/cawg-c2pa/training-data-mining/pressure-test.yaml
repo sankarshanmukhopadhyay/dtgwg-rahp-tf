@@ -1,0 +1,77 @@
+review:
+  id: CAWG-SR-003
+  status: complete
+  title: CAWG Training and Data Mining Assertion pressure test
+  reviewed_on: '2026-08-14'
+  target:
+    repository: decentralized-identity/cawg-training-and-data-mining-assertion
+    document: https://cawg.io/training-and-data-mining/1.1/
+    version: '1.1'
+    commit: e203ac5e795cd4000d53d0d12cab144c1bcc1111
+    source_paths: []
+  reviewed_against:
+    repository: sankarshanmukhopadhyay/rahp-toolkit
+    rahp_version: v0.6.0
+    corpus_date: '2026-08-14'
+  scope:
+    included:
+    - Machine-readable training/mining signals, authority, precedence and lifecycle.
+    excluded:
+    - Implementation-specific vulnerability testing beyond normative/documented behaviour.
+    - Legal opinion on whether a signal is enforceable in any jurisdiction.
+  method:
+    workflow: docs/pressure-testing-a-spec.md
+    rule: Treat cryptographic validity, identity, authority, consent, provenance and relying-party trust as distinct
+      propositions; route remediation to the narrowest effective control plane.
+  summary:
+    finding_count: 2
+    open_count: 2
+    by_primary_disposition:
+      governance: 1
+      companion-specification: 1
+    overall_assessment: This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conformance certification.
+      Findings focus on harms, authority/lifecycle boundaries and composition behaviour that matter when the specification
+      is adopted or mandated.
+  findings:
+  - id: F-001
+    title: A machine-readable use signal does not by itself establish enforceable authorization
+    status: open
+    severity: High
+    primary_disposition: governance
+    risks:
+    - CRK-05
+    evidence:
+    - source: https://cawg.io/training-and-data-mining/1.1/
+      observation: The assertion communicates whether an asset may be used for data mining or AI/ML training, while
+        legal enforceability and rights-holder authority depend on external regimes.
+    harm: Platforms can treat a preference signal as a complete licence decision, or ignore a legally meaningful
+      restriction because the specification itself does not resolve jurisdiction, ownership or contract status.
+    recommendation: Mandating profiles should state the legal/governance role of the signal, who is authorized to
+      set it, and when external licences or rights registries override or supplement it.
+    retest_when:
+    - A deployment profile defines authority and legal effect without changing the assertion into a universal legal
+      rule.
+    scenario_patterns:
+    - SP-GOV-01
+    - SP-FED-01
+  - id: F-002
+    title: Coexistence with the emerging Consent Assertion needs explicit conflict and migration rules
+    status: open
+    severity: High
+    primary_disposition: companion-specification
+    risks:
+    - CRK-06
+    evidence:
+    - source: https://cawg.io/consent/1.0-draft+initial-version/
+      observation: The emerging Consent Assertion explores broader permitted/prohibited use semantics, creating
+        overlap with existing training/data-mining declarations.
+    harm: Two independently valid permission signals can disagree, allowing different consumers to select the signal
+      that favours their preferred outcome.
+    recommendation: Define coexistence, precedence, supersession and migration semantics between Training/Data Mining
+      and Consent before relying parties use both as authorization inputs.
+    retest_when:
+    - The Consent work defines normative coexistence/precedence behaviour and publishes conflict test vectors.
+    scenario_patterns:
+    - SP-GOV-02
+    - SP-INTEROP-01
+    - SP-COMP-01

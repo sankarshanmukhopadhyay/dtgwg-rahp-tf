@@ -1,9 +1,9 @@
-# DTG RAHP Toolkit
+# RAHP Toolkit
 
-**Risk Assessment & Harms Prevention Task Force · Decentralised Trust Graph Working Group**  
-Release v0.5.0 · CC-BY 4.0
+**Risk Assessment & Harms Prevention**  
+Release v0.6.0 · CC-BY 4.0
 
-RAHP is a repeatable assurance framework for pressure-testing standards against risks and human harms, running adversarial security-hardening reviews, tracing findings to controls and evidence, and feeding actionable changes back into specification development. **v0.5 makes the YAML configuration the portability boundary:** a Working Group, developer, or reviewer can list one or more repositories and run RAHP, security, or combined review workflows without inheriting DTG-specific corpora, issues, governance records, or portfolio metadata. The bundled DTG material is an exemplar deployment of the neutral engine.
+RAHP is a repeatable assurance framework for pressure-testing standards against risks and human harms, running adversarial security-hardening reviews, tracing findings to controls and evidence, and feeding actionable changes back into specification development. **v0.6 keeps the YAML configuration as the portability boundary and proves it with an external CAWG/C2PA deployment:** a Working Group, developer, or reviewer can list one or more repositories and run RAHP, security, or combined review workflows without inheriting DTG-specific corpora, issues, governance records, or portfolio metadata. The bundled DTG material is an exemplar deployment of the neutral engine.
 
 ## What do you want to do?
 
@@ -18,6 +18,8 @@ RAHP is a repeatable assurance framework for pressure-testing standards against 
 | Design runtime assurance/evidence contracts | [Operational assurance](docs/operational-assurance.md) |
 | Understand the RAHP method | [How RAHP works](docs/how-rahp-works.md) |
 | Explore the DTG instance | [DTG instance](docs/dtg-instance.md) |
+| Explore the CAWG/C2PA external instance | [CAWG/C2PA instance](docs/cawg-instance.md) |
+| Read the CAWG/C2PA worked pressure tests | [CAWG/C2PA assessment pack](examples/cawg-c2pa/README.md) |
 | Adopt RAHP for another Working Group | [Adoption guide](ADOPTION.md) and [portability contract](docs/portability.md) |
 | Make a small first assessment | [Minimum viable RAHP](examples/minimal-instance/README.md) |
 | See what is waiting on the Task Force | [Task Force action register](docs/task-force-actions.md) |
@@ -73,9 +75,9 @@ another adopter to use `tools/rahp.py` with its own YAML configuration.
 
 | Path | Authority and editability |
 |---|---|
-| `method/` | Portable RAHP mechanics: lifecycle, controlled vocabularies, schemas, including the v0.5 configuration contract. |
-| `profiles/` | Deployment configurations. `profiles/dtg/rahp.yaml` is the bundled DTG exemplar; adopters can supply their own YAML anywhere. |
-| `data/` | Canonical records for the bundled DTG exemplar. These are not required merely to configure another repository target. |
+| `method/` | Portable RAHP mechanics: lifecycle, controlled vocabularies, schemas and the configuration contract. |
+| `profiles/` | Deployment configurations. DTG and CAWG/C2PA are separate profiles using the same engine. |
+| `data/` | Canonical records for the bundled DTG exemplar. External deployments may keep instance-local assurance vocabulary under `instances/<id>/data/` without importing it into DTG or the portable method. |
 | `tools/` | Validation and build automation. Produces machine-verifiable evidence and generated views. |
 | `context/` | JSON-LD context used by generated linked-data outputs. |
 | `docs/` | Just the Docs source for understanding and applying RAHP; published through GitHub Pages. |
@@ -117,12 +119,16 @@ The bundled [`profiles/dtg/rahp.yaml`](profiles/dtg/rahp.yaml) is therefore an *
 
 DTG's unresolved governance work remains visible through the generated **Task Force Action Register**. It is instance-specific evidence, not a requirement imposed on other RAHP adopters.
 
+## v0.6: external deployment proof
+
+v0.6 adds the first substantial non-DTG deployment: a branch-aware CAWG/C2PA profile, eight worked pressure tests, and a reusable repository-change monitor that turns material upstream changes into deduplicated `assessment-required` issues. The same scheduled workflow now maintains DTG and CAWG/C2PA assessment queues while preserving separate scope, state and governance boundaries. See [CAWG/C2PA RAHP instance](docs/cawg-instance.md) and [v0.6.0 release notes](docs/releases/v0.6.0.md).
+
 ## Quick start
 
 ```bash
 pip install -r requirements.txt
 python3 tools/rahp.py config-validate --config examples/configurations/minimal.yaml
-python3 tools/rahp.py targets --config profiles/dtg/rahp.yaml
+python3 tools/rahp.py targets --config profiles/cawg/rahp.yaml
 python3 tools/validate.py
 python3 tools/build.py
 ```

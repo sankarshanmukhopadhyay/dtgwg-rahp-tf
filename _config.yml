@@ -1,15 +1,15 @@
-title: DTG RAHP Toolkit
+title: RAHP Toolkit
 description: Risk Assessment & Harms Prevention toolkit for scenario-driven pressure testing of digital trust specifications.
 theme: just-the-docs
 url: "https://sankarshanmukhopadhyay.github.io"
-baseurl: "/dtgwg-rahp-tf"
-repository: sankarshanmukhopadhyay/dtgwg-rahp-tf
+baseurl: "/rahp-toolkit"
+repository: sankarshanmukhopadhyay/rahp-toolkit
 search_enabled: true
 heading_anchors: true
 color_scheme: rahp
 aux_links:
   "View on GitHub":
-    - "https://github.com/sankarshanmukhopadhyay/dtgwg-rahp-tf"
+    - "https://github.com/sankarshanmukhopadhyay/rahp-toolkit"
 aux_links_new_tab: true
 callouts:
   warning:

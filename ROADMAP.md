@@ -223,7 +223,7 @@ each target. The DTG deployment is the bundled exemplar of this engine.
 - [x] Prove the portable fixture does not require DTG corpora, governance issues, `RP-001`, or DTG instance data
 - [x] Add a generic configured-review GitHub Actions workflow
 - [x] Preserve existing DTG validators/renderers and evidence without a disruptive migration
-- [ ] Capture an external Working Group adoption as field evidence
+- [x] Capture a substantial external specification-portfolio deployment as field evidence (CAWG/C2PA in v0.6)
 - [ ] Publish a practitioner trial report with real evidence artefacts
 - [ ] Populate real evidence URI/digest/timestamp fields from field use
 - [ ] Ratify at least one rule profile and activate at least one monitoring profile in a deployment that chooses to use those RAHP governance features
@@ -233,6 +233,21 @@ software portability claim. Architectural portability is proven by configuration
 non-DTG adopter can checkout RAHP, add one YAML file, and use the review machinery
 without modifying or running DTG-specific instance material.
 
+## v0.6.0 — External deployment proof and neutral project identity
+
+**Status: delivered.** v0.6 turns the v0.5 portability contract into evidence from a materially different specification ecosystem.
+
+- [x] Rename/decouple the fork as `rahp-toolkit` while preserving DTG provenance.
+- [x] Add a CAWG/C2PA profile using the same portable YAML configuration contract.
+- [x] Track multiple branches of a repository independently where experimental specification work requires it.
+- [x] Complete initial RAHP pressure tests for the principal CAWG/C2PA specification surfaces.
+- [x] Add a reusable static-profile change monitor for non-DTG deployments.
+- [x] File deduplicated `assessment-required` issues when material tracked paths change.
+- [x] Persist observed revisions so scheduled runs advance the assessment baseline rather than repeatedly reopening the same delta.
+- [x] Keep DTG discovery/portfolio metadata instance-specific and keep CAWG/C2PA governance authority upstream.
+
+**Next field objective:** convert selected open CAWG/C2PA findings into upstream-discussion-ready evidence only after human review confirms the finding and appropriate control plane. RAHP should not automatically file findings against upstream projects.
+
 ## Open questions
 
 Answering Q1 below unblocks nothing further; it is settled. Q2 to Q5 are live.
@@ -241,7 +256,7 @@ Answering Q1 below unblocks nothing further; it is settled. Q2 to Q5 are live.
 Contributors write YAML because the alternative is that non-engineers stop
 contributing, and the personas are the part that most needs non-engineer
 contribution. `tools/build.py` emits JSON-LD with resolvable identifiers under
-`https://trustoverip.github.io/dtgwg-rahp-tf/id/`, so RAHP IDs can be referenced
+`https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/`, so RAHP IDs can be referenced
 normatively by other specifications without anyone hand-writing JSON-LD. This is
 reversible: if JSON-LD authoring later becomes necessary, the YAML becomes the
 derived view and nothing downstream changes.

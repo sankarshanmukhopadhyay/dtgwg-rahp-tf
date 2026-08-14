@@ -4,7 +4,7 @@ title: Home
 nav_order: 1
 has_toc: true
 ---
-# DTG RAHP Toolkit
+# RAHP Toolkit
 
 RAHP is a reusable **Risk Assessment & Harms Prevention** method for pressure-testing standards against human harms, security failures, governance weaknesses and operational edge conditions.
 
@@ -22,6 +22,8 @@ RAHP now supports **scenario-driven pressure testing**: a specification can be t
 - [Security-hardening review](docs/security-hardening-review.md)
 - [Adoption guide](ADOPTION.md)
 - [Quick start](QUICKSTART.md)
+- [CAWG/C2PA external instance](docs/cawg-instance.md)
+- [CAWG/C2PA worked pressure tests](examples/cawg-c2pa/README.md)
 - [GitHub Pages coverage](docs/pages-coverage.md)
 
 ## Assurance chain
@@ -42,6 +44,4 @@ flowchart LR
 
 ## Reference implementation
 
-The first external scenario corpus is derived from the **DTG ZKP implementation-guide pressure-test corpus**, providing 30 scenarios across privacy, liveness, holder binding, governance, lifecycle, accessibility, agent delegation, offline operation, resilience, crypto agility and interoperability.
-
-The corpus remains domain-owned by the ZKP work. RAHP consumes a structured adapter and maps each domain scenario to portable RAHP scenario patterns.
+The bundled DTG scenario corpora remain reference adapters. v0.6 additionally provides the first substantial **external deployment proof**: CAWG/C2PA specifications are configured through the same portable engine, independently pressure-tested, and monitored for material upstream changes without inheriting DTG portfolio or governance state.

@@ -1,0 +1,55 @@
+version: 1
+instance: cawg
+records:
+  - id: CRK-01
+    title: Identity-validity and authority conflation
+    description: A relying party treats successful identity or credential validation as proof that the actor is authoritative for the role, claim, right, or decision at issue.
+    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-01
+  - id: CRK-02
+    title: Historical verification continuity loss
+    description: Later revocation, issuer/key rotation, registry loss, or policy change makes it impossible to determine whether evidence was valid at the time an action occurred.
+    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-02
+  - id: CRK-03
+    title: Integrity and factual truth conflation
+    description: Tamper-evident or authenticated metadata is interpreted as factually correct or authoritative merely because its integrity can be verified.
+    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-03
+  - id: CRK-04
+    title: Conflicting authoritative assertions
+    description: Multiple valid actors, namespaces, registries, or assertions provide incompatible claims and relying parties lack deterministic conflict handling.
+    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-04
+  - id: CRK-05
+    title: Rights signal and legal-effect ambiguity
+    description: A machine-readable permission or prohibition signal is treated either as universally enforceable authorization or as legally irrelevant without a deployment-specific rights/governance interpretation.
+    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-05
+  - id: CRK-06
+    title: Permission precedence and lifecycle conflict
+    description: Embedded, external, older, newer, withdrawn, or superseding permission signals disagree and consumers choose inconsistent effective states.
+    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-06
+  - id: CRK-07
+    title: Consent authority and representation ambiguity
+    description: A consent assertion is accepted from an actor whose rights, legal capacity, representative authority, or relationship to other affected parties has not been established.
+    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-07
+  - id: CRK-08
+    title: Endorsement or delegation scope creep
+    description: Approval for bounded actions is interpreted as broader, transitive, onward-delegable, or indefinite authority.
+    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-08
+  - id: CRK-09
+    title: Stale delegated or organizational authority
+    description: An endorsement, role, credential, or organizational signing relationship remains apparently valid after employment, role, key-control, or mandate changes.
+    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-09
+  - id: CRK-10
+    title: Trust-anchor concentration and participation exclusion
+    description: A mandate makes a narrow set of credential issuers, certificate roots, or trust registries effective gatekeepers for participation without adequate alternatives, appeal, or portability.
+    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-10
+  - id: CRK-11
+    title: Verification UX overclaim
+    description: Human-facing presentation causes users to infer truth, safety, legitimacy, or endorsement from a narrower cryptographic, provenance, or identity verification result.
+    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-11
+  - id: CRK-12
+    title: Required-evidence downgrade ambiguity
+    description: A relying party accepts content after expected higher-layer assertions are absent, removed, unsupported, or unavailable because policy cannot distinguish missing evidence from acceptable evidence.
+    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-12
+  - id: CRK-13
+    title: Accessibility and failure-state exclusion
+    description: Mandatory provenance/identity interfaces or ambiguous unknown/error states prevent people using assistive technology or constrained contexts from understanding or exercising equivalent choices.
+    link: /rahp-toolkit/docs/cawg-risk-register.html#crk-13

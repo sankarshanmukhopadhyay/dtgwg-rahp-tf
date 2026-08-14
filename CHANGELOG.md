@@ -1,4 +1,27 @@
+---
+layout: default
+title: "Changelog"
+nav_order: 24
+has_toc: true
+---
 # Changelog
+
+## v0.6.0 — 2026-08-14
+
+### Added
+- First substantial external RAHP deployment under `profiles/cawg/` and `instances/cawg/`, covering CAWG/C2PA specification work without inheriting DTG portfolio governance.
+- Eight completed CAWG/C2PA RAHP pressure tests spanning identity, metadata, training/mining, consent, endorsement, organizational identity, UX, and C2PA substrate boundaries.
+- Portable branch-aware `tools/instance_monitor.py` for static-profile change tracking and materiality detection.
+- Deduplicated GitHub assessment issue publication and unified `instance-watch.yml` scheduled/manual workflow for DTG and CAWG/C2PA deployments.
+- CAWG/C2PA instance documentation and v0.6.0 release notes.
+
+### Changed
+- Project identity and Pages/JSON-LD references now use the neutral `sankarshanmukhopadhyay/rahp-toolkit` repository.
+- DTG is retained as an origin/exemplar deployment rather than encoded in the toolkit name.
+- External deployment proof is now field evidence rather than an unchecked v0.5 roadmap objective.
+
+### Removed
+- Obsolete root-level release checklist and duplicate root release-note files; `docs/releases/` is the canonical release-note location.
 
 ## v0.5.0 — 2026-08-13
 
@@ -16,46 +39,6 @@
 - Redefined portability around a YAML deployment profile rather than copying/replacing DTG instance data.
 - Reframed DTG corpora, Portfolio Monitor metadata, Task Force actions and governance records as deployment-specific exemplar assets rather than core requirements.
 - Made real external WG adoption a field-evidence objective rather than a blocker to the software portability claim.
-
----
-layout: default
-title: "Changelog"
-nav_order: 24
-has_toc: true
----
-# Changelog
-
-
-## [Unreleased] — v0.5-dev
-
-### Added
-
-- Generated **Task Force Action Register** that itemizes unresolved governance decisions
-  directly from canonical record state, including all 87 unassigned controls/guardrails,
-  proposed `RP-*` profiles, proposed governance precedents, pending risk acceptances, and
-  proposed monitoring activations.
-- Synthetic second-instance fixture under `examples/portable-instance/` to test mechanical
-  portability without claiming independent Working Group adoption.
-- `tools/validate_portability.py` and CI coverage for validating an external instance data
-  root against the portable RAHP method.
-- Portable assessment-method claim template for reporting that a target was assessed using
-  a pinned RAHP method/version without implying certification or DTG-specific conformance.
-- Portability, independent-adoption, assessment-claim, and Task Force work-queue guidance.
-
-### Changed
-
-- Roadmap now distinguishes repository-target portability, already demonstrated by the
-  multi-repository engine/corpus model, from the stronger independent-instance adoption
-  proof still required for v0.5.
-- `tools/validate.py` no longer couples an external `--data` root to the DTG repository
-  README; instance-specific count checking uses an explicit or sibling README.
-- Current development toolkit version is `v0.5-dev`; `v0.4.0` remains the latest release.
-
-### Removed
-
-- `RELEASE_CHECKLIST_v0.4.0.md`. Release readiness remains enforced by CI, validation,
-  release notes, immutable tags, and repository history rather than a persistent checklist.
-
 
 ## [v0.4.0] — 2026-08-13
 
@@ -172,7 +155,7 @@ review was based on.
 - **`tools/build.py`** — generates the HTML site, JSON-LD, a JSON bundle, derived
   cross-references and `build/normative.md` from `data/`.
 - **JSON-LD context** at `context/rahp.jsonld`, giving every RAHP identifier a
-  resolvable IRI under `https://trustoverip.github.io/dtgwg-rahp-tf/id/`.
+  resolvable IRI under `https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/`.
 - **`standards_status` and `normative_language` fields** on every control and
   guardrail. All 87 are deliberately `unassigned` — assigning them is a task force
   decision, and the importer records the gap rather than guessing.

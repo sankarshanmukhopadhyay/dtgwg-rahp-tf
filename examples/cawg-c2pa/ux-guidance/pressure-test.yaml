@@ -1,0 +1,75 @@
+review:
+  id: CAWG-SR-007
+  status: complete
+  title: CAWG User Experience Guidance pressure test
+  reviewed_on: '2026-08-14'
+  target:
+    repository: decentralized-identity/cawg-ux-guidance
+    document: https://cawg.io/ux-guidance/1.0/
+    version: '1.0'
+    commit: 3162bbbac52202e4f4178420928bd13900d21df9
+    source_paths: []
+  reviewed_against:
+    repository: sankarshanmukhopadhyay/rahp-toolkit
+    rahp_version: v0.6.0
+    corpus_date: '2026-08-14'
+  scope:
+    included:
+    - Human interpretation of validity, identity, provenance, failure and accessibility.
+    excluded:
+    - Implementation-specific vulnerability testing beyond normative/documented behaviour.
+    - Legal opinion on whether a signal is enforceable in any jurisdiction.
+  method:
+    workflow: docs/pressure-testing-a-spec.md
+    rule: Treat cryptographic validity, identity, authority, consent, provenance and relying-party trust as distinct
+      propositions; route remediation to the narrowest effective control plane.
+  summary:
+    finding_count: 2
+    open_count: 2
+    by_primary_disposition:
+      implementation-guidance: 2
+    overall_assessment: This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conformance certification.
+      Findings focus on harms, authority/lifecycle boundaries and composition behaviour that matter when the specification
+      is adopted or mandated.
+  findings:
+  - id: F-001
+    title: Positive verification UI can still encourage users to infer truth or trustworthiness
+    status: open
+    severity: High
+    primary_disposition: implementation-guidance
+    risks:
+    - CRK-11
+    evidence:
+    - source: https://cawg.io/ux-guidance/1.0/
+      observation: The guidance addresses presentation of provenance and identity verification states, but cryptographic
+        success cannot establish factual truth or domain-specific trust by itself.
+    harm: A visually prominent verified state can become a trust badge for misinformation, unauthorized claims or
+      misleading organizational assertions.
+    recommendation: Make the distinction between integrity/identity verification and truth/authority a minimum UX
+      requirement, including wording and negative examples for technically valid but substantively disputed content.
+    retest_when:
+    - UX conformance/user tests demonstrate that users do not systematically interpret verification as truth endorsement.
+    scenario_patterns:
+    - SP-COMP-01
+    - SP-INTEROP-01
+  - id: F-002
+    title: Accessibility and failure-state requirements are not yet strong enough for mandatory deployments
+    status: open
+    severity: Medium
+    primary_disposition: implementation-guidance
+    risks:
+    - CRK-13
+    evidence:
+    - source: https://cawg.io/ux-guidance/1.0/
+      observation: The guidance is intentionally evolutionary and calls for continued user research and implementation
+        learning.
+    harm: If CAWG/C2PA presentation becomes mandatory, inaccessible disclosure controls or ambiguous unknown/error
+      states can exclude users or pressure them into unsafe decisions.
+    recommendation: Add normative or profile-level accessibility criteria, minimum error/unknown-state disclosures,
+      and testing across assistive technologies and low-literacy contexts before procurement mandates rely on the
+      UX layer.
+    retest_when:
+    - A mandate profile defines accessibility and unknown/error-state acceptance criteria.
+    scenario_patterns:
+    - SP-INCL-01
+    - SP-OPS-01

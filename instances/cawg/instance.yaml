@@ -1,0 +1,29 @@
+version: 1
+instance:
+  id: cawg
+  title: CAWG/C2PA RAHP assessment instance
+  description: >-
+    External, branch-aware RAHP deployment for the specifications linked from
+    cawg.io/specs and their C2PA technical-specification dependency.
+  profile: profiles/cawg/rahp.yaml
+  review_repository: sankarshanmukhopadhyay/rahp-toolkit
+assessment:
+  default_mode: combined
+  materiality:
+    always_material_paths:
+      - "**/*.adoc"
+      - "**/*.md"
+      - "**/*.json"
+      - "**/*.cddl"
+      - "specifications/**"
+      - ".github/workflows/**"
+  issue:
+    repository: sankarshanmukhopadhyay/rahp-toolkit
+    labels: [assessment-required, cawg-instance]
+reviews:
+  root: instances/cawg/reviews
+state:
+  file: instances/cawg/state/repositories.json
+generated:
+  manifest: instances/cawg/generated/repositories.yaml
+  events: instances/cawg/generated/review-events.json

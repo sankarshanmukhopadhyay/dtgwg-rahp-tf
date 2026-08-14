@@ -1,0 +1,78 @@
+review:
+  id: CAWG-SR-002
+  status: complete
+  title: CAWG Metadata Assertion pressure test
+  reviewed_on: '2026-08-14'
+  target:
+    repository: decentralized-identity/cawg-metadata-assertion
+    document: https://cawg.io/metadata/1.2-draft/
+    version: 1.2 draft
+    commit: 64069e062b6dfa1105844a773fdfd80a69356b72
+    source_paths: []
+  reviewed_against:
+    repository: sankarshanmukhopadhyay/rahp-toolkit
+    rahp_version: v0.6.0
+    corpus_date: '2026-08-14'
+  scope:
+    included:
+    - Metadata integrity, namespace semantics, identity-backed attestations and relying-party interpretation.
+    excluded:
+    - Implementation-specific vulnerability testing beyond normative/documented behaviour.
+    - Legal opinion on whether a signal is enforceable in any jurisdiction.
+  method:
+    workflow: docs/pressure-testing-a-spec.md
+    rule: Treat cryptographic validity, identity, authority, consent, provenance and relying-party trust as distinct
+      propositions; route remediation to the narrowest effective control plane.
+  summary:
+    finding_count: 2
+    open_count: 2
+    by_primary_disposition:
+      implementation-guidance: 1
+      governance: 1
+    overall_assessment: This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conformance certification.
+      Findings focus on harms, authority/lifecycle boundaries and composition behaviour that matter when the specification
+      is adopted or mandated.
+  findings:
+  - id: F-001
+    title: Tamper-evident metadata can be mistaken for factually authoritative metadata
+    status: open
+    severity: High
+    primary_disposition: implementation-guidance
+    risks:
+    - CRK-03
+    evidence:
+    - source: https://cawg.io/metadata/1.2-draft/
+      observation: The metadata assertion binds broad external metadata to a C2PA Manifest, including use cases
+        where the manifest signer does not attest to the accuracy of gathered metadata.
+    harm: Consumers can display or automate on authenticated metadata as if authenticity of packaging implied truth,
+      provenance authority, copyright ownership, or professional status.
+    recommendation: Require implementations and UX profiles to distinguish integrity/authorship from factual authority,
+      and define when an identity-backed attestation or external authority is required for high-impact metadata
+      fields.
+    retest_when:
+    - Conformance guidance includes negative tests where metadata integrity succeeds but authority/truth is intentionally
+      unestablished.
+    scenario_patterns:
+    - SP-INTEROP-01
+    - SP-COMP-01
+  - id: F-002
+    title: Namespace and authority conflicts lack a general precedence model
+    status: open
+    severity: Medium
+    primary_disposition: governance
+    risks:
+    - CRK-04
+    evidence:
+    - source: https://cawg.io/metadata/1.2-draft/
+      observation: The assertion intentionally permits metadata from multiple external standards and namespaces,
+        enabling overlapping semantic claims from different authorities.
+    harm: Two valid metadata assertions can encode conflicting claims, leaving platforms to invent precedence rules
+      and creating inconsistent treatment across implementations.
+    recommendation: Define a conflict-handling profile that identifies authoritative sources by metadata domain,
+      preserves disagreement rather than silently choosing a value, and exposes unresolved conflicts to relying
+      parties.
+    retest_when:
+    - Cross-implementation tests cover contradictory valid metadata from different namespaces/actors.
+    scenario_patterns:
+    - SP-FED-01
+    - SP-INTEROP-01
