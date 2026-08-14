@@ -1,4 +1,65 @@
 {
-  "observed": {},
+  "observed": {
+    "trustoverip/dtgwg-cred-spec#11": {
+      "comments": 0,
+      "state": "open",
+      "title": "Remove or resolve the normative dependency on the unpublished Trust Task model",
+      "updated_at": "2026-08-04T17:33:42Z"
+    },
+    "trustoverip/dtgwg-cred-spec#17": {
+      "comments": 0,
+      "state": "open",
+      "title": "W3C alignment: DataIntegrityProof, digestMultibase, and the CID 1.0 multibase headers",
+      "updated_at": "2026-08-10T12:33:09Z"
+    },
+    "trustoverip/dtgwg-cred-spec#8": {
+      "comments": 1,
+      "state": "open",
+      "title": "Resolve the contradiction in VMC bidirectionality",
+      "updated_at": "2026-08-03T18:16:18Z"
+    },
+    "trustoverip/dtgwg-cred-spec#9": {
+      "comments": 1,
+      "state": "open",
+      "title": "Define the identity linkages required by the ZKP constructions",
+      "updated_at": "2026-08-06T00:34:28Z"
+    },
+    "trustoverip/dtgwg-trust-tasks-tf#173": {
+      "comments": 9,
+      "state": "open",
+      "title": "DTG Core Credentials now cites this framework normatively for its taskContext binding (pinned to existing mechanisms; one small optional ask)",
+      "updated_at": "2026-08-13T20:01:00Z"
+    },
+    "trustoverip/dtgwg-trust-tasks-tf#202": {
+      "comments": 0,
+      "state": "open",
+      "title": "Make duplicate-execution protection normative for consequential Trust Tasks",
+      "updated_at": "2026-08-10T00:14:33Z"
+    },
+    "trustoverip/dtgwg-trust-tasks-tf#203": {
+      "comments": 0,
+      "state": "open",
+      "title": "Define execution-time validity checks for consequential and delegated Trust Tasks",
+      "updated_at": "2026-08-10T00:15:43Z"
+    },
+    "trustoverip/dtgwg-trust-tasks-tf#204": {
+      "comments": 0,
+      "state": "open",
+      "title": "Define semantic cancellation, suspension, and supersession for in-flight Trust Tasks",
+      "updated_at": "2026-08-10T00:16:56Z"
+    },
+    "trustoverip/dtgwg-trust-tasks-tf#205": {
+      "comments": 0,
+      "state": "open",
+      "title": "Generalize the identity/proof-versus-authorization boundary across all Trust Tasks",
+      "updated_at": "2026-08-10T00:18:18Z"
+    },
+    "trustoverip/dtgwg-trust-tasks-tf#206": {
+      "comments": 0,
+      "state": "open",
+      "title": "Require transport bindings to justify any allowance to omit an in-band proof",
+      "updated_at": "2026-08-10T00:19:26Z"
+    }
+  },
   "version": 1
 }

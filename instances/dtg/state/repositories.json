@@ -1,1 +1,83 @@
-{"version": 1, "repositories": {}}
+{
+  "version": 1,
+  "repositories": {
+    "trustoverip/dtgwg-trust-tasks-tf": {
+      "sha": "fbe196a8a17ba3f99d0657a64be5ac58621023a1",
+      "status": "active",
+      "observed_at": "2026-08-14T04:58:39.398313+00:00"
+    },
+    "trustoverip/dtgwg-htx-tf": {
+      "sha": "820a3b63a73392ae9972a6339f69b70965c31b09",
+      "status": "active",
+      "observed_at": "2026-08-14T04:58:39.713090+00:00"
+    },
+    "trustoverip/dtgwg-ux-tf": {
+      "status": "no-commits",
+      "observed_at": "2026-08-14T04:58:39.865476+00:00"
+    },
+    "trustoverip/dtgwg-general": {
+      "sha": "fa15044225ff447ad6564983a5ce0732b80cbdc1",
+      "status": "active",
+      "observed_at": "2026-08-14T04:58:40.334658+00:00"
+    },
+    "trustoverip/dtgwg-cred-spec": {
+      "sha": "b89f389abbdae77ba60b673c0836c781c2b54169",
+      "status": "active",
+      "observed_at": "2026-08-14T04:58:40.558854+00:00"
+    },
+    "trustoverip/dtgwg-zkp-tf": {
+      "sha": "b37d52fca4ab64ef759d4952b13757f3b23cb20b",
+      "status": "active",
+      "observed_at": "2026-08-14T04:58:41.021584+00:00"
+    },
+    "trustoverip/dtgwg-cred-tf": {
+      "sha": "200acbaa47a422b173652ed2c3dc961c4fbc9e7a",
+      "status": "active",
+      "observed_at": "2026-08-14T04:58:41.471991+00:00"
+    },
+    "trustoverip/dtgwg-rahp-tf": {
+      "sha": "ce954decb4394c6de98282dee6c7c8c18392de63",
+      "status": "active",
+      "observed_at": "2026-08-14T04:58:42.034557+00:00"
+    },
+    "trustoverip/dtgwg-rcards-tf": {
+      "status": "no-commits",
+      "observed_at": "2026-08-14T04:58:42.227038+00:00"
+    },
+    "trustoverip/dtgwg-vds-tf": {
+      "sha": "99eacacedd1729d20528a2ec65ff5288d103ec5e",
+      "status": "active",
+      "observed_at": "2026-08-14T04:58:42.643913+00:00"
+    },
+    "trustoverip/dtgwg-agent-names-tf": {
+      "sha": "962591709e260616aba066bf08865962f6851bf3",
+      "status": "active",
+      "observed_at": "2026-08-14T04:58:43.075603+00:00"
+    },
+    "OpenVTC/dtg-credentials": {
+      "sha": "77b6e9b1287af0d518d544abd5ebbaa22d563aa9",
+      "status": "active",
+      "observed_at": "2026-08-14T04:58:43.379592+00:00"
+    },
+    "OpenVTC/openvtc": {
+      "sha": "761b6b0d2f5ec496dca805ceda62b35bbd5d24ec",
+      "status": "active",
+      "observed_at": "2026-08-14T04:58:43.713701+00:00"
+    },
+    "OpenVTC/verifiable-trust-infrastructure": {
+      "sha": "a879926704382c72cec24f8b1367194f7fb087fa",
+      "status": "active",
+      "observed_at": "2026-08-14T04:58:43.949657+00:00"
+    },
+    "sankarshanmukhopadhyay/dtgwg-cred-tf": {
+      "sha": "200acbaa47a422b173652ed2c3dc961c4fbc9e7a",
+      "status": "active",
+      "observed_at": "2026-08-14T04:58:44.346523+00:00"
+    },
+    "sankarshanmukhopadhyay/dtgwg-zkp-tf": {
+      "sha": "9a1ae81465e1da9f5c06ccd500a70708eb2511a6",
+      "status": "active",
+      "observed_at": "2026-08-14T04:58:44.581780+00:00"
+    }
+  }
+}

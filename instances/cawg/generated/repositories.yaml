@@ -101,7 +101,7 @@ repositories:
   repository: decentralized-identity/cawg-training-and-data-mining-assertion
   branch: main
   document: https://cawg.io/training-and-data-mining/1.1/
-  version: 1.1
+  version: '1.1'
   context:
     title: CAWG Training and Data Mining Assertion
     type: ratified-specification
@@ -152,7 +152,7 @@ repositories:
   repository: decentralized-identity/cawg-organizational-identity-profile
   branch: main
   document: https://cawg.io/organizational-identity-profile/1.0/
-  version: 1.0
+  version: '1.0'
   context:
     title: CAWG Organizational Identity Profile
     type: ratified-profile
@@ -186,7 +186,7 @@ repositories:
   repository: decentralized-identity/cawg-ux-guidance
   branch: main
   document: https://cawg.io/ux-guidance/1.0/
-  version: 1.0
+  version: '1.0'
   context:
     title: CAWG User Experience Guidance
     type: ratified-guidance
@@ -202,7 +202,7 @@ repositories:
 - id: c2pa-specifications
   repository: c2pa-org/specifications
   branch: main
-  document: https://spec.c2pa.org/specifications/specifications/2.2/index.html
+  document: https://spec.c2pa.org/specifications/specifications/2.4/index.html
   version: tracked main branch
   context:
     title: C2PA Technical Specification
