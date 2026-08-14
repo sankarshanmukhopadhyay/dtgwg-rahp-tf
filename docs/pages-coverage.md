@@ -62,4 +62,4 @@ inspectable without turning derived action queues into new canonical sources.
 
 ## v0.7 composition and situational assurance
 
-Required Pages coverage now includes the CAWG/C2PA scenario corpus, deployment-local risk register, mandate-readiness view and v0.7 release notes. The Pages validator also has regression coverage for base-URL-prefixed `/rahp-toolkit/` links so a valid Jekyll site is not rejected because of deployment-path normalization.
+Required Pages coverage now includes the CAWG/C2PA scenario corpus, deployment-local risk register, canonical mandate-readiness YAML projection, the curated CAWG and DTG issue-watch registries, rendered mandate-readiness view and v0.7 release notes. The Pages validator also has regression coverage for base-URL-prefixed `/rahp-toolkit/` links so a valid Jekyll site is not rejected because of deployment-path normalization.

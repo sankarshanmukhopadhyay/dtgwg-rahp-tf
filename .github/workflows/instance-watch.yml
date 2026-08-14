@@ -32,7 +32,20 @@ jobs:
       - name: Watch selected CAWG architecture issues
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: python3 tools/cawg_issue_watch.py
+        run: >-
+          python3 tools/issue_watch.py
+          --registry instances/cawg/watch/issues.yaml
+          --state instances/cawg/state/issues.json
+          --events instances/cawg/state/issue-events.json
+
+      - name: Watch selected DTG architecture issues
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: >-
+          python3 tools/issue_watch.py
+          --registry instances/dtg/watch/issues.yaml
+          --state instances/dtg/state/issues.json
+          --events instances/dtg/state/issue-events.json
 
       - name: Publish DTG assessment issues
         env:
@@ -48,6 +61,14 @@ jobs:
         run: >-
           python3 tools/publish_assessment_issues.py
           --events instances/cawg/generated/review-events.json
+          --repository sankarshanmukhopadhyay/rahp-toolkit
+
+      - name: Publish DTG architecture-issue assessment triggers
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: >-
+          python3 tools/publish_assessment_issues.py
+          --events instances/dtg/state/issue-events.json
           --repository sankarshanmukhopadhyay/rahp-toolkit
 
       - name: Publish CAWG architecture-issue assessment triggers
@@ -66,6 +87,8 @@ jobs:
           git add \
             instances/dtg/state/repositories.json \
             instances/dtg/generated/repositories.yaml \
+            instances/dtg/state/issues.json \
+            instances/dtg/state/issue-events.json \
             instances/cawg/state/repositories.json \
             instances/cawg/generated/repositories.yaml \
             instances/cawg/state/issues.json \

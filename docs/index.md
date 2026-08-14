@@ -30,7 +30,7 @@ Use [Configuration-driven adoption](configuration.md) and [Adopting RAHP](../ADO
 ### Examine independent deployments
 
 - [CAWG/C2PA deployment](cawg-instance.md) — external portfolio, branch-aware source monitoring, instance-local risk vocabulary, 36-scenario corpus, 17 CAWG pressure-test reviews, security/combined reviews and issue-aware situational monitoring.
-- [DTG exemplar deployment](dtg-instance.md) — historical origin, portfolio discovery, DTG scenario corpora, operational assurance and governance queue.
+- [DTG exemplar deployment](dtg-instance.md) — historical origin, portfolio discovery, DTG scenario corpora, operational assurance, governance queue and selective issue-aware situational monitoring.
 
 These deployments are **evidence of portability**, not prerequisites for adoption.
 

@@ -1,2 +1,4 @@
-version: 1
-observed: {}
+{
+  "observed": {},
+  "version": 1
+}

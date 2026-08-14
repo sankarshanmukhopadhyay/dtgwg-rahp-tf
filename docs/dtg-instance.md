@@ -40,9 +40,15 @@ flowchart LR
 The automation does not claim that a changed repository contains a defect. It creates an
 **assessment queue record** when changed files intersect the portfolio's material paths.
 
+## Issue-aware early warning
+
+Repository drift is not the only way the DTG risk picture changes. `instances/dtg/watch/issues.yaml` now maintains a curated allow-list of architecture, security, lifecycle and cross-specification issues whose evolution can invalidate assumptions in an existing review before normative text is merged. `tools/issue_watch.py` baselines those issues silently and emits `assessment-required` events only after a selected issue changes.
+
+This is intentionally **not** a watch of every DTG issue. See [DTG situational monitoring](dtg-situational-monitoring.md) for the selection rule and the boundary between discussion evidence and normative source material.
+
 ## Workflows
 
-- `instance-watch.yml`: scheduled and manual change-review queue for the DTG and CAWG/C2PA instances; the DTG job still uses the DTG-specific discovery adapter.
+- `instance-watch.yml`: scheduled and manual change-review queue for the DTG and CAWG/C2PA instances; DTG uses its portfolio-discovery adapter for repository scope and the shared issue watcher for selected upstream architecture issues.
 - `configured-review.yml`: generic on-demand RAHP runner for any YAML profile.
 - Existing validation, corpus and Pages workflows remain independent.
 

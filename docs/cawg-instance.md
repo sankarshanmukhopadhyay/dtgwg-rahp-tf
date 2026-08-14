@@ -32,7 +32,7 @@ repository's `main` branch.
 
 ## Initial v0.6.0 pressure tests
 
-The first worked assessment pack lives at [`examples/cawg-c2pa/`](../examples/cawg-c2pa/). It
+The first worked assessment pack lives at [`examples/cawg-c2pa/`](../examples/cawg-c2pa/README.md). It
 contains eight RAHP pressure tests covering the main CAWG/C2PA specification surfaces. The tests
 focus on adoption and mandate pressure rather than only syntax:
 

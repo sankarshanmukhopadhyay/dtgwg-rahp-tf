@@ -39,6 +39,9 @@ jobs:
       - name: Validate CAWG v0.7 deployment integrity
         run: python3 tools/validate_cawg_instance.py
 
+      - name: Validate selected issue-watch registries
+        run: python3 tools/validate_issue_watch_registries.py
+
       - name: Validate CAWG mandate-readiness rendering
         run: python3 tools/render_cawg_readiness.py --check
 

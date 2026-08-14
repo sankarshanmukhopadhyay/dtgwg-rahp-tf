@@ -16,7 +16,7 @@ v0.7 uses two independent early-warning channels for the external CAWG/C2PA depl
 
 `instances/cawg/watch/issues.yaml` is an explicit allow-list of upstream issues whose discussion can materially change assumptions used by RAHP before normative text lands. The current themes include trust registries/TRQP, governance assertions, delegation and agents, generalized credential trust, archival verification, consent state, assurance levels, privacy and alternative trust methods.
 
-`tools/cawg_issue_watch.py` records issue `updated_at`, state, title and comment count. The first observation establishes a baseline without opening a local issue. A later change emits a publisher-compatible event labelled `assessment-required` and `cawg-instance`.
+`tools/issue_watch.py` records issue `updated_at`, state, title and comment count from the CAWG allow-list. The first observation establishes a baseline without opening a local issue. A later change emits a publisher-compatible event labelled `assessment-required` and `cawg-instance`.
 
 {: .warning }
 Issue activity is **not normative evidence**. It is a situational-awareness trigger. Findings remain grounded in specifications, reviewed branch content and explicitly cited evidence.
@@ -39,3 +39,6 @@ The local issue title includes the upstream issue number and the observed `updat
 ## Why both channels are needed
 
 Repository monitoring answers **what normative or draft source changed?** Issue monitoring answers **which emerging architecture decision may change the next review even before it becomes specification text?** Keeping them separate prevents discussion from being mistaken for normative authority while still allowing RAHP to track a fast-moving specification programme.
+
+
+The same portable issue-watch mechanism is also used by the DTG deployment with its own independent allow-list, labels and state. Selection in one deployment has no effect on the other.

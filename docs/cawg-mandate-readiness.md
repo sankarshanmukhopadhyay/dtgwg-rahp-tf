@@ -32,4 +32,4 @@ Assessment date: **2026-08-14**
 - **Pilot** means the surface is appropriate for controlled experimentation but should not yet be treated as a mandate baseline.
 - **Not ready** means unresolved semantics can change the meaning of a relying-party decision.
 
-Read this table together with the [CAWG scenario corpus](../corpora/cawg.yaml), the [worked CAWG/C2PA reviews](../examples/cawg-c2pa/), and the [CAWG risk register](cawg-risk-register.html).
+Read this table together with the [CAWG scenario corpus](../corpora/cawg.yaml), the [worked CAWG/C2PA reviews](../examples/cawg-c2pa/README.md), and the [CAWG risk register](cawg-risk-register.html).
