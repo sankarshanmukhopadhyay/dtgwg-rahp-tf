@@ -1,0 +1,63 @@
+name: RAHP instance change watch
+
+on:
+  schedule:
+    - cron: '37 3 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+
+      - name: Check DTG instance
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 tools/dtg_portfolio.py check --config instances/dtg/instance.yaml
+
+      - name: Check CAWG/C2PA instance
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 tools/instance_monitor.py check --config instances/cawg/instance.yaml
+
+      - name: Publish DTG assessment issues
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: >-
+          python3 tools/publish_assessment_issues.py
+          --events instances/dtg/generated/review-events.json
+          --repository sankarshanmukhopadhyay/rahp-toolkit
+
+      - name: Publish CAWG/C2PA assessment issues
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: >-
+          python3 tools/publish_assessment_issues.py
+          --events instances/cawg/generated/review-events.json
+          --repository sankarshanmukhopadhyay/rahp-toolkit
+
+      - name: Persist observed revisions
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            instances/dtg/state/repositories.json \
+            instances/dtg/generated/repositories.yaml \
+            instances/cawg/state/repositories.json \
+            instances/cawg/generated/repositories.yaml
+          if git diff --cached --quiet; then
+            echo "No instance state changes to persist."
+          else
+            git commit -m "chore(assurance): advance monitored instance revisions"
+            git push
+          fi
