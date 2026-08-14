@@ -1,4 +1,77 @@
 {
-  "observed": {},
+  "observed": {
+    "decentralized-identity/cawg-identity-assertion#213": {
+      "comments": 1,
+      "state": "open",
+      "title": "Add Level of Assurance and Source of LoA Fields to identity Assertion container",
+      "updated_at": "2026-03-02T18:39:20Z"
+    },
+    "decentralized-identity/cawg-identity-assertion#216": {
+      "comments": 7,
+      "state": "open",
+      "title": "WIP: Adding Identity Hooks for Enhanced Privacy and Consistency",
+      "updated_at": "2026-02-03T01:09:13Z"
+    },
+    "decentralized-identity/cawg-identity-assertion#236": {
+      "comments": 4,
+      "state": "open",
+      "title": "Add context of Delegation to Identity Assertion",
+      "updated_at": "2026-02-03T01:08:04Z"
+    },
+    "decentralized-identity/cawg-identity-assertion#242": {
+      "comments": 5,
+      "state": "open",
+      "title": "Add Time Stamp Requirements for Timestamping of CAWG Assertions",
+      "updated_at": "2026-03-30T15:28:15Z"
+    },
+    "decentralized-identity/cawg-identity-assertion#245": {
+      "comments": 1,
+      "state": "open",
+      "title": "Reshaping the Section 9.3 Trust Scenarios into a more general framework",
+      "updated_at": "2026-02-03T01:05:07Z"
+    },
+    "decentralized-identity/cawg-identity-assertion#258": {
+      "comments": 1,
+      "state": "open",
+      "title": "Expand the Training & Data Mining Assertion to a Broader Set of Consent Assertions",
+      "updated_at": "2026-04-04T15:00:41Z"
+    },
+    "decentralized-identity/cawg-identity-assertion#259": {
+      "comments": 1,
+      "state": "open",
+      "title": "Formal Comment: Consent-State Verification as a Separate Interoperable Service Layer (Post-TRQP, Post-v1.2)",
+      "updated_at": "2026-03-10T22:16:27Z"
+    },
+    "decentralized-identity/cawg-identity-assertion#260": {
+      "comments": 2,
+      "state": "open",
+      "title": "Define \"archival-quality identifier\" as part of trust ecosystem",
+      "updated_at": "2026-03-30T15:31:09Z"
+    },
+    "decentralized-identity/cawg-identity-assertion#263": {
+      "comments": 1,
+      "state": "open",
+      "title": "Create a CAWG Governance Assertion to Indicate a Governing Authority's authorization over a CAWG Assertion",
+      "updated_at": "2026-04-08T01:58:50Z"
+    },
+    "decentralized-identity/cawg-identity-assertion#274": {
+      "comments": 3,
+      "state": "open",
+      "title": "CAWG X.509 + TRQP Trust Model",
+      "updated_at": "2026-07-27T15:25:34Z"
+    },
+    "decentralized-identity/cawg-identity-assertion#275": {
+      "comments": 2,
+      "state": "open",
+      "title": "CAWG & TRQP",
+      "updated_at": "2026-07-27T15:26:36Z"
+    },
+    "decentralized-identity/cawg-identity-assertion#277": {
+      "comments": 0,
+      "state": "open",
+      "title": "Proposal: DNSSEC/DANE-anchored signer trust (domain-bound keys via a TLSA record) as a new sig_type",
+      "updated_at": "2026-07-09T17:00:01Z"
+    }
+  },
   "version": 1
 }

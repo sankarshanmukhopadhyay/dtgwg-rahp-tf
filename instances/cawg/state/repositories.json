@@ -1,13 +1,57 @@
 {
   "version": 1,
   "targets": {
-    "decentralized-identity/cawg-identity-assertion@main": {"sha": "8a9c4925df7e8ccbcabce9d754fc27739e11dc12", "observed_at": "2026-08-14T00:00:00Z"},
-    "decentralized-identity/cawg-metadata-assertion@main": {"sha": "64069e062b6dfa1105844a773fdfd80a69356b72", "observed_at": "2026-08-14T00:00:00Z"},
-    "decentralized-identity/cawg-training-and-data-mining-assertion@main": {"sha": "e203ac5e795cd4000d53d0d12cab144c1bcc1111", "observed_at": "2026-08-14T00:00:00Z"},
-    "decentralized-identity/cawg-consent-assertion@main": {"sha": "0d6916c0c4a87705315bbd3b512827b9b41bb98f", "observed_at": "2026-08-14T00:00:00Z"},
-    "decentralized-identity/cawg-endorsement-assertion@main": {"sha": "585c7fbe4ea49d89442ba1a8c04ab39927dbb47d", "observed_at": "2026-08-14T00:00:00Z"},
-    "decentralized-identity/cawg-organizational-identity-profile@main": {"sha": "c862069e5ea2668f12a9346ef07e4b793045076f", "observed_at": "2026-08-14T00:00:00Z"},
-    "decentralized-identity/cawg-ux-guidance@main": {"sha": "3162bbbac52202e4f4178420928bd13900d21df9", "observed_at": "2026-08-14T00:00:00Z"},
-    "c2pa-org/specifications@main": {"sha": "b1703dc0a0420088d3f8b0e5fb11866d0fe931cb", "observed_at": "2026-08-14T00:00:00Z"}
+    "decentralized-identity/cawg-identity-assertion@main": {
+      "sha": "8a9c4925df7e8ccbcabce9d754fc27739e11dc12",
+      "observed_at": "2026-08-14T00:00:00Z"
+    },
+    "decentralized-identity/cawg-metadata-assertion@main": {
+      "sha": "64069e062b6dfa1105844a773fdfd80a69356b72",
+      "observed_at": "2026-08-14T00:00:00Z"
+    },
+    "decentralized-identity/cawg-training-and-data-mining-assertion@main": {
+      "sha": "e203ac5e795cd4000d53d0d12cab144c1bcc1111",
+      "observed_at": "2026-08-14T00:00:00Z"
+    },
+    "decentralized-identity/cawg-consent-assertion@main": {
+      "sha": "0d6916c0c4a87705315bbd3b512827b9b41bb98f",
+      "observed_at": "2026-08-14T00:00:00Z"
+    },
+    "decentralized-identity/cawg-endorsement-assertion@main": {
+      "sha": "585c7fbe4ea49d89442ba1a8c04ab39927dbb47d",
+      "observed_at": "2026-08-14T00:00:00Z"
+    },
+    "decentralized-identity/cawg-organizational-identity-profile@main": {
+      "sha": "c862069e5ea2668f12a9346ef07e4b793045076f",
+      "observed_at": "2026-08-14T00:00:00Z"
+    },
+    "decentralized-identity/cawg-ux-guidance@main": {
+      "sha": "3162bbbac52202e4f4178420928bd13900d21df9",
+      "observed_at": "2026-08-14T00:00:00Z"
+    },
+    "c2pa-org/specifications@main": {
+      "sha": "b1703dc0a0420088d3f8b0e5fb11866d0fe931cb",
+      "observed_at": "2026-08-14T00:00:00Z"
+    },
+    "decentralized-identity/cawg-identity-assertion@governance": {
+      "sha": "5f1908d4f5bf6c89d02d671ae5051f893df92dc9",
+      "status": "active",
+      "observed_at": "2026-08-14T04:58:45.156989+00:00"
+    },
+    "decentralized-identity/cawg-identity-assertion@w3c-vc-credential-support": {
+      "sha": "2339d9f0d55717c44e0c3f1881cb8b9083337ee6",
+      "status": "active",
+      "observed_at": "2026-08-14T04:58:45.381819+00:00"
+    },
+    "decentralized-identity/cawg-identity-assertion@vlei": {
+      "sha": "1fbff9683fb692667a81206274d4b24d17078c0b",
+      "status": "active",
+      "observed_at": "2026-08-14T04:58:45.600153+00:00"
+    },
+    "decentralized-identity/cawg-organizational-identity-profile@1.1-update": {
+      "sha": "ad951176b1d428e027c3c20c48506b2b780a8f77",
+      "status": "active",
+      "observed_at": "2026-08-14T04:58:47.263237+00:00"
+    }
   }
 }
