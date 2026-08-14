@@ -507,6 +507,69 @@
       ]
     },
     {
+      "id": "CT-67",
+      "name": "Agent Discovery Integrity and Freshness Verification",
+      "total_risks": 1,
+      "high_risks": 1,
+      "risks": [
+        "RK-AI06"
+      ]
+    },
+    {
+      "id": "CT-68",
+      "name": "Capability-to-Authority Non-Inference Rule",
+      "total_risks": 1,
+      "high_risks": 1,
+      "risks": [
+        "RK-AI05"
+      ]
+    },
+    {
+      "id": "CT-69",
+      "name": "End-to-End Delegation Context Propagation",
+      "total_risks": 1,
+      "high_risks": 1,
+      "risks": [
+        "RK-AI07"
+      ]
+    },
+    {
+      "id": "CT-70",
+      "name": "Callback Destination Ownership and Egress Validation",
+      "total_risks": 1,
+      "high_risks": 1,
+      "risks": [
+        "RK-AI08"
+      ]
+    },
+    {
+      "id": "CT-71",
+      "name": "Callback Authenticity Freshness and Task Binding",
+      "total_risks": 1,
+      "high_risks": 1,
+      "risks": [
+        "RK-AI08"
+      ]
+    },
+    {
+      "id": "CT-72",
+      "name": "Secondary Credential Audience Purpose and Delegation Constraint",
+      "total_risks": 1,
+      "high_risks": 1,
+      "risks": [
+        "RK-AI09"
+      ]
+    },
+    {
+      "id": "CT-73",
+      "name": "Cross-Agent Action Provenance and Correlation",
+      "total_risks": 1,
+      "high_risks": 1,
+      "risks": [
+        "RK-AI07"
+      ]
+    },
+    {
       "id": "CT-49",
       "name": "VRC Data Minimisation Clause",
       "total_risks": 3,
@@ -805,6 +868,16 @@
       ]
     },
     {
+      "id": "GR-22",
+      "name": "Discovery Is Not Authority",
+      "total_risks": 2,
+      "high_risks": 2,
+      "risks": [
+        "RK-AI05",
+        "RK-AI06"
+      ]
+    },
+    {
       "id": "GR-01",
       "name": "Genesis Policy Documentation",
       "total_risks": 4,
@@ -873,6 +946,33 @@
       "high_risks": 1,
       "risks": [
         "RK-EX05"
+      ]
+    },
+    {
+      "id": "GR-23",
+      "name": "Delegation Continuity Across Agent Boundaries",
+      "total_risks": 1,
+      "high_risks": 1,
+      "risks": [
+        "RK-AI07"
+      ]
+    },
+    {
+      "id": "GR-24",
+      "name": "Asynchronous Callback Trust Boundary",
+      "total_risks": 1,
+      "high_risks": 1,
+      "risks": [
+        "RK-AI08"
+      ]
+    },
+    {
+      "id": "GR-25",
+      "name": "Secondary Credential Non-Transitivity",
+      "total_risks": 1,
+      "high_risks": 1,
+      "risks": [
+        "RK-AI09"
       ]
     },
     {

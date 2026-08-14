@@ -2114,6 +2114,196 @@
         "imported": "2026-08-05"
       },
       "riskScore": 9
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI05",
+      "@type": "Risk",
+      "name": "Capability Advertisement Misread as Authority",
+      "category": "AI Agents",
+      "lifecyclePhase": "Agent Lifecycle",
+      "description": "A remote agent capability, skill, identity, provider, or service advertisement is treated as proof that the agent is authorised, trustworthy, accountable, or suitable to exercise that capability.",
+      "harmType": [
+        "Security",
+        "Trust Graph Integrity"
+      ],
+      "severity": "High",
+      "likelihood": "Medium",
+      "harm_description": "Clients may delegate sensitive work to an agent whose metadata is authentic but whose authority, operator accountability, assurance level, or entitlement to act has not been established.",
+      "affectedMetrics": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-38"
+      ],
+      "guardrails": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-22"
+      ],
+      "controls": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-68"
+      ],
+      "assuranceTests": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-22"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14",
+        "note": "Protocol-neutral risk added after reviewing signed Agent Card, discovery, skill and authorization semantics."
+      },
+      "riskScore": 6
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI06",
+      "@type": "Risk",
+      "name": "Agent Discovery Substitution or Stale Metadata",
+      "category": "AI Agents",
+      "lifecyclePhase": "Agent Lifecycle",
+      "description": "An agent is discovered through stale, substituted, mis-governed, or incorrectly trusted discovery metadata, causing the client to connect to the wrong endpoint or rely on obsolete capabilities, security requirements, or operator information.",
+      "harmType": [
+        "Security",
+        "Trust Graph Integrity"
+      ],
+      "severity": "High",
+      "likelihood": "Medium",
+      "harm_description": "A client can route sensitive tasks or data to an unintended service, continue trusting withdrawn capabilities, or apply obsolete authentication and policy assumptions.",
+      "affectedMetrics": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-38"
+      ],
+      "guardrails": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-22"
+      ],
+      "controls": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-67"
+      ],
+      "assuranceTests": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-22"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14",
+        "note": "Generalises discovery integrity, origin, freshness and registry-governance concerns beyond A2A."
+      },
+      "riskScore": 6
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI07",
+      "@type": "Risk",
+      "name": "Delegation Context Lost Across Agent Hops",
+      "category": "AI Agents",
+      "lifecyclePhase": "Agent Lifecycle",
+      "description": "When one agent delegates or subcontracts work to another agent, the originating principal, permitted purpose, capability scope, constraints, validity, revocation state, and approval boundaries are not preserved or enforceable end to end.",
+      "harmType": [
+        "Security",
+        "Trust Graph Integrity"
+      ],
+      "severity": "High",
+      "likelihood": "Medium",
+      "harm_description": "Downstream agents can perform actions that the original principal did not authorise, while upstream systems retain insufficient evidence to attribute, stop, or contest the action.",
+      "affectedMetrics": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-40"
+      ],
+      "userStories": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-08"
+      ],
+      "scenarios": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-10"
+      ],
+      "guardrails": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-23"
+      ],
+      "controls": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-69",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-73"
+      ],
+      "assuranceTests": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-23"
+      ],
+      "epics": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-6"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14",
+        "note": "Extends existing delegation-scope risk coverage from a single agent boundary to multi-agent chains."
+      },
+      "riskScore": 6
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI08",
+      "@type": "Risk",
+      "name": "Asynchronous Callback Trust Failure",
+      "category": "AI Agents",
+      "lifecyclePhase": "Agent Lifecycle",
+      "description": "A long-running agent workflow uses a callback, webhook, subscription, or push channel whose destination ownership, sender authenticity, task binding, freshness, or replay resistance is insufficiently verified.",
+      "harmType": [
+        "Security",
+        "Trust Graph Integrity"
+      ],
+      "severity": "High",
+      "likelihood": "Medium",
+      "harm_description": "Attackers can redirect callbacks, induce server-side requests, inject false task state, replay stale events, or cause sensitive workflow data to be delivered to unintended recipients.",
+      "affectedMetrics": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-39"
+      ],
+      "guardrails": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-24"
+      ],
+      "controls": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-70",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-71"
+      ],
+      "assuranceTests": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-24"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14",
+        "note": "Protocol-neutral asynchronous trust-boundary risk informed by A2A push-notification security guidance."
+      },
+      "riskScore": 6
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI09",
+      "@type": "Risk",
+      "name": "Secondary Credential Authority Laundering",
+      "category": "AI Agents",
+      "lifecyclePhase": "Agent Lifecycle",
+      "description": "Credentials supplied to an agent for downstream access are reused, forwarded, exchanged, or interpreted more broadly than the principal intended because audience, purpose, resource, delegation depth, or task binding is not preserved.",
+      "harmType": [
+        "Security",
+        "Trust Graph Integrity"
+      ],
+      "severity": "High",
+      "likelihood": "Medium",
+      "harm_description": "A legitimate agent can become a confused deputy or an attacker can turn a narrowly intended credential into broader downstream authority, making credential possession appear equivalent to delegated permission.",
+      "affectedMetrics": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-40"
+      ],
+      "userStories": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/US-08"
+      ],
+      "scenarios": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/SC-10"
+      ],
+      "guardrails": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-25"
+      ],
+      "controls": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-72"
+      ],
+      "assuranceTests": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-25"
+      ],
+      "epics": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-6"
+      ],
+      "standardsPriority": "must_address",
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14",
+        "note": "Generalises the risk created when an agent obtains secondary credentials out of band for downstream systems."
+      },
+      "riskScore": 6
     }
   ]
 }

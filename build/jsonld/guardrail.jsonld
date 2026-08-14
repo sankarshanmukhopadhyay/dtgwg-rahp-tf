@@ -584,6 +584,102 @@
         "source": "workbook:RiskRegister_v5.xlsx",
         "imported": "2026-08-05"
       }
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-22",
+      "@type": "Guardrail",
+      "name": "Discovery Is Not Authority",
+      "category": "Technology / Governance",
+      "requirement": "Agent discovery and capability metadata may inform routing and negotiation but must not, by itself, establish authority, operator accountability, trustworthiness, assurance level, or permission to perform a sensitive action.",
+      "applies_to_phase": "Agent Lifecycle",
+      "owner": "Client / Relying Party",
+      "risksAddressed": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI05",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI06"
+      ],
+      "controls": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-67",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-68"
+      ],
+      "assuranceTests": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-22"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14"
+      }
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-23",
+      "@type": "Guardrail",
+      "name": "Delegation Continuity Across Agent Boundaries",
+      "category": "Technology / Governance",
+      "requirement": "A downstream agent must not receive or exercise authority broader than the authority validly delegated to the upstream agent, and the delegation chain must remain attributable, bounded, revocable and auditable across every hop.",
+      "applies_to_phase": "Agent Lifecycle",
+      "owner": "Principal / Agent Operator / Policy Enforcement Point",
+      "risksAddressed": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI07"
+      ],
+      "controls": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-69",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-73"
+      ],
+      "assuranceTests": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-23"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14"
+      }
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-24",
+      "@type": "Guardrail",
+      "name": "Asynchronous Callback Trust Boundary",
+      "category": "Technology / Governance",
+      "requirement": "Callback and push channels must be treated as independent trust boundaries: destination legitimacy, sender authenticity, task binding, freshness and replay resistance must be verified before delivery or state transition.",
+      "applies_to_phase": "Agent Lifecycle",
+      "owner": "Callback Sender / Receiver",
+      "risksAddressed": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI08"
+      ],
+      "controls": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-70",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-71"
+      ],
+      "assuranceTests": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-24"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14"
+      }
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-25",
+      "@type": "Guardrail",
+      "name": "Secondary Credential Non-Transitivity",
+      "category": "Technology / Governance",
+      "requirement": "A credential provided to an intermediary agent must not be interpreted as transferable or recursively delegable authority unless the principal explicitly authorised that audience, purpose, scope and delegation depth.",
+      "applies_to_phase": "Agent Lifecycle",
+      "owner": "Principal / Agent Operator / Downstream Resource Server",
+      "risksAddressed": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI09"
+      ],
+      "controls": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-72"
+      ],
+      "assuranceTests": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-25"
+      ],
+      "standardsStatus": "unassigned",
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14"
+      }
     }
   ]
 }

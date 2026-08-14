@@ -4,11 +4,11 @@
 > The source of truth is the unresolved state on each canonical RAHP record.
 > Run `python3 tools/build.py` after a Task Force decision is recorded.
 
-Open Task Force decisions: **100**.
+Open Task Force decisions: **111**.
 
 | Category | Open items |
 |---|---:|
-| Normative status / language | 87 |
+| Normative status / language | 98 |
 | Monitoring activation | 5 |
 | Governance precedents | 3 |
 | Risk acceptances | 3 |
@@ -83,6 +83,13 @@ Open Task Force decisions: **100**.
 | `TF-NORM-CT-64` | `CT-64` — Organisational Governance Conformance Mapping | high | standards_status=unassigned | Assign canonical standards status, normative language where applicable, target control plane, and rationale. | `data/controls.yaml` |
 | `TF-NORM-CT-65` | `CT-65` — Cross-Jurisdiction IDVP Standing Verification | high | standards_status=unassigned | Assign canonical standards status, normative language where applicable, target control plane, and rationale. | `data/controls.yaml` |
 | `TF-NORM-CT-66` | `CT-66` — Children's Data Processing Impact Assessment Requirement | high | standards_status=unassigned | Assign canonical standards status, normative language where applicable, target control plane, and rationale. | `data/controls.yaml` |
+| `TF-NORM-CT-67` | `CT-67` — Agent Discovery Integrity and Freshness Verification | high | standards_status=unassigned | Assign canonical standards status, normative language where applicable, target control plane, and rationale. | `data/controls.yaml` |
+| `TF-NORM-CT-68` | `CT-68` — Capability-to-Authority Non-Inference Rule | high | standards_status=unassigned | Assign canonical standards status, normative language where applicable, target control plane, and rationale. | `data/controls.yaml` |
+| `TF-NORM-CT-69` | `CT-69` — End-to-End Delegation Context Propagation | high | standards_status=unassigned | Assign canonical standards status, normative language where applicable, target control plane, and rationale. | `data/controls.yaml` |
+| `TF-NORM-CT-70` | `CT-70` — Callback Destination Ownership and Egress Validation | high | standards_status=unassigned | Assign canonical standards status, normative language where applicable, target control plane, and rationale. | `data/controls.yaml` |
+| `TF-NORM-CT-71` | `CT-71` — Callback Authenticity Freshness and Task Binding | high | standards_status=unassigned | Assign canonical standards status, normative language where applicable, target control plane, and rationale. | `data/controls.yaml` |
+| `TF-NORM-CT-72` | `CT-72` — Secondary Credential Audience Purpose and Delegation Constraint | high | standards_status=unassigned | Assign canonical standards status, normative language where applicable, target control plane, and rationale. | `data/controls.yaml` |
+| `TF-NORM-CT-73` | `CT-73` — Cross-Agent Action Provenance and Correlation | high | standards_status=unassigned | Assign canonical standards status, normative language where applicable, target control plane, and rationale. | `data/controls.yaml` |
 | `TF-NORM-CT-05` | `CT-05` — Anchor Clustering Metric Monitoring | medium | standards_status=unassigned | Assign canonical standards status, normative language where applicable, target control plane, and rationale. | `data/controls.yaml` |
 | `TF-NORM-CT-06` | `CT-06` — Governance Capacity Planning | medium | standards_status=unassigned | Assign canonical standards status, normative language where applicable, target control plane, and rationale. | `data/controls.yaml` |
 | `TF-NORM-CT-17` | `CT-17` — Data Minimisation Audit | medium | standards_status=unassigned | Assign canonical standards status, normative language where applicable, target control plane, and rationale. | `data/controls.yaml` |
@@ -119,6 +126,10 @@ Open Task Force decisions: **100**.
 | `TF-NORM-GR-19` | `GR-19` — Supported Decision-Making and Legal Delegation Pathway | normal | standards_status=unassigned | Assign canonical standards status, normative language where applicable, target control plane, and rationale. | `data/guardrails.yaml` |
 | `TF-NORM-GR-20` | `GR-20` — Age Assurance Architecture Readiness | normal | standards_status=unassigned | Assign canonical standards status, normative language where applicable, target control plane, and rationale. | `data/guardrails.yaml` |
 | `TF-NORM-GR-21` | `GR-21` — Organisational Identity Governance Mapping | normal | standards_status=unassigned | Assign canonical standards status, normative language where applicable, target control plane, and rationale. | `data/guardrails.yaml` |
+| `TF-NORM-GR-22` | `GR-22` — Discovery Is Not Authority | normal | standards_status=unassigned | Assign canonical standards status, normative language where applicable, target control plane, and rationale. | `data/guardrails.yaml` |
+| `TF-NORM-GR-23` | `GR-23` — Delegation Continuity Across Agent Boundaries | normal | standards_status=unassigned | Assign canonical standards status, normative language where applicable, target control plane, and rationale. | `data/guardrails.yaml` |
+| `TF-NORM-GR-24` | `GR-24` — Asynchronous Callback Trust Boundary | normal | standards_status=unassigned | Assign canonical standards status, normative language where applicable, target control plane, and rationale. | `data/guardrails.yaml` |
+| `TF-NORM-GR-25` | `GR-25` — Secondary Credential Non-Transitivity | normal | standards_status=unassigned | Assign canonical standards status, normative language where applicable, target control plane, and rationale. | `data/guardrails.yaml` |
 
 ## Closure rule
 

@@ -75,7 +75,8 @@ records:
     signal: Elapsed hours from revocation decision timestamp to formal notification timestamp.
     threshold_warn: null
     threshold_critical: null
-    threshold_rule: Instance target must be defined before activation; any breach of the adopted revocation-notification SLA enters triage.
+    threshold_rule: Instance target must be defined before activation; any breach of the adopted revocation-notification
+      SLA enters triage.
     triage_workflow: docs/operational-assurance.md#triage-state-flow
     responsible_role: VTC governance operations
     evidence_captured:
@@ -326,7 +327,8 @@ records:
     signal: Rate of agent actions attempted or executed outside the delegated credential scope.
     threshold_warn: null
     threshold_critical: null
-    threshold_rule: Target is zero successful out-of-scope actions; attempted violations are retained for trend review.
+    threshold_rule: Target is zero successful out-of-scope actions; attempted violations are retained
+      for trend review.
     triage_workflow: docs/operational-assurance.md#triage-state-flow
     responsible_role: delegation policy operator
     evidence_captured:
@@ -923,7 +925,8 @@ records:
     signal: Percentage of required operator/agent liveness checks completed within the adopted interval.
     threshold_warn: null
     threshold_critical: null
-    threshold_rule: Target is 100% interval compliance; missed liveness checks suspend reliance until re-established.
+    threshold_rule: Target is 100% interval compliance; missed liveness checks suspend reliance until
+      re-established.
     triage_workflow: docs/operational-assurance.md#triage-state-flow
     responsible_role: agent operator
     evidence_captured:
@@ -1202,3 +1205,56 @@ records:
   epics:
   - EPIC-21
   monitoring: null
+- id: M-38
+  name: Agent Discovery Metadata Validation Failure Rate
+  category: Trust Integrity
+  description: Rate at which agent discovery metadata fails origin, integrity, endpoint-binding, freshness
+    or deployment trust-policy validation before use.
+  personas_want_high: []
+  personas_want_suppressed: []
+  risks_measured:
+  - RK-AI05
+  - RK-AI06
+  user_stories: []
+  scenarios: []
+  epics: []
+  evidence_artefacts: []
+  monitoring: null
+  provenance:
+    source: RAHP A2A v1.0 pressure test
+    imported: '2026-08-14'
+- id: M-39
+  name: Asynchronous Callback Trust Validation Failure Rate
+  category: Trust Integrity
+  description: Rate at which attempted agent callbacks or push notifications fail destination, sender-authentication,
+    task-binding, freshness or replay validation.
+  personas_want_high: []
+  personas_want_suppressed: []
+  risks_measured:
+  - RK-AI08
+  user_stories: []
+  scenarios: []
+  epics: []
+  evidence_artefacts: []
+  monitoring: null
+  provenance:
+    source: RAHP A2A v1.0 pressure test
+    imported: '2026-08-14'
+- id: M-40
+  name: Cross-Agent Delegation Scope Violation Rate
+  category: Trust Integrity
+  description: Rate at which a downstream agent attempts or performs an action outside the originating
+    principal’s valid delegated capability, purpose, resource, time or delegation-depth constraints.
+  personas_want_high: []
+  personas_want_suppressed: []
+  risks_measured:
+  - RK-AI07
+  - RK-AI09
+  user_stories: []
+  scenarios: []
+  epics: []
+  evidence_artefacts: []
+  monitoring: null
+  provenance:
+    source: RAHP A2A v1.0 pressure test
+    imported: '2026-08-14'

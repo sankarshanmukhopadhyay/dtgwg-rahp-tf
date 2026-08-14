@@ -2053,6 +2053,195 @@
           "source": "workbook:RiskRegister_v5.xlsx",
           "imported": "2026-08-05"
         }
+      },
+      {
+        "id": "RK-AI05",
+        "name": "Capability Advertisement Misread as Authority",
+        "category": "AI Agents",
+        "lifecycle_phase": "Agent Lifecycle",
+        "description": "A remote agent capability, skill, identity, provider, or service advertisement is treated as proof that the agent is authorised, trustworthy, accountable, or suitable to exercise that capability.",
+        "harm_types": [
+          "Security",
+          "Trust Graph Integrity"
+        ],
+        "severity": "High",
+        "likelihood": "Medium",
+        "harm_description": "Clients may delegate sensitive work to an agent whose metadata is authentic but whose authority, operator accountability, assurance level, or entitlement to act has not been established.",
+        "affected_metrics": [
+          "M-38"
+        ],
+        "user_stories": [],
+        "scenarios": [],
+        "guardrails": [
+          "GR-22"
+        ],
+        "controls": [
+          "CT-68"
+        ],
+        "assurance_tests": [
+          "AT-22"
+        ],
+        "epics": [],
+        "standards_priority": "must_address",
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14",
+          "note": "Protocol-neutral risk added after reviewing signed Agent Card, discovery, skill and authorization semantics."
+        }
+      },
+      {
+        "id": "RK-AI06",
+        "name": "Agent Discovery Substitution or Stale Metadata",
+        "category": "AI Agents",
+        "lifecycle_phase": "Agent Lifecycle",
+        "description": "An agent is discovered through stale, substituted, mis-governed, or incorrectly trusted discovery metadata, causing the client to connect to the wrong endpoint or rely on obsolete capabilities, security requirements, or operator information.",
+        "harm_types": [
+          "Security",
+          "Trust Graph Integrity"
+        ],
+        "severity": "High",
+        "likelihood": "Medium",
+        "harm_description": "A client can route sensitive tasks or data to an unintended service, continue trusting withdrawn capabilities, or apply obsolete authentication and policy assumptions.",
+        "affected_metrics": [
+          "M-38"
+        ],
+        "user_stories": [],
+        "scenarios": [],
+        "guardrails": [
+          "GR-22"
+        ],
+        "controls": [
+          "CT-67"
+        ],
+        "assurance_tests": [
+          "AT-22"
+        ],
+        "epics": [],
+        "standards_priority": "must_address",
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14",
+          "note": "Generalises discovery integrity, origin, freshness and registry-governance concerns beyond A2A."
+        }
+      },
+      {
+        "id": "RK-AI07",
+        "name": "Delegation Context Lost Across Agent Hops",
+        "category": "AI Agents",
+        "lifecycle_phase": "Agent Lifecycle",
+        "description": "When one agent delegates or subcontracts work to another agent, the originating principal, permitted purpose, capability scope, constraints, validity, revocation state, and approval boundaries are not preserved or enforceable end to end.",
+        "harm_types": [
+          "Security",
+          "Trust Graph Integrity"
+        ],
+        "severity": "High",
+        "likelihood": "Medium",
+        "harm_description": "Downstream agents can perform actions that the original principal did not authorise, while upstream systems retain insufficient evidence to attribute, stop, or contest the action.",
+        "affected_metrics": [
+          "M-40"
+        ],
+        "user_stories": [
+          "US-08"
+        ],
+        "scenarios": [
+          "SC-10"
+        ],
+        "guardrails": [
+          "GR-23"
+        ],
+        "controls": [
+          "CT-69",
+          "CT-73"
+        ],
+        "assurance_tests": [
+          "AT-23"
+        ],
+        "epics": [
+          "EPIC-6"
+        ],
+        "standards_priority": "must_address",
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14",
+          "note": "Extends existing delegation-scope risk coverage from a single agent boundary to multi-agent chains."
+        }
+      },
+      {
+        "id": "RK-AI08",
+        "name": "Asynchronous Callback Trust Failure",
+        "category": "AI Agents",
+        "lifecycle_phase": "Agent Lifecycle",
+        "description": "A long-running agent workflow uses a callback, webhook, subscription, or push channel whose destination ownership, sender authenticity, task binding, freshness, or replay resistance is insufficiently verified.",
+        "harm_types": [
+          "Security",
+          "Trust Graph Integrity"
+        ],
+        "severity": "High",
+        "likelihood": "Medium",
+        "harm_description": "Attackers can redirect callbacks, induce server-side requests, inject false task state, replay stale events, or cause sensitive workflow data to be delivered to unintended recipients.",
+        "affected_metrics": [
+          "M-39"
+        ],
+        "user_stories": [],
+        "scenarios": [],
+        "guardrails": [
+          "GR-24"
+        ],
+        "controls": [
+          "CT-70",
+          "CT-71"
+        ],
+        "assurance_tests": [
+          "AT-24"
+        ],
+        "epics": [],
+        "standards_priority": "must_address",
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14",
+          "note": "Protocol-neutral asynchronous trust-boundary risk informed by A2A push-notification security guidance."
+        }
+      },
+      {
+        "id": "RK-AI09",
+        "name": "Secondary Credential Authority Laundering",
+        "category": "AI Agents",
+        "lifecycle_phase": "Agent Lifecycle",
+        "description": "Credentials supplied to an agent for downstream access are reused, forwarded, exchanged, or interpreted more broadly than the principal intended because audience, purpose, resource, delegation depth, or task binding is not preserved.",
+        "harm_types": [
+          "Security",
+          "Trust Graph Integrity"
+        ],
+        "severity": "High",
+        "likelihood": "Medium",
+        "harm_description": "A legitimate agent can become a confused deputy or an attacker can turn a narrowly intended credential into broader downstream authority, making credential possession appear equivalent to delegated permission.",
+        "affected_metrics": [
+          "M-40"
+        ],
+        "user_stories": [
+          "US-08"
+        ],
+        "scenarios": [
+          "SC-10"
+        ],
+        "guardrails": [
+          "GR-25"
+        ],
+        "controls": [
+          "CT-72"
+        ],
+        "assurance_tests": [
+          "AT-25"
+        ],
+        "epics": [
+          "EPIC-6"
+        ],
+        "standards_priority": "must_address",
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14",
+          "note": "Generalises the risk created when an agent obtains secondary credentials out of band for downstream systems."
+        }
       }
     ],
     "control": [
@@ -3403,6 +3592,146 @@
           "source": "workbook:RiskRegister_v5.xlsx",
           "imported": "2026-08-05"
         }
+      },
+      {
+        "id": "CT-67",
+        "name": "Agent Discovery Integrity and Freshness Verification",
+        "type": "Technical",
+        "description": "Clients must validate the origin, integrity, endpoint binding and freshness of agent discovery metadata before relying on it, and deployments using registries must define which registry operators and update semantics are trusted.",
+        "guardrails": [
+          "GR-22"
+        ],
+        "linked_risks": [
+          "RK-AI06"
+        ],
+        "standards_relevance": "High",
+        "standards_status": "unassigned",
+        "normative_language": null,
+        "rationale": "Discovery metadata is a routing and policy input; authenticity alone does not establish freshness or registry legitimacy.",
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14"
+        }
+      },
+      {
+        "id": "CT-68",
+        "name": "Capability-to-Authority Non-Inference Rule",
+        "type": "Governance",
+        "description": "A capability, skill, provider, identity or endpoint advertisement must not be treated as evidence of delegated authority, operator accountability, assurance level, entitlement, or current permission without a separately evaluated authorization or trust-policy decision.",
+        "guardrails": [
+          "GR-22"
+        ],
+        "linked_risks": [
+          "RK-AI05"
+        ],
+        "standards_relevance": "High",
+        "standards_status": "unassigned",
+        "normative_language": null,
+        "rationale": "Separates descriptive interoperability metadata from normative authority.",
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14"
+        }
+      },
+      {
+        "id": "CT-69",
+        "name": "End-to-End Delegation Context Propagation",
+        "type": "Technical",
+        "description": "Multi-agent task chains must preserve and enforce the originating principal, delegated capability, purpose, resource scope, approval constraints, validity interval, revocation state and permitted delegation depth at each downstream hop.",
+        "guardrails": [
+          "GR-23"
+        ],
+        "linked_risks": [
+          "RK-AI07"
+        ],
+        "standards_relevance": "High",
+        "standards_status": "unassigned",
+        "normative_language": null,
+        "rationale": "A downstream agent should receive no more authority than the upstream agent was entitled to delegate.",
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14"
+        }
+      },
+      {
+        "id": "CT-70",
+        "name": "Callback Destination Ownership and Egress Validation",
+        "type": "Technical",
+        "description": "Before sending asynchronous callbacks or push notifications, a server must validate the callback destination against policy, prevent access to prohibited network ranges, and where risk warrants verify endpoint ownership or possession.",
+        "guardrails": [
+          "GR-24"
+        ],
+        "linked_risks": [
+          "RK-AI08"
+        ],
+        "standards_relevance": "High",
+        "standards_status": "unassigned",
+        "normative_language": null,
+        "rationale": "Prevents client-controlled callback destinations from becoming SSRF or amplification primitives.",
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14"
+        }
+      },
+      {
+        "id": "CT-71",
+        "name": "Callback Authenticity Freshness and Task Binding",
+        "type": "Technical",
+        "description": "Asynchronous notifications must be authenticated, integrity-protected, bound to the intended receiver and task, freshness-checked, and replay-resistant before they can change workflow state or trigger downstream action.",
+        "guardrails": [
+          "GR-24"
+        ],
+        "linked_risks": [
+          "RK-AI08"
+        ],
+        "standards_relevance": "High",
+        "standards_status": "unassigned",
+        "normative_language": null,
+        "rationale": "A valid transport connection is not sufficient evidence that an asynchronous event is current and belongs to the expected task.",
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14"
+        }
+      },
+      {
+        "id": "CT-72",
+        "name": "Secondary Credential Audience Purpose and Delegation Constraint",
+        "type": "Technical",
+        "description": "Credentials obtained for an agent to access a downstream service must be constrained to the intended audience, resource, purpose, lifetime and delegation depth, and must not be forwarded or exchanged unless that transitivity is explicitly authorised.",
+        "guardrails": [
+          "GR-25"
+        ],
+        "linked_risks": [
+          "RK-AI09"
+        ],
+        "standards_relevance": "High",
+        "standards_status": "unassigned",
+        "normative_language": null,
+        "rationale": "Possession of a credential by an intermediary agent must not silently widen the principal’s grant.",
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14"
+        }
+      },
+      {
+        "id": "CT-73",
+        "name": "Cross-Agent Action Provenance and Correlation",
+        "type": "Technical",
+        "description": "Systems participating in a multi-agent workflow must retain correlation evidence sufficient to reconstruct the principal, participating agents, delegated scope, task transitions, approvals, downstream actions and material outputs without requiring disclosure of private model reasoning.",
+        "guardrails": [
+          "GR-23"
+        ],
+        "linked_risks": [
+          "RK-AI07"
+        ],
+        "standards_relevance": "High",
+        "standards_status": "unassigned",
+        "normative_language": null,
+        "rationale": "Opaque execution can coexist with accountable external action provenance.",
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14"
+        }
       }
     ],
     "guardrail": [
@@ -3989,6 +4318,102 @@
           "source": "workbook:RiskRegister_v5.xlsx",
           "imported": "2026-08-05"
         }
+      },
+      {
+        "id": "GR-22",
+        "name": "Discovery Is Not Authority",
+        "category": "Technology / Governance",
+        "requirement": "Agent discovery and capability metadata may inform routing and negotiation but must not, by itself, establish authority, operator accountability, trustworthiness, assurance level, or permission to perform a sensitive action.",
+        "applies_to_phase": "Agent Lifecycle",
+        "owner": "Client / Relying Party",
+        "risks_addressed": [
+          "RK-AI05",
+          "RK-AI06"
+        ],
+        "controls": [
+          "CT-67",
+          "CT-68"
+        ],
+        "assurance_tests": [
+          "AT-22"
+        ],
+        "standards_status": "unassigned",
+        "normative_language": null,
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14"
+        }
+      },
+      {
+        "id": "GR-23",
+        "name": "Delegation Continuity Across Agent Boundaries",
+        "category": "Technology / Governance",
+        "requirement": "A downstream agent must not receive or exercise authority broader than the authority validly delegated to the upstream agent, and the delegation chain must remain attributable, bounded, revocable and auditable across every hop.",
+        "applies_to_phase": "Agent Lifecycle",
+        "owner": "Principal / Agent Operator / Policy Enforcement Point",
+        "risks_addressed": [
+          "RK-AI07"
+        ],
+        "controls": [
+          "CT-69",
+          "CT-73"
+        ],
+        "assurance_tests": [
+          "AT-23"
+        ],
+        "standards_status": "unassigned",
+        "normative_language": null,
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14"
+        }
+      },
+      {
+        "id": "GR-24",
+        "name": "Asynchronous Callback Trust Boundary",
+        "category": "Technology / Governance",
+        "requirement": "Callback and push channels must be treated as independent trust boundaries: destination legitimacy, sender authenticity, task binding, freshness and replay resistance must be verified before delivery or state transition.",
+        "applies_to_phase": "Agent Lifecycle",
+        "owner": "Callback Sender / Receiver",
+        "risks_addressed": [
+          "RK-AI08"
+        ],
+        "controls": [
+          "CT-70",
+          "CT-71"
+        ],
+        "assurance_tests": [
+          "AT-24"
+        ],
+        "standards_status": "unassigned",
+        "normative_language": null,
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14"
+        }
+      },
+      {
+        "id": "GR-25",
+        "name": "Secondary Credential Non-Transitivity",
+        "category": "Technology / Governance",
+        "requirement": "A credential provided to an intermediary agent must not be interpreted as transferable or recursively delegable authority unless the principal explicitly authorised that audience, purpose, scope and delegation depth.",
+        "applies_to_phase": "Agent Lifecycle",
+        "owner": "Principal / Agent Operator / Downstream Resource Server",
+        "risks_addressed": [
+          "RK-AI09"
+        ],
+        "controls": [
+          "CT-72"
+        ],
+        "assurance_tests": [
+          "AT-25"
+        ],
+        "standards_status": "unassigned",
+        "normative_language": null,
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14"
+        }
       }
     ],
     "assurance_test": [
@@ -4369,6 +4794,71 @@
         "provenance": {
           "source": "workbook:RiskRegister_v5.xlsx",
           "imported": "2026-08-05"
+        }
+      },
+      {
+        "id": "AT-22",
+        "guardrail": "GR-22",
+        "pass_criterion": "Discovery and capability metadata are integrity/freshness checked and the relying policy demonstrably separates advertised capability from delegated authority and trust decisions.",
+        "verification_method": "Review discovery validation, signature/origin handling, cache invalidation and authorization policy with a substituted/stale-card negative test.",
+        "automated": false,
+        "test_type": "Conformance",
+        "risks_covered": [
+          "RK-AI05",
+          "RK-AI06"
+        ],
+        "notes": null,
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14"
+        }
+      },
+      {
+        "id": "AT-23",
+        "guardrail": "GR-23",
+        "pass_criterion": "A multi-agent delegation test proves that downstream agents cannot exceed the originating delegation scope and that principal, scope, approvals and revocation can be reconstructed across hops.",
+        "verification_method": "Execute an allowed delegated task and negative tests for excess capability, expired/revoked scope and prohibited delegation depth.",
+        "automated": false,
+        "test_type": "Conformance",
+        "risks_covered": [
+          "RK-AI07"
+        ],
+        "notes": null,
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14"
+        }
+      },
+      {
+        "id": "AT-24",
+        "guardrail": "GR-24",
+        "pass_criterion": "Callback tests reject prohibited destinations, unauthenticated senders, wrong-task events, stale events and replayed events while accepting an authorised fresh notification.",
+        "verification_method": "Exercise callback URL validation plus sender-authentication, task-binding, freshness and replay negative vectors.",
+        "automated": false,
+        "test_type": "Security",
+        "risks_covered": [
+          "RK-AI08"
+        ],
+        "notes": null,
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14"
+        }
+      },
+      {
+        "id": "AT-25",
+        "guardrail": "GR-25",
+        "pass_criterion": "A downstream service rejects a secondary credential when audience, purpose, resource, lifetime or delegation-depth constraints do not authorise the requested action.",
+        "verification_method": "Run confused-deputy and token-forwarding negative tests across at least one downstream resource boundary.",
+        "automated": false,
+        "test_type": "Security",
+        "risks_covered": [
+          "RK-AI09"
+        ],
+        "notes": null,
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14"
         }
       }
     ],
@@ -5852,6 +6342,68 @@
           "EPIC-21"
         ],
         "monitoring": null
+      },
+      {
+        "id": "M-38",
+        "name": "Agent Discovery Metadata Validation Failure Rate",
+        "category": "Trust Integrity",
+        "description": "Rate at which agent discovery metadata fails origin, integrity, endpoint-binding, freshness or deployment trust-policy validation before use.",
+        "personas_want_high": [],
+        "personas_want_suppressed": [],
+        "risks_measured": [
+          "RK-AI05",
+          "RK-AI06"
+        ],
+        "user_stories": [],
+        "scenarios": [],
+        "epics": [],
+        "evidence_artefacts": [],
+        "monitoring": null,
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14"
+        }
+      },
+      {
+        "id": "M-39",
+        "name": "Asynchronous Callback Trust Validation Failure Rate",
+        "category": "Trust Integrity",
+        "description": "Rate at which attempted agent callbacks or push notifications fail destination, sender-authentication, task-binding, freshness or replay validation.",
+        "personas_want_high": [],
+        "personas_want_suppressed": [],
+        "risks_measured": [
+          "RK-AI08"
+        ],
+        "user_stories": [],
+        "scenarios": [],
+        "epics": [],
+        "evidence_artefacts": [],
+        "monitoring": null,
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14"
+        }
+      },
+      {
+        "id": "M-40",
+        "name": "Cross-Agent Delegation Scope Violation Rate",
+        "category": "Trust Integrity",
+        "description": "Rate at which a downstream agent attempts or performs an action outside the originating principal’s valid delegated capability, purpose, resource, time or delegation-depth constraints.",
+        "personas_want_high": [],
+        "personas_want_suppressed": [],
+        "risks_measured": [
+          "RK-AI07",
+          "RK-AI09"
+        ],
+        "user_stories": [],
+        "scenarios": [],
+        "epics": [],
+        "evidence_artefacts": [],
+        "monitoring": null,
+        "provenance": {
+          "source": "RAHP A2A v1.0 pressure test",
+          "imported": "2026-08-14"
+        }
       }
     ],
     "user_story": [

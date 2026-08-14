@@ -93,6 +93,12 @@ has_toc: true
 
 ## Unreleased — scenario-driven RAHP and JTD documentation
 
+### Agent-protocol assurance example
+
+- Add a worked RAHP pressure test of **Agent2Agent (A2A) Protocol v1.0.0**, pinned to upstream commit `1eb4aa03b07589d3a00ce7deab0dde679120ed30`.
+- Add reusable agentic risks `RK-AI05`–`RK-AI09`, controls `CT-67`–`CT-73`, guardrails `GR-22`–`GR-25`, assurance tests `AT-22`–`AT-25`, and metrics `M-38`–`M-40`.
+- Add method documentation for discovery metadata vs authority, multi-agent delegation continuity, asynchronous callback trust, secondary-credential non-transitivity, and cross-agent action provenance.
+
 - Added portable scenario patterns and a validated external scenario-corpus adapter model.
 - Added the DTG ZKP 30-use-case corpus as the first scenario-driven RAHP reference adapter.
 - Added a 16-scenario Trust Tasks corpus grounded in framework proof, identity, replay, versioning, transport, privacy and delegation semantics.

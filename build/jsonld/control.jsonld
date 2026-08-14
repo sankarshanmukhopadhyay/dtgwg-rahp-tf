@@ -1279,6 +1279,146 @@
         "source": "workbook:RiskRegister_v5.xlsx",
         "imported": "2026-08-05"
       }
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-67",
+      "@type": "Control",
+      "name": "Agent Discovery Integrity and Freshness Verification",
+      "type": "Technical",
+      "description": "Clients must validate the origin, integrity, endpoint binding and freshness of agent discovery metadata before relying on it, and deployments using registries must define which registry operators and update semantics are trusted.",
+      "guardrails": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-22"
+      ],
+      "linkedRisks": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI06"
+      ],
+      "standards_relevance": "High",
+      "standardsStatus": "unassigned",
+      "rationale": "Discovery metadata is a routing and policy input; authenticity alone does not establish freshness or registry legitimacy.",
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14"
+      }
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-68",
+      "@type": "Control",
+      "name": "Capability-to-Authority Non-Inference Rule",
+      "type": "Governance",
+      "description": "A capability, skill, provider, identity or endpoint advertisement must not be treated as evidence of delegated authority, operator accountability, assurance level, entitlement, or current permission without a separately evaluated authorization or trust-policy decision.",
+      "guardrails": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-22"
+      ],
+      "linkedRisks": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI05"
+      ],
+      "standards_relevance": "High",
+      "standardsStatus": "unassigned",
+      "rationale": "Separates descriptive interoperability metadata from normative authority.",
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14"
+      }
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-69",
+      "@type": "Control",
+      "name": "End-to-End Delegation Context Propagation",
+      "type": "Technical",
+      "description": "Multi-agent task chains must preserve and enforce the originating principal, delegated capability, purpose, resource scope, approval constraints, validity interval, revocation state and permitted delegation depth at each downstream hop.",
+      "guardrails": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-23"
+      ],
+      "linkedRisks": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI07"
+      ],
+      "standards_relevance": "High",
+      "standardsStatus": "unassigned",
+      "rationale": "A downstream agent should receive no more authority than the upstream agent was entitled to delegate.",
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14"
+      }
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-70",
+      "@type": "Control",
+      "name": "Callback Destination Ownership and Egress Validation",
+      "type": "Technical",
+      "description": "Before sending asynchronous callbacks or push notifications, a server must validate the callback destination against policy, prevent access to prohibited network ranges, and where risk warrants verify endpoint ownership or possession.",
+      "guardrails": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-24"
+      ],
+      "linkedRisks": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI08"
+      ],
+      "standards_relevance": "High",
+      "standardsStatus": "unassigned",
+      "rationale": "Prevents client-controlled callback destinations from becoming SSRF or amplification primitives.",
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14"
+      }
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-71",
+      "@type": "Control",
+      "name": "Callback Authenticity Freshness and Task Binding",
+      "type": "Technical",
+      "description": "Asynchronous notifications must be authenticated, integrity-protected, bound to the intended receiver and task, freshness-checked, and replay-resistant before they can change workflow state or trigger downstream action.",
+      "guardrails": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-24"
+      ],
+      "linkedRisks": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI08"
+      ],
+      "standards_relevance": "High",
+      "standardsStatus": "unassigned",
+      "rationale": "A valid transport connection is not sufficient evidence that an asynchronous event is current and belongs to the expected task.",
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14"
+      }
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-72",
+      "@type": "Control",
+      "name": "Secondary Credential Audience Purpose and Delegation Constraint",
+      "type": "Technical",
+      "description": "Credentials obtained for an agent to access a downstream service must be constrained to the intended audience, resource, purpose, lifetime and delegation depth, and must not be forwarded or exchanged unless that transitivity is explicitly authorised.",
+      "guardrails": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-25"
+      ],
+      "linkedRisks": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI09"
+      ],
+      "standards_relevance": "High",
+      "standardsStatus": "unassigned",
+      "rationale": "Possession of a credential by an intermediary agent must not silently widen the principal’s grant.",
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14"
+      }
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/CT-73",
+      "@type": "Control",
+      "name": "Cross-Agent Action Provenance and Correlation",
+      "type": "Technical",
+      "description": "Systems participating in a multi-agent workflow must retain correlation evidence sufficient to reconstruct the principal, participating agents, delegated scope, task transitions, approvals, downstream actions and material outputs without requiring disclosure of private model reasoning.",
+      "guardrails": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/GR-23"
+      ],
+      "linkedRisks": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI07"
+      ],
+      "standards_relevance": "High",
+      "standardsStatus": "unassigned",
+      "rationale": "Opaque execution can coexist with accountable external action provenance.",
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14"
+      }
     }
   ]
 }

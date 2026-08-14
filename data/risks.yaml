@@ -1759,3 +1759,165 @@ records:
   provenance:
     source: workbook:RiskRegister_v5.xlsx
     imported: '2026-08-05'
+- id: RK-AI05
+  name: Capability Advertisement Misread as Authority
+  category: AI Agents
+  lifecycle_phase: Agent Lifecycle
+  description: A remote agent capability, skill, identity, provider, or service advertisement is treated
+    as proof that the agent is authorised, trustworthy, accountable, or suitable to exercise that capability.
+  harm_types:
+  - Security
+  - Trust Graph Integrity
+  severity: High
+  likelihood: Medium
+  harm_description: Clients may delegate sensitive work to an agent whose metadata is authentic but whose
+    authority, operator accountability, assurance level, or entitlement to act has not been established.
+  affected_metrics:
+  - M-38
+  user_stories: []
+  scenarios: []
+  guardrails:
+  - GR-22
+  controls:
+  - CT-68
+  assurance_tests:
+  - AT-22
+  epics: []
+  standards_priority: must_address
+  provenance:
+    source: RAHP A2A v1.0 pressure test
+    imported: '2026-08-14'
+    note: Protocol-neutral risk added after reviewing signed Agent Card, discovery, skill and authorization
+      semantics.
+- id: RK-AI06
+  name: Agent Discovery Substitution or Stale Metadata
+  category: AI Agents
+  lifecycle_phase: Agent Lifecycle
+  description: An agent is discovered through stale, substituted, mis-governed, or incorrectly trusted
+    discovery metadata, causing the client to connect to the wrong endpoint or rely on obsolete capabilities,
+    security requirements, or operator information.
+  harm_types:
+  - Security
+  - Trust Graph Integrity
+  severity: High
+  likelihood: Medium
+  harm_description: A client can route sensitive tasks or data to an unintended service, continue trusting
+    withdrawn capabilities, or apply obsolete authentication and policy assumptions.
+  affected_metrics:
+  - M-38
+  user_stories: []
+  scenarios: []
+  guardrails:
+  - GR-22
+  controls:
+  - CT-67
+  assurance_tests:
+  - AT-22
+  epics: []
+  standards_priority: must_address
+  provenance:
+    source: RAHP A2A v1.0 pressure test
+    imported: '2026-08-14'
+    note: Generalises discovery integrity, origin, freshness and registry-governance concerns beyond A2A.
+- id: RK-AI07
+  name: Delegation Context Lost Across Agent Hops
+  category: AI Agents
+  lifecycle_phase: Agent Lifecycle
+  description: When one agent delegates or subcontracts work to another agent, the originating principal,
+    permitted purpose, capability scope, constraints, validity, revocation state, and approval boundaries
+    are not preserved or enforceable end to end.
+  harm_types:
+  - Security
+  - Trust Graph Integrity
+  severity: High
+  likelihood: Medium
+  harm_description: Downstream agents can perform actions that the original principal did not authorise,
+    while upstream systems retain insufficient evidence to attribute, stop, or contest the action.
+  affected_metrics:
+  - M-40
+  user_stories:
+  - US-08
+  scenarios:
+  - SC-10
+  guardrails:
+  - GR-23
+  controls:
+  - CT-69
+  - CT-73
+  assurance_tests:
+  - AT-23
+  epics:
+  - EPIC-6
+  standards_priority: must_address
+  provenance:
+    source: RAHP A2A v1.0 pressure test
+    imported: '2026-08-14'
+    note: Extends existing delegation-scope risk coverage from a single agent boundary to multi-agent
+      chains.
+- id: RK-AI08
+  name: Asynchronous Callback Trust Failure
+  category: AI Agents
+  lifecycle_phase: Agent Lifecycle
+  description: A long-running agent workflow uses a callback, webhook, subscription, or push channel whose
+    destination ownership, sender authenticity, task binding, freshness, or replay resistance is insufficiently
+    verified.
+  harm_types:
+  - Security
+  - Trust Graph Integrity
+  severity: High
+  likelihood: Medium
+  harm_description: Attackers can redirect callbacks, induce server-side requests, inject false task state,
+    replay stale events, or cause sensitive workflow data to be delivered to unintended recipients.
+  affected_metrics:
+  - M-39
+  user_stories: []
+  scenarios: []
+  guardrails:
+  - GR-24
+  controls:
+  - CT-70
+  - CT-71
+  assurance_tests:
+  - AT-24
+  epics: []
+  standards_priority: must_address
+  provenance:
+    source: RAHP A2A v1.0 pressure test
+    imported: '2026-08-14'
+    note: Protocol-neutral asynchronous trust-boundary risk informed by A2A push-notification security
+      guidance.
+- id: RK-AI09
+  name: Secondary Credential Authority Laundering
+  category: AI Agents
+  lifecycle_phase: Agent Lifecycle
+  description: Credentials supplied to an agent for downstream access are reused, forwarded, exchanged,
+    or interpreted more broadly than the principal intended because audience, purpose, resource, delegation
+    depth, or task binding is not preserved.
+  harm_types:
+  - Security
+  - Trust Graph Integrity
+  severity: High
+  likelihood: Medium
+  harm_description: A legitimate agent can become a confused deputy or an attacker can turn a narrowly
+    intended credential into broader downstream authority, making credential possession appear equivalent
+    to delegated permission.
+  affected_metrics:
+  - M-40
+  user_stories:
+  - US-08
+  scenarios:
+  - SC-10
+  guardrails:
+  - GR-25
+  controls:
+  - CT-72
+  assurance_tests:
+  - AT-25
+  epics:
+  - EPIC-6
+  standards_priority: must_address
+  provenance:
+    source: RAHP A2A v1.0 pressure test
+    imported: '2026-08-14'
+    note: Generalises the risk created when an agent obtains secondary credentials out of band for downstream
+      systems.

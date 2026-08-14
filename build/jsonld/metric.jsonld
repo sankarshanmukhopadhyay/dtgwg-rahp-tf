@@ -1472,6 +1472,50 @@
       "epics": [
         "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/EPIC-21"
       ]
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-38",
+      "@type": "Metric",
+      "name": "Agent Discovery Metadata Validation Failure Rate",
+      "category": "Trust Integrity",
+      "description": "Rate at which agent discovery metadata fails origin, integrity, endpoint-binding, freshness or deployment trust-policy validation before use.",
+      "risksMeasured": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI05",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI06"
+      ],
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14"
+      }
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-39",
+      "@type": "Metric",
+      "name": "Asynchronous Callback Trust Validation Failure Rate",
+      "category": "Trust Integrity",
+      "description": "Rate at which attempted agent callbacks or push notifications fail destination, sender-authentication, task-binding, freshness or replay validation.",
+      "risksMeasured": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI08"
+      ],
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14"
+      }
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/M-40",
+      "@type": "Metric",
+      "name": "Cross-Agent Delegation Scope Violation Rate",
+      "category": "Trust Integrity",
+      "description": "Rate at which a downstream agent attempts or performs an action outside the originating principal’s valid delegated capability, purpose, resource, time or delegation-depth constraints.",
+      "risksMeasured": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI07",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI09"
+      ],
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14"
+      }
     }
   ]
 }

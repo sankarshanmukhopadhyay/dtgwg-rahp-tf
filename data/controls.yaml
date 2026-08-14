@@ -71,15 +71,14 @@ records:
   type: Technical
   description: The VTA tracks an anchor clustering metric (e.g. organisational or jurisdictional Herfindahl
     index). Breaches of the diversity floor trigger a governance alert before additional anchors are admitted.
-  guardrails: []
+  guardrails:
+  - GR-03
   linked_risks:
   - RK-G03
   standards_relevance: Medium
   standards_status: unassigned
   normative_language: null
   rationale: null
-  guardrails:
-  - GR-03
   provenance:
     source: workbook:RiskRegister_v5.xlsx
     imported: '2026-08-05'
@@ -411,15 +410,14 @@ records:
   description: 'A defined credential renewal workflow — including advance expiry notification (recommended:
     30 days) and a grace period — must be implemented before Phase 4. Autonomous agent renewal (US-08)
     addresses this for agent-managed credentials.'
-  guardrails: []
+  guardrails:
+  - GR-08
   linked_risks:
   - RK-CR02
   standards_relevance: Medium
   standards_status: unassigned
   normative_language: null
   rationale: null
-  guardrails:
-  - GR-08
   provenance:
     source: workbook:RiskRegister_v5.xlsx
     imported: '2026-08-05'
@@ -1199,3 +1197,126 @@ records:
   provenance:
     source: workbook:RiskRegister_v5.xlsx
     imported: '2026-08-05'
+- id: CT-67
+  name: Agent Discovery Integrity and Freshness Verification
+  type: Technical
+  description: Clients must validate the origin, integrity, endpoint binding and freshness of agent discovery
+    metadata before relying on it, and deployments using registries must define which registry operators
+    and update semantics are trusted.
+  guardrails:
+  - GR-22
+  linked_risks:
+  - RK-AI06
+  standards_relevance: High
+  standards_status: unassigned
+  normative_language: null
+  rationale: Discovery metadata is a routing and policy input; authenticity alone does not establish freshness
+    or registry legitimacy.
+  provenance:
+    source: RAHP A2A v1.0 pressure test
+    imported: '2026-08-14'
+- id: CT-68
+  name: Capability-to-Authority Non-Inference Rule
+  type: Governance
+  description: A capability, skill, provider, identity or endpoint advertisement must not be treated as
+    evidence of delegated authority, operator accountability, assurance level, entitlement, or current
+    permission without a separately evaluated authorization or trust-policy decision.
+  guardrails:
+  - GR-22
+  linked_risks:
+  - RK-AI05
+  standards_relevance: High
+  standards_status: unassigned
+  normative_language: null
+  rationale: Separates descriptive interoperability metadata from normative authority.
+  provenance:
+    source: RAHP A2A v1.0 pressure test
+    imported: '2026-08-14'
+- id: CT-69
+  name: End-to-End Delegation Context Propagation
+  type: Technical
+  description: Multi-agent task chains must preserve and enforce the originating principal, delegated
+    capability, purpose, resource scope, approval constraints, validity interval, revocation state and
+    permitted delegation depth at each downstream hop.
+  guardrails:
+  - GR-23
+  linked_risks:
+  - RK-AI07
+  standards_relevance: High
+  standards_status: unassigned
+  normative_language: null
+  rationale: A downstream agent should receive no more authority than the upstream agent was entitled
+    to delegate.
+  provenance:
+    source: RAHP A2A v1.0 pressure test
+    imported: '2026-08-14'
+- id: CT-70
+  name: Callback Destination Ownership and Egress Validation
+  type: Technical
+  description: Before sending asynchronous callbacks or push notifications, a server must validate the
+    callback destination against policy, prevent access to prohibited network ranges, and where risk warrants
+    verify endpoint ownership or possession.
+  guardrails:
+  - GR-24
+  linked_risks:
+  - RK-AI08
+  standards_relevance: High
+  standards_status: unassigned
+  normative_language: null
+  rationale: Prevents client-controlled callback destinations from becoming SSRF or amplification primitives.
+  provenance:
+    source: RAHP A2A v1.0 pressure test
+    imported: '2026-08-14'
+- id: CT-71
+  name: Callback Authenticity Freshness and Task Binding
+  type: Technical
+  description: Asynchronous notifications must be authenticated, integrity-protected, bound to the intended
+    receiver and task, freshness-checked, and replay-resistant before they can change workflow state or
+    trigger downstream action.
+  guardrails:
+  - GR-24
+  linked_risks:
+  - RK-AI08
+  standards_relevance: High
+  standards_status: unassigned
+  normative_language: null
+  rationale: A valid transport connection is not sufficient evidence that an asynchronous event is current
+    and belongs to the expected task.
+  provenance:
+    source: RAHP A2A v1.0 pressure test
+    imported: '2026-08-14'
+- id: CT-72
+  name: Secondary Credential Audience Purpose and Delegation Constraint
+  type: Technical
+  description: Credentials obtained for an agent to access a downstream service must be constrained to
+    the intended audience, resource, purpose, lifetime and delegation depth, and must not be forwarded
+    or exchanged unless that transitivity is explicitly authorised.
+  guardrails:
+  - GR-25
+  linked_risks:
+  - RK-AI09
+  standards_relevance: High
+  standards_status: unassigned
+  normative_language: null
+  rationale: Possession of a credential by an intermediary agent must not silently widen the principal’s
+    grant.
+  provenance:
+    source: RAHP A2A v1.0 pressure test
+    imported: '2026-08-14'
+- id: CT-73
+  name: Cross-Agent Action Provenance and Correlation
+  type: Technical
+  description: Systems participating in a multi-agent workflow must retain correlation evidence sufficient
+    to reconstruct the principal, participating agents, delegated scope, task transitions, approvals,
+    downstream actions and material outputs without requiring disclosure of private model reasoning.
+  guardrails:
+  - GR-23
+  linked_risks:
+  - RK-AI07
+  standards_relevance: High
+  standards_status: unassigned
+  normative_language: null
+  rationale: Opaque execution can coexist with accountable external action provenance.
+  provenance:
+    source: RAHP A2A v1.0 pressure test
+    imported: '2026-08-14'

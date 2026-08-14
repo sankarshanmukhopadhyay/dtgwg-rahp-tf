@@ -60,7 +60,7 @@ Linked: —
 
 ## Awaiting standards triage
 
-87 controls and guardrails have no `standards_status`.
+98 controls and guardrails have no `standards_status`.
 
 | ID | Name | Type |
 |---|---|---|
@@ -130,6 +130,13 @@ Linked: —
 | CT-64 | Organisational Governance Conformance Mapping | control |
 | CT-65 | Cross-Jurisdiction IDVP Standing Verification | control |
 | CT-66 | Children's Data Processing Impact Assessment Requirement | control |
+| CT-67 | Agent Discovery Integrity and Freshness Verification | control |
+| CT-68 | Capability-to-Authority Non-Inference Rule | control |
+| CT-69 | End-to-End Delegation Context Propagation | control |
+| CT-70 | Callback Destination Ownership and Egress Validation | control |
+| CT-71 | Callback Authenticity Freshness and Task Binding | control |
+| CT-72 | Secondary Credential Audience Purpose and Delegation Constraint | control |
+| CT-73 | Cross-Agent Action Provenance and Correlation | control |
 | GR-01 | Genesis Policy Documentation | guardrail |
 | GR-02 | Time-Bounded Initiator Authority | guardrail |
 | GR-03 | Trust Anchor Diversity Policy | guardrail |
@@ -151,3 +158,7 @@ Linked: —
 | GR-19 | Supported Decision-Making and Legal Delegation Pathway | guardrail |
 | GR-20 | Age Assurance Architecture Readiness | guardrail |
 | GR-21 | Organisational Identity Governance Mapping | guardrail |
+| GR-22 | Discovery Is Not Authority | guardrail |
+| GR-23 | Delegation Continuity Across Agent Boundaries | guardrail |
+| GR-24 | Asynchronous Callback Trust Boundary | guardrail |
+| GR-25 | Secondary Credential Non-Transitivity | guardrail |

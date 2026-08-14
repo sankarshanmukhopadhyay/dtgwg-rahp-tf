@@ -383,6 +383,71 @@
         "source": "workbook:RiskRegister_v5.xlsx",
         "imported": "2026-08-05"
       }
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-22",
+      "@type": "AssuranceTest",
+      "guardrail": "GR-22",
+      "pass_criterion": "Discovery and capability metadata are integrity/freshness checked and the relying policy demonstrably separates advertised capability from delegated authority and trust decisions.",
+      "verification_method": "Review discovery validation, signature/origin handling, cache invalidation and authorization policy with a substituted/stale-card negative test.",
+      "automated": false,
+      "test_type": "Conformance",
+      "risks_covered": [
+        "RK-AI05",
+        "RK-AI06"
+      ],
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14"
+      }
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-23",
+      "@type": "AssuranceTest",
+      "guardrail": "GR-23",
+      "pass_criterion": "A multi-agent delegation test proves that downstream agents cannot exceed the originating delegation scope and that principal, scope, approvals and revocation can be reconstructed across hops.",
+      "verification_method": "Execute an allowed delegated task and negative tests for excess capability, expired/revoked scope and prohibited delegation depth.",
+      "automated": false,
+      "test_type": "Conformance",
+      "risks_covered": [
+        "RK-AI07"
+      ],
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14"
+      }
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-24",
+      "@type": "AssuranceTest",
+      "guardrail": "GR-24",
+      "pass_criterion": "Callback tests reject prohibited destinations, unauthenticated senders, wrong-task events, stale events and replayed events while accepting an authorised fresh notification.",
+      "verification_method": "Exercise callback URL validation plus sender-authentication, task-binding, freshness and replay negative vectors.",
+      "automated": false,
+      "test_type": "Security",
+      "risks_covered": [
+        "RK-AI08"
+      ],
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14"
+      }
+    },
+    {
+      "@id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/AT-25",
+      "@type": "AssuranceTest",
+      "guardrail": "GR-25",
+      "pass_criterion": "A downstream service rejects a secondary credential when audience, purpose, resource, lifetime or delegation-depth constraints do not authorise the requested action.",
+      "verification_method": "Run confused-deputy and token-forwarding negative tests across at least one downstream resource boundary.",
+      "automated": false,
+      "test_type": "Security",
+      "risks_covered": [
+        "RK-AI09"
+      ],
+      "provenance": {
+        "source": "RAHP A2A v1.0 pressure test",
+        "imported": "2026-08-14"
+      }
     }
   ]
 }

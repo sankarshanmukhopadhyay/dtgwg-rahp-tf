@@ -21,6 +21,7 @@ RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-test
 | Understand portability and deployment boundaries | [Portability](docs/portability.md) |
 | Inspect the CAWG/C2PA external deployment | [CAWG/C2PA instance](docs/cawg-instance.md) |
 | Inspect the bundled DTG exemplar | [DTG instance](docs/dtg-instance.md) |
+| Inspect the A2A agent-protocol example | [A2A worked example](docs/a2a-example.md) |
 | Read the current release | [v0.7.0 release notes](docs/releases/v0.7.0.md) |
 
 ## The v0.7 architecture
@@ -39,7 +40,7 @@ flowchart TB
 
   E --> D1[DTG exemplar deployment]
   E --> D2[CAWG/C2PA external deployment]
-  E --> D3[Your deployment]
+  E --> D3[A2A worked example]\n  E --> D4[Your deployment]
 ```
 
 The portability invariant is **shared method and engine, independent deployment context**. A deployment may own its target repositories, branches, assessment vocabulary, monitoring state, review artefacts and governance decisions without importing another deployment's state.
@@ -97,6 +98,12 @@ v0.6 demonstrates portability with a branch-aware CAWG/C2PA deployment configure
 
 The CAWG/C2PA deployment is independent assurance work. It does not represent CAWG, DIF or C2PA consensus and does not confer authority to modify upstream specifications. See [CAWG/C2PA RAHP instance](docs/cawg-instance.md).
 
+## Agent-protocol worked example: A2A
+
+The toolkit now includes an independent worked pressure test of the Linux Foundation **Agent2Agent (A2A) Protocol v1.0.0** under `examples/a2a/`. The assessment credits A2A's existing signed Agent Cards, authorization scoping and push-notification security guidance, then tests the residual trust boundaries created by discovery, multi-agent delegation, secondary credentials and asynchronous execution.
+
+That review adds reusable, protocol-neutral coverage for **discovery metadata vs authority, delegation continuity across agent hops, callback trust, secondary-credential non-transitivity and cross-agent action provenance**. See [A2A protocol worked example](docs/a2a-example.md).
+
 ## Bundled DTG exemplar
 
 RAHP originated in DTG Risk Assessment & Harms Prevention work. That provenance is retained, but DTG-specific governance, portfolio discovery and catalogue state are now explicitly an **exemplar deployment**, not a portability requirement.
@@ -105,11 +112,11 @@ The bundled DTG catalogue currently contains:
 
 | Prefix | Type | Count |
 |---|---|---|
-| `RK-xx` | Risk | 43 risks |
-| `CT-xx` | Control | 66 controls |
-| `GR-xx` | Guardrail | 21 guardrails |
-| `AT-xx` | Assurance test | 21 assurance tests |
-| `M-xx` | Trust metric | 37 metrics |
+| `RK-xx` | Risk | 48 risks |
+| `CT-xx` | Control | 73 controls |
+| `GR-xx` | Guardrail | 25 guardrails |
+| `AT-xx` | Assurance test | 25 assurance tests |
+| `M-xx` | Trust metric | 40 metrics |
 | `US-xx` | User story | 36 user stories |
 | `SC-xx` | Scenario | 33 scenarios |
 | `EPIC-xx` | Capability cluster | 21 EPICs |

@@ -30,13 +30,14 @@ Use [Configuration-driven adoption](configuration.md) and [Adopting RAHP](../ADO
 ### Examine independent deployments
 
 - [CAWG/C2PA deployment](cawg-instance.md) — external portfolio, branch-aware source monitoring, instance-local risk vocabulary, 36-scenario corpus, 17 CAWG pressure-test reviews, security/combined reviews and issue-aware situational monitoring.
+- [A2A protocol worked example](a2a-example.md) — independent agent-interoperability assessment covering discovery trust, multi-agent delegation, secondary credentials, callbacks and action provenance.
 - [DTG exemplar deployment](dtg-instance.md) — historical origin, portfolio discovery, DTG scenario corpora, operational assurance, governance queue and selective issue-aware situational monitoring.
 
 These deployments are **evidence of portability**, not prerequisites for adoption.
 
 ### Worked assessments
 
-The [CAWG/C2PA assessment pack](../examples/cawg-c2pa/README.md) now demonstrates v0.7 scenario-driven, cross-specification and combined assurance. Earlier DTG examples remain useful regression fixtures for credential and protocol/framework reviews: [DTG Credential Specification](../examples/dtg-credential-spec/README.md) and [Trust Tasks](../examples/trust-tasks-spec/README.md).
+The [CAWG/C2PA assessment pack](../examples/cawg-c2pa/README.md) now demonstrates v0.7 scenario-driven, cross-specification and combined assurance. The [A2A Protocol v1.0 example](../examples/a2a/README.md) exercises agent discovery, delegated authority and asynchronous execution. Earlier DTG examples remain useful regression fixtures for credential and protocol/framework reviews: [DTG Credential Specification](../examples/dtg-credential-spec/README.md) and [Trust Tasks](../examples/trust-tasks-spec/README.md).
 
 ### AI-assisted review
 

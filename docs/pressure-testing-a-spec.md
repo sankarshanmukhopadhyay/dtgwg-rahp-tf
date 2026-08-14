@@ -122,6 +122,7 @@ Worked reviews are maintained as regression fixtures for the method. v0.6 delibe
 
 - [`examples/cawg-c2pa/`](../examples/cawg-c2pa/README.md) is the v0.6 external-deployment pack covering eight CAWG/C2PA specification surfaces with an independent `CRK-*` risk namespace.
 - [`examples/dtg-credential-spec/`](../examples/dtg-credential-spec/README.md) pressure-tests a credential specification and demonstrates schema, lifecycle, privacy, governance, agent-authority and representation findings.
+- [`examples/a2a/`](../examples/a2a/README.md) pressure-tests an agent interoperability protocol and demonstrates discovery-trust, multi-hop delegation, secondary-credential, callback and action-provenance findings.
 - [`examples/trust-tasks-spec/`](../examples/trust-tasks-spec/README.md) pressure-tests a protocol/framework specification and demonstrates replay, freshness, delegation, registry-dependency, capability-negotiation, consent-policy and supported-representation findings.
 
 The second example is intentionally important for method discipline: several findings are **not** recommendations to add another field to the core Trust Task envelope. They are routed to companion specifications, governance, runtime controls or operational policy because those are the narrowest effective control planes.

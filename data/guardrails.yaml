@@ -513,3 +513,83 @@ records:
   provenance:
     source: workbook:RiskRegister_v5.xlsx
     imported: '2026-08-05'
+- id: GR-22
+  name: Discovery Is Not Authority
+  category: Technology / Governance
+  requirement: Agent discovery and capability metadata may inform routing and negotiation but must not,
+    by itself, establish authority, operator accountability, trustworthiness, assurance level, or permission
+    to perform a sensitive action.
+  applies_to_phase: Agent Lifecycle
+  owner: Client / Relying Party
+  risks_addressed:
+  - RK-AI05
+  - RK-AI06
+  controls:
+  - CT-67
+  - CT-68
+  assurance_tests:
+  - AT-22
+  standards_status: unassigned
+  normative_language: null
+  provenance:
+    source: RAHP A2A v1.0 pressure test
+    imported: '2026-08-14'
+- id: GR-23
+  name: Delegation Continuity Across Agent Boundaries
+  category: Technology / Governance
+  requirement: A downstream agent must not receive or exercise authority broader than the authority validly
+    delegated to the upstream agent, and the delegation chain must remain attributable, bounded, revocable
+    and auditable across every hop.
+  applies_to_phase: Agent Lifecycle
+  owner: Principal / Agent Operator / Policy Enforcement Point
+  risks_addressed:
+  - RK-AI07
+  controls:
+  - CT-69
+  - CT-73
+  assurance_tests:
+  - AT-23
+  standards_status: unassigned
+  normative_language: null
+  provenance:
+    source: RAHP A2A v1.0 pressure test
+    imported: '2026-08-14'
+- id: GR-24
+  name: Asynchronous Callback Trust Boundary
+  category: Technology / Governance
+  requirement: 'Callback and push channels must be treated as independent trust boundaries: destination
+    legitimacy, sender authenticity, task binding, freshness and replay resistance must be verified before
+    delivery or state transition.'
+  applies_to_phase: Agent Lifecycle
+  owner: Callback Sender / Receiver
+  risks_addressed:
+  - RK-AI08
+  controls:
+  - CT-70
+  - CT-71
+  assurance_tests:
+  - AT-24
+  standards_status: unassigned
+  normative_language: null
+  provenance:
+    source: RAHP A2A v1.0 pressure test
+    imported: '2026-08-14'
+- id: GR-25
+  name: Secondary Credential Non-Transitivity
+  category: Technology / Governance
+  requirement: A credential provided to an intermediary agent must not be interpreted as transferable
+    or recursively delegable authority unless the principal explicitly authorised that audience, purpose,
+    scope and delegation depth.
+  applies_to_phase: Agent Lifecycle
+  owner: Principal / Agent Operator / Downstream Resource Server
+  risks_addressed:
+  - RK-AI09
+  controls:
+  - CT-72
+  assurance_tests:
+  - AT-25
+  standards_status: unassigned
+  normative_language: null
+  provenance:
+    source: RAHP A2A v1.0 pressure test
+    imported: '2026-08-14'

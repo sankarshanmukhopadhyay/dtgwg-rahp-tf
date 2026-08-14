@@ -786,6 +786,90 @@
     "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
   },
   {
+    "id": "CT-67",
+    "kind": "control",
+    "name": "Agent Discovery Integrity and Freshness Verification",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI06"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-68",
+    "kind": "control",
+    "name": "Capability-to-Authority Non-Inference Rule",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI05"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-69",
+    "kind": "control",
+    "name": "End-to-End Delegation Context Propagation",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI07"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-70",
+    "kind": "control",
+    "name": "Callback Destination Ownership and Egress Validation",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI08"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-71",
+    "kind": "control",
+    "name": "Callback Authenticity Freshness and Task Binding",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI08"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-72",
+    "kind": "control",
+    "name": "Secondary Credential Audience Purpose and Delegation Constraint",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI09"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "CT-73",
+    "kind": "control",
+    "name": "Cross-Agent Action Provenance and Correlation",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI07"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
     "id": "GR-01",
     "kind": "guardrail",
     "name": "Genesis Policy Documentation",
@@ -1064,6 +1148,55 @@
       "RK-CY01",
       "RK-EX04",
       "RK-EX06"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-22",
+    "kind": "guardrail",
+    "name": "Discovery Is Not Authority",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI05",
+      "RK-AI06"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-23",
+    "kind": "guardrail",
+    "name": "Delegation Continuity Across Agent Boundaries",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI07"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-24",
+    "kind": "guardrail",
+    "name": "Asynchronous Callback Trust Boundary",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI08"
+    ],
+    "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
+  },
+  {
+    "id": "GR-25",
+    "kind": "guardrail",
+    "name": "Secondary Credential Non-Transitivity",
+    "current_status": "unassigned",
+    "candidate_status": "normative_candidate",
+    "candidate_language": "MUST",
+    "linked_risks": [
+      "RK-AI09"
     ],
     "reason": "High/critical risk linkage, high standards relevance, or mandatory source wording."
   },

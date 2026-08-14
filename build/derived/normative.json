@@ -464,6 +464,55 @@
       "normative_language": null
     },
     {
+      "id": "CT-67",
+      "kind": "control",
+      "name": "Agent Discovery Integrity and Freshness Verification",
+      "status": "unassigned",
+      "normative_language": null
+    },
+    {
+      "id": "CT-68",
+      "kind": "control",
+      "name": "Capability-to-Authority Non-Inference Rule",
+      "status": "unassigned",
+      "normative_language": null
+    },
+    {
+      "id": "CT-69",
+      "kind": "control",
+      "name": "End-to-End Delegation Context Propagation",
+      "status": "unassigned",
+      "normative_language": null
+    },
+    {
+      "id": "CT-70",
+      "kind": "control",
+      "name": "Callback Destination Ownership and Egress Validation",
+      "status": "unassigned",
+      "normative_language": null
+    },
+    {
+      "id": "CT-71",
+      "kind": "control",
+      "name": "Callback Authenticity Freshness and Task Binding",
+      "status": "unassigned",
+      "normative_language": null
+    },
+    {
+      "id": "CT-72",
+      "kind": "control",
+      "name": "Secondary Credential Audience Purpose and Delegation Constraint",
+      "status": "unassigned",
+      "normative_language": null
+    },
+    {
+      "id": "CT-73",
+      "kind": "control",
+      "name": "Cross-Agent Action Provenance and Correlation",
+      "status": "unassigned",
+      "normative_language": null
+    },
+    {
       "id": "GR-01",
       "kind": "guardrail",
       "name": "Genesis Policy Documentation",
@@ -607,6 +656,34 @@
       "id": "GR-21",
       "kind": "guardrail",
       "name": "Organisational Identity Governance Mapping",
+      "status": "unassigned",
+      "normative_language": null
+    },
+    {
+      "id": "GR-22",
+      "kind": "guardrail",
+      "name": "Discovery Is Not Authority",
+      "status": "unassigned",
+      "normative_language": null
+    },
+    {
+      "id": "GR-23",
+      "kind": "guardrail",
+      "name": "Delegation Continuity Across Agent Boundaries",
+      "status": "unassigned",
+      "normative_language": null
+    },
+    {
+      "id": "GR-24",
+      "kind": "guardrail",
+      "name": "Asynchronous Callback Trust Boundary",
+      "status": "unassigned",
+      "normative_language": null
+    },
+    {
+      "id": "GR-25",
+      "kind": "guardrail",
+      "name": "Secondary Credential Non-Transitivity",
       "status": "unassigned",
       "normative_language": null
     }

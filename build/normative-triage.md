@@ -4,7 +4,7 @@
 > to make human Task Force triage manageable. They do not change canonical status and
 > MUST NOT be cited as Task Force decisions.
 
-Items awaiting human triage: **87**.
+Items awaiting human triage: **98**.
 
 | ID | Type | Candidate | Language | Linked risks | Why surfaced |
 |---|---|---|---|---|---|
@@ -70,6 +70,13 @@ Items awaiting human triage: **87**.
 | CT-64 | control | normative_candidate | MUST | RK-EX05 | High/critical risk linkage, high standards relevance, or mandatory source wording. |
 | CT-65 | control | normative_candidate | MUST | RK-EX06, RK-ID03 | High/critical risk linkage, high standards relevance, or mandatory source wording. |
 | CT-66 | control | normative_candidate | MUST | RK-EX03, RK-ID06, RK-SC05 | High/critical risk linkage, high standards relevance, or mandatory source wording. |
+| CT-67 | control | normative_candidate | MUST | RK-AI06 | High/critical risk linkage, high standards relevance, or mandatory source wording. |
+| CT-68 | control | normative_candidate | MUST | RK-AI05 | High/critical risk linkage, high standards relevance, or mandatory source wording. |
+| CT-69 | control | normative_candidate | MUST | RK-AI07 | High/critical risk linkage, high standards relevance, or mandatory source wording. |
+| CT-70 | control | normative_candidate | MUST | RK-AI08 | High/critical risk linkage, high standards relevance, or mandatory source wording. |
+| CT-71 | control | normative_candidate | MUST | RK-AI08 | High/critical risk linkage, high standards relevance, or mandatory source wording. |
+| CT-72 | control | normative_candidate | MUST | RK-AI09 | High/critical risk linkage, high standards relevance, or mandatory source wording. |
+| CT-73 | control | normative_candidate | MUST | RK-AI07 | High/critical risk linkage, high standards relevance, or mandatory source wording. |
 | GR-01 | guardrail | normative_candidate | MUST | RK-G01, RK-G05, RK-NM02, RK-SC02 | High/critical risk linkage, high standards relevance, or mandatory source wording. |
 | GR-02 | guardrail | normative_candidate | MUST | RK-G01, RK-G02, RK-G05 | High/critical risk linkage, high standards relevance, or mandatory source wording. |
 | GR-03 | guardrail | normative_candidate | MUST | RK-CR04, RK-G03, RK-HX02, RK-SY01 | High/critical risk linkage, high standards relevance, or mandatory source wording. |
@@ -89,6 +96,10 @@ Items awaiting human triage: **87**.
 | GR-17 | guardrail | normative_candidate | MUST | RK-CY02, RK-EX03, RK-SY03 | High/critical risk linkage, high standards relevance, or mandatory source wording. |
 | GR-18 | guardrail | normative_candidate | MUST | RK-HX01, RK-ID05, RK-SC04 | High/critical risk linkage, high standards relevance, or mandatory source wording. |
 | GR-20 | guardrail | normative_candidate | MUST | RK-CY01, RK-EX04, RK-EX06 | High/critical risk linkage, high standards relevance, or mandatory source wording. |
+| GR-22 | guardrail | normative_candidate | MUST | RK-AI05, RK-AI06 | High/critical risk linkage, high standards relevance, or mandatory source wording. |
+| GR-23 | guardrail | normative_candidate | MUST | RK-AI07 | High/critical risk linkage, high standards relevance, or mandatory source wording. |
+| GR-24 | guardrail | normative_candidate | MUST | RK-AI08 | High/critical risk linkage, high standards relevance, or mandatory source wording. |
+| GR-25 | guardrail | normative_candidate | MUST | RK-AI09 | High/critical risk linkage, high standards relevance, or mandatory source wording. |
 | CT-05 | control | recommended_practice | SHOULD | RK-G03 | Material risk linkage or medium standards relevance. |
 | CT-36 | control | recommended_practice | SHOULD | RK-AI04 | Material risk linkage or medium standards relevance. |
 | CT-42 | control | recommended_practice | SHOULD | RK-HX01 | Material risk linkage or medium standards relevance. |

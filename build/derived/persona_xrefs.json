@@ -231,6 +231,8 @@
     "risks": [
       "RK-AI01",
       "RK-AI02",
+      "RK-AI07",
+      "RK-AI09",
       "RK-EX03",
       "RK-G01",
       "RK-G02",
@@ -291,6 +293,8 @@
       "RK-AI01",
       "RK-AI02",
       "RK-AI04",
+      "RK-AI07",
+      "RK-AI09",
       "RK-CR04",
       "RK-G02",
       "RK-G03",
@@ -357,6 +361,8 @@
     "risks": [
       "RK-AI01",
       "RK-AI02",
+      "RK-AI07",
+      "RK-AI09",
       "RK-CY01",
       "RK-EX03",
       "RK-G05",
@@ -712,7 +718,9 @@
     ],
     "risks": [
       "RK-AI01",
-      "RK-AI02"
+      "RK-AI02",
+      "RK-AI07",
+      "RK-AI09"
     ]
   },
   "M2": {

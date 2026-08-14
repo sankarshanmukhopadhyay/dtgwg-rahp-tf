@@ -714,6 +714,83 @@
     "title": "Children's Data Processing Impact Assessment Requirement"
   },
   {
+    "action_key": "TF-NORM-CT-67",
+    "subject_id": "CT-67",
+    "category": "normative_triage",
+    "priority": "high",
+    "status": "waiting_on_tf",
+    "current_state": "standards_status=unassigned",
+    "requested_decision": "Assign canonical standards status, normative language where applicable, target control plane, and rationale.",
+    "source": "data/controls.yaml",
+    "title": "Agent Discovery Integrity and Freshness Verification"
+  },
+  {
+    "action_key": "TF-NORM-CT-68",
+    "subject_id": "CT-68",
+    "category": "normative_triage",
+    "priority": "high",
+    "status": "waiting_on_tf",
+    "current_state": "standards_status=unassigned",
+    "requested_decision": "Assign canonical standards status, normative language where applicable, target control plane, and rationale.",
+    "source": "data/controls.yaml",
+    "title": "Capability-to-Authority Non-Inference Rule"
+  },
+  {
+    "action_key": "TF-NORM-CT-69",
+    "subject_id": "CT-69",
+    "category": "normative_triage",
+    "priority": "high",
+    "status": "waiting_on_tf",
+    "current_state": "standards_status=unassigned",
+    "requested_decision": "Assign canonical standards status, normative language where applicable, target control plane, and rationale.",
+    "source": "data/controls.yaml",
+    "title": "End-to-End Delegation Context Propagation"
+  },
+  {
+    "action_key": "TF-NORM-CT-70",
+    "subject_id": "CT-70",
+    "category": "normative_triage",
+    "priority": "high",
+    "status": "waiting_on_tf",
+    "current_state": "standards_status=unassigned",
+    "requested_decision": "Assign canonical standards status, normative language where applicable, target control plane, and rationale.",
+    "source": "data/controls.yaml",
+    "title": "Callback Destination Ownership and Egress Validation"
+  },
+  {
+    "action_key": "TF-NORM-CT-71",
+    "subject_id": "CT-71",
+    "category": "normative_triage",
+    "priority": "high",
+    "status": "waiting_on_tf",
+    "current_state": "standards_status=unassigned",
+    "requested_decision": "Assign canonical standards status, normative language where applicable, target control plane, and rationale.",
+    "source": "data/controls.yaml",
+    "title": "Callback Authenticity Freshness and Task Binding"
+  },
+  {
+    "action_key": "TF-NORM-CT-72",
+    "subject_id": "CT-72",
+    "category": "normative_triage",
+    "priority": "high",
+    "status": "waiting_on_tf",
+    "current_state": "standards_status=unassigned",
+    "requested_decision": "Assign canonical standards status, normative language where applicable, target control plane, and rationale.",
+    "source": "data/controls.yaml",
+    "title": "Secondary Credential Audience Purpose and Delegation Constraint"
+  },
+  {
+    "action_key": "TF-NORM-CT-73",
+    "subject_id": "CT-73",
+    "category": "normative_triage",
+    "priority": "high",
+    "status": "waiting_on_tf",
+    "current_state": "standards_status=unassigned",
+    "requested_decision": "Assign canonical standards status, normative language where applicable, target control plane, and rationale.",
+    "source": "data/controls.yaml",
+    "title": "Cross-Agent Action Provenance and Correlation"
+  },
+  {
     "action_key": "TF-NORM-CT-05",
     "subject_id": "CT-05",
     "category": "normative_triage",
@@ -1108,5 +1185,49 @@
     "requested_decision": "Assign canonical standards status, normative language where applicable, target control plane, and rationale.",
     "source": "data/guardrails.yaml",
     "title": "Organisational Identity Governance Mapping"
+  },
+  {
+    "action_key": "TF-NORM-GR-22",
+    "subject_id": "GR-22",
+    "category": "normative_triage",
+    "priority": "normal",
+    "status": "waiting_on_tf",
+    "current_state": "standards_status=unassigned",
+    "requested_decision": "Assign canonical standards status, normative language where applicable, target control plane, and rationale.",
+    "source": "data/guardrails.yaml",
+    "title": "Discovery Is Not Authority"
+  },
+  {
+    "action_key": "TF-NORM-GR-23",
+    "subject_id": "GR-23",
+    "category": "normative_triage",
+    "priority": "normal",
+    "status": "waiting_on_tf",
+    "current_state": "standards_status=unassigned",
+    "requested_decision": "Assign canonical standards status, normative language where applicable, target control plane, and rationale.",
+    "source": "data/guardrails.yaml",
+    "title": "Delegation Continuity Across Agent Boundaries"
+  },
+  {
+    "action_key": "TF-NORM-GR-24",
+    "subject_id": "GR-24",
+    "category": "normative_triage",
+    "priority": "normal",
+    "status": "waiting_on_tf",
+    "current_state": "standards_status=unassigned",
+    "requested_decision": "Assign canonical standards status, normative language where applicable, target control plane, and rationale.",
+    "source": "data/guardrails.yaml",
+    "title": "Asynchronous Callback Trust Boundary"
+  },
+  {
+    "action_key": "TF-NORM-GR-25",
+    "subject_id": "GR-25",
+    "category": "normative_triage",
+    "priority": "normal",
+    "status": "waiting_on_tf",
+    "current_state": "standards_status=unassigned",
+    "requested_decision": "Assign canonical standards status, normative language where applicable, target control plane, and rationale.",
+    "source": "data/guardrails.yaml",
+    "title": "Secondary Credential Non-Transitivity"
   }
 ]
