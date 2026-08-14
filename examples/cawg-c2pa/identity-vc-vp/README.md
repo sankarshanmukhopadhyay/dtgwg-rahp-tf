@@ -77,7 +77,7 @@ The VC/VP branch improves portability but needs stronger trust-chain, consent-to
 | Secondary dispositions | — |
 | Scenarios | `CAWG-032` |
 | Scenario patterns | `SP-FED-01`, `SP-COMP-01` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P2 — Producer / Originating Actor](../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P6 — Registry / Discovery / Trust-Service Operator](../../../build/site/catalogue.html#P6) |
 | Risks | [CRK-17 — Credential restatement and transitive trust amplification](/rahp-toolkit/docs/cawg-risk-register.html#crk-17) |
 | Controls | — |
 | Guardrails | — |
@@ -111,7 +111,7 @@ Define provenance requirements for restated claims, issuer-chain validation, evi
 | Secondary dispositions | — |
 | Scenarios | `CAWG-004`, `CAWG-021` |
 | Scenario patterns | `SP-AUTH-01`, `SP-AGENT-01` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P2 — Producer / Originating Actor](../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P4 — Intermediary / Platform Operator](../../../build/site/catalogue.html#P4) |
 | Risks | [CRK-18 — Holder and custodian authority ambiguity](/rahp-toolkit/docs/cawg-risk-register.html#crk-18) |
 | Controls | — |
 | Guardrails | — |
@@ -145,7 +145,7 @@ Require a verifiable actor-intent or authorization step separable from key custo
 | Secondary dispositions | — |
 | Scenarios | `CAWG-030`, `CAWG-031` |
 | Scenario patterns | `SP-PRIV-01`, `SP-GOV-02` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P4 — Intermediary / Platform Operator](../../../build/site/catalogue.html#P4), [P6 — Registry / Discovery / Trust-Service Operator](../../../build/site/catalogue.html#P6) |
 | Risks | [CRK-19 — Selective-disclosure correlation leakage](/rahp-toolkit/docs/cawg-risk-register.html#crk-19) |
 | Controls | — |
 | Guardrails | — |

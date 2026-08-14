@@ -54,6 +54,10 @@ review:
     scenario_patterns:
     - SP-FED-01
     - SP-GOV-03
+    personas:
+    - P2
+    - P3
+    - P6
   - id: F-002
     title: Organizational role changes need stronger continuity between identity validity and current authority
     status: open
@@ -74,3 +78,8 @@ review:
     scenario_patterns:
     - SP-GOV-01
     - SP-RECOV-01
+    personas:
+    - P1
+    - P2
+    - P3
+    - P6

@@ -75,7 +75,7 @@ This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conforman
 | Secondary dispositions | — |
 | Scenarios | — |
 | Scenario patterns | `SP-AGENT-01`, `SP-COMP-01` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P2 — Producer / Originating Actor](../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P5 — Delegated Service / Agent Operator](../../../build/site/catalogue.html#P5) |
 | Risks | [CRK-08 — Endorsement or delegation scope creep](/rahp-toolkit/docs/cawg-risk-register.html#crk-08) |
 | Controls | — |
 | Guardrails | — |
@@ -109,7 +109,7 @@ Define explicit non-transitivity by default, bounded action/resource/time scope,
 | Secondary dispositions | — |
 | Scenarios | — |
 | Scenario patterns | `SP-GOV-01`, `SP-RECOV-01` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P2 — Producer / Originating Actor](../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P5 — Delegated Service / Agent Operator](../../../build/site/catalogue.html#P5), [P6 — Registry / Discovery / Trust-Service Operator](../../../build/site/catalogue.html#P6) |
 | Risks | [CRK-09 — Stale delegated or organizational authority](/rahp-toolkit/docs/cawg-risk-register.html#crk-09) |
 | Controls | — |
 | Guardrails | — |

@@ -53,6 +53,10 @@ review:
     scenario_patterns:
     - SP-GOV-01
     - SP-FED-01
+    personas:
+    - P1
+    - P2
+    - P3
   - id: F-002
     title: Historical identity validity and status dependencies need a durable as-of verification contract
     status: open
@@ -77,3 +81,7 @@ review:
     - SP-RECOV-01
     secondary_dispositions:
     - governance
+    personas:
+    - P1
+    - P3
+    - P6

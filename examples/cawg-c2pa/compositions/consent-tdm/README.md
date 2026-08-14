@@ -75,7 +75,7 @@ Cross-specification RAHP review: individually valid components are tested for un
 | Secondary dispositions | — |
 | Scenarios | `CAWG-015`, `CAWG-016` |
 | Scenario patterns | `SP-COMP-01`, `SP-INTEROP-01` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../../build/site/catalogue.html#P1), [P2 — Producer / Originating Actor](../../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../../build/site/catalogue.html#P3), [P5 — Delegated Service / Agent Operator](../../../../build/site/catalogue.html#P5) |
 | Risks | [CRK-06 — Permission precedence and lifecycle conflict](/rahp-toolkit/docs/cawg-risk-register.html#crk-06) |
 | Controls | — |
 | Guardrails | — |
@@ -109,7 +109,7 @@ Define explicit coexistence, supersession and conflict rules between TDM and Con
 | Secondary dispositions | — |
 | Scenarios | `CAWG-027` |
 | Scenario patterns | `SP-COMP-01`, `SP-GOV-01` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../../build/site/catalogue.html#P1), [P2 — Producer / Originating Actor](../../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../../build/site/catalogue.html#P3), [P5 — Delegated Service / Agent Operator](../../../../build/site/catalogue.html#P5) |
 | Risks | [CRK-12 — Required-evidence downgrade ambiguity](/rahp-toolkit/docs/cawg-risk-register.html#crk-12) |
 | Controls | — |
 | Guardrails | — |

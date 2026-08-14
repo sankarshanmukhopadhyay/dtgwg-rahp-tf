@@ -54,6 +54,10 @@ review:
     scenario_patterns:
     - SP-COMP-01
     - SP-INTEROP-01
+    personas:
+    - P2
+    - P3
+    - P4
   - id: F-002
     title: Optional assertion loss can create downgrade ambiguity unless relying parties know what evidence was
       required
@@ -77,3 +81,7 @@ review:
     scenario_patterns:
     - SP-COMP-01
     - SP-INTEROP-01
+    personas:
+    - P2
+    - P3
+    - P4

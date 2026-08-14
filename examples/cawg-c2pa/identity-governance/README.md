@@ -78,7 +78,7 @@ High-value direction, but governance, historical-state and entity-binding semant
 | Secondary dispositions | — |
 | Scenarios | `CAWG-007`, `CAWG-008` |
 | Scenario patterns | `SP-AUTH-01`, `SP-FED-01` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P6 — Registry / Discovery / Trust-Service Operator](../../../build/site/catalogue.html#P6) |
 | Risks | [CRK-14 — Trust-registry identity binding failure](/rahp-toolkit/docs/cawg-risk-register.html#crk-14) |
 | Controls | — |
 | Guardrails | — |
@@ -112,7 +112,7 @@ Normatively bind entity identifiers to credential subjects, define rotation/migr
 | Secondary dispositions | — |
 | Scenarios | `CAWG-011`, `CAWG-012` |
 | Scenario patterns | `SP-GOV-02`, `SP-OPS-02` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P6 — Registry / Discovery / Trust-Service Operator](../../../build/site/catalogue.html#P6) |
 | Risks | [CRK-02 — Historical verification continuity loss](/rahp-toolkit/docs/cawg-risk-register.html#crk-02) |
 | Controls | — |
 | Guardrails | — |
@@ -146,7 +146,7 @@ Define as-of query semantics or stapled signed authorization evidence with reten
 | Secondary dispositions | — |
 | Scenarios | `CAWG-010`, `CAWG-036` |
 | Scenario patterns | `SP-GOV-03`, `SP-FED-01` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P6 — Registry / Discovery / Trust-Service Operator](../../../build/site/catalogue.html#P6) |
 | Risks | [CRK-10 — Trust-anchor concentration and participation exclusion](/rahp-toolkit/docs/cawg-risk-register.html#crk-10) |
 | Controls | — |
 | Guardrails | — |

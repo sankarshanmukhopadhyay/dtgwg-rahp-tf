@@ -1,7 +1,7 @@
 review:
   id: CAWG-COMP-003
   status: complete
-  title: "Consent \xD7 Training/Data Mining composition pressure test"
+  title: Consent × Training/Data Mining composition pressure test
   reviewed_on: '2026-08-14'
   target:
     repository: decentralized-identity/cawg-consent-assertion
@@ -22,15 +22,15 @@ review:
     - Claims that upstream CAWG, DIF, C2PA, GLEIF or W3C endorsed this RAHP assessment.
   method:
     workflow: docs/pressure-testing-a-spec.md
-    rule: Separate cryptographic validity, identity, authority, consent, lifecycle and relying-party trust; test both isolated
-      and composed failure states.
+    rule: Separate cryptographic validity, identity, authority, consent, lifecycle and relying-party trust; test
+      both isolated and composed failure states.
   summary:
     finding_count: 2
     open_count: 2
     by_primary_disposition:
       specification: 2
-    overall_assessment: 'Cross-specification RAHP review: individually valid components are tested for unsafe composed conclusions
-      and downgrade behaviour.'
+    overall_assessment: 'Cross-specification RAHP review: individually valid components are tested for unsafe composed
+      conclusions and downgrade behaviour.'
   findings:
   - id: F-001
     title: Overlapping permission assertions lack portfolio-wide precedence
@@ -41,11 +41,12 @@ review:
     - CRK-06
     evidence:
     - source: https://github.com/decentralized-identity/cawg-identity-assertion/issues/258
-      observation: CAWG is broadening consent beyond the dedicated TDM assertion, creating overlapping permission surfaces.
-    harm: The same asset can carry contradictory machine-readable training/consent signals with no deterministic effective
-      state.
-    recommendation: Define explicit coexistence, supersession and conflict rules between TDM and Consent before mandate-grade
-      use.
+      observation: CAWG is broadening consent beyond the dedicated TDM assertion, creating overlapping permission
+        surfaces.
+    harm: The same asset can carry contradictory machine-readable training/consent signals with no deterministic
+      effective state.
+    recommendation: Define explicit coexistence, supersession and conflict rules between TDM and Consent before
+      mandate-grade use.
     retest_when:
     - Normative semantics and interoperable test vectors close this failure path.
     scenarios:
@@ -54,6 +55,11 @@ review:
     scenario_patterns:
     - SP-COMP-01
     - SP-INTEROP-01
+    personas:
+    - P1
+    - P2
+    - P3
+    - P5
   - id: F-002
     title: Absence must not be interpreted as permission
     status: open
@@ -73,3 +79,8 @@ review:
     scenario_patterns:
     - SP-COMP-01
     - SP-GOV-01
+    personas:
+    - P1
+    - P2
+    - P3
+    - P5

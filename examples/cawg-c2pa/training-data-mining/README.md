@@ -75,7 +75,7 @@ This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conforman
 | Secondary dispositions | — |
 | Scenarios | — |
 | Scenario patterns | `SP-GOV-01`, `SP-FED-01` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P2 — Producer / Originating Actor](../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P5 — Delegated Service / Agent Operator](../../../build/site/catalogue.html#P5) |
 | Risks | [CRK-05 — Rights signal and legal-effect ambiguity](/rahp-toolkit/docs/cawg-risk-register.html#crk-05) |
 | Controls | — |
 | Guardrails | — |
@@ -109,7 +109,7 @@ Mandating profiles should state the legal/governance role of the signal, who is 
 | Secondary dispositions | — |
 | Scenarios | — |
 | Scenario patterns | `SP-GOV-02`, `SP-INTEROP-01`, `SP-COMP-01` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P2 — Producer / Originating Actor](../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P5 — Delegated Service / Agent Operator](../../../build/site/catalogue.html#P5) |
 | Risks | [CRK-06 — Permission precedence and lifecycle conflict](/rahp-toolkit/docs/cawg-risk-register.html#crk-06) |
 | Controls | — |
 | Guardrails | — |

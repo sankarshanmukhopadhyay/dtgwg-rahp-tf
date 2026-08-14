@@ -512,6 +512,7 @@ def build_site(records, derived, meta, out):
 
     # ---- personas -------------------------------------------------------
     tag_cls = {"legitimate_user": ("t-legit", "Legitimate user"),
+               "portable_role": ("t-legit", "Portable role"),
                "machine_agent": ("t-machine", "Machine agent"),
                "bad_actor": ("t-bad", "Bad actor"),
                "edge_case": ("t-edge", "Extreme user")}

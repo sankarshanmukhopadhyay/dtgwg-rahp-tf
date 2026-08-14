@@ -45,6 +45,9 @@ jobs:
       - name: Validate v0.7 project identity
         run: python3 tools/validate_project_identity.py
 
+      - name: Validate Markdown and Pages source renderability
+        run: python3 tools/validate_markdown_pages.py
+
       - name: Test source-monitor resilience
         run: python3 -m unittest discover -s tests -p 'test_*.py'
 

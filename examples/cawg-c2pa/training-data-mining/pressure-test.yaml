@@ -54,6 +54,11 @@ review:
     scenario_patterns:
     - SP-GOV-01
     - SP-FED-01
+    personas:
+    - P1
+    - P2
+    - P3
+    - P5
   - id: F-002
     title: Coexistence with the emerging Consent Assertion needs explicit conflict and migration rules
     status: open
@@ -75,3 +80,8 @@ review:
     - SP-GOV-02
     - SP-INTEROP-01
     - SP-COMP-01
+    personas:
+    - P1
+    - P2
+    - P3
+    - P5

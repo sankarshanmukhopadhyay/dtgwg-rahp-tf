@@ -765,5 +765,53 @@
       "RK-EX06",
       "RK-SY01"
     ]
+  },
+  "P1": {
+    "user_stories": [],
+    "scenarios": [],
+    "epics": [],
+    "metrics": [
+      "M-40"
+    ],
+    "risks": []
+  },
+  "P3": {
+    "user_stories": [],
+    "scenarios": [],
+    "epics": [],
+    "metrics": [
+      "M-38",
+      "M-40"
+    ],
+    "risks": []
+  },
+  "P4": {
+    "user_stories": [],
+    "scenarios": [],
+    "epics": [],
+    "metrics": [
+      "M-39"
+    ],
+    "risks": []
+  },
+  "P5": {
+    "user_stories": [],
+    "scenarios": [],
+    "epics": [],
+    "metrics": [
+      "M-38",
+      "M-39",
+      "M-40"
+    ],
+    "risks": []
+  },
+  "P6": {
+    "user_stories": [],
+    "scenarios": [],
+    "epics": [],
+    "metrics": [
+      "M-38"
+    ],
+    "risks": []
   }
 }

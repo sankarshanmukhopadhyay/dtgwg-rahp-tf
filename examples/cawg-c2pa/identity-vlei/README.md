@@ -78,7 +78,7 @@ The vLEI branch provides a strong organizational credential path but archival KE
 | Secondary dispositions | — |
 | Scenarios | `CAWG-033`, `CAWG-034` |
 | Scenario patterns | `SP-GOV-02`, `SP-RECOV-01` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P6 — Registry / Discovery / Trust-Service Operator](../../../build/site/catalogue.html#P6) |
 | Risks | [CRK-21 — Timestamp or status evidence insufficiency](/rahp-toolkit/docs/cawg-risk-register.html#crk-21) |
 | Controls | — |
 | Guardrails | — |
@@ -112,7 +112,7 @@ Specify archival evidence for role credential status at signing time, including 
 | Secondary dispositions | — |
 | Scenarios | `CAWG-034` |
 | Scenario patterns | `SP-OPS-01`, `SP-RECOV-01` |
-| Personas | — |
+| Personas | [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P6 — Registry / Discovery / Trust-Service Operator](../../../build/site/catalogue.html#P6) |
 | Risks | [CRK-02 — Historical verification continuity loss](/rahp-toolkit/docs/cawg-risk-register.html#crk-02) |
 | Controls | — |
 | Guardrails | — |
@@ -146,7 +146,7 @@ Define minimum retained KERI evidence, resolver-independent verification require
 | Secondary dispositions | — |
 | Scenarios | `CAWG-006`, `CAWG-028` |
 | Scenario patterns | `SP-INTEROP-01`, `SP-COMP-01` |
-| Personas | — |
+| Personas | [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P6 — Registry / Discovery / Trust-Service Operator](../../../build/site/catalogue.html#P6) |
 | Risks | [CRK-20 — Alternative trust-method inconsistency](/rahp-toolkit/docs/cawg-risk-register.html#crk-20) |
 | Controls | — |
 | Guardrails | — |

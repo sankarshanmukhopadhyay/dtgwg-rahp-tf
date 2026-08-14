@@ -76,7 +76,7 @@ Cross-specification RAHP review: individually valid components are tested for un
 | Secondary dispositions | — |
 | Scenarios | `CAWG-024`, `CAWG-025` |
 | Scenario patterns | `SP-GOV-01`, `SP-COMP-01` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../../build/site/catalogue.html#P1), [P2 — Producer / Originating Actor](../../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../../build/site/catalogue.html#P3), [P4 — Intermediary / Platform Operator](../../../../build/site/catalogue.html#P4) |
 | Risks | [CRK-03 — Integrity and factual truth conflation](/rahp-toolkit/docs/cawg-risk-register.html#crk-03) |
 | Controls | — |
 | Guardrails | — |
@@ -110,7 +110,7 @@ Pair sensitive metadata namespaces with authority/governance semantics and disti
 | Secondary dispositions | — |
 | Scenarios | `CAWG-025` |
 | Scenario patterns | `SP-FED-01`, `SP-COMP-01` |
-| Personas | — |
+| Personas | [P2 — Producer / Originating Actor](../../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../../build/site/catalogue.html#P3), [P4 — Intermediary / Platform Operator](../../../../build/site/catalogue.html#P4) |
 | Risks | [CRK-04 — Conflicting authoritative assertions](/rahp-toolkit/docs/cawg-risk-register.html#crk-04) |
 | Controls | — |
 | Guardrails | — |

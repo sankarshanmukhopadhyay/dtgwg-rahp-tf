@@ -6349,7 +6349,11 @@
         "category": "Trust Integrity",
         "description": "Rate at which agent discovery metadata fails origin, integrity, endpoint-binding, freshness or deployment trust-policy validation before use.",
         "personas_want_high": [],
-        "personas_want_suppressed": [],
+        "personas_want_suppressed": [
+          "P3",
+          "P5",
+          "P6"
+        ],
         "risks_measured": [
           "RK-AI05",
           "RK-AI06"
@@ -6370,7 +6374,10 @@
         "category": "Trust Integrity",
         "description": "Rate at which attempted agent callbacks or push notifications fail destination, sender-authentication, task-binding, freshness or replay validation.",
         "personas_want_high": [],
-        "personas_want_suppressed": [],
+        "personas_want_suppressed": [
+          "P4",
+          "P5"
+        ],
         "risks_measured": [
           "RK-AI08"
         ],
@@ -6390,7 +6397,11 @@
         "category": "Trust Integrity",
         "description": "Rate at which a downstream agent attempts or performs an action outside the originating principal’s valid delegated capability, purpose, resource, time or delegation-depth constraints.",
         "personas_want_high": [],
-        "personas_want_suppressed": [],
+        "personas_want_suppressed": [
+          "P1",
+          "P3",
+          "P5"
+        ],
         "risks_measured": [
           "RK-AI07",
           "RK-AI09"
@@ -9788,6 +9799,180 @@
             "url": "https://www.lawfaremedia.org/article/to-read-this--please-upload-photo-id"
           }
         ]
+      },
+      {
+        "id": "P1",
+        "name": "Principal / Rights-Bearing Party",
+        "role": "Principal, rights holder, represented person, or consent-giving party",
+        "type": "portable_role",
+        "quote": "An action may involve me, my rights, my assets, or my authority even when another system performs it.",
+        "lifecycle_phases": [
+          "Cross-domain"
+        ],
+        "goals": [
+          "Ensure actions affecting their rights or interests remain within granted authority",
+          "Understand who is acting and on what basis",
+          "Withdraw, amend, contest, or constrain authority where applicable"
+        ],
+        "risk_context": [
+          "Authority can be inferred from identity or possession rather than an explicit grant",
+          "Consent or delegation can outlive its intended purpose or validity",
+          "Multi-party rights may be collapsed into a single actor’s decision"
+        ],
+        "inclusion_drivers": [
+          "Explicit authority and consent boundaries",
+          "Revocation and lifecycle semantics",
+          "Accessible evidence of who acted for whom"
+        ],
+        "exclusion_risks": [
+          "Rights-bearing parties can become invisible behind intermediaries, platforms, credentials, or agents"
+        ],
+        "evidence": []
+      },
+      {
+        "id": "P2",
+        "name": "Producer / Originating Actor",
+        "role": "Actor that originates content, metadata, assertions, requests, or signed evidence",
+        "type": "portable_role",
+        "quote": "I can produce authentic evidence, but authenticity does not automatically make every statement authoritative for every purpose.",
+        "lifecycle_phases": [
+          "Cross-domain"
+        ],
+        "goals": [
+          "Produce interoperable and accurately scoped evidence",
+          "Avoid having assertions interpreted beyond their intended meaning",
+          "Preserve provenance and accountability for outputs"
+        ],
+        "risk_context": [
+          "Signed or integrity-protected output can be over-read as truth or authority",
+          "Optional evidence may be stripped or omitted",
+          "The producer may lack authority over a represented subject or property"
+        ],
+        "inclusion_drivers": [
+          "Clear assertion semantics",
+          "Property-specific authority rules",
+          "Stable provenance and lifecycle metadata"
+        ],
+        "exclusion_risks": [
+          "Producer identity can overshadow the rights or authority of other affected parties"
+        ],
+        "evidence": []
+      },
+      {
+        "id": "P3",
+        "name": "Relying Party / Verifier",
+        "role": "Actor that consumes evidence and makes a trust, policy, routing, authorization, or presentation decision",
+        "type": "portable_role",
+        "quote": "Validation tells me something important, but I still need to know what I am entitled to conclude from it.",
+        "lifecycle_phases": [
+          "Cross-domain"
+        ],
+        "goals": [
+          "Make defensible trust and authorization decisions",
+          "Distinguish integrity, identity, authority, consent, and policy",
+          "Detect missing, stale, conflicting, or downgraded evidence"
+        ],
+        "risk_context": [
+          "Cryptographic validity can be mistaken for semantic trustworthiness",
+          "Failure or absence may silently downgrade decision quality",
+          "Different trust lanes can be treated as equivalent without policy"
+        ],
+        "inclusion_drivers": [
+          "Explicit decision policy",
+          "Freshness and status checks",
+          "Negative and downgrade-path assurance tests"
+        ],
+        "exclusion_risks": [
+          "UI or protocol success signals can encourage overconfidence or unjustified exclusion"
+        ],
+        "evidence": []
+      },
+      {
+        "id": "P4",
+        "name": "Intermediary / Platform Operator",
+        "role": "Platform, publisher, gateway, distributor, transformer, host, or callback service between originator and relying party",
+        "type": "portable_role",
+        "quote": "I move, transform, route, or present evidence. That makes my handling choices part of the trust boundary.",
+        "lifecycle_phases": [
+          "Cross-domain"
+        ],
+        "goals": [
+          "Preserve relevant assurance information across processing",
+          "Apply policy consistently at scale",
+          "Avoid becoming a downgrade, correlation, or redirection point"
+        ],
+        "risk_context": [
+          "Transformation can remove optional or higher-layer evidence",
+          "Presentation can overstate verification meaning",
+          "Callback, routing, or storage functions can introduce new security and privacy boundaries"
+        ],
+        "inclusion_drivers": [
+          "Evidence-preserving transformation rules",
+          "Clear failure-state behaviour",
+          "Auditable policy enforcement"
+        ],
+        "exclusion_risks": [
+          "Centralized platforms can become participation gates or hidden policy authorities"
+        ],
+        "evidence": []
+      },
+      {
+        "id": "P5",
+        "name": "Delegated Service / Agent Operator",
+        "role": "Operator of a service or agent acting on behalf of another party or consuming delegated authority",
+        "type": "portable_role",
+        "quote": "Being able to perform an action is not the same as being authorised to perform it for this principal, purpose, and scope.",
+        "lifecycle_phases": [
+          "Cross-domain"
+        ],
+        "goals": [
+          "Receive only the authority needed for the assigned task",
+          "Preserve principal, purpose, scope, and approval boundaries",
+          "Produce accountable evidence of consequential actions"
+        ],
+        "risk_context": [
+          "Delegation context can be lost across service or agent hops",
+          "Secondary credentials can become transitive authority",
+          "A valid capability may be confused with permission to act"
+        ],
+        "inclusion_drivers": [
+          "Bounded delegation",
+          "Non-transitive credentials by default",
+          "Cross-service action provenance"
+        ],
+        "exclusion_risks": [
+          "Opaque delegation chains can make redress and accountability difficult"
+        ],
+        "evidence": []
+      },
+      {
+        "id": "P6",
+        "name": "Registry / Discovery / Trust-Service Operator",
+        "role": "Operator of a registry, directory, discovery service, status service, trust list, or other trust-supporting infrastructure",
+        "type": "portable_role",
+        "quote": "My service can help establish what is discoverable, valid, current, or recognized, but my governance determines how much that fact should mean.",
+        "lifecycle_phases": [
+          "Cross-domain"
+        ],
+        "goals": [
+          "Publish trustworthy, current, and well-governed trust information",
+          "Make status and historical state recoverable",
+          "Avoid becoming an opaque or discriminatory participation gate"
+        ],
+        "risk_context": [
+          "Discovery metadata can be stale or substituted",
+          "Current state may not answer historical authority",
+          "Registry governance can silently define market or ecosystem access"
+        ],
+        "inclusion_drivers": [
+          "Transparent governance and update semantics",
+          "Origin, integrity, freshness, and withdrawal controls",
+          "Historical/as-of query support where required"
+        ],
+        "exclusion_risks": [
+          "Centralized discovery or trust services can concentrate surveillance, gatekeeping, or policy power"
+        ],
+        "evidence": []
       }
     ],
     "recommendation": [

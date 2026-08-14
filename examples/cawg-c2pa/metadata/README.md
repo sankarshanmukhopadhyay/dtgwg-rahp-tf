@@ -75,7 +75,7 @@ This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conforman
 | Secondary dispositions | — |
 | Scenarios | — |
 | Scenario patterns | `SP-INTEROP-01`, `SP-COMP-01` |
-| Personas | — |
+| Personas | [P2 — Producer / Originating Actor](../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P4 — Intermediary / Platform Operator](../../../build/site/catalogue.html#P4) |
 | Risks | [CRK-03 — Integrity and factual truth conflation](/rahp-toolkit/docs/cawg-risk-register.html#crk-03) |
 | Controls | — |
 | Guardrails | — |
@@ -109,7 +109,7 @@ Require implementations and UX profiles to distinguish integrity/authorship from
 | Secondary dispositions | — |
 | Scenarios | — |
 | Scenario patterns | `SP-FED-01`, `SP-INTEROP-01` |
-| Personas | — |
+| Personas | [P2 — Producer / Originating Actor](../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P4 — Intermediary / Platform Operator](../../../build/site/catalogue.html#P4) |
 | Risks | [CRK-04 — Conflicting authoritative assertions](/rahp-toolkit/docs/cawg-risk-register.html#crk-04) |
 | Controls | — |
 | Guardrails | — |

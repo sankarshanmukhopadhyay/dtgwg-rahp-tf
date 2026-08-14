@@ -76,7 +76,7 @@ Cross-specification RAHP review: individually valid components are tested for un
 | Secondary dispositions | — |
 | Scenarios | `CAWG-019`, `CAWG-020`, `CAWG-021` |
 | Scenario patterns | `SP-GOV-01`, `SP-AGENT-01` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../../build/site/catalogue.html#P1), [P2 — Producer / Originating Actor](../../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../../build/site/catalogue.html#P3), [P5 — Delegated Service / Agent Operator](../../../../build/site/catalogue.html#P5) |
 | Risks | [CRK-08 — Endorsement or delegation scope creep](/rahp-toolkit/docs/cawg-risk-register.html#crk-08) |
 | Controls | — |
 | Guardrails | — |
@@ -110,7 +110,7 @@ Require delegation provenance and authority-to-delegate checks that are independ
 | Secondary dispositions | — |
 | Scenarios | `CAWG-022`, `CAWG-023` |
 | Scenario patterns | `SP-AGENT-02`, `SP-COMP-01` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../../build/site/catalogue.html#P1), [P3 — Relying Party / Verifier](../../../../build/site/catalogue.html#P3), [P5 — Delegated Service / Agent Operator](../../../../build/site/catalogue.html#P5) |
 | Risks | [CRK-25 — Onward delegation and sub-agent escalation](/rahp-toolkit/docs/cawg-risk-register.html#crk-25) |
 | Controls | — |
 | Guardrails | — |

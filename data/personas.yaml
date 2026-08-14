@@ -1,25 +1,18 @@
 record_type: persona
-# Personas are hand-maintained narrative records. Their cross-references to user
-# stories, scenarios, EPICs and metrics are DERIVED at build time from those
-# records' own persona fields — they are deliberately not stored here, because
-# storing them in both places is what caused the column-shift errors in rows D2,
-# D3, D5, M2 and B1 of the v6 Persona Cross-Reference sheet.
-#
-# Source: "DTG RAHP - Personas.docx" (D/M/B series) and
-#         "DTG_RAHP_Personas_Edge_Cases.docx" (EC series), draft v1, 2026-03-18.
 records:
 - id: D1
   name: Daniel Wright
   role: VTC Initiator
   type: legitimate_user
-  quote: >-
-    I am building something that needs to last. The choices I make at genesis will echo through every
+  quote: I am building something that needs to last. The choices I make at genesis will echo through every
     trust relationship this community ever forms.
   context:
     age: 41
     location: Berlin, Germany
     situation: Lives with partner; leads an open-source foundation
-  lifecycle_phases: [Phase 1, Phase 2]
+  lifecycle_phases:
+  - Phase 1
+  - Phase 2
   goals:
   - Successfully establish a new Verifiable Trust Community
   - Encode governance policies clearly at genesis
@@ -40,27 +33,27 @@ records:
   - Closed early trust circle
   - Implicit political or social bias embedded at genesis
   evidence:
-  - claim: Systems designed for decentralisation remain reliant on established steward organisations,
-      creating dependency that undermines decentralisation claims.
+  - claim: Systems designed for decentralisation remain reliant on established steward organisations, creating
+      dependency that undermines decentralisation claims.
     source: MDPI, Future Internet, December 2024
     url: https://www.mdpi.com/1999-5903/17/1/1
   - claim: Under eIDAS 2.0, trust derives from cryptographic assurance of each credential and the governance
       that made the issuer trusted, not from a single identity provider.
     source: Blockstand EU, Trust Models for Digital Identity, 2025
     url: https://blockstand.eu/blockstand/uploads/2025/05/Trust-Models-for-Digital-Identity_-State-of-play-2.pdf
-
 - id: D2
   name: Laila Hassan
   role: Community Trust Anchor
   type: legitimate_user
-  quote: >-
-    Every invitation I issue is a statement of my own integrity. If I vouch for the wrong person, I could
+  quote: Every invitation I issue is a statement of my own integrity. If I vouch for the wrong person, I could
     become part of the problem.
   context:
     age: 34
     location: Nairobi, Kenya
     situation: Runs a civic tech NGO; active in local governance
-  lifecycle_phases: [Phase 2, Phase 3]
+  lifecycle_phases:
+  - Phase 2
+  - Phase 3
   goals:
   - Grow the VTC responsibly
   - Maintain credibility and integrity
@@ -90,19 +83,19 @@ records:
       social engineering.
     source: SentinelOne, Identity Provider Security, 2026
     url: https://www.sentinelone.com/cybersecurity-101/identity-security/identity-provider-security/
-
 - id: D3
   name: Ahmed Khan
   role: New Member Seeking Inclusion
   type: legitimate_user
-  quote: >-
-    I meet all the technical criteria. I just do not know the right people. Are they using security as an
-    excuse to bar new members?
+  quote: I meet all the technical criteria. I just do not know the right people. Are they using security as
+    an excuse to bar new members?
   context:
     age: 26
     location: London, UK
     situation: Early-career professional; immigrant background
-  lifecycle_phases: [Phase 3, Phase 4]
+  lifecycle_phases:
+  - Phase 3
+  - Phase 4
   goals:
   - Gain legitimate access to a VTC
   - Demonstrate competence and trustworthiness
@@ -123,27 +116,26 @@ records:
   - Geographic or socioeconomic exclusion
   - Language and digital literacy barriers
   evidence:
-  - claim: Approximately 850 million people worldwide lack any form of ID; around 21 million voting-age
-      US citizens lack an unexpired government-issued photo ID. Social-graph admission compounds this exclusion.
+  - claim: Approximately 850 million people worldwide lack any form of ID; around 21 million voting-age US
+      citizens lack an unexpired government-issued photo ID. Social-graph admission compounds this exclusion.
     source: Lawfare, To Read This Please Upload Photo ID, 2026
     url: https://www.lawfaremedia.org/article/to-read-this--please-upload-photo-id
   - claim: Over 70 billion digital identity verification checks were conducted in 2024; synthetic identity
       fraud and deepfake biometrics disproportionately disadvantage legitimate applicants.
     source: Keyless, Digital Identity Verification Complete Guide, 2025
     url: https://keyless.io/blog/post/digital-identity-verification-complete-guide-2025
-
 - id: D4
   name: Elena Rossi
   role: Senior Compliance Executive, Identity Verification Provider (IDVP)
   type: legitimate_user
-  quote: >-
-    My credibility as a verification provider is only as good as my last audit. One breach could contaminate
+  quote: My credibility as a verification provider is only as good as my last audit. One breach could contaminate
     every credential I have ever issued.
   context:
     age: 50
     location: Milan, Italy
     situation: Lives with husband and adult son
-  lifecycle_phases: [Phase 4]
+  lifecycle_phases:
+  - Phase 4
   goals:
   - Provide reliable identity verification
   - Minimise regulatory and legal exposure
@@ -170,23 +162,23 @@ records:
       up to 70,000 government ID photos.
     source: Lawfare, 2026
     url: https://www.lawfaremedia.org/article/to-read-this--please-upload-photo-id
-  - claim: US consumer fraud losses attributed to identity verification failures reached $12.5bn in 2024,
-      up 25% year on year (FTC); EU DSA fines reach 6% of global annual turnover.
+  - claim: US consumer fraud losses attributed to identity verification failures reached $12.5bn in 2024, up
+      25% year on year (FTC); EU DSA fines reach 6% of global annual turnover.
     source: Shuftipro, When Identity Verification Systems Fail, 2025
     url: https://shuftipro.com/blog/when-identity-verification-systems-fail-everyone-pays-the-price/
-
 - id: D5
   name: Sophie Dubois
   role: Member Subject to Revocation
   type: legitimate_user
-  quote: >-
-    I followed the rules. I participated in good faith. But there is no appeals process that actually works,
-    and my revoked status is now permanent and public.
+  quote: I followed the rules. I participated in good faith. But there is no appeals process that actually
+    works, and my revoked status is now permanent and public.
   context:
     age: 27
     location: Paris, France
     situation: Freelance professional
-  lifecycle_phases: [Revocation, Expiration]
+  lifecycle_phases:
+  - Revocation
+  - Expiration
   goals:
   - Maintain membership in good standing
   - Protect professional reputation
@@ -215,18 +207,18 @@ records:
       in permissionless decentralised contexts.
     source: INATBA, Building Trust — Integrating AI, Blockchain and Digital Identity, November 2025
     url: https://inatba.org/wp-content/uploads/2025/11/Building-Trust_-Integrating-AI-Blockchain-and-Digital-Identity_NOVEMBER-2025.docx.pdf
-
 - id: D6
   name: Tomasz Kowalski
   role: Security Researcher / Harm Analyst
   type: legitimate_user
-  quote: >-
-    I am not trying to break the system. I am trying to find out how someone else will break it before they do.
+  quote: I am not trying to break the system. I am trying to find out how someone else will break it before
+    they do.
   context:
     age: 36
     location: Warsaw, Poland
     situation: Lives in a house share with other young professionals
-  lifecycle_phases: [All phases]
+  lifecycle_phases:
+  - All phases
   goals:
   - Identify systemic weaknesses
   - Stress-test uniqueness mechanisms
@@ -255,19 +247,18 @@ records:
       be developed, creating a window for adversarial probing before governance matures.
     source: arXiv, Are We There Yet? A Study of Decentralised Identity Applications, 2025
     url: https://arxiv.org/pdf/2503.15964
-
 - id: M1
   name: Aether
   role: Benign AI Agent
   type: machine_agent
-  quote: >-
-    I act within the scope I have been granted, log everything I do, and wait for my operator's next
-    instruction. The credential is the contract.
+  quote: I act within the scope I have been granted, log everything I do, and wait for my operator's next instruction.
+    The credential is the contract.
   context:
     composite: true
     operator: Human principal (individual or organisation) holding VTC membership
     credential_basis: Agent credential issued by the member-operator; scope-limited by policy
-  lifecycle_phases: [Agent Lifecycle]
+  lifecycle_phases:
+  - Agent Lifecycle
   goals:
   - Act on behalf of the member-operator within explicitly authorised credential scopes
   - Execute credential presentation, verification requests and data retrieval autonomously
@@ -287,28 +278,27 @@ records:
   - Governance frameworks not yet designed for non-human participants
   evidence:
   - claim: Only 18% of organisations are highly confident their IAM can manage agent identities; 21% maintain
-      a real-time inventory of active agents; 28% can trace agent actions to a human sponsor across all
-      environments (n=285).
+      a real-time inventory of active agents; 28% can trace agent actions to a human sponsor across all environments
+      (n=285).
     source: Cloud Security Alliance / Strata Identity, Securing Autonomous AI Agents, 2025
     url: https://cloudsecurityalliance.org/artifacts/securing-autonomous-ai-agents
-  - claim: Revoking access in one place does not automatically cut off access elsewhere; agents spin up
-      ephemeral sessions and sub-agents that survive revocation of the originating human principal.
+  - claim: Revoking access in one place does not automatically cut off access elsewhere; agents spin up ephemeral
+      sessions and sub-agents that survive revocation of the originating human principal.
     source: ISACA, The Looming Authorisation Crisis, 2025
     url: https://www.isaca.org/resources/news-and-trends/industry-news/2025/the-looming-authorization-crisis-why-traditional-iam-fails-agentic-ai
-
 - id: M2
   name: Phantom
   role: Malign AI Agent
   type: machine_agent
   adversarial: true
-  quote: >-
-    The VTC was designed for humans who make one application at a time. I make ten thousand applications a
-    second. Your governance process is my attack surface.
+  quote: The VTC was designed for humans who make one application at a time. I make ten thousand applications
+    a second. Your governance process is my attack surface.
   context:
     composite: true
     operator: Malicious human principal (e.g. B1 Viktor, B2 State Security Directorate)
     credential_basis: Fraudulently obtained, synthesised or stolen delegation credentials
-  lifecycle_phases: [All phases]
+  lifecycle_phases:
+  - All phases
   goals:
   - Automate Sybil identity creation and coordinated vouching at machine scale
   - Conduct social engineering of trust anchors via synthetic, convincing personas
@@ -333,19 +323,20 @@ records:
       directly applicable to AI-mediated credential vouching.
     source: CyberArk, AI Agents and Identity Risks, 2025
     url: https://www.cyberark.com/resources/blog/ai-agents-and-identity-risks-how-security-will-shift-in-2026
-
 - id: B1
   name: Viktor
   role: Sybil Network Operator
   type: bad_actor
   adversarial: true
-  quote: >-
-    I do not attack systems. I join them. Slowly, carefully, and from the inside, until I am indistinguishable
+  quote: I do not attack systems. I join them. Slowly, carefully, and from the inside, until I am indistinguishable
     from a legitimate member.
   context:
     age: Unknown
     location: Distributed
-  lifecycle_phases: [Phase 2, Phase 3, Phase 4]
+  lifecycle_phases:
+  - Phase 2
+  - Phase 3
+  - Phase 4
   goals:
   - Infiltrate the VTC at scale
   - Capture influence within the trust graph
@@ -361,31 +352,29 @@ records:
   - Homogeneous anchor clusters
   - Low diversity thresholds
   - No anomaly detection
-  calibration: >-
-    Viktor does not have infinite resources. Threat calibration must remain realistic — an implausible
+  calibration: Viktor does not have infinite resources. Threat calibration must remain realistic — an implausible
     threat model produces controls calibrated to the wrong risk.
   evidence:
   - claim: Sybil attacks remain the defining challenge of decentralised trust design, identified by Douceur
       (Microsoft Research, 2002) and still directed at Web3 governance mechanisms in 2025.
     source: Hacken, Sybil Attacks, 2024
     url: https://hacken.io/insights/sybil-attacks/
-  - claim: Sybil attacks become dramatically more effective when the attacker can influence node selection —
-      as occurs when anchor collusion creates homogeneous trust clusters.
+  - claim: Sybil attacks become dramatically more effective when the attacker can influence node selection
+      — as occurs when anchor collusion creates homogeneous trust clusters.
     source: ScienceDirect, Sybil Attacks on Identity-Augmented Proof-of-Stake, 2021
     url: https://www.sciencedirect.com/science/article/abs/pii/S1389128621003893
-
 - id: B2
   name: State Security Directorate
   role: State-Level Coercive Actor
   type: bad_actor
   adversarial: true
-  quote: >-
-    We do not need to break the cryptography. We just need to ask the right person the right question at the
-    right moment.
+  quote: We do not need to break the cryptography. We just need to ask the right person the right question
+    at the right moment.
   context:
     group_persona: true
     location: Jurisdictional
-  lifecycle_phases: [All phases]
+  lifecycle_phases:
+  - All phases
   goals:
   - Influence or control VTC membership
   - Identify dissidents
@@ -403,27 +392,27 @@ records:
   - Weak governance independence
   evidence:
   - claim: Global internet freedom declined for the 15th consecutive year; Venezuela deployed identity-linked
-      internet controls ahead of its July 2024 election and Vietnam enacted a December 2024 law requiring
-      government-ID authentication for social media.
+      internet controls ahead of its July 2024 election and Vietnam enacted a December 2024 law requiring government-ID
+      authentication for social media.
     source: Freedom House, Freedom on the Net 2025
     url: https://freedomhouse.org/report/freedom-net/2025/uncertain-future-global-internet
-  - claim: Digital identity infrastructure rarely remains confined to its original purpose but exhibits
-      function creep into welfare, banking, policing, immigration control and political monitoring.
+  - claim: Digital identity infrastructure rarely remains confined to its original purpose but exhibits function
+      creep into welfare, banking, policing, immigration control and political monitoring.
     source: ResearchGate, Mandatory Digital Identification and the Integrity of Democracy, 2025
     url: https://www.researchgate.net/publication/395382999_Mandatory_Digital_Identification_and_the_Integrity_of_Democracy_Surveillance_Exclusion_and_the_Risk_of_Authoritarian_Revival
-
 - id: B3
   name: The Collective
   role: Community Disruptor
   type: bad_actor
   adversarial: true
-  quote: >-
-    We do not want your data. We want your doubt. Once you are not sure who to trust, we have already won.
+  quote: We do not want your data. We want your doubt. Once you are not sure who to trust, we have already
+    won.
   context:
     group_persona: true
     location: Distributed across multiple jurisdictions
     affiliation: Loosely coordinated network; ideologically, commercially or politically motivated
-  lifecycle_phases: [Ongoing]
+  lifecycle_phases:
+  - Ongoing
   goals:
   - Undermine confidence in a VTC through disinformation about governance or membership
   - Weaponise legitimate grievance mechanisms to exhaust governance resources
@@ -448,34 +437,34 @@ records:
       objective is to flood the space and undermine legitimate governance.
     source: Rogers & Righetti, Coordinated Inauthentic Behaviour on Facebook, 2025
     url: https://journals.sagepub.com/doi/10.1177/29768624251369784
-
 - id: EC1
   name: Mia Okafor
   role: Teenager with Special Educational Needs — supported decision-maker
   type: edge_case
   safeguarding: true
-  safeguarding_note: >-
-    This persona is aged 14–17. All DTG design decisions affecting this persona MUST be evaluated against
-    the best interests of the child, the Children and Families Act 2014 (SEND framework), the UK GDPR Age
-    Appropriate Design Code, and the Online Safety Act 2023. Consent cannot be treated as equivalent to
-    adult consent. A named responsible adult must hold co-signatory authority over any credential issued
-    to or about her.
-  quote: >-
-    I know who I am and who I trust. I just need the system to understand that I might need help explaining it.
+  safeguarding_note: This persona is aged 14–17. All DTG design decisions affecting this persona MUST be evaluated
+    against the best interests of the child, the Children and Families Act 2014 (SEND framework), the UK GDPR
+    Age Appropriate Design Code, and the Online Safety Act 2023. Consent cannot be treated as equivalent to
+    adult consent. A named responsible adult must hold co-signatory authority over any credential issued to
+    or about her.
+  quote: I know who I am and who I trust. I just need the system to understand that I might need help explaining
+    it.
   context:
     age: 16
     location: Birmingham, UK
-    profile: Autism spectrum condition with an Education, Health and Care Plan; strong verbal skills,
-      variable executive function
-    capacity_status: Partial — meaningful participation in supported decision-making, requires accessible
-      communication and a nominated co-signatory
+    profile: Autism spectrum condition with an Education, Health and Care Plan; strong verbal skills, variable
+      executive function
+    capacity_status: Partial — meaningful participation in supported decision-making, requires accessible communication
+      and a nominated co-signatory
     responsible_adult: Mother (named responsible adult); school SENCO support coordinator
-  lifecycle_phases: [Phase 3, Phase 4, Revocation]
+  lifecycle_phases:
+  - Phase 3
+  - Phase 4
+  - Revocation
   goals:
   - Participate in a relevant VTC on her own terms without her SEN profile being disqualifying
   - Control whether her SEN status appears in any credential or trust graph metadata
-  - Have her responsible adult act in a co-signatory role distinguishable from full substituted
-    decision-making
+  - Have her responsible adult act in a co-signatory role distinguishable from full substituted decision-making
   risk_context:
   - No DTG admission pathway accounts for supported decision-making
   - Consent ambiguity — a VRC signed on her behalf cannot capture supported vs substituted consent
@@ -495,25 +484,26 @@ records:
       record high in 2025.
     source: UK Parliament Research Briefing CBP-10550, March 2026
     url: https://researchbriefings.files.parliament.uk/documents/CBP-10550/CBP-10550.pdf
-  - claim: The Data (Use and Access) Act 2025 introduces new codes of practice for systems processing
-      children's data; any VTC admitting under-18s is subject to these obligations.
+  - claim: The Data (Use and Access) Act 2025 introduces new codes of practice for systems processing children's
+      data; any VTC admitting under-18s is subject to these obligations.
     source: 5Rights Foundation, July 2025
     url: https://5rightsfoundation.com/new-uk-data-law-what-does-it-mean-for-childrens-privacy/
-
 - id: EC2a
   name: Arthur Kowalczyk
   role: Person Living with Dementia — credential holder with progressive capacity loss
   type: edge_case
   co_persona: EC2b
-  quote: >-
-    I want to stay part of this community. I just need to know that if I can't manage it myself one day,
+  quote: I want to stay part of this community. I just need to know that if I can't manage it myself one day,
     Margaret can do it for me — and that it will still be my identity, not hers.
   context:
     age: 74
     location: Sheffield, UK
     diagnosis: Early-stage vascular dementia; capacity intermittent and progressive
     capacity_status: Currently has capacity; LPA registered but not yet primary decision-making instrument
-  lifecycle_phases: [Ongoing, Revocation, Expiration]
+  lifecycle_phases:
+  - Ongoing
+  - Revocation
+  - Expiration
   goals:
   - Remain an active, recognised VTC member for as long as he has capacity
   - Ensure his attorney can take over credential management seamlessly on capacity loss
@@ -533,29 +523,29 @@ records:
   - Progressive capacity loss makes trust task ceremonies unusable
   - A VTC that cannot model guardianship defaults to treating him as full-capacity until a crisis
   evidence:
-  - claim: Around 982,000 people are living with dementia in the UK, with over a third lacking a formal
-      diagnosis. The Mental Capacity Act 2005 requires capacity to be assessed decision-by-decision.
+  - claim: Around 982,000 people are living with dementia in the UK, with over a third lacking a formal diagnosis.
+      The Mental Capacity Act 2005 requires capacity to be assessed decision-by-decision.
     source: Alzheimer's Society, Dementia Action Week 2025
     url: https://www.alzheimers.org.uk/
   - claim: An LPA can only be created while the person still has capacity; once lost, the costlier Court of
       Protection deputyship route is required.
     source: Dementia UK, Lasting Power of Attorney, 2025
     url: https://www.dementiauk.org/information-and-support/financial-and-legal-support/lasting-power-of-attorney/
-
 - id: EC2b
   name: Margaret Kowalczyk
   role: Partner, Carer and registered LPA holder
   type: edge_case
   co_persona: EC2a
-  quote: >-
-    The law says I can make decisions for Arthur when he can't. But the system doesn't know I exist. It just
-    sees his DID going quiet.
+  quote: The law says I can make decisions for Arthur when he can't. But the system doesn't know I exist. It
+    just sees his DID going quiet.
   context:
     age: 72
     location: Sheffield, UK
     dtg_role: Delegated credential operator for EC2a's M-DID; not an independent VTC member
     legal_basis: Registered Health and Welfare LPA and Property and Financial Affairs LPA
-  lifecycle_phases: [Ongoing, Revocation]
+  lifecycle_phases:
+  - Ongoing
+  - Revocation
   goals:
   - Exercise LPA authority over credentials in a legally sound, auditable and reversible way
   - Preserve the donor's VTC membership and trust graph relationships through capacity transitions
@@ -575,27 +565,32 @@ records:
   - Without a formal delegation model she is invisible to the system and cannot be involved in due process
   - No defined pathway to close the donor's M-DID on death or preserve membership history
   evidence:
-  - claim: The Mental Capacity Act 2005 requires attorneys to act in the donor's best interests and keep
-      clear records; the NHS requires hospitals to be informed of LPA status as early as possible.
+  - claim: The Mental Capacity Act 2005 requires attorneys to act in the donor's best interests and keep clear
+      records; the NHS requires hospitals to be informed of LPA status as early as possible.
     source: NHS, Managing Legal Affairs After a Dementia Diagnosis
     url: https://www.nhs.uk/conditions/dementia/care-and-support/legal-issues/
-
 - id: EC3
   name: Northgate Community Health Trust
   role: Public sector healthcare provider — organisational member
   type: edge_case
   organisational: true
-  quote: >-
-    We are not a person. We are a regulated organisation with a board, a Caldicott Guardian, and a statutory
+  quote: We are not a person. We are a regulated organisation with a board, a Caldicott Guardian, and a statutory
     duty of care. Our credential needs to carry the weight of that accountability.
   context:
     entity_type: NHS Foundation Trust (fictitious); CQC registered
     jurisdiction: England — NHS England regulatory framework
     dtg_role: Organisational VTC member holding a C-DID; issuing authority for staff M-DIDs and VMCs
-    accountable_officers: [Caldicott Guardian, Data Protection Officer, Chief Digital Officer]
+    accountable_officers:
+    - Caldicott Guardian
+    - Data Protection Officer
+    - Chief Digital Officer
     regulatory_context: NHS DCB3051 Identity Verification and Authentication Standard (updated December 2024
       to align with GPG45); UK GDPR; NHS Care Identity Service 2 (CIS2)
-  lifecycle_phases: [Phase 2, Phase 3, Phase 4, Revocation]
+  lifecycle_phases:
+  - Phase 2
+  - Phase 3
+  - Phase 4
+  - Revocation
   goals:
   - Issue verifiable staff credentials interoperable across NHS Trusts and recognised by CIS2
   - Participate as a trusted institutional member so staff avoid paper-based verification
@@ -615,37 +610,36 @@ records:
   - The DTG specification does not define an organisational credential type
   - NHS procurement and information governance cycles (12–18 months) are incompatible with DTG cadence
   evidence:
-  - claim: The NHS Digital Staff Passport enabled rapid staff redeployment across 100 NHS Trusts using
-      verifiable credentials, moving to public beta in 2025. Lessons — wallet-agnosticism is essential;
-      issuance must connect to existing HR systems; multi-organisational trust governance is complex.
+  - claim: The NHS Digital Staff Passport enabled rapid staff redeployment across 100 NHS Trusts using verifiable
+      credentials, moving to public beta in 2025. Lessons — wallet-agnosticism is essential; issuance must
+      connect to existing HR systems; multi-organisational trust governance is complex.
     source: techUK / NHSx-Condatis case study
     url: https://www.techuk.org/resource/healthcare-decentralised-identity-case-study-nhsx.html
   - claim: NHS organisations are subject to DCB3051 and CIS2; the DTG trust registry concept maps onto the
       NHS Credentials Gateway but the integration is unspecified.
     source: NHS Standards Directory, Identity Verification and Authentication Standard
     url: https://standards.nhs.uk/published-standards/identity-verification-and-authentication-standard-for-digital-health-and-care-services
-
 - id: EC4
   name: Velvet Gate Ltd
   role: Age-restricted content service provider — relying party
   type: edge_case
   organisational: true
   safeguarding: true
-  safeguarding_note: >-
-    Included because this sector drives the UK's Online Safety Act 2023 age verification requirements,
-    making it the most demanding real-world test of the DTG identity verification architecture. Presented
-    analytically. All design decisions for this persona must prioritise child safety and comply with the
-    Online Safety Act 2023 and Ofcom age assurance guidance effective 25 July 2025.
-  quote: >-
-    We have a legal obligation to verify that every subscriber is over 18. We have a competing legal
-    obligation not to build a surveillance database of who watches what.
+  safeguarding_note: Included because this sector drives the UK's Online Safety Act 2023 age verification requirements,
+    making it the most demanding real-world test of the DTG identity verification architecture. Presented analytically.
+    All design decisions for this persona must prioritise child safety and comply with the Online Safety Act
+    2023 and Ofcom age assurance guidance effective 25 July 2025.
+  quote: We have a legal obligation to verify that every subscriber is over 18. We have a competing legal obligation
+    not to build a surveillance database of who watches what.
   context:
     entity_type: UK-registered SME; Part 5 service under the Online Safety Act 2023 (fictitious)
     jurisdiction: UK-registered, serving UK and international subscribers; regulated by Ofcom
     dtg_role: Relying party — does not issue VMCs, relies on age-verified IDVCs from approved IDVPs
-    regulatory_context: Online Safety Act 2023 Part 5; mandatory age assurance from 25 July 2025;
-      UK GDPR; Ofcom Children's Code
-  lifecycle_phases: [Phase 4, Ongoing]
+    regulatory_context: Online Safety Act 2023 Part 5; mandatory age assurance from 25 July 2025; UK GDPR;
+      Ofcom Children's Code
+  lifecycle_phases:
+  - Phase 4
+  - Ongoing
   goals:
   - Satisfy Ofcom's highly effective age assurance requirement without a persistent identity database
   - Use ZKP-based proof of being over 18 to comply with the Online Safety Act and UK GDPR simultaneously
@@ -655,8 +649,8 @@ records:
   - Surveillance vs compliance paradox — robust age verification versus data minimisation
   - IDVP quality risk — IDVP failure cascades onto the relying party (see AU10TIX, 2024)
   - Bad actor abuse — automated fake-age-credential generation at scale by B1 and M2
-  - Child safety is non-negotiable — an architecture gap allowing a minor to obtain a valid over-18 IDVC
-    is a criminal liability, not merely a governance risk
+  - Child safety is non-negotiable — an architecture gap allowing a minor to obtain a valid over-18 IDVC is
+    a criminal liability, not merely a governance risk
   - Cross-border enforcement — non-UK IDVP standing in the trust registry is uncertain
   inclusion_drivers:
   - ZKP-based age proofs satisfying both Ofcom age assurance and UK GDPR data minimisation
@@ -667,11 +661,150 @@ records:
   - Reputational risk may make some IDVPs and anchors unwilling to participate
   evidence:
   - claim: From 25 July 2025 Ofcom enforces highly effective age assurance with fines up to £18m or 10% of
-      global qualifying revenue; accepted methods include digital ID services but must be technically
-      accurate, robust, reliable and fair.
+      global qualifying revenue; accepted methods include digital ID services but must be technically accurate,
+      robust, reliable and fair.
     source: Ofcom, Age Checks for Online Safety, June 2025
     url: https://www.ofcom.org.uk/online-safety/protecting-children/age-checks-for-online-safety--what-you-need-to-know-as-a-user
-  - claim: The AU10TIX breach illustrates what happens when age verification relies on centralised IDVP
-      databases rather than holder-controlled zero-knowledge proofs.
+  - claim: The AU10TIX breach illustrates what happens when age verification relies on centralised IDVP databases
+      rather than holder-controlled zero-knowledge proofs.
     source: Lawfare, To Read This Please Upload Photo ID, 2026
     url: https://www.lawfaremedia.org/article/to-read-this--please-upload-photo-id
+- id: P1
+  name: Principal / Rights-Bearing Party
+  role: Principal, rights holder, represented person, or consent-giving party
+  type: portable_role
+  quote: An action may involve me, my rights, my assets, or my authority even when another system performs
+    it.
+  lifecycle_phases:
+  - Cross-domain
+  goals:
+  - Ensure actions affecting their rights or interests remain within granted authority
+  - Understand who is acting and on what basis
+  - Withdraw, amend, contest, or constrain authority where applicable
+  risk_context:
+  - Authority can be inferred from identity or possession rather than an explicit grant
+  - Consent or delegation can outlive its intended purpose or validity
+  - Multi-party rights may be collapsed into a single actor’s decision
+  inclusion_drivers:
+  - Explicit authority and consent boundaries
+  - Revocation and lifecycle semantics
+  - Accessible evidence of who acted for whom
+  exclusion_risks:
+  - Rights-bearing parties can become invisible behind intermediaries, platforms, credentials, or agents
+  evidence: []
+- id: P2
+  name: Producer / Originating Actor
+  role: Actor that originates content, metadata, assertions, requests, or signed evidence
+  type: portable_role
+  quote: I can produce authentic evidence, but authenticity does not automatically make every statement authoritative
+    for every purpose.
+  lifecycle_phases:
+  - Cross-domain
+  goals:
+  - Produce interoperable and accurately scoped evidence
+  - Avoid having assertions interpreted beyond their intended meaning
+  - Preserve provenance and accountability for outputs
+  risk_context:
+  - Signed or integrity-protected output can be over-read as truth or authority
+  - Optional evidence may be stripped or omitted
+  - The producer may lack authority over a represented subject or property
+  inclusion_drivers:
+  - Clear assertion semantics
+  - Property-specific authority rules
+  - Stable provenance and lifecycle metadata
+  exclusion_risks:
+  - Producer identity can overshadow the rights or authority of other affected parties
+  evidence: []
+- id: P3
+  name: Relying Party / Verifier
+  role: Actor that consumes evidence and makes a trust, policy, routing, authorization, or presentation decision
+  type: portable_role
+  quote: Validation tells me something important, but I still need to know what I am entitled to conclude from
+    it.
+  lifecycle_phases:
+  - Cross-domain
+  goals:
+  - Make defensible trust and authorization decisions
+  - Distinguish integrity, identity, authority, consent, and policy
+  - Detect missing, stale, conflicting, or downgraded evidence
+  risk_context:
+  - Cryptographic validity can be mistaken for semantic trustworthiness
+  - Failure or absence may silently downgrade decision quality
+  - Different trust lanes can be treated as equivalent without policy
+  inclusion_drivers:
+  - Explicit decision policy
+  - Freshness and status checks
+  - Negative and downgrade-path assurance tests
+  exclusion_risks:
+  - UI or protocol success signals can encourage overconfidence or unjustified exclusion
+  evidence: []
+- id: P4
+  name: Intermediary / Platform Operator
+  role: Platform, publisher, gateway, distributor, transformer, host, or callback service between originator
+    and relying party
+  type: portable_role
+  quote: I move, transform, route, or present evidence. That makes my handling choices part of the trust boundary.
+  lifecycle_phases:
+  - Cross-domain
+  goals:
+  - Preserve relevant assurance information across processing
+  - Apply policy consistently at scale
+  - Avoid becoming a downgrade, correlation, or redirection point
+  risk_context:
+  - Transformation can remove optional or higher-layer evidence
+  - Presentation can overstate verification meaning
+  - Callback, routing, or storage functions can introduce new security and privacy boundaries
+  inclusion_drivers:
+  - Evidence-preserving transformation rules
+  - Clear failure-state behaviour
+  - Auditable policy enforcement
+  exclusion_risks:
+  - Centralized platforms can become participation gates or hidden policy authorities
+  evidence: []
+- id: P5
+  name: Delegated Service / Agent Operator
+  role: Operator of a service or agent acting on behalf of another party or consuming delegated authority
+  type: portable_role
+  quote: Being able to perform an action is not the same as being authorised to perform it for this principal,
+    purpose, and scope.
+  lifecycle_phases:
+  - Cross-domain
+  goals:
+  - Receive only the authority needed for the assigned task
+  - Preserve principal, purpose, scope, and approval boundaries
+  - Produce accountable evidence of consequential actions
+  risk_context:
+  - Delegation context can be lost across service or agent hops
+  - Secondary credentials can become transitive authority
+  - A valid capability may be confused with permission to act
+  inclusion_drivers:
+  - Bounded delegation
+  - Non-transitive credentials by default
+  - Cross-service action provenance
+  exclusion_risks:
+  - Opaque delegation chains can make redress and accountability difficult
+  evidence: []
+- id: P6
+  name: Registry / Discovery / Trust-Service Operator
+  role: Operator of a registry, directory, discovery service, status service, trust list, or other trust-supporting
+    infrastructure
+  type: portable_role
+  quote: My service can help establish what is discoverable, valid, current, or recognized, but my governance
+    determines how much that fact should mean.
+  lifecycle_phases:
+  - Cross-domain
+  goals:
+  - Publish trustworthy, current, and well-governed trust information
+  - Make status and historical state recoverable
+  - Avoid becoming an opaque or discriminatory participation gate
+  risk_context:
+  - Discovery metadata can be stale or substituted
+  - Current state may not answer historical authority
+  - Registry governance can silently define market or ecosystem access
+  inclusion_drivers:
+  - Transparent governance and update semantics
+  - Origin, integrity, freshness, and withdrawal controls
+  - Historical/as-of query support where required
+  exclusion_risks:
+  - Centralized discovery or trust services can concentrate surveillance, gatekeeping, or policy power
+  evidence: []

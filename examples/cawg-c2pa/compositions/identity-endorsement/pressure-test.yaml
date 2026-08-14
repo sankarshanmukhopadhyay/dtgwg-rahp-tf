@@ -1,7 +1,7 @@
 review:
   id: CAWG-COMP-004
   status: complete
-  title: "Identity \xD7 Endorsement / Delegation composition pressure test"
+  title: Identity × Endorsement / Delegation composition pressure test
   reviewed_on: '2026-08-14'
   target:
     repository: decentralized-identity/cawg-endorsement-assertion
@@ -22,16 +22,16 @@ review:
     - Claims that upstream CAWG, DIF, C2PA, GLEIF or W3C endorsed this RAHP assessment.
   method:
     workflow: docs/pressure-testing-a-spec.md
-    rule: Separate cryptographic validity, identity, authority, consent, lifecycle and relying-party trust; test both isolated
-      and composed failure states.
+    rule: Separate cryptographic validity, identity, authority, consent, lifecycle and relying-party trust; test
+      both isolated and composed failure states.
   summary:
     finding_count: 2
     open_count: 2
     by_primary_disposition:
       governance: 1
       specification: 1
-    overall_assessment: 'Cross-specification RAHP review: individually valid components are tested for unsafe composed conclusions
-      and downgrade behaviour.'
+    overall_assessment: 'Cross-specification RAHP review: individually valid components are tested for unsafe composed
+      conclusions and downgrade behaviour.'
   findings:
   - id: F-001
     title: Identity does not prove right to delegate
@@ -44,7 +44,8 @@ review:
     - source: https://github.com/decentralized-identity/cawg-endorsement-assertion/issues/12
       observation: The endorsement issue explicitly raises authority to assert and delegation of that authority.
     harm: A verified actor can issue an endorsement beyond their underlying authority.
-    recommendation: Require delegation provenance and authority-to-delegate checks that are independent of identity validation.
+    recommendation: Require delegation provenance and authority-to-delegate checks that are independent of identity
+      validation.
     retest_when:
     - Normative semantics and interoperable test vectors close this failure path.
     scenarios:
@@ -54,6 +55,11 @@ review:
     scenario_patterns:
     - SP-GOV-01
     - SP-AGENT-01
+    personas:
+    - P1
+    - P2
+    - P3
+    - P5
   - id: F-002
     title: Onward agent delegation needs an explicit non-transitivity default
     status: open
@@ -63,11 +69,11 @@ review:
     - CRK-25
     evidence:
     - source: https://github.com/decentralized-identity/cawg-identity-assertion/issues/236
-      observation: CAWG is considering delegation for people, organizations and AI agents, but transitivity is a distinct
-        authorization question.
-    harm: "An endorsed service or agent can pass authority to a sub-agent beyond the principal\u2019s intent."
-    recommendation: Make sub-delegation prohibited by default unless explicitly authorized with bounded scope, audience, actions
-      and expiry.
+      observation: CAWG is considering delegation for people, organizations and AI agents, but transitivity is a
+        distinct authorization question.
+    harm: An endorsed service or agent can pass authority to a sub-agent beyond the principal’s intent.
+    recommendation: Make sub-delegation prohibited by default unless explicitly authorized with bounded scope, audience,
+      actions and expiry.
     retest_when:
     - Normative semantics and interoperable test vectors close this failure path.
     scenarios:
@@ -76,3 +82,7 @@ review:
     scenario_patterns:
     - SP-AGENT-02
     - SP-COMP-01
+    personas:
+    - P1
+    - P3
+    - P5

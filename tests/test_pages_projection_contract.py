@@ -21,6 +21,25 @@ class TestPagesProjectionContract(unittest.TestCase):
             self.assertNotIn("(../examples/cawg-c2pa/)", text)
             self.assertIn("../examples/cawg-c2pa/README.md", text)
 
+    def test_a2a_and_persona_surfaces_are_required_pages_coverage(self):
+        validator = (ROOT / "tools" / "validate_jtd_site.py").read_text()
+        plugin = (ROOT / "_plugins" / "structured_data_pages.rb").read_text()
+        for required in (
+            "docs/a2a-example.html",
+            "docs/personas.html",
+            "examples/a2a/README.md",
+            "examples/a2a/pressure-test.yaml",
+        ):
+            self.assertIn(required, validator)
+        self.assertIn('parsed["review"]', plugin)
+        self.assertIn("review_summary", plugin)
+
+    def test_pressure_test_renderer_uses_directory_aware_catalogue_links(self):
+        renderer = (ROOT / "tools" / "render_pressure_tests.py").read_text()
+        self.assertIn("set_catalogue_relative", renderer)
+        self.assertIn("os.path.relpath", renderer)
+        self.assertIn('ROOT / "build/site/catalogue.html"', renderer)
+
 
 if __name__ == "__main__":
     unittest.main()

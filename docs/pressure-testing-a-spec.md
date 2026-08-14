@@ -20,6 +20,25 @@ flowchart LR
   H -. new evidence .-> C
 ```
 
+
+### Establish affected personas before scoring the finding
+
+Use the portable `Pxx` roles first:
+
+- `P1` Principal / Rights-Bearing Party
+- `P2` Producer / Originating Actor
+- `P3` Relying Party / Verifier
+- `P4` Intermediary / Platform Operator
+- `P5` Delegated Service / Agent Operator
+- `P6` Registry / Discovery / Trust-Service Operator
+
+Add `Mxx`, `Bxx`, or deployment-specific personas when machine behaviour, adversarial intent, lived experience, or local governance materially changes the finding. Persona references belong on the individual finding because different findings in the same specification can affect different actors.
+
+A protocol role and a machine actor may both apply. For example, `P5` identifies the accountable remote-agent operator while `M1` identifies the benign machine agent performing the task.
+
+See [Personas and actor roles](personas.md).
+
+
 ## Scenario-driven review pass
 
 After establishing scope, select applicable scenarios from a domain corpus and map them to portable patterns in `method/scenario-patterns.yaml`. Exercise the target text under those conditions before finalising findings. Record relevant `scenarios`, `scenario_patterns`, and `personas` in each finding. This is especially useful for collusion, accessibility, degraded operation, policy transitions, delegation and cross-implementation ambiguity that may not be obvious from a clause-by-clause reading.

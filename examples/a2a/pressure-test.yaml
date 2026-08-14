@@ -33,8 +33,8 @@ review:
     - Conformance testing of a particular deployed agent
   method:
     workflow: docs/pressure-testing-a-spec.md
-    rule: Credit controls already present in A2A v1.0; add a new RAHP risk only where the reusable catalogue
-      lacks the cross-agent trust boundary.
+    rule: Credit controls already present in A2A v1.0; add a new RAHP risk only where the reusable catalogue lacks
+      the cross-agent trust boundary.
   summary:
     finding_count: 6
     open_count: 6
@@ -45,9 +45,9 @@ review:
       governance: 1
     overall_assessment: A2A v1.0.0 has substantial protocol security foundations, including signed Agent Cards,
       authorization scoping, secure transport expectations and detailed push-notification guidance. The principal
-      RAHP gaps are not basic transport-security omissions. They are trust-semantics and delegated-authority
-      boundaries that emerge when independently operated agents discover one another, subcontract work, obtain
-      secondary credentials and act asynchronously.
+      RAHP gaps are not basic transport-security omissions. They are trust-semantics and delegated-authority boundaries
+      that emerge when independently operated agents discover one another, subcontract work, obtain secondary credentials
+      and act asynchronously.
   findings:
   - id: F-001
     title: A signed Agent Card can still be over-read as proof of authority or trust
@@ -67,24 +67,28 @@ review:
     - AT-22
     evidence:
     - source: docs/topics/agent-discovery.md#the-role-of-the-agent-card
-      observation: The Agent Card advertises identity/provider information, service endpoints, capabilities,
-        authentication requirements and skills, and clients use it to determine suitability.
+      observation: The Agent Card advertises identity/provider information, service endpoints, capabilities, authentication
+        requirements and skills, and clients use it to determine suitability.
     - source: docs/whats-new-v1.md#enterprise-ready-features
       observation: A2A v1.0 adds JWS plus JSON Canonicalization for Agent Card signature verification, improving
         integrity and authenticity of the published metadata.
     harm: A client may correctly verify who signed an Agent Card yet incorrectly infer that the signer is authorised
-      for the requested action, accountable to the principal, certified to a particular assurance level, or
-      entitled to exercise every advertised skill.
+      for the requested action, accountable to the principal, certified to a particular assurance level, or entitled
+      to exercise every advertised skill.
     recommendation: 'Add an explicit semantic non-inference rule: Agent Card integrity, identity/provider metadata,
-      skills and capabilities describe an endpoint but do not by themselves establish delegated authority,
-      operator accountability, assurance level or permission. Require those decisions to be made by the applicable
-      authorization and trust policy.'
+      skills and capabilities describe an endpoint but do not by themselves establish delegated authority, operator
+      accountability, assurance level or permission. Require those decisions to be made by the applicable authorization
+      and trust policy.'
     retest_when:
-    - The specification or normative security guidance explicitly separates signed capability advertisement
-      from authority and trust decisions.
+    - The specification or normative security guidance explicitly separates signed capability advertisement from
+      authority and trust decisions.
+    personas:
+    - P3
+    - P5
+    - P6
+    - M1
   - id: F-002
-    title: Discovery trust and freshness remain deployment-governed across well-known, registry and direct
-      modes
+    title: Discovery trust and freshness remain deployment-governed across well-known, registry and direct modes
     status: open
     severity: High
     primary_disposition: governance
@@ -100,20 +104,24 @@ review:
     - AT-22
     evidence:
     - source: docs/topics/agent-discovery.md#discovery-strategies
-      observation: A2A describes well-known URI, curated registry and direct/private discovery strategies;
-        it states that the current specification does not prescribe a standard API for curated registries.
+      observation: A2A describes well-known URI, curated registry and direct/private discovery strategies; it states
+        that the current specification does not prescribe a standard API for curated registries.
     - source: docs/topics/agent-discovery.md#caching-considerations
-      observation: Agent Cards are cacheable and clients may apply a reasonable default cache duration when
-        servers provide no caching headers.
-    harm: Two conforming deployments can apply materially different trust, registry-governance and freshness
-      assumptions. A valid but stale or incorrectly trusted card can route a task to an obsolete endpoint or
-      preserve outdated capabilities and security requirements.
+      observation: Agent Cards are cacheable and clients may apply a reasonable default cache duration when servers
+        provide no caching headers.
+    harm: Two conforming deployments can apply materially different trust, registry-governance and freshness assumptions.
+      A valid but stale or incorrectly trusted card can route a task to an obsolete endpoint or preserve outdated
+      capabilities and security requirements.
     recommendation: Document a deployment trust profile that identifies accepted discovery authorities, signature/origin
-      validation, cache/freshness bounds, withdrawal behavior and registry governance. Keep the registry API
-      out of core A2A if desired, but make the relying-party trust decision explicit and testable.
+      validation, cache/freshness bounds, withdrawal behavior and registry governance. Keep the registry API out
+      of core A2A if desired, but make the relying-party trust decision explicit and testable.
     retest_when:
     - A reusable discovery trust profile or equivalent implementation/governance guidance defines origin, freshness
       and registry trust requirements.
+    personas:
+    - P3
+    - P6
+    - M1
   - id: F-003
     title: A2A task delegation does not by itself preserve the originating principal’s authority envelope across
       agent hops
@@ -145,16 +153,21 @@ review:
     - source: docs/topics/enterprise-ready.md#authorization
       observation: Authorization is the A2A server’s responsibility and is specific to the agent implementation,
         data, backend resources and enterprise policy.
-    harm: An upstream agent can be authorised to perform a bounded task while a downstream agent sees only
-      a technically valid request. Purpose, human approval conditions, resource limits, expiry, revocation
-      and permitted delegation depth can be lost between hops.
-    recommendation: Define or normatively reference a delegation-context profile/extension that can bind an
-      A2A task to the originating principal and a bounded authority envelope. Preserve capability, purpose,
-      resource scope, approvals, validity, revocation and delegation depth across downstream calls without
-      requiring disclosure of private reasoning.
+    harm: An upstream agent can be authorised to perform a bounded task while a downstream agent sees only a technically
+      valid request. Purpose, human approval conditions, resource limits, expiry, revocation and permitted delegation
+      depth can be lost between hops.
+    recommendation: Define or normatively reference a delegation-context profile/extension that can bind an A2A
+      task to the originating principal and a bounded authority envelope. Preserve capability, purpose, resource
+      scope, approvals, validity, revocation and delegation depth across downstream calls without requiring disclosure
+      of private reasoning.
     retest_when:
-    - A2A or a companion profile defines interoperable delegation-context propagation and negative tests for
-      excess downstream authority.
+    - A2A or a companion profile defines interoperable delegation-context propagation and negative tests for excess
+      downstream authority.
+    personas:
+    - P1
+    - P3
+    - P5
+    - M1
   - id: F-004
     title: Out-of-band secondary credentials need an explicit non-transitivity boundary
     status: open
@@ -175,20 +188,24 @@ review:
     - AT-25
     evidence:
     - source: docs/topics/enterprise-ready.md#authentication
-      observation: When an agent needs credentials for a different system during a task, the client obtains
-        those credentials out of band and provides them to the A2A server to continue the task.
+      observation: When an agent needs credentials for a different system during a task, the client obtains those
+        credentials out of band and provides them to the A2A server to continue the task.
     - source: docs/topics/enterprise-ready.md#authorization
       observation: The remote agent is responsible for enforcing authorization before sensitive backend actions
         and is instructed to apply least privilege.
-    harm: A secondary credential can be technically valid yet broader than the task’s delegated authority.
-      Without audience, purpose and delegation-depth binding, credential possession can be mistaken for permission
-      to forward, exchange or reuse it with additional downstream agents.
+    harm: A secondary credential can be technically valid yet broader than the task’s delegated authority. Without
+      audience, purpose and delegation-depth binding, credential possession can be mistaken for permission to forward,
+      exchange or reuse it with additional downstream agents.
     recommendation: Define a companion credential/delegation profile or implementation contract requiring audience,
       resource, purpose, lifetime and delegation-depth restrictions for secondary credentials, with an explicit
       rule that credentials are non-transitive unless the principal authorised onward delegation.
     retest_when:
     - Secondary-credential guidance includes task/delegation binding and negative confused-deputy or token-forwarding
       tests.
+    personas:
+    - P1
+    - P5
+    - M1
   - id: F-005
     title: Push notification security is well identified but requires deployment-level assurance evidence
     status: open
@@ -205,11 +222,11 @@ review:
     - AT-24
     evidence:
     - source: docs/topics/streaming-and-async.md#security-considerations-for-push-notifications
-      observation: A2A warns against blindly trusting client-supplied webhook URLs because of SSRF and DDoS
-        risks, and recommends allowlisting, ownership verification and egress controls.
+      observation: A2A warns against blindly trusting client-supplied webhook URLs because of SSRF and DDoS risks,
+        and recommends allowlisting, ownership verification and egress controls.
     - source: docs/topics/streaming-and-async.md#client-webhook-receiver-security-when-receiving-notifications-from-a2a-server
-      observation: The guidance requires authenticating the A2A server and discusses timestamps, unique IDs
-        and key rotation to mitigate replay and impersonation.
+      observation: The guidance requires authenticating the A2A server and discusses timestamps, unique IDs and
+        key rotation to mitigate replay and impersonation.
     harm: An implementation can advertise push support while failing to prove that callback destinations, sender
       identity, task binding, freshness and replay controls work under adversarial conditions.
     recommendation: Add a deployment assurance checklist/test profile covering prohibited callback destinations,
@@ -217,8 +234,13 @@ review:
       and replay rejection. Treat this primarily as implementation assurance, not a new wire-format requirement
       unless testing reveals an interoperability gap.
     retest_when:
-    - A2A implementation/conformance guidance includes callback SSRF, authentication, task-binding, freshness
-      and replay negative vectors.
+    - A2A implementation/conformance guidance includes callback SSRF, authentication, task-binding, freshness and
+      replay negative vectors.
+    personas:
+    - P4
+    - P5
+    - M1
+    - M2
   - id: F-006
     title: Opaque execution needs portable cross-agent action provenance without exposing private reasoning
     status: open
@@ -237,18 +259,23 @@ review:
     - AT-23
     evidence:
     - source: docs/topics/enterprise-ready.md#tracing-observability-and-monitoring
-      observation: A2A recommends distributed tracing, comprehensive task/correlation logging and auditing
-        of significant agent actions.
+      observation: A2A recommends distributed tracing, comprehensive task/correlation logging and auditing of significant
+        agent actions.
     - source: docs/specification.md#12-guiding-principles
-      observation: A2A intentionally permits opaque execution so agents need not expose internal thoughts,
-        plans, memory or tool implementations.
+      observation: A2A intentionally permits opaque execution so agents need not expose internal thoughts, plans,
+        memory or tool implementations.
     harm: A multi-agent workflow can be operationally observable yet still lack evidence showing which principal
       authorised which agent, what scope was active, which approval boundary applied and which downstream action
       produced a material effect.
     recommendation: 'Define a portable action-provenance profile for externally consequential events: principal
       or accountable operator reference, agent identity, task/context IDs, delegation reference, action category,
-      approval checkpoint, timestamp, downstream target and outcome. Do not require model chain-of-thought
-      or private internal reasoning.'
+      approval checkpoint, timestamp, downstream target and outcome. Do not require model chain-of-thought or private
+      internal reasoning.'
     retest_when:
     - A2A implementation guidance or an extension profile defines reconstructable cross-agent action provenance
       independent of private model reasoning.
+    personas:
+    - P1
+    - P3
+    - P5
+    - M1

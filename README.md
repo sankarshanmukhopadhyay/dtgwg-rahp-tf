@@ -40,7 +40,8 @@ flowchart TB
 
   E --> D1[DTG exemplar deployment]
   E --> D2[CAWG/C2PA external deployment]
-  E --> D3[A2A worked example]\n  E --> D4[Your deployment]
+  E --> D3[A2A worked example]
+  E --> D4[Your deployment]
 ```
 
 The portability invariant is **shared method and engine, independent deployment context**. A deployment may own its target repositories, branches, assessment vocabulary, monitoring state, review artefacts and governance decisions without importing another deployment's state.
@@ -98,6 +99,12 @@ v0.6 demonstrates portability with a branch-aware CAWG/C2PA deployment configure
 
 The CAWG/C2PA deployment is independent assurance work. It does not represent CAWG, DIF or C2PA consensus and does not confer authority to modify upstream specifications. See [CAWG/C2PA RAHP instance](docs/cawg-instance.md).
 
+## Portable persona roles
+
+RAHP now separates reusable actor roles from deployment-specific personas. `P1`–`P6` cover principals/rights-bearing parties, producers, relying parties, intermediaries, delegated service or agent operators, and registry/discovery/trust-service operators. The C2PA/CAWG and A2A worked examples use these roles directly, while `Mxx`, `Bxx`, `Dxx`, and `ECxx` continue to capture machine behaviour, adversaries, and deployment-specific context.
+
+See [Personas and actor roles](docs/personas.md).
+
 ## Agent-protocol worked example: A2A
 
 The toolkit now includes an independent worked pressure test of the Linux Foundation **Agent2Agent (A2A) Protocol v1.0.0** under `examples/a2a/`. The assessment credits A2A's existing signed Agent Cards, authorization scoping and push-notification security guidance, then tests the residual trust boundaries created by discovery, multi-agent delegation, secondary credentials and asynchronous execution.
@@ -120,7 +127,7 @@ The bundled DTG catalogue currently contains:
 | `US-xx` | User story | 36 user stories |
 | `SC-xx` | Scenario | 33 scenarios |
 | `EPIC-xx` | Capability cluster | 21 EPICs |
-| `D/M/B/EC` | Persona | 16 personas |
+| `P/D/M/B/EC` | Persona | 22 personas |
 | `REC-x` | Standards recommendation | 9 recommendations |
 | `RA-xxx` | Risk acceptance | 3 risk acceptances (all `pending`) |
 | `GP-xxx` | Governance precedent | 3 governance precedents |

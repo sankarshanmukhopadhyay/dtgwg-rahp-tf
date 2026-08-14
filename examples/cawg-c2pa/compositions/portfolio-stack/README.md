@@ -76,7 +76,7 @@ Cross-specification RAHP review: individually valid components are tested for un
 | Secondary dispositions | — |
 | Scenarios | `CAWG-024`, `CAWG-028` |
 | Scenario patterns | `SP-COMP-01`, `SP-INCL-01` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../../build/site/catalogue.html#P1), [P2 — Producer / Originating Actor](../../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../../build/site/catalogue.html#P3), [P4 — Intermediary / Platform Operator](../../../../build/site/catalogue.html#P4), [P6 — Registry / Discovery / Trust-Service Operator](../../../../build/site/catalogue.html#P6) |
 | Risks | [CRK-28 — Implementation/specification semantic collapse](/rahp-toolkit/docs/cawg-risk-register.html#crk-28) |
 | Controls | — |
 | Guardrails | — |
@@ -110,7 +110,7 @@ Define a portfolio-level verifier result model and mandate UX separation of each
 | Secondary dispositions | — |
 | Scenarios | `CAWG-027` |
 | Scenario patterns | `SP-COMP-01`, `SP-REPLAY-01` |
-| Personas | — |
+| Personas | [P2 — Producer / Originating Actor](../../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../../build/site/catalogue.html#P3), [P4 — Intermediary / Platform Operator](../../../../build/site/catalogue.html#P4) |
 | Risks | [CRK-23 — Assertion stripping and downgrade](/rahp-toolkit/docs/cawg-risk-register.html#crk-23) |
 | Controls | — |
 | Guardrails | — |

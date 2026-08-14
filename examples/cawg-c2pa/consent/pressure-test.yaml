@@ -55,6 +55,11 @@ review:
     - SP-GOV-01
     - SP-GOV-03
     - SP-COMP-01
+    personas:
+    - P1
+    - P2
+    - P3
+    - P5
   - id: F-002
     title: Withdrawal, amendment, precedence and external permission state need a normative lifecycle
     status: open
@@ -77,3 +82,8 @@ review:
     - SP-GOV-02
     - SP-OPS-01
     - SP-INTEROP-01
+    personas:
+    - P1
+    - P2
+    - P3
+    - P5

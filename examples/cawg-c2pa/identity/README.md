@@ -75,7 +75,7 @@ This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conforman
 | Secondary dispositions | — |
 | Scenarios | — |
 | Scenario patterns | `SP-GOV-01`, `SP-FED-01` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P2 — Producer / Originating Actor](../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3) |
 | Risks | [CRK-01 — Identity-validity and authority conflation](/rahp-toolkit/docs/cawg-risk-register.html#crk-01) |
 | Controls | — |
 | Guardrails | — |
@@ -109,7 +109,7 @@ Define or normatively hook a relying-party governance profile that separates cre
 | Secondary dispositions | Governance |
 | Scenarios | — |
 | Scenario patterns | `SP-GOV-02`, `SP-OPS-01`, `SP-RECOV-01` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P6 — Registry / Discovery / Trust-Service Operator](../../../build/site/catalogue.html#P6) |
 | Risks | [CRK-02 — Historical verification continuity loss](/rahp-toolkit/docs/cawg-risk-register.html#crk-02) |
 | Controls | — |
 | Guardrails | — |

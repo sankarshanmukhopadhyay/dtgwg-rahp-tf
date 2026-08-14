@@ -56,3 +56,5 @@ Use [AI-assisted RAHP](ai-assisted-process.md) and [Use an AI agent to run a pre
 ## Historical material
 
 The [Historical Library](../archive/) retains earlier personas, requirements, registers, spreadsheets and generated views. It is provenance, not the portable RAHP method and not current deployment state.
+
+- [Personas and actor roles](personas.md)

@@ -1479,6 +1479,11 @@
       "name": "Agent Discovery Metadata Validation Failure Rate",
       "category": "Trust Integrity",
       "description": "Rate at which agent discovery metadata fails origin, integrity, endpoint-binding, freshness or deployment trust-policy validation before use.",
+      "personasWantSuppressed": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/P3",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/P5",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/P6"
+      ],
       "risksMeasured": [
         "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI05",
         "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI06"
@@ -1494,6 +1499,10 @@
       "name": "Asynchronous Callback Trust Validation Failure Rate",
       "category": "Trust Integrity",
       "description": "Rate at which attempted agent callbacks or push notifications fail destination, sender-authentication, task-binding, freshness or replay validation.",
+      "personasWantSuppressed": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/P4",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/P5"
+      ],
       "risksMeasured": [
         "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI08"
       ],
@@ -1508,6 +1517,11 @@
       "name": "Cross-Agent Delegation Scope Violation Rate",
       "category": "Trust Integrity",
       "description": "Rate at which a downstream agent attempts or performs an action outside the originating principal’s valid delegated capability, purpose, resource, time or delegation-depth constraints.",
+      "personasWantSuppressed": [
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/P1",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/P3",
+        "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/P5"
+      ],
       "risksMeasured": [
         "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI07",
         "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/id/RK-AI09"

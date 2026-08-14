@@ -74,7 +74,7 @@ This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conforman
 | Secondary dispositions | — |
 | Scenarios | — |
 | Scenario patterns | `SP-COMP-01`, `SP-INTEROP-01` |
-| Personas | — |
+| Personas | [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P4 — Intermediary / Platform Operator](../../../build/site/catalogue.html#P4) |
 | Risks | [CRK-11 — Verification UX overclaim](/rahp-toolkit/docs/cawg-risk-register.html#crk-11) |
 | Controls | — |
 | Guardrails | — |
@@ -108,7 +108,7 @@ Make the distinction between integrity/identity verification and truth/authority
 | Secondary dispositions | — |
 | Scenarios | — |
 | Scenario patterns | `SP-INCL-01`, `SP-OPS-01` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P4 — Intermediary / Platform Operator](../../../build/site/catalogue.html#P4) |
 | Risks | [CRK-13 — Accessibility and failure-state exclusion](/rahp-toolkit/docs/cawg-risk-register.html#crk-13) |
 | Controls | — |
 | Guardrails | — |

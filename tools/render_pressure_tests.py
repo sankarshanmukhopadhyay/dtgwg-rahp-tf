@@ -8,6 +8,7 @@ human-authored analysis and interpretation.
 from __future__ import annotations
 
 import argparse
+import os
 import pathlib
 import re
 import sys
@@ -22,6 +23,17 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 BEGIN = "<!-- BEGIN GENERATED PRESSURE TEST -->"
 END = "<!-- END GENERATED PRESSURE TEST -->"
 CATALOGUE_RELATIVE = "../../build/site/catalogue.html"
+
+def set_catalogue_relative(output_dir: pathlib.Path) -> None:
+    """Set the catalogue href relative to the README being rendered.
+
+    Worked reviews live at different directory depths. A fixed ../../ link works
+    for examples/a2a but breaks nested CAWG/C2PA compositions on GitHub Pages.
+    """
+    global CATALOGUE_RELATIVE
+    CATALOGUE_RELATIVE = pathlib.Path(
+        os.path.relpath(ROOT / "build/site/catalogue.html", output_dir)
+    ).as_posix()
 
 REFERENCE_FILES = {
     "risks": "risks.yaml",
@@ -272,6 +284,7 @@ def process(yaml_path: pathlib.Path, check: bool) -> bool:
         return False
 
     current = readme.read_text(encoding="utf-8")
+    set_catalogue_relative(readme.parent)
     try:
         expected = expected_readme(yaml_path, current)
     except ValueError as exc:

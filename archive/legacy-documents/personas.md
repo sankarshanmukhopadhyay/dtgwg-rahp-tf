@@ -9,7 +9,7 @@ has_toc: true
 
 > **Historical artefact.** This is a reading projection of a retained RAHP document. It is preserved for provenance and is not a current canonical RAHP source.
 
-[Download the original document](DTG RAHP - Personas.docx){: .btn .btn-primary }
+[Download the original document](DTG%20RAHP%20-%20Personas.docx){: .btn .btn-primary }
 
 # DTG RAHP - Personas
 

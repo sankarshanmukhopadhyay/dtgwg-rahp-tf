@@ -76,7 +76,7 @@ Cross-specification RAHP review: individually valid components are tested for un
 | Secondary dispositions | — |
 | Scenarios | `CAWG-003`, `CAWG-011` |
 | Scenario patterns | `SP-GOV-02`, `SP-COMP-01` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../../build/site/catalogue.html#P1), [P3 — Relying Party / Verifier](../../../../build/site/catalogue.html#P3), [P6 — Registry / Discovery / Trust-Service Operator](../../../../build/site/catalogue.html#P6) |
 | Risks | [CRK-16 — Trust-framework policy drift](/rahp-toolkit/docs/cawg-risk-register.html#crk-16) |
 | Controls | — |
 | Guardrails | — |
@@ -110,7 +110,7 @@ Bind authorization decisions to policy/version/time evidence and test historical
 | Secondary dispositions | — |
 | Scenarios | `CAWG-009` |
 | Scenario patterns | `SP-OPS-01`, `SP-COMP-01` |
-| Personas | — |
+| Personas | [P3 — Relying Party / Verifier](../../../../build/site/catalogue.html#P3), [P6 — Registry / Discovery / Trust-Service Operator](../../../../build/site/catalogue.html#P6) |
 | Risks | [CRK-15 — Registry and governing-authority availability dependency](/rahp-toolkit/docs/cawg-risk-register.html#crk-15) |
 | Controls | — |
 | Guardrails | — |

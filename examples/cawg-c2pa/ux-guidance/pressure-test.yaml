@@ -52,6 +52,9 @@ review:
     scenario_patterns:
     - SP-COMP-01
     - SP-INTEROP-01
+    personas:
+    - P3
+    - P4
   - id: F-002
     title: Accessibility and failure-state requirements are not yet strong enough for mandatory deployments
     status: open
@@ -73,3 +76,7 @@ review:
     scenario_patterns:
     - SP-INCL-01
     - SP-OPS-01
+    personas:
+    - P1
+    - P3
+    - P4

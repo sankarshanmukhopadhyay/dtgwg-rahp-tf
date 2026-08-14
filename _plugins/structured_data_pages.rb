@@ -140,6 +140,8 @@ module RahpPagesProjection
       lines << ""
       if parsed.is_a?(Hash) && parsed["corpus"].is_a?(Hash)
         lines.concat(corpus_summary(parsed["corpus"]))
+      elsif parsed.is_a?(Hash) && parsed["review"].is_a?(Hash)
+        lines.concat(review_summary(parsed["review"]))
       elsif path.end_with?("persona.jsonld") && parsed.is_a?(Hash)
         lines.concat(persona_summary(parsed))
       elsif parsed.is_a?(Hash) && parsed["@graph"].is_a?(Array)
@@ -176,6 +178,45 @@ module RahpPagesProjection
       out
     end
 
+
+    def review_summary(review)
+      target = review["target"].is_a?(Hash) ? review["target"] : {}
+      findings = Array(review["findings"]).select { |item| item.is_a?(Hash) }
+      summary = review["summary"].is_a?(Hash) ? review["summary"] : {}
+
+      out = [
+        "## Review metadata",
+        "",
+        "| Field | Value |",
+        "|---|---|",
+        "| Review ID | `#{escape_cell(review['id'])}` |",
+        "| Status | #{escape_cell(review['status'])} |",
+        "| Title | #{escape_cell(review['title'])} |",
+        "| Reviewed on | #{escape_cell(review['reviewed_on'])} |",
+        "| Target repository | `#{escape_cell(target['repository'])}` |",
+        "| Target version | #{escape_cell(target['version'])} |",
+        "| Target commit | `#{escape_cell(target['commit'])}` |",
+        "| Finding count | #{findings.length} |",
+        ""
+      ]
+
+      if summary["overall_assessment"]
+        out += ["## Overall assessment", "", format_value(summary["overall_assessment"]), ""]
+      end
+
+      unless findings.empty?
+        out += [
+          "## Finding index",
+          "",
+          "| ID | Finding | Severity | Status | Primary disposition |",
+          "|---|---|---|---|---|"
+        ]
+        findings.each do |finding|
+          out << "| `#{escape_cell(finding['id'])}` | #{escape_cell(finding['title'])} | #{escape_cell(finding['severity'])} | #{escape_cell(finding['status'])} | #{escape_cell(finding['primary_disposition'])} |"
+        end
+      end
+      out
+    end
 
     def persona_summary(parsed)
       personas = Array(parsed["@graph"]).select { |item| item.is_a?(Hash) }

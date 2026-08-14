@@ -36,7 +36,7 @@ ID_PATTERNS = {
     "US": r"US-\d{2}",
     "SC": r"SC-\d{2}",
     "EPIC": r"EPIC-\d{1,2}",
-    "PERSONA": r"\b(?:D[1-6]|M[12]|B[123]|EC[1-4][ab]?)\b",
+    "PERSONA": r"\b(?:P[1-9][0-9]*|D[1-6]|M[12]|B[123]|EC[1-4][ab]?)\b",
 }
 
 TODAY = datetime.date.today().isoformat()

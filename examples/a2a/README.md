@@ -92,7 +92,7 @@ A2A v1.0.0 has substantial protocol security foundations, including signed Agent
 | Secondary dispositions | Implementation Guidance, Governance |
 | Scenarios | — |
 | Scenario patterns | — |
-| Personas | — |
+| Personas | [P3 — Relying Party / Verifier](../../build/site/catalogue.html#P3), [P5 — Delegated Service / Agent Operator](../../build/site/catalogue.html#P5), [P6 — Registry / Discovery / Trust-Service Operator](../../build/site/catalogue.html#P6), [M1 — Aether](../../build/site/catalogue.html#M1) |
 | Risks | [RK-AI05 — Capability Advertisement Misread as Authority](../../build/site/catalogue.html#RK-AI05) |
 | Controls | [CT-68 — Capability-to-Authority Non-Inference Rule](../../build/site/catalogue.html#CT-68) |
 | Guardrails | [GR-22 — Discovery Is Not Authority](../../build/site/catalogue.html#GR-22) |
@@ -127,7 +127,7 @@ Add an explicit semantic non-inference rule: Agent Card integrity, identity/prov
 | Secondary dispositions | Implementation Guidance |
 | Scenarios | — |
 | Scenario patterns | — |
-| Personas | — |
+| Personas | [P3 — Relying Party / Verifier](../../build/site/catalogue.html#P3), [P6 — Registry / Discovery / Trust-Service Operator](../../build/site/catalogue.html#P6), [M1 — Aether](../../build/site/catalogue.html#M1) |
 | Risks | [RK-AI06 — Agent Discovery Substitution or Stale Metadata](../../build/site/catalogue.html#RK-AI06) |
 | Controls | [CT-67 — Agent Discovery Integrity and Freshness Verification](../../build/site/catalogue.html#CT-67) |
 | Guardrails | [GR-22 — Discovery Is Not Authority](../../build/site/catalogue.html#GR-22) |
@@ -162,7 +162,7 @@ Document a deployment trust profile that identifies accepted discovery authoriti
 | Secondary dispositions | Implementation Guidance |
 | Scenarios | — |
 | Scenario patterns | — |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../build/site/catalogue.html#P1), [P3 — Relying Party / Verifier](../../build/site/catalogue.html#P3), [P5 — Delegated Service / Agent Operator](../../build/site/catalogue.html#P5), [M1 — Aether](../../build/site/catalogue.html#M1) |
 | Risks | [RK-AI07 — Delegation Context Lost Across Agent Hops](../../build/site/catalogue.html#RK-AI07), [RK-AI01 — Agent Credential Scope Creep](../../build/site/catalogue.html#RK-AI01) |
 | Controls | [CT-30 — Cryptographic Delegation Scope Constraints](../../build/site/catalogue.html#CT-30), [CT-52 — Agent Delegation Credential Requirement](../../build/site/catalogue.html#CT-52), [CT-69 — End-to-End Delegation Context Propagation](../../build/site/catalogue.html#CT-69), [CT-73 — Cross-Agent Action Provenance and Correlation](../../build/site/catalogue.html#CT-73) |
 | Guardrails | [GR-12 — Agent Delegation Scope Constraint](../../build/site/catalogue.html#GR-12), [GR-13 — Agent Audit Logging](../../build/site/catalogue.html#GR-13), [GR-23 — Delegation Continuity Across Agent Boundaries](../../build/site/catalogue.html#GR-23) |
@@ -197,7 +197,7 @@ Define or normatively reference a delegation-context profile/extension that can 
 | Secondary dispositions | Implementation Guidance |
 | Scenarios | — |
 | Scenario patterns | — |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../build/site/catalogue.html#P1), [P5 — Delegated Service / Agent Operator](../../build/site/catalogue.html#P5), [M1 — Aether](../../build/site/catalogue.html#M1) |
 | Risks | [RK-AI09 — Secondary Credential Authority Laundering](../../build/site/catalogue.html#RK-AI09), [RK-AI01 — Agent Credential Scope Creep](../../build/site/catalogue.html#RK-AI01) |
 | Controls | [CT-30 — Cryptographic Delegation Scope Constraints](../../build/site/catalogue.html#CT-30), [CT-72 — Secondary Credential Audience Purpose and Delegation Constraint](../../build/site/catalogue.html#CT-72) |
 | Guardrails | [GR-12 — Agent Delegation Scope Constraint](../../build/site/catalogue.html#GR-12), [GR-25 — Secondary Credential Non-Transitivity](../../build/site/catalogue.html#GR-25) |
@@ -232,7 +232,7 @@ Define a companion credential/delegation profile or implementation contract requ
 | Secondary dispositions | — |
 | Scenarios | — |
 | Scenario patterns | — |
-| Personas | — |
+| Personas | [P4 — Intermediary / Platform Operator](../../build/site/catalogue.html#P4), [P5 — Delegated Service / Agent Operator](../../build/site/catalogue.html#P5), [M1 — Aether](../../build/site/catalogue.html#M1), [M2 — Phantom](../../build/site/catalogue.html#M2) |
 | Risks | [RK-AI08 — Asynchronous Callback Trust Failure](../../build/site/catalogue.html#RK-AI08) |
 | Controls | [CT-70 — Callback Destination Ownership and Egress Validation](../../build/site/catalogue.html#CT-70), [CT-71 — Callback Authenticity Freshness and Task Binding](../../build/site/catalogue.html#CT-71) |
 | Guardrails | [GR-24 — Asynchronous Callback Trust Boundary](../../build/site/catalogue.html#GR-24) |
@@ -267,7 +267,7 @@ Add a deployment assurance checklist/test profile covering prohibited callback d
 | Secondary dispositions | Governance |
 | Scenarios | — |
 | Scenario patterns | — |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../build/site/catalogue.html#P1), [P3 — Relying Party / Verifier](../../build/site/catalogue.html#P3), [P5 — Delegated Service / Agent Operator](../../build/site/catalogue.html#P5), [M1 — Aether](../../build/site/catalogue.html#M1) |
 | Risks | [RK-AI07 — Delegation Context Lost Across Agent Hops](../../build/site/catalogue.html#RK-AI07) |
 | Controls | [CT-73 — Cross-Agent Action Provenance and Correlation](../../build/site/catalogue.html#CT-73) |
 | Guardrails | [GR-13 — Agent Audit Logging](../../build/site/catalogue.html#GR-13), [GR-23 — Delegation Continuity Across Agent Boundaries](../../build/site/catalogue.html#GR-23) |

@@ -76,7 +76,7 @@ The 1.1 profile is a strong deployment surface but should pair implementation co
 | Secondary dispositions | — |
 | Scenarios | `CAWG-028` |
 | Scenario patterns | `SP-INTEROP-01`, `SP-COMP-01` |
-| Personas | — |
+| Personas | [P2 — Producer / Originating Actor](../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P4 — Intermediary / Platform Operator](../../../build/site/catalogue.html#P4) |
 | Risks | [CRK-28 — Implementation/specification semantic collapse](/rahp-toolkit/docs/cawg-risk-register.html#crk-28) |
 | Controls | — |
 | Guardrails | — |
@@ -110,7 +110,7 @@ Add paired generator/validator conformance vectors and explicit version-negotiat
 | Secondary dispositions | — |
 | Scenarios | `CAWG-001`, `CAWG-003` |
 | Scenario patterns | `SP-GOV-01`, `SP-FED-01` |
-| Personas | — |
+| Personas | [P2 — Producer / Originating Actor](../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P6 — Registry / Discovery / Trust-Service Operator](../../../build/site/catalogue.html#P6) |
 | Risks | [CRK-01 — Identity-validity and authority conflation](/rahp-toolkit/docs/cawg-risk-register.html#crk-01) |
 | Controls | — |
 | Guardrails | — |

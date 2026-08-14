@@ -22,16 +22,16 @@ review:
     - Claims that upstream CAWG, DIF, C2PA, GLEIF or W3C endorsed this RAHP assessment.
   method:
     workflow: docs/pressure-testing-a-spec.md
-    rule: Separate cryptographic validity, identity, authority, consent, lifecycle and relying-party trust; test both isolated
-      and composed failure states.
+    rule: Separate cryptographic validity, identity, authority, consent, lifecycle and relying-party trust; test
+      both isolated and composed failure states.
   summary:
     finding_count: 3
     open_count: 3
     by_primary_disposition:
       specification: 2
       implementation-guidance: 1
-    overall_assessment: The VC/VP branch improves portability but needs stronger trust-chain, consent-to-sign and privacy/lifecycle
-      contracts.
+    overall_assessment: The VC/VP branch improves portability but needs stronger trust-chain, consent-to-sign and
+      privacy/lifecycle contracts.
   findings:
   - id: F-001
     title: Credential restatement can amplify upstream trust
@@ -42,11 +42,12 @@ review:
     - CRK-17
     evidence:
     - source: https://github.com/decentralized-identity/cawg-identity-assertion/issues/245
-      observation: The generalized trust model explicitly contemplates issuers copying, filtering, aggregating and restating
-        upstream credentials.
-    harm: A restating issuer can make weak, stale, or context-limited evidence look like a stronger reusable identity credential.
-    recommendation: Define provenance requirements for restated claims, issuer-chain validation, evidence freshness, and limits
-      on semantic amplification.
+      observation: The generalized trust model explicitly contemplates issuers copying, filtering, aggregating and
+        restating upstream credentials.
+    harm: A restating issuer can make weak, stale, or context-limited evidence look like a stronger reusable identity
+      credential.
+    recommendation: Define provenance requirements for restated claims, issuer-chain validation, evidence freshness,
+      and limits on semantic amplification.
     retest_when:
     - Normative semantics and interoperable test vectors close this failure path.
     scenarios:
@@ -54,6 +55,11 @@ review:
     scenario_patterns:
     - SP-FED-01
     - SP-COMP-01
+    personas:
+    - P1
+    - P2
+    - P3
+    - P6
   - id: F-002
     title: Custodied signing needs per-asset actor authorization evidence
     status: open
@@ -63,11 +69,12 @@ review:
     - CRK-18
     evidence:
     - source: https://github.com/decentralized-identity/cawg-identity-assertion/issues/212
-      observation: Earlier VC/VP design work recognized custodial signing on behalf of named actors and the need to demonstrate
-        actor initiation.
-    harm: A claims aggregator or wallet custodian may be technically able to sign without sufficient proof that the named
-      actor approved the particular binding.
-    recommendation: Require a verifiable actor-intent or authorization step separable from key custody and issuer trust.
+      observation: Earlier VC/VP design work recognized custodial signing on behalf of named actors and the need
+        to demonstrate actor initiation.
+    harm: A claims aggregator or wallet custodian may be technically able to sign without sufficient proof that
+      the named actor approved the particular binding.
+    recommendation: Require a verifiable actor-intent or authorization step separable from key custody and issuer
+      trust.
     retest_when:
     - Normative semantics and interoperable test vectors close this failure path.
     scenarios:
@@ -76,6 +83,11 @@ review:
     scenario_patterns:
     - SP-AUTH-01
     - SP-AGENT-01
+    personas:
+    - P1
+    - P2
+    - P3
+    - P4
   - id: F-003
     title: Selective presentation can increase correlation or stale-status risk
     status: open
@@ -85,12 +97,12 @@ review:
     - CRK-19
     evidence:
     - source: https://cawg.io/identity/1.3-draft+vc-vp/
-      observation: The VC/VP model emphasizes portable holder-mediated presentation and multiple issuers, creating correlation
-        and lifecycle choices for validators.
-    harm: Holder-mediated credentials may disclose stable identifiers across contexts or present evidence whose status changed
-      after issuance.
-    recommendation: Define privacy guidance for pairwise/context-bound identifiers and require status/freshness handling for
-      presented credentials.
+      observation: The VC/VP model emphasizes portable holder-mediated presentation and multiple issuers, creating
+        correlation and lifecycle choices for validators.
+    harm: Holder-mediated credentials may disclose stable identifiers across contexts or present evidence whose
+      status changed after issuance.
+    recommendation: Define privacy guidance for pairwise/context-bound identifiers and require status/freshness
+      handling for presented credentials.
     retest_when:
     - Normative semantics and interoperable test vectors close this failure path.
     scenarios:
@@ -99,3 +111,8 @@ review:
     scenario_patterns:
     - SP-PRIV-01
     - SP-GOV-02
+    personas:
+    - P1
+    - P3
+    - P4
+    - P6

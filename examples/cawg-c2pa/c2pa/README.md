@@ -75,7 +75,7 @@ This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conforman
 | Secondary dispositions | — |
 | Scenarios | — |
 | Scenario patterns | `SP-COMP-01`, `SP-INTEROP-01` |
-| Personas | — |
+| Personas | [P2 — Producer / Originating Actor](../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P4 — Intermediary / Platform Operator](../../../build/site/catalogue.html#P4) |
 | Risks | [CRK-01 — Identity-validity and authority conflation](/rahp-toolkit/docs/cawg-risk-register.html#crk-01) |
 | Controls | — |
 | Guardrails | — |
@@ -109,7 +109,7 @@ Mandate profiles should define decision semantics above C2PA validation, includi
 | Secondary dispositions | — |
 | Scenarios | — |
 | Scenario patterns | `SP-COMP-01`, `SP-INTEROP-01` |
-| Personas | — |
+| Personas | [P2 — Producer / Originating Actor](../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P4 — Intermediary / Platform Operator](../../../build/site/catalogue.html#P4) |
 | Risks | [CRK-12 — Required-evidence downgrade ambiguity](/rahp-toolkit/docs/cawg-risk-register.html#crk-12) |
 | Controls | — |
 | Guardrails | — |

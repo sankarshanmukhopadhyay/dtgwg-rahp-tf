@@ -75,7 +75,7 @@ This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conforman
 | Secondary dispositions | — |
 | Scenarios | — |
 | Scenario patterns | `SP-FED-01`, `SP-GOV-03` |
-| Personas | — |
+| Personas | [P2 — Producer / Originating Actor](../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P6 — Registry / Discovery / Trust-Service Operator](../../../build/site/catalogue.html#P6) |
 | Risks | [CRK-10 — Trust-anchor concentration and participation exclusion](/rahp-toolkit/docs/cawg-risk-register.html#crk-10) |
 | Controls | — |
 | Guardrails | — |
@@ -109,7 +109,7 @@ Mandates should pair the profile with an explicit trust policy defining accepted
 | Secondary dispositions | — |
 | Scenarios | — |
 | Scenario patterns | `SP-GOV-01`, `SP-RECOV-01` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P2 — Producer / Originating Actor](../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P6 — Registry / Discovery / Trust-Service Operator](../../../build/site/catalogue.html#P6) |
 | Risks | [CRK-09 — Stale delegated or organizational authority](/rahp-toolkit/docs/cawg-risk-register.html#crk-09) |
 | Controls | — |
 | Guardrails | — |

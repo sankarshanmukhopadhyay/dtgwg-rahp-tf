@@ -93,6 +93,12 @@ has_toc: true
 
 ## Unreleased — scenario-driven RAHP and JTD documentation
 
+### Portable persona layer
+
+- Add reusable `P1`–`P6` personas for principals/rights-bearing parties, producers, relying parties, intermediaries, delegated service/agent operators, and registry/discovery/trust-service operators.
+- Apply portable personas at finding level across the C2PA/CAWG and A2A worked pressure tests, while retaining machine-agent personas where behaviour is independently relevant.
+- Extend persona namespace validation/import handling and document when portable roles versus DTG-specific personas should be used.
+
 ### Agent-protocol assurance example
 
 - Add a worked RAHP pressure test of **Agent2Agent (A2A) Protocol v1.0.0**, pinned to upstream commit `1eb4aa03b07589d3a00ce7deab0dde679120ed30`.

@@ -1,14 +1,13 @@
 severity:
-  description: Worst credible consequence if the risk is realised. Critical is not
-    a higher number on the same scale — it marks a risk whose non-zero incidence is
-    unacceptable regardless of likelihood, and which therefore must be addressed by
-    a guardrail rather than scored and tolerated.
+  description: Worst credible consequence if the risk is realised. Critical is not a higher number on the same
+    scale — it marks a risk whose non-zero incidence is unacceptable regardless of likelihood, and which therefore
+    must be addressed by a guardrail rather than scored and tolerated.
   values:
   - value: Critical
     score: null
     absolute: true
-    definition: Non-zero incidence is unacceptable. Legal, criminal or safeguarding
-      consequence. MUST be gated by a guardrail; may not be risk-accepted.
+    definition: Non-zero incidence is unacceptable. Legal, criminal or safeguarding consequence. MUST be gated
+      by a guardrail; may not be risk-accepted.
   - value: High
     score: 3
     definition: Serious, difficult-to-reverse harm to people or to trust graph integrity.
@@ -19,8 +18,7 @@ severity:
     score: 1
     definition: Limited or readily reversible harm.
 likelihood:
-  description: Probability of occurrence over the assessed lifecycle phase, absent
-    controls.
+  description: Probability of occurrence over the assessed lifecycle phase, absent controls.
   values:
   - value: High
     score: 3
@@ -34,14 +32,13 @@ likelihood:
 risk_score:
   formula: severity.score * likelihood.score
   range: 1-9
-  note: Risks with severity Critical have no numeric score by design. Do not coerce
-    them to 9.
+  note: Risks with severity Critical have no numeric score by design. Do not coerce them to 9.
 standards_priority:
   values:
   - value: must_address
     display: Must address
-    definition: Requires a normative provision or an explicit, signed risk acceptance
-      before the affected phase opens.
+    definition: Requires a normative provision or an explicit, signed risk acceptance before the affected phase
+      opens.
   - value: should_address
     display: Should address
     definition: Requires a recommendation or documented rationale for omission.
@@ -66,8 +63,7 @@ standards_status:
   - value: unassigned
     definition: Not yet triaged.
 normative_language:
-  description: RFC 2119 / RFC 8174 keyword proposed for this item, where a status
-    has been assigned.
+  description: RFC 2119 / RFC 8174 keyword proposed for this item, where a status has been assigned.
   values:
   - MUST
   - MUST NOT
@@ -86,15 +82,16 @@ persona_type:
   values:
   - value: legitimate_user
     definition: A participant the system is intended to serve.
+  - value: portable_role
+    definition: A reusable institutional or technical actor role that recurs across protocols and deployments;
+      use deployment-specific personas when local lived experience materially changes the assurance question.
   - value: machine_agent
-    definition: A non-human actor operating under delegated authority — benign or
-      adversarial.
+    definition: A non-human actor operating under delegated authority — benign or adversarial.
   - value: bad_actor
-    definition: An adversary whose capability must be calibrated to what is realistic,
-      not maximal.
+    definition: An adversary whose capability must be calibrated to what is realistic, not maximal.
   - value: edge_case
-    definition: An extreme user whose participation pathway is materially harder than
-      the mainstream case. Extreme users define requirements; middle cases do not.
+    definition: An extreme user whose participation pathway is materially harder than the mainstream case.
+      Extreme users define requirements; middle cases do not.
 risk_acceptance_decision:
   values:
   - value: accepted
@@ -104,8 +101,7 @@ risk_acceptance_decision:
   - value: rejected
     definition: Not accepted; mitigation required before the phase gate opens.
   - value: pending
-    definition: Recorded as requiring a decision; no authority has yet ruled. Not
-      an acceptance.
+    definition: Recorded as requiring a decision; no authority has yet ruled. Not an acceptance.
 governance_precedent_status:
   values:
   - proposed
@@ -113,8 +109,7 @@ governance_precedent_status:
   - superseded
   - reversed
 finding_disposition:
-  description: Primary control plane or resolution state for a specification-review
-    finding.
+  description: Primary control plane or resolution state for a specification-review finding.
   values:
   - specification
   - companion-specification
@@ -159,22 +154,19 @@ security_propagation:
   - community
   - systemic
 external_alignment_relationship:
-  description: Strength of the relationship between a RAHP security finding and an
-    external standard or guidance source.
+  description: Strength of the relationship between a RAHP security finding and an external standard or guidance
+    source.
   values:
   - value: direct
-    description: The external source explicitly addresses substantially the same security
-      requirement or mechanism.
+    description: The external source explicitly addresses substantially the same security requirement or mechanism.
   - value: supports
-    description: The external source supplies a control, principle, or assurance objective
-      that supports the recommended hardening.
+    description: The external source supplies a control, principle, or assurance objective that supports the
+      recommended hardening.
   - value: analogous
-    description: The external threat/control is a close analogue but was not written
-      for the DTG/Trust Tasks context.
+    description: The external threat/control is a close analogue but was not written for the DTG/Trust Tasks
+      context.
   - value: contextual
-    description: The source provides useful background or framing but does not independently
-      support the finding.
-
+    description: The source provides useful background or framing but does not independently support the finding.
 rule_profile_status:
   values:
   - proposed

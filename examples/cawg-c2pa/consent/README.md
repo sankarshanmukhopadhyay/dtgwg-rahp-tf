@@ -74,7 +74,7 @@ This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conforman
 | Secondary dispositions | — |
 | Scenarios | — |
 | Scenario patterns | `SP-GOV-01`, `SP-GOV-03`, `SP-COMP-01` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P2 — Producer / Originating Actor](../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P5 — Delegated Service / Agent Operator](../../../build/site/catalogue.html#P5) |
 | Risks | [CRK-07 — Consent authority and representation ambiguity](/rahp-toolkit/docs/cawg-risk-register.html#crk-07) |
 | Controls | — |
 | Guardrails | — |
@@ -108,7 +108,7 @@ Before mandate use, define actor/authority classes, representation/delegation ru
 | Secondary dispositions | — |
 | Scenarios | — |
 | Scenario patterns | `SP-GOV-02`, `SP-OPS-01`, `SP-INTEROP-01` |
-| Personas | — |
+| Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P2 — Producer / Originating Actor](../../../build/site/catalogue.html#P2), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P5 — Delegated Service / Agent Operator](../../../build/site/catalogue.html#P5) |
 | Risks | [CRK-06 — Permission precedence and lifecycle conflict](/rahp-toolkit/docs/cawg-risk-register.html#crk-06) |
 | Controls | — |
 | Guardrails | — |
