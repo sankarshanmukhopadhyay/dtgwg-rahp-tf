@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "affected_reviews": [
+      "trust-tasks-spec",
+      "dtg-credential-spec",
+      "cross-spec-composition"
+    ],
+    "body": "## Why this needs RAHP review\n\nA selected upstream issue changed after the last observed state for the **dtg** deployment. GitHub issue discussion is not normative input, but the change may alter assumptions used by affected RAHP reviews.\n\n- Upstream: `trustoverip/dtgwg-trust-tasks-tf#173`\n- Theme: `cross-specification`\n- Affected reviews: trust-tasks-spec, dtg-credential-spec, cross-spec-composition\n- Previous observed state: `{'comments': 9, 'state': 'open', 'title': 'DTG Core Credentials now cites this framework normatively for its taskContext binding (pinned to existing mechanisms; one small optional ask)', 'updated_at': '2026-08-13T20:01:00Z'}`\n- Current observed state: `{'updated_at': '2026-08-15T00:58:00Z', 'state': 'open', 'title': 'DTG Core Credentials now cites this framework normatively for its taskContext binding (pinned to existing mechanisms; one small optional ask)', 'comments': 12}`\n\nReview the discussion and any resulting branch/spec changes before re-baselining the affected assessment.",
+    "labels": [
+      "assessment-required",
+      "dtg-instance"
+    ],
+    "source": "upstream-issue",
+    "theme": "cross-specification",
+    "title": "[DTG assessment] upstream issue trustoverip/dtgwg-trust-tasks-tf#173 changed @ 2026-08-15T00-58-00Z",
+    "upstream_issue": 173,
+    "upstream_repository": "trustoverip/dtgwg-trust-tasks-tf"
+  },
+  {
+    "affected_reviews": [
+      "trust-tasks-spec",
+      "security-hardening/trust-tasks",
+      "cross-spec-composition"
+    ],
+    "body": "## Why this needs RAHP review\n\nA selected upstream issue changed after the last observed state for the **dtg** deployment. GitHub issue discussion is not normative input, but the change may alter assumptions used by affected RAHP reviews.\n\n- Upstream: `trustoverip/dtgwg-trust-tasks-tf#205`\n- Theme: `authorization`\n- Affected reviews: trust-tasks-spec, security-hardening/trust-tasks, cross-spec-composition\n- Previous observed state: `{'comments': 0, 'state': 'open', 'title': 'Generalize the identity/proof-versus-authorization boundary across all Trust Tasks', 'updated_at': '2026-08-10T00:18:18Z'}`\n- Current observed state: `{'updated_at': '2026-08-15T01:12:49Z', 'state': 'closed', 'title': 'Generalize the identity/proof-versus-authorization boundary across all Trust Tasks', 'comments': 0}`\n\nReview the discussion and any resulting branch/spec changes before re-baselining the affected assessment.",
+    "labels": [
+      "assessment-required",
+      "dtg-instance"
+    ],
+    "source": "upstream-issue",
+    "theme": "authorization",
+    "title": "[DTG assessment] upstream issue trustoverip/dtgwg-trust-tasks-tf#205 changed @ 2026-08-15T01-12-49Z",
+    "upstream_issue": 205,
+    "upstream_repository": "trustoverip/dtgwg-trust-tasks-tf"
+  }
+]

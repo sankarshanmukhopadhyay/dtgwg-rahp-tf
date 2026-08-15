@@ -25,10 +25,10 @@
       "updated_at": "2026-08-06T00:34:28Z"
     },
     "trustoverip/dtgwg-trust-tasks-tf#173": {
-      "comments": 9,
+      "comments": 12,
       "state": "open",
       "title": "DTG Core Credentials now cites this framework normatively for its taskContext binding (pinned to existing mechanisms; one small optional ask)",
-      "updated_at": "2026-08-13T20:01:00Z"
+      "updated_at": "2026-08-15T00:58:00Z"
     },
     "trustoverip/dtgwg-trust-tasks-tf#202": {
       "comments": 0,
@@ -50,9 +50,9 @@
     },
     "trustoverip/dtgwg-trust-tasks-tf#205": {
       "comments": 0,
-      "state": "open",
+      "state": "closed",
       "title": "Generalize the identity/proof-versus-authorization boundary across all Trust Tasks",
-      "updated_at": "2026-08-10T00:18:18Z"
+      "updated_at": "2026-08-15T01:12:49Z"
     },
     "trustoverip/dtgwg-trust-tasks-tf#206": {
       "comments": 0,
