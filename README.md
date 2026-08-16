@@ -17,7 +17,7 @@ RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-test
 | Run a security/adversarial review | [Security and hardening review](docs/security-hardening-review.md) |
 | Run both lenses together | [Review modes](docs/review-modes.md) |
 | Exercise scenario stress conditions | [Scenario-driven pressure testing](docs/scenario-driven-pressure-testing.md) |
-| Use AI assistance with human accountability | [AI-assisted RAHP](docs/ai-assisted-process.md) |
+| Use AI assistance with human accountability | [AI-assisted RAHP](docs/ai-assisted-process.md) and [AI use and accountability](#ai-assisted-use-and-accountability) |
 | Understand portability and deployment boundaries | [Portability](docs/portability.md) |
 | Inspect the CAWG/C2PA external deployment | [CAWG/C2PA instance](docs/cawg-instance.md) |
 | Inspect the bundled DTG exemplar | [DTG instance](docs/dtg-instance.md) |
@@ -90,6 +90,48 @@ python3 tools/review.py --help
 ```
 
 A reviewer may run `rahp`, `security`, or `combined` mode. The tooling scaffolds, validates and renders review evidence; it does not replace the human judgement needed to produce defensible findings.
+
+## AI-assisted use and accountability
+
+RAHP may be used with AI systems to assist activities such as corpus review, change analysis, scenario generation, cross-reference discovery, evidence organization, review preparation and drafting candidate findings or recommendations.
+
+AI assistance does **not** change the assurance boundary:
+
+- AI-generated output is not, by itself, assurance evidence.
+- AI-generated analysis does not become a RAHP finding or disposition without human review.
+- Durable findings should remain traceable to the reviewed source material, RAHP catalogue entries and supporting evidence.
+- Human reviewers remain accountable for assessment scope, interpretation, evidence quality, conclusions, recommendations and disposition.
+- Where AI materially influences a durable assessment, reviewers should record that assistance at an appropriate level of detail.
+
+RAHP does not require logging every incidental use of AI tooling. The goal is to preserve meaningful provenance, not complete prompt or conversation histories. When AI assistance materially affects an assessment, a record may identify its purpose and confirm human review without retaining prompts, hidden reasoning, model transcripts or other unnecessary execution exhaust.
+
+For example:
+
+```yaml
+assistance:
+  ai_used: true
+  purposes:
+    - change-analysis
+    - cross-reference-discovery
+    - draft-finding-generation
+  human_reviewed: true
+  notes: >
+    AI assistance was used to identify candidate impacts and draft
+    review text. Findings and dispositions were independently reviewed
+    against source material by the assessor.
+```
+
+The intended accountability chain is:
+
+```text
+source evidence
+  → AI-assisted interpretation or candidate analysis
+  → human review
+  → finding
+  → disposition
+```
+
+This follows the same principle as RAHP's monitoring workflow: an automated observation or candidate analysis may trigger review, but it does not automatically become a finding. See [AI-assisted RAHP](docs/ai-assisted-process.md).
 
 ## v0.6 external deployment proof: CAWG/C2PA
 
