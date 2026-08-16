@@ -31,6 +31,8 @@ jobs:
 
       - name: Validate v0.9 project identity
         run: python3 tools/validate_project_identity.py
+      - name: Validate v0.9 release metadata
+        run: python3 tools/validate_release_metadata.py
 
       - name: Test source-monitor resilience
         run: python3 -m unittest discover -s tests -p 'test_*.py'

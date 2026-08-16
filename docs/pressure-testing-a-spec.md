@@ -89,7 +89,7 @@ review:
     version: 1.2-draft
     commit: <full-40-character-commit-sha>
   reviewed_against:
-    rahp_version: v0.8.0
+    rahp_version: v0.9.0
   findings:
     - id: F-001
       title: Concise finding

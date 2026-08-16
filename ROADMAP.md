@@ -26,7 +26,7 @@ Key boundary:
 
 `method + schemas + fixtures → conforming engine → normalized result → retention/disposition`
 
-Next candidate: **v0.9 TypeScript reference SDK**, with generated types, graph traversal and programmatic APIs implemented against this contract. Rust/WASM remains a later option when static-binary, embedding or performance requirements justify a second implementation.
+Implemented in **v0.9**: the TypeScript reference SDK, graph traversal, programmatic APIs and Python↔TypeScript differential conformance gate now exercise this contract. Rust/WASM remains a later option when static-binary, embedding or performance requirements justify another implementation.
 
 ---
 
