@@ -66,6 +66,9 @@ jobs:
       - name: Validate selected issue-watch registries
         run: python3 tools/validate_issue_watch_registries.py
 
+      - name: Validate durable assessment queue state
+        run: python3 tools/validate_assessment_queue.py
+
       - name: Validate CAWG mandate-readiness rendering
         run: python3 tools/render_cawg_readiness.py --check
 

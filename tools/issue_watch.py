@@ -92,7 +92,10 @@ def watch(registry_path: pathlib.Path, state_path: pathlib.Path, events_path: pa
         old = state["observed"].get(key)
         if old and old != snap:
             revision = (snap.get("updated_at") or "unknown").replace(":", "-")
-            event_title = f"[{registry.get('instance', 'RAHP').upper()} assessment] upstream issue {key} changed @ {revision}"
+            instance_id = registry.get("instance", "external")
+            event_title = f"[{instance_id.upper()} assessment] upstream issue {key} changed @ {revision}"
+            assessment_key = f"{instance_id}:issue:{key}"
+            related_assessment_key = f"{instance_id}:repository:{repo}"
             theme = item.get("theme", "unspecified")
             affected = item.get("affected_reviews", [])
             body = (
@@ -116,6 +119,11 @@ def watch(registry_path: pathlib.Path, state_path: pathlib.Path, events_path: pa
                     "upstream_issue": number,
                     "theme": theme,
                     "affected_reviews": affected,
+                    "assessment_key": assessment_key,
+                    "related_assessment_key": related_assessment_key,
+                    "observed_at": snap.get("updated_at"),
+                    "previous_observation": old,
+                    "current_observation": snap,
                 }
             )
         state["observed"][key] = snap

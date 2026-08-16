@@ -42,6 +42,8 @@ issues:
             self.assertEqual(out[0]["labels"], ["assessment-required", "cawg-instance"])
             self.assertEqual(out[0]["upstream_repository"], "example/cawg")
             self.assertEqual(out[0]["upstream_issue"], 1)
+            self.assertEqual(out[0]["assessment_key"], "cawg:issue:example/cawg#1")
+            self.assertEqual(out[0]["related_assessment_key"], "cawg:repository:example/cawg")
 
     def test_dtg_style_per_issue_repositories_and_labels(self):
         with tempfile.TemporaryDirectory() as td:
@@ -82,6 +84,8 @@ issues:
             self.assertEqual(out[0]["labels"], ["assessment-required", "dtg-instance"])
             self.assertEqual(out[0]["upstream_repository"], "example/trust-tasks")
             self.assertIn("example/trust-tasks#205", out[0]["title"])
+            self.assertEqual(out[0]["assessment_key"], "dtg:issue:example/trust-tasks#205")
+            self.assertEqual(out[0]["related_assessment_key"], "dtg:repository:example/trust-tasks")
 
     def test_legacy_yaml_state_at_json_path_is_migrated(self):
         with tempfile.TemporaryDirectory() as td:

@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "baselined_at": "2026-08-16T06:08:00+05:30",
+  "open_generated_assessments": [],
+  "dispositions": [
+    {
+      "assessment_id": "DTG-AR-2026-001",
+      "assessment_key": "dtg:repository:trustoverip/dtgwg-trust-tasks-tf",
+      "review": "instances/dtg/reviews/2026-08-trust-tasks.md",
+      "reviewed_revision": "8eb7509ffabf6cc095eec20cb7d8d0120ff59ef3",
+      "rahp_issues": [1, 3, 4],
+      "disposition": "findings-raised"
+    },
+    {
+      "assessment_id": "DTG-AR-2026-002",
+      "assessment_key": "dtg:repository:OpenVTC/verifiable-trust-infrastructure",
+      "review": "instances/dtg/reviews/2026-08-verifiable-trust-infrastructure.md",
+      "reviewed_revision": "1c20e3157597952d174fa2e884609f5b938923be",
+      "rahp_issues": [2],
+      "disposition": "findings-raised"
+    }
+  ]
+}

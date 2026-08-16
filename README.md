@@ -1,7 +1,7 @@
 # RAHP Toolkit
 
 **Risk Assessment & Harms Prevention**  
-Release v0.7.0 · CC-BY 4.0
+Release v0.7.1 · CC-BY 4.0
 
 RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-testing standards and technical specifications against risks, human harms, governance weaknesses and adversarial/security failure conditions. It provides a reusable method, configuration contract, review tooling, scenario patterns, source-change monitoring, validators and evidence rendering.
 
@@ -22,7 +22,7 @@ RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-test
 | Inspect the CAWG/C2PA external deployment | [CAWG/C2PA instance](docs/cawg-instance.md) |
 | Inspect the bundled DTG exemplar | [DTG instance](docs/dtg-instance.md) |
 | Inspect the A2A agent-protocol example | [A2A worked example](docs/a2a-example.md) |
-| Read the current release | [v0.7.0 release notes](docs/releases/v0.7.0.md) |
+| Read the current release | [v0.7.1 release notes](docs/releases/v0.7.1.md) |
 
 ## The v0.7 architecture
 
@@ -36,7 +36,7 @@ flowchart TB
   E --> R[RAHP / Security / Combined review]
   R --> O[Evidence · findings · retest triggers]
   E --> W[Source-change monitoring]
-  W --> Q[assessment-required issue queue]
+  W --> Q[coalesced assessment work queue]
 
   E --> D1[DTG exemplar deployment]
   E --> D2[CAWG/C2PA external deployment]
@@ -140,6 +140,10 @@ These counts are checked by `tools/validate.py`. DTG governance work such as `RP
 
 v0.7 deepens the external CAWG/C2PA deployment with a 36-scenario corpus, experimental-branch and cross-specification reviews, CAWG-local security/combined reviews, issue-aware situational monitoring, and a rendered mandate-readiness view. The deployment remains independent of DTG governance and identifiers. See [v0.7.0 release notes](docs/releases/v0.7.0.md), [CAWG/C2PA mandate readiness](docs/cawg-mandate-readiness.md), and [CAWG instance](docs/cawg-instance.md).
 
+## v0.7.1: assessment queue consolidation
+
+v0.7.1 hardens the situational-assurance loop introduced in v0.7.0. Assessment work now has a stable key independent of event titles; repeated material repository revisions advance an open work item; watched upstream issues can attach as triggers to the repository assessment they affect; and durable DTG review records capture disposition and reviewed revision. The release dispositions the initial four generated DTG queue issues and establishes reviewed baselines for Trust Tasks and Verifiable Trust Infrastructure. See [v0.7.1 release notes](docs/releases/v0.7.1.md).
+
 ## Quick start
 
 ```bash
@@ -161,7 +165,7 @@ python3 tools/validate_reference_links.py
 
 ## Change monitoring
 
-`tools/instance_monitor.py` provides reusable `repository@branch` source monitoring for static deployment profiles, while the DTG adapter additionally discovers its portfolio perimeter. `tools/issue_watch.py` provides a second, allow-listed early-warning channel for upstream architecture/governance issues. Both bundled deployments now use issue-aware monitoring with independent registries and state. `tools/publish_assessment_issues.py` converts material source or selected-issue change events into deduplicated review-queue issues.
+`tools/instance_monitor.py` provides reusable `repository@branch` source monitoring for static deployment profiles, while the DTG adapter additionally discovers its portfolio perimeter. `tools/issue_watch.py` provides a second, allow-listed early-warning channel for upstream architecture/governance issues. Both bundled deployments now use issue-aware monitoring with independent registries and state. `tools/publish_assessment_issues.py` converts material source or selected-issue observations into stable assessment work items. v0.7.1 coalesces repeated repository revisions and related watched-issue triggers into an existing open assessment when possible, preserving event provenance without creating one GitHub issue per observation.
 
 A change issue means **the assessment baseline is stale**, not that a specification is defective. A reviewer must inspect the diff and decide whether RAHP, security or combined evidence requires revision.
 

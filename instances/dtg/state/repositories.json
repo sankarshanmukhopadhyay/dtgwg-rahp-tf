@@ -2,9 +2,9 @@
   "version": 1,
   "repositories": {
     "trustoverip/dtgwg-trust-tasks-tf": {
-      "sha": "bcc75f5837bd92bbf81f7755aa5842de7bcd6f8b",
+      "sha": "8eb7509ffabf6cc095eec20cb7d8d0120ff59ef3",
       "status": "active",
-      "observed_at": "2026-08-15T03:24:49.577083+00:00"
+      "observed_at": "2026-08-16T00:38:00+00:00"
     },
     "trustoverip/dtgwg-htx-tf": {
       "sha": "820a3b63a73392ae9972a6339f69b70965c31b09",
@@ -67,7 +67,7 @@
     "OpenVTC/verifiable-trust-infrastructure": {
       "sha": "1c20e3157597952d174fa2e884609f5b938923be",
       "status": "active",
-      "observed_at": "2026-08-15T03:24:57.526252+00:00"
+      "observed_at": "2026-08-16T00:38:00+00:00"
     },
     "sankarshanmukhopadhyay/dtgwg-cred-tf": {
       "sha": "200acbaa47a422b173652ed2c3dc961c4fbc9e7a",

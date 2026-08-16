@@ -6,6 +6,18 @@ has_toc: true
 ---
 # RAHP Toolkit Roadmap
 
+## v0.7.1 — Assessment Queue Consolidation (complete)
+
+v0.7.1 closes the operational gap exposed by the first live situational-assurance queue: an observation is not automatically a new assessment. Repository and selected-issue events now carry stable assessment identity, related triggers coalesce into an open repository assessment, and durable review records preserve the reviewed revision and disposition.
+
+Status: release baseline; the initial DTG generated queue is dispositioned through two durable assessments, while unresolved upstream dependencies remain watched without being confused with independent RAHP findings.
+
+Key execution model established for the next engine boundary:
+
+`source → observation → trigger → assessment → finding → disposition → baseline`
+
+---
+
 ## v0.7.0 — Composition and Situational Assurance (complete)
 
 CAWG/C2PA now exercises scenario-driven, cross-specification, security and combined review modes with mandate-readiness evidence, while both CAWG/C2PA and DTG use deployment-owned selected-issue situational monitoring alongside repository drift.

@@ -6,6 +6,25 @@ has_toc: true
 ---
 # Changelog
 
+## v0.7.1 — 2026-08-16
+
+### Added
+- Stable assessment keys for repository-change and selected-issue observations.
+- Durable DTG assessment records for the Trust Tasks and Verifiable Trust Infrastructure change windows.
+- DTG assessment-queue state linking generated GitHub issues to durable review records and reviewed revisions.
+- Queue-behaviour tests covering stable keys, legacy marker migration, repository correlation and trigger idempotence.
+
+### Changed
+- Rework assessment issue publication from title-based event deduplication to work-item coalescing.
+- Related selected-issue events now carry a repository assessment correlation key so situational triggers can enrich an existing open repository assessment.
+- Repository monitors now emit stable assessment identity independently of the current SHA or issue title.
+- Advance the DTG Trust Tasks reviewed baseline through `8eb7509ffabf6cc095eec20cb7d8d0120ff59ef3`; retain `1c20e3157597952d174fa2e884609f5b938923be` as the reviewed Verifiable Trust Infrastructure baseline.
+- Re-baseline selected Trust Tasks issue-watch state through the observations used for this release, including the still-open task-control/corrigibility discussion.
+
+### Dispositioned
+- RAHP toolkit issues #1, #3 and #4 through consolidated assessment `DTG-AR-2026-001`.
+- RAHP toolkit issue #2 through assessment `DTG-AR-2026-002`.
+
 ## v0.7.0 — 2026-08-14
 
 - Deepen CAWG/C2PA coverage with scenario, composition, experimental-branch, security and combined review evidence.

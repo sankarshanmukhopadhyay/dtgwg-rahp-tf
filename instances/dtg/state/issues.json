@@ -25,28 +25,28 @@
       "updated_at": "2026-08-06T00:34:28Z"
     },
     "trustoverip/dtgwg-trust-tasks-tf#173": {
-      "comments": 12,
+      "comments": 13,
       "state": "open",
       "title": "DTG Core Credentials now cites this framework normatively for its taskContext binding (pinned to existing mechanisms; one small optional ask)",
-      "updated_at": "2026-08-15T00:58:00Z"
+      "updated_at": "2026-08-15T22:11:15Z"
     },
     "trustoverip/dtgwg-trust-tasks-tf#202": {
       "comments": 0,
-      "state": "open",
+      "state": "closed",
       "title": "Make duplicate-execution protection normative for consequential Trust Tasks",
-      "updated_at": "2026-08-10T00:14:33Z"
+      "updated_at": "2026-08-15T07:42:44Z"
     },
     "trustoverip/dtgwg-trust-tasks-tf#203": {
       "comments": 0,
-      "state": "open",
+      "state": "closed",
       "title": "Define execution-time validity checks for consequential and delegated Trust Tasks",
-      "updated_at": "2026-08-10T00:15:43Z"
+      "updated_at": "2026-08-15T08:51:29Z"
     },
     "trustoverip/dtgwg-trust-tasks-tf#204": {
-      "comments": 0,
+      "comments": 2,
       "state": "open",
       "title": "Define semantic cancellation, suspension, and supersession for in-flight Trust Tasks",
-      "updated_at": "2026-08-10T00:16:56Z"
+      "updated_at": "2026-08-16T00:30:24Z"
     },
     "trustoverip/dtgwg-trust-tasks-tf#205": {
       "comments": 0,
@@ -56,9 +56,9 @@
     },
     "trustoverip/dtgwg-trust-tasks-tf#206": {
       "comments": 0,
-      "state": "open",
+      "state": "closed",
       "title": "Require transport bindings to justify any allowance to omit an in-band proof",
-      "updated_at": "2026-08-10T00:19:26Z"
+      "updated_at": "2026-08-15T08:01:02Z"
     }
   },
   "version": 1

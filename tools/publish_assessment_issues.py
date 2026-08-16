@@ -1,8 +1,24 @@
 #!/usr/bin/env python3
-"""Publish RAHP change-monitor events as deduplicated GitHub issues."""
+"""Publish RAHP assessment events as stable, coalesced GitHub work items.
+
+v0.7.1 separates *observations* from *assessment work items*. Repeated material
+repository deltas and watched-issue activity should enrich an existing open
+assessment whenever possible rather than create one issue per observation.
+"""
 from __future__ import annotations
-import argparse, json, os, urllib.error, urllib.parse, urllib.request
+
+import argparse
+import json
+import os
+import re
+import urllib.error
+import urllib.parse
+import urllib.request
 from pathlib import Path
+from typing import Any
+
+KEY_RE = re.compile(r"<!--\s*rahp-assessment-key:([^>]+?)\s*-->")
+LEGACY_DTG_RE = re.compile(r"<!--\s*rahp-dtg-change:([^@>]+)@[^>]+-->")
 
 
 def request(method: str, url: str, token: str, payload=None):
@@ -10,7 +26,7 @@ def request(method: str, url: str, token: str, payload=None):
     req = urllib.request.Request(url, data=data, method=method, headers={
         "Accept": "application/vnd.github+json",
         "Authorization": f"Bearer {token}",
-        "User-Agent": "rahp-assessment-issue-publisher/0.7",
+        "User-Agent": "rahp-assessment-issue-publisher/0.7.1",
         "X-GitHub-Api-Version": "2022-11-28",
     })
     try:
@@ -36,18 +52,88 @@ def ensure_label(repo: str, label: str, token: str):
             {"name": label, "color": palette.get(label, "6f42c1"), "description": "RAHP automated assessment workflow"})
 
 
-def existing_titles(repo: str, token: str) -> set[str]:
-    titles = set()
+def infer_issue_keys(issue: dict[str, Any]) -> set[str]:
+    """Return explicit keys plus the v0.7 DTG repository key when inferable."""
+    body = issue.get("body") or ""
+    keys = {m.group(1).strip() for m in KEY_RE.finditer(body)}
+    for match in LEGACY_DTG_RE.finditer(body):
+        keys.add(f"dtg:repository:{match.group(1).strip()}")
+    return keys
+
+
+def existing_issues(repo: str, token: str) -> list[dict[str, Any]]:
+    issues: list[dict[str, Any]] = []
     page = 1
     while page <= 5:
         items = request("GET", f"https://api.github.com/repos/{repo}/issues?state=all&per_page=100&page={page}", token)
         if not items:
             break
-        titles.update(i.get("title", "") for i in items if "pull_request" not in i)
+        issues.extend(i for i in items if "pull_request" not in i)
         if len(items) < 100:
             break
         page += 1
-    return titles
+    return issues
+
+
+def open_issue_by_key(issues: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    index: dict[str, dict[str, Any]] = {}
+    for issue in issues:
+        if issue.get("state") != "open":
+            continue
+        for key in infer_issue_keys(issue):
+            index.setdefault(key, issue)
+    return index
+
+
+def event_marker(event: dict[str, Any]) -> str:
+    key = event.get("assessment_key") or "unkeyed"
+    stamp = event.get("observed_at") or event.get("new") or "unknown"
+    return f"<!-- rahp-trigger:{key}@{stamp} -->"
+
+
+def trigger_appendix(event: dict[str, Any]) -> str:
+    marker = event_marker(event)
+    source = event.get("source", "assessment-event")
+    lines = [
+        "",
+        "---",
+        "",
+        "## Additional assessment trigger",
+        "",
+        marker,
+        f"- Source: `{source}`",
+    ]
+    if event.get("upstream_repository") and event.get("upstream_issue"):
+        lines.append(f"- Upstream issue: `{event['upstream_repository']}#{event['upstream_issue']}`")
+    if event.get("repository"):
+        lines.append(f"- Repository: `{event['repository']}`")
+    if event.get("old") and event.get("new"):
+        lines.append(f"- Additional revision window: `{event['old']}` → `{event['new']}`")
+    if event.get("theme"):
+        lines.append(f"- Theme: `{event['theme']}`")
+    if event.get("affected_reviews"):
+        lines.append(f"- Affected reviews: {', '.join(event['affected_reviews'])}")
+    lines.extend([
+        "",
+        "This observation has been coalesced into the open assessment. Review the new delta or discussion before dispositioning the work item.",
+    ])
+    return "\n".join(lines)
+
+
+def coalesce_issue(repo: str, issue: dict[str, Any], event: dict[str, Any], token: str) -> bool:
+    body = issue.get("body") or ""
+    marker = event_marker(event)
+    if marker in body:
+        print(f"[dedupe-trigger] #{issue.get('number')} {marker}")
+        return False
+    new_body = body.rstrip() + "\n" + trigger_appendix(event) + "\n"
+    payload: dict[str, Any] = {"body": new_body}
+    # Repository-change events advance the visible work-item revision window.
+    if event.get("source") == "repository-change" and event.get("title"):
+        payload["title"] = event["title"]
+    request("PATCH", f"https://api.github.com/repos/{repo}/issues/{issue['number']}", token, payload)
+    print(f"[coalesced] #{issue.get('number')} <- {event.get('assessment_key')}")
+    return True
 
 
 def main() -> int:
@@ -62,21 +148,42 @@ def main() -> int:
     if not events:
         print("no assessment issues to publish")
         return 0
-    known = existing_titles(args.repository, token)
-    created = 0
+
+    issues = existing_issues(args.repository, token)
+    open_by_key = open_issue_by_key(issues)
+    known_titles = {i.get("title", "") for i in issues}
+    created = coalesced = 0
+
     for event in events:
+        key = event.get("assessment_key")
+        related = event.get("related_assessment_key")
+        target = open_by_key.get(related) if related else None
+        target = target or (open_by_key.get(key) if key else None)
+        if target:
+            if coalesce_issue(args.repository, target, event, token):
+                coalesced += 1
+            continue
+
         title = event["title"]
-        if title in known:
-            print(f"[dedupe] {title}")
+        # Backward compatibility for unkeyed events generated by older tooling.
+        if not key and title in known_titles:
+            print(f"[dedupe-title] {title}")
             continue
         labels = event.get("labels") or ["assessment-required"]
         for label in labels:
             ensure_label(args.repository, label, token)
+        body = event["body"]
+        if key and f"rahp-assessment-key:{key}" not in body:
+            body = f"<!-- rahp-assessment-key:{key} -->\n\n" + body
         issue = request("POST", f"https://api.github.com/repos/{args.repository}/issues", token,
-                        {"title": title, "body": event["body"], "labels": labels})
+                        {"title": title, "body": body, "labels": labels})
         print(f"[created] #{issue.get('number')} {title}")
-        known.add(title); created += 1
-    print(f"created {created} issue(s)")
+        known_titles.add(title)
+        if key:
+            open_by_key[key] = issue
+        created += 1
+
+    print(f"created {created} issue(s); coalesced {coalesced} event(s)")
     return 0
 
 

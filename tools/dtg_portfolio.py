@@ -119,8 +119,11 @@ def classify(target: dict[str,Any], files: list[dict[str,Any]], cfg: dict[str,An
         return False, matched, ["transitional repository excluded by DTG instance policy"]
     return bool(matched), matched, reasons
 
+def assessment_key(repo: str) -> str:
+    return f"dtg:repository:{repo}"
+
 def issue_mark(repo: str, sha: str) -> str:
-    return f"<!-- rahp-dtg-change:{repo}@{sha} -->"
+    return f"<!-- rahp-assessment-key:{assessment_key(repo)} -->\n<!-- rahp-dtg-change:{repo}@{sha} -->"
 
 def issue_body(target:dict[str,Any], old:str, new:str, comp:dict[str,Any], matched:list[str], reasons:list[str]) -> str:
     files=comp.get("files",[])
@@ -279,6 +282,9 @@ def main():
             comp={"files":[],"commits":[]}
         if material:
             events.append({"target":t,"old":old,"new":new,"matched":matched,"reasons":reasons,
+                           "assessment_key": assessment_key(repo),
+                           "source": "repository-change",
+                           "repository": repo,
                            "title":f"[RAHP review required] {repo}: {old[:7]} → {new[:7]}",
                            "body":issue_body(t,old,new,comp,matched,reasons),
                            "labels": cfg.get("assessment",{}).get("issue",{}).get("labels",["assessment-required","dtg-instance"])})

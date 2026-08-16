@@ -145,9 +145,12 @@ def main() -> int:
             comp = {"commits": []}
             print(f"warning: comparison failed for {key}: {exc}")
         if material:
+            instance_id = instance.get("id") or "external"
             events.append({
-                "instance": instance.get("id"),
+                "instance": instance_id,
                 "target_id": target.get("id"),
+                "assessment_key": f"{instance_id}:repository:{repo}",
+                "source": "repository-change",
                 "repository": repo,
                 "branch": branch,
                 "old": old,
