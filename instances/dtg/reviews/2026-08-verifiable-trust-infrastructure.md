@@ -2,6 +2,8 @@
 title: "DTG review: Verifiable Trust Infrastructure August 2026 change window"
 parent: DTG RAHP review record
 nav_order: 20
+layout: default
+nav_exclude: true
 ---
 
 # DTG review: Verifiable Trust Infrastructure August 2026 change window

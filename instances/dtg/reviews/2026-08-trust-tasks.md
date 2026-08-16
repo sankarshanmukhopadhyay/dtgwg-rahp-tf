@@ -2,6 +2,8 @@
 title: "DTG review: Trust Tasks August 2026 change window"
 parent: DTG RAHP review record
 nav_order: 10
+layout: default
+nav_exclude: true
 ---
 
 # DTG review: Trust Tasks August 2026 change window

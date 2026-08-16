@@ -12,19 +12,19 @@ RAHP includes a complete worked pressure test of the **Agent2Agent (A2A) Protoco
 This example broadens RAHP beyond credential, trust-task, and content-authenticity specifications. It shows how the toolkit treats an **agent interoperability protocol** whose implementations may be independently operated, opaque, long-running, and capable of delegating work.
 
 {: .evidence }
-The canonical review record is [`examples/a2a/pressure-test.yaml`](../examples/a2a/pressure-test.yaml). The [fully rendered worked assessment](../examples/a2a/README.md) is generated from that record.
+The canonical review record is [`examples/a2a/pressure-test.yaml`](../examples/a2a/pressure-test.yaml). The [fully rendered worked assessment]({{ '/examples/a2a/' | relative_url }}) is generated from that record.
 
 ## What is being assessed
 
 ```mermaid
 flowchart LR
-    P1[P1 Principal / Rights-Bearing Party] --> C[P3 Client / Relying Party]
-    C --> A[M1 Client Agent]
-    A --> D[P6 Discovery / Registry]
-    A --> R[M1 Remote Agent]
-    R --> O[P5 Remote Agent Operator]
-    R --> S[P5 Downstream Service]
-    R --> W[P4 Callback / Webhook]
+    P1["P1 Principal / Rights-Bearing Party"] --> C["P3 Client / Relying Party"]
+    C --> A["M1 Client Agent"]
+    A --> D["P6 Discovery / Registry"]
+    A --> R["M1 Remote Agent"]
+    R --> O["P5 Remote Agent Operator"]
+    R --> S["P5 Downstream Service"]
+    R --> W["P4 Callback / Webhook"]
     D --> A
     W --> C
 ```
@@ -49,7 +49,7 @@ The assessment focuses on six assurance boundaries:
 | F-005 — Push security requires deployment assurance evidence | High | `GR-24`, `CT-70`, `CT-71`, `AT-24` | `P4`, `P5`, `M1`, `M2` |
 | F-006 — Opaque execution still needs action provenance | Medium | `GR-23`, `CT-73`, `AT-23` | `P1`, `P3`, `P5`, `M1` |
 
-See the [full finding evidence and recommendations](../examples/a2a/README.md#detailed-findings).
+See the [full finding evidence and recommendations]({{ '/examples/a2a/#detailed-findings' | relative_url }}).
 
 ## What A2A already does well
 
@@ -104,7 +104,7 @@ RAHP evaluates whether an assurance obligation is covered **at the correct contr
 ## Reproducing and inspecting the example
 
 - [Canonical A2A pressure-test YAML](../examples/a2a/pressure-test.yaml)
-- [Rendered A2A pressure test](../examples/a2a/README.md)
+- [Rendered A2A pressure test]({{ '/examples/a2a/' | relative_url }})
 - [Pressure-testing workflow](pressure-testing-a-spec.md)
 - [Agent delegation governance](agent-delegation-governance.md)
 - [Persona model](personas.md)

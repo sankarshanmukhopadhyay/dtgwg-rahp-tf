@@ -1,6 +1,8 @@
 ---
 title: DTG RAHP review record
 nav_order: 70
+layout: default
+nav_exclude: true
 ---
 
 # DTG RAHP review record

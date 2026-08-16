@@ -2,6 +2,7 @@
 title: DTG RAHP instance
 nav_order: 3
 parent: Deployments & examples
+layout: default
 ---
 
 # DTG RAHP instance
@@ -25,21 +26,23 @@ DTG assessment perimeter automatically.
 
 ```mermaid
 flowchart LR
-  PM[DTG Portfolio Monitor registry] --> D[Discover targets]
-  F[Relevant forks] --> D
-  D --> H[Resolve current heads]
-  H --> C{Changed since last observation?}
-  C -- no --> S[Retain state]
-  C -- yes --> M{Material paths changed?}
+  PM["DTG Portfolio Monitor registry"] --> D["Discover targets"]
+  F["Relevant forks"] --> D
+  D --> H["Resolve current heads"]
+  H --> C{"Changed since last observation?"}
+  C -- no --> S["Retain state"]
+  C -- yes --> M{"Material paths changed?"}
   M -- no --> S
-  M -- yes --> I[File assessment-required issue]
-  I --> R[RAHP / security / combined review]
-  R --> A[Store durable artefacts under instances/dtg/reviews]
-  A --> X[Close queue issue with reviewed SHA]
+  M -- yes --> I["File assessment-required issue"]
+  I --> R["RAHP / security / combined review"]
+  R --> A["Store durable artefacts under instances/dtg/reviews"]
+  A --> X["Close queue issue with reviewed SHA"]
 ```
 
 The automation does not claim that a changed repository contains a defect. It creates an
 **assessment queue record** when changed files intersect the portfolio's material paths.
+
+The [DTG durable review record](../instances/dtg/reviews/README.md) explains how completed assessment cycles are retained without turning the repository into an archive of transient run output.
 
 ## Issue-aware early warning
 

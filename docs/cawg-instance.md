@@ -2,6 +2,7 @@
 title: CAWG/C2PA RAHP instance
 nav_order: 2
 parent: Deployments & examples
+layout: default
 ---
 
 # CAWG/C2PA RAHP instance

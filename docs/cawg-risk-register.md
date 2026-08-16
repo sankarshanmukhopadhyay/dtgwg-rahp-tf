@@ -2,6 +2,7 @@
 title: CAWG/C2PA assessment risk register
 parent: Deployments & examples
 nav_order: 7
+layout: default
 ---
 # CAWG/C2PA assessment risk register
 

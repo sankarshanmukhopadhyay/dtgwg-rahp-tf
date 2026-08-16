@@ -1,3 +1,9 @@
+---
+layout: default
+title: "A2A RAHP worked assessment"
+nav_exclude: true
+permalink: /examples/a2a/
+---
 # A2A Protocol v1.0 RAHP example
 
 > **v0.8 revalidation:** this curated review has been mechanically revalidated against `rahp-engine-contract-v1` and the current RAHP catalogues on 2026-08-16. The target commit and original substantive review date remain unchanged; this does not claim a new upstream-target reassessment.

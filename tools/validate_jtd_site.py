@@ -63,6 +63,20 @@ REQUIRED_DOCS = [
     'archive/historical-builds/risks.html',
 ]
 
+# These are user-facing canonical routes. Existence is insufficient: each must
+# be wrapped in the Just-the-Docs layout rather than emitted as a bare HTML
+# fragment when a Markdown source accidentally omits `layout: default`.
+REQUIRED_JTD_SHELL = [
+    'docs/a2a-example.html',
+    'docs/dtg-instance.html',
+    'docs/cawg-risk-register.html',
+    'instances/dtg/reviews/README.html',
+    'docs/cawg-instance.html',
+    'instances/dtg/reviews/2026-08-trust-tasks.html',
+    'instances/dtg/reviews/2026-08-verifiable-trust-infrastructure.html',
+    'examples/a2a/index.html',
+]
+
 class P(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -103,6 +117,15 @@ for required in REQUIRED_DOCS + REQUIRED_PROJECTIONS:
         head = target.read_text(errors='ignore')[:1000].lower()
         if '<!doctype html' not in head and '<html' not in head:
             errors.append(f'structured-data path was not rendered as HTML: {required}')
+
+for required in REQUIRED_JTD_SHELL:
+    target = resolve_site_target(required)
+    if not target.exists():
+        errors.append(f'missing required themed Pages route: {required}')
+        continue
+    rendered = target.read_text(errors='ignore').lower()
+    if '<html' not in rendered or 'id="main-content"' not in rendered:
+        errors.append(f'Pages route missing Just-the-Docs shell: {required}')
 
 for page in htmls:
     # Historical generated HTML is a frozen provenance artefact. Require its key

@@ -105,6 +105,8 @@ def main() -> int:
                     parsed = yaml.safe_load(text[4:end]) or {}
                     if not isinstance(parsed, dict):
                         errors.append(f"{rp}: front matter must be a mapping")
+                    elif not parsed.get("layout"):
+                        errors.append(f"{rp}: front-matter page must declare a layout (use layout: default for Pages)")
                 except Exception as exc:
                     errors.append(f"{rp}: invalid YAML front matter: {exc}")
 

@@ -20,6 +20,8 @@ parent: Reference
 - Current toolkit, deployment-profile, template and TypeScript package metadata advances to v1.0.0.
 - The primary Just the Docs navigation is curated by reader task rather than flat page-level `nav_order`.
 - v1.0 treats `rahp-engine-contract-v1`, result schema version 1 and evidence-retention policy v1 as stable compatibility boundaries.
+- Correct Pages rendering for deployment and durable-review routes by requiring the Just-the-Docs layout on every front-matter Markdown page; harden Mermaid labels and make the A2A detailed assessment a rendered Pages route.
+- Strengthen source and post-Jekyll validation so bare HTML fragments cannot pass as valid themed documentation pages.
 
 
 ## v0.9.0 — 2026-08-16
