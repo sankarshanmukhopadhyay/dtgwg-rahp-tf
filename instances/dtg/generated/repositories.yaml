@@ -337,6 +337,6 @@ output:
 governance:
   namespace: dtg
 extensions:
-  generated_at: '2026-08-15T03:24:48.106330+00:00'
+  generated_at: '2026-08-16T04:31:02.650200+00:00'
   source_registry: sankarshanmukhopadhyay/dtg-portfolio-monitor
   fork_owner: sankarshanmukhopadhyay
