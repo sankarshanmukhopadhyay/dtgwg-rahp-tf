@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""RAHP v0.8 language-neutral engine-contract utility.
+"""RAHP v1 stable language-neutral engine-contract utility.
 
 This Python command is a reference adapter for the contract, not the normative
 RAHP implementation. Other implementations MUST consume the same schemas,
@@ -60,6 +60,14 @@ def retention_plan(result:dict[str,Any])->dict[str,Any]:
                         'retention_days':spec.get('default_retention_days'),
                         'action': 'commit' if spec['repository']=='allowed' else ('manifest-only' if spec['repository']=='manifest-only' else 'do-not-commit')})
     return {'policy':policy['id'],'assessment':result['assessment']['id'],'actions':actions}
+
+
+def correlate_trigger(observation:dict[str,Any], assessments:list[dict[str,Any]])->dict[str,Any]:
+    key=observation.get('assessment_key')
+    for item in assessments:
+        if item.get('key')==key and item.get('status') in ('in-progress','open'):
+            return {'action':'coalesce','assessment_key':key,'assessment_id':item.get('id')}
+    return {'action':'create','assessment_key':key}
 
 def cmd_describe(_):
     c=load_yaml(CONTRACT)

@@ -66,3 +66,4 @@ export function validateProfile(file) { const p = loadProfile(file), e = []; if 
     if (!r.reviews.length)
         e.push(`repositories.${i}.reviews required`);
 } return { valid: !e.length, errors: e }; }
+export function correlateTrigger(observation, assessments) { const a = assessments.find(x => x.key === observation.assessment_key && (x.status === 'in-progress' || x.status === 'open')); return a ? { action: 'coalesce', assessment_key: observation.assessment_key, assessment_id: a.id } : { action: 'create', assessment_key: observation.assessment_key }; }

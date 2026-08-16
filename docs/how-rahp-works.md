@@ -3,6 +3,7 @@ layout: default
 title: "How RAHP works"
 nav_order: 2
 has_toc: true
+parent: Learn RAHP
 ---
 # How RAHP works
 

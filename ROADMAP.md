@@ -1,10 +1,22 @@
 ---
 layout: default
 title: "Roadmap"
-nav_order: 23
+nav_order: 6
 has_toc: true
+parent: Reference
 ---
 # RAHP Toolkit Roadmap
+
+
+## v1.0.0 — Stable Method and Implementation Conformance (complete)
+
+v1.0 is the first stable RAHP Toolkit release. It freezes `rahp-engine-contract-v1`, normalized result schema version `1`, `rahp-evidence-retention-v1`, published identifier stability, and explicit compatibility/versioning rules. Python and TypeScript remain reference implementations rather than normative method layers.
+
+The release also restructures the rendered documentation around reader tasks instead of a flat page inventory, adds navigation ownership validation, expands cross-implementation conformance to configured target enumeration and assessment-trigger correlation, and preserves DTG, CAWG/C2PA and A2A as independent portability evidence.
+
+Status: **stable release baseline**. Future breaking method changes require v2. Additive method/engine capabilities may evolve under compatible minor releases. Rust/WASM and npm publication remain optional distribution choices driven by demonstrated adopter requirements, not v1 conformance requirements.
+
+---
 
 ## v0.9.0 — TypeScript Reference SDK (complete)
 
@@ -12,7 +24,7 @@ v0.9 proves implementation portability against the v0.8 language-neutral engine 
 
 Status: release baseline. TypeScript is a reference implementation, not a normative method layer; Python remains the operational implementation for repository observation, issue publication and existing review automation.
 
-Next candidate: **v1.0 stable method and implementation conformance**, expanding shared fixtures to cover the full portable lifecycle and stabilizing contract/versioning rules after multi-deployment use.
+Delivered in **v1.0**: stable method/versioning rules, curated documentation architecture, target-enumeration equivalence, lifecycle correlation fixtures and a documented conformance claim boundary.
 
 ---
 

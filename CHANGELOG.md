@@ -1,10 +1,26 @@
 ---
 layout: default
 title: "Changelog"
-nav_order: 24
+nav_order: 7
 has_toc: true
+parent: Reference
 ---
 # Changelog
+
+## v1.0.0 — 2026-08-16
+
+### Added
+- Stable v1 compatibility and versioning contract for method, engine, normalized results and identifiers.
+- Reader-journey documentation hubs for learning, adoption, assessment, operations, implementation, deployments, reference and releases.
+- Documentation information-architecture validation.
+- Shared lifecycle trigger-correlation fixtures and stronger Python↔TypeScript target-enumeration equivalence checks.
+- Implementation-conformance guide and v1.0 release notes.
+
+### Changed
+- Current toolkit, deployment-profile, template and TypeScript package metadata advances to v1.0.0.
+- The primary Just the Docs navigation is curated by reader task rather than flat page-level `nav_order`.
+- v1.0 treats `rahp-engine-contract-v1`, result schema version 1 and evidence-retention policy v1 as stable compatibility boundaries.
+
 
 ## v0.9.0 — 2026-08-16
 

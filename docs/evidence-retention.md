@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "Review evidence and retention"
-nav_order: 10
+nav_order: 2
 has_toc: true
+parent: Operate assurance
 ---
 # Review evidence and retention
 

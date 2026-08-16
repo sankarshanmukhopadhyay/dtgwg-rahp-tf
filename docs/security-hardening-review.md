@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "Security hardening"
-nav_order: 8
+nav_order: 3
 has_toc: true
+parent: Run assessments
 ---
 # Security and hardening review workflow
 

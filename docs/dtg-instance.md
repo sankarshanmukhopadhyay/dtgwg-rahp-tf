@@ -1,6 +1,7 @@
 ---
 title: DTG RAHP instance
-nav_order: 69
+nav_order: 3
+parent: Deployments & examples
 ---
 
 # DTG RAHP instance

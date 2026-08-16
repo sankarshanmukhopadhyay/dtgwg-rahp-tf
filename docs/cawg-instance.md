@@ -1,11 +1,12 @@
 ---
 title: CAWG/C2PA RAHP instance
-nav_order: 70
+nav_order: 2
+parent: Deployments & examples
 ---
 
 # CAWG/C2PA RAHP instance
 
-> **Current toolkit status (v0.8):** the CAWG/C2PA deployment remains independently governed, and its curated worked reviews have been revalidated against `rahp-engine-contract-v1`. Historical v0.6/v0.7 section labels below describe when coverage was introduced, not the current engine version.
+> **Current toolkit status (v1.0):** the CAWG/C2PA deployment remains independently governed, and its curated worked reviews have been compatible with the stable `rahp-engine-contract-v1`. Historical v0.6/v0.7 section labels below describe when coverage was introduced, not the current engine version.
 
 v0.6.0 introduced the first substantial **external deployment** of the portable RAHP engine. The
 instance tracks the CAWG specifications linked from `cawg.io/specs/`, selected published

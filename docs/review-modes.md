@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "Review modes"
-nav_order: 7
+nav_order: 2
 has_toc: true
+parent: Run assessments
 ---
 # Review modes
 

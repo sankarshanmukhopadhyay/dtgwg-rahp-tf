@@ -1,11 +1,12 @@
 ---
 layout: default
 title: "TypeScript Reference SDK"
-nav_order: 16
+nav_order: 2
+parent: Implement RAHP
 ---
 # TypeScript Reference SDK
 
-RAHP v0.9 adds a second reference implementation of the v0.8 engine boundary. The TypeScript SDK is intentionally **an implementation of `rahp-engine-contract-v1`, not a second normative definition of RAHP**. Method YAML, schemas, retention rules and shared conformance fixtures remain authoritative.
+RAHP v1.0 includes a second reference implementation of the v0.8 engine boundary. The TypeScript SDK is intentionally **an implementation of `rahp-engine-contract-v1`, not a second normative definition of RAHP**. Method YAML, schemas, retention rules and shared conformance fixtures remain authoritative.
 
 ## Packages
 
@@ -42,11 +43,11 @@ node packages/cli/dist/cli.js trace RK-AI01 build/rahp.json 2
 node packages/cli/dist/cli.js conformance
 ```
 
-## What v0.9 proves
+## What the TypeScript implementation proves
 
-v0.9 proves that normalized result validation, evidence-retention decisions, profile enumeration and catalogue traversal can be implemented independently of Python while preserving the same portable contract.
+The v1 release preserves the v0.9 proof that normalized result validation, evidence-retention decisions, profile enumeration and catalogue traversal can be implemented independently of Python while preserving the same portable contract.
 
-It does **not** make TypeScript normative, retire the Python operational tooling, or require existing Actions workflows to execute assessments in TypeScript. Operational source observation and GitHub issue publication remain Python-backed in v0.9 while the portable engine boundary is exercised by both implementations.
+It does **not** make TypeScript normative, retire the Python operational tooling, or require existing Actions workflows to execute assessments in TypeScript. Operational source observation and GitHub issue publication remain Python-backed in v1.0 while the portable engine boundary is exercised by both implementations.
 
 ## v1.0 direction
 

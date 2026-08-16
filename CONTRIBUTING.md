@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "Contributing"
-nav_order: 22
+nav_order: 3
 has_toc: true
+parent: Implement RAHP
 ---
 # Contributing to the RAHP Toolkit
 

@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "CAWG/C2PA mandate readiness"
-nav_order: 13
+parent: Deployments & examples
+nav_order: 6
 has_toc: true
 ---
 # CAWG/C2PA mandate readiness

@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "CAWG/C2PA situational monitoring"
-nav_order: 14
+nav_order: 4
 has_toc: true
+parent: Deployments & examples
 ---
 # CAWG/C2PA situational monitoring
 

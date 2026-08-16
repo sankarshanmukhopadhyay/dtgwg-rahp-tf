@@ -36,3 +36,22 @@ export declare function loadProfile(file: string): {
     repositories: Target[];
 };
 export declare function validateProfile(file: string): ValidationResult;
+export interface Observation {
+    assessment_key: string;
+    trigger_key: string;
+    revision?: string;
+}
+export interface AssessmentRef {
+    id: string;
+    key: string;
+    status: string;
+}
+export declare function correlateTrigger(observation: Observation, assessments: AssessmentRef[]): {
+    action: string;
+    assessment_key: string;
+    assessment_id: string;
+} | {
+    action: string;
+    assessment_key: string;
+    assessment_id?: undefined;
+};

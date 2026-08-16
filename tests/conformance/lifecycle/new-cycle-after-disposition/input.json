@@ -1,0 +1,14 @@
+{
+  "observation": {
+    "assessment_key": "demo:repository:org/spec",
+    "trigger_key": "repo:org/spec@ghi",
+    "revision": "ghi"
+  },
+  "open_assessments": [
+    {
+      "id": "AR-1",
+      "key": "demo:repository:org/spec",
+      "status": "dispositioned"
+    }
+  ]
+}

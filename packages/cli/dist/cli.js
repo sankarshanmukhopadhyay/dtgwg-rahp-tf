@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import path from 'node:path';
-import { loadProfile, validateProfile, validateNormalizedResult, loadResult, retentionPlan, sha256 } from '@rahp/core';
+import { loadProfile, validateProfile, validateNormalizedResult, loadResult, retentionPlan, sha256, correlateTrigger } from '@rahp/core';
 import { RahpGraph } from '@rahp/graph';
 const root = process.cwd();
 const [cmd, ...a] = process.argv.slice(2);
@@ -26,6 +26,10 @@ if (cmd === 'validate-profile') {
 }
 if (cmd === 'targets') {
     console.log(JSON.stringify(loadProfile(a[0]).repositories, null, 2));
+}
+if (cmd === 'correlate-trigger') {
+    const v = JSON.parse(readFileSync(a[0], 'utf8'));
+    console.log(JSON.stringify(correlateTrigger(v.observation, v.open_assessments || []), null, 2));
 }
 if (cmd === 'graph-stats') {
     const f = a[0] || 'build/rahp.json';
@@ -58,5 +62,5 @@ if (cmd === 'conformance') {
     process.exit(fail ? 1 : 0);
 }
 if (!cmd || cmd === 'describe') {
-    console.log('RAHP TypeScript reference SDK v0.9.0\nCommands: validate-profile targets validate-result retention-plan sha256 trace graph-stats conformance');
+    console.log('RAHP TypeScript reference SDK v1.0.0\nCommands: validate-profile targets validate-result retention-plan correlate-trigger sha256 trace graph-stats conformance');
 }

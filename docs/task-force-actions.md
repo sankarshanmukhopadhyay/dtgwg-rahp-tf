@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "DTG exemplar governance action register"
-nav_order: 15
+nav_order: 8
 has_toc: true
+parent: Deployments & examples
 ---
 # DTG exemplar governance action register
 

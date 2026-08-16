@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "Normative triage"
-nav_order: 13
+nav_order: 4
 has_toc: true
+parent: Operate assurance
 ---
 # Normative triage in RAHP v0.4
 

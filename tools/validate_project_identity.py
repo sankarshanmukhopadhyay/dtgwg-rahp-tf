@@ -22,8 +22,8 @@ for path in ACTIVE:
         errors.append(f"{rel}: legacy repository identity 'dtgwg-rahp-tf' appears in active guidance")
 
 required = {
-    ROOT / 'README.md': ['# RAHP Toolkit', '## The v0.9 architecture', 'CAWG/C2PA', 'Bundled DTG exemplar'],
-    ROOT / 'docs' / 'index.md': ['title: "RAHP Toolkit documentation"', 'RAHP is not the DTG deployment', 'CAWG/C2PA'],
+    ROOT / 'README.md': ['# RAHP Toolkit', '## The v1.0 architecture', 'CAWG/C2PA', 'Bundled DTG exemplar'],
+    ROOT / 'docs' / 'index.md': ['title: RAHP Toolkit', 'RAHP is not the DTG deployment', 'CAWG/C2PA'],
     ROOT / 'ADOPTION.md': ['# Adopting RAHP', 'shared engine contract, independent deployment context'],
     ROOT / 'CONTRIBUTING.md': ['instances/<id>/', 'bundled DTG exemplar'],
     ROOT / 'docs' / 'portability.md': ['RAHP is portable by construction'],

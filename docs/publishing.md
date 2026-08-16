@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "Publishing the RAHP site"
-nav_order: 90
+nav_order: 5
 has_toc: true
+parent: Operate assurance
 ---
 # Publishing the RAHP site
 

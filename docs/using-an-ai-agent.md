@@ -3,6 +3,7 @@ layout: default
 title: "Use an AI agent to run a pressure test"
 nav_order: 8
 has_toc: true
+parent: Run assessments
 ---
 # Use an AI agent to run a pressure test
 

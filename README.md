@@ -1,7 +1,7 @@
 # RAHP Toolkit
 
 **Risk Assessment & Harms Prevention**  
-Release v0.9.0 · CC-BY 4.0
+Release v1.0.0 · CC-BY 4.0
 
 RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-testing standards and technical specifications against risks, human harms, governance weaknesses and adversarial/security failure conditions. It provides a reusable method, configuration contract, review tooling, scenario patterns, source-change monitoring, validators and evidence rendering.
 
@@ -24,9 +24,9 @@ RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-test
 | Inspect the A2A agent-protocol example | [A2A worked example](docs/a2a-example.md) |
 | Understand the engine boundary | [Engine contract](docs/engine-contract.md) |
 | Understand review/log retention | [Review evidence and retention](docs/evidence-retention.md) |
-| Read the current release | [v0.9.0 release notes](docs/releases/v0.9.0.md) |
+| Read the current release | [v1.0.0 release notes](docs/releases/v1.0.0.md) |
 
-## The v0.9 architecture
+## The v1.0 architecture
 
 ```mermaid
 flowchart TB
@@ -140,11 +140,11 @@ The bundled DTG catalogue currently contains:
 
 These counts are checked by `tools/validate.py`. DTG governance work such as `RP-001`, normative triage and its action queue remains scoped to that deployment unless another adopter explicitly chooses equivalent governance structures.
 
-## v0.9: independent TypeScript reference implementation
+## v1.0: stable method and implementation conformance
 
-v0.9 proves that the language-neutral execution contract introduced in v0.8 is independently implementable. `@rahp/schema`, `@rahp/core`, `@rahp/graph` and `@rahp/cli` implement `rahp-engine-contract-v1` without making TypeScript normative, while Python remains the operational implementation for repository observation, issue publication and existing assessment orchestration. Python↔TypeScript differential checks run against the same normalized-result and evidence-retention fixtures.
+v1.0 stabilizes the portable RAHP method and the `rahp-engine-contract-v1` boundary after independent Python and TypeScript implementation. `@rahp/schema`, `@rahp/core`, `@rahp/graph` and `@rahp/cli` remain non-normative reference packages; shared conformance fixtures and compatibility rules now define what implementations may claim. Python continues to provide the operational monitoring workflows while both implementations are required to agree on the portable behaviors they share.
 
-The normative portable boundary remains `method/engine-contract.yaml`, the normalized result schema, retention policy and shared conformance fixtures. New run scaffolds continue to live under ignored `.rahp/` workspaces by default; Git retains compact assurance state and deliberately promoted exemplars rather than every generated review. See [TypeScript Reference SDK](docs/typescript-sdk.md), [engine contract](docs/engine-contract.md), [review evidence and retention](docs/evidence-retention.md), and [v0.9.0 release notes](docs/releases/v0.9.0.md).
+The normative portable boundary remains `method/engine-contract.yaml`, the normalized result schema, retention policy and shared conformance fixtures. New run scaffolds continue to live under ignored `.rahp/` workspaces by default; Git retains compact assurance state and deliberately promoted exemplars rather than every generated review. See [TypeScript Reference SDK](docs/typescript-sdk.md), [engine contract](docs/engine-contract.md), [review evidence and retention](docs/evidence-retention.md), and [v1.0.0 release notes](docs/releases/v1.0.0.md).
 
 ## v0.7: composition and situational assurance
 

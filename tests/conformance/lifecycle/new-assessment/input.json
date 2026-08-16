@@ -1,0 +1,8 @@
+{
+  "observation": {
+    "assessment_key": "demo:repository:org/spec",
+    "trigger_key": "repo:org/spec@abc",
+    "revision": "abc"
+  },
+  "open_assessments": []
+}

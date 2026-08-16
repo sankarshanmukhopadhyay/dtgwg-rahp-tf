@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "Adopting RAHP"
-nav_order: 20
+nav_order: 1
 has_toc: true
+parent: Adopt RAHP
 ---
 # Adopting RAHP
 

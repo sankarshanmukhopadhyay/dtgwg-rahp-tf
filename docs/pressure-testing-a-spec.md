@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "Pressure-testing a specification"
-nav_order: 6
+nav_order: 1
 has_toc: true
+parent: Run assessments
 ---
 # Pressure-testing a specification
 
@@ -89,7 +90,7 @@ review:
     version: 1.2-draft
     commit: <full-40-character-commit-sha>
   reviewed_against:
-    rahp_version: v0.9.0
+    rahp_version: v1.0.0
   findings:
     - id: F-001
       title: Concise finding

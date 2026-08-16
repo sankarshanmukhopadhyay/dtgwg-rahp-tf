@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "RAHP Toolkit documentation"
+title: RAHP Toolkit
 nav_order: 1
 has_toc: true
 ---
@@ -10,49 +10,22 @@ RAHP Toolkit is a **portable specification-assurance toolkit**. It provides a me
 
 The repository contains deployments and examples, but **RAHP is not the DTG deployment and it is not the CAWG/C2PA deployment**. DTG is the historical origin and a bundled exemplar; CAWG/C2PA is the first substantial external deployment proving that the same method and engine can operate with independent scope, risks, state and governance.
 
-## Start here
+## Choose your path
 
-### Understand the portable method
+The documentation is organized by task rather than by file type:
 
-Read [Concepts](concepts.md), [How RAHP works](how-rahp-works.md), [Portability](portability.md), and the [Engine contract](engine-contract.md). These pages describe the parts that belong to RAHP itself rather than to a particular deployment.
+| I want to… | Go to |
+|---|---|
+| Understand the method | [Learn RAHP](learn.md) |
+| Configure RAHP for my project | [Adopt RAHP](adopt.md) |
+| Run or interpret an assessment | [Run assessments](assess.md) |
+| Operate monitoring, evidence and disposition | [Operate assurance](operate.md) |
+| Build or integrate an engine | [Implement RAHP](implement.md) |
+| Inspect DTG, CAWG/C2PA or A2A | [Deployments & examples](deployments.md) |
+| Find diagrams, registers and project history | [Reference](reference.md) |
+| See release history | [Releases](releases/index.md) |
 
-### Apply RAHP to your own target
-
-Use [Configuration-driven adoption](configuration.md) and [Adopting RAHP](../ADOPTION.md), then follow [Pressure-testing a specification](pressure-testing-a-spec.md). The minimum path is: declare target repositories in YAML, pin review provenance, record evidence-backed findings, render, validate and re-test after change.
-
-### Choose the analytical lens
-
-- [RAHP pressure testing](pressure-testing-a-spec.md) focuses on people, harms, governance boundaries and assurance.
-- [Security and hardening review](security-hardening-review.md) focuses on adversarial protocol and implementation failure.
-- [Review modes](review-modes.md) explains `rahp`, `security`, and `combined` operation.
-- [Scenario-driven pressure testing](scenario-driven-pressure-testing.md) applies reusable stress patterns and domain corpora.
-
-### Examine independent deployments
-
-- [CAWG/C2PA deployment](cawg-instance.md) — external portfolio, branch-aware source monitoring, instance-local risk vocabulary, 36-scenario corpus, 17 CAWG pressure-test reviews, security/combined reviews and issue-aware situational monitoring.
-- [A2A protocol worked example](a2a-example.md) — independent agent-interoperability assessment covering discovery trust, multi-agent delegation, secondary credentials, callbacks and action provenance.
-- [DTG exemplar deployment](dtg-instance.md) — historical origin, portfolio discovery, DTG scenario corpora, operational assurance, governance queue and selective issue-aware situational monitoring.
-
-These deployments are **evidence of portability**, not prerequisites for adoption.
-
-### Worked assessments
-
-The [CAWG/C2PA assessment pack](../examples/cawg-c2pa/README.md) demonstrates v0.7 scenario-driven, cross-specification and combined assurance and is revalidated against the v0.8 engine contract. The [A2A Protocol v1.0 example](../examples/a2a/README.md) exercises agent discovery, delegated authority and asynchronous execution. Earlier DTG examples remain useful regression fixtures for credential and protocol/framework reviews: [DTG Credential Specification](../examples/dtg-credential-spec/README.md) and [Trust Tasks](../examples/trust-tasks-spec/README.md).
-
-### AI-assisted review
-
-Use [AI-assisted RAHP](ai-assisted-process.md) and [Use an AI agent to run a pressure test](using-an-ai-agent.md). AI may prepare, synthesize and cross-reference evidence; accountable humans remain responsible for findings, risk judgements, acceptance and governance decisions.
-
-### Evidence, governance and maintenance
-
-- [Interpreting results](interpreting-results.md)
-- [Governance boundaries](governance-boundaries.md)
-- [Operational assurance](operational-assurance.md)
-- [Review evidence and retention](evidence-retention.md)
-- [Assessment claims](conformance-claims.md)
-- [Corpus synchronization and provenance](corpus-synchronization.md)
-- [DTG exemplar governance action register](task-force-actions.md)
-- [Roadmap](../ROADMAP.md)
+The portable method is independent of the bundled deployments. Deployment pages are evidence that the same contract works in different governance contexts; they are not prerequisites for adoption.
 
 ## Historical material
 
@@ -63,4 +36,4 @@ The [Historical Library](../archive/) retains earlier personas, requirements, re
 
 ## Implementations
 
-RAHP v0.9 ships both the Python operational/reference tooling and a [TypeScript Reference SDK](typescript-sdk.md) that conforms to the same v0.8 engine boundary.
+RAHP v1.0 ships Python and TypeScript reference implementations against the stable [v1 engine contract](engine-contract.md). See [Implementation conformance](conformance.md) for the compatibility promise and differential test boundary.

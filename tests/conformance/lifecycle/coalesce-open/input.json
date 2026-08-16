@@ -1,0 +1,14 @@
+{
+  "observation": {
+    "assessment_key": "demo:repository:org/spec",
+    "trigger_key": "issue:org/spec#12",
+    "revision": "def"
+  },
+  "open_assessments": [
+    {
+      "id": "AR-1",
+      "key": "demo:repository:org/spec",
+      "status": "in-progress"
+    }
+  ]
+}

@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Personas and actor roles
-nav_order: 8
+nav_order: 3
 has_toc: true
+parent: Learn RAHP
 ---
 
 # Personas and actor roles

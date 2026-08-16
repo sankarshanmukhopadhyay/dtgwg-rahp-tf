@@ -1,6 +1,7 @@
 ---
 title: CAWG/C2PA assessment risk register
-nav_order: 71
+parent: Deployments & examples
+nav_order: 7
 ---
 # CAWG/C2PA assessment risk register
 

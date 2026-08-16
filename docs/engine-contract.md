@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "Engine contract"
-nav_order: 9
+nav_order: 1
 has_toc: true
+parent: Implement RAHP
 ---
 # RAHP engine contract
 

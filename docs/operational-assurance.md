@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "Operational assurance"
-nav_order: 14
+nav_order: 1
 has_toc: true
+parent: Operate assurance
 ---
 # Operational assurance in RAHP v0.4
 

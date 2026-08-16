@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "A2A protocol worked example"
-nav_order: 16
+nav_order: 1
 has_toc: true
+parent: Deployments & examples
 ---
 # A2A protocol worked example
 

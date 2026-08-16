@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "Governance boundaries"
-nav_order: 9
+nav_order: 6
 has_toc: true
+parent: Learn RAHP
 ---
 # Governance boundaries and finding disposition
 

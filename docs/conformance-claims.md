@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "Assessment claims"
-nav_order: 17
+nav_order: 4
 has_toc: true
+parent: Adopt RAHP
 ---
 # Claiming an assessment used RAHP
 

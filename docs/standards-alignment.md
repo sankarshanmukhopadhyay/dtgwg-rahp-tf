@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "Standards alignment"
-nav_order: 10
+nav_order: 3
 has_toc: true
+parent: Adopt RAHP
 ---
 # External standards alignment
 

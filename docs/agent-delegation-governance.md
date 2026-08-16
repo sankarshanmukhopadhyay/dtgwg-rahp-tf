@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "Agent delegation governance"
-nav_order: 15
+nav_order: 7
 has_toc: true
+parent: Learn RAHP
 ---
 # Agent delegation governance
 

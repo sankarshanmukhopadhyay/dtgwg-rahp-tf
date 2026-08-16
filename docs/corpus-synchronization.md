@@ -1,8 +1,8 @@
 ---
 layout: default
 title: "Corpus synchronization and provenance"
-nav_order: 7
-parent: "Scenario corpora"
+nav_order: 3
+parent: Operate assurance
 has_toc: true
 ---
 # Corpus synchronization and provenance

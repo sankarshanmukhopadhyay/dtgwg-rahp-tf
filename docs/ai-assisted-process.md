@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "AI-assisted process"
-nav_order: 12
+nav_order: 7
 has_toc: true
+parent: Run assessments
 ---
 # AI-assisted RAHP — a worked example
 

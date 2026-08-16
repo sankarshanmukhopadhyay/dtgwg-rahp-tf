@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the v0.8 engine contract, retention policy and conformance fixtures."""
+"""Validate the stable v1 engine contract, retention policy and conformance fixtures."""
 from __future__ import annotations
 import json, pathlib, sys
 try:
@@ -35,10 +35,20 @@ def main():
             plan=retention_plan(load_result(result_path)); got=sorted({a['class'] for a in plan['actions'] if a['action']=='commit'})
             want=sorted(exp['retention'].get('repository_classes') or [])
             if got!=want: errors+=fail(f'{result_path.parent.name}: retention repository classes {got}, expected {want}')
+    versioning=yaml.safe_load((ROOT/'method/versioning.yaml').read_text())
+    if versioning.get('stable_release')!='v1.0.0': errors+=fail('versioning contract must identify v1.0.0 stable release')
+    if versioning.get('contracts',{}).get('engine')!=contract.get('id'): errors+=fail('versioning engine contract id mismatch')
+    from engine_contract import correlate_trigger
+    lifecycle=sorted((ROOT/'tests/conformance/lifecycle').glob('*/input.json'))
+    if not lifecycle: errors+=fail('no lifecycle conformance fixtures')
+    for ip in lifecycle:
+        inp=json.loads(ip.read_text()); exp=json.loads((ip.parent/'expected.json').read_text()); got=correlate_trigger(inp['observation'],inp.get('open_assessments') or [])
+        if got!=exp: errors+=fail(f'{ip.parent.name}: lifecycle correlation mismatch {got} != {exp}')
+
     durable=sorted(ROOT.glob('instances/*/reviews/*.result.json'))
     for result_path in durable:
         if not validate_result(result_path,quiet=True): errors+=fail(f'durable normalized result invalid: {result_path.relative_to(ROOT)}')
     if errors: print(f'Engine contract validation failed: {errors} error(s)'); return 1
-    print(f'Engine contract valid: {len(fixtures)} conformance fixtures; {len(durable)} durable normalized result(s); retention policy valid')
+    print(f'Engine contract valid: {len(fixtures)} result fixture(s); {len(lifecycle)} lifecycle fixture(s); {len(durable)} durable normalized result(s); stable v1 versioning/retention policy valid')
     return 0
 if __name__=='__main__': raise SystemExit(main())

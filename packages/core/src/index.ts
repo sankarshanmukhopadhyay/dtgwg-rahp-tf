@@ -18,3 +18,7 @@ export function parseProfile(text:string):{profile:{id:string};assessment:any;re
 function scalar(v:string):any{v=v.trim();if(!v)return '';if(v.startsWith('[')&&v.endsWith(']'))return v.slice(1,-1).split(',').map(x=>x.trim().replace(/^['"]|['"]$/g,''));if(v==='true'||v==='false')return v==='true';if(/^\d+$/.test(v))return Number(v);return v.replace(/^['"]|['"]$/g,'')}
 export function loadProfile(file:string){return parseProfile(readFileSync(file,'utf8'))}
 export function validateProfile(file:string):ValidationResult{const p=loadProfile(file),e:string[]=[];if(!p.profile.id)e.push('profile.id required');if(!p.repositories.length)e.push('repositories must not be empty');for(const [i,r] of p.repositories.entries()){if(!r.id)e.push(`repositories.${i}.id required`);if(!r.repository)e.push(`repositories.${i}.repository required`);if(!r.reviews.length)e.push(`repositories.${i}.reviews required`)}return {valid:!e.length,errors:e}}
+
+export interface Observation {assessment_key:string;trigger_key:string;revision?:string}
+export interface AssessmentRef {id:string;key:string;status:string}
+export function correlateTrigger(observation:Observation,assessments:AssessmentRef[]){const a=assessments.find(x=>x.key===observation.assessment_key&&(x.status==='in-progress'||x.status==='open'));return a?{action:'coalesce',assessment_key:observation.assessment_key,assessment_id:a.id}:{action:'create',assessment_key:observation.assessment_key}}

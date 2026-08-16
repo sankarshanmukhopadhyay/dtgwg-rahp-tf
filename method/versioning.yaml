@@ -1,0 +1,30 @@
+version: 1
+id: rahp-versioning-v1
+stable_release: v1.0.0
+contracts:
+  engine: rahp-engine-contract-v1
+  result_schema: 1
+  evidence_retention: rahp-evidence-retention-v1
+compatibility:
+  method:
+    breaking_change_requires: major
+    additive_optional_change_requires: minor
+    clarification_or_fix_requires: patch
+  engine_contract:
+    breaking_change_requires: new_contract_id
+    additive_operation_requires: minor
+  normalized_result:
+    breaking_change_requires: new_schema_version
+  identifiers:
+    published_identifiers_are_stable: true
+    reuse_after_retirement: forbidden
+conformance:
+  normative_sources:
+    - method/engine-contract.yaml
+    - method/schema/rahp-result.schema.json
+    - method/evidence-retention.yaml
+    - method/versioning.yaml
+  reference_implementations:
+    - python
+    - typescript
+  rule: Implementations MUST agree on shared conformance fixtures for operations they claim.

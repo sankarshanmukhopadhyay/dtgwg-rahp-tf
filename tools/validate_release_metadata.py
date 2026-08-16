@@ -27,6 +27,14 @@ portable = ROOT / 'examples' / 'portable-instance' / 'data' / 'instance.yaml'
 if portable.exists() and f'toolkit_version: {tag}' not in portable.read_text():
     errors.append(f'portable instance fixture: expected toolkit_version: {tag}')
 
+for pkg in sorted((ROOT / 'packages').glob('*/package.json')):
+    meta=json.loads(pkg.read_text())
+    if meta.get('version') != version:
+        errors.append(f'{pkg.relative_to(ROOT)}: expected version {version}')
+versioning=ROOT/'method/versioning.yaml'
+if versioning.exists() and f'stable_release: {tag}' not in versioning.read_text():
+    errors.append(f'method/versioning.yaml: expected stable_release: {tag}')
+
 if errors:
     for error in errors:
         print(f'ERROR: {error}')

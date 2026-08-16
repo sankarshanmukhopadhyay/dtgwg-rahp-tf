@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "DTG situational monitoring"
-nav_order: 15
+nav_order: 5
 has_toc: true
+parent: Deployments & examples
 ---
 # DTG situational monitoring
 

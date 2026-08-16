@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "Scenario coverage"
-nav_order: 7
+nav_order: 2
 has_toc: true
+parent: Reference
 ---
 # Scenario coverage
 

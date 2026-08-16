@@ -1,8 +1,9 @@
 ---
 layout: default
 title: "GitHub Pages coverage"
-nav_order: 91
+nav_order: 1
 has_toc: true
+parent: Reference
 ---
 # GitHub Pages coverage
 

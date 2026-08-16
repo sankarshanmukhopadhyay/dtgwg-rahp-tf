@@ -4,7 +4,7 @@ import yaml,sys
 ROOT=Path(__file__).resolve().parents[1]
 SRC=ROOT/'instances/cawg/mandate-readiness.yaml'; OUT=ROOT/'docs/cawg-mandate-readiness.md'
 d=yaml.safe_load(SRC.read_text())
-lines=['---','layout: default','title: "CAWG/C2PA mandate readiness"','nav_order: 13','has_toc: true','---','# CAWG/C2PA mandate readiness','', '> RAHP Toolkit assessment view. This is not a CAWG, DIF or C2PA conformance decision and does not assign legal effect to any assertion.','',f"Assessment date: **{d['assessment_date']}**",'', '## Portfolio view','', '| Surface | Technical | Governance | Security | Composition | Mandate readiness | Blocking risks |','|---|---|---|---|---|---|---|']
+lines=['---','layout: default','title: "CAWG/C2PA mandate readiness"','parent: Deployments & examples','nav_order: 6','has_toc: true','---','# CAWG/C2PA mandate readiness','', '> RAHP Toolkit assessment view. This is not a CAWG, DIF or C2PA conformance decision and does not assign legal effect to any assertion.','',f"Assessment date: **{d['assessment_date']}**",'', '## Portfolio view','', '| Surface | Technical | Governance | Security | Composition | Mandate readiness | Blocking risks |','|---|---|---|---|---|---|---|']
 for r in d['records']:
     risks=', '.join(f'[`{x}`](cawg-risk-register.html#{x.lower()})' for x in r['blocking_risks'])
     lines.append(f"| {r['title']} | {r['technical']} | {r['governance']} | {r['security']} | {r['composition']} | **{r['mandate_readiness']}** | {risks} |")
