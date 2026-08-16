@@ -18,6 +18,261 @@ Status: **stable release baseline**. Future breaking method changes require v2. 
 
 ---
 
+
+## v1.1.x — Governed Finding-to-Issue Publication (planned)
+
+RAHP already supports scheduled repository observation, assessment-trigger generation,
+assessment queue consolidation, combined RAHP/security review modes and deduplicated
+`assessment-required` issues. A future minor release may extend that lifecycle so that
+**confirmed actionable findings can be routed to the repository that owns remediation**.
+
+This capability is intentionally **not implemented immediately**. RAHP deployments may
+run on cron schedules and may monitor large external portfolios such as DTG, CAWG/C2PA,
+A2A or other specification ecosystems. Automatically converting every detected change
+or every provisional RAHP observation into a target-repository issue would create a
+material risk of noise, duplicate work, inappropriate cross-project escalation and
+loss of trust in the assurance process.
+
+The design objective is therefore not "automatic issue filing". It is:
+
+`observation → trigger → assessment → finding → disposition → publication decision → remediation evidence`
+
+Only the **publication decision** may create or update an issue in a target repository.
+
+### Design principles
+
+Any future finding-to-issue implementation MUST preserve the following boundaries:
+
+- **Observation is not a finding.** Repository drift, issue activity or a changed tracked
+  path may create an assessment trigger, but never directly create a remediation issue.
+- **A finding is not automatically publishable.** Findings require an explicit disposition
+  describing the correct control plane and owner.
+- **Target-repository authority is explicit.** RAHP must not assume that because it can
+  observe or assess a repository it is authorized to create issues there.
+- **External/upstream projects default to human review.** DTG, CAWG/C2PA, A2A and other
+  externally governed repositories must not receive automatically generated findings
+  unless the deployment has an explicit publication mandate for that repository.
+- **No auto-close on absence.** A subsequent run no longer detecting a finding is evidence
+  of possible resolution, not authority to close the remediation issue.
+- **Every publication effect must be auditable.** The originating assessment, target
+  revision, finding identifier, disposition, publication decision and resulting issue
+  reference must remain traceable.
+
+### Proposed finding dispositions
+
+A future review result may classify each finding using a controlled disposition such as:
+
+| Disposition | Meaning |
+|---|---|
+| `target-issue` | Action belongs in the assessed repository and may be eligible for publication. |
+| `rahp-record` | Keep as RAHP assurance evidence; do not create a target issue. |
+| `upstream-issue` | Finding belongs to an upstream specification or dependency rather than the assessed repository. |
+| `accepted-risk` | Finding remains open as governed residual risk with an acceptance record. |
+| `duplicate` | Existing issue or finding already covers the matter. |
+| `no-action` | Observation is informative but does not warrant remediation work. |
+
+Only `target-issue` is eligible for automated target-repository publication.
+
+### Signal-to-noise controls
+
+The first implementation MUST optimize for **signal over issue volume**. At minimum it
+should support:
+
+- **stable finding IDs** so repeated runs update an existing work item rather than create
+  new ones;
+- **assessment coalescing**, preserving the v0.7.1 rule that related triggers become one
+  assessment rather than independent work items;
+- **finding coalescing**, so closely related findings may become one remediation issue
+  where a common control or code path resolves them;
+- **severity/publication thresholds**, allowing deployments to auto-publish only findings
+  above a configured threshold;
+- **confidence or evidence thresholds**, preventing weak or incomplete findings from being
+  escalated automatically;
+- **cooldown windows**, preventing repeated publication activity for the same finding during
+  rapid repository churn;
+- **per-repository publication quotas or rate limits**, protecting monitored repositories
+  from bursty automated issue creation;
+- **allow-listed target repositories**, with publication disabled by default;
+- **repository-specific publication policy**, including labels, severity thresholds,
+  review requirements and permitted review modes;
+- **closed-issue regression handling**, distinguishing a genuine recurrence from simple
+  re-detection of historical evidence;
+- **dry-run and manifest-only modes**, allowing operators to observe likely publication
+  behavior before enabling writes.
+
+### Publication modes
+
+The capability should support at least three deployment modes.
+
+#### 1. Evidence-only
+
+```text
+assessment
+→ finding
+→ disposition
+→ durable RAHP record
+```
+
+No target-repository issues are created. This remains the default for external or
+untrusted publication contexts.
+
+#### 2. Governed publication
+
+```text
+assessment
+→ finding
+→ proposed publication manifest
+→ human review / approval
+→ create-or-update target issue
+```
+
+This should be the default for DTG, A2A, CAWG/C2PA and other externally governed
+repositories unless an explicit governance decision establishes a stronger mandate.
+
+#### 3. Trusted automatic publication
+
+```text
+assessment
+→ high-confidence target-issue finding
+→ policy checks
+→ create-or-update target issue
+```
+
+This mode may be appropriate for repositories under the same accountable operator where
+the publication policy, severity threshold and issue ownership are explicitly configured.
+
+### Proposed publication manifest
+
+Even automatic publication should pass through a machine-readable intermediate artefact,
+for example:
+
+```yaml
+assessment:
+  id: assessment-2026-08-16-policymesh
+  mode: combined
+  reviewed_revision: <commit>
+
+issues:
+  - finding: PM-RH-03
+    repository: example/PolicyMesh
+    disposition: target-issue
+    action: create-or-update
+    severity: high
+    publication_mode: governed
+```
+
+The manifest provides a reviewable boundary between **assurance judgment** and **GitHub
+side effect**.
+
+### Proposed issue contract
+
+A published RAHP remediation issue should include enough structured information to be
+useful to the target repository rather than merely reporting that "RAHP found a risk".
+
+At minimum:
+
+- stable RAHP finding identifier;
+- assessment mode and reviewed revision;
+- concise finding statement;
+- why the issue matters;
+- affected authority / delegation / enforcement / evidence surfaces;
+- recommended control or remediation direction;
+- machine-verifiable acceptance evidence where possible;
+- link or reference to the originating assessment evidence;
+- explicit statement of the RAHP authority boundary;
+- hidden stable deduplication marker.
+
+The issue should therefore behave as an **assurance work item**, not as a generic scanner
+alert.
+
+### Cross-repository safety boundary
+
+A future implementation must treat issue publication as a privileged cross-repository
+action.
+
+The configuration should distinguish:
+
+```yaml
+issue_publication:
+  enabled: false
+  publication_mode: evidence-only
+```
+
+from an explicitly authorized target:
+
+```yaml
+issue_publication:
+  enabled: true
+  publication_mode: governed
+  severity_threshold: high
+```
+
+Observation permission, assessment permission and publication permission are separate
+capabilities. A repository may be monitored and assessed without granting RAHP authority
+to create issues in that repository.
+
+### Authentication and least privilege
+
+Cross-repository publication should use narrowly scoped credentials. The preferred
+operating model is a dedicated GitHub App or equivalent deployment credential installed
+only on repositories that opt into publication, with repository metadata read and issues
+read/write permissions sufficient for the publication workflow.
+
+Broad personal credentials should not be required by the portable method.
+
+### Required validation
+
+Before automatic publication is enabled, conformance fixtures should prove at least:
+
+- target repository routing cannot cross configured repository boundaries;
+- repeated detection of the same stable finding does not create duplicate issues;
+- multiple related triggers coalesce into one assessment;
+- multiple materially identical findings can coalesce into one remediation issue;
+- findings below the configured publication threshold remain evidence-only;
+- `rahp-record`, `upstream-issue`, `accepted-risk`, `duplicate` and `no-action` dispositions
+  never create target issues;
+- external repositories fail closed when publication authority is absent;
+- closed findings are not silently reopened without the configured regression policy;
+- dry-run and manifest-only modes produce no GitHub write effects;
+- every created or updated issue can be traced back to an immutable assessment record.
+
+### Release gate
+
+This feature should not be considered ready merely because the publisher can create
+issues. A release candidate should first run in **manifest-only mode** against one or more
+real monitored portfolios for a sustained period and publish a signal-to-noise trial
+report.
+
+The trial should measure:
+
+- number of observations;
+- number of assessment triggers;
+- number of coalesced assessments;
+- number of substantive findings;
+- number of findings eligible for publication;
+- number of findings suppressed by deduplication, threshold or policy;
+- number of proposed target issues;
+- number of proposed issues accepted, merged, rejected or reclassified by human review.
+
+Automatic publication should remain disabled until that evidence demonstrates that the
+system produces materially more signal than noise.
+
+### Intended release posture
+
+This capability is an **additive operational-assurance feature** under the stable
+`rahp-engine-contract-v1`; it must not change the normative RAHP method rule that human or
+deployment governance determines disposition and risk acceptance.
+
+The roadmap goal is therefore:
+
+> make remediation routing machine-verifiable and automatable **without turning RAHP into
+> a cross-repository issue bot**.
+
+Status: **planned / design-stage only**. No implementation commitment is implied until
+manifest-only field evidence demonstrates acceptable signal-to-noise behavior.
+
+---
+
 ## v0.9.0 — TypeScript Reference SDK (complete)
 
 v0.9 proves implementation portability against the v0.8 language-neutral engine contract. The repository now ships `@rahp/schema`, `@rahp/core`, `@rahp/graph` and `@rahp/cli`, plus a differential conformance gate requiring Python and TypeScript to agree on normalized-result validity and evidence-retention decisions.
