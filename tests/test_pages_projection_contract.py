@@ -27,10 +27,12 @@ class TestPagesProjectionContract(unittest.TestCase):
         for required in (
             "docs/a2a-example.html",
             "docs/personas.html",
-            "examples/a2a/README.md",
+            "examples/a2a/index.html",
             "examples/a2a/pressure-test.yaml",
         ):
             self.assertIn(required, validator)
+        a2a_source = (ROOT / "examples/a2a/README.md").read_text()
+        self.assertIn("permalink: /examples/a2a/", a2a_source)
         self.assertIn('parsed["review"]', plugin)
         self.assertIn("review_summary", plugin)
 

@@ -47,7 +47,7 @@ REQUIRED_DOCS = [
     'docs/releases/v0.7.0.html',
     'docs/a2a-example.html',
     'docs/personas.html',
-    'examples/a2a/README.md',
+    'examples/a2a/index.html',
     'build/site/task-force-actions.html',
     'README.md',
     'QUICKSTART.html',
