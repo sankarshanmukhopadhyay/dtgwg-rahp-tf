@@ -51,7 +51,7 @@ def render(path):
     rr=(load(rp).get("review") or {}); sr=(load(sp).get("review") or {})
     rfs=rr.get("findings") or []; sfs=sr.get("findings") or []
     pairs=strongest_pairs(rfs,sfs)
-    target=c.get("target") or {}
+    target=c.get("target") or {}; against=c.get("reviewed_against") or {}
     lines=[f"# {cell(c.get('title'))}","",
       "> Generated from the linked RAHP pressure-test and security-hardening YAML records. This report is a cross-lens synthesis, not a third independent test.","",
       "## Review metadata","",
@@ -63,7 +63,10 @@ def render(path):
       f"| Version | {cell(target.get('version'))} |",
       f"| Commit | `{cell(target.get('commit'))}` |",
       f"| RAHP review | `{cell(rr.get('id'))}` — {len(rfs)} finding(s) |",
-      f"| Security review | `{cell(sr.get('id'))}` — {len(sfs)} finding(s) |","",
+      f"| Security review | `{cell(sr.get('id'))}` — {len(sfs)} finding(s) |",
+      f"| RAHP version | `{cell(against.get('rahp_version'))}` |",
+      f"| Engine contract | `{cell(against.get('engine_contract'))}` |",
+      f"| Engine/method revalidated on | {cell(against.get('revalidated_on'))} |","",
       "## How to read the combined view","",
       "The RAHP lens asks what harms, governance failures, assurance gaps, and affected-party consequences remain. The security lens asks how an adversary or compromised component can violate a security property. The synthesis below uses shared canonical RAHP context as a heuristic, weighted toward shared risks and guardrails. It shows only the strongest connections and does not imply that paired findings are identical.","",
       "## Strongest cross-lens connections",""]

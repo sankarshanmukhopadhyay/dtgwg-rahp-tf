@@ -1,5 +1,7 @@
 # DTG Credential Specification pressure-test example
 
+> **v0.8 revalidation:** this curated review has been mechanically revalidated against `rahp-engine-contract-v1` and the current RAHP catalogues on 2026-08-16. The target commit and original substantive review date remain unchanged; this does not claim a new upstream-target reassessment.
+
 This directory contains a **substantive RAHP pressure test**, not an illustrative placeholder. It demonstrates how a standards review can be pinned to a precise target revision, mapped to the canonical RAHP corpus, routed to the correct control plane, and retained for later re-testing.
 
 The target revision, review scope, RAHP baseline, summary and complete finding record are rendered below directly from the canonical [`pressure-test.yaml`](pressure-test.yaml).
@@ -24,8 +26,12 @@ The target revision, review scope, RAHP baseline, summary and complete finding r
 | Target commit | `d19f7c9cac364fab8e50cf434513ef53fef80e37` |
 | Target source paths | `spec/intro.md`, `spec/body.md` |
 | RAHP repository | `sankarshanmukhopadhyay/rahp-toolkit` |
-| RAHP version | `v0.3-dev` |
-| RAHP corpus date | 2026-08-12 |
+| RAHP version | `v0.8.0` |
+| Engine contract | `rahp-engine-contract-v1` |
+| RAHP corpus date | 2026-08-16 |
+| Engine/method revalidated on | 2026-08-16 |
+| Original RAHP version | `v0.3-dev` |
+| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
 
 ### Method
 

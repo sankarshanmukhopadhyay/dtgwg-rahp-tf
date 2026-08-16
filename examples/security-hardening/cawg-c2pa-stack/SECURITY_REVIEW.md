@@ -12,6 +12,11 @@
 | Target repository | `c2pa-org/specifications` |
 | Target version | 2.4 / tracked main |
 | Target commit | `b1703dc0a0420088d3f8b0e5fb11866d0fe931cb` |
+| RAHP version | `v0.8.0` |
+| Engine contract | `rahp-engine-contract-v1` |
+| Engine/method revalidated on | 2026-08-16 |
+| Original RAHP version | `v0.7.0` |
+| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
 | Source paths | — |
 
 ## Overall assessment

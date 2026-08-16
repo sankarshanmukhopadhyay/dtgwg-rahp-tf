@@ -8,6 +8,9 @@ has_toc: true
 
 RAHP exposes three coordinated review modes through `tools/review.py`.
 
+> **v0.8 storage default:** `review.py init` writes working review artefacts under ignored `.rahp/reviews/`. This prevents ordinary runs from automatically growing the committed `examples/` corpus. Use `review.py promote` only when a completed review is intentionally maintained as a worked example. Deployment dispositions belong under `instances/<id>/reviews/` as compact records.
+
+
 ## 1. RAHP pressure test
 
 Use the RAHP lens when the primary question is:
@@ -24,7 +27,7 @@ python3 tools/review.py init \
   --commit <40-character-sha>
 ```
 
-The canonical record is `examples/<slug>/pressure-test.yaml`. Its human-readable projection is the sibling `README.md`.
+The default working record is `.rahp/reviews/<slug>/pressure-test.yaml`, with a sibling `README.md`. If the review is deliberately promoted as a maintained exemplar, those become `examples/<slug>/pressure-test.yaml` and `examples/<slug>/README.md`.
 
 ## 2. Security-hardening review
 
@@ -42,7 +45,7 @@ python3 tools/review.py init \
   --commit <40-character-sha>
 ```
 
-The canonical record is `examples/security-hardening/<slug>/findings.yaml`. Its Markdown report is `SECURITY_REVIEW.md`.
+The default working record is `.rahp/reviews/<slug>/security-findings.yaml`, with `SECURITY_REVIEW.md`. A promoted exemplar uses `examples/security-hardening/<slug>/findings.yaml` and its sibling report.
 
 ## 3. Combined review
 
@@ -58,21 +61,18 @@ python3 tools/review.py init \
   --commit <40-character-sha>
 ```
 
-This produces:
+By default this produces one ignored working directory:
 
 ```text
-examples/example-spec/
+.rahp/reviews/example-spec/
   pressure-test.yaml
   README.md
-
-examples/security-hardening/example-spec/
-  findings.yaml
+  security-findings.yaml
   SECURITY_REVIEW.md
-
-examples/combined/example-spec/
   combined-review.yaml
-  COMBINED_REVIEW.md
 ```
+
+After accountable review, `review.py promote --mode combined --slug example-spec` may copy the maintained exemplar into the three `examples/` surfaces. Promotion is not required for a normal deployment assessment; durable deployment dispositions belong under `instances/<id>/reviews/`.
 
 The combined report is **not a third independent test**. It synthesizes the two lenses, showing where RAHP and security findings share canonical risks, controls, guardrails, or assurance tests, and which findings remain specific to one lens.
 

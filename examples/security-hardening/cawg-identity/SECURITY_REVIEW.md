@@ -12,6 +12,11 @@
 | Target repository | `decentralized-identity/cawg-identity-assertion` |
 | Target version | 1.3 WG-approved draft |
 | Target commit | `8a9c4925df7e8ccbcabce9d754fc27739e11dc12` |
+| RAHP version | `v0.8.0` |
+| Engine contract | `rahp-engine-contract-v1` |
+| Engine/method revalidated on | 2026-08-16 |
+| Original RAHP version | `v0.7.0` |
+| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
 | Source paths | — |
 
 ## Overall assessment

@@ -11,5 +11,10 @@ review:
   security_review: ../../security-hardening/cawg-c2pa-stack/findings.yaml
   summary: Cross-lens synthesis of RAHP harms/governance and adversarial security findings.
   notes:
-  - 'The principal portfolio risk is semantic downgrade: lower-layer cryptographic validity can survive removal, conflict
-    or non-evaluation of higher-layer evidence.'
+  - 'The principal portfolio risk is semantic downgrade: lower-layer cryptographic validity can survive removal,
+    conflict or non-evaluation of higher-layer evidence.'
+  reviewed_against:
+    rahp_version: v0.8.0
+    engine_contract: rahp-engine-contract-v1
+    revalidated_on: '2026-08-16'
+    revalidation_scope: cross-lens synthesis regenerated from v0.8-revalidated pinned source reviews

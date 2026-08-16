@@ -9,5 +9,11 @@ review:
     commit: d19f7c9cac364fab8e50cf434513ef53fef80e37
   rahp_review: ../../dtg-credential-spec/pressure-test.yaml
   security_review: ../../security-hardening/credential-spec/findings.yaml
-  summary: Cross-lens synthesis of the risks-and-harms pressure test and adversarial security-hardening review.
+  summary: Cross-lens synthesis of the risks-and-harms pressure test and adversarial security-hardening 
+    review.
   notes: []
+  reviewed_against:
+    rahp_version: v0.8.0
+    engine_contract: rahp-engine-contract-v1
+    revalidated_on: '2026-08-16'
+    revalidation_scope: cross-lens synthesis regenerated from v0.8-revalidated pinned source reviews

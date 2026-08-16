@@ -1,5 +1,7 @@
 # CAWG Metadata Assertion pressure test
 
+> **v0.8 revalidation:** this curated review has been mechanically revalidated against `rahp-engine-contract-v1` and the current RAHP catalogues on 2026-08-16. The target commit and original substantive review date remain unchanged; this does not claim a new upstream-target reassessment.
+
 This worked review is part of the RAHP v0.6.0 CAWG/C2PA external-deployment proof. It is an independent assessment and does not represent CAWG, DIF or C2PA consensus.
 
 <!-- BEGIN GENERATED PRESSURE TEST -->
@@ -22,8 +24,12 @@ This worked review is part of the RAHP v0.6.0 CAWG/C2PA external-deployment proo
 | Target commit | `64069e062b6dfa1105844a773fdfd80a69356b72` |
 | Target source paths | — |
 | RAHP repository | `sankarshanmukhopadhyay/rahp-toolkit` |
-| RAHP version | `v0.6.0` |
-| RAHP corpus date | 2026-08-14 |
+| RAHP version | `v0.8.0` |
+| Engine contract | `rahp-engine-contract-v1` |
+| RAHP corpus date | 2026-08-16 |
+| Engine/method revalidated on | 2026-08-16 |
+| Original RAHP version | `v0.6.0` |
+| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
 
 ### Method
 

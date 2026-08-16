@@ -6,6 +6,7 @@ has_toc: true
 ---
 # DTG situational monitoring
 
+> **v0.8 note:** monitoring events feed the language-neutral observation/trigger/assessment lifecycle. Repeated events should coalesce into stable assessment work items; they are not themselves findings or durable review records.
 The DTG deployment uses **three complementary signals** to decide when existing RAHP evidence may need review. None of them automatically turns upstream discussion or source movement into a finding.
 
 ## 1. Portfolio membership
@@ -20,7 +21,7 @@ For each resolved target, the DTG monitor records the observed revision and comp
 
 `instances/dtg/watch/issues.yaml` is a deliberately small allow-list of upstream issues whose discussion can materially change assumptions in existing RAHP reviews before specification text is merged.
 
-The initial v0.7 set focuses on:
+The curated DTG issue-watch set currently focuses on:
 
 - Trust Tasks identity/proof versus authorization;
 - cancellation, suspension, supersession and other corrigibility semantics;
@@ -49,4 +50,4 @@ Routine editorial issues, implementation chores and ordinary backlog items remai
 
 ## Discussions
 
-Some DTG work, particularly ZKP task-force design, also happens in GitHub Discussions. v0.7 issue monitoring does not yet treat Discussions as a monitored source type. They should be added selectively if a discussion is carrying architecture or governance decisions that would otherwise escape the repository and issue channels; the same early-warning/non-normative rule should apply.
+Some DTG work, particularly ZKP task-force design, also happens in GitHub Discussions. Current issue monitoring does not yet treat Discussions as a monitored source type. They should be added selectively if a discussion is carrying architecture or governance decisions that would otherwise escape the repository and issue channels; the same early-warning/non-normative rule should apply.

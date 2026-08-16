@@ -11,8 +11,13 @@ review:
     source_paths: []
   reviewed_against:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    rahp_version: v0.6.0
-    corpus_date: '2026-08-14'
+    rahp_version: v0.8.0
+    corpus_date: '2026-08-16'
+    original_rahp_version: v0.6.0
+    original_corpus_date: '2026-08-14'
+    engine_contract: rahp-engine-contract-v1
+    revalidated_on: '2026-08-16'
+    revalidation_scope: method-and-engine-only; target revision and substantive findings unchanged
   scope:
     included:
     - Consent authority, lifecycle, external state, precedence and withdrawal.
@@ -21,16 +26,16 @@ review:
     - Legal opinion on whether a signal is enforceable in any jurisdiction.
   method:
     workflow: docs/pressure-testing-a-spec.md
-    rule: Treat cryptographic validity, identity, authority, consent, provenance and relying-party trust as distinct
-      propositions; route remediation to the narrowest effective control plane.
+    rule: Treat cryptographic validity, identity, authority, consent, provenance and relying-party trust as 
+      distinct propositions; route remediation to the narrowest effective control plane.
   summary:
     finding_count: 2
     open_count: 2
     by_primary_disposition:
       specification: 2
-    overall_assessment: This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conformance certification.
-      Findings focus on harms, authority/lifecycle boundaries and composition behaviour that matter when the specification
-      is adopted or mandated.
+    overall_assessment: This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conformance 
+      certification. Findings focus on harms, authority/lifecycle boundaries and composition behaviour that 
+      matter when the specification is adopted or mandated.
   findings:
   - id: F-001
     title: Consent authority and multi-party rights are not yet sufficiently bounded for mandate use
@@ -41,16 +46,16 @@ review:
     - CRK-07
     evidence:
     - source: https://cawg.io/consent/1.0-draft/
-      observation: The current canonical draft is an early specification skeleton, while the experimental version
-        explores creator/rights-holder declarations across multiple usage domains.
-    harm: A system can accept consent from a party who lacks authority, fail to account for performers or represented
-      persons, or collapse multiple independent rights into one declaration.
-    recommendation: Before mandate use, define actor/authority classes, representation/delegation rules, multi-party
-      consent requirements, and explicit non-inference rules where the assertion cannot establish legal capacity
-      or rights ownership.
+      observation: The current canonical draft is an early specification skeleton, while the experimental 
+        version explores creator/rights-holder declarations across multiple usage domains.
+    harm: A system can accept consent from a party who lacks authority, fail to account for performers or 
+      represented persons, or collapse multiple independent rights into one declaration.
+    recommendation: Before mandate use, define actor/authority classes, representation/delegation rules, 
+      multi-party consent requirements, and explicit non-inference rules where the assertion cannot establish 
+      legal capacity or rights ownership.
     retest_when:
-    - The canonical draft normatively defines consent authority and multi-party conflict cases with conformance
-      tests.
+    - The canonical draft normatively defines consent authority and multi-party conflict cases with 
+      conformance tests.
     scenario_patterns:
     - SP-GOV-01
     - SP-GOV-03
@@ -69,15 +74,16 @@ review:
     - CRK-06
     evidence:
     - source: https://cawg.io/consent/1.0-draft+initial-version/
-      observation: The experimental proposal considers revocation, precedence and external registry pointers but
-        leaves important synchronization and resolution behaviour to future work.
-    harm: A consumer can continue relying on stale consent after withdrawal, or reach a different decision from
-      another verifier when embedded and external states disagree.
-    recommendation: Define a testable consent state machine and as-of semantics covering effective, amended, withdrawn,
-      expired and superseded states; specify resolution failure and conflict handling for external state.
+      observation: The experimental proposal considers revocation, precedence and external registry pointers 
+        but leaves important synchronization and resolution behaviour to future work.
+    harm: A consumer can continue relying on stale consent after withdrawal, or reach a different decision 
+      from another verifier when embedded and external states disagree.
+    recommendation: Define a testable consent state machine and as-of semantics covering effective, amended, 
+      withdrawn, expired and superseded states; specify resolution failure and conflict handling for external 
+      state.
     retest_when:
-    - Lifecycle and external-state rules are normative and covered by offline, outage, stale-cache and conflicting-state
-      vectors.
+    - Lifecycle and external-state rules are normative and covered by offline, outage, stale-cache and 
+      conflicting-state vectors.
     scenario_patterns:
     - SP-GOV-02
     - SP-OPS-01

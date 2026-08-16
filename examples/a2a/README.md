@@ -1,5 +1,7 @@
 # A2A Protocol v1.0 RAHP example
 
+> **v0.8 revalidation:** this curated review has been mechanically revalidated against `rahp-engine-contract-v1` and the current RAHP catalogues on 2026-08-16. The target commit and original substantive review date remain unchanged; this does not claim a new upstream-target reassessment.
+
 This worked example applies the portable RAHP method to the Linux Foundation Agent2Agent (A2A) Protocol rather than to a DTG or CAWG specification.
 
 The review intentionally distinguishes **protocol security that A2A already provides** from residual **trust, authority, delegation and operational-assurance boundaries**. A signed Agent Card is not treated as a weakness; the pressure test asks what a relying agent is entitled to infer from it. Likewise, A2A's push-notification security guidance is credited and then converted into an assurance test rather than re-described as an absent control.
@@ -26,8 +28,12 @@ The example also motivated five protocol-neutral RAHP risks (`RK-AI05` through `
 | Target commit | `1eb4aa03b07589d3a00ce7deab0dde679120ed30` |
 | Target source paths | `docs/specification.md`, `docs/topics/agent-discovery.md`, `docs/topics/enterprise-ready.md`, `docs/topics/streaming-and-async.md`, `docs/whats-new-v1.md` |
 | RAHP repository | `sankarshanmukhopadhyay/rahp-toolkit` |
-| RAHP version | `v0.7.0+a2a-example` |
-| RAHP corpus date | 2026-08-14 |
+| RAHP version | `v0.8.0` |
+| Engine contract | `rahp-engine-contract-v1` |
+| RAHP corpus date | 2026-08-16 |
+| Engine/method revalidated on | 2026-08-16 |
+| Original RAHP version | `v0.7.0+a2a-example` |
+| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
 
 ### Method
 

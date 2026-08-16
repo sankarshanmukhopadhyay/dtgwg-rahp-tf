@@ -146,9 +146,16 @@ def render_review(review: dict[str, Any]) -> str:
         f"| Target source paths | {code_list(target.get('source_paths'))} |",
         f"| RAHP repository | `{md_cell(against.get('repository'))}` |",
         f"| RAHP version | `{md_cell(against.get('rahp_version'))}` |",
+        f"| Engine contract | `{md_cell(against.get('engine_contract'))}` |",
         f"| RAHP corpus date | {md_cell(against.get('corpus_date'))} |",
-        "",
     ]
+    if against.get("revalidated_on"):
+        lines.append(f"| Engine/method revalidated on | {md_cell(against.get('revalidated_on'))} |")
+    if against.get("original_rahp_version"):
+        lines.append(f"| Original RAHP version | `{md_cell(against.get('original_rahp_version'))}` |")
+    if against.get("revalidation_scope"):
+        lines.append(f"| Revalidation scope | {md_cell(against.get('revalidation_scope'))} |")
+    lines += [""]
 
     method = review.get("method") or {}
     if method:

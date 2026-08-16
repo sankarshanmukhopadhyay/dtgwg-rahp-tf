@@ -131,7 +131,7 @@ The validator enforces this.
 
 ## Contributing a specification pressure test
 
-Use `docs/pressure-testing-a-spec.md` and place worked review material under `examples/<target>/` unless/until the Working Group decides to make review records part of canonical `data/`. Every finding should identify the target version/commit, linked RAHP risks, disposition, status, and evidence or resolution reference.
+Use `docs/pressure-testing-a-spec.md`. New review runs belong under ignored `.rahp/reviews/` by default. Promote a completed review into `examples/<target>/` only when it is deliberately maintained as a teaching/conformance exemplar; deployment decisions should normally be captured as compact durable records under `instances/<id>/reviews/`. Every finding should identify the target version/commit, linked RAHP risks, disposition, status, and evidence or resolution reference.
 
 A finding is not a mandate to edit the core specification. Reviewers must identify the control plane with legitimate authority and an enforceable evidence path.
 

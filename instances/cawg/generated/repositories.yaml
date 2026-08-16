@@ -2,14 +2,14 @@ version: 1
 profile:
   id: cawg-c2pa
   title: CAWG/C2PA specification assurance deployment
-  description: 'External RAHP deployment covering the CAWG assertion/profile portfolio
-    and the C2PA technical specification on which those assertions depend. The deployment
-    is observational: upstream projects retain specification and governance authority.'
+  description: 'External RAHP deployment covering the CAWG assertion/profile portfolio and the C2PA technical specification
+    on which those assertions depend. The deployment is observational: upstream projects retain specification and
+    governance authority.'
   owner: RAHP external assessment instance
 assessment:
   default_mode: combined
   rahp_repository: sankarshanmukhopadhyay/rahp-toolkit
-  rahp_version: v0.7.0
+  rahp_version: v0.8.0
 repositories:
 - id: cawg-identity
   repository: decentralized-identity/cawg-identity-assertion
@@ -223,6 +223,5 @@ output:
   directory: build/targets/cawg
 governance:
   namespace: cawg-external-assessment
-  authority_boundary: Findings are RAHP assessment artefacts only. CAWG, DIF and C2PA
-    retain authority over their respective specifications, releases and governance
-    decisions.
+  authority_boundary: Findings are RAHP assessment artefacts only. CAWG, DIF and C2PA retain authority over 
+    their respective specifications, releases and governance decisions.

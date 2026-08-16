@@ -12,6 +12,11 @@
 | Target repository | `trustoverip/dtgwg-cred-spec` |
 | Target version | Working Draft 01 |
 | Target commit | `d19f7c9cac364fab8e50cf434513ef53fef80e37` |
+| RAHP version | `v0.8.0` |
+| Engine contract | `rahp-engine-contract-v1` |
+| Engine/method revalidated on | 2026-08-16 |
+| Original RAHP version | `v0.3-dev` |
+| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
 | Source paths | `spec/body.md`, `spec/intro.md`, `spec/header.md`, `CONTEXT.md` |
 
 ## Overall assessment

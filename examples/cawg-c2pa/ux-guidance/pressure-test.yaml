@@ -11,8 +11,13 @@ review:
     source_paths: []
   reviewed_against:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    rahp_version: v0.6.0
-    corpus_date: '2026-08-14'
+    rahp_version: v0.8.0
+    corpus_date: '2026-08-16'
+    original_rahp_version: v0.6.0
+    original_corpus_date: '2026-08-14'
+    engine_contract: rahp-engine-contract-v1
+    revalidated_on: '2026-08-16'
+    revalidation_scope: method-and-engine-only; target revision and substantive findings unchanged
   scope:
     included:
     - Human interpretation of validity, identity, provenance, failure and accessibility.
@@ -21,16 +26,16 @@ review:
     - Legal opinion on whether a signal is enforceable in any jurisdiction.
   method:
     workflow: docs/pressure-testing-a-spec.md
-    rule: Treat cryptographic validity, identity, authority, consent, provenance and relying-party trust as distinct
-      propositions; route remediation to the narrowest effective control plane.
+    rule: Treat cryptographic validity, identity, authority, consent, provenance and relying-party trust as 
+      distinct propositions; route remediation to the narrowest effective control plane.
   summary:
     finding_count: 2
     open_count: 2
     by_primary_disposition:
       implementation-guidance: 2
-    overall_assessment: This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conformance certification.
-      Findings focus on harms, authority/lifecycle boundaries and composition behaviour that matter when the specification
-      is adopted or mandated.
+    overall_assessment: This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conformance 
+      certification. Findings focus on harms, authority/lifecycle boundaries and composition behaviour that 
+      matter when the specification is adopted or mandated.
   findings:
   - id: F-001
     title: Positive verification UI can still encourage users to infer truth or trustworthiness
@@ -41,14 +46,16 @@ review:
     - CRK-11
     evidence:
     - source: https://cawg.io/ux-guidance/1.0/
-      observation: The guidance addresses presentation of provenance and identity verification states, but cryptographic
-        success cannot establish factual truth or domain-specific trust by itself.
-    harm: A visually prominent verified state can become a trust badge for misinformation, unauthorized claims or
-      misleading organizational assertions.
-    recommendation: Make the distinction between integrity/identity verification and truth/authority a minimum UX
-      requirement, including wording and negative examples for technically valid but substantively disputed content.
+      observation: The guidance addresses presentation of provenance and identity verification states, but 
+        cryptographic success cannot establish factual truth or domain-specific trust by itself.
+    harm: A visually prominent verified state can become a trust badge for misinformation, unauthorized claims
+      or misleading organizational assertions.
+    recommendation: Make the distinction between integrity/identity verification and truth/authority a minimum
+      UX requirement, including wording and negative examples for technically valid but substantively disputed
+      content.
     retest_when:
-    - UX conformance/user tests demonstrate that users do not systematically interpret verification as truth endorsement.
+    - UX conformance/user tests demonstrate that users do not systematically interpret verification as truth 
+      endorsement.
     scenario_patterns:
     - SP-COMP-01
     - SP-INTEROP-01
@@ -64,13 +71,13 @@ review:
     - CRK-13
     evidence:
     - source: https://cawg.io/ux-guidance/1.0/
-      observation: The guidance is intentionally evolutionary and calls for continued user research and implementation
-        learning.
-    harm: If CAWG/C2PA presentation becomes mandatory, inaccessible disclosure controls or ambiguous unknown/error
-      states can exclude users or pressure them into unsafe decisions.
-    recommendation: Add normative or profile-level accessibility criteria, minimum error/unknown-state disclosures,
-      and testing across assistive technologies and low-literacy contexts before procurement mandates rely on the
-      UX layer.
+      observation: The guidance is intentionally evolutionary and calls for continued user research and 
+        implementation learning.
+    harm: If CAWG/C2PA presentation becomes mandatory, inaccessible disclosure controls or ambiguous 
+      unknown/error states can exclude users or pressure them into unsafe decisions.
+    recommendation: Add normative or profile-level accessibility criteria, minimum error/unknown-state 
+      disclosures, and testing across assistive technologies and low-literacy contexts before procurement 
+      mandates rely on the UX layer.
     retest_when:
     - A mandate profile defines accessibility and unknown/error-state acceptance criteria.
     scenario_patterns:

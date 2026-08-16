@@ -11,8 +11,13 @@ review:
     source_paths: []
   reviewed_against:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    rahp_version: v0.7.0
-    corpus_date: '2026-08-14'
+    rahp_version: v0.8.0
+    corpus_date: '2026-08-16'
+    original_rahp_version: v0.7.0
+    original_corpus_date: '2026-08-14'
+    engine_contract: rahp-engine-contract-v1
+    revalidated_on: '2026-08-16'
+    revalidation_scope: method-and-engine-only; target revision and substantive findings unchanged
   scope:
     included:
     - Normative and draft semantics relevant to the named composition or experiment.
@@ -22,8 +27,8 @@ review:
     - Claims that upstream CAWG, DIF, C2PA, GLEIF or W3C endorsed this RAHP assessment.
   method:
     workflow: docs/pressure-testing-a-spec.md
-    rule: Separate cryptographic validity, identity, authority, consent, lifecycle and relying-party trust; test
-      both isolated and composed failure states.
+    rule: Separate cryptographic validity, identity, authority, consent, lifecycle and relying-party trust; 
+      test both isolated and composed failure states.
   summary:
     finding_count: 3
     open_count: 3
@@ -31,8 +36,8 @@ review:
       specification: 1
       companion-specification: 1
       implementation-guidance: 1
-    overall_assessment: The vLEI branch provides a strong organizational credential path but archival KERI evidence
-      and cross-lane interpretation remain central assurance questions.
+    overall_assessment: The vLEI branch provides a strong organizational credential path but archival KERI 
+      evidence and cross-lane interpretation remain central assurance questions.
   findings:
   - id: F-001
     title: Role credentials need durable as-of validation
@@ -42,13 +47,14 @@ review:
     risks:
     - CRK-21
     evidence:
-    - source: https://github.com/decentralized-identity/cawg-identity-assertion/commits/1fbff9683fb692667a81206274d4b24d17078c0b
-      observation: The branch contains an explicit TODO about archival-quality validation material and issuer signatures
-        over historical validity.
-    harm: A later-revoked OOR/ECR credential can make historically legitimate content ambiguous, or current verification
-      can misstate historical authority.
-    recommendation: Specify archival evidence for role credential status at signing time, including issuer/key lifecycle
-      and retained validation material.
+    - source: 
+        https://github.com/decentralized-identity/cawg-identity-assertion/commits/1fbff9683fb692667a81206274d4b24d17078c0b
+      observation: The branch contains an explicit TODO about archival-quality validation material and issuer 
+        signatures over historical validity.
+    harm: A later-revoked OOR/ECR credential can make historically legitimate content ambiguous, or current 
+      verification can misstate historical authority.
+    recommendation: Specify archival evidence for role credential status at signing time, including issuer/key
+      lifecycle and retained validation material.
     retest_when:
     - Normative semantics and interoperable test vectors close this failure path.
     scenarios:
@@ -70,12 +76,12 @@ review:
     - CRK-02
     evidence:
     - source: https://cawg.io/identity/1.3-draft+vlei/
-      observation: vLEI verification relies on KERI key-state and credential chains whose long-term availability
-        is distinct from the asset itself.
-    harm: Long-lived media can outlive accessible KEL/key-state evidence needed to validate the signer and delegation
-      chain.
-    recommendation: Define minimum retained KERI evidence, resolver-independent verification requirements, and failure
-      semantics when historical KEL material is unavailable.
+      observation: vLEI verification relies on KERI key-state and credential chains whose long-term 
+        availability is distinct from the asset itself.
+    harm: Long-lived media can outlive accessible KEL/key-state evidence needed to validate the signer and 
+      delegation chain.
+    recommendation: Define minimum retained KERI evidence, resolver-independent verification requirements, and
+      failure semantics when historical KEL material is unavailable.
     retest_when:
     - Normative semantics and interoperable test vectors close this failure path.
     scenarios:
@@ -95,12 +101,12 @@ review:
     - CRK-20
     evidence:
     - source: https://github.com/decentralized-identity/cawg-identity-assertion/issues/274
-      observation: CAWG discussions describe X.509, vLEI and W3C credential lanes with materially different trust
-        roots and governance.
-    harm: Relying parties may render vLEI, X.509 and VC-backed assertions as equivalent even though their assurance,
-      governance and lifecycle semantics differ.
-    recommendation: Require trust-lane-specific result codes/metadata and prohibit UX from collapsing mechanisms
-      into an undifferentiated verified identity state.
+      observation: CAWG discussions describe X.509, vLEI and W3C credential lanes with materially different 
+        trust roots and governance.
+    harm: Relying parties may render vLEI, X.509 and VC-backed assertions as equivalent even though their 
+      assurance, governance and lifecycle semantics differ.
+    recommendation: Require trust-lane-specific result codes/metadata and prohibit UX from collapsing 
+      mechanisms into an undifferentiated verified identity state.
     retest_when:
     - Normative semantics and interoperable test vectors close this failure path.
     scenarios:

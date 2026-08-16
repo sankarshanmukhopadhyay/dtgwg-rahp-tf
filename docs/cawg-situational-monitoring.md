@@ -6,7 +6,8 @@ has_toc: true
 ---
 # CAWG/C2PA situational monitoring
 
-v0.7 uses two independent early-warning channels for the external CAWG/C2PA deployment. Neither channel changes an assessment automatically.
+> **v0.8 note:** monitoring events feed the language-neutral observation/trigger/assessment lifecycle. Repeated events should coalesce into stable assessment work items; they are not themselves findings or durable review records.
+The CAWG/C2PA deployment uses two independent early-warning channels. Neither channel changes an assessment automatically; in v0.8 both feed the common observation/trigger/assessment lifecycle.
 
 ## 1. Normative-source drift
 

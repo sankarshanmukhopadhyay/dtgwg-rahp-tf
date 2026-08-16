@@ -29,7 +29,7 @@ jobs:
       - name: Validate pressure-test records
         run: python3 tools/validate_pressure_tests.py
 
-      - name: Validate v0.7 project identity
+      - name: Validate v0.8 project identity
         run: python3 tools/validate_project_identity.py
 
       - name: Test source-monitor resilience
@@ -39,7 +39,7 @@ jobs:
       - name: Validate combined reviews
         run: python3 tools/validate_combined_reviews.py
 
-      - name: Validate CAWG v0.7 deployment integrity
+      - name: Validate CAWG v0.8 deployment integrity
         run: python3 tools/validate_cawg_instance.py
 
       - name: Validate selected issue-watch registries
@@ -47,6 +47,9 @@ jobs:
 
       - name: Validate durable assessment queue state
         run: python3 tools/validate_assessment_queue.py
+
+      - name: Validate v0.8 engine contract and retention policy
+        run: python3 tools/validate_engine_contract.py
 
       - name: Validate CAWG mandate-readiness rendering
         run: python3 tools/render_cawg_readiness.py --check

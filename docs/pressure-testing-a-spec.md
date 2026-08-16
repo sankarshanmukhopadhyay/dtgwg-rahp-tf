@@ -89,7 +89,7 @@ review:
     version: 1.2-draft
     commit: <full-40-character-commit-sha>
   reviewed_against:
-    rahp_version: v0.6.0
+    rahp_version: v0.8.0
   findings:
     - id: F-001
       title: Concise finding
@@ -109,14 +109,14 @@ review:
         - Observable condition that should trigger re-review.
 ```
 
-A completed review is expected to pin the target to a full commit SHA and preserve enough evidence to explain why each canonical RAHP risk was triggered. The YAML review record is canonical. Render its human-readable view into the sibling README, then validate it:
+A completed review is expected to pin the target to a full commit SHA and preserve enough evidence to explain why each canonical RAHP risk was triggered. During an ordinary run, the canonical working YAML lives under `.rahp/reviews/<slug>/`; a deliberately promoted exemplar uses `examples/<slug>/pressure-test.yaml`. Render and validate the record before promotion or durable disposition:
 
 ```bash
 python3 tools/render_pressure_tests.py
 python3 tools/validate_pressure_tests.py
 ```
 
-The renderer updates only the region between `<!-- BEGIN GENERATED PRESSURE TEST -->` and `<!-- END GENERATED PRESSURE TEST -->`, preserving human-authored interpretation around it. It produces review metadata, scope, summary counts, a finding index, detailed RAHP mappings, evidence tables, harm statements, recommendations, related work, and retest triggers.
+For curated exemplars, the renderer updates only the region between `<!-- BEGIN GENERATED PRESSURE TEST -->` and `<!-- END GENERATED PRESSURE TEST -->`, preserving human-authored interpretation around it. It produces review metadata, scope, summary counts, a finding index, detailed RAHP mappings, evidence tables, harm statements, recommendations, related work, and retest triggers.
 
 The validator checks target pinning, required finding metadata, controlled dispositions, summary counts, every referenced risk/control/guardrail/assurance-test identifier, and whether the generated README view is current. A YAML change without regeneration therefore fails validation rather than silently drifting from the human-readable report.
 
@@ -126,7 +126,7 @@ A review is not complete when findings are published. Preserve the target versio
 
 ## Evidence produced
 
-A pressure test should leave behind enough evidence to answer: what was reviewed, against which RAHP version, which risks were triggered, which target version was assessed, what remains open, what change resolved a finding, and when retesting is required.
+A pressure test should leave behind enough **durable assurance state** to answer: what was reviewed, against which RAHP version/engine contract, which risks were triggered, which target revision was assessed, what remains open, what change resolved a finding, what evidence supports the disposition, and when retesting is required. Raw logs and intermediate run artefacts are not durable evidence by default; see [Review evidence and retention](evidence-retention.md).
 
 
 ## Reference-link convention
@@ -137,9 +137,9 @@ This creates a repository invariant: **a RAHP identifier in generated human-faci
 
 ## Worked examples
 
-Worked reviews are maintained as regression fixtures for the method. v0.6 deliberately includes examples from more than one deployment so the documentation does not imply that RAHP's semantics are DTG-specific:
+Worked reviews are deliberately promoted `exemplar` artefacts and are maintained as regression fixtures for the method. The current set spans more than one deployment so the documentation does not imply that RAHP's semantics are DTG-specific:
 
-- [`examples/cawg-c2pa/`](../examples/cawg-c2pa/README.md) is the v0.6 external-deployment pack covering eight CAWG/C2PA specification surfaces with an independent `CRK-*` risk namespace.
+- [`examples/cawg-c2pa/`](../examples/cawg-c2pa/README.md) is the external-deployment pack, expanded through v0.7 and revalidated with the v0.8 engine contract, with an independent `CRK-*` risk namespace.
 - [`examples/dtg-credential-spec/`](../examples/dtg-credential-spec/README.md) pressure-tests a credential specification and demonstrates schema, lifecycle, privacy, governance, agent-authority and representation findings.
 - [`examples/a2a/`](../examples/a2a/README.md) pressure-tests an agent interoperability protocol and demonstrates discovery-trust, multi-hop delegation, secondary-credential, callback and action-provenance findings.
 - [`examples/trust-tasks-spec/`](../examples/trust-tasks-spec/README.md) pressure-tests a protocol/framework specification and demonstrates replay, freshness, delegation, registry-dependency, capability-negotiation, consent-policy and supported-representation findings.

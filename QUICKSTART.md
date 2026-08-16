@@ -9,13 +9,13 @@ has_toc: true
 Use this path when you want useful output before learning every artefact type.
 
 1. **Choose a target.** Record the specification/system, version or commit, and review scope.
-2. **Choose 3–6 personas.** Start with who has decision power, who bears harm, and edge cases.
-3. **Reuse existing risks.** Search `data/risks.yaml` before inventing new hypotheses.
+2. **Choose 3–6 personas.** Start with portable `Pxx` roles, then add machine, adversarial, or deployment-specific personas when they materially change the analysis.
+3. **Reuse the deployment's existing risks.** Search the applicable risk catalogue (for example `instances/<id>/data/risks.yaml`; the bundled DTG exemplar uses `data/risks.yaml`) before inventing new hypotheses.
 4. **Pressure-test 5–15 hypotheses.** Ask what fails, who is harmed, what harmful inference remains possible, and what can remain technically valid while governance-invalid.
 5. **Map controls only where needed.** Use guardrails for hard stops and assurance tests for evidence.
 6. **Route each finding.** Decide the correct control plane using `docs/governance-boundaries.md`.
 7. **Publish recommendations.** Make each action traceable to evidence and status.
-8. **Render, validate and repeat.** Treat `pressure-test.yaml` as canonical, render its Markdown view into the sibling README, and use the generated Reference catalogue so every RAHP citation resolves to its definition and context. Re-run the review when the target specification changes.
+8. **Render, validate and disposition.** Keep ordinary run artefacts in the ignored `.rahp/` workspace, render and validate the canonical review record, then deliberately promote only maintained exemplars or preserve a compact deployment disposition. Re-run the review when a retest trigger or target change occurs.
 
 ```bash
 pip install -r requirements.txt
@@ -29,7 +29,7 @@ python3 tools/validate_reference_links.py
 For the complete process, see [ADOPTION.md](ADOPTION.md) and [docs/pressure-testing-a-spec.md](docs/pressure-testing-a-spec.md).
 
 
-Worked pressure tests: [`examples/dtg-credential-spec/`](examples/dtg-credential-spec/README.md) and [`examples/trust-tasks-spec/`](examples/trust-tasks-spec/README.md).
+Worked pressure tests: [`examples/cawg-c2pa/`](examples/cawg-c2pa/README.md), [`examples/a2a/`](examples/a2a/README.md), [`examples/dtg-credential-spec/`](examples/dtg-credential-spec/README.md), and [`examples/trust-tasks-spec/`](examples/trust-tasks-spec/README.md). These are curated exemplars, not the default storage location for ordinary runs.
 
 
 ## Using an AI agent

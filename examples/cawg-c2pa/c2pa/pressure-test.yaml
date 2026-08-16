@@ -11,27 +11,33 @@ review:
     source_paths: []
   reviewed_against:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    rahp_version: v0.6.0
-    corpus_date: '2026-08-14'
+    rahp_version: v0.8.0
+    corpus_date: '2026-08-16'
+    original_rahp_version: v0.6.0
+    original_corpus_date: '2026-08-14'
+    engine_contract: rahp-engine-contract-v1
+    revalidated_on: '2026-08-16'
+    revalidation_scope: method-and-engine-only; target revision and substantive findings unchanged
   scope:
     included:
-    - C2PA as the integrity/provenance substrate consumed by CAWG assertions; relying-party and composition boundaries.
+    - C2PA as the integrity/provenance substrate consumed by CAWG assertions; relying-party and composition 
+      boundaries.
     excluded:
     - Implementation-specific vulnerability testing beyond normative/documented behaviour.
     - Legal opinion on whether a signal is enforceable in any jurisdiction.
   method:
     workflow: docs/pressure-testing-a-spec.md
-    rule: Treat cryptographic validity, identity, authority, consent, provenance and relying-party trust as distinct
-      propositions; route remediation to the narrowest effective control plane.
+    rule: Treat cryptographic validity, identity, authority, consent, provenance and relying-party trust as 
+      distinct propositions; route remediation to the narrowest effective control plane.
   summary:
     finding_count: 2
     open_count: 2
     by_primary_disposition:
       governance: 1
       implementation-guidance: 1
-    overall_assessment: This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conformance certification.
-      Findings focus on harms, authority/lifecycle boundaries and composition behaviour that matter when the specification
-      is adopted or mandated.
+    overall_assessment: This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conformance 
+      certification. Findings focus on harms, authority/lifecycle boundaries and composition behaviour that 
+      matter when the specification is adopted or mandated.
   findings:
   - id: F-001
     title: A valid C2PA manifest is a provenance/integrity result, not a complete relying-party trust decision
@@ -42,15 +48,16 @@ review:
     - CRK-01
     evidence:
     - source: https://spec.c2pa.org/specifications/specifications/2.4/index.html
-      observation: C2PA defines signed manifests, assertions and validation machinery; higher-layer assertion semantics
-        and relying-party trust policy are supplied by applications, assertion specifications and governance.
-    harm: Organizations can mandate C2PA and then overstate what successful validation proves about identity, factual
-      truth, rights, consent or authority.
-    recommendation: Mandate profiles should define decision semantics above C2PA validation, including which CAWG
-      assertions and trust policies are required for each claimed outcome.
+      observation: C2PA defines signed manifests, assertions and validation machinery; higher-layer assertion 
+        semantics and relying-party trust policy are supplied by applications, assertion specifications and 
+        governance.
+    harm: Organizations can mandate C2PA and then overstate what successful validation proves about identity, 
+      factual truth, rights, consent or authority.
+    recommendation: Mandate profiles should define decision semantics above C2PA validation, including which 
+      CAWG assertions and trust policies are required for each claimed outcome.
     retest_when:
-    - A conformance profile distinguishes C2PA structural/cryptographic validation from higher-layer identity, authority,
-      consent and truth decisions.
+    - A conformance profile distinguishes C2PA structural/cryptographic validation from higher-layer identity,
+      authority, consent and truth decisions.
     scenario_patterns:
     - SP-COMP-01
     - SP-INTEROP-01
@@ -59,8 +66,8 @@ review:
     - P3
     - P4
   - id: F-002
-    title: Optional assertion loss can create downgrade ambiguity unless relying parties know what evidence was
-      required
+    title: Optional assertion loss can create downgrade ambiguity unless relying parties know what evidence 
+      was required
     status: open
     severity: High
     primary_disposition: implementation-guidance
@@ -68,16 +75,18 @@ review:
     - CRK-12
     evidence:
     - source: https://spec.c2pa.org/specifications/specifications/2.4/index.html
-      observation: C2PA supports extensible assertions and provenance chains; applications may encounter assets
-        whose manifests or optional higher-layer assertions differ across transformations and distribution paths.
-    harm: A consumer can accept an asset with fewer assurance assertions than the producer or policy expected, particularly
-      when identity, consent or endorsement evidence is absent rather than cryptographically invalid.
+      observation: C2PA supports extensible assertions and provenance chains; applications may encounter 
+        assets whose manifests or optional higher-layer assertions differ across transformations and 
+        distribution paths.
+    harm: A consumer can accept an asset with fewer assurance assertions than the producer or policy expected,
+      particularly when identity, consent or endorsement evidence is absent rather than cryptographically 
+      invalid.
     recommendation: 'Define deployment-level required-assertion policies and downgrade detection: validators should
       distinguish absent, unsupported, stripped/expected and invalid evidence where the workflow provides enough
       context to know what was required.'
     retest_when:
-    - CAWG/C2PA composition tests cover removal or absence of required Identity, Consent, Metadata and Endorsement
-      assertions.
+    - CAWG/C2PA composition tests cover removal or absence of required Identity, Consent, Metadata and 
+      Endorsement assertions.
     scenario_patterns:
     - SP-COMP-01
     - SP-INTEROP-01

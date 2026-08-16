@@ -6,6 +6,20 @@ has_toc: true
 ---
 # RAHP Toolkit Roadmap
 
+## v0.8.0 — Language-neutral Engine Boundary (complete)
+
+v0.8 turns the lifecycle established in v0.7.1 into an explicit implementation contract. The portable method now defines engine operations, a normalized result schema, implementation-neutral conformance fixtures and review-evidence retention semantics.
+
+Status: release baseline. Python remains the current reference adapter, but its internal module structure is not normative. New review runs default to ignored `.rahp/` workspaces; durable Git state is limited to compact dispositions/evidence manifests and explicitly promoted exemplars.
+
+Key boundary:
+
+`method + schemas + fixtures → conforming engine → normalized result → retention/disposition`
+
+Next candidate: **v0.9 TypeScript reference SDK**, with generated types, graph traversal and programmatic APIs implemented against this contract. Rust/WASM remains a later option when static-binary, embedding or performance requirements justify a second implementation.
+
+---
+
 ## v0.7.1 — Assessment Queue Consolidation (complete)
 
 v0.7.1 closes the operational gap exposed by the first live situational-assurance queue: an observation is not automatically a new assessment. Repository and selected-issue events now carry stable assessment identity, related triggers coalesce into an open repository assessment, and durable review records preserve the reviewed revision and disposition.

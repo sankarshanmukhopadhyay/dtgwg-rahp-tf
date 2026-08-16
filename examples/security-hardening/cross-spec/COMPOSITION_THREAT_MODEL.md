@@ -12,6 +12,11 @@
 | Target repository | `trustoverip/dtgwg-trust-tasks-tf + trustoverip/dtgwg-cred-spec` |
 | Target version | Composition of Trust Tasks fbe196a8 and Credentials WD01 d19f7c9 |
 | Target commit | `fbe196a8a17ba3f99d0657a64be5ac58621023a1` |
+| RAHP version | `v0.8.0` |
+| Engine contract | `rahp-engine-contract-v1` |
+| Engine/method revalidated on | 2026-08-16 |
+| Original RAHP version | `v0.3-dev` |
+| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
 | Secondary target commit | `d19f7c9cac364fab8e50cf434513ef53fef80e37` |
 | Source paths | `Trust Tasks SPEC.md and ceremony/delegation artifacts`, `DTG Credential Spec spec/body.md` |
 

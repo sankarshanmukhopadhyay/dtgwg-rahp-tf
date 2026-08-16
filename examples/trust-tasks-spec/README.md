@@ -1,5 +1,7 @@
 # Trust Tasks Framework pressure-test example
 
+> **v0.8 revalidation:** this curated review has been mechanically revalidated against `rahp-engine-contract-v1` and the current RAHP catalogues on 2026-08-16. The target commit and original substantive review date remain unchanged; this does not claim a new upstream-target reassessment.
+
 This directory records a **substantive RAHP pressure test of the Trust Tasks Framework**, using the same review-record model as the DTG Credential Specification example.
 
 The purpose is not to argue that every safety concern belongs in `SPEC.md`. Trust Tasks intentionally separates document authenticity, authorization, transport, ceremony evidence, deployment policy and task-specific semantics. The pressure test preserves that architecture by routing each finding to the narrowest effective control plane.
@@ -26,8 +28,12 @@ The target revision, review scope, RAHP baseline, summary and complete finding r
 | Target commit | `fbe196a8a17ba3f99d0657a64be5ac58621023a1` |
 | Target source paths | `SPEC.md`, `docs/design-notes/delegated-trust-task-execution.md`, `docs/design-notes/trust-ceremonies.md`, `specs/task-consent/`, `specs/trust-task-discovery/`, `specs/trust-ceremony-receipt/` |
 | RAHP repository | `sankarshanmukhopadhyay/rahp-toolkit` |
-| RAHP version | `v0.3-dev` |
-| RAHP corpus date | 2026-08-12 |
+| RAHP version | `v0.8.0` |
+| Engine contract | `rahp-engine-contract-v1` |
+| RAHP corpus date | 2026-08-16 |
+| Engine/method revalidated on | 2026-08-16 |
+| Original RAHP version | `v0.3-dev` |
+| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
 
 ### Method
 

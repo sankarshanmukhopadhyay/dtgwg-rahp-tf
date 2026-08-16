@@ -1,6 +1,6 @@
-# Copy this file into examples/<target>/pressure-test.yaml and replace all placeholders.
-# Keep this YAML as the canonical pressure-test record. Add a sibling README.md and run
-# `python3 tools/render_pressure_tests.py` to insert/update its generated Markdown view.
+# Use this as a starting shape for a working review under .rahp/reviews/<target>/.
+# Promote a completed review into examples/<target>/ only when it is deliberately maintained
+# as a curated exemplar. The YAML is canonical for that review; render its sibling Markdown view.
 # Quote scalar values that contain `#` (for example, "PR #12 merged") so YAML does not
 # treat the remainder as a comment.
 review:
@@ -16,8 +16,9 @@ review:
     source_paths: []
   reviewed_against:
     repository: owner/rahp-repository
-    rahp_version: <tag or development version>
+    rahp_version: v0.8.0
     corpus_date: YYYY-MM-DD
+    engine_contract: rahp-engine-contract-v1
   scope:
     included: []
     excluded: []
@@ -27,22 +28,22 @@ review:
     finding_count: 1
     open_count: 1
   findings:
-    - id: F-001
-      title: <concise finding>
-      status: open
-      severity: High
-      primary_disposition: specification
-      scenarios: []
-      scenario_patterns: []
-      personas: []
-      risks: [RK-XXX]
-      controls: []
-      guardrails: []
-      assurance_tests: []
-      evidence:
-        - source: path/to/spec.md#section
-          observation: <what the reviewed text permits, omits or contradicts>
-      harm: <who can be harmed and how>
-      recommendation: <actionable change at the chosen control plane>
-      retest_when:
-        - <observable condition that should trigger re-review>
+  - id: F-001
+    title: <concise finding>
+    status: open
+    severity: High
+    primary_disposition: specification
+    scenarios: []
+    scenario_patterns: []
+    personas: []
+    risks: [RK-XXX]
+    controls: []
+    guardrails: []
+    assurance_tests: []
+    evidence:
+    - source: path/to/spec.md#section
+      observation: <what the reviewed text permits, omits or contradicts>
+    harm: <who can be harmed and how>
+    recommendation: <actionable change at the chosen control plane>
+    retest_when:
+    - <observable condition that should trigger re-review>

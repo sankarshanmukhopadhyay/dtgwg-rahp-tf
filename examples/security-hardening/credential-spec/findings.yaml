@@ -14,7 +14,11 @@ review:
     - CONTEXT.md
   reviewed_against:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    rahp_version: v0.3-dev
+    rahp_version: v0.8.0
+    original_rahp_version: v0.3-dev
+    engine_contract: rahp-engine-contract-v1
+    revalidated_on: '2026-08-16'
+    revalidation_scope: method-and-engine-only; target revision and substantive findings unchanged
   summary:
     finding_count: 13
     open_count: 13
@@ -54,23 +58,24 @@ review:
     - integrity
     evidence:
     - source: spec/body.md#vmc-verifiable-membership-credential
-      observation: The purpose states that two VMCs, one each direction, form a complete edge, but issuer is constrained
-        to the VTC/VTN C-DID and subject to the member.
+      observation: The purpose states that two VMCs, one each direction, form a complete edge, but issuer is 
+        constrained to the VTC/VTN C-DID and subject to the member.
     - source: trustoverip/dtgwg-cred-spec#12
       observation: 'Open PR #12 proposes member-issued acknowledgement semantics and explicitly identifies the current
         reverse credential as unconstructible.'
-    attack: A community can issue a VMC naming an entity as a member, while the normative schema provides no constructible
-      member-to-community acknowledgement. Implementations may either treat unilateral membership as complete or
-      invent incompatible consent artifacts.
+    attack: A community can issue a VMC naming an entity as a member, while the normative schema provides no 
+      constructible member-to-community acknowledgement. Implementations may either treat unilateral 
+      membership as complete or invent incompatible consent artifacts.
     existing_mitigations:
     - The prose consistently describes membership as bidirectional.
     - 'PR #12 proposes direction-qualified rules and a digest-bound acknowledgement.'
-    residual_gap: The current published Working Draft cannot express its own stated completeness/consent invariant.
-    recommendation: Resolve the contradiction normatively and add conformance tests for grant-only, acknowledgement-only,
-      mismatched digest and complete membership-edge cases.
+    residual_gap: The current published Working Draft cannot express its own stated completeness/consent 
+      invariant.
+    recommendation: Resolve the contradiction normatively and add conformance tests for grant-only, 
+      acknowledgement-only, mismatched digest and complete membership-edge cases.
     verification:
-    - A verifier rejects an unconsented membership assertion where policy requires a complete edge and interoperably
-      validates both directions.
+    - A verifier rejects an unconsented membership assertion where policy requires a complete edge and 
+      interoperably validates both directions.
     rahp:
       risks:
       - RK-ID01
@@ -87,13 +92,13 @@ review:
     external_alignment:
     - ref: W3C-VC-DM-2.0
       relationship: supports
-      rationale: VC processing depends on unambiguous issuer, subject, and credential semantics; a normative schema
-        that cannot express one required direction undermines interoperable verification.
+      rationale: VC processing depends on unambiguous issuer, subject, and credential semantics; a normative 
+        schema that cannot express one required direction undermines interoperable verification.
       clause: Data model and verification model
     - ref: NIST-SP-800-53-R5
       relationship: supports
-      rationale: Developer testing and evaluation controls support negative/conformance tests for security-relevant
-        schema invariants.
+      rationale: Developer testing and evaluation controls support negative/conformance tests for 
+        security-relevant schema invariants.
       clause: SA-11 Developer Testing and Evaluation
   - id: SEC-CR-002
     title: Agent membership can be over-read as delegation or authority
@@ -120,17 +125,17 @@ review:
     - source: spec/body.md#vmc-verifiable-membership-credential
       observation: credentialSubject.id may be the M-DID of a person, device, or agent.
     - source: spec/body.md#governance-considerations
-      observation: Membership and issuer authorization are governance-derived, but no explicit agent non-inference
-        rule enumerates delegation/capability boundaries.
-    attack: A verifier correctly establishes that an agent is a community member and incorrectly infers that it
-      may act autonomously, on behalf of a principal, or exercise a capability.
+      observation: Membership and issuer authorization are governance-derived, but no explicit agent 
+        non-inference rule enumerates delegation/capability boundaries.
+    attack: A verifier correctly establishes that an agent is a community member and incorrectly infers that 
+      it may act autonomously, on behalf of a principal, or exercise a capability.
     existing_mitigations:
     - Issuer authorization checks are required generally.
     - Trust registry/governance is expected to carry role semantics.
-    residual_gap: Membership has no explicit normative non-inference boundary for operator identity, principal,
-      capability, autonomy, accountability or mandate.
-    recommendation: Add an explicit rule that agent/device membership alone MUST NOT establish delegation, capability
-      or accountability; bind agent execution to a separate delegation/capability profile.
+    residual_gap: Membership has no explicit normative non-inference boundary for operator identity, 
+      principal, capability, autonomy, accountability or mandate.
+    recommendation: Add an explicit rule that agent/device membership alone MUST NOT establish delegation, 
+      capability or accountability; bind agent execution to a separate delegation/capability profile.
     verification:
     - Negative tests show a valid agent VMC alone cannot satisfy authorization for a delegated action.
     rahp:
@@ -151,17 +156,18 @@ review:
     external_alignment:
     - ref: NIST-SP-800-207
       relationship: direct
-      rationale: Zero trust explicitly separates identity authentication from authorization, directly supporting
-        the rule that membership identity must not be treated as delegated authority.
+      rationale: Zero trust explicitly separates identity authentication from authorization, directly 
+        supporting the rule that membership identity must not be treated as delegated authority.
       clause: Authentication and authorization are discrete functions
     - ref: NIST-SP-800-207A
       relationship: direct
-      rationale: Application/service identity must be combined with granular authorization policy before access
-        is granted.
+      rationale: Application/service identity must be combined with granular authorization policy before 
+        access is granted.
       clause: Application/service identity policies
     - ref: OWASP-AGENTIC-2025
       relationship: supports
-      rationale: Agentic threat guidance reinforces explicit scope and permission constraints for autonomous actors.
+      rationale: Agentic threat guidance reinforces explicit scope and permission constraints for autonomous 
+        actors.
   - id: SEC-CR-003
     title: Credential status and revocation behavior are not deterministic enough for high-impact verification
     status: open
@@ -181,7 +187,8 @@ review:
     - lifecycle
     preconditions:
     - Credential signature verifies.
-    - validUntil is absent or status/revocation data is unavailable or semantically inconsistent across registries.
+    - validUntil is absent or status/revocation data is unavailable or semantically inconsistent across 
+      registries.
     security_properties:
     - freshness
     - authorization
@@ -190,21 +197,22 @@ review:
     - source: spec/body.md#base-structure
       observation: validUntil is OPTIONAL.
     - source: spec/body.md#security-considerations
-      observation: Verifiers should check applicable revocation status via the governing trust registry; key rotation/revocation
-        procedures are delegated to DID methods and trust registries.
-    attack: A stale membership, invitation, endorsement or witness assertion remains technically valid after the
-      issuer's authority, subject status or underlying relationship has changed. Different verifiers reach different
-      results because status lookup semantics are external.
+      observation: Verifiers should check applicable revocation status via the governing trust registry; key 
+        rotation/revocation procedures are delegated to DID methods and trust registries.
+    attack: A stale membership, invitation, endorsement or witness assertion remains technically valid after 
+      the issuer's authority, subject status or underlying relationship has changed. Different verifiers reach
+      different results because status lookup semantics are external.
     existing_mitigations:
     - Validity periods are supported and must be enforced when present.
     - The spec explicitly distinguishes cryptographic validity from issuer authorization.
-    residual_gap: The credential format does not bind a common status mechanism, historical/as-of query behavior,
-      failure disposition or freshness requirement.
-    recommendation: Define or normatively reference a DTG status/lifecycle profile covering suspension, revocation,
-      withdrawal, key compromise, as-of verification, cache age and fail-closed/fail-indeterminate behavior.
+    residual_gap: The credential format does not bind a common status mechanism, historical/as-of query 
+      behavior, failure disposition or freshness requirement.
+    recommendation: Define or normatively reference a DTG status/lifecycle profile covering suspension, 
+      revocation, withdrawal, key compromise, as-of verification, cache age and fail-closed/fail-indeterminate
+      behavior.
     verification:
-    - Conformance corpus exercises current, suspended, revoked, withdrawn, registry-unavailable and historical verification
-      states with deterministic outcomes.
+    - Conformance corpus exercises current, suspended, revoked, withdrawn, registry-unavailable and historical
+      verification states with deterministic outcomes.
     rahp:
       risks:
       - RK-CR02
@@ -227,18 +235,18 @@ review:
     external_alignment:
     - ref: W3C-BSL-1.0
       relationship: direct
-      rationale: Bitstring Status List defines interoperable status purposes such as revocation and suspension,
-        plus status validity, caching, privacy, and integrity considerations.
+      rationale: Bitstring Status List defines interoperable status purposes such as revocation and 
+        suspension, plus status validity, caching, privacy, and integrity considerations.
       clause: Credential status, Privacy Considerations, 7.2 Validity Periods
     - ref: W3C-VC-DM-2.0
       relationship: direct
-      rationale: VC Data Model defines credential status as an extensibility point and requires verifiers to apply
-        the applicable status mechanism during verification.
+      rationale: VC Data Model defines credential status as an extensibility point and requires verifiers to 
+        apply the applicable status mechanism during verification.
       clause: Credential Status and Verification
     - ref: NIST-SP-800-63C-4
       relationship: supports
-      rationale: Assertion lifecycle and relying-party processing reinforce explicit validity and status handling
-        for security assertions.
+      rationale: Assertion lifecycle and relying-party processing reinforce explicit validity and status 
+        handling for security assertions.
   - id: SEC-CR-004
     title: VRC completeness and relationship semantics can be over-claimed from one direction
     status: open
@@ -264,16 +272,18 @@ review:
     - source: spec/body.md#vrc-verifiable-relationship-credential
       observation: Two VRCs, one each direction, form a complete DTG edge.
     - source: spec/body.md#pairwise-zero-knowledge-proof
-      observation: A holder may construct a proof of possession of a valid VRC and selectively disclose predicates.
-    attack: A presentation proves one directional attestation but an application labels it as a complete bilateral
-      relationship. The signature is valid but the higher-level relationship claim exceeds the proven artifact set.
+      observation: A holder may construct a proof of possession of a valid VRC and selectively disclose 
+        predicates.
+    attack: A presentation proves one directional attestation but an application labels it as a complete 
+      bilateral relationship. The signature is valid but the higher-level relationship claim exceeds the 
+      proven artifact set.
     existing_mitigations:
     - The specification states that two directions form a complete edge.
     - Pairwise ZKP language distinguishes what is actually proven.
-    residual_gap: No explicit verifier rule requires evidence of both directions before claiming edge completeness,
-      nor a standard claim vocabulary distinguishing unilateral attestation from complete edge.
-    recommendation: Define verifier semantics for unilateral VRC, complete edge and community-anchored relationship
-      proofs; require claims to identify which level was established.
+    residual_gap: No explicit verifier rule requires evidence of both directions before claiming edge 
+      completeness, nor a standard claim vocabulary distinguishing unilateral attestation from complete edge.
+    recommendation: Define verifier semantics for unilateral VRC, complete edge and community-anchored 
+      relationship proofs; require claims to identify which level was established.
     verification:
     - Negative test proves one VRC cannot satisfy a complete-edge predicate.
     rahp:
@@ -292,13 +302,13 @@ review:
     external_alignment:
     - ref: W3C-VC-DM-2.0
       relationship: supports
-      rationale: The VC trust model warns that cryptographic verification does not create transitive trust or establish
-        broader semantics beyond the issuer's claim.
+      rationale: The VC trust model warns that cryptographic verification does not create transitive trust or 
+        establish broader semantics beyond the issuer's claim.
       clause: Trust Model
     - ref: NIST-SP-800-207
       relationship: supports
-      rationale: Least-privilege/resource-specific authorization principles support avoiding inference of bilateral
-        completeness from one authenticated assertion.
+      rationale: Least-privilege/resource-specific authorization principles support avoiding inference of 
+        bilateral completeness from one authenticated assertion.
   - id: SEC-CR-005
     title: M-DID bootstrapping creates an open-ended correlation window
     status: open
@@ -325,14 +335,14 @@ review:
       observation: R-DIDs are recommended for privacy while M-DIDs are allowed for bootstrapping.
     - source: spec/body.md#privacy-considerations
       observation: Migration from M-DID-based to R-DID-based edges is recommended post-bootstrapping.
-    attack: A deployment remains in the bootstrapping exception indefinitely, making a stable M-DID visible across
-      relationships and enabling graph correlation that R-DIDs were intended to prevent.
+    attack: A deployment remains in the bootstrapping exception indefinitely, making a stable M-DID visible 
+      across relationships and enabling graph correlation that R-DIDs were intended to prevent.
     existing_mitigations:
     - R-DID uniqueness is mandatory when R-DIDs are used.
     - Privacy considerations explicitly recognize M-DID correlation risk.
     residual_gap: The transition trigger is a recommendation with no objective phase/scale gate.
-    recommendation: Adopt a governance/profile migration trigger tied to phase, membership count or elapsed time;
-      prohibit new M-DID edges after the trigger unless risk-accepted.
+    recommendation: Adopt a governance/profile migration trigger tied to phase, membership count or elapsed 
+      time; prohibit new M-DID edges after the trigger unless risk-accepted.
     verification:
     - Assurance test proves new relationships use unique R-DIDs after the declared migration gate.
     rahp:
@@ -349,8 +359,8 @@ review:
     external_alignment:
     - ref: W3C-VC-DM-2.0
       relationship: direct
-      rationale: VC privacy considerations address identifier-based correlation and data minimization across credential
-        use.
+      rationale: VC privacy considerations address identifier-based correlation and data minimization across 
+        credential use.
       clause: Privacy Considerations
     - ref: W3C-VC-DI-1.0
       relationship: direct
@@ -372,27 +382,27 @@ review:
     - ZKP presentation
     - proof verification
     preconditions:
-    - Holder and verifier both support privacy-preserving presentation but choose different proof systems or predicate
-      semantics.
+    - Holder and verifier both support privacy-preserving presentation but choose different proof systems or 
+      predicate semantics.
     security_properties:
     - confidentiality
     - integrity
     - unlinkability
     evidence:
     - source: spec/body.md#zero-knowledge-and-selective-disclosure
-      observation: The specification is format-agnostic and leaves detailed ZK protocols and registry-ZK interactions
-        to future work.
+      observation: The specification is format-agnostic and leaves detailed ZK protocols and registry-ZK 
+        interactions to future work.
     - source: spec/body.md#privacy-considerations
       observation: Implementations should use ZKP presentation by default.
-    attack: Implementations either fail to interoperate or silently fall back to full credential disclosure / a
-      weaker proof system. Verifiers may also interpret semantically similar predicates differently.
+    attack: Implementations either fail to interoperate or silently fall back to full credential disclosure / 
+      a weaker proof system. Verifiers may also interpret semantically similar predicates differently.
     existing_mitigations:
     - Credential schemas are deliberately minimal to support selective disclosure.
     - Pairwise and community-anchored proof constructions are conceptually separated.
-    residual_gap: There is no mandatory proof format, challenge/domain binding, predicate vocabulary, status integration
-      or anti-downgrade negotiation.
-    recommendation: Define one or more named DTG ZKP profiles with proof format, freshness challenge, domain/audience
-      binding, status proof, predicate semantics and downgrade behavior.
+    residual_gap: There is no mandatory proof format, challenge/domain binding, predicate vocabulary, status 
+      integration or anti-downgrade negotiation.
+    recommendation: Define one or more named DTG ZKP profiles with proof format, freshness challenge, 
+      domain/audience binding, status proof, predicate semantics and downgrade behavior.
     verification:
     - Cross-implementation vectors verify the same predicates and reject replay/downgrade presentations.
     rahp:
@@ -412,18 +422,18 @@ review:
     external_alignment:
     - ref: W3C-VC-DI-1.0
       relationship: direct
-      rationale: Data Integrity explicitly addresses selective disclosure and unlinkability, making it the closest
-        normative baseline for interoperable privacy-preserving proof behavior.
+      rationale: Data Integrity explicitly addresses selective disclosure and unlinkability, making it the 
+        closest normative baseline for interoperable privacy-preserving proof behavior.
       clause: 6.1 Unlinkability; 6.2 Selective Disclosure
     - ref: W3C-VC-DM-2.0
       relationship: supports
-      rationale: VC Data Model permits derived/selectively disclosed presentations but requires ecosystem agreement
-        on verification semantics.
+      rationale: VC Data Model permits derived/selectively disclosed presentations but requires ecosystem 
+        agreement on verification semantics.
       clause: Securing and presenting credentials
     - ref: NIST-SP-800-63C-4
       relationship: supports
-      rationale: Federation/assertion interoperability guidance reinforces agreeing on assurance and verifier processing
-        requirements.
+      rationale: Federation/assertion interoperability guidance reinforces agreeing on assurance and verifier 
+        processing requirements.
   - id: SEC-CR-007
     title: Presentation replay protection is outside the credential specification
     status: open
@@ -449,16 +459,16 @@ review:
     - source: spec/body.md#zero-knowledge-and-selective-disclosure
       observation: Detailed ZK protocols are out of scope.
     - source: spec/body.md#security-considerations
-      observation: Security requirements focus on credential proof verification and validity/status, not presentation
-        challenge semantics.
-    attack: A captured proof of membership, relationship, personhood or endorsement is replayed to another session
-      or relying party while remaining cryptographically valid.
+      observation: Security requirements focus on credential proof verification and validity/status, not 
+        presentation challenge semantics.
+    attack: A captured proof of membership, relationship, personhood or endorsement is replayed to another 
+      session or relying party while remaining cryptographically valid.
     existing_mitigations:
     - Underlying credential signatures and validity periods are verified.
-    residual_gap: No DTG presentation profile requires nonce/challenge, verifier domain, intended audience or one-time
-      use where appropriate.
-    recommendation: Require replay-resistant presentation profiles for interactive verification, with verifier challenge,
-      domain/audience binding and explicit non-interactive exceptions.
+    residual_gap: No DTG presentation profile requires nonce/challenge, verifier domain, intended audience or 
+      one-time use where appropriate.
+    recommendation: Require replay-resistant presentation profiles for interactive verification, with verifier
+      challenge, domain/audience binding and explicit non-interactive exceptions.
     verification:
     - Captured presentation fails when replayed under a new challenge or verifier domain.
     rahp:
@@ -476,18 +486,18 @@ review:
     external_alignment:
     - ref: NIST-SP-800-63B-4
       relationship: direct
-      rationale: Replay resistance is a core authentication property; credential presentations used for authentication
-        need equivalent verifier challenge/freshness protection.
+      rationale: Replay resistance is a core authentication property; credential presentations used for 
+        authentication need equivalent verifier challenge/freshness protection.
       clause: Replay-resistant authentication
     - ref: NIST-SP-800-63C-4
       relationship: direct
-      rationale: Federation assertions rely on relying-party, audience, and lifecycle restrictions to prevent assertion
-        replay/misuse.
+      rationale: Federation assertions rely on relying-party, audience, and lifecycle restrictions to prevent 
+        assertion replay/misuse.
       clause: Assertion protection and relying-party processing
     - ref: W3C-VC-DM-2.0
       relationship: supports
-      rationale: The VC presentation model provides the container but leaves challenge/domain binding to securing
-        mechanisms and application profiles.
+      rationale: The VC presentation model provides the container but leaves challenge/domain binding to 
+        securing mechanisms and application profiles.
   - id: SEC-CR-008
     title: Invitation single-use behavior is recommended but not interoperably enforceable
     status: open
@@ -511,20 +521,23 @@ review:
     - authorization
     evidence:
     - source: spec/body.md#security-considerations
-      observation: VICs should have short validity periods and should be treated as single-use to prevent replay.
+      observation: VICs should have short validity periods and should be treated as single-use to prevent 
+        replay.
     - source: spec/body.md#vic-verifiable-invitation-credential
-      observation: The schema does not define a redemption identifier/status mechanism beyond ordinary credential
-        fields.
-    attack: The same invitation is redeemed multiple times at the same or different acceptance points, potentially
-      creating duplicate or unauthorized memberships.
+      observation: The schema does not define a redemption identifier/status mechanism beyond ordinary 
+        credential fields.
+    attack: The same invitation is redeemed multiple times at the same or different acceptance points, 
+      potentially creating duplicate or unauthorized memberships.
     existing_mitigations:
     - validUntil can bound invitation lifetime.
     - Issuer authorization is evaluated through governance/registry policy.
-    residual_gap: Single-use semantics are advisory and no interoperable redemption/status mechanism is specified.
-    recommendation: Make single-use redemption normative for invitation profiles that create membership; define
-      redemption state, concurrency behavior and atomic check-and-mark semantics.
+    residual_gap: Single-use semantics are advisory and no interoperable redemption/status mechanism is 
+      specified.
+    recommendation: Make single-use redemption normative for invitation profiles that create membership; 
+      define redemption state, concurrency behavior and atomic check-and-mark semantics.
     verification:
-    - Concurrent redemption test demonstrates only one acceptance succeeds across cooperating acceptance points.
+    - Concurrent redemption test demonstrates only one acceptance succeeds across cooperating acceptance 
+      points.
     rahp:
       risks:
       - RK-ID01
@@ -541,14 +554,15 @@ review:
     external_alignment:
     - ref: OWASP-API-2023
       relationship: analogous
-      rationale: API6 addresses abuse of a valid sensitive business flow through repeated automated use; invitation
-        reuse is an analogous flow-abuse problem.
+      rationale: API6 addresses abuse of a valid sensitive business flow through repeated automated use; 
+        invitation reuse is an analogous flow-abuse problem.
       clause: API6:2023 — Unrestricted Access to Sensitive Business Flows
-      url: https://owasp.org/API-Security/editions/2023/en/0xa6-unrestricted-access-to-sensitive-business-flows/
+      url: 
+        https://owasp.org/API-Security/editions/2023/en/0xa6-unrestricted-access-to-sensitive-business-flows/
     - ref: NIST-SP-800-53-R5
       relationship: supports
-      rationale: Access enforcement and replay/session controls support one-time acceptance semantics for invitation-like
-        authorization artifacts.
+      rationale: Access enforcement and replay/session controls support one-time acceptance semantics for 
+        invitation-like authorization artifacts.
       clause: AC-3 Access Enforcement; SC-23 Session Authenticity
   - id: SEC-CR-009
     title: Optional VWC digest permits witness assertions that are not bound to an exact VRC
@@ -572,20 +586,22 @@ review:
     - provenance
     evidence:
     - source: spec/body.md#vwc-verifiable-witness-credential
-      observation: credentialSubject.digest is OPTIONAL although, when present, it hashes the exact witnessed VRC
-        using JCS + SHA-256.
+      observation: credentialSubject.digest is OPTIONAL although, when present, it hashes the exact witnessed 
+        VRC using JCS + SHA-256.
     - source: spec/body.md#trust-task-context-binding
-      observation: VWC taskContext is required and identifies the trust task exchange, not the exact credential
-        bytes.
-    attack: A valid witness credential is associated with a different or later VRC from the same task/party context.
-      The witness signature proves the witness statement but not which exact relationship credential it observed.
+      observation: VWC taskContext is required and identifies the trust task exchange, not the exact 
+        credential bytes.
+    attack: A valid witness credential is associated with a different or later VRC from the same task/party 
+      context. The witness signature proves the witness statement but not which exact relationship credential 
+      it observed.
     existing_mitigations:
     - taskContext is mandatory for VWC.
     - Per-direction subject rules disambiguate which VRC issuer is being witnessed.
     - Digest verification is well specified when digest is present.
-    residual_gap: Exact artifact binding remains optional despite being the strongest defense against substitution/ambiguity.
-    recommendation: Require digest for any VWC that attests a specific VRC. Reserve digest omission only for explicitly
-      typed witness claims whose semantics do not depend on a particular credential artifact.
+    residual_gap: Exact artifact binding remains optional despite being the strongest defense against 
+      substitution/ambiguity.
+    recommendation: Require digest for any VWC that attests a specific VRC. Reserve digest omission only for 
+      explicitly typed witness claims whose semantics do not depend on a particular credential artifact.
     verification:
     - Negative test shows a VWC cannot validate as witness evidence for a substituted VRC.
     rahp:
@@ -602,12 +618,13 @@ review:
     external_alignment:
     - ref: W3C-VC-DI-1.0
       relationship: direct
-      rationale: Data Integrity's purpose is cryptographic binding of proof to exact secured data; an optional digest
-        weakens equivalent binding between a witness assertion and the specific VRC.
+      rationale: Data Integrity's purpose is cryptographic binding of proof to exact secured data; an optional
+        digest weakens equivalent binding between a witness assertion and the specific VRC.
       clause: Authenticity and integrity of secured data
     - ref: NIST-SP-800-53-R5
       relationship: supports
-      rationale: Information-integrity controls support cryptographic binding and verification of referenced evidence.
+      rationale: Information-integrity controls support cryptographic binding and verification of referenced 
+        evidence.
       clause: SI-7 Software, Firmware, and Information Integrity
   - id: SEC-CR-010
     title: Witness method strings can be mistaken for verified liveness or proximity assurance
@@ -633,22 +650,24 @@ review:
     - assurance
     evidence:
     - source: spec/body.md#vwc-verifiable-witness-credential
-      observation: witnessContext.method is an optional human-readable string and witnessing policies are defined
-        by the governing VTC/VTN.
+      observation: witnessContext.method is an optional human-readable string and witnessing policies are 
+        defined by the governing VTC/VTN.
     - source: spec/body.md#governance-considerations
       observation: Witnessing policies are delegated to governance.
-    attack: A low-assurance or malicious witness labels its method with a high-assurance term. A verifier checks
-      signature and string value but not the witness's accreditation, procedure, device or evidence requirements.
+    attack: A low-assurance or malicious witness labels its method with a high-assurance term. A verifier 
+      checks signature and string value but not the witness's accreditation, procedure, device or evidence 
+      requirements.
     existing_mitigations:
     - Issuer authorization must be evaluated through governance/trust registry.
     - The spec intentionally does not claim the witness proves more than its attestation.
-    residual_gap: The schema provides no machine-readable assurance profile identifier or evidence-policy binding
-      for witness methods.
-    recommendation: Define governed witness-method profiles with stable identifiers, issuer eligibility, evidence
-      requirements, liveness/proximity semantics and audit expectations. Human-readable method strings should not
-      drive authorization.
+    residual_gap: The schema provides no machine-readable assurance profile identifier or evidence-policy 
+      binding for witness methods.
+    recommendation: Define governed witness-method profiles with stable identifiers, issuer eligibility, 
+      evidence requirements, liveness/proximity semantics and audit expectations. Human-readable method 
+      strings should not drive authorization.
     verification:
-    - Verifier rejects a high-assurance predicate when the VWC lacks a recognized witness profile/authorized issuer.
+    - Verifier rejects a high-assurance predicate when the VWC lacks a recognized witness profile/authorized 
+      issuer.
     rahp:
       risks:
       - RK-G05
@@ -663,13 +682,13 @@ review:
     external_alignment:
     - ref: NIST-SP-800-63-4
       relationship: supports
-      rationale: Digital identity assurance requires defined evidence/verification processes; a free-form method
-        label should not be treated as an assurance level without an associated validated process.
+      rationale: Digital identity assurance requires defined evidence/verification processes; a free-form 
+        method label should not be treated as an assurance level without an associated validated process.
       clause: Digital identity assurance model
     - ref: W3C-VC-DM-2.0
       relationship: supports
-      rationale: VC verification establishes provenance/integrity of a claim, not the factual truth or assurance
-        strength of an unconstrained claim value.
+      rationale: VC verification establishes provenance/integrity of a claim, not the factual truth or 
+        assurance strength of an unconstrained claim value.
       clause: Trust Model and verification semantics
   - id: SEC-CR-011
     title: VEC endorsements can become stale or reputation-laundered across governance contexts
@@ -695,23 +714,23 @@ review:
     - freshness
     evidence:
     - source: spec/body.md#vec-verifiable-endorsement-credential
-      observation: Endorsement structure and fields are community/VTN-defined; cryptographic verifiability does
-        not establish truth of the assertion.
+      observation: Endorsement structure and fields are community/VTN-defined; cryptographic verifiability 
+        does not establish truth of the assertion.
     - source: spec/body.md#governance-considerations
       observation: Endorsement vocabularies are defined by governance.
-    attack: An endorsement from a weak or compromised community is presented in another context as if its semantics,
-      assurance level and issuer reputation were equivalent. Stale endorsements may persist after the underlying
-      skill/standing changes.
+    attack: An endorsement from a weak or compromised community is presented in another context as if its 
+      semantics, assurance level and issuer reputation were equivalent. Stale endorsements may persist after 
+      the underlying skill/standing changes.
     existing_mitigations:
     - The specification explicitly distinguishes signature validity from assertion truth.
     - Issuer authorization checks apply generally.
-    residual_gap: No common scope, assurance-level, evidence provenance, status or transitivity rules constrain
-      cross-context endorsement consumption.
-    recommendation: Define governance/profile rules for endorsement scope, issuer accreditation, validity/status,
-      evidence provenance and non-transitivity across communities unless explicitly mapped.
+    residual_gap: No common scope, assurance-level, evidence provenance, status or transitivity rules 
+      constrain cross-context endorsement consumption.
+    recommendation: Define governance/profile rules for endorsement scope, issuer accreditation, 
+      validity/status, evidence provenance and non-transitivity across communities unless explicitly mapped.
     verification:
-    - Cross-community test prevents an endorsement from satisfying a higher assurance predicate without an explicit
-      mapping.
+    - Cross-community test prevents an endorsement from satisfying a higher assurance predicate without an 
+      explicit mapping.
     rahp:
       risks:
       - RK-CR04
@@ -726,13 +745,13 @@ review:
     external_alignment:
     - ref: W3C-BSL-1.0
       relationship: analogous
-      rationale: Credential status mechanisms provide the closest standard lifecycle pattern for preventing reliance
-        on credentials whose standing has changed.
+      rationale: Credential status mechanisms provide the closest standard lifecycle pattern for preventing 
+        reliance on credentials whose standing has changed.
       clause: Revocation, suspension, validity periods
     - ref: W3C-VC-DM-2.0
       relationship: supports
-      rationale: The verifier remains responsible for deciding which issuers and claims are trusted for a purpose;
-        endorsement meaning must not become transitively trusted across governance contexts.
+      rationale: The verifier remains responsible for deciding which issuers and claims are trusted for a 
+        purpose; endorsement meaning must not become transitively trusted across governance contexts.
       clause: Trust Model
   - id: SEC-CR-012
     title: Personhood hint can be over-read as authoritative PHC status
@@ -757,17 +776,17 @@ review:
     - identity assurance
     evidence:
     - source: spec/body.md#personhood-credentials-phc
-      observation: PHC is a VMC whose community governance enforces real human personhood and uniqueness; issuers
-        may optionally add PersonhoodCredential as a non-authoritative hint.
+      observation: PHC is a VMC whose community governance enforces real human personhood and uniqueness; 
+        issuers may optionally add PersonhoodCredential as a non-authoritative hint.
     - source: spec/body.md#governance-considerations
       observation: Whether a VMC qualifies as a PHC is a governance determination, not a schema property.
-    attack: An issuer self-labels a VMC as PersonhoodCredential and a verifier or generic VC library treats the
-      type hint as sufficient evidence of personhood/uniqueness.
+    attack: An issuer self-labels a VMC as PersonhoodCredential and a verifier or generic VC library treats 
+      the type hint as sufficient evidence of personhood/uniqueness.
     existing_mitigations:
     - The specification explicitly calls the hint non-authoritative.
     - PHC semantics are tied to governance and trust registry standing.
-    residual_gap: The non-authoritative status is informative text rather than a concrete verifier algorithm/profile
-      that requires registry evidence.
+    residual_gap: The non-authoritative status is informative text rather than a concrete verifier 
+      algorithm/profile that requires registry evidence.
     recommendation: 'Add a normative verifier rule: the PersonhoodCredential type string MUST NOT satisfy a PHC
       predicate without verified community qualification and current registry evidence.'
     verification:
@@ -788,13 +807,14 @@ review:
     external_alignment:
     - ref: W3C-VC-DM-2.0
       relationship: direct
-      rationale: VC type/proof validity does not establish that a semantic claim is true or trusted for a relying
-        party's purpose; authoritative personhood must come from the relevant trust/governance context.
+      rationale: VC type/proof validity does not establish that a semantic claim is true or trusted for a 
+        relying party's purpose; authoritative personhood must come from the relevant trust/governance 
+        context.
       clause: Trust Model
     - ref: NIST-SP-800-63-4
       relationship: supports
-      rationale: Assurance levels are established by defined proofing/authentication processes, not by an unaudited
-        type label.
+      rationale: Assurance levels are established by defined proofing/authentication processes, not by an 
+        unaudited type label.
   - id: SEC-CR-013
     title: Dual VC version support expands downgrade and proof-suite compatibility surface
     status: open
@@ -818,21 +838,25 @@ review:
     - algorithm agility
     evidence:
     - source: spec/body.md#w3c-verifiable-credentials-version-support
-      observation: Implementations MUST verify v2.0 and SHOULD accept v1.1; issuers may use v1.1 for compatibility.
+      observation: Implementations MUST verify v2.0 and SHOULD accept v1.1; issuers may use v1.1 for 
+        compatibility.
     - source: spec/body.md#property-mapping
-      observation: The text presents a simple property mapping while proof types are chosen from those commonly
-        used in both versions.
-    attack: An attacker or weak issuer selects the least restrictive supported combination of data model, context
-      and proof suite, causing inconsistent canonicalization, proof processing or status behavior across verifiers.
+      observation: The text presents a simple property mapping while proof types are chosen from those 
+        commonly used in both versions.
+    attack: An attacker or weak issuer selects the least restrictive supported combination of data model, 
+      context and proof suite, causing inconsistent canonicalization, proof processing or status behavior 
+      across verifiers.
     existing_mitigations:
     - v2.0 is the primary standard.
     - Implementations are told to process proof types required by both versions.
-    residual_gap: No named minimum cryptographic profile or downgrade policy accompanies dual-version acceptance.
-    recommendation: Define minimum accepted proof suites and algorithm-agility rules per VC version; allow deployments
-      to disable legacy issuance/verification by policy and prohibit silent fallback after v2 verification failure.
+    residual_gap: No named minimum cryptographic profile or downgrade policy accompanies dual-version 
+      acceptance.
+    recommendation: Define minimum accepted proof suites and algorithm-agility rules per VC version; allow 
+      deployments to disable legacy issuance/verification by policy and prohibit silent fallback after v2 
+      verification failure.
     verification:
-    - Downgrade tests prove a failed v2 proof is not retried as a weaker legacy interpretation and deprecated suites
-      are rejected.
+    - Downgrade tests prove a failed v2 proof is not retried as a weaker legacy interpretation and deprecated 
+      suites are rejected.
     rahp:
       risks:
       - RK-CY01
@@ -847,16 +871,16 @@ review:
     external_alignment:
     - ref: OWASP-API-2023
       relationship: analogous
-      rationale: API9 highlights risks from deployed-version and inventory drift; dual VC generations create an
-        analogous compatibility/downgrade surface.
+      rationale: API9 highlights risks from deployed-version and inventory drift; dual VC generations create 
+        an analogous compatibility/downgrade surface.
       clause: API9:2023 — Improper Inventory Management
       url: https://owasp.org/API-Security/editions/2023/en/0xa9-improper-inventory-management/
     - ref: W3C-VC-DM-2.0
       relationship: direct
-      rationale: VC Data Model 2.0 provides the current Recommendation baseline; supporting older generations requires
-        an explicit compatibility/security policy.
+      rationale: VC Data Model 2.0 provides the current Recommendation baseline; supporting older generations 
+        requires an explicit compatibility/security policy.
     - ref: NIST-SP-800-53-R5
       relationship: supports
-      rationale: Configuration management and obsolete-component controls support controlled version baselines and
-        retirement of insecure compatibility paths.
+      rationale: Configuration management and obsolete-component controls support controlled version baselines
+        and retirement of insecure compatibility paths.
       clause: CM family; SA-22 Unsupported System Components

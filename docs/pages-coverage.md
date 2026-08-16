@@ -65,6 +65,10 @@ inspectable without turning derived action queues into new canonical sources.
 Required Pages coverage now includes the CAWG/C2PA scenario corpus, deployment-local risk register, canonical mandate-readiness YAML projection, the curated CAWG and DTG issue-watch registries, rendered mandate-readiness view and v0.7 release notes. The Pages validator also has regression coverage for base-URL-prefixed `/rahp-toolkit/` links so a valid Jekyll site is not rejected because of deployment-path normalization.
 
 
+## v0.8 engine and retention coverage
+
+Required Pages coverage now also includes the language-neutral engine contract, normalized result schema, evidence-retention policy, v0.8 release notes, and the review evidence/retention guide. Curated example projections remain published, while `.rahp/` working directories and run-local logs are intentionally absent from the site because they are ephemeral execution state.
+
 ## Agent-protocol and portable-persona coverage
 
 The required Pages contract now includes the A2A worked-example guide, its full rendered assessment, its canonical `pressure-test.yaml` projection, and the portable persona guide. This prevents the site from passing validation when the newer agent-protocol or cross-domain persona surfaces are missing.

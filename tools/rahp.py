@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Configuration-driven RAHP v0.5 command line interface.
+"""Configuration-driven RAHP v0.8 command line interface.
 
 The YAML configuration is the portability boundary. A profile lists one or more
 repositories, assessment context and permitted review modes. The engine does not
@@ -160,7 +160,7 @@ def scaffold_one(cfg: dict[str, Any], item: dict[str, Any], mode: str, a: argpar
            "--repository", item["repository"], "--version", version, "--commit", commit,
            "--reviewed-on", a.reviewed_on,
            "--rahp-repository", assessment.get("rahp_repository", "sankarshanmukhopadhyay/rahp-toolkit"),
-           "--rahp-version", assessment.get("rahp_version", "v0.5.0")]
+           "--rahp-version", assessment.get("rahp_version", "v0.8.0"), "--storage", "working"]
     if item.get("document"): cmd += ["--document", item["document"]]
     for path in (item.get("scope") or {}).get("include", []): cmd += ["--source-path", path]
     if a.force: cmd.append("--force")

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/rahp/schema/rahp-result.schema.json",
+  "title": "RAHP normalized assessment result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "assessment", "target", "mode", "status", "findings", "disposition", "evidence"],
+  "properties": {
+    "version": {"const": 1},
+    "assessment": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "key"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "key": {"type": "string", "minLength": 1},
+        "triggers": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      }
+    },
+    "target": {
+      "type": "object", "additionalProperties": false,
+      "required": ["repository", "reviewed_revision"],
+      "properties": {
+        "repository": {"type": "string", "minLength": 1},
+        "reviewed_revision": {"type": "string", "minLength": 1},
+        "baseline_revision": {"type": ["string", "null"]},
+        "document": {"type": "string"}
+      }
+    },
+    "mode": {"enum": ["rahp", "security", "combined"]},
+    "status": {"enum": ["in-progress", "completed", "dispositioned"]},
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": true,
+        "required": ["id", "title", "status"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "title": {"type": "string", "minLength": 1},
+          "status": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "disposition": {
+      "type": "object", "additionalProperties": false,
+      "required": ["outcome"],
+      "properties": {
+        "outcome": {"enum": ["pending", "no-material-assurance-impact", "findings-raised", "remediation-requested", "risk-accepted", "superseded"]},
+        "summary": {"type": "string"},
+        "decided_at": {"type": ["string", "null"]}
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "class", "description"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "class": {"enum": ["ephemeral", "referenced", "durable", "exemplar"]},
+          "description": {"type": "string", "minLength": 1},
+          "uri": {"type": "string"},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "collected_at": {"type": "string"},
+          "sensitivity": {"type": "string"}
+        }
+      }
+    },
+    "retest_triggers": {"type": "array", "items": {"type": "string"}}
+  }
+}

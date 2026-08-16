@@ -8,7 +8,7 @@ instance:
     version_assessed: v0.3
     review_date: 2026-03
     repository: https://github.com/trustoverip/dtgwg-cred-spec
-  toolkit_version: v0.7.0
+  toolkit_version: v0.8.0
   source_artefacts:
     user_stories_framework: DTG_RAHP_User_Stories_Framework_v6.xlsx
     risk_register: DTG_RAHP_Risk_Register_v5.xlsx
@@ -17,8 +17,8 @@ instance:
   maintainer: Risk Assessment & Harms Prevention Task Force, DTGWG
   governance:
     rule_profile: RP-001
-    note: RP-001 is a proposed v0.4 operating profile. It makes the acceptance authority model machine-readable
-      without implying Task Force ratification.
+    note: RP-001 is a proposed v0.4 operating profile. It makes the acceptance authority model 
+      machine-readable without implying Task Force ratification.
 namespaces:
   RK:
     pattern: ^RK-[A-Z]{1,2}\d{2}$
@@ -138,8 +138,8 @@ invariants:
   severity: error
 - id: INV-2
   rule: every_control_reaches_a_metric
-  message: A control without a metric linkage is unmonitorable. Satisfied transitively — a control counts as monitorable
-    if any risk it is linked to has at least one affected metric.
+  message: A control without a metric linkage is unmonitorable. Satisfied transitively — a control counts as 
+    monitorable if any risk it is linked to has at least one affected metric.
   severity: error
 - id: INV-3
   rule: critical_risk_has_guardrail

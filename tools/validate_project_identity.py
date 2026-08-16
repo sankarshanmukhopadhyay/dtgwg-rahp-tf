@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Guard the v0.7 project/deployment identity boundary in active documentation."""
+"""Guard the v0.8 project/deployment identity boundary in active documentation."""
 from pathlib import Path
 import sys
 
@@ -22,9 +22,9 @@ for path in ACTIVE:
         errors.append(f"{rel}: legacy repository identity 'dtgwg-rahp-tf' appears in active guidance")
 
 required = {
-    ROOT / 'README.md': ['# RAHP Toolkit', '## The v0.7 architecture', 'CAWG/C2PA', 'Bundled DTG exemplar'],
+    ROOT / 'README.md': ['# RAHP Toolkit', '## The v0.8 architecture', 'CAWG/C2PA', 'Bundled DTG exemplar'],
     ROOT / 'docs' / 'index.md': ['title: "RAHP Toolkit documentation"', 'RAHP is not the DTG deployment', 'CAWG/C2PA'],
-    ROOT / 'ADOPTION.md': ['# Adopting RAHP', 'shared engine, independent deployment context'],
+    ROOT / 'ADOPTION.md': ['# Adopting RAHP', 'shared engine contract, independent deployment context'],
     ROOT / 'CONTRIBUTING.md': ['instances/<id>/', 'bundled DTG exemplar'],
     ROOT / 'docs' / 'portability.md': ['RAHP is portable by construction'],
 }
@@ -32,7 +32,7 @@ for path, phrases in required.items():
     text = path.read_text(encoding='utf-8')
     for phrase in phrases:
         if phrase not in text:
-            errors.append(f"{path.relative_to(ROOT)}: required v0.7 identity phrase missing: {phrase!r}")
+            errors.append(f"{path.relative_to(ROOT)}: required v0.8 identity phrase missing: {phrase!r}")
 
 # The documentation landing page must never masquerade as a deployment page.
 index = (ROOT / 'docs' / 'index.md').read_text(encoding='utf-8')

@@ -14,6 +14,9 @@
 | Commit | `d19f7c9cac364fab8e50cf434513ef53fef80e37` |
 | RAHP review | `SR-001` — 8 finding(s) |
 | Security review | `SEC-CR-001` — 13 finding(s) |
+| RAHP version | `v0.8.0` |
+| Engine contract | `rahp-engine-contract-v1` |
+| Engine/method revalidated on | 2026-08-16 |
 
 ## How to read the combined view
 

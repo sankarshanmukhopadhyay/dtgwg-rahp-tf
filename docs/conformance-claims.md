@@ -6,7 +6,7 @@ has_toc: true
 ---
 # Claiming an assessment used RAHP
 
-RAHP v0.5 development adds a portable template for the statement:
+RAHP v0.5 introduced a portable template for the statement; v0.8 retains it as a method claim rather than an implementation-language claim:
 
 > **This specification or system was assessed using RAHP.**
 

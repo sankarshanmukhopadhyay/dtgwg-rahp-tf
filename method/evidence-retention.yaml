@@ -1,0 +1,59 @@
+version: 1
+id: rahp-evidence-retention-v1
+title: RAHP review evidence retention policy
+principle: Git preserves assurance state, not execution exhaust.
+classes:
+  ephemeral:
+    description: Raw execution exhaust that can be reproduced or has no governance value after the run.
+    examples:
+      - command logs
+      - cloned target repositories
+      - temporary normalized source
+      - intermediate rendered pages
+      - draft review scaffolds
+    repository: forbidden
+    default_location: .rahp/
+    default_retention_days: 14
+  referenced:
+    description: Evidence needed to support a disposition but unsuitable for permanent storage in the toolkit repository.
+    examples:
+      - large diff bundles
+      - screenshots
+      - machine traces
+      - external scan reports
+      - archived source snapshots
+    repository: manifest-only
+    requirements:
+      - immutable_or_versioned_uri
+      - sha256
+      - collected_at
+      - sensitivity
+    default_retention_days: 365
+  durable:
+    description: Compact assurance state that must survive to explain what was reviewed and why the baseline advanced.
+    examples:
+      - assessment identity
+      - target and reviewed revision
+      - trigger summary
+      - findings and disposition
+      - evidence manifest entries
+      - retest triggers
+    repository: allowed
+    preferred_location: instances/<instance>/reviews/
+    default_retention_days: null
+  exemplar:
+    description: Deliberately curated worked examples used to teach or test the portable method.
+    examples:
+      - worked pressure tests
+      - conformance fixtures
+      - documented security reviews
+    repository: allowed
+    preferred_location: examples/
+    promotion: explicit-human-decision
+rules:
+  - Raw logs MUST NOT be committed merely because a RAHP run produced them.
+  - Generated review scaffolds are ephemeral until a reviewer deliberately promotes a completed assessment.
+  - A durable record MUST be sufficient to identify the target, reviewed revision, review mode, findings, disposition and evidence references.
+  - Large or sensitive evidence SHOULD remain outside Git and be represented by an integrity-protected manifest entry.
+  - Evidence required by law, contract or deployment governance MAY use a stricter deployment-specific retention policy.
+  - Deleting ephemeral artefacts MUST NOT remove the durable disposition or make its evidence references ambiguous.

@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "assessment": {
+    "id": "DTG-AR-2026-001",
+    "key": "dtg:repository:trustoverip/dtgwg-trust-tasks-tf",
+    "triggers": ["rahp-toolkit#1", "rahp-toolkit#3", "rahp-toolkit#4"]
+  },
+  "target": {
+    "repository": "trustoverip/dtgwg-trust-tasks-tf",
+    "baseline_revision": "fbe196a8a17ba3f99d0657a64be5ac58621023a1",
+    "reviewed_revision": "8eb7509ffabf6cc095eec20cb7d8d0120ff59ef3"
+  },
+  "mode": "combined",
+  "status": "dispositioned",
+  "findings": [
+    {"id": "F-001", "title": "Retained outcome evidence remains a cross-specification dependency", "status": "watch"},
+    {"id": "F-002", "title": "Semantic task control is not yet fully closed", "status": "watch"}
+  ],
+  "disposition": {
+    "outcome": "findings-raised",
+    "summary": "Net assurance strengthening; continuing composition and corrigibility dependencies remain watched.",
+    "decided_at": "2026-08-16T06:08:00+05:30"
+  },
+  "evidence": [
+    {"id": "DTG-AR-2026-001-RECORD", "class": "durable", "description": "Human-readable durable assessment record in 2026-08-trust-tasks.md"}
+  ],
+  "retest_triggers": ["material Trust Tasks repository change", "normative change resolving retained outcome evidence", "normative task-control change"]
+}

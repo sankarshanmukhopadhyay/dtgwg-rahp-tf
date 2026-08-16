@@ -11,8 +11,13 @@ review:
     source_paths: []
   reviewed_against:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    rahp_version: v0.6.0
-    corpus_date: '2026-08-14'
+    rahp_version: v0.8.0
+    corpus_date: '2026-08-16'
+    original_rahp_version: v0.6.0
+    original_corpus_date: '2026-08-14'
+    engine_contract: rahp-engine-contract-v1
+    revalidated_on: '2026-08-16'
+    revalidation_scope: method-and-engine-only; target revision and substantive findings unchanged
   scope:
     included:
     - Organizational identity profile, trust anchors, operator roles and lifecycle.
@@ -21,20 +26,21 @@ review:
     - Legal opinion on whether a signal is enforceable in any jurisdiction.
   method:
     workflow: docs/pressure-testing-a-spec.md
-    rule: Treat cryptographic validity, identity, authority, consent, provenance and relying-party trust as distinct
-      propositions; route remediation to the narrowest effective control plane.
+    rule: Treat cryptographic validity, identity, authority, consent, provenance and relying-party trust as 
+      distinct propositions; route remediation to the narrowest effective control plane.
   summary:
     finding_count: 2
     open_count: 2
     by_primary_disposition:
       governance: 1
       companion-specification: 1
-    overall_assessment: This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conformance certification.
-      Findings focus on harms, authority/lifecycle boundaries and composition behaviour that matter when the specification
-      is adopted or mandated.
+    overall_assessment: This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conformance 
+      certification. Findings focus on harms, authority/lifecycle boundaries and composition behaviour that 
+      matter when the specification is adopted or mandated.
   findings:
   - id: F-001
-    title: Profile conformance does not itself establish that an organization is trusted for a relying-party purpose
+    title: Profile conformance does not itself establish that an organization is trusted for a relying-party 
+      purpose
     status: open
     severity: High
     primary_disposition: governance
@@ -42,15 +48,15 @@ review:
     - CRK-10
     evidence:
     - source: https://cawg.io/organizational-identity-profile/1.0/
-      observation: The profile composes C2PA with CAWG Identity and Metadata requirements, but deployment still
-        requires policy for accepted organizational credentials and trust anchors.
-    harm: Procurement or platform mandates can equate technical profile conformance with institutional legitimacy,
-      creating false trust or concentrating participation around a narrow issuer set.
-    recommendation: Mandates should pair the profile with an explicit trust policy defining accepted issuers, assurance
-      levels, jurisdiction/domain scope, appeal and rotation processes.
+      observation: The profile composes C2PA with CAWG Identity and Metadata requirements, but deployment 
+        still requires policy for accepted organizational credentials and trust anchors.
+    harm: Procurement or platform mandates can equate technical profile conformance with institutional 
+      legitimacy, creating false trust or concentrating participation around a narrow issuer set.
+    recommendation: Mandates should pair the profile with an explicit trust policy defining accepted issuers, 
+      assurance levels, jurisdiction/domain scope, appeal and rotation processes.
     retest_when:
-    - A deployment can publish machine-readable accepted trust anchors and test rejection/unknown states without
-      modifying the profile itself.
+    - A deployment can publish machine-readable accepted trust anchors and test rejection/unknown states 
+      without modifying the profile itself.
     scenario_patterns:
     - SP-FED-01
     - SP-GOV-03
@@ -59,7 +65,8 @@ review:
     - P3
     - P6
   - id: F-002
-    title: Organizational role changes need stronger continuity between identity validity and current authority
+    title: Organizational role changes need stronger continuity between identity validity and current 
+      authority
     status: open
     severity: High
     primary_disposition: companion-specification
@@ -67,14 +74,15 @@ review:
     - CRK-09
     evidence:
     - source: https://cawg.io/organizational-identity-profile/1.0/
-      observation: Organizational identity is presented through credential/profile machinery whose continued authorization
-        can change independently of a historical signed asset.
-    harm: Employees, contractors or signing services can remain associated with organizational authority after employment,
-      role or key-control changes.
-    recommendation: Require organizational deployment profiles to bind signing/identity credentials to current role
-      authority and preserve historical evidence for actions taken before role termination.
+      observation: Organizational identity is presented through credential/profile machinery whose continued 
+        authorization can change independently of a historical signed asset.
+    harm: Employees, contractors or signing services can remain associated with organizational authority after
+      employment, role or key-control changes.
+    recommendation: Require organizational deployment profiles to bind signing/identity credentials to current
+      role authority and preserve historical evidence for actions taken before role termination.
     retest_when:
-    - Role termination and key rotation vectors produce consistent current and historical verification results.
+    - Role termination and key rotation vectors produce consistent current and historical verification 
+      results.
     scenario_patterns:
     - SP-GOV-01
     - SP-RECOV-01

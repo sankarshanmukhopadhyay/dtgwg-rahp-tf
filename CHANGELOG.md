@@ -6,6 +6,23 @@ has_toc: true
 ---
 # Changelog
 
+## v0.8.0 — 2026-08-16
+
+### Added
+- Language-neutral RAHP engine contract covering the source → observation → trigger → assessment → finding → disposition → baseline lifecycle.
+- Normalized `rahp-result` schema and implementation-neutral engine conformance fixtures.
+- Reference engine-contract CLI and CI validator.
+- Evidence-retention policy with `ephemeral`, `referenced`, `durable` and `exemplar` classes.
+- Deployment-profile retention settings and ignored `.rahp/` working review area.
+
+### Changed
+- New review scaffolds default to `.rahp/reviews/` rather than automatically becoming committed examples.
+- Curated examples now require explicit promotion from a working review.
+- Clarify that Python is a reference adapter; schemas, method data, lifecycle invariants and conformance fixtures define the portable engine boundary.
+- Review retention now preserves compact assurance/disposition state in Git while keeping logs, target clones, intermediate renders and large/sensitive evidence outside normal repository history.
+- Revalidate all 20 committed pressure-test exemplars, 5 security-hardening reviews and 4 combined syntheses against `rahp-engine-contract-v1`, preserving original target pins and review dates while recording prior RAHP versions.
+- Complete an active-documentation audit so review output locations, portability guidance, templates, Pages coverage and retention semantics consistently describe v0.8 behavior.
+
 ## v0.7.1 — 2026-08-16
 
 ### Added
@@ -110,7 +127,7 @@ has_toc: true
   v0.4 provides decision support rather than inventing those decisions.
 
 
-## Unreleased — scenario-driven RAHP and JTD documentation
+## Development history — scenario-driven RAHP and JTD documentation (incorporated through v0.8.0)
 
 ### Portable persona layer
 
@@ -142,7 +159,7 @@ has_toc: true
 - Added corpus synchronization/provenance documentation and an AI-agent corpus-maintenance workflow.
 
 
-## Unreleased
+## Development history — review orchestration and repository architecture (incorporated before v0.8.0)
 
 - Added unified `tools/review.py` orchestration with `rahp`, `security`, and `combined` modes; CI-safe in-progress scaffolds; generated cross-lens synthesis; and combined-review validation. — adoption architecture and specification pressure-testing workflow
 
@@ -170,7 +187,7 @@ the previous scheme (User Stories Framework v6, Risk Register v5, HTML site
 unversioned) made it impossible to say which state of the toolkit a given
 review was based on.
 
-## [Unreleased] — v0.3-dev
+## v0.3 development history
 
 ### Added
 

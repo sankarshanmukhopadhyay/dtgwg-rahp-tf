@@ -12,6 +12,11 @@
 | Target repository | `trustoverip/dtgwg-trust-tasks-tf` |
 | Target version | Framework editor's draft at current main |
 | Target commit | `fbe196a8a17ba3f99d0657a64be5ac58621023a1` |
+| RAHP version | `v0.8.0` |
+| Engine contract | `rahp-engine-contract-v1` |
+| Engine/method revalidated on | 2026-08-16 |
+| Original RAHP version | `v0.3-dev` |
+| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
 | Source paths | `SPEC.md`, `docs/design-notes/delegated-trust-task-execution.md`, `docs/design-notes/trust-ceremonies.md`, `specs/trust-task-discovery/0.1/spec.md`, `specs/trust-ceremony-receipt/0.1/spec.md` |
 
 ## Overall assessment

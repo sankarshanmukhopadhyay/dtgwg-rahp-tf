@@ -14,7 +14,7 @@ The repository contains deployments and examples, but **RAHP is not the DTG depl
 
 ### Understand the portable method
 
-Read [Concepts](concepts.md), [How RAHP works](how-rahp-works.md), and [Portability](portability.md). These pages describe the parts that belong to RAHP itself rather than to a particular deployment.
+Read [Concepts](concepts.md), [How RAHP works](how-rahp-works.md), [Portability](portability.md), and the [Engine contract](engine-contract.md). These pages describe the parts that belong to RAHP itself rather than to a particular deployment.
 
 ### Apply RAHP to your own target
 
@@ -37,7 +37,7 @@ These deployments are **evidence of portability**, not prerequisites for adoptio
 
 ### Worked assessments
 
-The [CAWG/C2PA assessment pack](../examples/cawg-c2pa/README.md) now demonstrates v0.7 scenario-driven, cross-specification and combined assurance. The [A2A Protocol v1.0 example](../examples/a2a/README.md) exercises agent discovery, delegated authority and asynchronous execution. Earlier DTG examples remain useful regression fixtures for credential and protocol/framework reviews: [DTG Credential Specification](../examples/dtg-credential-spec/README.md) and [Trust Tasks](../examples/trust-tasks-spec/README.md).
+The [CAWG/C2PA assessment pack](../examples/cawg-c2pa/README.md) demonstrates v0.7 scenario-driven, cross-specification and combined assurance and is revalidated against the v0.8 engine contract. The [A2A Protocol v1.0 example](../examples/a2a/README.md) exercises agent discovery, delegated authority and asynchronous execution. Earlier DTG examples remain useful regression fixtures for credential and protocol/framework reviews: [DTG Credential Specification](../examples/dtg-credential-spec/README.md) and [Trust Tasks](../examples/trust-tasks-spec/README.md).
 
 ### AI-assisted review
 
@@ -48,6 +48,7 @@ Use [AI-assisted RAHP](ai-assisted-process.md) and [Use an AI agent to run a pre
 - [Interpreting results](interpreting-results.md)
 - [Governance boundaries](governance-boundaries.md)
 - [Operational assurance](operational-assurance.md)
+- [Review evidence and retention](evidence-retention.md)
 - [Assessment claims](conformance-claims.md)
 - [Corpus synchronization and provenance](corpus-synchronization.md)
 - [DTG exemplar governance action register](task-force-actions.md)

@@ -6,7 +6,7 @@ has_toc: true
 ---
 # Configuration-driven adoption
 
-RAHP uses a YAML file as the boundary between the portable engine and a deployment. v0.6 proves this contract with independent DTG and CAWG/C2PA deployments. An adopter does **not** need to copy the DTG instance, import DTG issues, use DTG corpora, or connect to the DTG Portfolio Monitor.
+RAHP uses a YAML file as the boundary between the portable engine contract and a deployment. The independent DTG and CAWG/C2PA deployments prove this configuration boundary, while v0.8 makes the execution/result contract language-neutral. An adopter does **not** need to copy the DTG instance, import DTG issues, use DTG corpora, or connect to the DTG Portfolio Monitor.
 
 ## Minimal configuration
 
@@ -77,3 +77,20 @@ The canonical schema is [`method/schema/rahp-config.schema.json`](../method/sche
 ## What the engine does not do
 
 Configuration makes target resolution and workflow orchestration portable; it does not automate judgement. RAHP can resolve revisions, prepare repositories, scaffold review records, validate records, and render evidence. A human or AI-assisted reviewer remains responsible for examining target material, determining whether a finding is defensible, recording evidence, and proposing disposition.
+
+
+## Review retention
+
+v0.8 supports optional deployment retention settings under `assessment.retention`:
+
+```yaml
+assessment:
+  default_mode: combined
+  retention:
+    workspace_directory: .rahp
+    ephemeral_days: 14
+    referenced_days: 365
+    allow_sensitive_git_evidence: false
+```
+
+These values refine the portable defaults in `method/evidence-retention.yaml`. Working review scaffolds are not durable evidence simply because they exist; use [Review evidence and retention](evidence-retention.md) to decide what is promoted or referenced.

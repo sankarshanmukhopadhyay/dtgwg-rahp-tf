@@ -18,7 +18,7 @@ A capable coding or repository agent can:
 1. clone or open this RAHP repository and the target specification;
 2. identify the appropriate review mode: `rahp`, `security`, or `combined`;
 3. inspect the available scenario corpora and choose relevant test vectors;
-4. run `tools/review.py init` to create canonical review records;
+4. run `tools/review.py init` to create an ignored working review under `.rahp/`;
 5. read the target specification and populate evidence-backed candidate findings;
 6. link findings to RAHP risks, controls, guardrails, assurance tests, scenarios, patterns, and personas;
 7. render the human-readable reports;
@@ -48,7 +48,7 @@ sequenceDiagram
     H->>H: Review judgement and governance decisions
     H-->>A: Accept/edit/reject findings
     A->>V: Re-render and run final validation
-    V-->>H: Reproducible review artefacts
+    V-->>H: Reproducible validated working artefacts
 ```
 
 The swimlane makes the accountability boundary explicit: **the agent may prepare the decision surface; the human owns the decision**.
@@ -165,6 +165,15 @@ Human review is mandatory before:
 | Normative recommendation | May change implementer obligations and interoperability. |
 | Final publication | The reviewer must stand behind the review record. |
 
+
+## Storage and promotion
+
+The agent should treat `.rahp/` as disposable working state. A successful render or validation does **not** by itself justify committing the run. After accountable review, either:
+
+- promote the review into `examples/` when it is intentionally maintained as a teaching/conformance exemplar; or
+- preserve a compact deployment disposition and evidence manifest under `instances/<id>/reviews/`, leaving large or sensitive evidence in deployment-controlled storage.
+
+See [Review evidence and retention](evidence-retention.md).
 
 ## Use an agent to maintain a corpus
 

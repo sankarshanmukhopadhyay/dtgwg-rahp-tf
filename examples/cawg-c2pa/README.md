@@ -1,6 +1,6 @@
 # CAWG/C2PA RAHP pressure-test portfolio
 
-RAHP v0.6.0 introduced CAWG/C2PA as the first substantial external deployment proof. v0.7.0 retains those baseline reviews and expands them with scenario-driven, experimental-branch, cross-specification, security and combined assurance evidence without claiming upstream governance authority.
+RAHP v0.6.0 introduced CAWG/C2PA as the first substantial external deployment proof, and v0.7.0 expanded it with scenario-driven, experimental-branch, cross-specification, security and combined assurance evidence. In v0.8.0 the committed review corpus is revalidated against the language-neutral engine contract without changing the pinned upstream target revisions or claiming upstream governance authority.
 
 | Review | Primary pressure |
 |---|---|

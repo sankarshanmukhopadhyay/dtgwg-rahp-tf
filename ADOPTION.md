@@ -61,13 +61,13 @@ python3 tools/rahp.py review --config rahp.yaml --target specification --mode se
 python3 tools/rahp.py review --config rahp.yaml --target specification --mode combined
 ```
 
-The CLI scaffolds canonical review records with repository and commit provenance. It does not infer findings. Inspect the target, populate evidence-backed findings, then use the existing renderers and validators described in `docs/review-modes.md`.
+The CLI scaffolds review records with repository and commit provenance under the ignored `.rahp/` working area. It does not infer findings. Inspect the target and populate evidence-backed findings. Do not commit run logs or draft scaffolds merely because a run completed; promote only deliberate worked examples, and preserve deployment decisions as compact durable review/disposition records. See `docs/review-modes.md` and `docs/evidence-retention.md`.
 
 ## What you do not inherit
 
 A new deployment does not inherit another deployment's governance or assessment state. You do not need the DTG Portfolio Monitor, DTG scenario corpora, DTG governance queue, `RP-001`, canonical DTG `data/` records, CAWG `CRK-*` risks, or CAWG/C2PA monitoring state. Adopt only the method and capabilities your deployment needs.
 
-This separation is a core v0.6 invariant: **shared engine, independent deployment context**.
+This separation remains a core invariant: **shared engine contract, independent deployment context**. v0.8 additionally makes the engine boundary language-neutral.
 
 ## Optional richer use
 

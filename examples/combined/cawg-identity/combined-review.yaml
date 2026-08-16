@@ -11,4 +11,10 @@ review:
   security_review: ../../security-hardening/cawg-identity/findings.yaml
   summary: Cross-lens synthesis of RAHP harms/governance and adversarial security findings.
   notes:
-  - Identity validity, authority and historical status are both harms/governance and adversarial trust-boundary concerns.
+  - Identity validity, authority and historical status are both harms/governance and adversarial 
+    trust-boundary concerns.
+  reviewed_against:
+    rahp_version: v0.8.0
+    engine_contract: rahp-engine-contract-v1
+    revalidated_on: '2026-08-16'
+    revalidation_scope: cross-lens synthesis regenerated from v0.8-revalidated pinned source reviews

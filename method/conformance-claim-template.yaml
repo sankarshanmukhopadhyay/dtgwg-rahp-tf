@@ -7,7 +7,7 @@ claim:
   status: draft
 
 rahp:
-  version: v0.7.0
+  version: v0.8.0
   method_repository: https://github.com/sankarshanmukhopadhyay/rahp-toolkit
   method_commit: "<immutable commit SHA>"
   instance_id: "<adopter instance id>"
@@ -21,7 +21,7 @@ target:
 
 assessment:
   modes:
-    - rahp
+  - rahp
   corpus_ids: []
   finding_record: "<URI/path to canonical findings>"
   evidence_manifest: "<URI/path if applicable>"

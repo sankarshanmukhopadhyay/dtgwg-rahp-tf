@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "assessment": {"id": "TEST-AR-003", "key": "test:repository:example/spec"},
+  "target": {"repository": "example/spec", "reviewed_revision": "bbbbbbbb"},
+  "mode": "security",
+  "status": "dispositioned",
+  "findings": [],
+  "disposition": {"outcome": "no-material-assurance-impact"},
+  "evidence": [{"id": "EV-2", "class": "referenced", "description": "External trace", "uri": "https://example.invalid/evidence"}]
+}

@@ -1,0 +1,53 @@
+version: 1
+id: rahp-engine-contract-v1
+title: RAHP language-neutral engine contract
+purpose: >-
+  Define the portable execution boundary shared by any conforming RAHP implementation.
+  Method data and schemas are normative; implementation language, UI and persistence backend are not.
+execution_model:
+  stages:
+    - source
+    - observation
+    - trigger
+    - assessment
+    - finding
+    - disposition
+    - baseline
+  invariants:
+    - An observation is not automatically a new assessment.
+    - Multiple triggers may be correlated into one open assessment.
+    - Every assessment is pinned to an explicit target revision or immutable source identity.
+    - Findings remain distinct from queue/work-item state.
+    - A disposition records the reviewed revision and the decision made.
+    - A baseline advances only after a disposition is durable.
+operations:
+  - id: validate-profile
+    inputs: [rahp-config]
+    outputs: [validation-result]
+  - id: enumerate-targets
+    inputs: [rahp-config]
+    outputs: [target-set]
+  - id: observe-source
+    inputs: [target, prior-baseline]
+    outputs: [observation]
+  - id: correlate-trigger
+    inputs: [observation, open-assessments]
+    outputs: [trigger-correlation]
+  - id: scaffold-assessment
+    inputs: [target, trigger-correlation, review-mode]
+    outputs: [assessment-workspace]
+  - id: validate-assessment
+    inputs: [assessment-workspace]
+    outputs: [validation-result]
+  - id: normalize-result
+    inputs: [assessment-workspace]
+    outputs: [rahp-result]
+  - id: plan-retention
+    inputs: [rahp-result, retention-policy]
+    outputs: [retention-plan]
+  - id: promote-disposition
+    inputs: [rahp-result, retention-plan]
+    outputs: [durable-assurance-record]
+result_schema: method/schema/rahp-result.schema.json
+retention_policy: method/evidence-retention.yaml
+conformance_fixtures: tests/conformance/engine

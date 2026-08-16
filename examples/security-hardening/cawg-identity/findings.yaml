@@ -10,15 +10,19 @@ review:
     source_paths: []
   reviewed_against:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    rahp_version: v0.7.0
+    rahp_version: v0.8.0
+    original_rahp_version: v0.7.0
+    engine_contract: rahp-engine-contract-v1
+    revalidated_on: '2026-08-16'
+    revalidation_scope: method-and-engine-only; target revision and substantive findings unchanged
   summary:
     finding_count: 3
     open_count: 3
-    overall_assessment: Adversarial review of validation, resolution, downgrade and trust-boundary behavior. Findings are
-      RAHP assessment artefacts, not upstream vulnerability determinations.
+    overall_assessment: Adversarial review of validation, resolution, downgrade and trust-boundary behavior. 
+      Findings are RAHP assessment artefacts, not upstream vulnerability determinations.
   positive_controls:
-  - Cryptographic binding and signed C2PA/CAWG structures provide a strong integrity substrate when validators preserve layer-specific
-    semantics.
+  - Cryptographic binding and signed C2PA/CAWG structures provide a strong integrity substrate when validators
+    preserve layer-specific semantics.
   findings:
   - id: SEC-CW-001
     title: External identity and registry URI resolution can become a network attack surface
@@ -35,24 +39,26 @@ review:
     - validator
     - network resolver
     preconditions:
-    - Attacker can influence a credential, assertion, external reference, distribution intermediary, or validation dependency.
+    - Attacker can influence a credential, assertion, external reference, distribution intermediary, or 
+      validation dependency.
     security_properties:
     - integrity
     - availability
     evidence:
     - source: https://github.com/decentralized-identity/cawg-identity-assertion/issues/232
       observation: CAWG has explicitly tracked restrictions for verified identity/provider URIs.
-    attack: A crafted URI causes a validator to access an internal, local, redirecting, or attacker-controlled resource during
-      identity validation.
+    attack: A crafted URI causes a validator to access an internal, local, redirecting, or attacker-controlled
+      resource during identity validation.
     existing_mitigations:
-    - Cryptographic integrity and signature validation constrain direct content tampering but do not close this higher-layer
-      failure path.
-    residual_gap: The trust model requires network-aware resolution but URI scheme, redirect and destination restrictions
-      can vary by implementation.
-    recommendation: Specify allowed schemes, redirect limits, private-address blocking, size/time limits and offline behavior;
-      publish SSRF-focused conformance vectors.
+    - Cryptographic integrity and signature validation constrain direct content tampering but do not close 
+      this higher-layer failure path.
+    residual_gap: The trust model requires network-aware resolution but URI scheme, redirect and destination 
+      restrictions can vary by implementation.
+    recommendation: Specify allowed schemes, redirect limits, private-address blocking, size/time limits and 
+      offline behavior; publish SSRF-focused conformance vectors.
     verification:
-    - Add a negative interoperability vector reproducing the failure and require a distinct non-success validation result.
+    - Add a negative interoperability vector reproducing the failure and require a distinct non-success 
+      validation result.
     rahp:
       risks:
       - CRK-22
@@ -63,8 +69,8 @@ review:
     - ref: OWASP-API-2023
       clause: API7:2023 Server Side Request Forgery
       relationship: supports
-      rationale: Provides an external security-control reference for the recommended validation boundary; it does not imply
-        external review of CAWG or this finding.
+      rationale: Provides an external security-control reference for the recommended validation boundary; it 
+        does not imply external review of CAWG or this finding.
   - id: SEC-CW-002
     title: Trust-registry entity binding can be substituted across issuers
     status: open
@@ -80,23 +86,26 @@ review:
     - validator
     - trust registry
     preconditions:
-    - Attacker can influence a credential, assertion, external reference, distribution intermediary, or validation dependency.
+    - Attacker can influence a credential, assertion, external reference, distribution intermediary, or 
+      validation dependency.
     security_properties:
     - authorization
     - integrity
     evidence:
     - source: https://github.com/decentralized-identity/cawg-identity-assertion/issues/274
       observation: The X.509 + TRQP proposal identifies entity_id linkage as the main challenge.
-    attack: An attacker causes a trusted certificate identity to be evaluated against a registry entity identifier assigned
-      to another entity or CA namespace.
+    attack: An attacker causes a trusted certificate identity to be evaluated against a registry entity 
+      identifier assigned to another entity or CA namespace.
     existing_mitigations:
-    - Cryptographic integrity and signature validation constrain direct content tampering but do not close this higher-layer
-      failure path.
-    residual_gap: Cryptographic certificate validation alone does not prove correctness of the external entity_id linkage.
-    recommendation: Cryptographically or normatively bind entity_id namespace/issuer provenance and reject ambiguous cross-CA
-      reuse.
+    - Cryptographic integrity and signature validation constrain direct content tampering but do not close 
+      this higher-layer failure path.
+    residual_gap: Cryptographic certificate validation alone does not prove correctness of the external 
+      entity_id linkage.
+    recommendation: Cryptographically or normatively bind entity_id namespace/issuer provenance and reject 
+      ambiguous cross-CA reuse.
     verification:
-    - Add a negative interoperability vector reproducing the failure and require a distinct non-success validation result.
+    - Add a negative interoperability vector reproducing the failure and require a distinct non-success 
+      validation result.
     rahp:
       risks:
       - CRK-14
@@ -107,8 +116,8 @@ review:
     - ref: NIST-SP-800-63C-4
       clause: Federation assertions and audience/trust binding
       relationship: supports
-      rationale: Provides an external security-control reference for the recommended validation boundary; it does not imply
-        external review of CAWG or this finding.
+      rationale: Provides an external security-control reference for the recommended validation boundary; it 
+        does not imply external review of CAWG or this finding.
   - id: SEC-CW-003
     title: Status and archival dependency loss can force insecure fallback
     status: open
@@ -124,23 +133,26 @@ review:
     - validator
     - status resolver
     preconditions:
-    - Attacker can influence a credential, assertion, external reference, distribution intermediary, or validation dependency.
+    - Attacker can influence a credential, assertion, external reference, distribution intermediary, or 
+      validation dependency.
     security_properties:
     - integrity
     - authorization
     evidence:
     - source: https://github.com/decentralized-identity/cawg-identity-assertion/issues/260
-      observation: CAWG identifies archival-quality verification as a distinct requirement for long-lived assertions.
-    attack: A validator unable to retrieve historical status accepts a signature based only on embedded credential material
-      or current trust.
+      observation: CAWG identifies archival-quality verification as a distinct requirement for long-lived 
+        assertions.
+    attack: A validator unable to retrieve historical status accepts a signature based only on embedded 
+      credential material or current trust.
     existing_mitigations:
-    - Cryptographic integrity and signature validation constrain direct content tampering but do not close this higher-layer
-      failure path.
+    - Cryptographic integrity and signature validation constrain direct content tampering but do not close 
+      this higher-layer failure path.
     residual_gap: Long-term verification can outlive online issuer, registry and status infrastructure.
-    recommendation: Require explicit indeterminate states, retained/stapled historical evidence where supported, and tests
-      prohibiting silent fallback.
+    recommendation: Require explicit indeterminate states, retained/stapled historical evidence where 
+      supported, and tests prohibiting silent fallback.
     verification:
-    - Add a negative interoperability vector reproducing the failure and require a distinct non-success validation result.
+    - Add a negative interoperability vector reproducing the failure and require a distinct non-success 
+      validation result.
     rahp:
       risks:
       - CRK-21
@@ -151,5 +163,5 @@ review:
     - ref: NIST-SP-800-53-R5
       clause: SI-7 Software, Firmware, and Information Integrity
       relationship: supports
-      rationale: Provides an external security-control reference for the recommended validation boundary; it does not imply
-        external review of CAWG or this finding.
+      rationale: Provides an external security-control reference for the recommended validation boundary; it 
+        does not imply external review of CAWG or this finding.

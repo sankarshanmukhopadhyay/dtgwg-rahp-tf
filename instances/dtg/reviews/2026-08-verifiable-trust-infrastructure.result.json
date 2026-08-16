@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "assessment": {
+    "id": "DTG-AR-2026-002",
+    "key": "dtg:repository:OpenVTC/verifiable-trust-infrastructure",
+    "triggers": ["rahp-toolkit#2"]
+  },
+  "target": {
+    "repository": "OpenVTC/verifiable-trust-infrastructure",
+    "baseline_revision": "a879926704382c72cec24f8b1367194f7fb087fa",
+    "reviewed_revision": "1c20e3157597952d174fa2e884609f5b938923be"
+  },
+  "mode": "combined",
+  "status": "dispositioned",
+  "findings": [
+    {"id": "F-001", "title": "Runtime tenant configuration makes attestation evidence load-bearing", "status": "watch"},
+    {"id": "F-002", "title": "Parent-controlled availability remains outside enclave integrity guarantees", "status": "watch"}
+  ],
+  "disposition": {
+    "outcome": "findings-raised",
+    "summary": "Reviewed architecture materially strengthens attested tenant configuration while retaining operational dependencies for future monitoring.",
+    "decided_at": "2026-08-16T06:08:00+05:30"
+  },
+  "evidence": [
+    {"id": "DTG-AR-2026-002-RECORD", "class": "durable", "description": "Human-readable durable assessment record in 2026-08-verifiable-trust-infrastructure.md"}
+  ],
+  "retest_triggers": ["material VTI repository change", "attestation contract change", "tenant configuration trust-boundary change"]
+}

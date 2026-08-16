@@ -10,7 +10,8 @@ review:
     source_paths: []
   reviewed_against:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    rahp_version: v0.4.0
+    rahp_version: v0.8.0
+    engine_contract: rahp-engine-contract-v1
   summary:
     finding_count: 1
     open_count: 1
@@ -56,9 +57,10 @@ review:
     - ref: NIST-SP-800-53-R5
       clause: AC-3 Access Enforcement
       relationship: supports
-      rationale: Explain precisely how the external control supports the recommended hardening without implying
-        that NIST evaluated this protocol.
+      rationale: Explain precisely how the external control supports the recommended hardening without 
+        implying that NIST evaluated this protocol.
     - ref: OWASP-API-2023
       clause: API5:2023 — Broken Function Level Authorization
       relationship: analogous
-      rationale: Use analogous when the external threat class is similar but was not written for this protocol.
+      rationale: Use analogous when the external threat class is similar but was not written for this 
+        protocol.

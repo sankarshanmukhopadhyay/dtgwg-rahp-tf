@@ -6,11 +6,11 @@ has_toc: true
 ---
 # Portability
 
-RAHP is portable by construction: **the adopter supplies deployment configuration and owns deployment state; the method and engine remain shared**. v0.5 introduced this configuration boundary, v0.6 demonstrated it with DTG and CAWG/C2PA, and v0.7 extends portability to multi-source corpora, deployment-local security vocabularies and independent situational monitoring.
+RAHP is portable by construction: **the adopter supplies deployment configuration and owns deployment state; the method and engine contract remain shared**. v0.5 introduced the configuration boundary, v0.6 demonstrated it with DTG and CAWG/C2PA, v0.7 extended it to multi-source corpora and independent situational monitoring, and v0.8 makes the execution/result boundary language-neutral while separating ephemeral run state from durable assurance state.
 
 ```mermaid
 flowchart TD
-    E[Portable RAHP engine<br/>method + schemas + tools] --> C1[DTG profile YAML]
+    E[Portable RAHP contract<br/>method + schemas + conformance fixtures] --> C1[DTG profile YAML]
     E --> C2[Another WG profile YAML]
     E --> C3[Developer/project profile YAML]
     C1 --> D[DTG repository targets<br/>optional DTG corpora and governance]
@@ -28,7 +28,8 @@ An adopter must be able to:
 4. resolve target revisions with pinned commits, local Git checkouts, or configured remote branches;
 5. select RAHP, security, or combined review mode per target;
 6. scaffold assessment records without loading DTG corpora, DTG issues, DTG governance records, or the DTG Portfolio Monitor; and
-7. retain full commit-level provenance for each assessment.
+7. retain full commit-level provenance for each assessment; and
+8. keep ordinary execution exhaust outside Git while preserving compact durable dispositions and integrity-bound evidence references.
 
 ## Mechanical proof
 

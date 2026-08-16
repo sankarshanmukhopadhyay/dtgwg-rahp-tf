@@ -1,7 +1,7 @@
 # RAHP Toolkit
 
 **Risk Assessment & Harms Prevention**  
-Release v0.7.1 · CC-BY 4.0
+Release v0.8.0 · CC-BY 4.0
 
 RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-testing standards and technical specifications against risks, human harms, governance weaknesses and adversarial/security failure conditions. It provides a reusable method, configuration contract, review tooling, scenario patterns, source-change monitoring, validators and evidence rendering.
 
@@ -22,9 +22,11 @@ RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-test
 | Inspect the CAWG/C2PA external deployment | [CAWG/C2PA instance](docs/cawg-instance.md) |
 | Inspect the bundled DTG exemplar | [DTG instance](docs/dtg-instance.md) |
 | Inspect the A2A agent-protocol example | [A2A worked example](docs/a2a-example.md) |
-| Read the current release | [v0.7.1 release notes](docs/releases/v0.7.1.md) |
+| Understand the engine boundary | [Engine contract](docs/engine-contract.md) |
+| Understand review/log retention | [Review evidence and retention](docs/evidence-retention.md) |
+| Read the current release | [v0.8.0 release notes](docs/releases/v0.8.0.md) |
 
-## The v0.7 architecture
+## The v0.8 architecture
 
 ```mermaid
 flowchart TB
@@ -34,7 +36,9 @@ flowchart TB
   I[Deployment-owned state / local vocabulary] --> E
   C[Optional scenario corpora] --> E
   E --> R[RAHP / Security / Combined review]
-  R --> O[Evidence · findings · retest triggers]
+  R --> O[Normalized result · findings · disposition]
+  O --> X[Durable record / evidence manifest]
+  R --> T[Ephemeral .rahp workspace]
   E --> W[Source-change monitoring]
   W --> Q[coalesced assessment work queue]
 
@@ -44,7 +48,7 @@ flowchart TB
   E --> D4[Your deployment]
 ```
 
-The portability invariant is **shared method and engine, independent deployment context**. A deployment may own its target repositories, branches, assessment vocabulary, monitoring state, review artefacts and governance decisions without importing another deployment's state.
+The portability invariant is **shared method and engine, independent deployment context**. The v0.8 engine boundary is language-neutral: schemas, method data and conformance fixtures are portable; Python is a reference adapter rather than the normative API. Normal run exhaust lives under ignored `.rahp/`, while only compact dispositions/evidence manifests and deliberately curated examples belong in Git. A deployment may own its target repositories, branches, assessment vocabulary, monitoring state, review artefacts and governance decisions without importing another deployment's state.
 
 ## Repository architecture
 
@@ -135,6 +139,10 @@ The bundled DTG catalogue currently contains:
 | `EV-xxx` | Evidence artefact | 5 operational assurance evidence contracts |
 
 These counts are checked by `tools/validate.py`. DTG governance work such as `RP-001`, normative triage and its action queue remains scoped to that deployment unless another adopter explicitly chooses equivalent governance structures.
+
+## v0.8: language-neutral engine boundary
+
+v0.8 defines the portable execution contract independently of Python internals. `method/engine-contract.yaml`, the normalized result schema and implementation-neutral conformance fixtures now define the boundary a future TypeScript or Rust implementation must satisfy. New run scaffolds live under ignored `.rahp/` workspaces by default; Git retains compact assurance state and explicitly promoted exemplars rather than every generated review. See [engine contract](docs/engine-contract.md), [review evidence and retention](docs/evidence-retention.md), and [v0.8.0 release notes](docs/releases/v0.8.0.md).
 
 ## v0.7: composition and situational assurance
 

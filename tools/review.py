@@ -36,15 +36,24 @@ def run_tool(name:str,*args:str)->int:
     cmd=[sys.executable,str(ROOT/"tools"/name),*args]
     return subprocess.run(cmd,cwd=ROOT).returncode
 
-def rahp_paths(slug:str):
+def rahp_paths(slug:str, storage:str="exemplar"):
+    if storage=="working":
+        d=ROOT/".rahp"/"reviews"/slug
+        return d/"pressure-test.yaml",d/"README.md"
     d=ROOT/"examples"/slug
     return d/"pressure-test.yaml",d/"README.md"
 
-def security_paths(slug:str):
+def security_paths(slug:str, storage:str="exemplar"):
+    if storage=="working":
+        d=ROOT/".rahp"/"reviews"/slug
+        return d/"security-findings.yaml",d/"SECURITY_REVIEW.md"
     d=ROOT/"examples"/"security-hardening"/slug
     return d/"findings.yaml",d/"SECURITY_REVIEW.md"
 
-def combined_paths(slug:str):
+def combined_paths(slug:str, storage:str="exemplar"):
+    if storage=="working":
+        d=ROOT/".rahp"/"reviews"/slug
+        return d/"combined-review.yaml",d/"COMBINED_REVIEW.md"
     d=ROOT/"examples"/"combined"/slug
     return d/"combined-review.yaml",d/"COMBINED_REVIEW.md"
 
@@ -54,13 +63,14 @@ def base_target(a):
     return t
 
 def init_rahp(a):
-    y,readme=rahp_paths(a.slug)
+    y,readme=rahp_paths(a.slug,a.storage)
     if y.exists() and not a.force: raise SystemExit(f"{y.relative_to(ROOT)} already exists; use --force to replace")
     target=base_target(a)
     data={"review":{
         "id":a.rahp_id or "SR-DRAFT","status":"in-progress","title":f"{a.title} RAHP pressure test",
         "reviewed_on":a.reviewed_on,"target":target,
-        "reviewed_against":{"repository":a.rahp_repository,"rahp_version":a.rahp_version,"corpus_date":a.reviewed_on},
+        "reviewed_against":{"repository":a.rahp_repository,"rahp_version":a.rahp_version,"corpus_date":a.reviewed_on,
+                            "engine_contract":"rahp-engine-contract-v1"},
         "scope":{"included":[],"excluded":[]},"method":{"workflow":"docs/pressure-testing-a-spec.md"},
         "summary":{"finding_count":0,"open_count":0},"findings":[]}}
     dump(y,data)
@@ -69,28 +79,30 @@ def init_rahp(a):
     print(f"[init] {y.relative_to(ROOT)}")
 
 def init_security(a):
-    y,_=security_paths(a.slug)
+    y,_=security_paths(a.slug,a.storage)
     if y.exists() and not a.force: raise SystemExit(f"{y.relative_to(ROOT)} already exists; use --force to replace")
     target=base_target(a)
     target.pop("document",None)
     data={"review":{
         "id":a.security_id or "SEC-X-000","status":"in-progress","title":f"{a.title} security-hardening review",
         "reviewed_on":a.reviewed_on,"target":target,
-        "reviewed_against":{"repository":a.rahp_repository,"rahp_version":a.rahp_version},
+        "reviewed_against":{"repository":a.rahp_repository,"rahp_version":a.rahp_version,
+                            "engine_contract":"rahp-engine-contract-v1"},
         "summary":{"finding_count":0,"open_count":0,"overall_assessment":"Review in progress."},
         "findings":[]}}
     dump(y,data); print(f"[init] {y.relative_to(ROOT)}")
 
 def init_combined(a):
     init_rahp(a); init_security(a)
-    y,_=combined_paths(a.slug)
+    y,_=combined_paths(a.slug,a.storage)
     data={"review":{
         "id":a.combined_id or "COMB-DRAFT","status":"in-progress","title":f"{a.title} combined RAHP + security review",
         "reviewed_on":a.reviewed_on,
         "target":{"repository":a.repository,"version":a.version,"commit":a.commit},
-        "rahp_review":f"../../{a.slug}/pressure-test.yaml",
-        "security_review":f"../../security-hardening/{a.slug}/findings.yaml",
+        "rahp_review":("pressure-test.yaml" if a.storage=="working" else f"../../{a.slug}/pressure-test.yaml"),
+        "security_review":("security-findings.yaml" if a.storage=="working" else f"../../security-hardening/{a.slug}/findings.yaml"),
         "summary":"Generated cross-lens synthesis. Add reviewer interpretation in notes when useful.",
+        "reviewed_against":{"repository":a.rahp_repository,"rahp_version":a.rahp_version,"engine_contract":"rahp-engine-contract-v1"},
         "notes":[]}}
     dump(y,data); print(f"[init] {y.relative_to(ROOT)}")
 
@@ -101,8 +113,12 @@ def cmd_init(a):
     elif a.mode=="security": init_security(a)
     else: init_combined(a)
     print("\nReview scaffold created. Populate canonical YAML findings after examining the target.")
-    print("Run `python3 tools/review.py render --mode %s%s` to render the human-readable view." %
-          (a.mode, f" --slug {a.slug}" if a.mode=="combined" else ""))
+    if a.storage=="working":
+        print("Working review is under .rahp/ and is intentionally ignored by Git.")
+        print("Promote only a deliberately curated worked example with `review.py promote --mode %s --slug %s`." % (a.mode,a.slug))
+    else:
+        print("Run `python3 tools/review.py render --mode %s%s` to render the human-readable view." %
+              (a.mode, f" --slug {a.slug}" if a.mode=="combined" else ""))
 
 def cmd_render(a):
     rc=0
@@ -126,6 +142,22 @@ def cmd_run(a):
     except SystemExit as e:
         if e.code: raise
     cmd_validate(x)
+
+def cmd_promote(a):
+    src=ROOT/".rahp"/"reviews"/a.slug
+    if not src.exists(): raise SystemExit(f"working review not found: {src.relative_to(ROOT)}")
+    pairs=[]
+    if a.mode in ("rahp","combined"):
+        pairs += [(src/"pressure-test.yaml", rahp_paths(a.slug,"exemplar")[0]), (src/"README.md", rahp_paths(a.slug,"exemplar")[1])]
+    if a.mode in ("security","combined"):
+        pairs += [(src/"security-findings.yaml", security_paths(a.slug,"exemplar")[0]), (src/"SECURITY_REVIEW.md", security_paths(a.slug,"exemplar")[1])]
+    if a.mode=="combined":
+        pairs += [(src/"combined-review.yaml", combined_paths(a.slug,"exemplar")[0])]
+    for source,dest in pairs:
+        if not source.exists(): raise SystemExit(f"missing working review file: {source.relative_to(ROOT)}")
+        if dest.exists() and not a.force: raise SystemExit(f"{dest.relative_to(ROOT)} exists; use --force")
+        dest.parent.mkdir(parents=True,exist_ok=True); shutil.copy2(source,dest); print(f"[promote] {dest.relative_to(ROOT)}")
+    print("Promotion creates a curated exemplar. Deployment dispositions should instead use compact instance review records and evidence manifests.")
 
 def cmd_status(a):
     rows=[]; represented_rahp=set(); represented_security=set()
@@ -159,8 +191,9 @@ def main():
     ip.add_argument("--source-path",action="append",default=[])
     ip.add_argument("--reviewed-on",default=dt.date.today().isoformat())
     ip.add_argument("--rahp-repository",default="sankarshanmukhopadhyay/rahp-toolkit")
-    ip.add_argument("--rahp-version",default="development")
+    ip.add_argument("--rahp-version",default="v0.8.0")
     ip.add_argument("--rahp-id"); ip.add_argument("--security-id"); ip.add_argument("--combined-id")
+    ip.add_argument("--storage",choices=["working","exemplar"],default="working",help="working keeps run artefacts under ignored .rahp/; exemplar writes to examples/")
     ip.add_argument("--force",action="store_true"); ip.set_defaults(func=cmd_init)
 
     for name,func in [("render",cmd_render),("validate",cmd_validate),("run",cmd_run)]:
@@ -168,7 +201,9 @@ def main():
         p.add_argument("--mode",choices=["rahp","security","combined"],required=True)
         p.add_argument("--slug",help="limit combined rendering to one target slug")
         p.set_defaults(func=func)
-    st=sub.add_parser("status",help="show discovered review records"); st.set_defaults(func=cmd_status)
+    pr=sub.add_parser("promote",help="promote a working review into the curated examples corpus")
+    pr.add_argument("--mode",choices=["rahp","security","combined"],required=True); pr.add_argument("--slug",required=True); pr.add_argument("--force",action="store_true"); pr.set_defaults(func=cmd_promote)
+    st=sub.add_parser("status",help="show discovered committed exemplar review records"); st.set_defaults(func=cmd_status)
     a=ap.parse_args(); a.func(a)
 
 if __name__=="__main__": main()
