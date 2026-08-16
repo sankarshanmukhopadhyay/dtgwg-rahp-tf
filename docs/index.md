@@ -59,3 +59,8 @@ Use [AI-assisted RAHP](ai-assisted-process.md) and [Use an AI agent to run a pre
 The [Historical Library](../archive/) retains earlier personas, requirements, registers, spreadsheets and generated views. It is provenance, not the portable RAHP method and not current deployment state.
 
 - [Personas and actor roles](personas.md)
+
+
+## Implementations
+
+RAHP v0.9 ships both the Python operational/reference tooling and a [TypeScript Reference SDK](typescript-sdk.md) that conforms to the same v0.8 engine boundary.

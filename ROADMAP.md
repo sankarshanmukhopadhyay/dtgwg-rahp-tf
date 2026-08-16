@@ -6,6 +6,16 @@ has_toc: true
 ---
 # RAHP Toolkit Roadmap
 
+## v0.9.0 — TypeScript Reference SDK (complete)
+
+v0.9 proves implementation portability against the v0.8 language-neutral engine contract. The repository now ships `@rahp/schema`, `@rahp/core`, `@rahp/graph` and `@rahp/cli`, plus a differential conformance gate requiring Python and TypeScript to agree on normalized-result validity and evidence-retention decisions.
+
+Status: release baseline. TypeScript is a reference implementation, not a normative method layer; Python remains the operational implementation for repository observation, issue publication and existing review automation.
+
+Next candidate: **v1.0 stable method and implementation conformance**, expanding shared fixtures to cover the full portable lifecycle and stabilizing contract/versioning rules after multi-deployment use.
+
+---
+
 ## v0.8.0 — Language-neutral Engine Boundary (complete)
 
 v0.8 turns the lifecycle established in v0.7.1 into an explicit implementation contract. The portable method now defines engine operations, a normalized result schema, implementation-neutral conformance fixtures and review-evidence retention semantics.

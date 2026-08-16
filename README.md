@@ -144,6 +144,8 @@ These counts are checked by `tools/validate.py`. DTG governance work such as `RP
 
 v0.8 defines the portable execution contract independently of Python internals. `method/engine-contract.yaml`, the normalized result schema and implementation-neutral conformance fixtures now define the boundary a future TypeScript or Rust implementation must satisfy. New run scaffolds live under ignored `.rahp/` workspaces by default; Git retains compact assurance state and explicitly promoted exemplars rather than every generated review. See [engine contract](docs/engine-contract.md), [review evidence and retention](docs/evidence-retention.md), and [v0.8.0 release notes](docs/releases/v0.8.0.md).
 
+**v0.9 adds an independent TypeScript reference SDK.** `@rahp/schema`, `@rahp/core`, `@rahp/graph` and `@rahp/cli` implement the v0.8 contract without making TypeScript normative. Python↔TypeScript differential checks now run against the shared conformance fixtures and retention decisions. See [TypeScript Reference SDK](docs/typescript-sdk.md) and [v0.9.0 release notes](docs/releases/v0.9.0.md).
+
 ## v0.7: composition and situational assurance
 
 v0.7 deepens the external CAWG/C2PA deployment with a 36-scenario corpus, experimental-branch and cross-specification reviews, CAWG-local security/combined reviews, issue-aware situational monitoring, and a rendered mandate-readiness view. The deployment remains independent of DTG governance and identifiers. See [v0.7.0 release notes](docs/releases/v0.7.0.md), [CAWG/C2PA mandate readiness](docs/cawg-mandate-readiness.md), and [CAWG instance](docs/cawg-instance.md).

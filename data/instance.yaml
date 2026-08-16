@@ -8,7 +8,7 @@ instance:
     version_assessed: v0.3
     review_date: 2026-03
     repository: https://github.com/trustoverip/dtgwg-cred-spec
-  toolkit_version: v0.8.0
+  toolkit_version: v0.9.0
   source_artefacts:
     user_stories_framework: DTG_RAHP_User_Stories_Framework_v6.xlsx
     risk_register: DTG_RAHP_Risk_Register_v5.xlsx

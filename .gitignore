@@ -3,5 +3,9 @@ __pycache__/
 .venv/
 .DS_Store
 
-# RAHP v0.8 ephemeral run workspace
+# RAHP ephemeral run workspace
 .rahp/
+
+# TypeScript build/install state
+node_modules/
+.ts-out/

@@ -1,0 +1,1 @@
+{"version":1,"assessment":{"id":"TEST-AR-006","key":"test:repository:example/spec"},"target":{"repository":"example/spec","reviewed_revision":"bbbbbbbb"},"mode":"combined","status":"dispositioned","findings":[],"disposition":{"outcome":"pending"},"evidence":[]}

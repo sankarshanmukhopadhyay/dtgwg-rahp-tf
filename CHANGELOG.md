@@ -6,6 +6,18 @@ has_toc: true
 ---
 # Changelog
 
+## v0.9.0 — 2026-08-16
+
+### Added
+- TypeScript reference packages for schema/result validation, core profile and retention operations, catalogue graph traversal and CLI access.
+- Python↔TypeScript differential conformance validation against the shared v0.8 engine fixtures.
+- TypeScript SDK documentation and v0.9 release notes.
+
+### Changed
+- Current toolkit/profile/template metadata advances to v0.9.0.
+- CI now builds and validates both reference implementations while preserving Python-backed operational monitoring.
+
+
 ## v0.8.0 — 2026-08-16
 
 ### Added

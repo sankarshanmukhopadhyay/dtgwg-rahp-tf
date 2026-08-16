@@ -1,0 +1,16 @@
+{
+  "name": "@rahp/cli",
+  "version": "0.9.0",
+  "type": "module",
+  "main": "dist/cli.js",
+  "bin": {
+    "rahp-ts": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@rahp/core": "0.9.0",
+    "@rahp/graph": "0.9.0"
+  }
+}

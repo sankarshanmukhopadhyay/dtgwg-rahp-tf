@@ -1,0 +1,5 @@
+{
+  "name":"rahp-toolkit","private":true,"version":"0.9.0","type":"module",
+  "workspaces":["packages/*"],
+  "scripts":{"build:ts":"npm run build --workspaces --if-present","test:ts":"npm run build:ts && node packages/cli/dist/cli.js conformance","check:ts":"npm run build:ts && node packages/cli/dist/cli.js validate-result tests/conformance/engine/valid-minimal/result.json"}
+}
