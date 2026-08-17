@@ -1,0 +1,16 @@
+term: Fail closed
+slug: fail-closed
+status: stable
+definition: To stop or refuse a consequential action when a required safety or assurance condition cannot
+  be established.
+plain_example: If current revocation status cannot be checked, the verifier defers the high-impact action.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- fail-open
+- guardrail
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

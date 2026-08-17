@@ -1,0 +1,16 @@
+term: Lifecycle
+slug: lifecycle
+status: stable
+definition: The states an artefact, authority or policy moves through from creation to retirement or invalidation.
+plain_example: A credential can be issued, active, suspended, revoked and expired.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- revocation
+- suspension
+- freshness
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

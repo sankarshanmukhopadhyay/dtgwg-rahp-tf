@@ -1,0 +1,1132 @@
+{
+  "glossary_version": "1.0.0",
+  "language": "en",
+  "writing_style": "simple English",
+  "terms": [
+    {
+      "term": "Agent",
+      "slug": "agent",
+      "status": "stable",
+      "definition": "A software or human actor that takes actions for itself or for another principal.",
+      "plain_example": "A software agent requests a credential presentation on behalf of its user.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "principal",
+        "mandate",
+        "delegation"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Applicability",
+      "slug": "applicability",
+      "status": "stable",
+      "definition": "The conditions under which a risk, control, guardrail or test is relevant.",
+      "plain_example": "A cross-context privacy guardrail applies only when correlation is not necessary for the declared purpose.",
+      "term_type": "rahp-native",
+      "scope": "portable-method",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "scope",
+        "guardrail-requirement"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Assurance level",
+      "slug": "assurance-level",
+      "status": "stable",
+      "definition": "A label for how strong the assurance evidence is, from basic inspection to stronger independent or automated evidence.",
+      "plain_example": "A2 may require repeatable tests while A0 may only record that no assurance has been shown.",
+      "term_type": "rahp-native",
+      "scope": "portable-method",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "assurance",
+        "evidence"
+      ],
+      "related_catalogue": [
+        "A0",
+        "A1",
+        "A2",
+        "A3",
+        "A4"
+      ],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Assurance pattern",
+      "slug": "assurance-pattern",
+      "status": "stable",
+      "definition": "A reusable testable claim about a control or guardrail, including how to test it and what evidence to keep.",
+      "plain_example": "Try a revoked delegation and confirm the action is blocked.",
+      "term_type": "rahp-native",
+      "scope": "portable-method",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "assurance",
+        "evidence-pattern",
+        "control-pattern"
+      ],
+      "related_catalogue": [
+        "ATP-*"
+      ],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Assurance",
+      "slug": "assurance",
+      "status": "stable",
+      "definition": "Reasoned confidence, supported by evidence, that a system or control behaves as claimed.",
+      "plain_example": "A replay test and its retained trace support confidence that duplicate execution is blocked.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "assurance-pattern",
+        "evidence"
+      ],
+      "related_catalogue": [
+        "AT-*",
+        "ATP-*"
+      ],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Audience",
+      "slug": "audience",
+      "status": "stable",
+      "definition": "The party or set of parties for whom a message, credential, proof or authority grant is intended.",
+      "plain_example": "A proof created for one verifier should not automatically be reused by another.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "purpose",
+        "context-binding"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Audit event",
+      "slug": "audit-event",
+      "status": "stable",
+      "definition": "A recorded event that shows a control, guardrail, decision or override was evaluated or used.",
+      "plain_example": "The log records that authority was checked and that an override was rejected.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "evidence",
+        "auditability"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Auditability",
+      "slug": "auditability",
+      "status": "stable",
+      "definition": "The ability to reconstruct what happened, which rules were used, who acted and what evidence supported the result.",
+      "plain_example": "An investigator can trace a delegated action back to the principal and active mandate.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "audit-event",
+        "evidence",
+        "provenance"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Authentication",
+      "slug": "authentication",
+      "status": "stable",
+      "definition": "A process that establishes which actor, account, key or system is presenting itself.",
+      "plain_example": "A signature verifies that a message came from a known key.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "authority",
+        "authorization"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Authority",
+      "slug": "authority",
+      "status": "stable",
+      "definition": "The legitimate power to make a decision, request an action or change governed state.",
+      "plain_example": "A valid signature proves who signed; it does not by itself prove that the signer had authority to approve payment.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "authentication",
+        "authorization",
+        "delegation"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Authorization",
+      "slug": "authorization",
+      "status": "stable",
+      "definition": "A decision about whether an actor is allowed to perform a particular action in a particular context.",
+      "plain_example": "An authenticated agent may still be denied permission to transfer funds.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "authentication",
+        "authority",
+        "scope"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Composition boundary",
+      "slug": "composition-boundary",
+      "status": "stable",
+      "definition": "The point where one specification, protocol or system relies on facts produced by another.",
+      "plain_example": "A task engine accepts a credential status result from a separate credential system.",
+      "term_type": "rahp-native",
+      "scope": "portable-method",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "cross-spec-composition",
+        "enforcement-point"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Consequential action",
+      "slug": "consequential-action",
+      "status": "stable",
+      "definition": "An action that can materially affect rights, money, access, safety, authority, privacy or an external system state.",
+      "plain_example": "Revoking access, transferring money or publishing a credential are consequential actions.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "decision-boundary",
+        "authority"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Contestability",
+      "slug": "contestability",
+      "status": "stable",
+      "definition": "The ability to understand, challenge and seek correction or remedy for a consequential outcome.",
+      "plain_example": "A person can see why access was denied and submit evidence for review.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "redress",
+        "evidence"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Context binding",
+      "slug": "context-binding",
+      "status": "stable",
+      "definition": "A rule that ties evidence, authority or a credential to the task, transaction, audience or purpose where it is meant to be used.",
+      "plain_example": "A witness credential names the trust task that produced it.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "purpose",
+        "audience"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Control pattern",
+      "slug": "control-pattern",
+      "status": "stable",
+      "definition": "A reusable control objective that deployments can apply in their own way.",
+      "plain_example": "Check current authority at the action boundary.",
+      "term_type": "rahp-native",
+      "scope": "portable-method",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "control",
+        "risk-pattern",
+        "assurance-pattern"
+      ],
+      "related_catalogue": [
+        "CTP-*"
+      ],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Control side effect",
+      "slug": "control-side-effect",
+      "status": "stable",
+      "definition": "A new risk or harm introduced or made worse by a control that was meant to reduce another risk.",
+      "plain_example": "Extra identity checks reduce fraud but may increase exclusion or surveillance.",
+      "term_type": "rahp-native",
+      "scope": "portable-method",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "control",
+        "risk-pattern"
+      ],
+      "related_catalogue": [
+        "CTP-RISK-01"
+      ],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Control",
+      "slug": "control",
+      "status": "stable",
+      "definition": "A deployment-specific measure used to reduce, detect, contain or recover from a risk.",
+      "plain_example": "A verifier checks status immediately before approving a transaction.",
+      "term_type": "rahp-native",
+      "scope": "deployment",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "control-pattern",
+        "guardrail"
+      ],
+      "related_catalogue": [
+        "CT-*"
+      ],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Cross-spec composition",
+      "slug": "cross-spec-composition",
+      "status": "stable",
+      "definition": "The combined behavior that appears when two or more specifications or protocols are used together.",
+      "plain_example": "A credential can be valid under one specification but stale under the lifecycle rules of another.",
+      "term_type": "rahp-native",
+      "scope": "portable-method",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "composition-boundary",
+        "lifecycle"
+      ],
+      "related_catalogue": [
+        "RKP-COMP-*"
+      ],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Decision boundary",
+      "slug": "decision-boundary",
+      "status": "stable",
+      "definition": "The point where a system changes from gathering information to making or executing a consequential decision.",
+      "plain_example": "The final approval step before an account is disabled is a decision boundary.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "enforcement-point",
+        "consequential-action"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Delegation",
+      "slug": "delegation",
+      "status": "stable",
+      "definition": "A grant of bounded authority from one actor to another.",
+      "plain_example": "A person allows an agent to book one hotel within a price limit.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "authority",
+        "scope",
+        "revocation"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Enforcement point",
+      "slug": "enforcement-point",
+      "status": "stable",
+      "definition": "The place in a system where a control or guardrail is actually checked and can stop, change or allow an action.",
+      "plain_example": "A verifier checks current authorization just before it calls the payment API.",
+      "term_type": "rahp-native",
+      "scope": "portable-method",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "control",
+        "guardrail",
+        "decision-boundary"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Evidence pattern",
+      "slug": "evidence-pattern",
+      "status": "stable",
+      "definition": "A reusable description of what evidence should be produced, who produces it, how fresh it must be and when it becomes invalid.",
+      "plain_example": "A revocation propagation trace records when each enforcement point learned about a revocation.",
+      "term_type": "rahp-native",
+      "scope": "portable-method",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "evidence",
+        "assurance-pattern"
+      ],
+      "related_catalogue": [
+        "EVP-*"
+      ],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Evidence",
+      "slug": "evidence",
+      "status": "stable",
+      "definition": "Information kept to support or challenge an assurance claim, decision or finding.",
+      "plain_example": "A signed authorization decision record shows what policy and authority were used.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "evidence-pattern",
+        "audit-event"
+      ],
+      "related_catalogue": [
+        "EV-*",
+        "EVP-*"
+      ],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Fail closed",
+      "slug": "fail-closed",
+      "status": "stable",
+      "definition": "To stop or refuse a consequential action when a required safety or assurance condition cannot be established.",
+      "plain_example": "If current revocation status cannot be checked, the verifier defers the high-impact action.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "fail-open",
+        "guardrail"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Fail open",
+      "slug": "fail-open",
+      "status": "stable",
+      "definition": "To continue an action even though a check or dependency failed. This must be explicit when it can create risk.",
+      "plain_example": "A low-impact read may use a short cached value during a network outage.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "fail-closed",
+        "risk-acceptance"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Finding disposition",
+      "slug": "finding-disposition",
+      "status": "stable",
+      "definition": "The recorded outcome for an earlier finding, such as unchanged, weakened, resolved or superseded.",
+      "plain_example": "A new normative replay rule changes a replay finding from open to resolved.",
+      "term_type": "rahp-native",
+      "scope": "deployment",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "finding",
+        "reassessment"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Finding",
+      "slug": "finding",
+      "status": "stable",
+      "definition": "A specific observation from a pressure test or security review that needs attention or a recorded disposition.",
+      "plain_example": "The specification does not say how a user can challenge an adverse decision.",
+      "term_type": "rahp-native",
+      "scope": "deployment",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "risk",
+        "recommendation",
+        "finding-disposition"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Freshness",
+      "slug": "freshness",
+      "status": "stable",
+      "definition": "How recent information or evidence must be for a decision to rely on it.",
+      "plain_example": "A high-impact action may require status checked within the last minute.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "lifecycle",
+        "stale-state"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Guardrail pattern",
+      "slug": "guardrail-pattern",
+      "status": "stable",
+      "definition": "A reusable guardrail that describes what must not be allowed, where it is enforced and what happens on failure.",
+      "plain_example": "Do not treat a valid credential as permission for an unrelated action.",
+      "term_type": "rahp-native",
+      "scope": "portable-method",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "guardrail",
+        "risk-pattern",
+        "assurance-pattern"
+      ],
+      "related_catalogue": [
+        "GRP-*"
+      ],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Guardrail requirement",
+      "slug": "guardrail-requirement",
+      "status": "stable",
+      "definition": "The catalogue decision that says whether a risk needs a guardrail, needs one only in some conditions, or is adequately handled by controls.",
+      "plain_example": "A privacy risk may need a guardrail only when cross-context correlation is not necessary.",
+      "term_type": "rahp-native",
+      "scope": "portable-method",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "guardrail",
+        "applicability"
+      ],
+      "related_catalogue": [
+        "RKP-*"
+      ],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Guardrail",
+      "slug": "guardrail",
+      "status": "stable",
+      "definition": "A rule that blocks or stops an unacceptable state. It is stronger than normal guidance.",
+      "plain_example": "Do not let a consequential action proceed when current authority cannot be established.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "control",
+        "prohibited-state",
+        "fail-closed"
+      ],
+      "related_catalogue": [
+        "GR-*",
+        "GRP-*"
+      ],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Harm pattern",
+      "slug": "harm-pattern",
+      "status": "stable",
+      "definition": "A reusable description of a kind of harm that can appear in many systems.",
+      "plain_example": "Wrongful exclusion can happen in identity, payment or registry systems.",
+      "term_type": "rahp-native",
+      "scope": "portable-method",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "harm",
+        "risk-pattern"
+      ],
+      "related_catalogue": [
+        "HRM-*"
+      ],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Harm",
+      "slug": "harm",
+      "status": "stable",
+      "definition": "A bad effect on a person, group, organization or public interest.",
+      "plain_example": "A person is wrongly locked out of an essential service.",
+      "term_type": "rahp-native",
+      "scope": "portable-method",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "risk",
+        "harm-pattern"
+      ],
+      "related_catalogue": [
+        "HRM-*"
+      ],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Lifecycle",
+      "slug": "lifecycle",
+      "status": "stable",
+      "definition": "The states an artefact, authority or policy moves through from creation to retirement or invalidation.",
+      "plain_example": "A credential can be issued, active, suspended, revoked and expired.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "revocation",
+        "suspension",
+        "freshness"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Mandate",
+      "slug": "mandate",
+      "status": "stable",
+      "definition": "The purpose and limits under which an actor or agent is expected to act for a principal.",
+      "plain_example": "An agent may compare travel options but may not buy one without approval.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "delegation",
+        "principal",
+        "scope"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Override authority",
+      "slug": "override-authority",
+      "status": "stable",
+      "definition": "The role or actor that is allowed to approve an override.",
+      "plain_example": "Only the incident commander may approve an emergency continuity override.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "override",
+        "authority"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Override",
+      "slug": "override",
+      "status": "stable",
+      "definition": "A governed exception that allows a normal control or guardrail outcome to be changed by an authorized actor.",
+      "plain_example": "An emergency override may be allowed only to a named governance role and must be logged.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "override-authority",
+        "audit-event"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Principal",
+      "slug": "principal",
+      "status": "stable",
+      "definition": "The person or organization whose authority, interests or instructions an agent or delegate is expected to serve.",
+      "plain_example": "A traveller is the principal when a personal agent books on the traveller’s behalf.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "agent",
+        "delegation",
+        "mandate"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Prohibited state",
+      "slug": "prohibited-state",
+      "status": "stable",
+      "definition": "A system state that a guardrail says must not be entered or continued.",
+      "plain_example": "A payment proceeds even though required authority cannot be established.",
+      "term_type": "rahp-native",
+      "scope": "portable-method",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "guardrail",
+        "protected-interest"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Protected interest",
+      "slug": "protected-interest",
+      "status": "stable",
+      "definition": "The person, group or institutional interest that a guardrail is meant to protect.",
+      "plain_example": "Privacy is the protected interest behind a guardrail against unnecessary disclosure.",
+      "term_type": "rahp-native",
+      "scope": "portable-method",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "guardrail",
+        "harm"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Provenance",
+      "slug": "provenance",
+      "status": "stable",
+      "definition": "Information about where an artefact, action, decision or claim came from and how it changed over time.",
+      "plain_example": "A delegation trace shows which principal granted which delegate which scope.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "auditability",
+        "delegation"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Purpose",
+      "slug": "purpose",
+      "status": "stable",
+      "definition": "The stated reason for collecting information, making a decision or performing an action.",
+      "plain_example": "A credential is requested to confirm age, not to build a marketing profile.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "scope",
+        "audience",
+        "context-binding"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Reassessment",
+      "slug": "reassessment",
+      "status": "stable",
+      "definition": "A new review performed because the target, evidence, threat model or operating context has changed.",
+      "plain_example": "A specification changes its revocation rules, so earlier findings are checked again.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "retest-condition",
+        "finding-disposition"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Recommendation",
+      "slug": "recommendation",
+      "status": "stable",
+      "definition": "A proposed action to reduce a finding or risk.",
+      "plain_example": "Require a fresh authority check immediately before a destructive action.",
+      "term_type": "rahp-native",
+      "scope": "deployment",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "finding",
+        "control"
+      ],
+      "related_catalogue": [
+        "REC-*"
+      ],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Redress",
+      "slug": "redress",
+      "status": "stable",
+      "definition": "A process that can correct, compensate for or otherwise remedy a harmful or incorrect outcome.",
+      "plain_example": "A wrongly excluded user can appeal and have access restored.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "contestability",
+        "remedy"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Remedy",
+      "slug": "remedy",
+      "status": "stable",
+      "definition": "The action taken to correct or reduce the effect of a harmful or incorrect outcome.",
+      "plain_example": "A registry corrects an entry and notifies affected relying parties.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "redress",
+        "contestability"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Residual risk",
+      "slug": "residual-risk",
+      "status": "stable",
+      "definition": "The risk that remains after controls and guardrails are applied.",
+      "plain_example": "A cached status check lowers outage risk but still leaves a short stale-state window.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "risk",
+        "risk-acceptance"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Retest condition",
+      "slug": "retest-condition",
+      "status": "stable",
+      "definition": "A stated event that should cause an earlier assurance result or finding to be checked again.",
+      "plain_example": "Retest when the specification changes its authorization model.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "reassessment",
+        "assurance"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Revocation",
+      "slug": "revocation",
+      "status": "stable",
+      "definition": "A governed act that ends previously granted authority, status or validity.",
+      "plain_example": "A principal revokes an agent’s authority to make purchases.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "suspension",
+        "delegation",
+        "authority"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Risk acceptance",
+      "slug": "risk-acceptance",
+      "status": "stable",
+      "definition": "A governed decision to live with a known residual risk for a stated period and reason.",
+      "plain_example": "A deployment accepts a low-impact availability risk until a replacement service is ready.",
+      "term_type": "rahp-native",
+      "scope": "deployment",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "residual-risk",
+        "reassessment"
+      ],
+      "related_catalogue": [
+        "RA-*"
+      ],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Risk pattern",
+      "slug": "risk-pattern",
+      "status": "stable",
+      "definition": "A reusable failure mechanism that can appear in more than one deployment or specification.",
+      "plain_example": "A system may mistake proof of identity for permission to act.",
+      "term_type": "rahp-native",
+      "scope": "portable-method",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "risk",
+        "harm-pattern",
+        "control-pattern"
+      ],
+      "related_catalogue": [
+        "RKP-*"
+      ],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Risk",
+      "slug": "risk",
+      "status": "stable",
+      "definition": "A possible way a specific deployment can cause harm or fail to meet its goals.",
+      "plain_example": "A registry may keep an old key after it should have been removed.",
+      "term_type": "rahp-native",
+      "scope": "deployment",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "risk-pattern",
+        "finding"
+      ],
+      "related_catalogue": [
+        "RK-*"
+      ],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Scope",
+      "slug": "scope",
+      "status": "stable",
+      "definition": "The boundary of what an authority, control, assessment or claim applies to.",
+      "plain_example": "A delegation may allow read access to one record for one hour.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "authority",
+        "applicability",
+        "purpose"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Stale state",
+      "slug": "stale-state",
+      "status": "stable",
+      "definition": "Old information that no longer reflects the current authority, status, policy or system condition.",
+      "plain_example": "A cached registry entry still points to a key that has been revoked.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "freshness",
+        "revocation"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    },
+    {
+      "term": "Suspension",
+      "slug": "suspension",
+      "status": "stable",
+      "definition": "A governed temporary stop that may later be lifted without creating a new grant from scratch.",
+      "plain_example": "A credential is suspended during an investigation and later restored.",
+      "term_type": "rahp-native",
+      "scope": "general",
+      "do_not_confuse_with": [],
+      "see_also": [
+        "revocation",
+        "lifecycle"
+      ],
+      "related_catalogue": [],
+      "source": {
+        "authority": "RAHP Toolkit",
+        "note": "Definition written for RAHP in simple English."
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+term: Contestability
+slug: contestability
+status: stable
+definition: The ability to understand, challenge and seek correction or remedy for a consequential outcome.
+plain_example: A person can see why access was denied and submit evidence for review.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- redress
+- evidence
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

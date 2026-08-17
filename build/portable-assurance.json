@@ -358,7 +358,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-AUTH-02",
@@ -375,7 +380,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-AUTH-03",
@@ -393,7 +403,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-DEL-01",
@@ -415,7 +430,12 @@
             "multi-party or multi-agent execution"
           ]
         },
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-DEL-02",
@@ -433,7 +453,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-DEL-03",
@@ -450,7 +475,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-GOV-01",
@@ -467,7 +497,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-GOV-02",
@@ -484,7 +519,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-GOV-03",
@@ -501,7 +541,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-GOV-04",
@@ -518,7 +563,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-ID-01",
@@ -535,7 +585,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-ID-02",
@@ -552,7 +607,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-ID-03",
@@ -570,7 +630,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-DISC-01",
@@ -587,7 +652,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-DISC-02",
@@ -605,7 +675,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-DISC-03",
@@ -622,7 +697,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-CRD-01",
@@ -639,7 +719,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-CRD-02",
@@ -656,7 +741,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-CRD-03",
@@ -673,7 +763,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-CRD-04",
@@ -691,7 +786,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-PRV-01",
@@ -708,7 +808,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-PRV-02",
@@ -725,7 +830,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-PRV-03",
@@ -742,7 +852,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-EXC-01",
@@ -760,7 +875,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-EXC-02",
@@ -777,7 +897,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-AGT-01",
@@ -794,7 +919,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-AGT-02",
@@ -812,7 +942,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-AGT-03",
@@ -829,7 +964,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-OPS-01",
@@ -846,7 +986,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-OPS-02",
@@ -863,7 +1008,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-OPS-03",
@@ -880,7 +1030,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-RED-01",
@@ -897,7 +1052,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-COMP-01",
@@ -915,7 +1075,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-COMP-02",
@@ -933,7 +1098,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-COMP-03",
@@ -950,7 +1120,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-COMP-04",
@@ -967,7 +1142,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-PE-01",
@@ -985,7 +1165,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "This risk can create an unacceptable state at a clear decision or execution boundary, so a portable guardrail should block or stop that state.",
+          "condition": null
+        }
       },
       {
         "id": "RKP-PE-02",
@@ -1003,7 +1188,12 @@
         "reversibility": "costly",
         "observability": "detectable",
         "applicability": {},
-        "related_patterns": []
+        "related_patterns": [],
+        "guardrail_requirement": {
+          "status": "conditional",
+          "rationale": "Failure costs are not always avoidable. A guardrail is required when affected people cannot reasonably choose, exit or seek remedy.",
+          "condition": "Applies to high-impact or involuntary use where materially affected parties lack meaningful choice, exit or remedy."
+        }
       }
     ],
     "control_patterns": [
@@ -1715,7 +1905,8 @@
         "prohibited_state": "A consequential action proceeds when required authority, revocation or status state cannot be established at the action boundary.",
         "risk_patterns": [
           "RKP-AUTH-02",
-          "RKP-DEL-03"
+          "RKP-DEL-03",
+          "RKP-CRD-02"
         ],
         "control_patterns": [
           "CTP-AUTH-02",
@@ -1816,7 +2007,8 @@
         "protected_interest": "equitable access",
         "prohibited_state": "A high-impact or essential participation path has no viable alternative for foreseeable legitimate users excluded by the primary mechanism.",
         "risk_patterns": [
-          "RKP-EXC-01"
+          "RKP-EXC-01",
+          "RKP-EXC-02"
         ],
         "control_patterns": [
           "CTP-EXC-01"
@@ -1928,6 +2120,207 @@
         "override_permitted": false,
         "override_authority": null,
         "evidence_required": true
+      },
+      {
+        "id": "GRP-DEL-02",
+        "name": "Consequential delegated action needs provenance",
+        "protected_interest": "accountability",
+        "prohibited_state": "A consequential delegated or agentic action happens without durable evidence linking the action to the accountable principal and the authority used.",
+        "risk_patterns": [
+          "RKP-DEL-02",
+          "RKP-AGT-03"
+        ],
+        "control_patterns": [
+          "CTP-DEL-01",
+          "CTP-AGT-03"
+        ],
+        "trigger_condition": "before a consequential delegated action is accepted as authorized or complete",
+        "enforcement_point": "delegation and audit boundary",
+        "failure_mode": "block, suspend, or mark the action as not sufficiently attributable",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-GOV-02",
+        "name": "No unsafe governance transition",
+        "protected_interest": "continuity and due process",
+        "prohibited_state": "A governance or policy change takes effect for live artefacts or dependent systems without clear effective dates, migration rules, compatibility handling or retirement rules.",
+        "risk_patterns": [
+          "RKP-GOV-03"
+        ],
+        "control_patterns": [
+          "CTP-GOV-02"
+        ],
+        "trigger_condition": "before a changed rule becomes effective for existing participants or artefacts",
+        "enforcement_point": "policy lifecycle",
+        "failure_mode": "delay activation or require an explicit governed transition plan",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-GOV-03",
+        "name": "Registry authority must be explicit",
+        "protected_interest": "legitimate governance",
+        "prohibited_state": "Trust-relevant registry entries can be added, changed, suspended, removed or corrected without a published rule saying who has authority and how decisions can be reviewed.",
+        "risk_patterns": [
+          "RKP-DISC-03"
+        ],
+        "control_patterns": [
+          "CTP-DISC-03",
+          "CTP-GOV-01"
+        ],
+        "trigger_condition": "before a registry decision changes trust-relevant state",
+        "enforcement_point": "registry governance",
+        "failure_mode": "do not treat the registry decision as authoritative until the governance rule is established",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-CRD-01",
+        "name": "No credential use outside its bound context",
+        "protected_interest": "purpose integrity and principal agency",
+        "prohibited_state": "A credential is relied on outside its bound task, audience, purpose or authorization context without an explicit rule permitting the broader use.",
+        "risk_patterns": [
+          "RKP-CRD-03",
+          "RKP-CRD-04"
+        ],
+        "control_patterns": [
+          "CTP-CRD-01",
+          "CTP-AGT-02"
+        ],
+        "trigger_condition": "before a credential is accepted for a materially different context, audience or purpose",
+        "enforcement_point": "credential verification and relying-party decision boundary",
+        "failure_mode": "reject, request fresh evidence, or require explicit onward authorization",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-OPS-02",
+        "name": "No silent assurance downgrade on dependency failure",
+        "protected_interest": "assurance integrity",
+        "prohibited_state": "A system treats stale, cached or unavailable trust-relevant dependency state as current without a declared and bounded fallback rule.",
+        "risk_patterns": [
+          "RKP-OPS-01",
+          "RKP-DISC-02"
+        ],
+        "control_patterns": [
+          "CTP-OPS-01",
+          "CTP-DISC-02"
+        ],
+        "trigger_condition": "when current dependency or discovery state cannot be obtained or verified",
+        "enforcement_point": "dependency and discovery boundary",
+        "failure_mode": "deny, defer, or use only a documented bounded fallback with visible risk state",
+        "fail_behavior": "closed",
+        "override_permitted": true,
+        "override_authority": "explicit deployment governance authority",
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-OPS-03",
+        "name": "Systemic invalidation needs a continuity path",
+        "protected_interest": "service continuity and access",
+        "prohibited_state": "Withdrawal, compromise or deregistration of a shared dependency invalidates many downstream artefacts without notification, re-verification, replacement or recovery handling.",
+        "risk_patterns": [
+          "RKP-OPS-03"
+        ],
+        "control_patterns": [
+          "CTP-OPS-03"
+        ],
+        "trigger_condition": "before or when a shared dependency is withdrawn, compromised or materially changes status",
+        "enforcement_point": "dependency lifecycle and recovery boundary",
+        "failure_mode": "enter a governed continuity or recovery state rather than silently invalidating downstream use",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-COMP-02",
+        "name": "Cross-spec lifecycle semantics must reconcile",
+        "protected_interest": "composition integrity",
+        "prohibited_state": "A consequential composed action proceeds when participating specifications disagree about the relevant validity, freshness, expiry, revocation or status point.",
+        "risk_patterns": [
+          "RKP-COMP-02"
+        ],
+        "control_patterns": [
+          "CTP-COMP-02",
+          "CTP-AUTH-02",
+          "CTP-CRD-02"
+        ],
+        "trigger_condition": "before a composed action relies on state from more than one specification",
+        "enforcement_point": "cross-spec composition boundary",
+        "failure_mode": "block or require an explicit lifecycle reconciliation contract",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-PRV-02",
+        "name": "No unnecessary cross-context correlation",
+        "protected_interest": "privacy",
+        "prohibited_state": "Stable identifiers or combined protocol data enable cross-context correlation that is not needed for the declared purpose.",
+        "risk_patterns": [
+          "RKP-PRV-01",
+          "RKP-COMP-03"
+        ],
+        "control_patterns": [
+          "CTP-PRV-01",
+          "CTP-PRV-02"
+        ],
+        "trigger_condition": "before stable identifiers or combined data are disclosed across contexts",
+        "enforcement_point": "identifier creation and presentation composition boundary",
+        "failure_mode": "use scoped identifiers, reduce disclosure, or document why correlation is necessary",
+        "fail_behavior": "closed",
+        "override_permitted": true,
+        "override_authority": "explicit privacy or governance authority",
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-ID-02",
+        "name": "No load-bearing uniqueness claim without evidence",
+        "protected_interest": "fairness and identity integrity",
+        "prohibited_state": "A consequential decision relies on a uniqueness or one-person-one-actor claim when the system cannot state and support the scope and mechanism of that claim.",
+        "risk_patterns": [
+          "RKP-ID-02"
+        ],
+        "control_patterns": [
+          "CTP-RISK-01"
+        ],
+        "trigger_condition": "before uniqueness is used to allow, deny, rank, limit or allocate something consequential",
+        "enforcement_point": "identity and policy decision boundary",
+        "failure_mode": "do not use uniqueness as a decision input, or narrow the claim to what can be supported",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-ID-03",
+        "name": "High-impact recovery must resist takeover",
+        "protected_interest": "identity continuity and access",
+        "prohibited_state": "A recovery path for a high-impact account or identity can bypass normal protections without independent checks, notice, delay or equivalent takeover resistance.",
+        "risk_patterns": [
+          "RKP-ID-03"
+        ],
+        "control_patterns": [
+          "CTP-ID-02"
+        ],
+        "trigger_condition": "before recovery changes control of a high-impact identity, account or credential",
+        "enforcement_point": "recovery workflow",
+        "failure_mode": "stop recovery or require stronger independent recovery evidence",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
       }
     ],
     "assurance_patterns": [
@@ -2008,7 +2401,9 @@
           "CTP-DEL-01",
           "CTP-AGT-03"
         ],
-        "guardrail_patterns": [],
+        "guardrail_patterns": [
+          "GRP-DEL-02"
+        ],
         "preconditions": [
           "system or specification exposes the relevant decision boundary"
         ],
@@ -2051,7 +2446,9 @@
         "control_patterns": [
           "CTP-GOV-02"
         ],
-        "guardrail_patterns": [],
+        "guardrail_patterns": [
+          "GRP-GOV-02"
+        ],
         "preconditions": [
           "system or specification exposes the relevant decision boundary"
         ],
@@ -2073,7 +2470,8 @@
           "CTP-ID-02"
         ],
         "guardrail_patterns": [
-          "GRP-ID-01"
+          "GRP-ID-01",
+          "GRP-ID-03"
         ],
         "preconditions": [
           "system or specification exposes the relevant decision boundary"
@@ -2096,7 +2494,8 @@
           "CTP-DISC-03"
         ],
         "guardrail_patterns": [
-          "GRP-AUTH-01"
+          "GRP-AUTH-01",
+          "GRP-GOV-03"
         ],
         "preconditions": [
           "system or specification exposes the relevant decision boundary"
@@ -2140,7 +2539,8 @@
           "CTP-PRV-03"
         ],
         "guardrail_patterns": [
-          "GRP-PRV-01"
+          "GRP-PRV-01",
+          "GRP-PRV-02"
         ],
         "preconditions": [
           "system or specification exposes the relevant decision boundary"
@@ -2207,7 +2607,10 @@
           "CTP-OPS-01",
           "CTP-OPS-03"
         ],
-        "guardrail_patterns": [],
+        "guardrail_patterns": [
+          "GRP-OPS-02",
+          "GRP-OPS-03"
+        ],
         "preconditions": [
           "system or specification exposes the relevant decision boundary"
         ],
@@ -2275,7 +2678,8 @@
           "CTP-CRD-01"
         ],
         "guardrail_patterns": [
-          "GRP-COMP-01"
+          "GRP-COMP-01",
+          "GRP-CRD-01"
         ],
         "preconditions": [
           "system or specification exposes the relevant decision boundary"
@@ -2296,7 +2700,9 @@
         "control_patterns": [
           "CTP-COMP-02"
         ],
-        "guardrail_patterns": [],
+        "guardrail_patterns": [
+          "GRP-COMP-02"
+        ],
         "preconditions": [
           "system or specification exposes the relevant decision boundary"
         ],
@@ -2317,7 +2723,9 @@
           "CTP-RISK-01",
           "CTP-ID-03"
         ],
-        "guardrail_patterns": [],
+        "guardrail_patterns": [
+          "GRP-ID-02"
+        ],
         "preconditions": [
           "system or specification exposes the relevant decision boundary"
         ],

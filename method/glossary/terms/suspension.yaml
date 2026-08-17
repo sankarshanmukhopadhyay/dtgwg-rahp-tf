@@ -1,0 +1,15 @@
+term: Suspension
+slug: suspension
+status: stable
+definition: A governed temporary stop that may later be lifted without creating a new grant from scratch.
+plain_example: A credential is suspended during an investigation and later restored.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- revocation
+- lifecycle
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

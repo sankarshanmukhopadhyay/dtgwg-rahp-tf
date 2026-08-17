@@ -1,0 +1,17 @@
+term: Risk pattern
+slug: risk-pattern
+status: stable
+definition: A reusable failure mechanism that can appear in more than one deployment or specification.
+plain_example: A system may mistake proof of identity for permission to act.
+term_type: rahp-native
+scope: portable-method
+do_not_confuse_with: []
+see_also:
+- risk
+- harm-pattern
+- control-pattern
+related_catalogue:
+- RKP-*
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

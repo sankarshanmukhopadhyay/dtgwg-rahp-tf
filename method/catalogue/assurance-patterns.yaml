@@ -58,7 +58,8 @@ records:
   control_patterns:
   - CTP-DEL-01
   - CTP-AGT-03
-  guardrail_patterns: []
+  guardrail_patterns:
+  - GRP-DEL-02
   preconditions:
   - system or specification exposes the relevant decision boundary
   procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
@@ -92,7 +93,8 @@ records:
     rules.
   control_patterns:
   - CTP-GOV-02
-  guardrail_patterns: []
+  guardrail_patterns:
+  - GRP-GOV-02
   preconditions:
   - system or specification exposes the relevant decision boundary
   procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
@@ -111,6 +113,7 @@ records:
   - CTP-ID-02
   guardrail_patterns:
   - GRP-ID-01
+  - GRP-ID-03
   preconditions:
   - system or specification exposes the relevant decision boundary
   procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
@@ -129,6 +132,7 @@ records:
   - CTP-DISC-03
   guardrail_patterns:
   - GRP-AUTH-01
+  - GRP-GOV-03
   preconditions:
   - system or specification exposes the relevant decision boundary
   procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
@@ -163,6 +167,7 @@ records:
   - CTP-PRV-03
   guardrail_patterns:
   - GRP-PRV-01
+  - GRP-PRV-02
   preconditions:
   - system or specification exposes the relevant decision boundary
   procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
@@ -213,7 +218,9 @@ records:
   control_patterns:
   - CTP-OPS-01
   - CTP-OPS-03
-  guardrail_patterns: []
+  guardrail_patterns:
+  - GRP-OPS-02
+  - GRP-OPS-03
   preconditions:
   - system or specification exposes the relevant decision boundary
   procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
@@ -267,6 +274,7 @@ records:
   - CTP-CRD-01
   guardrail_patterns:
   - GRP-COMP-01
+  - GRP-CRD-01
   preconditions:
   - system or specification exposes the relevant decision boundary
   procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
@@ -282,7 +290,8 @@ records:
     and appeal boundaries.
   control_patterns:
   - CTP-COMP-02
-  guardrail_patterns: []
+  guardrail_patterns:
+  - GRP-COMP-02
   preconditions:
   - system or specification exposes the relevant decision boundary
   procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
@@ -300,7 +309,8 @@ records:
   control_patterns:
   - CTP-RISK-01
   - CTP-ID-03
-  guardrail_patterns: []
+  guardrail_patterns:
+  - GRP-ID-02
   preconditions:
   - system or specification exposes the relevant decision boundary
   procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.

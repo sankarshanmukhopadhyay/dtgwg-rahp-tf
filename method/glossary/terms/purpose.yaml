@@ -1,0 +1,16 @@
+term: Purpose
+slug: purpose
+status: stable
+definition: The stated reason for collecting information, making a decision or performing an action.
+plain_example: A credential is requested to confirm age, not to build a marketing profile.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- scope
+- audience
+- context-binding
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

@@ -1,0 +1,17 @@
+term: Evidence
+slug: evidence
+status: stable
+definition: Information kept to support or challenge an assurance claim, decision or finding.
+plain_example: A signed authorization decision record shows what policy and authority were used.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- evidence-pattern
+- audit-event
+related_catalogue:
+- EV-*
+- EVP-*
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

@@ -13,6 +13,7 @@ RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-test
 |---|---|
 | Understand the method | [How RAHP works](docs/how-rahp-works.md) and [Concepts](docs/concepts.md) |
 | Browse reusable harm/risk/control patterns | [Portable assurance catalogue](method/catalogue/) and [catalogue guide](docs/portable-assurance-catalogue.md) |
+| Understand RAHP terms | [Glossary](docs/glossary.md) — simple-English definitions with structured YAML sources |
 | Inspect generated assurance coverage | [Portable assurance site](build/site/portable-catalogue.html) and [assurance graph](build/site/assurance-graph.html) |
 | Configure your own repositories | [Configuration-driven adoption](docs/configuration.md) and [Adopting RAHP](ADOPTION.md) |
 | Run a risks-and-harms review | [Pressure-testing a specification](docs/pressure-testing-a-spec.md) |
@@ -187,7 +188,7 @@ These counts are checked by `tools/validate.py`. DTG governance work such as `RP
 
 ## v1.1: portable assurance knowledge model
 
-v1.1 adds a method-level catalogue of 139 reusable assurance patterns: 24 human-harm patterns, 38 risk patterns, 31 control patterns, 12 guardrail patterns, 19 assurance-test patterns and 15 evidence contracts. Curated RAHP and security examples now map deployment-specific findings to these patterns through `portable_assurance`, while local identifiers, evidence, governance and disposition remain authoritative.
+v1.1 adds a method-level catalogue of 149 reusable assurance patterns: 24 human-harm patterns, 38 risk patterns, 31 control patterns, 22 guardrail patterns, 19 assurance-test patterns and 15 evidence contracts. Curated RAHP and security examples now map deployment-specific findings to these patterns through `portable_assurance`, while local identifiers, evidence, governance and disposition remain authoritative.
 
 The new catalogue is under `method/catalogue/` and validated by `tools/validate_catalogue.py`; `tools/build.py` also emits `build/portable-assurance.json` and `build/derived/portable-catalogue-coverage.json`. The Trust Tasks × DTG Credential Specification composition is now a first-class RAHP worked example, demonstrating how component-level success can still produce composition-level authority, lifecycle, privacy, replay and redress failures. See [Assurance knowledge model](docs/assurance-knowledge-model.md), [portable catalogue](docs/portable-assurance-catalogue.md), and [v1.1.0 release notes](docs/releases/v1.1.0.md).
 

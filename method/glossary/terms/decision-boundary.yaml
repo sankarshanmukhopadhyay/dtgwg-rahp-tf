@@ -1,0 +1,16 @@
+term: Decision boundary
+slug: decision-boundary
+status: stable
+definition: The point where a system changes from gathering information to making or executing a consequential
+  decision.
+plain_example: The final approval step before an account is disabled is a decision boundary.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- enforcement-point
+- consequential-action
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

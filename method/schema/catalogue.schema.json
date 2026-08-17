@@ -53,7 +53,8 @@
         "scope",
         "temporal_mode",
         "reversibility",
-        "observability"
+        "observability",
+        "guardrail_requirement"
       ],
       "properties": {
         "id": {
@@ -92,6 +93,33 @@
         },
         "related_patterns": {
           "$ref": "#/$defs/idList"
+        },
+        "guardrail_requirement": {
+          "type": "object",
+          "required": [
+            "status",
+            "rationale"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "required",
+                "conditional",
+                "control_sufficient"
+              ]
+            },
+            "rationale": {
+              "type": "string",
+              "minLength": 20
+            },
+            "condition": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
         }
       },
       "additionalProperties": false

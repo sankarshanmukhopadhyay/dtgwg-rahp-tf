@@ -1,0 +1,16 @@
+term: Mandate
+slug: mandate
+status: stable
+definition: The purpose and limits under which an actor or agent is expected to act for a principal.
+plain_example: An agent may compare travel options but may not buy one without approval.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- delegation
+- principal
+- scope
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

@@ -1,0 +1,16 @@
+term: Recommendation
+slug: recommendation
+status: stable
+definition: A proposed action to reduce a finding or risk.
+plain_example: Require a fresh authority check immediately before a destructive action.
+term_type: rahp-native
+scope: deployment
+do_not_confuse_with: []
+see_also:
+- finding
+- control
+related_catalogue:
+- REC-*
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

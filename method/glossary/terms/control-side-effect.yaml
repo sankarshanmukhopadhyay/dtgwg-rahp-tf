@@ -1,0 +1,17 @@
+term: Control side effect
+slug: control-side-effect
+status: stable
+definition: A new risk or harm introduced or made worse by a control that was meant to reduce another
+  risk.
+plain_example: Extra identity checks reduce fraud but may increase exclusion or surveillance.
+term_type: rahp-native
+scope: portable-method
+do_not_confuse_with: []
+see_also:
+- control
+- risk-pattern
+related_catalogue:
+- CTP-RISK-01
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

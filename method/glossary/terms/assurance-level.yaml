@@ -1,0 +1,21 @@
+term: Assurance level
+slug: assurance-level
+status: stable
+definition: A label for how strong the assurance evidence is, from basic inspection to stronger independent
+  or automated evidence.
+plain_example: A2 may require repeatable tests while A0 may only record that no assurance has been shown.
+term_type: rahp-native
+scope: portable-method
+do_not_confuse_with: []
+see_also:
+- assurance
+- evidence
+related_catalogue:
+- A0
+- A1
+- A2
+- A3
+- A4
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

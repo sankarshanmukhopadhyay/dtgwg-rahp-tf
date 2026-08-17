@@ -1,0 +1,15 @@
+term: Composition boundary
+slug: composition-boundary
+status: stable
+definition: The point where one specification, protocol or system relies on facts produced by another.
+plain_example: A task engine accepts a credential status result from a separate credential system.
+term_type: rahp-native
+scope: portable-method
+do_not_confuse_with: []
+see_also:
+- cross-spec-composition
+- enforcement-point
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

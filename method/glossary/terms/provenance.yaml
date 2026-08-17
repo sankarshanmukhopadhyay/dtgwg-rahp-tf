@@ -1,0 +1,16 @@
+term: Provenance
+slug: provenance
+status: stable
+definition: Information about where an artefact, action, decision or claim came from and how it changed
+  over time.
+plain_example: A delegation trace shows which principal granted which delegate which scope.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- auditability
+- delegation
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

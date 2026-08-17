@@ -1,0 +1,16 @@
+term: Revocation
+slug: revocation
+status: stable
+definition: A governed act that ends previously granted authority, status or validity.
+plain_example: A principal revokes an agent’s authority to make purchases.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- suspension
+- delegation
+- authority
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

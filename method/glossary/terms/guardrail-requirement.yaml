@@ -1,0 +1,17 @@
+term: Guardrail requirement
+slug: guardrail-requirement
+status: stable
+definition: The catalogue decision that says whether a risk needs a guardrail, needs one only in some
+  conditions, or is adequately handled by controls.
+plain_example: A privacy risk may need a guardrail only when cross-context correlation is not necessary.
+term_type: rahp-native
+scope: portable-method
+do_not_confuse_with: []
+see_also:
+- guardrail
+- applicability
+related_catalogue:
+- RKP-*
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

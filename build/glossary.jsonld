@@ -1,0 +1,588 @@
+{
+  "@context": {
+    "rahp": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/glossary/",
+    "term": "rahp:term",
+    "definition": "rahp:definition",
+    "seeAlso": "rahp:seeAlso"
+  },
+  "@graph": [
+    {
+      "@id": "rahp:agent",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Agent",
+      "definition": "A software or human actor that takes actions for itself or for another principal.",
+      "seeAlso": [
+        "rahp:principal",
+        "rahp:mandate",
+        "rahp:delegation"
+      ]
+    },
+    {
+      "@id": "rahp:applicability",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Applicability",
+      "definition": "The conditions under which a risk, control, guardrail or test is relevant.",
+      "seeAlso": [
+        "rahp:scope",
+        "rahp:guardrail-requirement"
+      ]
+    },
+    {
+      "@id": "rahp:assurance-level",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Assurance level",
+      "definition": "A label for how strong the assurance evidence is, from basic inspection to stronger independent or automated evidence.",
+      "seeAlso": [
+        "rahp:assurance",
+        "rahp:evidence"
+      ]
+    },
+    {
+      "@id": "rahp:assurance-pattern",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Assurance pattern",
+      "definition": "A reusable testable claim about a control or guardrail, including how to test it and what evidence to keep.",
+      "seeAlso": [
+        "rahp:assurance",
+        "rahp:evidence-pattern",
+        "rahp:control-pattern"
+      ]
+    },
+    {
+      "@id": "rahp:assurance",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Assurance",
+      "definition": "Reasoned confidence, supported by evidence, that a system or control behaves as claimed.",
+      "seeAlso": [
+        "rahp:assurance-pattern",
+        "rahp:evidence"
+      ]
+    },
+    {
+      "@id": "rahp:audience",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Audience",
+      "definition": "The party or set of parties for whom a message, credential, proof or authority grant is intended.",
+      "seeAlso": [
+        "rahp:purpose",
+        "rahp:context-binding"
+      ]
+    },
+    {
+      "@id": "rahp:audit-event",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Audit event",
+      "definition": "A recorded event that shows a control, guardrail, decision or override was evaluated or used.",
+      "seeAlso": [
+        "rahp:evidence",
+        "rahp:auditability"
+      ]
+    },
+    {
+      "@id": "rahp:auditability",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Auditability",
+      "definition": "The ability to reconstruct what happened, which rules were used, who acted and what evidence supported the result.",
+      "seeAlso": [
+        "rahp:audit-event",
+        "rahp:evidence",
+        "rahp:provenance"
+      ]
+    },
+    {
+      "@id": "rahp:authentication",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Authentication",
+      "definition": "A process that establishes which actor, account, key or system is presenting itself.",
+      "seeAlso": [
+        "rahp:authority",
+        "rahp:authorization"
+      ]
+    },
+    {
+      "@id": "rahp:authority",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Authority",
+      "definition": "The legitimate power to make a decision, request an action or change governed state.",
+      "seeAlso": [
+        "rahp:authentication",
+        "rahp:authorization",
+        "rahp:delegation"
+      ]
+    },
+    {
+      "@id": "rahp:authorization",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Authorization",
+      "definition": "A decision about whether an actor is allowed to perform a particular action in a particular context.",
+      "seeAlso": [
+        "rahp:authentication",
+        "rahp:authority",
+        "rahp:scope"
+      ]
+    },
+    {
+      "@id": "rahp:composition-boundary",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Composition boundary",
+      "definition": "The point where one specification, protocol or system relies on facts produced by another.",
+      "seeAlso": [
+        "rahp:cross-spec-composition",
+        "rahp:enforcement-point"
+      ]
+    },
+    {
+      "@id": "rahp:consequential-action",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Consequential action",
+      "definition": "An action that can materially affect rights, money, access, safety, authority, privacy or an external system state.",
+      "seeAlso": [
+        "rahp:decision-boundary",
+        "rahp:authority"
+      ]
+    },
+    {
+      "@id": "rahp:contestability",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Contestability",
+      "definition": "The ability to understand, challenge and seek correction or remedy for a consequential outcome.",
+      "seeAlso": [
+        "rahp:redress",
+        "rahp:evidence"
+      ]
+    },
+    {
+      "@id": "rahp:context-binding",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Context binding",
+      "definition": "A rule that ties evidence, authority or a credential to the task, transaction, audience or purpose where it is meant to be used.",
+      "seeAlso": [
+        "rahp:purpose",
+        "rahp:audience"
+      ]
+    },
+    {
+      "@id": "rahp:control-pattern",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Control pattern",
+      "definition": "A reusable control objective that deployments can apply in their own way.",
+      "seeAlso": [
+        "rahp:control",
+        "rahp:risk-pattern",
+        "rahp:assurance-pattern"
+      ]
+    },
+    {
+      "@id": "rahp:control-side-effect",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Control side effect",
+      "definition": "A new risk or harm introduced or made worse by a control that was meant to reduce another risk.",
+      "seeAlso": [
+        "rahp:control",
+        "rahp:risk-pattern"
+      ]
+    },
+    {
+      "@id": "rahp:control",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Control",
+      "definition": "A deployment-specific measure used to reduce, detect, contain or recover from a risk.",
+      "seeAlso": [
+        "rahp:control-pattern",
+        "rahp:guardrail"
+      ]
+    },
+    {
+      "@id": "rahp:cross-spec-composition",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Cross-spec composition",
+      "definition": "The combined behavior that appears when two or more specifications or protocols are used together.",
+      "seeAlso": [
+        "rahp:composition-boundary",
+        "rahp:lifecycle"
+      ]
+    },
+    {
+      "@id": "rahp:decision-boundary",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Decision boundary",
+      "definition": "The point where a system changes from gathering information to making or executing a consequential decision.",
+      "seeAlso": [
+        "rahp:enforcement-point",
+        "rahp:consequential-action"
+      ]
+    },
+    {
+      "@id": "rahp:delegation",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Delegation",
+      "definition": "A grant of bounded authority from one actor to another.",
+      "seeAlso": [
+        "rahp:authority",
+        "rahp:scope",
+        "rahp:revocation"
+      ]
+    },
+    {
+      "@id": "rahp:enforcement-point",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Enforcement point",
+      "definition": "The place in a system where a control or guardrail is actually checked and can stop, change or allow an action.",
+      "seeAlso": [
+        "rahp:control",
+        "rahp:guardrail",
+        "rahp:decision-boundary"
+      ]
+    },
+    {
+      "@id": "rahp:evidence-pattern",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Evidence pattern",
+      "definition": "A reusable description of what evidence should be produced, who produces it, how fresh it must be and when it becomes invalid.",
+      "seeAlso": [
+        "rahp:evidence",
+        "rahp:assurance-pattern"
+      ]
+    },
+    {
+      "@id": "rahp:evidence",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Evidence",
+      "definition": "Information kept to support or challenge an assurance claim, decision or finding.",
+      "seeAlso": [
+        "rahp:evidence-pattern",
+        "rahp:audit-event"
+      ]
+    },
+    {
+      "@id": "rahp:fail-closed",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Fail closed",
+      "definition": "To stop or refuse a consequential action when a required safety or assurance condition cannot be established.",
+      "seeAlso": [
+        "rahp:fail-open",
+        "rahp:guardrail"
+      ]
+    },
+    {
+      "@id": "rahp:fail-open",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Fail open",
+      "definition": "To continue an action even though a check or dependency failed. This must be explicit when it can create risk.",
+      "seeAlso": [
+        "rahp:fail-closed",
+        "rahp:risk-acceptance"
+      ]
+    },
+    {
+      "@id": "rahp:finding-disposition",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Finding disposition",
+      "definition": "The recorded outcome for an earlier finding, such as unchanged, weakened, resolved or superseded.",
+      "seeAlso": [
+        "rahp:finding",
+        "rahp:reassessment"
+      ]
+    },
+    {
+      "@id": "rahp:finding",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Finding",
+      "definition": "A specific observation from a pressure test or security review that needs attention or a recorded disposition.",
+      "seeAlso": [
+        "rahp:risk",
+        "rahp:recommendation",
+        "rahp:finding-disposition"
+      ]
+    },
+    {
+      "@id": "rahp:freshness",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Freshness",
+      "definition": "How recent information or evidence must be for a decision to rely on it.",
+      "seeAlso": [
+        "rahp:lifecycle",
+        "rahp:stale-state"
+      ]
+    },
+    {
+      "@id": "rahp:guardrail-pattern",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Guardrail pattern",
+      "definition": "A reusable guardrail that describes what must not be allowed, where it is enforced and what happens on failure.",
+      "seeAlso": [
+        "rahp:guardrail",
+        "rahp:risk-pattern",
+        "rahp:assurance-pattern"
+      ]
+    },
+    {
+      "@id": "rahp:guardrail-requirement",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Guardrail requirement",
+      "definition": "The catalogue decision that says whether a risk needs a guardrail, needs one only in some conditions, or is adequately handled by controls.",
+      "seeAlso": [
+        "rahp:guardrail",
+        "rahp:applicability"
+      ]
+    },
+    {
+      "@id": "rahp:guardrail",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Guardrail",
+      "definition": "A rule that blocks or stops an unacceptable state. It is stronger than normal guidance.",
+      "seeAlso": [
+        "rahp:control",
+        "rahp:prohibited-state",
+        "rahp:fail-closed"
+      ]
+    },
+    {
+      "@id": "rahp:harm-pattern",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Harm pattern",
+      "definition": "A reusable description of a kind of harm that can appear in many systems.",
+      "seeAlso": [
+        "rahp:harm",
+        "rahp:risk-pattern"
+      ]
+    },
+    {
+      "@id": "rahp:harm",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Harm",
+      "definition": "A bad effect on a person, group, organization or public interest.",
+      "seeAlso": [
+        "rahp:risk",
+        "rahp:harm-pattern"
+      ]
+    },
+    {
+      "@id": "rahp:lifecycle",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Lifecycle",
+      "definition": "The states an artefact, authority or policy moves through from creation to retirement or invalidation.",
+      "seeAlso": [
+        "rahp:revocation",
+        "rahp:suspension",
+        "rahp:freshness"
+      ]
+    },
+    {
+      "@id": "rahp:mandate",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Mandate",
+      "definition": "The purpose and limits under which an actor or agent is expected to act for a principal.",
+      "seeAlso": [
+        "rahp:delegation",
+        "rahp:principal",
+        "rahp:scope"
+      ]
+    },
+    {
+      "@id": "rahp:override-authority",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Override authority",
+      "definition": "The role or actor that is allowed to approve an override.",
+      "seeAlso": [
+        "rahp:override",
+        "rahp:authority"
+      ]
+    },
+    {
+      "@id": "rahp:override",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Override",
+      "definition": "A governed exception that allows a normal control or guardrail outcome to be changed by an authorized actor.",
+      "seeAlso": [
+        "rahp:override-authority",
+        "rahp:audit-event"
+      ]
+    },
+    {
+      "@id": "rahp:principal",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Principal",
+      "definition": "The person or organization whose authority, interests or instructions an agent or delegate is expected to serve.",
+      "seeAlso": [
+        "rahp:agent",
+        "rahp:delegation",
+        "rahp:mandate"
+      ]
+    },
+    {
+      "@id": "rahp:prohibited-state",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Prohibited state",
+      "definition": "A system state that a guardrail says must not be entered or continued.",
+      "seeAlso": [
+        "rahp:guardrail",
+        "rahp:protected-interest"
+      ]
+    },
+    {
+      "@id": "rahp:protected-interest",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Protected interest",
+      "definition": "The person, group or institutional interest that a guardrail is meant to protect.",
+      "seeAlso": [
+        "rahp:guardrail",
+        "rahp:harm"
+      ]
+    },
+    {
+      "@id": "rahp:provenance",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Provenance",
+      "definition": "Information about where an artefact, action, decision or claim came from and how it changed over time.",
+      "seeAlso": [
+        "rahp:auditability",
+        "rahp:delegation"
+      ]
+    },
+    {
+      "@id": "rahp:purpose",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Purpose",
+      "definition": "The stated reason for collecting information, making a decision or performing an action.",
+      "seeAlso": [
+        "rahp:scope",
+        "rahp:audience",
+        "rahp:context-binding"
+      ]
+    },
+    {
+      "@id": "rahp:reassessment",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Reassessment",
+      "definition": "A new review performed because the target, evidence, threat model or operating context has changed.",
+      "seeAlso": [
+        "rahp:retest-condition",
+        "rahp:finding-disposition"
+      ]
+    },
+    {
+      "@id": "rahp:recommendation",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Recommendation",
+      "definition": "A proposed action to reduce a finding or risk.",
+      "seeAlso": [
+        "rahp:finding",
+        "rahp:control"
+      ]
+    },
+    {
+      "@id": "rahp:redress",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Redress",
+      "definition": "A process that can correct, compensate for or otherwise remedy a harmful or incorrect outcome.",
+      "seeAlso": [
+        "rahp:contestability",
+        "rahp:remedy"
+      ]
+    },
+    {
+      "@id": "rahp:remedy",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Remedy",
+      "definition": "The action taken to correct or reduce the effect of a harmful or incorrect outcome.",
+      "seeAlso": [
+        "rahp:redress",
+        "rahp:contestability"
+      ]
+    },
+    {
+      "@id": "rahp:residual-risk",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Residual risk",
+      "definition": "The risk that remains after controls and guardrails are applied.",
+      "seeAlso": [
+        "rahp:risk",
+        "rahp:risk-acceptance"
+      ]
+    },
+    {
+      "@id": "rahp:retest-condition",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Retest condition",
+      "definition": "A stated event that should cause an earlier assurance result or finding to be checked again.",
+      "seeAlso": [
+        "rahp:reassessment",
+        "rahp:assurance"
+      ]
+    },
+    {
+      "@id": "rahp:revocation",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Revocation",
+      "definition": "A governed act that ends previously granted authority, status or validity.",
+      "seeAlso": [
+        "rahp:suspension",
+        "rahp:delegation",
+        "rahp:authority"
+      ]
+    },
+    {
+      "@id": "rahp:risk-acceptance",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Risk acceptance",
+      "definition": "A governed decision to live with a known residual risk for a stated period and reason.",
+      "seeAlso": [
+        "rahp:residual-risk",
+        "rahp:reassessment"
+      ]
+    },
+    {
+      "@id": "rahp:risk-pattern",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Risk pattern",
+      "definition": "A reusable failure mechanism that can appear in more than one deployment or specification.",
+      "seeAlso": [
+        "rahp:risk",
+        "rahp:harm-pattern",
+        "rahp:control-pattern"
+      ]
+    },
+    {
+      "@id": "rahp:risk",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Risk",
+      "definition": "A possible way a specific deployment can cause harm or fail to meet its goals.",
+      "seeAlso": [
+        "rahp:risk-pattern",
+        "rahp:finding"
+      ]
+    },
+    {
+      "@id": "rahp:scope",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Scope",
+      "definition": "The boundary of what an authority, control, assessment or claim applies to.",
+      "seeAlso": [
+        "rahp:authority",
+        "rahp:applicability",
+        "rahp:purpose"
+      ]
+    },
+    {
+      "@id": "rahp:stale-state",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Stale state",
+      "definition": "Old information that no longer reflects the current authority, status, policy or system condition.",
+      "seeAlso": [
+        "rahp:freshness",
+        "rahp:revocation"
+      ]
+    },
+    {
+      "@id": "rahp:suspension",
+      "@type": "rahp:GlossaryTerm",
+      "term": "Suspension",
+      "definition": "A governed temporary stop that may later be lifted without creating a new grant from scratch.",
+      "seeAlso": [
+        "rahp:revocation",
+        "rahp:lifecycle"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+term: Override
+slug: override
+status: stable
+definition: A governed exception that allows a normal control or guardrail outcome to be changed by an
+  authorized actor.
+plain_example: An emergency override may be allowed only to a named governance role and must be logged.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- override-authority
+- audit-event
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

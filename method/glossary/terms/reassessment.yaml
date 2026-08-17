@@ -1,0 +1,16 @@
+term: Reassessment
+slug: reassessment
+status: stable
+definition: A new review performed because the target, evidence, threat model or operating context has
+  changed.
+plain_example: A specification changes its revocation rules, so earlier findings are checked again.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- retest-condition
+- finding-disposition
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

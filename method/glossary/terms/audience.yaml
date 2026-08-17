@@ -1,0 +1,15 @@
+term: Audience
+slug: audience
+status: stable
+definition: The party or set of parties for whom a message, credential, proof or authority grant is intended.
+plain_example: A proof created for one verifier should not automatically be reused by another.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- purpose
+- context-binding
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

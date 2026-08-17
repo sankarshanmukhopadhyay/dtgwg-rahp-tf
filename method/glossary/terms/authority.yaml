@@ -1,0 +1,17 @@
+term: Authority
+slug: authority
+status: stable
+definition: The legitimate power to make a decision, request an action or change governed state.
+plain_example: A valid signature proves who signed; it does not by itself prove that the signer had authority
+  to approve payment.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- authentication
+- authorization
+- delegation
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

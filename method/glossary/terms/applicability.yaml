@@ -1,0 +1,16 @@
+term: Applicability
+slug: applicability
+status: stable
+definition: The conditions under which a risk, control, guardrail or test is relevant.
+plain_example: A cross-context privacy guardrail applies only when correlation is not necessary for the
+  declared purpose.
+term_type: rahp-native
+scope: portable-method
+do_not_confuse_with: []
+see_also:
+- scope
+- guardrail-requirement
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

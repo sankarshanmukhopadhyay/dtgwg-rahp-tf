@@ -1,0 +1,15 @@
+term: Redress
+slug: redress
+status: stable
+definition: A process that can correct, compensate for or otherwise remedy a harmful or incorrect outcome.
+plain_example: A wrongly excluded user can appeal and have access restored.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- contestability
+- remedy
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

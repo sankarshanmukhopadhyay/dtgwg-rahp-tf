@@ -1,0 +1,17 @@
+term: Cross-spec composition
+slug: cross-spec-composition
+status: stable
+definition: The combined behavior that appears when two or more specifications or protocols are used together.
+plain_example: A credential can be valid under one specification but stale under the lifecycle rules of
+  another.
+term_type: rahp-native
+scope: portable-method
+do_not_confuse_with: []
+see_also:
+- composition-boundary
+- lifecycle
+related_catalogue:
+- RKP-COMP-*
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

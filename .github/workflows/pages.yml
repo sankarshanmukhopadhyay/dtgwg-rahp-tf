@@ -33,6 +33,10 @@ jobs:
 
       - name: Validate portable assurance catalogue
         run: python3 tools/validate_catalogue.py
+      - name: Validate RAHP glossary
+        run: python3 tools/validate_glossary.py
+      - name: Validate portable catalogue documentation
+        run: python3 tools/render_portable_catalogue_docs.py --check
 
       - name: Validate portable method invariants
         run: python3 tools/validate_v04_method.py

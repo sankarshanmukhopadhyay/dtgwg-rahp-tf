@@ -1,0 +1,16 @@
+term: Context binding
+slug: context-binding
+status: stable
+definition: A rule that ties evidence, authority or a credential to the task, transaction, audience or
+  purpose where it is meant to be used.
+plain_example: A witness credential names the trust task that produced it.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- purpose
+- audience
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

@@ -20,6 +20,15 @@ parent: Reference
 ---
 # Changelog
 
+## Unreleased — semantic governance and guardrail closure
+
+- Add a 56-term RAHP glossary under `method/glossary/terms/`, written in simple English and validated against `method/schema/glossary-term.schema.json`.
+- Generate `build/glossary.json`, `build/glossary.md`, `docs/glossary.md` and `build/site/glossary.html` from the authoritative term records.
+- Add `guardrail_requirement` to every portable risk pattern so guardrail completeness is explicit and machine-verifiable.
+- Expand the portable catalogue from 139 to 149 patterns by adding 10 reusable guardrails and extending two existing guardrails to naturally related risks.
+- Reduce required guardrail gaps to zero while keeping `RKP-PE-02` explicitly conditional.
+- Update generated assurance coverage so it distinguishes missing required guardrails from conditional or intentionally control-only cases.
+
 ## v1.1.0 — 2026-08-17
 
 ### Added

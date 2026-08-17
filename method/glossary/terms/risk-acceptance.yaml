@@ -1,0 +1,16 @@
+term: Risk acceptance
+slug: risk-acceptance
+status: stable
+definition: A governed decision to live with a known residual risk for a stated period and reason.
+plain_example: A deployment accepts a low-impact availability risk until a replacement service is ready.
+term_type: rahp-native
+scope: deployment
+do_not_confuse_with: []
+see_also:
+- residual-risk
+- reassessment
+related_catalogue:
+- RA-*
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

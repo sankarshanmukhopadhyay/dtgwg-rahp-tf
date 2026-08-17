@@ -1,0 +1,15 @@
+term: Prohibited state
+slug: prohibited-state
+status: stable
+definition: A system state that a guardrail says must not be entered or continued.
+plain_example: A payment proceeds even though required authority cannot be established.
+term_type: rahp-native
+scope: portable-method
+do_not_confuse_with: []
+see_also:
+- guardrail
+- protected-interest
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

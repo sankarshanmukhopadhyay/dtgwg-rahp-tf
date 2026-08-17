@@ -1,0 +1,15 @@
+term: Protected interest
+slug: protected-interest
+status: stable
+definition: The person, group or institutional interest that a guardrail is meant to protect.
+plain_example: Privacy is the protected interest behind a guardrail against unnecessary disclosure.
+term_type: rahp-native
+scope: portable-method
+do_not_confuse_with: []
+see_also:
+- guardrail
+- harm
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

@@ -1,0 +1,16 @@
+term: Scope
+slug: scope
+status: stable
+definition: The boundary of what an authority, control, assessment or claim applies to.
+plain_example: A delegation may allow read access to one record for one hour.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- authority
+- applicability
+- purpose
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

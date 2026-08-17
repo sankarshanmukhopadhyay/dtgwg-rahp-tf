@@ -1,0 +1,17 @@
+term: Control pattern
+slug: control-pattern
+status: stable
+definition: A reusable control objective that deployments can apply in their own way.
+plain_example: Check current authority at the action boundary.
+term_type: rahp-native
+scope: portable-method
+do_not_confuse_with: []
+see_also:
+- control
+- risk-pattern
+- assurance-pattern
+related_catalogue:
+- CTP-*
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

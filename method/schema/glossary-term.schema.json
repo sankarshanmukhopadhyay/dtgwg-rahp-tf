@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/schema/glossary-term.schema.json",
+  "title": "RAHP glossary term",
+  "type": "object",
+  "required": [
+    "term",
+    "slug",
+    "status",
+    "definition",
+    "term_type",
+    "scope",
+    "see_also"
+  ],
+  "properties": {
+    "term": {
+      "type": "string",
+      "minLength": 2
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "status": {
+      "enum": [
+        "stable",
+        "draft"
+      ]
+    },
+    "definition": {
+      "type": "string",
+      "minLength": 20
+    },
+    "plain_example": {
+      "type": "string"
+    },
+    "term_type": {
+      "enum": [
+        "rahp-native",
+        "adopted",
+        "external"
+      ]
+    },
+    "scope": {
+      "enum": [
+        "portable-method",
+        "deployment",
+        "general"
+      ]
+    },
+    "do_not_confuse_with": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "see_also": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "related_catalogue": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "authority": {
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "term": {
+          "type": "string"
+        },
+        "pinned_release": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "authority"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

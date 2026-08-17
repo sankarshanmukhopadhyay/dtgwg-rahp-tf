@@ -1,0 +1,17 @@
+term: Assurance
+slug: assurance
+status: stable
+definition: Reasoned confidence, supported by evidence, that a system or control behaves as claimed.
+plain_example: A replay test and its retained trace support confidence that duplicate execution is blocked.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- assurance-pattern
+- evidence
+related_catalogue:
+- AT-*
+- ATP-*
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

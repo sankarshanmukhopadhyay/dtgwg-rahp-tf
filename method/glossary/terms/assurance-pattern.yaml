@@ -1,0 +1,18 @@
+term: Assurance pattern
+slug: assurance-pattern
+status: stable
+definition: A reusable testable claim about a control or guardrail, including how to test it and what
+  evidence to keep.
+plain_example: Try a revoked delegation and confirm the action is blocked.
+term_type: rahp-native
+scope: portable-method
+do_not_confuse_with: []
+see_also:
+- assurance
+- evidence-pattern
+- control-pattern
+related_catalogue:
+- ATP-*
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

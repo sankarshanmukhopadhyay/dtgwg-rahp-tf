@@ -1,0 +1,16 @@
+term: Control
+slug: control
+status: stable
+definition: A deployment-specific measure used to reduce, detect, contain or recover from a risk.
+plain_example: A verifier checks status immediately before approving a transaction.
+term_type: rahp-native
+scope: deployment
+do_not_confuse_with: []
+see_also:
+- control-pattern
+- guardrail
+related_catalogue:
+- CT-*
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

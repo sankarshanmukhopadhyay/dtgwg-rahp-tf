@@ -1,0 +1,16 @@
+term: Delegation
+slug: delegation
+status: stable
+definition: A grant of bounded authority from one actor to another.
+plain_example: A person allows an agent to book one hotel within a price limit.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- authority
+- scope
+- revocation
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

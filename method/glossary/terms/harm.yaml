@@ -1,0 +1,16 @@
+term: Harm
+slug: harm
+status: stable
+definition: A bad effect on a person, group, organization or public interest.
+plain_example: A person is wrongly locked out of an essential service.
+term_type: rahp-native
+scope: portable-method
+do_not_confuse_with: []
+see_also:
+- risk
+- harm-pattern
+related_catalogue:
+- HRM-*
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

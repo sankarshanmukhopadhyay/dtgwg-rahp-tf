@@ -1,0 +1,15 @@
+term: Freshness
+slug: freshness
+status: stable
+definition: How recent information or evidence must be for a decision to rely on it.
+plain_example: A high-impact action may require status checked within the last minute.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- lifecycle
+- stale-state
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

@@ -1,0 +1,15 @@
+term: Finding disposition
+slug: finding-disposition
+status: stable
+definition: The recorded outcome for an earlier finding, such as unchanged, weakened, resolved or superseded.
+plain_example: A new normative replay rule changes a replay finding from open to resolved.
+term_type: rahp-native
+scope: deployment
+do_not_confuse_with: []
+see_also:
+- finding
+- reassessment
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

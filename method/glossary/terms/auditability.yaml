@@ -1,0 +1,17 @@
+term: Auditability
+slug: auditability
+status: stable
+definition: The ability to reconstruct what happened, which rules were used, who acted and what evidence
+  supported the result.
+plain_example: An investigator can trace a delegated action back to the principal and active mandate.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- audit-event
+- evidence
+- provenance
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

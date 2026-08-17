@@ -86,8 +86,14 @@ def main():
         controls=[cid for cid,c in records.get('control_pattern',{}).items() if rid in (c.get('risk_patterns') or [])]
         guards=[gid for gid,g in records.get('guardrail_pattern',{}).items() if rid in (g.get('risk_patterns') or [])]
         if not controls: warnings.append(f'risk_pattern/{rid}: no portable control pattern')
-        if not guards and any(h.startswith(('HRM-SAF','HRM-SEC-02','HRM-AUT-04')) for h in r.get('harm_patterns') or []):
-            warnings.append(f'risk_pattern/{rid}: high-agency/safety risk has no portable guardrail pattern')
+        req=r.get('guardrail_requirement') or {}
+        status=req.get('status')
+        if status == 'required' and not guards:
+            errors.append(f'risk_pattern/{rid}: guardrail_requirement is required but no portable guardrail maps to this risk')
+        if status == 'control_sufficient' and guards:
+            warnings.append(f'risk_pattern/{rid}: marked control_sufficient but a portable guardrail also maps to it')
+        if status == 'conditional' and not req.get('condition'):
+            errors.append(f'risk_pattern/{rid}: conditional guardrail requirement must state the condition')
 
     counts={k:len(v) for k,v in records.items()}
     if errors:

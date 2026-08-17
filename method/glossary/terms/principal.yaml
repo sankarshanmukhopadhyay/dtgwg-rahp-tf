@@ -1,0 +1,17 @@
+term: Principal
+slug: principal
+status: stable
+definition: The person or organization whose authority, interests or instructions an agent or delegate
+  is expected to serve.
+plain_example: A traveller is the principal when a personal agent books on the traveller’s behalf.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- agent
+- delegation
+- mandate
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

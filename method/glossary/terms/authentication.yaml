@@ -1,0 +1,15 @@
+term: Authentication
+slug: authentication
+status: stable
+definition: A process that establishes which actor, account, key or system is presenting itself.
+plain_example: A signature verifies that a message came from a known key.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- authority
+- authorization
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

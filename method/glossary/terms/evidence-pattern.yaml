@@ -1,0 +1,17 @@
+term: Evidence pattern
+slug: evidence-pattern
+status: stable
+definition: A reusable description of what evidence should be produced, who produces it, how fresh it
+  must be and when it becomes invalid.
+plain_example: A revocation propagation trace records when each enforcement point learned about a revocation.
+term_type: rahp-native
+scope: portable-method
+do_not_confuse_with: []
+see_also:
+- evidence
+- assurance-pattern
+related_catalogue:
+- EVP-*
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

@@ -1,0 +1,17 @@
+term: Finding
+slug: finding
+status: stable
+definition: A specific observation from a pressure test or security review that needs attention or a recorded
+  disposition.
+plain_example: The specification does not say how a user can challenge an adverse decision.
+term_type: rahp-native
+scope: deployment
+do_not_confuse_with: []
+see_also:
+- risk
+- recommendation
+- finding-disposition
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

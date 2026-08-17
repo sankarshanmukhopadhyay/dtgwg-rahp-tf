@@ -1,0 +1,17 @@
+term: Enforcement point
+slug: enforcement-point
+status: stable
+definition: The place in a system where a control or guardrail is actually checked and can stop, change
+  or allow an action.
+plain_example: A verifier checks current authorization just before it calls the payment API.
+term_type: rahp-native
+scope: portable-method
+do_not_confuse_with: []
+see_also:
+- control
+- guardrail
+- decision-boundary
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

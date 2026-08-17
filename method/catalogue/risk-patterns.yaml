@@ -17,6 +17,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-AUTH-02
   name: Stale authority accepted
   family: Authority and delegation
@@ -32,6 +37,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-AUTH-03
   name: Authority scope ambiguity
   family: Authority and delegation
@@ -48,6 +58,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-DEL-01
   name: Transitive delegation expansion
   family: Authority and delegation
@@ -65,6 +80,11 @@ records:
     - delegation
     - multi-party or multi-agent execution
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-DEL-02
   name: Delegation provenance loss
   family: Authority and delegation
@@ -80,6 +100,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-DEL-03
   name: Revocation propagation failure
   family: Authority and delegation
@@ -95,6 +120,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-GOV-01
   name: Concentrated governance authority
   family: Governance and capture
@@ -109,6 +139,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-GOV-02
   name: Governance capture or collusion
   family: Governance and capture
@@ -123,6 +158,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-GOV-03
   name: Rule change without safe transition
   family: Governance and capture
@@ -138,6 +178,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-GOV-04
   name: Responsibility fragmentation
   family: Governance and capture
@@ -153,6 +198,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-ID-01
   name: Identity or role misbinding
   family: Identity and attribution
@@ -168,6 +218,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-ID-02
   name: Uniqueness assumption failure
   family: Identity and attribution
@@ -183,6 +238,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-ID-03
   name: Recovery enables takeover or exclusion
   family: Identity and attribution
@@ -198,6 +258,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-DISC-01
   name: Discovery interpreted as endorsement
   family: Discovery and trust inference
@@ -213,6 +278,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-DISC-02
   name: Stale discovery metadata
   family: Discovery and trust inference
@@ -229,6 +299,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-DISC-03
   name: Registry governance ambiguity
   family: Discovery and trust inference
@@ -244,6 +319,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-CRD-01
   name: Credential validity interpreted as authorization
   family: Credentials and claims
@@ -259,6 +339,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-CRD-02
   name: Credential status or issuer authority staleness
   family: Credentials and claims
@@ -273,6 +358,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-CRD-03
   name: Credential context detachment
   family: Credentials and claims
@@ -288,6 +378,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-CRD-04
   name: Credential audience or purpose expansion
   family: Credentials and claims
@@ -304,6 +399,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-PRV-01
   name: Stable identifier correlation
   family: Privacy and inference
@@ -318,6 +418,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-PRV-02
   name: Composition fingerprinting
   family: Privacy and inference
@@ -332,6 +437,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-PRV-03
   name: Failure channel disclosure
   family: Privacy and inference
@@ -347,6 +457,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-EXC-01
   name: Single-path participation exclusion
   family: Inclusion and accessibility
@@ -363,6 +478,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-EXC-02
   name: Social or institutional privilege dependency
   family: Inclusion and accessibility
@@ -378,6 +498,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-AGT-01
   name: Agent goal or mandate drift
   family: Agentic systems
@@ -393,6 +518,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-AGT-02
   name: Secondary credential transitivity
   family: Agentic systems
@@ -409,6 +539,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-AGT-03
   name: Opaque execution accountability gap
   family: Agentic systems
@@ -424,6 +559,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-OPS-01
   name: Dependency unavailability or stale fallback
   family: Operational resilience
@@ -439,6 +579,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-OPS-02
   name: Replay or duplicate side effect
   family: Operational resilience
@@ -454,6 +599,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-OPS-03
   name: Cascading invalidation
   family: Operational resilience
@@ -469,6 +619,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-RED-01
   name: Evidence insufficient for contestability
   family: Accountability and redress
@@ -484,6 +639,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-COMP-01
   name: Cross-spec authority mismatch
   family: Composition
@@ -500,6 +660,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-COMP-02
   name: Cross-spec lifecycle mismatch
   family: Composition
@@ -516,6 +681,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-COMP-03
   name: Cross-system linkability
   family: Composition
@@ -531,6 +701,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-COMP-04
   name: Policy or evidence boundary conflict
   family: Composition
@@ -546,6 +721,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-PE-01
   name: Infrastructure dependency capture
   family: Political economy
@@ -562,6 +742,11 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: required
+    rationale: This risk can create an unacceptable state at a clear decision or execution boundary, so a portable
+      guardrail should block or stop that state.
+    condition: null
 - id: RKP-PE-02
   name: Failure cost externalization
   family: Political economy
@@ -578,3 +763,9 @@ records:
   observability: detectable
   applicability: {}
   related_patterns: []
+  guardrail_requirement:
+    status: conditional
+    rationale: Failure costs are not always avoidable. A guardrail is required when affected people cannot reasonably
+      choose, exit or seek remedy.
+    condition: Applies to high-impact or involuntary use where materially affected parties lack meaningful choice,
+      exit or remedy.

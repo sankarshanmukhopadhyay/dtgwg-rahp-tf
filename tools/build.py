@@ -24,6 +24,7 @@ import pathlib
 import sys
 from collections import defaultdict
 
+from build_glossary import build_outputs as build_glossary_outputs
 from tf_actions import derive_tf_actions, load_manual_actions, render_markdown as render_tf_actions_markdown, summary as summarize_tf_actions
 
 try:
@@ -338,6 +339,7 @@ small.mono{font-family:var(--mono);font-size:11px;color:var(--faint)}
 NAV = [
     ("index.html", "Overview & personas", "var(--blue)"),
     ("portable-catalogue.html", "Portable assurance catalogue", "var(--plum)"),
+    ("glossary.html", "Glossary", "var(--blue)"),
     ("assurance-graph.html", "Assurance graph & coverage", "var(--teal)"),
     ("risks.html", "DTG risks & metrics", "var(--red)"),
     ("catalogue.html", "DTG deployment catalogue", "var(--blue)"),
@@ -546,6 +548,14 @@ def portable_catalogue_body(catalogue):
     return ''.join(out)
 
 
+def glossary_body(terms):
+    out=['<div class="card"><div class="cb"><strong>RAHP glossary.</strong> These terms use simple English. Structured YAML under <code>method/glossary/terms/</code> is authoritative.</div></div>']
+    for t in sorted(terms,key=lambda x:x.get('term','').lower()):
+        example=f'<div class="ref-summary"><strong>Example:</strong> {html.escape(t.get("plain_example") or "")}</div>' if t.get('plain_example') else ''
+        related=''.join(f'<span class="pill pm">{html.escape(x)}</span>' for x in (t.get('related_catalogue') or []))
+        out.append(f'<div class="card ref-card" id="{html.escape(t["slug"])}"><div class="cb"><div class="ref-title"><strong>{html.escape(t["term"])}</strong><span class="pill pct">{html.escape(t["term_type"])}</span></div><div class="ref-summary">{html.escape(t["definition"])}</div>{example}<div class="ref-meta">{related}</div></div></div>')
+    return ''.join(out)
+
 def assurance_graph_body(catalogue, head_qualification):
     rec = catalogue['records']
     coverage = derive_portable_catalogue_coverage(catalogue)
@@ -562,7 +572,9 @@ def assurance_graph_body(catalogue, head_qualification):
     ]) + '</div>'
     checks = [
         ('Risks without portable control', coverage['risks_without_portable_control']),
-        ('Risks without portable guardrail', coverage['risks_without_portable_guardrail']),
+        ('Risks without any mapped portable guardrail', coverage['risks_without_portable_guardrail']),
+        ('Required guardrails missing', coverage['required_guardrails_missing']),
+        ('Conditional guardrail risks', coverage['conditional_guardrail_risks']),
         ('Controls without assurance pattern', coverage['controls_without_assurance_pattern']),
         ('Evidence patterns not used by assurance patterns', sorted(evidence_ids-used_evidence)),
     ]
@@ -589,6 +601,11 @@ def build_site(records, derived, meta, out):
     ptitle, psub = "Portable assurance catalogue", "Reusable harm, risk, control, guardrail, assurance and evidence patterns that define the v1.1 portable method layer."
     (site / "portable-catalogue.html").write_text(page("portable-catalogue.html", ptitle, psub, body, meta), encoding="utf-8")
     pages.append(("portable-catalogue", ptitle, psub, body))
+
+    body = glossary_body(derived.get("glossary_terms") or [])
+    ptitle, psub = "Glossary", "RAHP terms explained in simple English, with stable structured source records for tooling and documentation."
+    (site / "glossary.html").write_text(page("glossary.html", ptitle, psub, body, meta), encoding="utf-8")
+    pages.append(("glossary", ptitle, psub, body))
 
     body = assurance_graph_body(derived["portable_catalogue"], derived.get("head_qualification"))
     ptitle, psub = "Assurance graph & coverage", "Machine-derived coverage diagnostics across the portable assurance chain, plus current HEAD qualification evidence."
@@ -631,6 +648,7 @@ def build_site(records, derived, meta, out):
 <div class="pgrid" style="margin-bottom:24px">
   <div class="pcard"><h3>Understand</h3><div class="role">Why RAHP → people and power → risks and harms → controls, guardrails and assurance</div><a href="../../docs/how-rahp-works.html">Read the method guide</a></div>
   <div class="pcard"><h3>Portable assurance</h3><div class="role">Harms → risk patterns → controls/guardrails → assurance → evidence</div><a href="portable-catalogue.html">Browse portable patterns</a></div>
+  <div class="pcard"><h3>Glossary</h3><div class="role">RAHP terms in simple English with machine-readable source records</div><a href="glossary.html">Browse glossary</a></div>
   <div class="pcard"><h3>Coverage & qualification</h3><div class="role">Catalogue gaps → assurance coverage → live HEAD qualification evidence</div><a href="assurance-graph.html">Inspect assurance coverage</a></div>
   <div class="pcard"><h3>Apply</h3><div class="role">Choose a specification → pressure-test → analyse findings → determine the control layer → publish recommendations</div><a href="../../docs/pressure-testing-a-spec.html">Run a pressure test</a></div>
   <div class="pcard"><h3>DTG deployment</h3><div class="role">Personas → scenarios → local risks → controls → metrics → standards actions</div><a href="risks.html">Explore DTG evidence</a></div>
@@ -1024,10 +1042,16 @@ def derive_portable_catalogue_coverage(catalogue):
     controlled = {r for c in controls for r in (c.get("risk_patterns") or [])}
     guarded = {r for g in guards for r in (g.get("risk_patterns") or [])}
     tested_controls = {c for t in tests for c in (t.get("control_patterns") or [])}
+    required = {r["id"] for r in records["risk_patterns"] if (r.get("guardrail_requirement") or {}).get("status") == "required"}
+    conditional = {r["id"] for r in records["risk_patterns"] if (r.get("guardrail_requirement") or {}).get("status") == "conditional"}
+    control_sufficient = {r["id"] for r in records["risk_patterns"] if (r.get("guardrail_requirement") or {}).get("status") == "control_sufficient"}
     return {
         "counts": {k: len(v) for k, v in records.items()},
         "risks_without_portable_control": sorted(risk_ids - controlled),
         "risks_without_portable_guardrail": sorted(risk_ids - guarded),
+        "required_guardrails_missing": sorted(required - guarded),
+        "conditional_guardrail_risks": sorted(conditional),
+        "control_sufficient_guardrail_risks": sorted(control_sufficient),
         "controls_without_assurance_pattern": sorted({c["id"] for c in controls} - tested_controls),
     }
 
@@ -1043,6 +1067,7 @@ def main():
     records = load_all(data_dir, instance)
     lifecycle = load(ROOT / "method" / "lifecycle.yaml")
     portable_catalogue = load_portable_catalogue()
+    glossary_terms = build_glossary_outputs()
 
     derived = {
         "persona_xrefs": derive_persona_xrefs(records),
@@ -1053,6 +1078,7 @@ def main():
         "tf_actions": derive_tf_actions(records, load_manual_actions(data_dir)),
         "lifecycle": lifecycle,
         "portable_catalogue": portable_catalogue,
+        "glossary_terms": glossary_terms,
         "head_qualification": load(ROOT / "examples" / "head-qualification" / "qualification.yaml") if (ROOT / "examples" / "head-qualification" / "qualification.yaml").exists() else {},
     }
 

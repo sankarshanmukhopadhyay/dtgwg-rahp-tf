@@ -1,0 +1,18 @@
+term: Guardrail pattern
+slug: guardrail-pattern
+status: stable
+definition: A reusable guardrail that describes what must not be allowed, where it is enforced and what
+  happens on failure.
+plain_example: Do not treat a valid credential as permission for an unrelated action.
+term_type: rahp-native
+scope: portable-method
+do_not_confuse_with: []
+see_also:
+- guardrail
+- risk-pattern
+- assurance-pattern
+related_catalogue:
+- GRP-*
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

@@ -1,0 +1,15 @@
+term: Remedy
+slug: remedy
+status: stable
+definition: The action taken to correct or reduce the effect of a harmful or incorrect outcome.
+plain_example: A registry corrects an entry and notifies affected relying parties.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- redress
+- contestability
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

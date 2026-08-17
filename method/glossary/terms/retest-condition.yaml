@@ -1,0 +1,15 @@
+term: Retest condition
+slug: retest-condition
+status: stable
+definition: A stated event that should cause an earlier assurance result or finding to be checked again.
+plain_example: Retest when the specification changes its authorization model.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- reassessment
+- assurance
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

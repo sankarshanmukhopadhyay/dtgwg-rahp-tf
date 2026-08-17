@@ -1,0 +1,18 @@
+term: Guardrail
+slug: guardrail
+status: stable
+definition: A rule that blocks or stops an unacceptable state. It is stronger than normal guidance.
+plain_example: Do not let a consequential action proceed when current authority cannot be established.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- control
+- prohibited-state
+- fail-closed
+related_catalogue:
+- GR-*
+- GRP-*
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

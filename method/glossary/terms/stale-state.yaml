@@ -1,0 +1,15 @@
+term: Stale state
+slug: stale-state
+status: stable
+definition: Old information that no longer reflects the current authority, status, policy or system condition.
+plain_example: A cached registry entry still points to a key that has been revoked.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- freshness
+- revocation
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

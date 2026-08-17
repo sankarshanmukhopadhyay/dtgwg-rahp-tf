@@ -1,0 +1,16 @@
+term: Consequential action
+slug: consequential-action
+status: stable
+definition: An action that can materially affect rights, money, access, safety, authority, privacy or
+  an external system state.
+plain_example: Revoking access, transferring money or publishing a credential are consequential actions.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- decision-boundary
+- authority
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

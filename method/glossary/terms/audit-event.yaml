@@ -1,0 +1,15 @@
+term: Audit event
+slug: audit-event
+status: stable
+definition: A recorded event that shows a control, guardrail, decision or override was evaluated or used.
+plain_example: The log records that authority was checked and that an override was rejected.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- evidence
+- auditability
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

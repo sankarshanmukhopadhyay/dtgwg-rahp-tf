@@ -7,6 +7,8 @@ parent: Implement RAHP
 ---
 # Extend the assurance catalogue
 
+Use the [RAHP glossary](glossary.md) when naming concepts. Prefer simple English. If a new pattern introduces a term that a reader may not understand, add or update the glossary in the same change.
+
 Use this workflow when contributing **portable** harms, risks, controls, guardrails, assurance patterns or evidence patterns. The portable catalogue is reusable method knowledge, not a collection of every finding encountered in a deployment.
 
 ## Outcome

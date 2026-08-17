@@ -30,6 +30,13 @@ class TestGeneratedAssuranceSite(unittest.TestCase):
         self.assertIn("DTG operational assurance", text)
         self.assertIn("v1.1 portable ATP/EVP model", text)
 
+    def test_glossary_and_guardrail_closure_are_generated(self):
+        glossary = (SITE / "glossary.html").read_text()
+        self.assertIn("RAHP terms explained in simple English", glossary)
+        graph = (SITE / "assurance-graph.html").read_text()
+        self.assertIn("Required guardrails missing", graph)
+        self.assertIn("Conditional guardrail risks", graph)
+
 
 if __name__ == "__main__":
     unittest.main()

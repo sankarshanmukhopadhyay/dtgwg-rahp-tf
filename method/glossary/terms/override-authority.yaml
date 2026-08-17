@@ -1,0 +1,15 @@
+term: Override authority
+slug: override-authority
+status: stable
+definition: The role or actor that is allowed to approve an override.
+plain_example: Only the incident commander may approve an emergency continuity override.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- override
+- authority
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

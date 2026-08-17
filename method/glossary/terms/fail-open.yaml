@@ -1,0 +1,16 @@
+term: Fail open
+slug: fail-open
+status: stable
+definition: To continue an action even though a check or dependency failed. This must be explicit when
+  it can create risk.
+plain_example: A low-impact read may use a short cached value during a network outage.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- fail-closed
+- risk-acceptance
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

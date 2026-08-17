@@ -1,0 +1,16 @@
+term: Risk
+slug: risk
+status: stable
+definition: A possible way a specific deployment can cause harm or fail to meet its goals.
+plain_example: A registry may keep an old key after it should have been removed.
+term_type: rahp-native
+scope: deployment
+do_not_confuse_with: []
+see_also:
+- risk-pattern
+- finding
+related_catalogue:
+- RK-*
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

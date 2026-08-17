@@ -1,0 +1,16 @@
+term: Agent
+slug: agent
+status: stable
+definition: A software or human actor that takes actions for itself or for another principal.
+plain_example: A software agent requests a credential presentation on behalf of its user.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- principal
+- mandate
+- delegation
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

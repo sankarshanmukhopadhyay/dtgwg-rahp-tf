@@ -1,0 +1,17 @@
+term: Authorization
+slug: authorization
+status: stable
+definition: A decision about whether an actor is allowed to perform a particular action in a particular
+  context.
+plain_example: An authenticated agent may still be denied permission to transfer funds.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- authentication
+- authority
+- scope
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

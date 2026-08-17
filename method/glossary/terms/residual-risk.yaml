@@ -1,0 +1,15 @@
+term: Residual risk
+slug: residual-risk
+status: stable
+definition: The risk that remains after controls and guardrails are applied.
+plain_example: A cached status check lowers outage risk but still leaves a short stale-state window.
+term_type: rahp-native
+scope: general
+do_not_confuse_with: []
+see_also:
+- risk
+- risk-acceptance
+related_catalogue: []
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.

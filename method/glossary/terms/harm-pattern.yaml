@@ -1,0 +1,16 @@
+term: Harm pattern
+slug: harm-pattern
+status: stable
+definition: A reusable description of a kind of harm that can appear in many systems.
+plain_example: Wrongful exclusion can happen in identity, payment or registry systems.
+term_type: rahp-native
+scope: portable-method
+do_not_confuse_with: []
+see_also:
+- harm
+- risk-pattern
+related_catalogue:
+- HRM-*
+source:
+  authority: RAHP Toolkit
+  note: Definition written for RAHP in simple English.
