@@ -26,6 +26,7 @@ RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-test
 | Understand the engine boundary | [Engine contract](docs/engine-contract.md) |
 | Understand review/log retention | [Review evidence and retention](docs/evidence-retention.md) |
 | Read the current release | [v1.1.0 release notes](docs/releases/v1.1.0.md) |
+| Inspect current example HEAD qualification | [v1.1 HEAD qualification](docs/head-qualification.md) |
 
 ## The v1.0 architecture
 

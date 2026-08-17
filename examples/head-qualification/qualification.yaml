@@ -1,0 +1,309 @@
+qualification:
+  id: HQ-2026-08-17-v1.1.0
+  status: complete
+  run_date: '2026-08-17'
+  rahp_version: v1.1.0
+  engine_contract: rahp-engine-contract-v1
+  purpose: Qualify maintained worked examples against the current default-branch HEAD of every live repository represented
+    by the example estate.
+  method:
+  - Resolve current default-branch HEAD for each live target repository.
+  - Compare each canonical pinned example baseline with HEAD.
+  - Revalidate unchanged targets against the identical source revision.
+  - Review material source deltas for changed targets and classify prior findings as unchanged, weakened, resolved,
+    strengthened, superseded or new.
+  - Reassess the Trust Tasks x Credential Specification composition where either constituent changed.
+  - Preserve deliberately pinned experimental/draft variants rather than silently replacing them with default-branch
+    HEAD.
+  summary:
+    live_repositories: 11
+    head_unchanged_from_canonical_baseline: 8
+    head_advanced: 3
+    new_open_findings: 0
+    catalogue_mapping_gaps: 0
+    overall: v1.1.0 remains applicable at current HEAD. The largest delta is positive assurance movement in Trust
+      Tasks; one Credential Spec security finding is resolved; A2A findings are unchanged because the only intervening
+      change is outside assessed source paths.
+  targets:
+  - repository: a2aproject/A2A
+    canonical_baseline: 1eb4aa03b07589d3a00ce7deab0dde679120ed30
+    head: 134a382ed38a0c527902e21b5b61c1666a60402e
+    head_state: advanced
+    ahead_by: 1
+    materiality: non-material
+    changed_paths:
+    - docs/index.md
+    assessment: No assessed source path changed; all six A2A RAHP findings remain unchanged.
+  - repository: c2pa-org/specifications
+    canonical_baseline: b1703dc0a0420088d3f8b0e5fb11866d0fe931cb
+    head: b1703dc0a0420088d3f8b0e5fb11866d0fe931cb
+    head_state: same
+    ahead_by: 0
+    materiality: none
+    assessment: Canonical C2PA and CAWG/C2PA stack examples remain current at HEAD.
+  - repository: decentralized-identity/cawg-consent-assertion
+    canonical_baseline: 0d6916c0c4a87705315bbd3b512827b9b41bb98f
+    head: 0d6916c0c4a87705315bbd3b512827b9b41bb98f
+    head_state: same
+    ahead_by: 0
+    materiality: none
+    assessment: Consent and consent x TDM examples remain current at HEAD.
+  - repository: decentralized-identity/cawg-endorsement-assertion
+    canonical_baseline: 585c7fbe4ea49d89442ba1a8c04ab39927dbb47d
+    head: 585c7fbe4ea49d89442ba1a8c04ab39927dbb47d
+    head_state: same
+    ahead_by: 0
+    materiality: none
+    assessment: Endorsement and identity x endorsement examples remain current at HEAD.
+  - repository: decentralized-identity/cawg-identity-assertion
+    canonical_baseline: 8a9c4925df7e8ccbcabce9d754fc27739e11dc12
+    head: 8a9c4925df7e8ccbcabce9d754fc27739e11dc12
+    head_state: same
+    ahead_by: 0
+    materiality: none
+    assessment: Canonical WG-approved identity example remains current. Governance, VC/VP and vLEI experiment examples
+      remain intentionally pinned to their experiment revisions and are not rewritten as default-branch HEAD evidence.
+    variant_pins:
+    - 5f1908d4f5bf6c89d02d671ae5051f893df92dc9
+    - 2339d9f0d55717c44e0c3f1881cb8b9083337ee6
+    - 1fbff9683fb692667a81206274d4b24d17078c0b
+  - repository: decentralized-identity/cawg-metadata-assertion
+    canonical_baseline: 64069e062b6dfa1105844a773fdfd80a69356b72
+    head: 64069e062b6dfa1105844a773fdfd80a69356b72
+    head_state: same
+    ahead_by: 0
+    materiality: none
+    assessment: Metadata and identity x metadata examples remain current at HEAD.
+  - repository: decentralized-identity/cawg-organizational-identity-profile
+    canonical_baseline: c862069e5ea2668f12a9346ef07e4b793045076f
+    head: c862069e5ea2668f12a9346ef07e4b793045076f
+    head_state: same
+    ahead_by: 0
+    materiality: none
+    assessment: Ratified organizational-identity example remains current. The 1.1 draft example remains an intentionally
+      pinned draft variant.
+    variant_pins:
+    - ad951176b1d428e027c3c20c48506b2b780a8f77
+  - repository: decentralized-identity/cawg-training-and-data-mining-assertion
+    canonical_baseline: e203ac5e795cd4000d53d0d12cab144c1bcc1111
+    head: e203ac5e795cd4000d53d0d12cab144c1bcc1111
+    head_state: same
+    ahead_by: 0
+    materiality: none
+    assessment: Training/data-mining example remains current at HEAD.
+  - repository: decentralized-identity/cawg-ux-guidance
+    canonical_baseline: 3162bbbac52202e4f4178420928bd13900d21df9
+    head: 3162bbbac52202e4f4178420928bd13900d21df9
+    head_state: same
+    ahead_by: 0
+    materiality: none
+    assessment: UX guidance example remains current at HEAD.
+  - repository: trustoverip/dtgwg-cred-spec
+    canonical_baseline: d19f7c9cac364fab8e50cf434513ef53fef80e37
+    head: b89f389abbdae77ba60b673c0836c781c2b54169
+    head_state: advanced
+    ahead_by: 1
+    materiality: material-positive
+    changed_paths:
+    - spec/body.md
+    assessment: VWC digest is now REQUIRED and normatively binds witness evidence to the exact VRC. This resolves
+      SEC-CR-009 and strengthens task/outcome evidence composition without changing the other Credential Spec findings.
+  - repository: trustoverip/dtgwg-trust-tasks-tf
+    canonical_baseline: fbe196a8a17ba3f99d0657a64be5ac58621023a1
+    head: 7e0d755f5b815498c861cacecee5cae49b3f14eb
+    head_state: advanced
+    ahead_by: 27
+    materiality: material-positive
+    assessment: HEAD materially strengthens replay resistance, authorization semantics, authority re-evaluation,
+      task control/corrigibility, proof-omission profiles, citation integrity and payload validation. Several prior
+      RAHP/security findings are resolved or weakened; no new open finding is required by this qualification run.
+  finding_deltas:
+    examples/a2a/pressure-test.yaml:
+    - finding: F-001
+      classification: unchanged
+    - finding: F-002
+      classification: unchanged
+    - finding: F-003
+      classification: unchanged
+    - finding: F-004
+      classification: unchanged
+    - finding: F-005
+      classification: unchanged
+    - finding: F-006
+      classification: unchanged
+    examples/dtg-credential-spec/pressure-test.yaml:
+    - finding: F-001
+      classification: unchanged
+    - finding: F-002
+      classification: unchanged
+    - finding: F-003
+      classification: unchanged
+    - finding: F-004
+      classification: unchanged
+    - finding: F-005
+      classification: unchanged
+    - finding: F-006
+      classification: unchanged
+    - finding: F-007
+      classification: unchanged
+    - finding: F-008
+      classification: unchanged
+    examples/security-hardening/credential-spec/findings.yaml:
+    - finding: SEC-CR-001
+      classification: unchanged
+    - finding: SEC-CR-002
+      classification: unchanged
+    - finding: SEC-CR-003
+      classification: unchanged
+    - finding: SEC-CR-004
+      classification: unchanged
+    - finding: SEC-CR-005
+      classification: unchanged
+    - finding: SEC-CR-006
+      classification: unchanged
+    - finding: SEC-CR-007
+      classification: unchanged
+    - finding: SEC-CR-008
+      classification: unchanged
+    - finding: SEC-CR-009
+      classification: resolved
+      evidence: b89f389 requires credentialSubject.digest and defines exact VRC/edge binding.
+    - finding: SEC-CR-010
+      classification: unchanged
+    - finding: SEC-CR-011
+      classification: unchanged
+    - finding: SEC-CR-012
+      classification: unchanged
+    - finding: SEC-CR-013
+      classification: unchanged
+    examples/trust-tasks-spec/pressure-test.yaml:
+    - finding: F-001
+      classification: resolved
+      evidence: "SPEC \xA77.2 item 11 now normatively prevents duplicate execution of consequential tasks for the\
+        \ same document id."
+    - finding: F-002
+      classification: resolved
+      evidence: "SPEC \xA77.2 item 4 plus the item-11 retention bound require an executable acceptance/freshness\
+        \ window for consequential tasks; a task with neither expiry nor establishable age MUST NOT execute."
+    - finding: F-003
+      classification: resolved
+      evidence: "SPEC \xA77.2 item 10 explicitly separates identity/proof validation from authorization; \xA77.3\
+        \ item 15 requires consequential task specifications to state the authorization evidence they rely on."
+    - finding: F-004
+      classification: unchanged
+    - finding: F-005
+      classification: unchanged
+    - finding: F-006
+      classification: weakened
+      evidence: Binding security profiles and explicit ext-policy discovery improve pre-execution clarity, but discovery
+        still does not negotiate a complete mutually secure execution profile.
+    - finding: F-007
+      classification: unchanged
+    - finding: F-008
+      classification: unchanged
+    examples/security-hardening/trust-tasks/findings.yaml:
+    - finding: SEC-TT-001
+      classification: resolved
+      evidence: "\xA77.2 item 11 requires duplicate-execution suppression keyed to document id plus content digest."
+    - finding: SEC-TT-002
+      classification: resolved
+      evidence: Consequential tasks without an enforceable acceptance window may no longer execute.
+    - finding: SEC-TT-003
+      classification: resolved
+      evidence: "\xA79.1.1 requires any proof-omission allowance to be justified by an explicit binding security\
+        \ profile; silence is not permission."
+    - finding: SEC-TT-004
+      classification: weakened
+      evidence: "\xA77.2 item 10 prevents identity/VID equivalence from being silently treated as authorization,\
+        \ but deployment-specific VID equivalence remains possible."
+    - finding: SEC-TT-005
+      classification: weakened
+      evidence: Unrecognized extension namespaces remain non-actionable and consumers can require/publish named
+        ext namespaces, reducing but not eliminating ecosystem semantic skew.
+    - finding: SEC-TT-006
+      classification: unchanged
+    - finding: SEC-TT-007
+      classification: unchanged
+    - finding: SEC-TT-008
+      classification: weakened
+      evidence: Transport binding security profiles are clearer, but discovery still lacks complete secure-profile
+        negotiation.
+    - finding: SEC-TT-009
+      classification: weakened
+      evidence: Authorization evaluation is now mandatory for consequential tasks, but the framework intentionally
+        leaves the authorization model and policy content to deployments.
+    - finding: SEC-TT-010
+      classification: resolved
+      evidence: "\xA77.2 item 12 requires re-evaluation of required authority/credential conditions immediately\
+        \ before irreversible effects."
+    - finding: SEC-TT-011
+      classification: unchanged
+    - finding: SEC-TT-012
+      classification: unchanged
+    - finding: SEC-TT-013
+      classification: unchanged
+    examples/cross-spec/trust-tasks-credspec/pressure-test.yaml:
+    - finding: F-001
+      classification: weakened
+      evidence: Trust Tasks now explicitly separates authentication from authorization and re-evaluates authority
+        before effects; Credential validity still does not itself establish current delegated authority.
+    - finding: F-002
+      classification: weakened
+      evidence: Task digests, ceremony receipts and required VWC edge digests provide stronger binding material,
+        but generic credential validity still remains distinct from terminal task outcome evidence.
+    - finding: F-003
+      classification: resolved
+      evidence: "Trust Tasks \xA77.2 item 11 prevents replay of the same consequential task document from repeating\
+        \ the effect."
+    - finding: F-004
+      classification: unchanged
+    - finding: F-005
+      classification: weakened
+      evidence: Authority and credential conditions are now re-evaluated before irreversible task effects; later/offline
+        credential verification still has its own lifecycle boundary.
+    - finding: F-006
+      classification: unchanged
+    examples/security-hardening/cross-spec/findings.yaml:
+    - finding: SEC-X-001
+      classification: weakened
+    - finding: SEC-X-002
+      classification: weakened
+      evidence: Task digests and ceremony receipts now provide explicit completion/citation evidence, and the Credential
+        Spec explicitly distinguishes credential validity from Trust Task artifacts.
+    - finding: SEC-X-003
+      classification: unchanged
+    - finding: SEC-X-004
+      classification: weakened
+      evidence: Exact document replay is suppressed by Trust Tasks item 11; semantically duplicate fresh issuance
+        requests remain task-specific.
+    - finding: SEC-X-005
+      classification: weakened
+      evidence: Trust Tasks item 12 re-evaluates authority and status before irreversible effects, reducing the
+        approval-to-issuance gap.
+    - finding: SEC-X-006
+      classification: weakened
+      evidence: Outstanding task effects now re-evaluate authority, but already-issued credential lifecycle remains
+        independently governed.
+    - finding: SEC-X-007
+      classification: resolved
+      evidence: Both specifications now explicitly separate ceremony/task completion evidence from durable credential
+        validity, with Trust Task receipts/citations available for the former.
+    - finding: SEC-X-008
+      classification: unchanged
+    - finding: SEC-X-009
+      classification: unchanged
+    - finding: SEC-X-010
+      classification: weakened
+      evidence: New task-control dispositions, task errors and acknowledgement semantics improve durable state reporting
+        but do not define every task-specific issuance failure bridge.
+    - finding: SEC-X-011
+      classification: unchanged
+    - finding: SEC-X-012
+      classification: weakened
+      evidence: Trust Tasks now forbids identity/proof from being treated as authorization; accountable human/control
+        relationships remain outside syntactic role satisfaction.
+  portable_catalogue_result:
+    new_pattern_required: false
+    unmapped_new_risk: false
+    assessment: The v1.1 portable assurance catalogue was sufficient to express every material HEAD delta encountered
+      in this run; no new HRM/RKP/CTP/GRP/ATP/EVP object is required.

@@ -19,6 +19,13 @@ parent: Reference
 - Revalidate and rerender curated examples against v1.1.0 while preserving pinned target revisions.
 - Expand scenario patterns and cross-spec documentation for authority, delegation, discovery, redress, political economy, lifecycle skew and control side effects.
 - Keep `rahp-engine-contract-v1` and result schema version 1 stable; v1.1 is additive.
+### Qualification refresh
+- Qualify all maintained live example repositories against current default-branch HEAD.
+- Record longitudinal finding deltas without overwriting the original pinned evidence.
+- Resolve the Trust Tasks duplicate-execution, stale-consequential-request and identity-as-authorization findings against current HEAD.
+- Resolve Credential Spec `SEC-CR-009` after VWC digest becomes required.
+- Reassess the Trust Tasks × Credential Specification composition and confirm no new portable-catalogue pattern is required.
+
 
 ## v1.0.0 — 2026-08-16
 

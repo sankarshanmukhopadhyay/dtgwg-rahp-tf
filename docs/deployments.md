@@ -15,3 +15,8 @@ Inspect independent deployments and worked examples that demonstrate portability
 - [Trust Tasks × Credential Specification cross-spec example](../examples/cross-spec/trust-tasks-credspec/README.md)
 - [CAWG/C2PA deployment](cawg-instance.md)
 - [DTG exemplar deployment](dtg-instance.md)
+
+
+## Current example qualification
+
+The maintained example estate was re-qualified against current repository HEADs on 2026-08-17. See [v1.1 HEAD qualification](head-qualification.md) for repository revisions, finding deltas and cross-specification results.
