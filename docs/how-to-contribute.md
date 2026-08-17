@@ -1,14 +1,11 @@
 ---
 layout: default
-title: "Contributing"
-nav_order: 3
+title: "How to contribute"
+nav_order: 4
 has_toc: true
-has_children: true
 parent: Implement RAHP
 ---
 # Contributing to the RAHP Toolkit
-
-> **Documentation navigation:** the step-by-step contribution guides are also published under [How to contribute](docs/how-to-contribute.md), with dedicated workflows for catalogue, capability and pressure-test contributions.
 
 RAHP contributions are easiest to review when the contributor first identifies **which authority boundary is changing** and then follows the workflow for that contribution type. This section is intentionally procedural: each path tells you what to change, in what order, what evidence to produce, and what must pass before a pull request is ready.
 
@@ -16,9 +13,9 @@ RAHP contributions are easiest to review when the contributor first identifies *
 
 | I want to… | Start here | Primary authority |
 |---|---|---|
-| Add or improve reusable harms, risks, controls, guardrails, assurance or evidence patterns | [Extend the assurance catalogue](docs/contributing-catalogue.md) | `method/catalogue/` |
-| Add a toolkit capability, command, validator, renderer, monitor or other executable behaviour | [Add a toolkit capability](docs/contributing-capability.md) | `tools/`, `packages/`, schemas and tests as applicable |
-| Add a RAHP pressure test for a specification or protocol | [Add a specification pressure test](docs/contributing-pressure-test.md) | `.rahp/reviews/` while working; `examples/` only for maintained exemplars |
+| Add or improve reusable harms, risks, controls, guardrails, assurance or evidence patterns | [Extend the assurance catalogue](contributing-catalogue.md) | `method/catalogue/` |
+| Add a toolkit capability, command, validator, renderer, monitor or other executable behaviour | [Add a toolkit capability](contributing-capability.md) | `tools/`, `packages/`, schemas and tests as applicable |
+| Add a RAHP pressure test for a specification or protocol | [Add a specification pressure test](contributing-pressure-test.md) | `.rahp/reviews/` while working; `examples/` only for maintained exemplars |
 
 If your change crosses more than one row, follow every applicable workflow. A new capability that introduces a new portable method concept, for example, must satisfy both the capability workflow and the catalogue/method workflow.
 
@@ -133,7 +130,7 @@ Run the additional commands specified by the workflow you followed.
 
 ## Using an AI assistant
 
-See [AI-assisted process](docs/ai-assisted-process.md). AI-assisted contributions follow exactly the same review and evidence requirements as human-drafted changes.
+See [AI-assisted process](ai-assisted-process.md). AI-assisted contributions follow exactly the same review and evidence requirements as human-drafted changes.
 
 When a record was substantially drafted by an assistant, use the repository's provenance convention, for example:
 
