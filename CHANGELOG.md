@@ -20,6 +20,11 @@ parent: Reference
 ---
 # Changelog
 
+## Unreleased
+
+- Fix generated standalone assurance-site links so Jekyll-projected `build/rahp-toolkit.html` resolves portable catalogue and assurance-graph views through `build/site/`.
+- Restructure the root README around the current v1.1 method, quick start, architecture, deployment examples, monitoring, contribution, and compatibility surfaces instead of historical release chronology.
+
 ## Unreleased — semantic governance and guardrail closure
 
 - Add a 56-term RAHP glossary under `method/glossary/terms/`, written in simple English and validated against `method/schema/glossary-term.schema.json`.

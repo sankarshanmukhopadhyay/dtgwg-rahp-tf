@@ -424,7 +424,9 @@ def single_file_body(body):
     """
     return (body
             .replace('href="catalogue.html#', 'href="#')
-            .replace('href="portable-catalogue.html#', 'href="#')
+            .replace('href="portable-catalogue.html#', 'href="site/portable-catalogue.html#')
+            .replace('href="portable-catalogue.html"', 'href="site/portable-catalogue.html"')
+            .replace('href="assurance-graph.html"', 'href="site/assurance-graph.html"')
             .replace('href="risks.html"', 'href="#pane-risks"')
             .replace('href="../../docs/', 'href="../docs/')
             .replace('.md"', '.html"'))

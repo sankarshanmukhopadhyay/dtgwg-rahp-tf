@@ -37,6 +37,13 @@ class TestGeneratedAssuranceSite(unittest.TestCase):
         self.assertIn("Required guardrails missing", graph)
         self.assertIn("Conditional guardrail risks", graph)
 
+    def test_standalone_toolkit_links_to_site_only_views(self):
+        text = (ROOT / "build" / "rahp-toolkit.html").read_text()
+        self.assertIn('href="site/portable-catalogue.html"', text)
+        self.assertIn('href="site/assurance-graph.html"', text)
+        self.assertNotIn('href="portable-catalogue.html"', text)
+        self.assertNotIn('href="assurance-graph.html"', text)
+
 
 if __name__ == "__main__":
     unittest.main()
