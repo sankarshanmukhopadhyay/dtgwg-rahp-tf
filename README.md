@@ -13,6 +13,7 @@ RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-test
 |---|---|
 | Understand the method | [How RAHP works](docs/how-rahp-works.md) and [Concepts](docs/concepts.md) |
 | Browse reusable harm/risk/control patterns | [Portable assurance catalogue](method/catalogue/) and [catalogue guide](docs/portable-assurance-catalogue.md) |
+| Inspect generated assurance coverage | [Portable assurance site](build/site/portable-catalogue.html) and [assurance graph](build/site/assurance-graph.html) |
 | Configure your own repositories | [Configuration-driven adoption](docs/configuration.md) and [Adopting RAHP](ADOPTION.md) |
 | Run a risks-and-harms review | [Pressure-testing a specification](docs/pressure-testing-a-spec.md) |
 | Run a security/adversarial review | [Security and hardening review](docs/security-hardening-review.md) |
@@ -63,7 +64,7 @@ The portability invariant is **shared method and engine contract, independent de
 | `corpora/` | Optional domain scenario adapters mapped to portable `SP-*` stress patterns. |
 | `examples/` | Worked assessments and adoption fixtures. |
 | `data/` | Bundled DTG exemplar catalogue retained for compatibility and generated evidence; **not the portable RAHP method**. |
-| `build/` | Generated evidence and catalogue output. Do not hand-edit. |
+| `build/` | Generated evidence and catalogue output. Do not hand-edit. Includes a layered assurance site with portable method views and explicitly scoped DTG deployment views. |
 | `docs/` | Guided documentation for the toolkit and bundled deployments. |
 | `archive/` | Historical provenance only; not current authority. |
 

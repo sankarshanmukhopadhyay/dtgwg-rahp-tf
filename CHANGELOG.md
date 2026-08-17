@@ -4,6 +4,13 @@
 
 - Expanded contribution workflows for catalogue, capabilities and specification pressure tests.
 
+### Generated assurance site
+
+- Add portable catalogue and assurance-graph views under `build/site/` for the v1.1 `HRM/RKP/CTP/GRP/ATP/EVP` model.
+- Relabel the existing `build/site/` risk, catalogue, normative, matrix, lifecycle, governance, assurance and Task Force views as DTG deployment surfaces.
+- Preserve `catalogue.html#RK-*` deep links while distinguishing deployment-local records from portable method patterns.
+- Surface catalogue coverage gaps and the current 11-repository HEAD qualification evidence in generated assurance output.
+
 ---
 layout: default
 title: "Changelog"

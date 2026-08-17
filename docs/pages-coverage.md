@@ -86,3 +86,16 @@ The v1.1 Pages contract explicitly separates **canonical source routes** from **
 ### Projected Markdown route stability
 
 Repository `README.md` files become directory indexes. Other projected Markdown files render as same-directory `.html` siblings rather than nested directory indexes, preserving relative links to adjacent evidence and generated catalogue pages.
+
+## v1.1 generated assurance site
+
+The generated `build/site/` surface now reflects both assurance layers in the repository rather than treating the DTG deployment catalogue as the whole RAHP model.
+
+| Generated view | Scope |
+|---|---|
+| `build/site/portable-catalogue.html` | Portable `HRM-*`, `RKP-*`, `CTP-*`, `GRP-*`, `ATP-*`, and `EVP-*` assurance patterns from `method/catalogue/`. |
+| `build/site/assurance-graph.html` | Portable coverage diagnostics plus the current worked-example HEAD qualification evidence. |
+| `build/site/catalogue.html` | DTG deployment catalogue from `data/`; retained at its historical URL so existing deep links such as `#RK-*` remain stable. |
+| `build/site/risks.html`, `normative.html`, `matrix.html`, `lifecycle.html`, `governance.html`, `assurance.html`, `task-force-actions.html` | Explicitly labelled DTG deployment views. |
+
+This is an authority boundary, not merely a navigation choice. `method/catalogue/` defines reusable method patterns. `data/` remains the bundled DTG deployment instance. Generated Pages must not imply that DTG-local governance state is portable RAHP method state.
