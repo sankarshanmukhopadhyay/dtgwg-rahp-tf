@@ -43,10 +43,10 @@
       "updated_at": "2026-08-15T08:51:29Z"
     },
     "trustoverip/dtgwg-trust-tasks-tf#204": {
-      "comments": 2,
-      "state": "open",
+      "comments": 3,
+      "state": "closed",
       "title": "Define semantic cancellation, suspension, and supersession for in-flight Trust Tasks",
-      "updated_at": "2026-08-16T00:30:24Z"
+      "updated_at": "2026-08-16T12:38:47Z"
     },
     "trustoverip/dtgwg-trust-tasks-tf#205": {
       "comments": 0,

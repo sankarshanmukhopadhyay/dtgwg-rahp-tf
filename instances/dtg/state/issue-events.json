@@ -1,1 +1,33 @@
-[]
+[
+  {
+    "affected_reviews": [
+      "trust-tasks-spec",
+      "cross-spec-composition"
+    ],
+    "assessment_key": "dtg:issue:trustoverip/dtgwg-trust-tasks-tf#204",
+    "body": "## Why this needs RAHP review\n\nA selected upstream issue changed after the last observed state for the **dtg** deployment. GitHub issue discussion is not normative input, but the change may alter assumptions used by affected RAHP reviews.\n\n- Upstream: `trustoverip/dtgwg-trust-tasks-tf#204`\n- Theme: `corrigibility`\n- Affected reviews: trust-tasks-spec, cross-spec-composition\n- Previous observed state: `{'comments': 2, 'state': 'open', 'title': 'Define semantic cancellation, suspension, and supersession for in-flight Trust Tasks', 'updated_at': '2026-08-16T00:30:24Z'}`\n- Current observed state: `{'updated_at': '2026-08-16T12:38:47Z', 'state': 'closed', 'title': 'Define semantic cancellation, suspension, and supersession for in-flight Trust Tasks', 'comments': 3}`\n\nReview the discussion and any resulting branch/spec changes before re-baselining the affected assessment.",
+    "current_observation": {
+      "comments": 3,
+      "state": "closed",
+      "title": "Define semantic cancellation, suspension, and supersession for in-flight Trust Tasks",
+      "updated_at": "2026-08-16T12:38:47Z"
+    },
+    "labels": [
+      "assessment-required",
+      "dtg-instance"
+    ],
+    "observed_at": "2026-08-16T12:38:47Z",
+    "previous_observation": {
+      "comments": 2,
+      "state": "open",
+      "title": "Define semantic cancellation, suspension, and supersession for in-flight Trust Tasks",
+      "updated_at": "2026-08-16T00:30:24Z"
+    },
+    "related_assessment_key": "dtg:repository:trustoverip/dtgwg-trust-tasks-tf",
+    "source": "upstream-issue",
+    "theme": "corrigibility",
+    "title": "[DTG assessment] upstream issue trustoverip/dtgwg-trust-tasks-tf#204 changed @ 2026-08-16T12-38-47Z",
+    "upstream_issue": 204,
+    "upstream_repository": "trustoverip/dtgwg-trust-tasks-tf"
+  }
+]
