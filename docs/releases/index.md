@@ -7,4 +7,6 @@ has_toc: false
 ---
 # Releases
 
-Release notes record changes to the portable method, engine contract, implementations, deployments and evidence lifecycle. The current stable release is [v1.0.0](v1.0.0.md). Historical notes remain available for provenance.
+- [v1.1.0](v1.1.0.md) — portable assurance knowledge model and catalogue-aware examples.
+
+Release notes record changes to the portable method, engine contract, implementations, deployments and evidence lifecycle. The current stable release is [v1.1.0](v1.1.0.md). Historical notes remain available for provenance.

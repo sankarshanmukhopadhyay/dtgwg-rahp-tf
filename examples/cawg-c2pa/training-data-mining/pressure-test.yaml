@@ -11,13 +11,14 @@ review:
     source_paths: []
   reviewed_against:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    rahp_version: v0.8.0
+    rahp_version: v1.1.0
     corpus_date: '2026-08-16'
     original_rahp_version: v0.6.0
     original_corpus_date: '2026-08-14'
     engine_contract: rahp-engine-contract-v1
-    revalidated_on: '2026-08-16'
-    revalidation_scope: method-and-engine-only; target revision and substantive findings unchanged
+    revalidated_on: '2026-08-17'
+    revalidation_scope: v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target
+      revision unchanged
   scope:
     included:
     - Machine-readable training/mining signals, authority, precedence and lifecycle.
@@ -26,17 +27,17 @@ review:
     - Legal opinion on whether a signal is enforceable in any jurisdiction.
   method:
     workflow: docs/pressure-testing-a-spec.md
-    rule: Treat cryptographic validity, identity, authority, consent, provenance and relying-party trust as 
-      distinct propositions; route remediation to the narrowest effective control plane.
+    rule: Treat cryptographic validity, identity, authority, consent, provenance and relying-party trust as distinct
+      propositions; route remediation to the narrowest effective control plane.
   summary:
     finding_count: 2
     open_count: 2
     by_primary_disposition:
       governance: 1
       companion-specification: 1
-    overall_assessment: This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conformance 
-      certification. Findings focus on harms, authority/lifecycle boundaries and composition behaviour that 
-      matter when the specification is adopted or mandated.
+    overall_assessment: This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conformance certification.
+      Findings focus on harms, authority/lifecycle boundaries and composition behaviour that matter when the specification
+      is adopted or mandated.
   findings:
   - id: F-001
     title: A machine-readable use signal does not by itself establish enforceable authorization
@@ -47,16 +48,15 @@ review:
     - CRK-05
     evidence:
     - source: https://cawg.io/training-and-data-mining/1.1/
-      observation: The assertion communicates whether an asset may be used for data mining or AI/ML training, 
-        while legal enforceability and rights-holder authority depend on external regimes.
-    harm: Platforms can treat a preference signal as a complete licence decision, or ignore a legally 
-      meaningful restriction because the specification itself does not resolve jurisdiction, ownership or 
-      contract status.
-    recommendation: Mandating profiles should state the legal/governance role of the signal, who is authorized
-      to set it, and when external licences or rights registries override or supplement it.
+      observation: The assertion communicates whether an asset may be used for data mining or AI/ML training, while
+        legal enforceability and rights-holder authority depend on external regimes.
+    harm: Platforms can treat a preference signal as a complete licence decision, or ignore a legally meaningful
+      restriction because the specification itself does not resolve jurisdiction, ownership or contract status.
+    recommendation: Mandating profiles should state the legal/governance role of the signal, who is authorized to
+      set it, and when external licences or rights registries override or supplement it.
     retest_when:
-    - A deployment profile defines authority and legal effect without changing the assertion into a universal 
-      legal rule.
+    - A deployment profile defines authority and legal effect without changing the assertion into a universal legal
+      rule.
     scenario_patterns:
     - SP-GOV-01
     - SP-FED-01
@@ -65,6 +65,34 @@ review:
     - P2
     - P3
     - P5
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-ECO-02
+      - HRM-GOV-01
+      - HRM-GOV-03
+      risk_patterns:
+      - RKP-AUTH-01
+      - RKP-AUTH-03
+      - RKP-GOV-01
+      control_patterns:
+      - CTP-AUTH-01
+      - CTP-AUTH-03
+      - CTP-GOV-01
+      guardrail_patterns:
+      - GRP-AUTH-01
+      - GRP-DEL-01
+      - GRP-GOV-01
+      assurance_patterns:
+      - ATP-AUTH-01
+      - ATP-DEL-01
+      - ATP-GOV-01
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-AUTH-02
+      - EVP-GOV-01
   - id: F-002
     title: Coexistence with the emerging Consent Assertion needs explicit conflict and migration rules
     status: open
@@ -74,12 +102,12 @@ review:
     - CRK-06
     evidence:
     - source: https://cawg.io/consent/1.0-draft+initial-version/
-      observation: The emerging Consent Assertion explores broader permitted/prohibited use semantics, 
-        creating overlap with existing training/data-mining declarations.
-    harm: Two independently valid permission signals can disagree, allowing different consumers to select the 
-      signal that favours their preferred outcome.
-    recommendation: Define coexistence, precedence, supersession and migration semantics between Training/Data
-      Mining and Consent before relying parties use both as authorization inputs.
+      observation: The emerging Consent Assertion explores broader permitted/prohibited use semantics, creating
+        overlap with existing training/data-mining declarations.
+    harm: Two independently valid permission signals can disagree, allowing different consumers to select the signal
+      that favours their preferred outcome.
+    recommendation: Define coexistence, precedence, supersession and migration semantics between Training/Data Mining
+      and Consent before relying parties use both as authorization inputs.
     retest_when:
     - The Consent work defines normative coexistence/precedence behaviour and publishes conflict test vectors.
     scenario_patterns:
@@ -91,3 +119,34 @@ review:
     - P2
     - P3
     - P5
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-ECO-02
+      - HRM-GOV-01
+      - HRM-SEC-03
+      risk_patterns:
+      - RKP-AUTH-01
+      - RKP-AUTH-03
+      - RKP-GOV-03
+      - RKP-COMP-02
+      control_patterns:
+      - CTP-AUTH-01
+      - CTP-AUTH-03
+      - CTP-GOV-02
+      - CTP-COMP-02
+      guardrail_patterns:
+      - GRP-AUTH-01
+      - GRP-DEL-01
+      assurance_patterns:
+      - ATP-AUTH-01
+      - ATP-DEL-01
+      - ATP-GOV-02
+      - ATP-COMP-02
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-AUTH-02
+      - EVP-GOV-02
+      - EVP-COMP-01

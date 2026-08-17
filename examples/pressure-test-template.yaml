@@ -16,7 +16,7 @@ review:
     source_paths: []
   reviewed_against:
     repository: owner/rahp-repository
-    rahp_version: v1.0.0
+    rahp_version: v1.1.0
     corpus_date: YYYY-MM-DD
     engine_contract: rahp-engine-contract-v1
   scope:
@@ -40,6 +40,13 @@ review:
     controls: []
     guardrails: []
     assurance_tests: []
+    portable_assurance:
+      harm_patterns: []
+      risk_patterns: []
+      control_patterns: []
+      guardrail_patterns: []
+      assurance_patterns: []
+      evidence_patterns: []
     evidence:
     - source: path/to/spec.md#section
       observation: <what the reviewed text permits, omits or contradicts>

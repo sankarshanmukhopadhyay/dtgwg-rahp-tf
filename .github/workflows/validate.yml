@@ -16,6 +16,9 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Validate RAHP artefacts
         run: python3 tools/validate.py
+
+      - name: Validate portable assurance catalogue
+        run: python3 tools/validate_catalogue.py
       - name: Validate portable method invariants
         run: python3 tools/validate_v04_method.py
 
@@ -29,9 +32,9 @@ jobs:
       - name: Validate pressure-test records
         run: python3 tools/validate_pressure_tests.py
 
-      - name: Validate v1.0 project identity
+      - name: Validate v1.1 project identity
         run: python3 tools/validate_project_identity.py
-      - name: Validate v1.0 release metadata
+      - name: Validate v1.1 release metadata
         run: python3 tools/validate_release_metadata.py
       - name: Validate documentation information architecture
         run: python3 tools/validate_documentation_ia.py
@@ -43,7 +46,7 @@ jobs:
       - name: Validate combined reviews
         run: python3 tools/validate_combined_reviews.py
 
-      - name: Validate CAWG v1.0 deployment integrity
+      - name: Validate CAWG v1.1 deployment integrity
         run: python3 tools/validate_cawg_instance.py
 
       - name: Validate selected issue-watch registries
@@ -52,7 +55,7 @@ jobs:
       - name: Validate durable assessment queue state
         run: python3 tools/validate_assessment_queue.py
 
-      - name: Validate v1.0 stable engine and retention contract
+      - name: Validate v1.1 stable engine and retention contract
         run: python3 tools/validate_engine_contract.py
 
       - uses: actions/setup-node@v6

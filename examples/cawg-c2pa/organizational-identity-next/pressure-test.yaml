@@ -11,13 +11,14 @@ review:
     source_paths: []
   reviewed_against:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    rahp_version: v0.8.0
+    rahp_version: v1.1.0
     corpus_date: '2026-08-16'
     original_rahp_version: v0.7.0
     original_corpus_date: '2026-08-14'
     engine_contract: rahp-engine-contract-v1
-    revalidated_on: '2026-08-16'
-    revalidation_scope: method-and-engine-only; target revision and substantive findings unchanged
+    revalidated_on: '2026-08-17'
+    revalidation_scope: v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target
+      revision unchanged
   scope:
     included:
     - Normative and draft semantics relevant to the named composition or experiment.
@@ -27,16 +28,16 @@ review:
     - Claims that upstream CAWG, DIF, C2PA, GLEIF or W3C endorsed this RAHP assessment.
   method:
     workflow: docs/pressure-testing-a-spec.md
-    rule: Separate cryptographic validity, identity, authority, consent, lifecycle and relying-party trust; 
-      test both isolated and composed failure states.
+    rule: Separate cryptographic validity, identity, authority, consent, lifecycle and relying-party trust; test
+      both isolated and composed failure states.
   summary:
     finding_count: 2
     open_count: 2
     by_primary_disposition:
       companion-specification: 1
       governance: 1
-    overall_assessment: The 1.1 profile is a strong deployment surface but should pair implementation 
-      conformance with explicit authority and cross-version behavior.
+    overall_assessment: The 1.1 profile is a strong deployment surface but should pair implementation conformance
+      with explicit authority and cross-version behavior.
   findings:
   - id: F-001
     title: Generator and validator profiles can diverge across supported C2PA versions
@@ -46,14 +47,12 @@ review:
     risks:
     - CRK-28
     evidence:
-    - source: 
-        https://github.com/decentralized-identity/cawg-organizational-identity-profile/commits/ad951176b1d428e027c3c20c48506b2b780a8f77
-      observation: Version 1.1 separates generator and validator requirements while spanning multiple C2PA 
-        versions.
-    harm: Content may be generated under capabilities a validator nominally conforming to the profile does not
-      interpret identically.
-    recommendation: Add paired generator/validator conformance vectors and explicit 
-      version-negotiation/failure semantics.
+    - source: https://github.com/decentralized-identity/cawg-organizational-identity-profile/commits/ad951176b1d428e027c3c20c48506b2b780a8f77
+      observation: Version 1.1 separates generator and validator requirements while spanning multiple C2PA versions.
+    harm: Content may be generated under capabilities a validator nominally conforming to the profile does not interpret
+      identically.
+    recommendation: Add paired generator/validator conformance vectors and explicit version-negotiation/failure
+      semantics.
     retest_when:
     - Normative semantics and interoperable test vectors close this failure path.
     scenarios:
@@ -65,6 +64,20 @@ review:
     - P2
     - P3
     - P4
+    portable_assurance:
+      harm_patterns:
+      - HRM-GOV-02
+      - HRM-INF-01
+      risk_patterns:
+      - RKP-COMP-04
+      control_patterns:
+      - CTP-COMP-01
+      guardrail_patterns:
+      - GRP-COMP-01
+      assurance_patterns:
+      - ATP-COMP-01
+      evidence_patterns:
+      - EVP-COMP-01
   - id: F-002
     title: Profile conformance still does not establish organization authority
     status: open
@@ -74,12 +87,12 @@ review:
     - CRK-01
     evidence:
     - source: https://cawg.io/organizational-identity-profile/1.1-draft/
-      observation: The profile standardizes implementation capabilities, while relying-party trust in an 
-        organization remains external.
-    harm: A conformant product can validate organizational identity without proving authorization for a 
-      particular domain claim.
-    recommendation: Bind profile deployment to explicit trust-policy and authority semantics; expose these 
-      separately from conformance.
+      observation: The profile standardizes implementation capabilities, while relying-party trust in an organization
+        remains external.
+    harm: A conformant product can validate organizational identity without proving authorization for a particular
+      domain claim.
+    recommendation: Bind profile deployment to explicit trust-policy and authority semantics; expose these separately
+      from conformance.
     retest_when:
     - Normative semantics and interoperable test vectors close this failure path.
     scenarios:
@@ -92,3 +105,24 @@ review:
     - P2
     - P3
     - P6
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-ECO-02
+      risk_patterns:
+      - RKP-AUTH-01
+      - RKP-AUTH-03
+      control_patterns:
+      - CTP-AUTH-01
+      - CTP-AUTH-03
+      guardrail_patterns:
+      - GRP-AUTH-01
+      - GRP-DEL-01
+      assurance_patterns:
+      - ATP-AUTH-01
+      - ATP-DEL-01
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-AUTH-02

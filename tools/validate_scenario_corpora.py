@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from pathlib import Path
 import sys, re, yaml
+from portable_catalogue import validate_block
 ROOT=Path(__file__).resolve().parent.parent
 patdoc=yaml.safe_load((ROOT/'method/scenario-patterns.yaml').read_text()) or {}
 patterns={p['id'] for p in patdoc.get('patterns',[])}
@@ -52,6 +53,8 @@ for path in sorted((ROOT/'corpora').glob('*.yaml')):
         if not isinstance(refs,list): errors.append(f'{path.relative_to(ROOT)}:{sid}: scenario_patterns must be a list'); continue
         for ref in refs:
             if ref not in patterns: errors.append(f'{path.relative_to(ROOT)}:{sid}: unknown scenario pattern {ref}')
+        if c.get('assurance_catalogue'):
+            validate_block(s.get('portable_assurance'), f'{path.relative_to(ROOT)}:{sid}', errors, required=True)
 if corpora==0: errors.append('no corpora/*.yaml files found')
 for cid,item in manifest_sources.items():
     cf=ROOT/str(item.get('corpus_file',''))

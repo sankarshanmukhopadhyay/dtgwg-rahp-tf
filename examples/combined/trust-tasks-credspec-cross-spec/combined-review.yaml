@@ -1,0 +1,21 @@
+review:
+  id: COMB-X-001
+  status: complete
+  title: Trust Tasks × DTG Credential Specification combined composition review
+  reviewed_on: '2026-08-17'
+  target:
+    repository: trustoverip/dtgwg-trust-tasks-tf + trustoverip/dtgwg-cred-spec
+    version: Composition of Trust Tasks fbe196a8 and Credentials WD01 d19f7c9
+    commit: fbe196a8a17ba3f99d0657a64be5ac58621023a1
+  rahp_review: ../../cross-spec/trust-tasks-credspec/pressure-test.yaml
+  security_review: ../../security-hardening/cross-spec/findings.yaml
+  summary: v1.1 cross-lens synthesis of human-harm/composition risks and adversarial security findings at the Trust
+    Tasks × Credential Specification seam.
+  notes:
+  - Portable assurance patterns provide the shared semantic bridge between the RAHP and security lenses without
+    replacing deployment-specific findings.
+  reviewed_against:
+    rahp_version: v1.1.0
+    engine_contract: rahp-engine-contract-v1
+    revalidated_on: '2026-08-17'
+    revalidation_scope: catalogue-aware cross-spec composition synthesis

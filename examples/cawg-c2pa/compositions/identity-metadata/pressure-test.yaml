@@ -11,13 +11,14 @@ review:
     source_paths: []
   reviewed_against:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    rahp_version: v0.8.0
+    rahp_version: v1.1.0
     corpus_date: '2026-08-16'
     original_rahp_version: v0.7.0
     original_corpus_date: '2026-08-14'
     engine_contract: rahp-engine-contract-v1
-    revalidated_on: '2026-08-16'
-    revalidation_scope: method-and-engine-only; target revision and substantive findings unchanged
+    revalidated_on: '2026-08-17'
+    revalidation_scope: v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target
+      revision unchanged
   scope:
     included:
     - Normative and draft semantics relevant to the named composition or experiment.
@@ -27,8 +28,8 @@ review:
     - Claims that upstream CAWG, DIF, C2PA, GLEIF or W3C endorsed this RAHP assessment.
   method:
     workflow: docs/pressure-testing-a-spec.md
-    rule: Separate cryptographic validity, identity, authority, consent, lifecycle and relying-party trust; 
-      test both isolated and composed failure states.
+    rule: Separate cryptographic validity, identity, authority, consent, lifecycle and relying-party trust; test
+      both isolated and composed failure states.
   summary:
     finding_count: 2
     open_count: 2
@@ -47,11 +48,10 @@ review:
     - CRK-03
     evidence:
     - source: https://cawg.io/metadata/1.2-draft/
-      observation: Metadata can be identity-backed without making the signer authoritative for every asserted 
-        property.
+      observation: Metadata can be identity-backed without making the signer authoritative for every asserted property.
     harm: Users may infer that identified signers make factually authoritative metadata claims.
-    recommendation: Pair sensitive metadata namespaces with authority/governance semantics and distinct UX for
-      integrity versus authoritative verification.
+    recommendation: Pair sensitive metadata namespaces with authority/governance semantics and distinct UX for integrity
+      versus authoritative verification.
     retest_when:
     - Normative semantics and interoperable test vectors close this failure path.
     scenarios:
@@ -65,6 +65,39 @@ review:
     - P2
     - P3
     - P4
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-ECO-02
+      - HRM-GOV-01
+      - HRM-GOV-03
+      risk_patterns:
+      - RKP-AUTH-01
+      - RKP-AUTH-03
+      - RKP-GOV-01
+      - RKP-COMP-04
+      control_patterns:
+      - CTP-AUTH-01
+      - CTP-AUTH-03
+      - CTP-GOV-01
+      - CTP-COMP-01
+      guardrail_patterns:
+      - GRP-AUTH-01
+      - GRP-DEL-01
+      - GRP-GOV-01
+      - GRP-COMP-01
+      assurance_patterns:
+      - ATP-AUTH-01
+      - ATP-DEL-01
+      - ATP-GOV-01
+      - ATP-COMP-01
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-AUTH-02
+      - EVP-GOV-01
+      - EVP-COMP-01
   - id: F-002
     title: Conflicting identity-backed metadata needs deterministic policy
     status: open
@@ -74,12 +107,12 @@ review:
     - CRK-04
     evidence:
     - source: https://github.com/decentralized-identity/cawg-metadata-assertion/issues/7
-      observation: Metadata quality/attestation concerns show that authenticated assertions can carry 
-        uncertainty and competing claims.
-    harm: Different valid actors can provide incompatible provenance or rights metadata and consumers may 
-      choose arbitrarily.
-    recommendation: Define precedence or multi-claim presentation semantics rather than treating later or 
-      locally preferred metadata as implicitly authoritative.
+      observation: Metadata quality/attestation concerns show that authenticated assertions can carry uncertainty
+        and competing claims.
+    harm: Different valid actors can provide incompatible provenance or rights metadata and consumers may choose
+      arbitrarily.
+    recommendation: Define precedence or multi-claim presentation semantics rather than treating later or locally
+      preferred metadata as implicitly authoritative.
     retest_when:
     - Normative semantics and interoperable test vectors close this failure path.
     scenarios:
@@ -91,3 +124,17 @@ review:
     - P2
     - P3
     - P4
+    portable_assurance:
+      harm_patterns:
+      - HRM-GOV-02
+      - HRM-INF-01
+      risk_patterns:
+      - RKP-COMP-04
+      control_patterns:
+      - CTP-COMP-01
+      guardrail_patterns:
+      - GRP-COMP-01
+      assurance_patterns:
+      - ATP-COMP-01
+      evidence_patterns:
+      - EVP-COMP-01

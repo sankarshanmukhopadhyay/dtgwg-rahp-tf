@@ -18,3 +18,7 @@ RAHP converts affected-party analysis into standards assurance evidence.
 7. Risk acceptances and governance precedents preserve explicit decisions rather than allowing silent drift.
 
 The validator makes structural integrity machine-verifiable. v0.8 also defines a language-neutral execution lifecycle (`source → observation → trigger → assessment → finding → disposition → baseline`) and normalized result contract. The build system turns canonical YAML into human and machine-readable evidence surfaces, while ordinary run exhaust remains outside durable Git state. See [Engine contract](engine-contract.md) and [Review evidence and retention](evidence-retention.md).
+
+## v1.1: reusable assurance patterns
+
+RAHP can now project a deployment finding onto a portable assurance chain: `HRM-* ← RKP-* → CTP-* → GRP-*/ATP-* → EVP-*`. The local finding remains authoritative for the reviewed deployment; the portable mapping makes recurring mechanisms comparable and testable across specifications. See [Assurance knowledge model](assurance-knowledge-model.md).

@@ -75,3 +75,7 @@ This separation remains a core invariant: **shared engine contract, independent 
 Once a project needs recurring scenarios, governed risk/control catalogues, evidence contracts, or source-drift monitoring, it can adopt those RAHP capabilities deliberately. They are not prerequisites for the first configured assessment.
 
 See `docs/configuration.md` for the complete configuration model and `docs/portability.md` for the portability contract demonstrated by the independent DTG and CAWG/C2PA deployments.
+
+## Portable assurance catalogue
+
+RAHP v1.1 ships reusable `HRM-*`, `RKP-*`, `CTP-*`, `GRP-*`, `ATP-*` and `EVP-*` patterns under `method/catalogue/`. Adopters may reference or specialize these patterns, but should keep deployment-specific risks, evidence, governance decisions and dispositions in their own deployment state. Do not copy the bundled DTG `data/` merely to obtain the portable catalogue.

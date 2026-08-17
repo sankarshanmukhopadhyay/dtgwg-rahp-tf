@@ -90,7 +90,7 @@ review:
     version: 1.2-draft
     commit: <full-40-character-commit-sha>
   reviewed_against:
-    rahp_version: v1.0.0
+    rahp_version: v1.1.0
   findings:
     - id: F-001
       title: Concise finding
@@ -147,3 +147,7 @@ Worked reviews are deliberately promoted `exemplar` artefacts and are maintained
 
 The second example is intentionally important for method discipline: several findings are **not** recommendations to add another field to the core Trust Task envelope. They are routed to companion specifications, governance, runtime controls or operational policy because those are the narrowest effective control planes.
 
+
+## Add a portable assurance mapping
+
+For maintained v1.1 examples, each finding includes a `portable_assurance` block linking the deployment finding to reusable harm, risk, control, guardrail, assurance and evidence patterns. Use the mapping when it clarifies a reusable mechanism; do not force-fit a deployment-specific issue into a portable pattern. The deployment risk IDs, source evidence and disposition remain the review authority.

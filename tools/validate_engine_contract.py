@@ -36,7 +36,7 @@ def main():
             want=sorted(exp['retention'].get('repository_classes') or [])
             if got!=want: errors+=fail(f'{result_path.parent.name}: retention repository classes {got}, expected {want}')
     versioning=yaml.safe_load((ROOT/'method/versioning.yaml').read_text())
-    if versioning.get('stable_release')!='v1.0.0': errors+=fail('versioning contract must identify v1.0.0 stable release')
+    if versioning.get('stable_release')!='v1.1.0': errors+=fail('versioning contract must identify v1.1.0 stable release')
     if versioning.get('contracts',{}).get('engine')!=contract.get('id'): errors+=fail('versioning engine contract id mismatch')
     from engine_contract import correlate_trigger
     lifecycle=sorted((ROOT/'tests/conformance/lifecycle').glob('*/input.json'))

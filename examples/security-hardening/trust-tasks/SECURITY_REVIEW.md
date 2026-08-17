@@ -12,11 +12,11 @@
 | Target repository | `trustoverip/dtgwg-trust-tasks-tf` |
 | Target version | Framework editor's draft at current main |
 | Target commit | `fbe196a8a17ba3f99d0657a64be5ac58621023a1` |
-| RAHP version | `v0.8.0` |
+| RAHP version | `v1.1.0` |
 | Engine contract | `rahp-engine-contract-v1` |
-| Engine/method revalidated on | 2026-08-16 |
+| Engine/method revalidated on | 2026-08-17 |
 | Original RAHP version | `v0.3-dev` |
-| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
+| Revalidation scope | v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target revision unchanged |
 | Source paths | `SPEC.md`, `docs/design-notes/delegated-trust-task-execution.md`, `docs/design-notes/trust-ceremonies.md`, `specs/trust-task-discovery/0.1/spec.md`, `specs/trust-ceremony-receipt/0.1/spec.md` |
 
 ## Overall assessment
@@ -88,6 +88,17 @@ External mappings are evidence links, not claims that the cited organization rev
 | RAHP guardrails | [GR-12 — Agent Delegation Scope Constraint](../../../build/site/catalogue.html#GR-12), [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../../build/site/catalogue.html#AT-12), [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | HRM-AUT-04, HRM-SEC-02, HRM-INF-01, HRM-ECO-02 |
+| Risks | RKP-AUTH-01, RKP-AUTH-03, RKP-CRD-01, RKP-OPS-02 |
+| Controls | CTP-AUTH-01, CTP-AUTH-03, CTP-OPS-02 |
+| Guardrails | GRP-AUTH-01, GRP-DEL-01, GRP-OPS-01 |
+| Assurance | ATP-AUTH-01, ATP-DEL-01, ATP-OPS-02 |
+| Evidence | EVP-AUTH-01, EVP-AUTH-02, EVP-OPS-02 |
+
 **External standards alignment**
 
 | External source | Clause / control | Relationship | Rationale |
@@ -148,6 +159,17 @@ Require duplicate suppression for mutating, destructive and actsAsSubject reques
 | RAHP controls | [CT-25 — Credential Renewal Workflow](../../../build/site/catalogue.html#CT-25), [CT-31 — Short-Lived Agent Credentials](../../../build/site/catalogue.html#CT-31), [CT-32 — Agent Liveness Check on Operator VMC](../../../build/site/catalogue.html#CT-32) |
 | RAHP guardrails | [GR-12 — Agent Delegation Scope Constraint](../../../build/site/catalogue.html#GR-12), [GR-17 — Open Issues Risk Acceptance](../../../build/site/catalogue.html#GR-17) |
 | RAHP assurance tests | [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../../build/site/catalogue.html#AT-12), [AT-17 — All four open issues have documented mitigations or risk acceptances signed by governing b…](../../../build/site/catalogue.html#AT-17) |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | HRM-AUT-04, HRM-SEC-02, HRM-ECO-02, HRM-SEC-03, HRM-INF-01 |
+| Risks | RKP-DEL-01, RKP-AGT-01, RKP-OPS-02, RKP-OPS-01 |
+| Controls | CTP-DEL-01, CTP-AGT-01, CTP-OPS-02, CTP-OPS-01 |
+| Guardrails | GRP-DEL-01, GRP-AGT-01, GRP-OPS-01 |
+| Assurance | ATP-DEL-01, ATP-AGT-01, ATP-OPS-02, ATP-OPS-01 |
+| Evidence | EVP-DEL-01, EVP-AUTH-02, EVP-OPS-02, EVP-OPS-01 |
 
 **External standards alignment**
 
@@ -210,6 +232,17 @@ Require a bounded freshness rule for destructive and actsAsSubject requests, wit
 | RAHP guardrails | [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | HRM-SEC-02, HRM-INF-01, HRM-PRV-01, HRM-PRV-05, HRM-AUT-04, HRM-SEC-03 |
+| Risks | RKP-CRD-01, RKP-CRD-04, RKP-AGT-02, RKP-OPS-01 |
+| Controls | CTP-AUTH-01, CTP-AGT-02, CTP-OPS-01 |
+| Guardrails | GRP-AUTH-01, GRP-AGT-01 |
+| Assurance | ATP-AUTH-01, ATP-AGT-01, ATP-OPS-01 |
+| Evidence | EVP-AUTH-01, EVP-AUTH-02, EVP-OPS-01 |
+
 **External standards alignment**
 
 | External source | Clause / control | Relationship | Rationale |
@@ -269,6 +302,17 @@ Define named transport security profiles and require bindings to declare whether
 | RAHP controls | [CT-14 — DID Document Integrity Verification](../../../build/site/catalogue.html#CT-14), [CT-19 — Conformance Test Suite](../../../build/site/catalogue.html#CT-19) |
 | RAHP guardrails | [GR-10 — Multi-Party Registry Write Authorisation](../../../build/site/catalogue.html#GR-10), [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-10 — Registry write with single-party authorisation rejected](../../../build/site/catalogue.html#AT-10), [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | HRM-AUT-04, HRM-SEC-02, HRM-INF-01, HRM-ECO-02 |
+| Risks | RKP-AUTH-01, RKP-AUTH-03 |
+| Controls | CTP-AUTH-01, CTP-AUTH-03 |
+| Guardrails | GRP-AUTH-01, GRP-DEL-01 |
+| Assurance | ATP-AUTH-01, ATP-DEL-01 |
+| Evidence | EVP-AUTH-01, EVP-AUTH-02 |
 
 **External standards alignment**
 
@@ -330,6 +374,17 @@ Publish an identity-resolution profile for deployments that accept multiple VID 
 | RAHP guardrails | [GR-12 — Agent Delegation Scope Constraint](../../../build/site/catalogue.html#GR-12), [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../../build/site/catalogue.html#AT-12), [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | HRM-AUT-04, HRM-SEC-02, HRM-INF-01, HRM-ECO-02, HRM-PRV-01, HRM-PRV-05 |
+| Risks | RKP-AUTH-01, RKP-AUTH-03, RKP-CRD-04, RKP-AGT-02 |
+| Controls | CTP-AUTH-01, CTP-AUTH-03, CTP-AGT-02 |
+| Guardrails | GRP-AUTH-01, GRP-DEL-01, GRP-AGT-01 |
+| Assurance | ATP-AUTH-01, ATP-DEL-01, ATP-AGT-01 |
+| Evidence | EVP-AUTH-01, EVP-AUTH-02 |
+
 **External standards alignment**
 
 | External source | Clause / control | Relationship | Rationale |
@@ -388,6 +443,17 @@ Define a companion critical-extension convention or require security-relevant pr
 | RAHP controls | [CT-18 — Normative Credential Schema Publication](../../../build/site/catalogue.html#CT-18), [CT-47 — Formal Open Issues Mitigation Plan](../../../build/site/catalogue.html#CT-47), [CT-48 — Threat Model Maintenance](../../../build/site/catalogue.html#CT-48) |
 | RAHP guardrails | [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16), [GR-17 — Open Issues Risk Acceptance](../../../build/site/catalogue.html#GR-17) |
 | RAHP assurance tests | [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16), [AT-17 — All four open issues have documented mitigations or risk acceptances signed by governing b…](../../../build/site/catalogue.html#AT-17) |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | HRM-GOV-02, HRM-ECO-02 |
+| Risks | RKP-RED-01 |
+| Controls | CTP-RED-01 |
+| Guardrails | GRP-RED-01 |
+| Assurance | ATP-RED-01 |
+| Evidence | EVP-RED-01 |
 
 **External standards alignment**
 
@@ -449,6 +515,17 @@ For documents emitted against draft specifications, support an immutable revisio
 | RAHP guardrails | [GR-10 — Multi-Party Registry Write Authorisation](../../../build/site/catalogue.html#GR-10), [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-10 — Registry write with single-party authorisation rejected](../../../build/site/catalogue.html#AT-10), [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | HRM-AUT-04, HRM-SEC-02, HRM-INF-01, HRM-ECO-02, HRM-SEC-03 |
+| Risks | RKP-AUTH-01, RKP-AUTH-03, RKP-OPS-01 |
+| Controls | CTP-AUTH-01, CTP-AUTH-03, CTP-OPS-01 |
+| Guardrails | GRP-AUTH-01, GRP-DEL-01 |
+| Assurance | ATP-AUTH-01, ATP-DEL-01, ATP-OPS-01 |
+| Evidence | EVP-AUTH-01, EVP-AUTH-02, EVP-OPS-01 |
+
 **External standards alignment**
 
 | External source | Clause / control | Relationship | Rationale |
@@ -508,6 +585,17 @@ Publish an operational hardening profile for authenticated artifact pinning, imm
 | RAHP controls | [CT-19 — Conformance Test Suite](../../../build/site/catalogue.html#CT-19), [CT-27 — Audited ZKP Library Requirement](../../../build/site/catalogue.html#CT-27), [CT-29 — Algorithm Agility and Migration Pathway](../../../build/site/catalogue.html#CT-29) |
 | RAHP guardrails | [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16) |
 | RAHP assurance tests | [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16) |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | HRM-AUT-04, HRM-SEC-02, HRM-INF-01, HRM-SEC-01, HRM-SEC-03 |
+| Risks | RKP-DEL-01, RKP-AGT-01, RKP-DISC-01, RKP-DISC-02 |
+| Controls | CTP-DEL-01, CTP-AGT-01, CTP-DISC-01, CTP-DISC-02 |
+| Guardrails | GRP-DEL-01, GRP-AGT-01, GRP-AUTH-01 |
+| Assurance | ATP-DEL-01, ATP-AGT-01, ATP-DISC-01, ATP-DISC-02 |
+| Evidence | EVP-DEL-01, EVP-AUTH-02, EVP-AUTH-01, EVP-OPS-01 |
 
 **External standards alignment**
 
@@ -569,6 +657,17 @@ Define a security-capability profile for discovery with explicit anti-downgrade 
 | RAHP guardrails | [GR-12 — Agent Delegation Scope Constraint](../../../build/site/catalogue.html#GR-12), [GR-19 — Supported Decision-Making and Legal Delegation Pathway](../../../build/site/catalogue.html#GR-19) |
 | RAHP assurance tests | [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../../build/site/catalogue.html#AT-12), [AT-19 — For any VTC that has admitted or intends to admit participants under supported or substitu…](../../../build/site/catalogue.html#AT-19) |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | HRM-AUT-04, HRM-SEC-02, HRM-GOV-01, HRM-GOV-03 |
+| Risks | RKP-DEL-01, RKP-AGT-01, RKP-GOV-01 |
+| Controls | CTP-DEL-01, CTP-AGT-01, CTP-GOV-01 |
+| Guardrails | GRP-DEL-01, GRP-AGT-01, GRP-GOV-01 |
+| Assurance | ATP-DEL-01, ATP-AGT-01, ATP-GOV-01 |
+| Evidence | EVP-DEL-01, EVP-AUTH-02, EVP-GOV-01 |
+
 **External standards alignment**
 
 | External source | Clause / control | Relationship | Rationale |
@@ -629,6 +728,17 @@ Define a governance/security deployment profile for delegated execution. High-im
 | RAHP guardrails | [GR-12 — Agent Delegation Scope Constraint](../../../build/site/catalogue.html#GR-12) |
 | RAHP assurance tests | [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../../build/site/catalogue.html#AT-12) |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | HRM-AUT-05, HRM-SEC-02, HRM-AUT-04, HRM-INF-01, HRM-ECO-02 |
+| Risks | RKP-AUTH-02, RKP-DEL-03, RKP-AUTH-01, RKP-AUTH-03 |
+| Controls | CTP-AUTH-02, CTP-DEL-02, CTP-AUTH-01, CTP-AUTH-03 |
+| Guardrails | GRP-AUTH-02, GRP-AUTH-01, GRP-DEL-01 |
+| Assurance | ATP-AUTH-02, ATP-AUTH-01, ATP-DEL-01 |
+| Evidence | EVP-AUTH-01, EVP-DEL-02, EVP-AUTH-02 |
+
 **External standards alignment**
 
 | External source | Clause / control | Relationship | Rationale |
@@ -688,6 +798,17 @@ Bind approvals to a revocable approver credential/device identifier and revalida
 | RAHP guardrails | [GR-14 — Non-Human Actor Detection](../../../build/site/catalogue.html#GR-14), [GR-15 — Complaint and Appeals Rate-Limiting](../../../build/site/catalogue.html#GR-15) |
 | RAHP assurance tests | [AT-14 — Rate-limiting triggers on high-frequency non-human credential presentation; legitimate age…](../../../build/site/catalogue.html#AT-14), [AT-15 — Complaint rate-limiting active; legitimate single-member complaint receives response withi…](../../../build/site/catalogue.html#AT-15) |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | HRM-GOV-02, HRM-ECO-02 |
+| Risks | RKP-RED-01 |
+| Controls | CTP-RED-01 |
+| Guardrails | GRP-RED-01 |
+| Assurance | ATP-RED-01 |
+| Evidence | EVP-RED-01 |
+
 **External standards alignment**
 
 | External source | Clause / control | Relationship | Rationale |
@@ -744,6 +865,17 @@ Implement per-origin/task-family prompt budgets, exponential backoff and abuse t
 | RAHP controls | [CT-15 — Pseudonymous Per-VTC M-DID Design](../../../build/site/catalogue.html#CT-15), [CT-16 — Minimum-Necessary IDVC Attribute Set](../../../build/site/catalogue.html#CT-16), [CT-27 — Audited ZKP Library Requirement](../../../build/site/catalogue.html#CT-27) |
 | RAHP guardrails | [GR-06 — Privacy-Preserving Proofing Option](../../../build/site/catalogue.html#GR-06), [GR-09 — Privacy-Preserving Revocation Disclosure](../../../build/site/catalogue.html#GR-09) |
 | RAHP assurance tests | [AT-06 — At least one ZKP / selective disclosure path is available and functional in Phase 4 UX](../../../build/site/catalogue.html#AT-06), [AT-09 — Default revocation status disclosure does not expose member real-world identity](../../../build/site/catalogue.html#AT-09) |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | HRM-SEC-02, HRM-INF-01, HRM-PRV-01, HRM-PRV-05, HRM-AUT-04, HRM-PRV-02 |
+| Risks | RKP-CRD-01, RKP-CRD-04, RKP-AGT-02, RKP-PRV-02 |
+| Controls | CTP-AUTH-01, CTP-AGT-02, CTP-PRV-02 |
+| Guardrails | GRP-AUTH-01, GRP-AGT-01, GRP-PRV-01 |
+| Assurance | ATP-AUTH-01, ATP-AGT-01, ATP-PRV-01 |
+| Evidence | EVP-AUTH-01, EVP-AUTH-02, EVP-PRV-01 |
 
 **External standards alignment**
 
@@ -804,6 +936,17 @@ Define a receipt privacy profile covering blinded enactments, selective disclosu
 | RAHP controls | [CT-19 — Conformance Test Suite](../../../build/site/catalogue.html#CT-19), [CT-48 — Threat Model Maintenance](../../../build/site/catalogue.html#CT-48) |
 | RAHP guardrails | [GR-16 — Formal Threat Model Publication](../../../build/site/catalogue.html#GR-16), [GR-17 — Open Issues Risk Acceptance](../../../build/site/catalogue.html#GR-17) |
 | RAHP assurance tests | [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../../build/site/catalogue.html#AT-16), [AT-17 — All four open issues have documented mitigations or risk acceptances signed by governing b…](../../../build/site/catalogue.html#AT-17) |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | HRM-AUT-04, HRM-SEC-02, HRM-INF-01, HRM-ECO-02 |
+| Risks | RKP-AUTH-01, RKP-AUTH-03 |
+| Controls | CTP-AUTH-01, CTP-AUTH-03 |
+| Guardrails | GRP-AUTH-01, GRP-DEL-01 |
+| Assurance | ATP-AUTH-01, ATP-DEL-01 |
+| Evidence | EVP-AUTH-01, EVP-AUTH-02 |
 
 **External standards alignment**
 

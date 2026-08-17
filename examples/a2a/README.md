@@ -34,12 +34,12 @@ The example also motivated five protocol-neutral RAHP risks (`RK-AI05` through `
 | Target commit | `1eb4aa03b07589d3a00ce7deab0dde679120ed30` |
 | Target source paths | `docs/specification.md`, `docs/topics/agent-discovery.md`, `docs/topics/enterprise-ready.md`, `docs/topics/streaming-and-async.md`, `docs/whats-new-v1.md` |
 | RAHP repository | `sankarshanmukhopadhyay/rahp-toolkit` |
-| RAHP version | `v0.8.0` |
+| RAHP version | `v1.1.0` |
 | Engine contract | `rahp-engine-contract-v1` |
 | RAHP corpus date | 2026-08-16 |
-| Engine/method revalidated on | 2026-08-16 |
+| Engine/method revalidated on | 2026-08-17 |
 | Original RAHP version | `v0.7.0+a2a-example` |
-| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
+| Revalidation scope | v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target revision unchanged |
 
 ### Method
 
@@ -110,6 +110,17 @@ A2A v1.0.0 has substantial protocol security foundations, including signed Agent
 | Guardrails | [GR-22 — Discovery Is Not Authority](../../build/site/catalogue.html#GR-22) |
 | Assurance tests | [AT-22 — Discovery and capability metadata are integrity/freshness checked and the relying policy d…](../../build/site/catalogue.html#AT-22) |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-INF-01`, `HRM-ECO-02` |
+| Risks | `RKP-DEL-01`, `RKP-AGT-01`, `RKP-AUTH-01`, `RKP-AUTH-03` |
+| Controls | `CTP-DEL-01`, `CTP-AGT-01`, `CTP-AUTH-01`, `CTP-AUTH-03` |
+| Guardrails | `GRP-DEL-01`, `GRP-AGT-01`, `GRP-AUTH-01` |
+| Assurance | `ATP-DEL-01`, `ATP-AGT-01`, `ATP-AUTH-01` |
+| Evidence | `EVP-DEL-01`, `EVP-AUTH-02`, `EVP-AUTH-01` |
+
 **Evidence**
 
 | Source | Observation |
@@ -144,6 +155,17 @@ Add an explicit semantic non-inference rule: Agent Card integrity, identity/prov
 | Controls | [CT-67 — Agent Discovery Integrity and Freshness Verification](../../build/site/catalogue.html#CT-67) |
 | Guardrails | [GR-22 — Discovery Is Not Authority](../../build/site/catalogue.html#GR-22) |
 | Assurance tests | [AT-22 — Discovery and capability metadata are integrity/freshness checked and the relying policy d…](../../build/site/catalogue.html#AT-22) |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-05`, `HRM-SEC-02`, `HRM-INF-01`, `HRM-SEC-01`, `HRM-SEC-03` |
+| Risks | `RKP-AUTH-02`, `RKP-DEL-03`, `RKP-DISC-01`, `RKP-DISC-02` |
+| Controls | `CTP-AUTH-02`, `CTP-DEL-02`, `CTP-DISC-01`, `CTP-DISC-02` |
+| Guardrails | `GRP-AUTH-02`, `GRP-AUTH-01` |
+| Assurance | `ATP-AUTH-02`, `ATP-DISC-01`, `ATP-DISC-02` |
+| Evidence | `EVP-AUTH-01`, `EVP-DEL-02`, `EVP-OPS-01` |
 
 **Evidence**
 
@@ -180,6 +202,17 @@ Document a deployment trust profile that identifies accepted discovery authoriti
 | Guardrails | [GR-12 — Agent Delegation Scope Constraint](../../build/site/catalogue.html#GR-12), [GR-13 — Agent Audit Logging](../../build/site/catalogue.html#GR-13), [GR-23 — Delegation Continuity Across Agent Boundaries](../../build/site/catalogue.html#GR-23) |
 | Assurance tests | [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../build/site/catalogue.html#AT-12), [AT-13 — Agent credential operations visible in operator audit log with all required fields](../../build/site/catalogue.html#AT-13), [AT-23 — A multi-agent delegation test proves that downstream agents cannot exceed the originating …](../../build/site/catalogue.html#AT-23) |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-AUT-05` |
+| Risks | `RKP-DEL-01`, `RKP-AGT-01`, `RKP-AUTH-02`, `RKP-DEL-03` |
+| Controls | `CTP-DEL-01`, `CTP-AGT-01`, `CTP-AUTH-02`, `CTP-DEL-02` |
+| Guardrails | `GRP-DEL-01`, `GRP-AGT-01`, `GRP-AUTH-02` |
+| Assurance | `ATP-DEL-01`, `ATP-AGT-01`, `ATP-AUTH-02` |
+| Evidence | `EVP-DEL-01`, `EVP-AUTH-02`, `EVP-AUTH-01`, `EVP-DEL-02` |
+
 **Evidence**
 
 | Source | Observation |
@@ -214,6 +247,17 @@ Define or normatively reference a delegation-context profile/extension that can 
 | Controls | [CT-30 — Cryptographic Delegation Scope Constraints](../../build/site/catalogue.html#CT-30), [CT-72 — Secondary Credential Audience Purpose and Delegation Constraint](../../build/site/catalogue.html#CT-72) |
 | Guardrails | [GR-12 — Agent Delegation Scope Constraint](../../build/site/catalogue.html#GR-12), [GR-25 — Secondary Credential Non-Transitivity](../../build/site/catalogue.html#GR-25) |
 | Assurance tests | [AT-25 — A downstream service rejects a secondary credential when audience, purpose, resource, life…](../../build/site/catalogue.html#AT-25) |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-INF-01`, `HRM-ECO-02` |
+| Risks | `RKP-DEL-01`, `RKP-AGT-01`, `RKP-AUTH-01`, `RKP-AUTH-03` |
+| Controls | `CTP-DEL-01`, `CTP-AGT-01`, `CTP-AUTH-01`, `CTP-AUTH-03` |
+| Guardrails | `GRP-DEL-01`, `GRP-AGT-01`, `GRP-AUTH-01` |
+| Assurance | `ATP-DEL-01`, `ATP-AGT-01`, `ATP-AUTH-01` |
+| Evidence | `EVP-DEL-01`, `EVP-AUTH-02`, `EVP-AUTH-01` |
 
 **Evidence**
 
@@ -250,6 +294,17 @@ Define a companion credential/delegation profile or implementation contract requ
 | Guardrails | [GR-24 — Asynchronous Callback Trust Boundary](../../build/site/catalogue.html#GR-24) |
 | Assurance tests | [AT-24 — Callback tests reject prohibited destinations, unauthenticated senders, wrong-task events,…](../../build/site/catalogue.html#AT-24) |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-PRV-01`, `HRM-PRV-05`, `HRM-AUT-04`, `HRM-SEC-02`, `HRM-ECO-02`, `HRM-SEC-03` |
+| Risks | `RKP-CRD-04`, `RKP-AGT-02`, `RKP-OPS-02`, `RKP-OPS-01` |
+| Controls | `CTP-AGT-02`, `CTP-OPS-02`, `CTP-OPS-01` |
+| Guardrails | `GRP-AGT-01`, `GRP-OPS-01` |
+| Assurance | `ATP-AGT-01`, `ATP-OPS-02`, `ATP-OPS-01` |
+| Evidence | `EVP-AUTH-02`, `EVP-OPS-02`, `EVP-OPS-01` |
+
 **Evidence**
 
 | Source | Observation |
@@ -284,6 +339,17 @@ Add a deployment assurance checklist/test profile covering prohibited callback d
 | Controls | [CT-73 — Cross-Agent Action Provenance and Correlation](../../build/site/catalogue.html#CT-73) |
 | Guardrails | [GR-13 — Agent Audit Logging](../../build/site/catalogue.html#GR-13), [GR-23 — Delegation Continuity Across Agent Boundaries](../../build/site/catalogue.html#GR-23) |
 | Assurance tests | [AT-23 — A multi-agent delegation test proves that downstream agents cannot exceed the originating …](../../build/site/catalogue.html#AT-23) |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02` |
+| Risks | `RKP-DEL-01`, `RKP-AGT-01` |
+| Controls | `CTP-DEL-01`, `CTP-AGT-01` |
+| Guardrails | `GRP-DEL-01`, `GRP-AGT-01` |
+| Assurance | `ATP-DEL-01`, `ATP-AGT-01` |
+| Evidence | `EVP-DEL-01`, `EVP-AUTH-02` |
 
 **Evidence**
 

@@ -1,12 +1,12 @@
 corpus:
   id: CORPUS-TT-CREDSPEC-COMPOSED
-  title: "Trust Tasks \xD7 Credential Spec composed scenario corpus"
+  title: Trust Tasks × Credential Spec composed scenario corpus
   source_repository: trustoverip/dtgwg-trust-tasks-tf + trustoverip/dtgwg-cred-spec
   source_path: SPEC.md + spec/body.md
   source_commit: archive-snapshot
-  adapter_version: '1.0'
-  description: RAHP-authored cross-specification scenarios that pressure-test the seam where Trust Tasks consume, convey,
-    contextualize or rely upon DTG credentials. XSP-* identifiers are owned by this RAHP adapter.
+  adapter_version: '1.1'
+  description: RAHP-authored cross-specification scenarios that pressure-test the seam where Trust Tasks consume,
+    convey, contextualize or rely upon DTG credentials. XSP-* identifiers are owned by this RAHP adapter.
   scenarios:
   - id: XSP-001
     title: Credential issued in a Trust Task is later presented without its outcome evidence
@@ -17,7 +17,31 @@ corpus:
     scenario_patterns:
     - SP-COMP-01
     - SP-OPS-01
-    source_anchor: "Trust Tasks \xA74.9 + CredSpec Trust Task Context Binding"
+    source_anchor: Trust Tasks §4.9 + CredSpec Trust Task Context Binding
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-AUT-04
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-CRD-01
+      - RKP-CRD-03
+      - RKP-COMP-01
+      - RKP-COMP-04
+      control_patterns:
+      - CTP-AUTH-01
+      - CTP-CRD-01
+      - CTP-COMP-01
+      guardrail_patterns:
+      - GRP-AUTH-01
+      - GRP-COMP-01
+      assurance_patterns:
+      - ATP-AUTH-01
+      - ATP-COMP-01
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-COMP-01
   - id: XSP-002
     title: Credential authority changes after task authorization but before execution
     domain: Cross-spec / lifecycle
@@ -28,6 +52,33 @@ corpus:
     - SP-GOV-01
     - SP-AGENT-02
     source_anchor: Trust Tasks expiry/consumer rules + CredSpec Trust Registries
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-ECO-02
+      risk_patterns:
+      - RKP-AUTH-01
+      - RKP-AUTH-03
+      - RKP-CRD-01
+      - RKP-COMP-01
+      control_patterns:
+      - CTP-AUTH-01
+      - CTP-AUTH-03
+      - CTP-COMP-01
+      guardrail_patterns:
+      - GRP-AUTH-01
+      - GRP-DEL-01
+      - GRP-COMP-01
+      assurance_patterns:
+      - ATP-AUTH-01
+      - ATP-DEL-01
+      - ATP-COMP-01
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-AUTH-02
+      - EVP-COMP-01
   - id: XSP-003
     title: Task is replayed with a still-valid credential to repeat a side effect
     domain: Cross-spec / replay
@@ -38,6 +89,34 @@ corpus:
     - SP-REPLAY-01
     - SP-COMP-01
     source_anchor: Trust Tasks retry/audience rules + CredSpec credential presentation
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-ECO-02
+      - HRM-AUT-04
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-CRD-01
+      - RKP-OPS-02
+      - RKP-COMP-01
+      - RKP-COMP-04
+      control_patterns:
+      - CTP-AUTH-01
+      - CTP-OPS-02
+      - CTP-COMP-01
+      guardrail_patterns:
+      - GRP-AUTH-01
+      - GRP-OPS-01
+      - GRP-COMP-01
+      assurance_patterns:
+      - ATP-AUTH-01
+      - ATP-OPS-02
+      - ATP-COMP-01
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-OPS-02
+      - EVP-COMP-01
   - id: XSP-004
     title: Trust Task issuer identity and credential issuer/holder semantics are conflated
     domain: Cross-spec / identity
@@ -47,7 +126,32 @@ corpus:
     scenario_patterns:
     - SP-AUTH-01
     - SP-INTEROP-01
-    source_anchor: "Trust Tasks \xA74.8 + CredSpec Base Structure"
+    source_anchor: Trust Tasks §4.8 + CredSpec Base Structure
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-SEC-01
+      - HRM-AUT-04
+      risk_patterns:
+      - RKP-CRD-01
+      - RKP-ID-01
+      - RKP-COMP-01
+      control_patterns:
+      - CTP-AUTH-01
+      - CTP-ID-01
+      - CTP-COMP-01
+      guardrail_patterns:
+      - GRP-AUTH-01
+      - GRP-ID-01
+      - GRP-COMP-01
+      assurance_patterns:
+      - ATP-AUTH-01
+      - ATP-ID-01
+      - ATP-COMP-01
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-COMP-01
   - id: XSP-005
     title: Bearer task carries a credential whose disclosure should be recipient-scoped
     domain: Cross-spec / privacy
@@ -58,6 +162,35 @@ corpus:
     - SP-PRIV-01
     - SP-REPLAY-01
     source_anchor: Trust Tasks bearer specifications + CredSpec Privacy Considerations
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-PRV-01
+      - HRM-PRV-05
+      - HRM-AUT-04
+      - HRM-PRV-02
+      risk_patterns:
+      - RKP-CRD-01
+      - RKP-CRD-04
+      - RKP-AGT-02
+      - RKP-PRV-02
+      control_patterns:
+      - CTP-AUTH-01
+      - CTP-AGT-02
+      - CTP-PRV-02
+      guardrail_patterns:
+      - GRP-AUTH-01
+      - GRP-AGT-01
+      - GRP-PRV-01
+      assurance_patterns:
+      - ATP-AUTH-01
+      - ATP-AGT-01
+      - ATP-PRV-01
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-AUTH-02
+      - EVP-PRV-01
   - id: XSP-006
     title: Two individually minimal credentials become identifying when composed in one task
     domain: Cross-spec / privacy
@@ -68,6 +201,35 @@ corpus:
     - SP-COMP-01
     - SP-PRIV-02
     source_anchor: Trust Tasks payload/proof + CredSpec selective disclosure
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-PRV-02
+      - HRM-PRV-03
+      - HRM-AUT-04
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-CRD-01
+      - RKP-PRV-02
+      - RKP-COMP-01
+      - RKP-COMP-04
+      control_patterns:
+      - CTP-AUTH-01
+      - CTP-PRV-02
+      - CTP-COMP-01
+      guardrail_patterns:
+      - GRP-AUTH-01
+      - GRP-PRV-01
+      - GRP-COMP-01
+      assurance_patterns:
+      - ATP-AUTH-01
+      - ATP-PRV-01
+      - ATP-COMP-01
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-PRV-01
+      - EVP-COMP-01
   - id: XSP-007
     title: Agent continues using a credential after human delegation is withdrawn
     domain: Cross-spec / agents
@@ -78,6 +240,34 @@ corpus:
     - SP-AGENT-01
     - SP-AGENT-02
     source_anchor: Trust Tasks exposure/authorization + CredSpec holder presentation
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-AUT-05
+      risk_patterns:
+      - RKP-DEL-01
+      - RKP-AGT-01
+      - RKP-AUTH-02
+      - RKP-DEL-03
+      control_patterns:
+      - CTP-DEL-01
+      - CTP-AGT-01
+      - CTP-AUTH-02
+      - CTP-DEL-02
+      guardrail_patterns:
+      - GRP-DEL-01
+      - GRP-AGT-01
+      - GRP-AUTH-02
+      assurance_patterns:
+      - ATP-DEL-01
+      - ATP-AGT-01
+      - ATP-AUTH-02
+      evidence_patterns:
+      - EVP-DEL-01
+      - EVP-AUTH-02
+      - EVP-AUTH-01
+      - EVP-DEL-02
   - id: XSP-008
     title: Transport-level identity conflicts with credential subject or relationship identity
     domain: Cross-spec / identity
@@ -88,6 +278,33 @@ corpus:
     - SP-AUTH-01
     - SP-COMP-01
     source_anchor: Trust Tasks identity precedence + CredSpec credentialSubject
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-SEC-01
+      - HRM-AUT-04
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-CRD-01
+      - RKP-ID-01
+      - RKP-COMP-01
+      - RKP-COMP-04
+      control_patterns:
+      - CTP-AUTH-01
+      - CTP-ID-01
+      - CTP-COMP-01
+      guardrail_patterns:
+      - GRP-AUTH-01
+      - GRP-ID-01
+      - GRP-COMP-01
+      assurance_patterns:
+      - ATP-AUTH-01
+      - ATP-ID-01
+      - ATP-COMP-01
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-COMP-01
   - id: XSP-009
     title: Offline task processing relies on stale credential or registry state
     domain: Cross-spec / operations
@@ -98,6 +315,31 @@ corpus:
     - SP-OPS-01
     - SP-OPS-02
     source_anchor: Trust Tasks transport processing + CredSpec Trust Registries
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-SEC-03
+      - HRM-AUT-04
+      risk_patterns:
+      - RKP-CRD-01
+      - RKP-OPS-01
+      - RKP-COMP-01
+      control_patterns:
+      - CTP-AUTH-01
+      - CTP-OPS-01
+      - CTP-COMP-01
+      guardrail_patterns:
+      - GRP-AUTH-01
+      - GRP-COMP-01
+      assurance_patterns:
+      - ATP-AUTH-01
+      - ATP-OPS-01
+      - ATP-COMP-01
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-OPS-01
+      - EVP-COMP-01
   - id: XSP-010
     title: Framework or credential version migration occurs on only one side of the interaction
     domain: Cross-spec / interoperability
@@ -108,7 +350,37 @@ corpus:
     - SP-GOV-02
     - SP-INTEROP-01
     - SP-CRYPTO-01
-    source_anchor: "Trust Tasks \xA75 + CredSpec VC Version Support"
+    source_anchor: Trust Tasks §5 + CredSpec VC Version Support
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-GOV-01
+      - HRM-SEC-03
+      - HRM-AUT-05
+      - HRM-AUT-04
+      risk_patterns:
+      - RKP-CRD-01
+      - RKP-GOV-03
+      - RKP-COMP-02
+      - RKP-COMP-01
+      control_patterns:
+      - CTP-AUTH-01
+      - CTP-GOV-02
+      - CTP-COMP-02
+      - CTP-COMP-01
+      guardrail_patterns:
+      - GRP-AUTH-01
+      - GRP-COMP-01
+      assurance_patterns:
+      - ATP-AUTH-01
+      - ATP-GOV-02
+      - ATP-COMP-02
+      - ATP-COMP-01
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-GOV-02
+      - EVP-COMP-01
   - id: XSP-011
     title: Error response exposes details derived from a sensitive credential
     domain: Cross-spec / privacy
@@ -118,6 +390,36 @@ corpus:
     scenario_patterns:
     - SP-PRIV-01
     source_anchor: Trust Tasks error responses + CredSpec Privacy Considerations
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-PRV-02
+      - HRM-PRV-03
+      - HRM-PRV-01
+      - HRM-AUT-04
+      risk_patterns:
+      - RKP-CRD-01
+      - RKP-PRV-02
+      - RKP-PRV-03
+      - RKP-COMP-01
+      control_patterns:
+      - CTP-AUTH-01
+      - CTP-PRV-02
+      - CTP-PRV-03
+      - CTP-COMP-01
+      guardrail_patterns:
+      - GRP-AUTH-01
+      - GRP-PRV-01
+      - GRP-COMP-01
+      assurance_patterns:
+      - ATP-AUTH-01
+      - ATP-PRV-01
+      - ATP-COMP-01
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-PRV-01
+      - EVP-COMP-01
   - id: XSP-012
     title: A cross-spec adverse decision cannot be explained or appealed because responsibility is split
     domain: Cross-spec / governance
@@ -128,6 +430,31 @@ corpus:
     - SP-GOV-03
     - SP-FED-01
     source_anchor: Trust Tasks consumer policy + CredSpec Governance Considerations
+    portable_assurance:
+      harm_patterns:
+      - HRM-GOV-02
+      - HRM-ECO-02
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-INF-01
+      risk_patterns:
+      - RKP-RED-01
+      - RKP-GOV-04
+      - RKP-COMP-01
+      - RKP-COMP-04
+      control_patterns:
+      - CTP-RED-01
+      - CTP-GOV-03
+      - CTP-COMP-01
+      guardrail_patterns:
+      - GRP-RED-01
+      - GRP-COMP-01
+      assurance_patterns:
+      - ATP-RED-01
+      - ATP-COMP-01
+      evidence_patterns:
+      - EVP-RED-01
+      - EVP-COMP-01
   source_urls:
   - https://github.com/trustoverip/dtgwg-trust-tasks-tf
   - https://github.com/trustoverip/dtgwg-cred-spec
@@ -140,3 +467,4 @@ corpus:
     source_commit: archive-snapshot
     adapter_version: '1.0'
   provenance_note: Derived corpus must be recomposed after either dependency is semantically re-baselined.
+  assurance_catalogue: method/catalogue/

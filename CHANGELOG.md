@@ -7,6 +7,19 @@ parent: Reference
 ---
 # Changelog
 
+## v1.1.0 — 2026-08-17
+
+### Added
+- Portable assurance catalogue with 139 reusable harm, risk, control, guardrail, assurance and evidence patterns.
+- Catalogue schema, validator and human-readable reference documentation.
+- Dedicated Trust Tasks × DTG Credential Specification RAHP cross-specification exemplar and combined review.
+- Portable assurance mappings across curated RAHP, security and composed-corpus examples.
+
+### Changed
+- Revalidate and rerender curated examples against v1.1.0 while preserving pinned target revisions.
+- Expand scenario patterns and cross-spec documentation for authority, delegation, discovery, redress, political economy, lifecycle skew and control side effects.
+- Keep `rahp-engine-contract-v1` and result schema version 1 stable; v1.1 is additive.
+
 ## v1.0.0 — 2026-08-16
 
 ### Added

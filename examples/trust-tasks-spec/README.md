@@ -28,12 +28,12 @@ The target revision, review scope, RAHP baseline, summary and complete finding r
 | Target commit | `fbe196a8a17ba3f99d0657a64be5ac58621023a1` |
 | Target source paths | `SPEC.md`, `docs/design-notes/delegated-trust-task-execution.md`, `docs/design-notes/trust-ceremonies.md`, `specs/task-consent/`, `specs/trust-task-discovery/`, `specs/trust-ceremony-receipt/` |
 | RAHP repository | `sankarshanmukhopadhyay/rahp-toolkit` |
-| RAHP version | `v0.8.0` |
+| RAHP version | `v1.1.0` |
 | Engine contract | `rahp-engine-contract-v1` |
 | RAHP corpus date | 2026-08-16 |
-| Engine/method revalidated on | 2026-08-16 |
+| Engine/method revalidated on | 2026-08-17 |
 | Original RAHP version | `v0.3-dev` |
-| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
+| Revalidation scope | v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target revision unchanged |
 
 ### Method
 
@@ -108,6 +108,17 @@ The Trust Tasks framework has unusually strong separation between transport iden
 | Guardrails | [GR-12 — Agent Delegation Scope Constraint](../../build/site/catalogue.html#GR-12), [GR-16 — Formal Threat Model Publication](../../build/site/catalogue.html#GR-16) |
 | Assurance tests | [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../build/site/catalogue.html#AT-12) |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-INF-01`, `HRM-ECO-02` |
+| Risks | `RKP-AUTH-01`, `RKP-AUTH-03`, `RKP-CRD-01`, `RKP-OPS-02` |
+| Controls | `CTP-AUTH-01`, `CTP-AUTH-03`, `CTP-OPS-02` |
+| Guardrails | `GRP-AUTH-01`, `GRP-DEL-01`, `GRP-OPS-01` |
+| Assurance | `ATP-AUTH-01`, `ATP-DEL-01`, `ATP-OPS-02` |
+| Evidence | `EVP-AUTH-01`, `EVP-AUTH-02`, `EVP-OPS-02` |
+
 **Evidence**
 
 | Source | Observation |
@@ -143,6 +154,17 @@ Make duplicate suppression normative for mutating, destructive and actsAsSubject
 | Guardrails | [GR-12 — Agent Delegation Scope Constraint](../../build/site/catalogue.html#GR-12), [GR-17 — Open Issues Risk Acceptance](../../build/site/catalogue.html#GR-17) |
 | Assurance tests | [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../build/site/catalogue.html#AT-12), [AT-17 — All four open issues have documented mitigations or risk acceptances signed by governing b…](../../build/site/catalogue.html#AT-17) |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-INF-01`, `HRM-ECO-02` |
+| Risks | `RKP-DEL-01`, `RKP-AGT-01`, `RKP-AUTH-01`, `RKP-AUTH-03` |
+| Controls | `CTP-DEL-01`, `CTP-AGT-01`, `CTP-AUTH-01`, `CTP-AUTH-03` |
+| Guardrails | `GRP-DEL-01`, `GRP-AGT-01`, `GRP-AUTH-01` |
+| Assurance | `ATP-DEL-01`, `ATP-AGT-01`, `ATP-AUTH-01` |
+| Evidence | `EVP-DEL-01`, `EVP-AUTH-02`, `EVP-AUTH-01` |
+
 **Evidence**
 
 | Source | Observation |
@@ -177,6 +199,17 @@ Require bounded freshness for destructive and actsAsSubject tasks, either in the
 | Controls | [CT-30 — Cryptographic Delegation Scope Constraints](../../build/site/catalogue.html#CT-30), [CT-31 — Short-Lived Agent Credentials](../../build/site/catalogue.html#CT-31), [CT-32 — Agent Liveness Check on Operator VMC](../../build/site/catalogue.html#CT-32), [CT-52 — Agent Delegation Credential Requirement](../../build/site/catalogue.html#CT-52), [CT-56 — VTC Governance Conformance Class](../../build/site/catalogue.html#CT-56) |
 | Guardrails | [GR-12 — Agent Delegation Scope Constraint](../../build/site/catalogue.html#GR-12), [GR-13 — Agent Audit Logging](../../build/site/catalogue.html#GR-13) |
 | Assurance tests | [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../build/site/catalogue.html#AT-12), [AT-13 — Agent credential operations visible in operator audit log with all required fields](../../build/site/catalogue.html#AT-13) |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-AUT-05` |
+| Risks | `RKP-DEL-01`, `RKP-AGT-01`, `RKP-AUTH-02`, `RKP-DEL-03` |
+| Controls | `CTP-DEL-01`, `CTP-AGT-01`, `CTP-AUTH-02`, `CTP-DEL-02` |
+| Guardrails | `GRP-DEL-01`, `GRP-AGT-01`, `GRP-AUTH-02` |
+| Assurance | `ATP-DEL-01`, `ATP-AGT-01`, `ATP-AUTH-02` |
+| Evidence | `EVP-DEL-01`, `EVP-AUTH-02`, `EVP-AUTH-01`, `EVP-DEL-02` |
 
 **Evidence**
 
@@ -214,6 +247,17 @@ Preserve the framework's identity/authority separation, but normatively bind a c
 | Guardrails | [GR-16 — Formal Threat Model Publication](../../build/site/catalogue.html#GR-16), [GR-17 — Open Issues Risk Acceptance](../../build/site/catalogue.html#GR-17) |
 | Assurance tests | [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../build/site/catalogue.html#AT-16), [AT-17 — All four open issues have documented mitigations or risk acceptances signed by governing b…](../../build/site/catalogue.html#AT-17) |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-GOV-02`, `HRM-ECO-02` |
+| Risks | `RKP-RED-01` |
+| Controls | `CTP-RED-01` |
+| Guardrails | `GRP-RED-01` |
+| Assurance | `ATP-RED-01` |
+| Evidence | `EVP-RED-01` |
+
 **Evidence**
 
 | Source | Observation |
@@ -248,6 +292,17 @@ Add immutable revision pinning for emitted documents that target draft specifica
 | Controls | [CT-18 — Normative Credential Schema Publication](../../build/site/catalogue.html#CT-18), [CT-19 — Conformance Test Suite](../../build/site/catalogue.html#CT-19), [CT-39 — Distributed Registry Architecture](../../build/site/catalogue.html#CT-39), [CT-48 — Threat Model Maintenance](../../build/site/catalogue.html#CT-48) |
 | Guardrails | [GR-16 — Formal Threat Model Publication](../../build/site/catalogue.html#GR-16) |
 | Assurance tests | [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../build/site/catalogue.html#AT-16) |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-SEC-03`, `HRM-INF-01` |
+| Risks | `RKP-OPS-01` |
+| Controls | `CTP-OPS-01` |
+| Guardrails | — |
+| Assurance | `ATP-OPS-01` |
+| Evidence | `EVP-OPS-01` |
 
 **Evidence**
 
@@ -284,6 +339,17 @@ Publish an operational profile for authenticated schema pinning, caching and off
 | Guardrails | [GR-16 — Formal Threat Model Publication](../../build/site/catalogue.html#GR-16) |
 | Assurance tests | [AT-16 — Published threat model exists, is dated within 12 months, and covers all six listed threat…](../../build/site/catalogue.html#AT-16) |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-INF-01`, `HRM-ECO-02`, `HRM-SEC-01`, `HRM-SEC-03` |
+| Risks | `RKP-AUTH-01`, `RKP-AUTH-03`, `RKP-DISC-01`, `RKP-DISC-02` |
+| Controls | `CTP-AUTH-01`, `CTP-AUTH-03`, `CTP-DISC-01`, `CTP-DISC-02` |
+| Guardrails | `GRP-AUTH-01`, `GRP-DEL-01` |
+| Assurance | `ATP-AUTH-01`, `ATP-DEL-01`, `ATP-DISC-01`, `ATP-DISC-02` |
+| Evidence | `EVP-AUTH-01`, `EVP-AUTH-02`, `EVP-OPS-01` |
+
 **Evidence**
 
 | Source | Observation |
@@ -319,6 +385,17 @@ Extend discovery through a companion capability profile that can advertise the s
 | Guardrails | [GR-12 — Agent Delegation Scope Constraint](../../build/site/catalogue.html#GR-12), [GR-19 — Supported Decision-Making and Legal Delegation Pathway](../../build/site/catalogue.html#GR-19) |
 | Assurance tests | [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../build/site/catalogue.html#AT-12), [AT-19 — For any VTC that has admitted or intends to admit participants under supported or substitu…](../../build/site/catalogue.html#AT-19) |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-INF-01`, `HRM-ECO-02`, `HRM-GOV-01`, `HRM-GOV-03` |
+| Risks | `RKP-AUTH-01`, `RKP-AUTH-03`, `RKP-GOV-01` |
+| Controls | `CTP-AUTH-01`, `CTP-AUTH-03`, `CTP-GOV-01` |
+| Guardrails | `GRP-AUTH-01`, `GRP-DEL-01`, `GRP-GOV-01` |
+| Assurance | `ATP-AUTH-01`, `ATP-DEL-01`, `ATP-GOV-01` |
+| Evidence | `EVP-AUTH-01`, `EVP-AUTH-02`, `EVP-GOV-01` |
+
 **Evidence**
 
 | Source | Observation |
@@ -353,6 +430,17 @@ Keep consent policy out of generic payload schemas, but define a governance/safe
 | Controls | [CT-57 — Supported Decision-Making Credential Extension](../../build/site/catalogue.html#CT-57), [CT-58 — Accessible Trust Task Ceremony UX for Cognitive Differences](../../build/site/catalogue.html#CT-58), [CT-59 — LPA Delegation Credential Type](../../build/site/catalogue.html#CT-59), [CT-60 — Secondary Notification Recipient Registration](../../build/site/catalogue.html#CT-60), [CT-66 — Children's Data Processing Impact Assessment Requirement](../../build/site/catalogue.html#CT-66) |
 | Guardrails | [GR-19 — Supported Decision-Making and Legal Delegation Pathway](../../build/site/catalogue.html#GR-19) |
 | Assurance tests | [AT-19 — For any VTC that has admitted or intends to admit participants under supported or substitu…](../../build/site/catalogue.html#AT-19) |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-SEC-01`, `HRM-INF-01` |
+| Risks | `RKP-DEL-01`, `RKP-AGT-01`, `RKP-ID-01` |
+| Controls | `CTP-DEL-01`, `CTP-AGT-01`, `CTP-ID-01` |
+| Guardrails | `GRP-DEL-01`, `GRP-AGT-01`, `GRP-ID-01` |
+| Assurance | `ATP-DEL-01`, `ATP-AGT-01`, `ATP-ID-01` |
+| Evidence | `EVP-DEL-01`, `EVP-AUTH-02`, `EVP-AUTH-01` |
 
 **Evidence**
 

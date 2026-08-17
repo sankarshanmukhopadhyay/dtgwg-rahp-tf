@@ -1,0 +1,580 @@
+catalogue_version: 1.1.0
+record_type: risk_pattern
+records:
+- id: RKP-AUTH-01
+  name: Possession mistaken for authority
+  family: Authority and delegation
+  description: Authentication, key possession or identity proof is treated as sufficient evidence that the actor
+    is authorized for the requested action.
+  harm_patterns:
+  - HRM-AUT-04
+  - HRM-SEC-02
+  - HRM-INF-01
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-AUTH-02
+  name: Stale authority accepted
+  family: Authority and delegation
+  description: Authority is checked at an earlier lifecycle point and not re-evaluated when a consequential action
+    occurs.
+  harm_patterns:
+  - HRM-AUT-05
+  - HRM-SEC-02
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-AUTH-03
+  name: Authority scope ambiguity
+  family: Authority and delegation
+  description: Purpose, audience, resource, action, value or time bounds are insufficiently defined or inconsistently
+    interpreted.
+  harm_patterns:
+  - HRM-AUT-04
+  - HRM-ECO-02
+  - HRM-SEC-02
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-DEL-01
+  name: Transitive delegation expansion
+  family: Authority and delegation
+  description: A downstream delegate receives or infers broader authority than the upstream principal granted.
+  harm_patterns:
+  - HRM-AUT-04
+  - HRM-SEC-02
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability:
+    requires:
+    - delegation
+    - multi-party or multi-agent execution
+  related_patterns: []
+- id: RKP-DEL-02
+  name: Delegation provenance loss
+  family: Authority and delegation
+  description: An execution chain cannot demonstrate which principal authorized which delegate under what scope.
+  harm_patterns:
+  - HRM-GOV-02
+  - HRM-ECO-02
+  - HRM-SEC-02
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-DEL-03
+  name: Revocation propagation failure
+  family: Authority and delegation
+  description: Withdrawal or suspension of delegated authority does not reach all parties or enforcement points
+    before further action.
+  harm_patterns:
+  - HRM-AUT-05
+  - HRM-SEC-02
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-GOV-01
+  name: Concentrated governance authority
+  family: Governance and capture
+  description: A single actor or tightly aligned group can set, change or enforce rules without independent constraint.
+  harm_patterns:
+  - HRM-GOV-01
+  - HRM-GOV-03
+  origin: governance
+  scope: systemic
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-GOV-02
+  name: Governance capture or collusion
+  family: Governance and capture
+  description: Actors expected to provide independent oversight coordinate, collude or are commonly controlled.
+  harm_patterns:
+  - HRM-GOV-03
+  - HRM-ACC-02
+  origin: governance
+  scope: systemic
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-GOV-03
+  name: Rule change without safe transition
+  family: Governance and capture
+  description: Policy or governance semantics change while old artefacts or dependent implementations remain active
+    without migration rules.
+  harm_patterns:
+  - HRM-GOV-01
+  - HRM-SEC-03
+  origin: governance
+  scope: cross-party
+  temporal_mode: delayed
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-GOV-04
+  name: Responsibility fragmentation
+  family: Governance and capture
+  description: No single accountable path exists for an adverse outcome that spans specifications, operators or
+    trust domains.
+  harm_patterns:
+  - HRM-GOV-02
+  - HRM-ECO-02
+  origin: governance
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-ID-01
+  name: Identity or role misbinding
+  family: Identity and attribution
+  description: Identity layers or roles are substituted or conflated, binding a claim or action to the wrong subject,
+    issuer, holder, operator or principal.
+  harm_patterns:
+  - HRM-SEC-01
+  - HRM-INF-01
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-ID-02
+  name: Uniqueness assumption failure
+  family: Identity and attribution
+  description: A system assumes uniqueness or one-person/one-actor semantics without a defensible mechanism or stated
+    limitation.
+  harm_patterns:
+  - HRM-GOV-03
+  - HRM-ACC-02
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-ID-03
+  name: Recovery enables takeover or exclusion
+  family: Identity and attribution
+  description: Recovery is absent, inaccessible or weak enough to enable account/identity takeover.
+  harm_patterns:
+  - HRM-ACC-01
+  - HRM-SEC-01
+  - HRM-SEC-03
+  origin: operations
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-DISC-01
+  name: Discovery interpreted as endorsement
+  family: Discovery and trust inference
+  description: Presence in a discovery document, registry or directory is treated as certification, endorsement
+    or sufficient trust.
+  harm_patterns:
+  - HRM-INF-01
+  - HRM-SEC-02
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-DISC-02
+  name: Stale discovery metadata
+  family: Discovery and trust inference
+  description: Cached or unrefreshed discovery metadata preserves obsolete endpoints, keys, capabilities, authority
+    or status.
+  harm_patterns:
+  - HRM-SEC-01
+  - HRM-SEC-03
+  - HRM-INF-01
+  origin: operations
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-DISC-03
+  name: Registry governance ambiguity
+  family: Discovery and trust inference
+  description: Relying parties cannot determine who may add, remove, suspend or correct registry entries and under
+    what authority.
+  harm_patterns:
+  - HRM-GOV-03
+  - HRM-INF-01
+  origin: governance
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-CRD-01
+  name: Credential validity interpreted as authorization
+  family: Credentials and claims
+  description: A valid credential or proof is treated as permission for an action outside the credential’s actual
+    claim semantics.
+  harm_patterns:
+  - HRM-SEC-02
+  - HRM-INF-01
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-CRD-02
+  name: Credential status or issuer authority staleness
+  family: Credentials and claims
+  description: Credential validity or issuer authority is evaluated using stale status, registry or governance state.
+  harm_patterns:
+  - HRM-SEC-02
+  - HRM-SEC-03
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-CRD-03
+  name: Credential context detachment
+  family: Credentials and claims
+  description: A credential bound to a task, ceremony, transaction or context is later reused as a free-standing
+    assurance claim.
+  harm_patterns:
+  - HRM-INF-01
+  - HRM-SEC-02
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-CRD-04
+  name: Credential audience or purpose expansion
+  family: Credentials and claims
+  description: A credential or secondary credential is forwarded, reused or presented to a broader audience or purpose
+    than intended.
+  harm_patterns:
+  - HRM-PRV-01
+  - HRM-PRV-05
+  - HRM-AUT-04
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-PRV-01
+  name: Stable identifier correlation
+  family: Privacy and inference
+  description: Persistent identifiers allow interactions across relying parties or contexts to be correlated.
+  harm_patterns:
+  - HRM-PRV-02
+  - HRM-PRV-04
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-PRV-02
+  name: Composition fingerprinting
+  family: Privacy and inference
+  description: Individually minimal proofs or metadata become identifying or sensitive when combined.
+  harm_patterns:
+  - HRM-PRV-02
+  - HRM-PRV-03
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-PRV-03
+  name: Failure channel disclosure
+  family: Privacy and inference
+  description: Errors, diagnostics or status responses reveal sensitive attributes, classifications or relationship
+    information.
+  harm_patterns:
+  - HRM-PRV-01
+  - HRM-PRV-03
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-EXC-01
+  name: Single-path participation exclusion
+  family: Inclusion and accessibility
+  description: A system requires one identity, device, interaction or proofing path without a viable alternative
+    for legitimate participants.
+  harm_patterns:
+  - HRM-ACC-01
+  - HRM-ACC-03
+  - HRM-ACC-04
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-EXC-02
+  name: Social or institutional privilege dependency
+  family: Inclusion and accessibility
+  description: Access depends on pre-existing social, institutional or documentation privilege that is unevenly
+    distributed.
+  harm_patterns:
+  - HRM-ACC-01
+  - HRM-ACC-02
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-AGT-01
+  name: Agent goal or mandate drift
+  family: Agentic systems
+  description: An autonomous actor optimizes or continues execution in ways that depart from the principal’s current
+    purpose or constraints.
+  harm_patterns:
+  - HRM-AUT-04
+  - HRM-SEC-02
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-AGT-02
+  name: Secondary credential transitivity
+  family: Agentic systems
+  description: A credential obtained for one agent/task is forwarded or treated as authority for another without
+    explicit onward delegation.
+  harm_patterns:
+  - HRM-AUT-04
+  - HRM-PRV-05
+  - HRM-SEC-02
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-AGT-03
+  name: Opaque execution accountability gap
+  family: Agentic systems
+  description: Opaque internal execution is combined with insufficient external action provenance to reconstruct
+    accountability.
+  harm_patterns:
+  - HRM-GOV-02
+  - HRM-ECO-02
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-OPS-01
+  name: Dependency unavailability or stale fallback
+  family: Operational resilience
+  description: A required registry, status, issuer, policy or network dependency is unavailable and fallback behavior
+    is unsafe or undefined.
+  harm_patterns:
+  - HRM-SEC-03
+  - HRM-INF-01
+  origin: operations
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-OPS-02
+  name: Replay or duplicate side effect
+  family: Operational resilience
+  description: A valid request, proof or task can be replayed or retried in a way that repeats an externally consequential
+    effect.
+  harm_patterns:
+  - HRM-ECO-02
+  - HRM-SEC-02
+  origin: implementation
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-OPS-03
+  name: Cascading invalidation
+  family: Operational resilience
+  description: Compromise, deregistration or withdrawal of a dependency invalidates many downstream artefacts without
+    a safe continuity path.
+  harm_patterns:
+  - HRM-ACC-01
+  - HRM-SEC-03
+  origin: operations
+  scope: systemic
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-RED-01
+  name: Evidence insufficient for contestability
+  family: Accountability and redress
+  description: The system cannot produce durable evidence necessary to explain, contest or remedy a consequential
+    outcome.
+  harm_patterns:
+  - HRM-GOV-02
+  - HRM-ECO-02
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-COMP-01
+  name: Cross-spec authority mismatch
+  family: Composition
+  description: Two specifications use compatible-looking identity or authorization concepts with materially different
+    semantics.
+  harm_patterns:
+  - HRM-AUT-04
+  - HRM-SEC-02
+  - HRM-INF-01
+  origin: design
+  scope: systemic
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-COMP-02
+  name: Cross-spec lifecycle mismatch
+  family: Composition
+  description: Validity, status, expiry, revocation or freshness is evaluated at different lifecycle points across
+    dependent specifications.
+  harm_patterns:
+  - HRM-AUT-05
+  - HRM-SEC-02
+  - HRM-SEC-03
+  origin: design
+  scope: systemic
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-COMP-03
+  name: Cross-system linkability
+  family: Composition
+  description: Composition across protocols exposes identifiers or metadata that defeat privacy separation present
+    in each component.
+  harm_patterns:
+  - HRM-PRV-02
+  - HRM-PRV-05
+  origin: design
+  scope: systemic
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-COMP-04
+  name: Policy or evidence boundary conflict
+  family: Composition
+  description: Dependent systems disagree about which artefact establishes completion, authority, status or an auditable
+    fact.
+  harm_patterns:
+  - HRM-GOV-02
+  - HRM-INF-01
+  origin: design
+  scope: systemic
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-PE-01
+  name: Infrastructure dependency capture
+  family: Political economy
+  description: A critical governance or verification dependency is controlled by an actor that can extract rents,
+    surveil participants or change access conditions.
+  harm_patterns:
+  - HRM-GOV-03
+  - HRM-PRV-04
+  - HRM-ACC-04
+  origin: ecosystem
+  scope: systemic
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []
+- id: RKP-PE-02
+  name: Failure cost externalization
+  family: Political economy
+  description: Operators or intermediaries capture benefits while harmed participants bear disproportionate remediation,
+    exclusion or liability costs.
+  harm_patterns:
+  - HRM-ECO-01
+  - HRM-ECO-02
+  - HRM-GOV-02
+  origin: ecosystem
+  scope: systemic
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns: []

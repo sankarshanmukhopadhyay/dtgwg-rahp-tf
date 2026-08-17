@@ -24,12 +24,12 @@ This worked review is part of the RAHP v0.6.0 CAWG/C2PA external-deployment proo
 | Target commit | `585c7fbe4ea49d89442ba1a8c04ab39927dbb47d` |
 | Target source paths | — |
 | RAHP repository | `sankarshanmukhopadhyay/rahp-toolkit` |
-| RAHP version | `v0.8.0` |
+| RAHP version | `v1.1.0` |
 | Engine contract | `rahp-engine-contract-v1` |
 | RAHP corpus date | 2026-08-16 |
-| Engine/method revalidated on | 2026-08-16 |
+| Engine/method revalidated on | 2026-08-17 |
 | Original RAHP version | `v0.6.0` |
-| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
+| Revalidation scope | v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target revision unchanged |
 
 ### Method
 
@@ -87,6 +87,17 @@ This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conforman
 | Guardrails | — |
 | Assurance tests | — |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-INF-01`, `HRM-ECO-02` |
+| Risks | `RKP-DEL-01`, `RKP-AGT-01`, `RKP-AUTH-01`, `RKP-AUTH-03` |
+| Controls | `CTP-DEL-01`, `CTP-AGT-01`, `CTP-AUTH-01`, `CTP-AUTH-03` |
+| Guardrails | `GRP-DEL-01`, `GRP-AGT-01`, `GRP-AUTH-01` |
+| Assurance | `ATP-DEL-01`, `ATP-AGT-01`, `ATP-AUTH-01` |
+| Evidence | `EVP-DEL-01`, `EVP-AUTH-02`, `EVP-AUTH-01` |
+
 **Evidence**
 
 | Source | Observation |
@@ -120,6 +131,17 @@ Define explicit non-transitivity by default, bounded action/resource/time scope,
 | Controls | — |
 | Guardrails | — |
 | Assurance tests | — |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-05`, `HRM-SEC-02`, `HRM-AUT-04`, `HRM-INF-01`, `HRM-ECO-02` |
+| Risks | `RKP-AUTH-02`, `RKP-DEL-03`, `RKP-AUTH-01`, `RKP-AUTH-03` |
+| Controls | `CTP-AUTH-02`, `CTP-DEL-02`, `CTP-AUTH-01`, `CTP-AUTH-03` |
+| Guardrails | `GRP-AUTH-02`, `GRP-AUTH-01`, `GRP-DEL-01` |
+| Assurance | `ATP-AUTH-02`, `ATP-AUTH-01`, `ATP-DEL-01` |
+| Evidence | `EVP-AUTH-01`, `EVP-DEL-02`, `EVP-AUTH-02` |
 
 **Evidence**
 

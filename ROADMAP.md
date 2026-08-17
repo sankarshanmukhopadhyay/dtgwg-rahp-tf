@@ -19,6 +19,23 @@ Status: **stable release baseline**. Future breaking method changes require v2. 
 ---
 
 
+## v1.1.0 — Portable Assurance Knowledge Model (complete)
+
+v1.1.0 adds a portable method-level assurance catalogue for reusable harms, risks, controls, guardrails, assurance propositions and evidence contracts. It preserves the stable v1 engine boundary and deployment independence while allowing curated findings and scenario corpora to map to reusable assurance semantics.
+
+Delivered:
+
+- 139 portable patterns under `method/catalogue/`;
+- catalogue schema and machine validation;
+- catalogue-aware pressure-test, security-review and scenario validation;
+- enriched curated examples across DTG, CAWG/C2PA and A2A;
+- a first-class Trust Tasks × Credential Specification cross-spec RAHP and combined example;
+- documentation for causal, compositional, evidence and control-side-effect reasoning.
+
+Status: **complete**. Remaining catalogue-quality warnings are intentionally visible enrichment candidates and do not weaken v1.1 conformance.
+
+---
+
 ## v1.1.x — Governed Finding-to-Issue Publication (planned)
 
 RAHP already supports scheduled repository observation, assessment-trigger generation,

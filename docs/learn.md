@@ -13,6 +13,7 @@ Understand the method, its assurance model, actors, scenarios and governance bou
 
 - [Concepts](concepts.md)
 - [How RAHP works](how-rahp-works.md)
+- [Assurance knowledge model](assurance-knowledge-model.md)
 - [Personas and actor roles](personas.md)
 - [Scenario corpora](scenario-corpora.md)
 - [Portability](portability.md)

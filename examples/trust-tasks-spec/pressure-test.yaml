@@ -17,13 +17,14 @@ review:
     - specs/trust-ceremony-receipt/
   reviewed_against:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    rahp_version: v0.8.0
+    rahp_version: v1.1.0
     corpus_date: '2026-08-16'
     original_rahp_version: v0.3-dev
     original_corpus_date: '2026-08-12'
     engine_contract: rahp-engine-contract-v1
-    revalidated_on: '2026-08-16'
-    revalidation_scope: method-and-engine-only; target revision and substantive findings unchanged
+    revalidated_on: '2026-08-17'
+    revalidation_scope: v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target
+      revision unchanged
   scope:
     included:
     - Trust Task document model, party identity and proof semantics
@@ -41,8 +42,8 @@ review:
     - Review of any specific VTC governance framework
   method:
     workflow: docs/pressure-testing-a-spec.md
-    rule: Reuse existing RAHP risks before creating new risks; route each recommendation to the narrowest 
-      effective control plane.
+    rule: Reuse existing RAHP risks before creating new risks; route each recommendation to the narrowest effective
+      control plane.
   summary:
     finding_count: 8
     open_count: 8
@@ -51,284 +52,512 @@ review:
       companion-specification: 2
       governance: 1
       operational-policy: 1
-    overall_assessment: >-
-      The Trust Tasks framework has unusually strong separation between transport identity,
-      document proof, audience binding, ceremony membership and authorization, and it explicitly
-      treats destructive effects and delegated action as separate safety dimensions. The pressure
-      test nevertheless finds eight open assurance gaps concentrated around repeat execution,
-      freshness, portable authority, mutable draft semantics, registry dependence, negotiation,
-      human approval and supported representation. Several should not be solved by enlarging the
-      core envelope; they need explicit companion profiles or governance requirements.
+    overall_assessment: The Trust Tasks framework has unusually strong separation between transport identity, document
+      proof, audience binding, ceremony membership and authorization, and it explicitly treats destructive effects
+      and delegated action as separate safety dimensions. The pressure test nevertheless finds eight open assurance
+      gaps concentrated around repeat execution, freshness, portable authority, mutable draft semantics, registry
+      dependence, negotiation, human approval and supported representation. Several should not be solved by enlarging
+      the core envelope; they need explicit companion profiles or governance requirements.
   findings:
   - id: F-001
     title: Repeat execution of mutating or destructive tasks is not normatively prevented
     status: open
     severity: Critical
     primary_disposition: specification
-    secondary_dispositions: [runtime-control, implementation-guidance]
-    risks: [RK-SC02, RK-AI01]
-    controls: [CT-19, CT-30, CT-48]
-    guardrails: [GR-12, GR-16]
-    assurance_tests: [AT-12]
+    secondary_dispositions:
+    - runtime-control
+    - implementation-guidance
+    risks:
+    - RK-SC02
+    - RK-AI01
+    controls:
+    - CT-19
+    - CT-30
+    - CT-48
+    guardrails:
+    - GR-12
+    - GR-16
+    assurance_tests:
+    - AT-12
     evidence:
     - source: SPEC.md#101-cross-recipient-replay
-      observation: >-
-        Producers must mint a unique document id, but same-recipient replay protection is only
-        a SHOULD: consumers handling assertions whose effect persists between exchanges SHOULD
-        maintain an idempotency cache keyed on id.
+      observation: 'Producers must mint a unique document id, but same-recipient replay protection is only a SHOULD:
+        consumers handling assertions whose effect persists between exchanges SHOULD maintain an idempotency cache
+        keyed on id.'
     - source: SPEC.md#73-specification-requirements
-      observation: >-
-        Every specification declares whether execution is none, mutating or destructive, so
-        the framework already has a machine-readable signal that could trigger a stronger
-        replay rule for state-changing operations.
-    harm: >-
-      A captured or accidentally retried Trust Task can execute the same state mutation,
-      destructive operation or authority-bearing action more than once even though the document
-      itself remains valid. For deletion, key rotation, credential issuance, grants or actions
-      performed as the subject, duplicate execution can be irreversible or create authority the
-      producer never intended to create twice.
-    recommendation: >-
-      Make duplicate suppression normative for mutating, destructive and actsAsSubject tasks.
-      Define the minimum replay-key lifetime and the required duplicate disposition, and allow
-      task-specific specifications to strengthen the rule with operation-level idempotency keys
-      where document id alone is insufficient.
+      observation: Every specification declares whether execution is none, mutating or destructive, so the framework
+        already has a machine-readable signal that could trigger a stronger replay rule for state-changing operations.
+    harm: A captured or accidentally retried Trust Task can execute the same state mutation, destructive operation
+      or authority-bearing action more than once even though the document itself remains valid. For deletion, key
+      rotation, credential issuance, grants or actions performed as the subject, duplicate execution can be irreversible
+      or create authority the producer never intended to create twice.
+    recommendation: Make duplicate suppression normative for mutating, destructive and actsAsSubject tasks. Define
+      the minimum replay-key lifetime and the required duplicate disposition, and allow task-specific specifications
+      to strengthen the rule with operation-level idempotency keys where document id alone is insufficient.
     retest_when:
     - Same-recipient replay handling is mandatory for state-changing and authority-exercising tasks.
-
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-ECO-02
+      risk_patterns:
+      - RKP-AUTH-01
+      - RKP-AUTH-03
+      - RKP-CRD-01
+      - RKP-OPS-02
+      control_patterns:
+      - CTP-AUTH-01
+      - CTP-AUTH-03
+      - CTP-OPS-02
+      guardrail_patterns:
+      - GRP-AUTH-01
+      - GRP-DEL-01
+      - GRP-OPS-01
+      assurance_patterns:
+      - ATP-AUTH-01
+      - ATP-DEL-01
+      - ATP-OPS-02
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-AUTH-02
+      - EVP-OPS-02
   - id: F-002
     title: High-impact Trust Tasks can remain valid without a bounded freshness window
     status: open
     severity: High
     primary_disposition: specification
-    secondary_dispositions: [operational-policy]
-    risks: [RK-AI02, RK-CR02, RK-SC02]
-    controls: [CT-19, CT-25, CT-31, CT-32]
-    guardrails: [GR-12, GR-17]
-    assurance_tests: [AT-12, AT-17]
+    secondary_dispositions:
+    - operational-policy
+    risks:
+    - RK-AI02
+    - RK-CR02
+    - RK-SC02
+    controls:
+    - CT-19
+    - CT-25
+    - CT-31
+    - CT-32
+    guardrails:
+    - GR-12
+    - GR-17
+    assurance_tests:
+    - AT-12
+    - AT-17
     evidence:
     - source: SPEC.md#42-top-level-members
-      observation: >-
-        issuedAt is a SHOULD and expiresAt is a MAY. A consumer must honor expiry only when an
-        expiresAt value is actually present.
+      observation: issuedAt is a SHOULD and expiresAt is a MAY. A consumer must honor expiry only when an expiresAt
+        value is actually present.
     - source: SPEC.md#73-specification-requirements
-      observation: >-
-        Side-effect and exposure classifications distinguish destructive tasks and tasks that
-        act as the subject, but no framework requirement couples those risk classes to expiry
-        or freshness.
-    harm: >-
-      A signed or transport-authenticated instruction that changes authority or acts on a
-      subject's behalf can remain actionable long after the human intent, operator mandate,
-      policy state or security context that produced it has changed. Cryptographic validity
-      alone does not establish that the request is still live.
-    recommendation: >-
-      Require bounded freshness for destructive and actsAsSubject tasks, either in the framework
-      or a mandatory safety profile. At minimum define when issuedAt and expiresAt are required,
-      maximum-age evaluation, and how a consumer responds when freshness cannot be established.
+      observation: Side-effect and exposure classifications distinguish destructive tasks and tasks that act as
+        the subject, but no framework requirement couples those risk classes to expiry or freshness.
+    harm: A signed or transport-authenticated instruction that changes authority or acts on a subject's behalf can
+      remain actionable long after the human intent, operator mandate, policy state or security context that produced
+      it has changed. Cryptographic validity alone does not establish that the request is still live.
+    recommendation: Require bounded freshness for destructive and actsAsSubject tasks, either in the framework or
+      a mandatory safety profile. At minimum define when issuedAt and expiresAt are required, maximum-age evaluation,
+      and how a consumer responds when freshness cannot be established.
     retest_when:
     - High-impact task classes have testable freshness and maximum-age requirements.
-
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-ECO-02
+      risk_patterns:
+      - RKP-DEL-01
+      - RKP-AGT-01
+      - RKP-AUTH-01
+      - RKP-AUTH-03
+      control_patterns:
+      - CTP-DEL-01
+      - CTP-AGT-01
+      - CTP-AUTH-01
+      - CTP-AUTH-03
+      guardrail_patterns:
+      - GRP-DEL-01
+      - GRP-AGT-01
+      - GRP-AUTH-01
+      assurance_patterns:
+      - ATP-DEL-01
+      - ATP-AGT-01
+      - ATP-AUTH-01
+      evidence_patterns:
+      - EVP-DEL-01
+      - EVP-AUTH-02
+      - EVP-AUTH-01
   - id: F-003
     title: Producer identity is not portable evidence of authority, delegation or mandate
     status: open
     severity: Critical
     primary_disposition: companion-specification
-    secondary_dispositions: [governance, specification]
-    risks: [RK-AI01, RK-AI02, RK-G05]
-    controls: [CT-30, CT-31, CT-32, CT-52, CT-56]
-    guardrails: [GR-12, GR-13]
-    assurance_tests: [AT-12, AT-13]
+    secondary_dispositions:
+    - governance
+    - specification
+    risks:
+    - RK-AI01
+    - RK-AI02
+    - RK-G05
+    controls:
+    - CT-30
+    - CT-31
+    - CT-32
+    - CT-52
+    - CT-56
+    guardrails:
+    - GR-12
+    - GR-13
+    assurance_tests:
+    - AT-12
+    - AT-13
     evidence:
     - source: SPEC.md#72-consumer-requirements
-      observation: >-
-        Ceremony membership explicitly confers no authority; authorization decisions rest on
-        issuer, proof and the consumer's own policy.
+      observation: Ceremony membership explicitly confers no authority; authorization decisions rest on issuer,
+        proof and the consumer's own policy.
     - source: SPEC.md#48-the-issuer-and-recipient-members
-      observation: >-
-        issuer identifies the party responsible for the document and proof binds content to
-        that party, but the framework does not define portable evidence that the party is
-        authorized to request the action represented by the task.
+      observation: issuer identifies the party responsible for the document and proof binds content to that party,
+        but the framework does not define portable evidence that the party is authorized to request the action represented
+        by the task.
     - source: docs/design-notes/delegated-trust-task-execution.md#2-roles-and-trust
-      observation: >-
-        Delegated execution deliberately makes the executor's policy authoritative and treats
-        a relying party as untrusted, confirming that authorization is a separate layer from
-        document authenticity.
-    harm: >-
-      Implementations can correctly authenticate the same producer yet reach incompatible
-      conclusions about whether that producer is allowed to invoke a task. In agentic or
-      delegated execution, identity can be over-read as mandate, leaving stale or over-broad
-      authority active after the principal's intent changes.
-    recommendation: >-
-      Preserve the framework's identity/authority separation, but normatively bind a companion
-      authorization or delegation profile for portable use cases. It should identify the
-      principal, delegate, permitted task types/actions, constraints, validity, revocation,
-      onward delegation and the evidence a consumer must evaluate before execution.
+      observation: Delegated execution deliberately makes the executor's policy authoritative and treats a relying
+        party as untrusted, confirming that authorization is a separate layer from document authenticity.
+    harm: Implementations can correctly authenticate the same producer yet reach incompatible conclusions about
+      whether that producer is allowed to invoke a task. In agentic or delegated execution, identity can be over-read
+      as mandate, leaving stale or over-broad authority active after the principal's intent changes.
+    recommendation: Preserve the framework's identity/authority separation, but normatively bind a companion authorization
+      or delegation profile for portable use cases. It should identify the principal, delegate, permitted task types/actions,
+      constraints, validity, revocation, onward delegation and the evidence a consumer must evaluate before execution.
     retest_when:
     - A portable delegation/capability profile is defined and its binding to Trust Task execution is explicit.
-
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-AUT-05
+      risk_patterns:
+      - RKP-DEL-01
+      - RKP-AGT-01
+      - RKP-AUTH-02
+      - RKP-DEL-03
+      control_patterns:
+      - CTP-DEL-01
+      - CTP-AGT-01
+      - CTP-AUTH-02
+      - CTP-DEL-02
+      guardrail_patterns:
+      - GRP-DEL-01
+      - GRP-AGT-01
+      - GRP-AUTH-02
+      assurance_patterns:
+      - ATP-DEL-01
+      - ATP-AGT-01
+      - ATP-AUTH-02
+      evidence_patterns:
+      - EVP-DEL-01
+      - EVP-AUTH-02
+      - EVP-AUTH-01
+      - EVP-DEL-02
   - id: F-004
     title: Mutable draft specifications undermine reproducible validation of retained Trust Task evidence
     status: open
     severity: High
     primary_disposition: specification
-    secondary_dispositions: [operational-policy]
-    risks: [RK-SC02, RK-SY03]
-    controls: [CT-18, CT-19, CT-47, CT-48]
-    guardrails: [GR-16, GR-17]
-    assurance_tests: [AT-16, AT-17]
+    secondary_dispositions:
+    - operational-policy
+    risks:
+    - RK-SC02
+    - RK-SY03
+    controls:
+    - CT-18
+    - CT-19
+    - CT-47
+    - CT-48
+    guardrails:
+    - GR-16
+    - GR-17
+    assurance_tests:
+    - AT-16
+    - AT-17
     evidence:
     - source: SPEC.md#52-compatibility-rules
-      observation: >-
-        While a task specification is at draft status, breaking changes may use a MINOR
-        increment and editorial or normalization changes are required to be made in place
-        within the existing version.
+      observation: While a task specification is at draft status, breaking changes may use a MINOR increment and
+        editorial or normalization changes are required to be made in place within the existing version.
     - source: SPEC.md#53-maturity-levels
-      observation: >-
-        Draft schemas and prose may change without notice, while producers are still allowed
-        to emit documents whose type resolves to a draft specification.
-    harm: >-
-      A retained document can later be evaluated against semantics or schema content different
-      from those in force when it was produced. This weakens auditability, dispute resolution
-      and long-lived evidence because the Type URI alone may not identify the exact normative
-      material under which the document was created.
-    recommendation: >-
-      Add immutable revision pinning for emitted documents that target draft specifications,
-      such as a content digest, immutable revision URI or registry snapshot reference. Define
-      verification behavior when the historical draft cannot be retrieved. Candidate and
-      standard immutability should remain the preferred production path.
+      observation: Draft schemas and prose may change without notice, while producers are still allowed to emit
+        documents whose type resolves to a draft specification.
+    harm: A retained document can later be evaluated against semantics or schema content different from those in
+      force when it was produced. This weakens auditability, dispute resolution and long-lived evidence because
+      the Type URI alone may not identify the exact normative material under which the document was created.
+    recommendation: Add immutable revision pinning for emitted documents that target draft specifications, such
+      as a content digest, immutable revision URI or registry snapshot reference. Define verification behavior when
+      the historical draft cannot be retrieved. Candidate and standard immutability should remain the preferred
+      production path.
     retest_when:
     - Retained documents can unambiguously resolve the exact draft semantics under which they were emitted.
-
+    portable_assurance:
+      harm_patterns:
+      - HRM-GOV-02
+      - HRM-ECO-02
+      risk_patterns:
+      - RKP-RED-01
+      control_patterns:
+      - CTP-RED-01
+      guardrail_patterns:
+      - GRP-RED-01
+      assurance_patterns:
+      - ATP-RED-01
+      evidence_patterns:
+      - EVP-RED-01
   - id: F-005
     title: Runtime registry resolution can become an availability and semantic-integrity dependency
     status: open
     severity: High
     primary_disposition: operational-policy
-    secondary_dispositions: [specification, implementation-guidance]
-    risks: [RK-EX02, RK-SC02]
-    controls: [CT-18, CT-19, CT-39, CT-48]
-    guardrails: [GR-16]
-    assurance_tests: [AT-16]
+    secondary_dispositions:
+    - specification
+    - implementation-guidance
+    risks:
+    - RK-EX02
+    - RK-SC02
+    controls:
+    - CT-18
+    - CT-19
+    - CT-39
+    - CT-48
+    guardrails:
+    - GR-16
+    assurance_tests:
+    - AT-16
     evidence:
     - source: SPEC.md#72-consumer-requirements
-      observation: >-
-        Consumer validation is defined in terms of obtaining the framework and payload schemas
-        by content-negotiating registry URIs.
+      observation: Consumer validation is defined in terms of obtaining the framework and payload schemas by content-negotiating
+        registry URIs.
     - source: SPEC.md#103-schema-validation-dos
-      observation: >-
-        The security considerations explicitly distinguish dynamically obtained schemas from
-        schemas authenticated and embedded at build time, but do not establish a normative
-        caching, pinning or offline-verification baseline.
-    harm: >-
-      A registry outage, routing failure, compromised mutable source or forced online dependency
-      can prevent otherwise valid tasks from being processed or cause different consumers to
-      validate against different material. Critical trust operations can therefore inherit a
-      single resolution-path dependency that the transport-agnostic document model does not make
-      obvious to deployers.
-    recommendation: >-
-      Publish an operational profile for authenticated schema pinning, caching and offline
-      verification. Candidate/standard artifacts should be cacheable indefinitely by immutable
-      digest, with explicit failure behavior when a required artifact cannot be authenticated or
-      retrieved.
+      observation: The security considerations explicitly distinguish dynamically obtained schemas from schemas
+        authenticated and embedded at build time, but do not establish a normative caching, pinning or offline-verification
+        baseline.
+    harm: A registry outage, routing failure, compromised mutable source or forced online dependency can prevent
+      otherwise valid tasks from being processed or cause different consumers to validate against different material.
+      Critical trust operations can therefore inherit a single resolution-path dependency that the transport-agnostic
+      document model does not make obvious to deployers.
+    recommendation: Publish an operational profile for authenticated schema pinning, caching and offline verification.
+      Candidate/standard artifacts should be cacheable indefinitely by immutable digest, with explicit failure behavior
+      when a required artifact cannot be authenticated or retrieved.
     retest_when:
     - Registry-unavailable and registry-compromise scenarios have a normative or required operational profile.
-
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-03
+      - HRM-INF-01
+      risk_patterns:
+      - RKP-OPS-01
+      control_patterns:
+      - CTP-OPS-01
+      guardrail_patterns: []
+      assurance_patterns:
+      - ATP-OPS-01
+      evidence_patterns:
+      - EVP-OPS-01
   - id: F-006
     title: Capability discovery does not negotiate the security profile needed to execute a supported task
     status: open
     severity: High
     primary_disposition: companion-specification
-    secondary_dispositions: [specification, implementation-guidance]
-    risks: [RK-CY01, RK-ID04, RK-SC02]
-    controls: [CT-14, CT-19, CT-27, CT-28, CT-29]
-    guardrails: [GR-16]
-    assurance_tests: [AT-16]
+    secondary_dispositions:
+    - specification
+    - implementation-guidance
+    risks:
+    - RK-CY01
+    - RK-ID04
+    - RK-SC02
+    controls:
+    - CT-14
+    - CT-19
+    - CT-27
+    - CT-28
+    - CT-29
+    guardrails:
+    - GR-16
+    assurance_tests:
+    - AT-16
     evidence:
     - source: SPEC.md#11-discovery-and-capability-negotiation
-      observation: >-
-        Discovery returns supported Type URIs and is advisory. It does not negotiate supported
-        VID methods, proof suites, transport bindings, required extensions or freshness/
-        authorization profiles for the advertised task.
+      observation: Discovery returns supported Type URIs and is advisory. It does not negotiate supported VID methods,
+        proof suites, transport bindings, required extensions or freshness/ authorization profiles for the advertised
+        task.
     - source: SPEC.md#47-proof
-      observation: >-
-        The framework permits any appropriate W3C-registered Data Integrity suite, leaving
-        suite choice to the parties' trust requirements.
-    harm: >-
-      Two parties can discover that they support the same task and still fail at execution
-      because they do not share a verification method, proof suite, binding or mandatory safety
-      profile. In higher-stakes deployments this can push implementers toward silent downgrade,
-      bespoke fallback or broad acceptance rules that reduce assurance.
-    recommendation: >-
-      Extend discovery through a companion capability profile that can advertise the security
-      parameters relevant to successful execution without making the core task registry
-      transport-specific. Include supported VID schemes, proof suites, bindings and named
-      authorization/freshness profiles, with anti-downgrade guidance.
+      observation: The framework permits any appropriate W3C-registered Data Integrity suite, leaving suite choice
+        to the parties' trust requirements.
+    harm: Two parties can discover that they support the same task and still fail at execution because they do not
+      share a verification method, proof suite, binding or mandatory safety profile. In higher-stakes deployments
+      this can push implementers toward silent downgrade, bespoke fallback or broad acceptance rules that reduce
+      assurance.
+    recommendation: Extend discovery through a companion capability profile that can advertise the security parameters
+      relevant to successful execution without making the core task registry transport-specific. Include supported
+      VID schemes, proof suites, bindings and named authorization/freshness profiles, with anti-downgrade guidance.
     retest_when:
     - Parties can discover a mutually executable security profile before sending the task.
-
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-ECO-02
+      - HRM-SEC-01
+      - HRM-SEC-03
+      risk_patterns:
+      - RKP-AUTH-01
+      - RKP-AUTH-03
+      - RKP-DISC-01
+      - RKP-DISC-02
+      control_patterns:
+      - CTP-AUTH-01
+      - CTP-AUTH-03
+      - CTP-DISC-01
+      - CTP-DISC-02
+      guardrail_patterns:
+      - GRP-AUTH-01
+      - GRP-DEL-01
+      assurance_patterns:
+      - ATP-AUTH-01
+      - ATP-DEL-01
+      - ATP-DISC-01
+      - ATP-DISC-02
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-AUTH-02
+      - EVP-OPS-01
   - id: F-007
     title: Destructive and actsAsSubject classifications do not establish a minimum human-approval floor
     status: open
     severity: Critical
     primary_disposition: governance
-    secondary_dispositions: [companion-specification, runtime-control]
-    risks: [RK-AI01, RK-HX04]
-    controls: [CT-30, CT-52, CT-58]
-    guardrails: [GR-12, GR-19]
-    assurance_tests: [AT-12, AT-19]
+    secondary_dispositions:
+    - companion-specification
+    - runtime-control
+    risks:
+    - RK-AI01
+    - RK-HX04
+    controls:
+    - CT-30
+    - CT-52
+    - CT-58
+    guardrails:
+    - GR-12
+    - GR-19
+    assurance_tests:
+    - AT-12
+    - AT-19
     evidence:
     - source: SPEC.md#73-specification-requirements
-      observation: >-
-        Side-effect and exposure classifications are explicitly descriptive, not prescriptive;
-        a specification must not derive a consent requirement from them.
+      observation: Side-effect and exposure classifications are explicitly descriptive, not prescriptive; a specification
+        must not derive a consent requirement from them.
     - source: docs/design-notes/delegated-trust-task-execution.md#3-the-invariant
-      observation: >-
-        Policy enforcement is opt-in and the boot-installed baseline allows every task,
-        including destructive tasks. Human consent exists only where a deployment enables
-        enforcement and authors a requireConsent policy.
-    harm: >-
-      Two conforming deployments can treat the same destructive or subject-authority action very
-      differently: one can require meaningful human approval while another can execute it
-      automatically. For agent-mediated operation this can turn a technically conforming task
-      vocabulary into an automation surface that exceeds the principal's expectations.
-    recommendation: >-
-      Keep consent policy out of generic payload schemas, but define a governance/safety profile
-      for deployments that execute on behalf of people. The profile should establish minimum
-      approval requirements for destructive and actsAsSubject actions, fail-safe behavior when
-      effects cannot be rendered, and explicit exceptions for pre-authorized automation.
+      observation: Policy enforcement is opt-in and the boot-installed baseline allows every task, including destructive
+        tasks. Human consent exists only where a deployment enables enforcement and authors a requireConsent policy.
+    harm: 'Two conforming deployments can treat the same destructive or subject-authority action very differently:
+      one can require meaningful human approval while another can execute it automatically. For agent-mediated operation
+      this can turn a technically conforming task vocabulary into an automation surface that exceeds the principal''s
+      expectations.'
+    recommendation: Keep consent policy out of generic payload schemas, but define a governance/safety profile for
+      deployments that execute on behalf of people. The profile should establish minimum approval requirements for
+      destructive and actsAsSubject actions, fail-safe behavior when effects cannot be rendered, and explicit exceptions
+      for pre-authorized automation.
     retest_when:
     - A named deployment profile establishes minimum approval behavior for high-impact delegated execution.
-
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-ECO-02
+      - HRM-GOV-01
+      - HRM-GOV-03
+      risk_patterns:
+      - RKP-AUTH-01
+      - RKP-AUTH-03
+      - RKP-GOV-01
+      control_patterns:
+      - CTP-AUTH-01
+      - CTP-AUTH-03
+      - CTP-GOV-01
+      guardrail_patterns:
+      - GRP-AUTH-01
+      - GRP-DEL-01
+      - GRP-GOV-01
+      assurance_patterns:
+      - ATP-AUTH-01
+      - ATP-DEL-01
+      - ATP-GOV-01
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-AUTH-02
+      - EVP-GOV-01
   - id: F-008
     title: Supported decision-making and legal representation have no framework-level binding point
     status: open
     severity: High
     primary_disposition: specification
-    secondary_dispositions: [companion-specification, governance]
-    risks: [RK-HX04, RK-HX05, RK-SC05]
-    controls: [CT-57, CT-58, CT-59, CT-60, CT-66]
-    guardrails: [GR-19]
-    assurance_tests: [AT-19]
+    secondary_dispositions:
+    - companion-specification
+    - governance
+    risks:
+    - RK-HX04
+    - RK-HX05
+    - RK-SC05
+    controls:
+    - CT-57
+    - CT-58
+    - CT-59
+    - CT-60
+    - CT-66
+    guardrails:
+    - GR-19
+    assurance_tests:
+    - AT-19
     evidence:
     - source: SPEC.md#2-terminology
-      observation: >-
-        The framework models each document bilaterally with one producer/issuer and one
-        consumer/recipient, while additional people represented in a payload have no common
-        framework semantics.
+      observation: The framework models each document bilaterally with one producer/issuer and one consumer/recipient,
+        while additional people represented in a payload have no common framework semantics.
     - source: SPEC.md#73-specification-requirements
-      observation: >-
-        Specifications define parties and payloads but there is no common representation for a
-        representative acting with or for a subject, supported consent, notification of a
-        secondary decision-support person, or legal delegation evidence.
-    harm: >-
-      Task specifications can independently invent incompatible ways to represent guardians,
-      attorneys, supporters or co-decision-makers, or omit them entirely. People who cannot
-      safely or legally act through a single-controller interaction can therefore be excluded
-      from otherwise interoperable trust workflows.
-    recommendation: >-
-      Add an explicit extension/binding point for representation semantics and normatively
-      reference a companion supported-decision-making/legal-delegation profile. Do not require
-      every Trust Task to carry representation data; require specifications and deployments to
-      avoid inferring exclusive legal capacity from issuer identity alone.
+      observation: Specifications define parties and payloads but there is no common representation for a representative
+        acting with or for a subject, supported consent, notification of a secondary decision-support person, or
+        legal delegation evidence.
+    harm: Task specifications can independently invent incompatible ways to represent guardians, attorneys, supporters
+      or co-decision-makers, or omit them entirely. People who cannot safely or legally act through a single-controller
+      interaction can therefore be excluded from otherwise interoperable trust workflows.
+    recommendation: Add an explicit extension/binding point for representation semantics and normatively reference
+      a companion supported-decision-making/legal-delegation profile. Do not require every Trust Task to carry representation
+      data; require specifications and deployments to avoid inferring exclusive legal capacity from issuer identity
+      alone.
     retest_when:
-    - A reusable representation/delegation profile is defined and the framework states how task specifications
-      bind to it.
+    - A reusable representation/delegation profile is defined and the framework states how task specifications bind
+      to it.
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-SEC-01
+      - HRM-INF-01
+      risk_patterns:
+      - RKP-DEL-01
+      - RKP-AGT-01
+      - RKP-ID-01
+      control_patterns:
+      - CTP-DEL-01
+      - CTP-AGT-01
+      - CTP-ID-01
+      guardrail_patterns:
+      - GRP-DEL-01
+      - GRP-AGT-01
+      - GRP-ID-01
+      assurance_patterns:
+      - ATP-DEL-01
+      - ATP-AGT-01
+      - ATP-ID-01
+      evidence_patterns:
+      - EVP-DEL-01
+      - EVP-AUTH-02
+      - EVP-AUTH-01

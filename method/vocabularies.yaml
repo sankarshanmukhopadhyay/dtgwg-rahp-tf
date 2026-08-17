@@ -1,13 +1,13 @@
 severity:
-  description: Worst credible consequence if the risk is realised. Critical is not a higher number on the same
-    scale — it marks a risk whose non-zero incidence is unacceptable regardless of likelihood, and which therefore
-    must be addressed by a guardrail rather than scored and tolerated.
+  description: "Worst credible consequence if the risk is realised. Critical is not a higher number on the same\
+    \ scale \u2014 it marks a risk whose non-zero incidence is unacceptable regardless of likelihood, and which\
+    \ therefore must be addressed by a guardrail rather than scored and tolerated."
   values:
   - value: Critical
     score: null
     absolute: true
-    definition: Non-zero incidence is unacceptable. Legal, criminal or safeguarding consequence. MUST be gated
-      by a guardrail; may not be risk-accepted.
+    definition: Non-zero incidence is unacceptable. Legal, criminal or safeguarding consequence. MUST be gated by
+      a guardrail; may not be risk-accepted.
   - value: High
     score: 3
     definition: Serious, difficult-to-reverse harm to people or to trust graph integrity.
@@ -83,15 +83,15 @@ persona_type:
   - value: legitimate_user
     definition: A participant the system is intended to serve.
   - value: portable_role
-    definition: A reusable institutional or technical actor role that recurs across protocols and deployments;
-      use deployment-specific personas when local lived experience materially changes the assurance question.
+    definition: A reusable institutional or technical actor role that recurs across protocols and deployments; use
+      deployment-specific personas when local lived experience materially changes the assurance question.
   - value: machine_agent
-    definition: A non-human actor operating under delegated authority — benign or adversarial.
+    definition: "A non-human actor operating under delegated authority \u2014 benign or adversarial."
   - value: bad_actor
     definition: An adversary whose capability must be calibrated to what is realistic, not maximal.
   - value: edge_case
-    definition: An extreme user whose participation pathway is materially harder than the mainstream case.
-      Extreme users define requirements; middle cases do not.
+    definition: An extreme user whose participation pathway is materially harder than the mainstream case. Extreme
+      users define requirements; middle cases do not.
 risk_acceptance_decision:
   values:
   - value: accepted
@@ -160,11 +160,10 @@ external_alignment_relationship:
   - value: direct
     description: The external source explicitly addresses substantially the same security requirement or mechanism.
   - value: supports
-    description: The external source supplies a control, principle, or assurance objective that supports the
-      recommended hardening.
+    description: The external source supplies a control, principle, or assurance objective that supports the recommended
+      hardening.
   - value: analogous
-    description: The external threat/control is a close analogue but was not written for the DTG/Trust Tasks
-      context.
+    description: The external threat/control is a close analogue but was not written for the DTG/Trust Tasks context.
   - value: contextual
     description: The source provides useful background or framing but does not independently support the finding.
 rule_profile_status:
@@ -185,3 +184,40 @@ monitoring_status:
   - active
   - suspended
   - retired
+portable_control_function:
+  values:
+  - prevent
+  - deter
+  - constrain
+  - detect
+  - interrupt
+  - contain
+  - recover
+  - remediate
+  - compensate
+  - audit
+  - govern
+assurance_level:
+  values:
+  - value: A0
+    definition: Documented claim only; no test evidence.
+  - value: A1
+    definition: Human-reviewable rationale or artefact exists.
+  - value: A2
+    definition: A defined test can be executed against the claim.
+  - value: A3
+    definition: Test result is independently reproducible from retained evidence.
+  - value: A4
+    definition: The claim is continuously or routinely evidenced with freshness controls.
+automation_level:
+  values:
+  - manual
+  - assisted
+  - automated
+risk_origin:
+  values:
+  - design
+  - governance
+  - implementation
+  - operations
+  - ecosystem

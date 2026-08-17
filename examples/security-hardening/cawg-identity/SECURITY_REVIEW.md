@@ -12,11 +12,11 @@
 | Target repository | `decentralized-identity/cawg-identity-assertion` |
 | Target version | 1.3 WG-approved draft |
 | Target commit | `8a9c4925df7e8ccbcabce9d754fc27739e11dc12` |
-| RAHP version | `v0.8.0` |
+| RAHP version | `v1.1.0` |
 | Engine contract | `rahp-engine-contract-v1` |
-| Engine/method revalidated on | 2026-08-16 |
+| Engine/method revalidated on | 2026-08-17 |
 | Original RAHP version | `v0.7.0` |
-| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
+| Revalidation scope | v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target revision unchanged |
 | Source paths | — |
 
 ## Overall assessment
@@ -65,6 +65,17 @@ External mappings are evidence links, not claims that the cited organization rev
 | RAHP controls | — |
 | RAHP guardrails | — |
 | RAHP assurance tests | — |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | HRM-SEC-03, HRM-INF-01 |
+| Risks | RKP-OPS-01 |
+| Controls | CTP-OPS-01 |
+| Guardrails | — |
+| Assurance | ATP-OPS-01 |
+| Evidence | EVP-OPS-01 |
 
 **External standards alignment**
 
@@ -121,6 +132,17 @@ Specify allowed schemes, redirect limits, private-address blocking, size/time li
 | RAHP guardrails | — |
 | RAHP assurance tests | — |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | HRM-GOV-02, HRM-ECO-02 |
+| Risks | RKP-RED-01 |
+| Controls | CTP-RED-01 |
+| Guardrails | GRP-RED-01 |
+| Assurance | ATP-RED-01 |
+| Evidence | EVP-RED-01 |
+
 **External standards alignment**
 
 | External source | Clause / control | Relationship | Rationale |
@@ -175,6 +197,17 @@ Cryptographically or normatively bind entity_id namespace/issuer provenance and 
 | RAHP controls | — |
 | RAHP guardrails | — |
 | RAHP assurance tests | — |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | HRM-SEC-02, HRM-INF-01 |
+| Risks | RKP-CRD-01 |
+| Controls | CTP-AUTH-01 |
+| Guardrails | GRP-AUTH-01 |
+| Assurance | ATP-AUTH-01 |
+| Evidence | EVP-AUTH-01 |
 
 **External standards alignment**
 

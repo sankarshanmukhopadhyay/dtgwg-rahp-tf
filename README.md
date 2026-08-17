@@ -1,7 +1,7 @@
 # RAHP Toolkit
 
 **Risk Assessment & Harms Prevention**  
-Release v1.0.0 · CC-BY 4.0
+Release v1.1.0 · CC-BY 4.0
 
 RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-testing standards and technical specifications against risks, human harms, governance weaknesses and adversarial/security failure conditions. It provides a reusable method, configuration contract, review tooling, scenario patterns, source-change monitoring, validators and evidence rendering.
 
@@ -12,6 +12,7 @@ RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-test
 | Goal | Start here |
 |---|---|
 | Understand the method | [How RAHP works](docs/how-rahp-works.md) and [Concepts](docs/concepts.md) |
+| Browse reusable harm/risk/control patterns | [Portable assurance catalogue](docs/portable-assurance-catalogue.md) |
 | Configure your own repositories | [Configuration-driven adoption](docs/configuration.md) and [Adopting RAHP](ADOPTION.md) |
 | Run a risks-and-harms review | [Pressure-testing a specification](docs/pressure-testing-a-spec.md) |
 | Run a security/adversarial review | [Security and hardening review](docs/security-hardening-review.md) |
@@ -24,7 +25,7 @@ RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-test
 | Inspect the A2A agent-protocol example | [A2A worked example](docs/a2a-example.md) |
 | Understand the engine boundary | [Engine contract](docs/engine-contract.md) |
 | Understand review/log retention | [Review evidence and retention](docs/evidence-retention.md) |
-| Read the current release | [v1.0.0 release notes](docs/releases/v1.0.0.md) |
+| Read the current release | [v1.1.0 release notes](docs/releases/v1.1.0.md) |
 
 ## The v1.0 architecture
 
@@ -54,7 +55,7 @@ The portability invariant is **shared method and engine contract, independent de
 
 | Path | Role |
 |---|---|
-| `method/` | Portable RAHP lifecycle, controlled vocabularies, schemas and configuration contract. |
+| `method/` | Portable RAHP lifecycle, assurance catalogue, controlled vocabularies, schemas and configuration contract. |
 | `tools/` | Portable orchestration, validation, monitoring, rendering and build tooling. |
 | `profiles/<id>/` | Deployment configuration: repositories, branches, scope, context and allowed review modes. |
 | `instances/<id>/` | Deployment-owned state, review records and optional local assurance vocabulary. |
@@ -181,6 +182,12 @@ The bundled DTG catalogue currently contains:
 | `EV-xxx` | Evidence artefact | 5 operational assurance evidence contracts |
 
 These counts are checked by `tools/validate.py`. DTG governance work such as `RP-001`, normative triage and its action queue remains scoped to that deployment unless another adopter explicitly chooses equivalent governance structures.
+
+## v1.1: portable assurance knowledge model
+
+v1.1 adds a method-level catalogue of 139 reusable assurance patterns: 24 human-harm patterns, 38 risk patterns, 31 control patterns, 12 guardrail patterns, 19 assurance-test patterns and 15 evidence contracts. Curated RAHP and security examples now map deployment-specific findings to these patterns through `portable_assurance`, while local identifiers, evidence, governance and disposition remain authoritative.
+
+The new catalogue is under `method/catalogue/` and validated by `tools/validate_catalogue.py`; `tools/build.py` also emits `build/portable-assurance.json` and `build/derived/portable-catalogue-coverage.json`. The Trust Tasks × DTG Credential Specification composition is now a first-class RAHP worked example, demonstrating how component-level success can still produce composition-level authority, lifecycle, privacy, replay and redress failures. See [Assurance knowledge model](docs/assurance-knowledge-model.md), [portable catalogue](docs/portable-assurance-catalogue.md), and [v1.1.0 release notes](docs/releases/v1.1.0.md).
 
 ## v1.0: stable method and implementation conformance
 

@@ -12,5 +12,6 @@ Inspect independent deployments and worked examples that demonstrate portability
 ## In this section
 
 - [A2A worked example](a2a-example.md)
+- [Trust Tasks × Credential Specification cross-spec example](../examples/cross-spec/trust-tasks-credspec/README.md)
 - [CAWG/C2PA deployment](cawg-instance.md)
 - [DTG exemplar deployment](dtg-instance.md)

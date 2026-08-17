@@ -11,13 +11,14 @@ review:
     source_paths: []
   reviewed_against:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    rahp_version: v0.8.0
+    rahp_version: v1.1.0
     corpus_date: '2026-08-16'
     original_rahp_version: v0.6.0
     original_corpus_date: '2026-08-14'
     engine_contract: rahp-engine-contract-v1
-    revalidated_on: '2026-08-16'
-    revalidation_scope: method-and-engine-only; target revision and substantive findings unchanged
+    revalidated_on: '2026-08-17'
+    revalidation_scope: v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target
+      revision unchanged
   scope:
     included:
     - Delegation/endorsement scope, identity binding, chaining and revocation.
@@ -26,21 +27,20 @@ review:
     - Legal opinion on whether a signal is enforceable in any jurisdiction.
   method:
     workflow: docs/pressure-testing-a-spec.md
-    rule: Treat cryptographic validity, identity, authority, consent, provenance and relying-party trust as 
-      distinct propositions; route remediation to the narrowest effective control plane.
+    rule: Treat cryptographic validity, identity, authority, consent, provenance and relying-party trust as distinct
+      propositions; route remediation to the narrowest effective control plane.
   summary:
     finding_count: 2
     open_count: 2
     by_primary_disposition:
       specification: 1
       companion-specification: 1
-    overall_assessment: This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conformance 
-      certification. Findings focus on harms, authority/lifecycle boundaries and composition behaviour that 
-      matter when the specification is adopted or mandated.
+    overall_assessment: This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conformance certification.
+      Findings focus on harms, authority/lifecycle boundaries and composition behaviour that matter when the specification
+      is adopted or mandated.
   findings:
   - id: F-001
-    title: Endorsement can be over-read as open-ended delegation when scope and onward delegation are not 
-      explicit
+    title: Endorsement can be over-read as open-ended delegation when scope and onward delegation are not explicit
     status: open
     severity: High
     primary_disposition: specification
@@ -48,12 +48,12 @@ review:
     - CRK-08
     evidence:
     - source: https://cawg.io/endorsement/1.0-draft/
-      observation: Endorsement records approval for specific subsequent actions by another actor, creating a 
-        delegation-like authorization relationship.
-    harm: An endorsed processor, organization or agent can be treated as authorized beyond the stated actions,
-      or may delegate onward without the original endorser understanding the resulting authority chain.
-    recommendation: Define explicit non-transitivity by default, bounded action/resource/time scope, 
-      onward-delegation rules, and validation behaviour for endorsement chains.
+      observation: Endorsement records approval for specific subsequent actions by another actor, creating a delegation-like
+        authorization relationship.
+    harm: An endorsed processor, organization or agent can be treated as authorized beyond the stated actions, or
+      may delegate onward without the original endorser understanding the resulting authority chain.
+    recommendation: Define explicit non-transitivity by default, bounded action/resource/time scope, onward-delegation
+      rules, and validation behaviour for endorsement chains.
     retest_when:
     - Conformance vectors cover over-scope action, onward delegation and multi-hop endorsement.
     scenario_patterns:
@@ -64,6 +64,34 @@ review:
     - P2
     - P3
     - P5
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-ECO-02
+      risk_patterns:
+      - RKP-DEL-01
+      - RKP-AGT-01
+      - RKP-AUTH-01
+      - RKP-AUTH-03
+      control_patterns:
+      - CTP-DEL-01
+      - CTP-AGT-01
+      - CTP-AUTH-01
+      - CTP-AUTH-03
+      guardrail_patterns:
+      - GRP-DEL-01
+      - GRP-AGT-01
+      - GRP-AUTH-01
+      assurance_patterns:
+      - ATP-DEL-01
+      - ATP-AGT-01
+      - ATP-AUTH-01
+      evidence_patterns:
+      - EVP-DEL-01
+      - EVP-AUTH-02
+      - EVP-AUTH-01
   - id: F-002
     title: Revocation and actor identity lifecycle are not yet a complete authorization lifecycle
     status: open
@@ -73,16 +101,15 @@ review:
     - CRK-09
     evidence:
     - source: https://cawg.io/endorsement/1.0-draft/
-      observation: The draft binds approval to actor/action relationships but depends on identity/signing and 
-        surrounding lifecycle machinery for continuing validity.
-    harm: A previously endorsed actor can remain apparently authorized after role termination, credential 
-      compromise, organizational change, or explicit withdrawal of authority.
-    recommendation: Bind endorsement validation to an explicit authority-status lifecycle, including 
-      revocation/expiry, role or credential rotation, and historical validation of actions taken while 
-      endorsement was effective.
+      observation: The draft binds approval to actor/action relationships but depends on identity/signing and surrounding
+        lifecycle machinery for continuing validity.
+    harm: A previously endorsed actor can remain apparently authorized after role termination, credential compromise,
+      organizational change, or explicit withdrawal of authority.
+    recommendation: Bind endorsement validation to an explicit authority-status lifecycle, including revocation/expiry,
+      role or credential rotation, and historical validation of actions taken while endorsement was effective.
     retest_when:
-    - A validator can deterministically distinguish currently authorized, historically authorized and 
-      withdrawn endorsements.
+    - A validator can deterministically distinguish currently authorized, historically authorized and withdrawn
+      endorsements.
     scenario_patterns:
     - SP-GOV-01
     - SP-RECOV-01
@@ -92,3 +119,32 @@ review:
     - P3
     - P5
     - P6
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-05
+      - HRM-SEC-02
+      - HRM-AUT-04
+      - HRM-INF-01
+      - HRM-ECO-02
+      risk_patterns:
+      - RKP-AUTH-02
+      - RKP-DEL-03
+      - RKP-AUTH-01
+      - RKP-AUTH-03
+      control_patterns:
+      - CTP-AUTH-02
+      - CTP-DEL-02
+      - CTP-AUTH-01
+      - CTP-AUTH-03
+      guardrail_patterns:
+      - GRP-AUTH-02
+      - GRP-AUTH-01
+      - GRP-DEL-01
+      assurance_patterns:
+      - ATP-AUTH-02
+      - ATP-AUTH-01
+      - ATP-DEL-01
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-DEL-02
+      - EVP-AUTH-02

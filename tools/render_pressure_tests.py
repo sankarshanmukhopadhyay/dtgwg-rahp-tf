@@ -227,6 +227,22 @@ def render_review(review: dict[str, Any]) -> str:
             "",
         ]
 
+        portable = finding.get("portable_assurance") or {}
+        if portable:
+            lines += [
+                "**Portable v1.1 assurance patterns**",
+                "",
+                "| Layer | Patterns |",
+                "|---|---|",
+                f"| Harms | {code_list(portable.get('harm_patterns'))} |",
+                f"| Risks | {code_list(portable.get('risk_patterns'))} |",
+                f"| Controls | {code_list(portable.get('control_patterns'))} |",
+                f"| Guardrails | {code_list(portable.get('guardrail_patterns'))} |",
+                f"| Assurance | {code_list(portable.get('assurance_patterns'))} |",
+                f"| Evidence | {code_list(portable.get('evidence_patterns'))} |",
+                "",
+            ]
+
         evidence = finding.get("evidence") or []
         if evidence:
             lines += ["**Evidence**", "", "| Source | Observation |", "|---|---|"]

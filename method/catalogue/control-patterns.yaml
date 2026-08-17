@@ -1,0 +1,560 @@
+catalogue_version: 1.1.0
+record_type: control_pattern
+records:
+- id: CTP-AUTH-01
+  name: Separate authentication from authorization
+  control_function: constrain
+  control_objective: Require an explicit authorization decision independent of identity, authentication, credential
+    validity or discovery integrity.
+  risk_patterns:
+  - RKP-AUTH-01
+  - RKP-CRD-01
+  - RKP-DISC-01
+  authority: system operator
+  enforcement_point: authorization boundary
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns: []
+  introduces_or_amplifies_risks: []
+- id: CTP-AUTH-02
+  name: Action-time authority evaluation
+  control_function: prevent
+  control_objective: Evaluate current authority, status, expiry and revocation immediately before a consequential
+    action.
+  risk_patterns:
+  - RKP-AUTH-02
+  - RKP-CRD-02
+  - RKP-COMP-02
+  authority: system operator
+  enforcement_point: action boundary
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-AUTH-01
+  introduces_or_amplifies_risks: []
+- id: CTP-AUTH-03
+  name: Machine-readable authority envelope
+  control_function: constrain
+  control_objective: Represent audience, action, resource, purpose, value, time and delegation bounds in a form
+    that can be enforced.
+  risk_patterns:
+  - RKP-AUTH-03
+  - RKP-DEL-01
+  - RKP-AGT-01
+  authority: system operator
+  enforcement_point: policy enforcement point
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-AUTH-02
+  introduces_or_amplifies_risks: []
+- id: CTP-DEL-01
+  name: Delegation chain continuity
+  control_function: constrain
+  control_objective: Preserve the originating principal and bounded authority envelope across each delegation hop.
+  risk_patterns:
+  - RKP-DEL-01
+  - RKP-DEL-02
+  - RKP-AGT-02
+  - RKP-COMP-01
+  authority: system operator
+  enforcement_point: delegation boundary
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-DEL-01
+  introduces_or_amplifies_risks: []
+- id: CTP-DEL-02
+  name: Revocation propagation
+  control_function: interrupt
+  control_objective: Distribute revocation/suspension rapidly to every enforcement point that can exercise delegated
+    authority.
+  risk_patterns:
+  - RKP-DEL-03
+  - RKP-AUTH-02
+  authority: system operator
+  enforcement_point: delegation/status boundary
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-DEL-02
+  introduces_or_amplifies_risks: []
+- id: CTP-GOV-01
+  name: Independent governance checks
+  control_function: constrain
+  control_objective: Separate policy creation, approval, enforcement and appeal so no single actor can unilaterally
+    control the full lifecycle.
+  risk_patterns:
+  - RKP-GOV-01
+  - RKP-GOV-02
+  - RKP-DISC-03
+  authority: governance authority
+  enforcement_point: governance workflow
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-GOV-01
+  introduces_or_amplifies_risks: []
+- id: CTP-GOV-02
+  name: Versioned policy transition
+  control_function: recover
+  control_objective: Publish effective dates, migration rules, compatibility constraints and rollback/retirement
+    handling for governance changes.
+  risk_patterns:
+  - RKP-GOV-03
+  - RKP-COMP-02
+  authority: governance authority
+  enforcement_point: policy lifecycle
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-GOV-02
+  introduces_or_amplifies_risks: []
+- id: CTP-GOV-03
+  name: Cross-boundary responsibility map
+  control_function: remediate
+  control_objective: Assign accountable owners and redress paths for outcomes that span protocols, operators or
+    trust domains.
+  risk_patterns:
+  - RKP-GOV-04
+  - RKP-RED-01
+  - RKP-COMP-04
+  authority: governance authority
+  enforcement_point: governance/redress boundary
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-RED-01
+  introduces_or_amplifies_risks: []
+- id: CTP-ID-01
+  name: Explicit role binding
+  control_function: prevent
+  control_objective: Bind subject, issuer, holder, operator, principal and relying-party roles explicitly and reject
+    role substitution.
+  risk_patterns:
+  - RKP-ID-01
+  - RKP-COMP-01
+  authority: system operator
+  enforcement_point: verification boundary
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns: []
+  introduces_or_amplifies_risks: []
+- id: CTP-ID-02
+  name: Recovery with takeover resistance
+  control_function: recover
+  control_objective: Provide accessible recovery with independent checks, notification, delay or quorum protections
+    appropriate to impact.
+  risk_patterns:
+  - RKP-ID-03
+  authority: system operator
+  enforcement_point: recovery workflow
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-REC-01
+  introduces_or_amplifies_risks: []
+- id: CTP-DISC-01
+  name: Discovery non-inference rule
+  control_function: constrain
+  control_objective: State and enforce that discoverability, signed metadata or registry presence does not itself
+    establish authorization, certification or endorsement.
+  risk_patterns:
+  - RKP-DISC-01
+  - RKP-CRD-01
+  authority: system operator
+  enforcement_point: relying-party decision
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns: []
+  introduces_or_amplifies_risks: []
+- id: CTP-DISC-02
+  name: Discovery freshness and withdrawal
+  control_function: detect
+  control_objective: Define cache bounds, refresh rules, withdrawal semantics and stale-state behavior for discovery
+    metadata.
+  risk_patterns:
+  - RKP-DISC-02
+  - RKP-OPS-01
+  authority: system operator
+  enforcement_point: discovery client
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-OPS-01
+  introduces_or_amplifies_risks: []
+- id: CTP-DISC-03
+  name: Registry governance policy
+  control_function: govern
+  control_objective: Publish admission, update, suspension, removal, correction, audit and appeal authority for
+    registry entries.
+  risk_patterns:
+  - RKP-DISC-03
+  - RKP-GOV-01
+  authority: registry governance authority
+  enforcement_point: registry governance
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-GOV-01
+  introduces_or_amplifies_risks: []
+- id: CTP-CRD-01
+  name: Context-bound credential use
+  control_function: constrain
+  control_objective: Bind credential use to intended task, transaction, audience or purpose and reject detached
+    reuse when context is material.
+  risk_patterns:
+  - RKP-CRD-03
+  - RKP-CRD-04
+  - RKP-OPS-02
+  authority: system operator
+  enforcement_point: credential verifier
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns: []
+  introduces_or_amplifies_risks: []
+- id: CTP-CRD-02
+  name: Status-as-of semantics
+  control_function: detect
+  control_objective: Define which status and authority state must be evaluated and at what time for issuance, presentation
+    and action.
+  risk_patterns:
+  - RKP-CRD-02
+  - RKP-COMP-02
+  authority: system operator
+  enforcement_point: credential verifier
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-AUTH-01
+  introduces_or_amplifies_risks: []
+- id: CTP-PRV-01
+  name: Pairwise or scoped identifiers
+  control_function: prevent
+  control_objective: Use context-scoped identifiers and minimize stable metadata where correlation is not required.
+  risk_patterns:
+  - RKP-PRV-01
+  - RKP-COMP-03
+  authority: system operator
+  enforcement_point: identifier creation
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns: []
+  introduces_or_amplifies_risks: []
+- id: CTP-PRV-02
+  name: Composition privacy analysis
+  control_function: detect
+  control_objective: Evaluate privacy and inference risks for the combined disclosure set, not only each credential
+    or artefact independently.
+  risk_patterns:
+  - RKP-PRV-02
+  - RKP-COMP-03
+  authority: system operator
+  enforcement_point: presentation construction
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-PRV-01
+  introduces_or_amplifies_risks: []
+- id: CTP-PRV-03
+  name: Privacy-safe failure responses
+  control_function: prevent
+  control_objective: Limit errors and diagnostics to information necessary for remediation, with sensitive detail
+    protected or authenticated.
+  risk_patterns:
+  - RKP-PRV-03
+  authority: system operator
+  enforcement_point: error boundary
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns: []
+  introduces_or_amplifies_risks: []
+- id: CTP-EXC-01
+  name: Alternative participation path
+  control_function: compensate
+  control_objective: Provide at least one viable alternative when the primary identity, device, accessibility or
+    connectivity path excludes legitimate participants.
+  risk_patterns:
+  - RKP-EXC-01
+  - RKP-EXC-02
+  authority: system operator
+  enforcement_point: user journey
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-INCL-01
+  introduces_or_amplifies_risks: []
+- id: CTP-AGT-01
+  name: Principal intent checkpoint
+  control_function: constrain
+  control_objective: Require step-up confirmation or reauthorization for material scope expansion, high-impact action
+    or changed conditions.
+  risk_patterns:
+  - RKP-AGT-01
+  - RKP-AUTH-03
+  authority: system operator
+  enforcement_point: agent action boundary
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-AUTH-02
+  introduces_or_amplifies_risks: []
+- id: CTP-AGT-02
+  name: Secondary credential non-transitivity
+  control_function: constrain
+  control_objective: Do not forward or reuse secondary credentials across agents or purposes unless onward delegation
+    is explicitly authorized.
+  risk_patterns:
+  - RKP-AGT-02
+  - RKP-CRD-04
+  authority: system operator
+  enforcement_point: agent credential boundary
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns: []
+  introduces_or_amplifies_risks: []
+- id: CTP-AGT-03
+  name: External action provenance
+  control_function: audit
+  control_objective: Record externally consequential actions, active delegation reference, accountable actor, target,
+    time and outcome without requiring private chain-of-thought.
+  risk_patterns:
+  - RKP-AGT-03
+  - RKP-DEL-02
+  - RKP-RED-01
+  authority: system operator
+  enforcement_point: audit boundary
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-AUD-01
+  introduces_or_amplifies_risks: []
+- id: CTP-OPS-01
+  name: Safe dependency degradation
+  control_function: contain
+  control_objective: Define fail-closed, defer, bounded-cache or explicit risk-accepted behavior for unavailable
+    dependencies.
+  risk_patterns:
+  - RKP-OPS-01
+  - RKP-CRD-02
+  authority: system operator
+  enforcement_point: dependency boundary
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-OPS-01
+  introduces_or_amplifies_risks: []
+- id: CTP-OPS-02
+  name: Idempotency and anti-replay
+  control_function: prevent
+  control_objective: Bind freshness/uniqueness to consequential requests and make retries idempotent where duplicate
+    effects are unsafe.
+  risk_patterns:
+  - RKP-OPS-02
+  - RKP-CRD-03
+  authority: system operator
+  enforcement_point: execution boundary
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-OPS-02
+  introduces_or_amplifies_risks: []
+- id: CTP-OPS-03
+  name: Dependency invalidation continuity plan
+  control_function: recover
+  control_objective: Define notification, re-verification, grace, replacement and rollback behavior when a dependency
+    is compromised or withdrawn.
+  risk_patterns:
+  - RKP-OPS-03
+  authority: system operator
+  enforcement_point: operations/governance
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-GOV-02
+  introduces_or_amplifies_risks: []
+- id: CTP-RED-01
+  name: Contestability evidence package
+  control_function: audit
+  control_objective: Preserve sufficient decision, policy, identity/authority and action evidence to support explanation,
+    appeal and remediation.
+  risk_patterns:
+  - RKP-RED-01
+  - RKP-GOV-04
+  authority: system operator
+  enforcement_point: decision/audit boundary
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-RED-01
+  - EVP-AUD-01
+  introduces_or_amplifies_risks: []
+- id: CTP-COMP-01
+  name: Cross-spec semantic contract
+  control_function: prevent
+  control_objective: Define ownership and exact semantics of identity, authority, status, completion and evidence
+    facts at each specification seam.
+  risk_patterns:
+  - RKP-COMP-01
+  - RKP-COMP-04
+  authority: system operator
+  enforcement_point: composition boundary
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-COMP-01
+  introduces_or_amplifies_risks: []
+- id: CTP-COMP-02
+  name: Cross-spec lifecycle test matrix
+  control_function: detect
+  control_objective: Test dependent specifications across issue, authorize, present, execute, revoke, retry, migrate
+    and appeal timing boundaries.
+  risk_patterns:
+  - RKP-COMP-02
+  - RKP-OPS-02
+  authority: system operator
+  enforcement_point: conformance testing
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-COMP-01
+  introduces_or_amplifies_risks: []
+- id: CTP-PE-01
+  name: Dependency governance and exit assessment
+  control_function: govern
+  control_objective: Document control, funding, surveillance capability, switching cost, shutdown authority and
+    exit paths for critical dependencies.
+  risk_patterns:
+  - RKP-PE-01
+  - RKP-PE-02
+  authority: deployment governance
+  enforcement_point: governance review
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-GOV-01
+  introduces_or_amplifies_risks: []
+- id: CTP-RISK-01
+  name: Control side-effect assessment
+  control_function: detect
+  control_objective: Assess whether a mitigation introduces, amplifies or redistributes other risks and require
+    explicit disposition of material side effects.
+  risk_patterns:
+  - RKP-EXC-02
+  - RKP-PRV-01
+  - RKP-PE-02
+  authority: system operator
+  enforcement_point: risk review
+  activation: before or at relevant decision boundary
+  failure_behavior: deny, defer, or escalate rather than silently weaken the assurance claim
+  audit_events:
+  - control-evaluated
+  - control-failed-or-overridden
+  evidence_patterns:
+  - EVP-RISK-01
+  introduces_or_amplifies_risks: []
+- id: CTP-ID-03
+  name: Explicit uniqueness assurance
+  control_function: constrain
+  control_objective: Where uniqueness is required, define the population, assurance mechanism, false-positive/false-negative
+    limits and non-uniqueness fallback explicitly.
+  risk_patterns:
+  - RKP-ID-02
+  authority: deployment governance
+  enforcement_point: identity/admission boundary
+  activation: before a decision relies on uniqueness
+  failure_behavior: do not infer uniqueness; use a lower-assurance or alternate path
+  audit_events:
+  - uniqueness-evaluated
+  evidence_patterns:
+  - EVP-RISK-01
+  introduces_or_amplifies_risks:
+  - RKP-EXC-02
+  - RKP-PRV-01

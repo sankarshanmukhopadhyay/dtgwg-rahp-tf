@@ -1,0 +1,335 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sankarshanmukhopadhyay.github.io/rahp-toolkit/schema/catalogue.schema.json",
+  "title": "RAHP portable assurance catalogue record schemas",
+  "$defs": {
+    "idList": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "harm_pattern": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "family",
+        "definition"
+      ],
+      "properties": {
+        "id": {
+          "pattern": "^HRM-[A-Z]+-[0-9]{2}$"
+        },
+        "name": {
+          "type": "string"
+        },
+        "family": {
+          "type": "string"
+        },
+        "definition": {
+          "type": "string",
+          "minLength": 20
+        },
+        "affected_interests": {
+          "$ref": "#/$defs/idList"
+        },
+        "example_manifestations": {
+          "$ref": "#/$defs/idList"
+        }
+      },
+      "additionalProperties": false
+    },
+    "risk_pattern": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "family",
+        "description",
+        "harm_patterns",
+        "origin",
+        "scope",
+        "temporal_mode",
+        "reversibility",
+        "observability"
+      ],
+      "properties": {
+        "id": {
+          "pattern": "^RKP-[A-Z]+-[0-9]{2}$"
+        },
+        "name": {
+          "type": "string"
+        },
+        "family": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 20
+        },
+        "harm_patterns": {
+          "$ref": "#/$defs/idList"
+        },
+        "origin": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "temporal_mode": {
+          "type": "string"
+        },
+        "reversibility": {
+          "type": "string"
+        },
+        "observability": {
+          "type": "string"
+        },
+        "applicability": {
+          "type": "object"
+        },
+        "related_patterns": {
+          "$ref": "#/$defs/idList"
+        }
+      },
+      "additionalProperties": false
+    },
+    "control_pattern": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "control_function",
+        "control_objective",
+        "risk_patterns",
+        "authority",
+        "enforcement_point",
+        "activation",
+        "failure_behavior"
+      ],
+      "properties": {
+        "id": {
+          "pattern": "^CTP-[A-Z]+-[0-9]{2}$"
+        },
+        "name": {
+          "type": "string"
+        },
+        "control_function": {
+          "type": "string"
+        },
+        "control_objective": {
+          "type": "string",
+          "minLength": 20
+        },
+        "risk_patterns": {
+          "$ref": "#/$defs/idList"
+        },
+        "authority": {
+          "type": "string"
+        },
+        "enforcement_point": {
+          "type": "string"
+        },
+        "activation": {
+          "type": "string"
+        },
+        "failure_behavior": {
+          "type": "string"
+        },
+        "audit_events": {
+          "$ref": "#/$defs/idList"
+        },
+        "evidence_patterns": {
+          "$ref": "#/$defs/idList"
+        },
+        "introduces_or_amplifies_risks": {
+          "$ref": "#/$defs/idList"
+        }
+      },
+      "additionalProperties": false
+    },
+    "guardrail_pattern": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "protected_interest",
+        "prohibited_state",
+        "risk_patterns",
+        "control_patterns",
+        "trigger_condition",
+        "enforcement_point",
+        "failure_mode",
+        "fail_behavior",
+        "override_permitted",
+        "evidence_required"
+      ],
+      "properties": {
+        "id": {
+          "pattern": "^GRP-[A-Z]+-[0-9]{2}$"
+        },
+        "name": {
+          "type": "string"
+        },
+        "protected_interest": {
+          "type": "string"
+        },
+        "prohibited_state": {
+          "type": "string",
+          "minLength": 20
+        },
+        "risk_patterns": {
+          "$ref": "#/$defs/idList"
+        },
+        "control_patterns": {
+          "$ref": "#/$defs/idList"
+        },
+        "trigger_condition": {
+          "type": "string"
+        },
+        "enforcement_point": {
+          "type": "string"
+        },
+        "failure_mode": {
+          "type": "string"
+        },
+        "fail_behavior": {
+          "type": "string"
+        },
+        "override_permitted": {
+          "type": "boolean"
+        },
+        "override_authority": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence_required": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "assurance_pattern": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "assertion",
+        "control_patterns",
+        "guardrail_patterns",
+        "procedure",
+        "expected_result",
+        "failure_interpretation",
+        "evidence_patterns",
+        "automation_level",
+        "assurance_level"
+      ],
+      "properties": {
+        "id": {
+          "pattern": "^ATP-[A-Z]+-[0-9]{2}$"
+        },
+        "name": {
+          "type": "string"
+        },
+        "assertion": {
+          "type": "string",
+          "minLength": 20
+        },
+        "control_patterns": {
+          "$ref": "#/$defs/idList"
+        },
+        "guardrail_patterns": {
+          "$ref": "#/$defs/idList"
+        },
+        "preconditions": {
+          "$ref": "#/$defs/idList"
+        },
+        "procedure": {
+          "type": "string"
+        },
+        "expected_result": {
+          "type": "string"
+        },
+        "failure_interpretation": {
+          "type": "string"
+        },
+        "evidence_patterns": {
+          "$ref": "#/$defs/idList"
+        },
+        "automation_level": {
+          "enum": [
+            "manual",
+            "assisted",
+            "automated"
+          ]
+        },
+        "assurance_level": {
+          "enum": [
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "A4"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidence_pattern": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "claim_supported",
+        "producer",
+        "consumer",
+        "collection_event",
+        "integrity_requirement",
+        "freshness",
+        "retention",
+        "invalidation",
+        "privacy_classification"
+      ],
+      "properties": {
+        "id": {
+          "pattern": "^EVP-[A-Z]+-[0-9]{2}$"
+        },
+        "name": {
+          "type": "string"
+        },
+        "claim_supported": {
+          "type": "string"
+        },
+        "producer": {
+          "type": "string"
+        },
+        "consumer": {
+          "type": "string"
+        },
+        "collection_event": {
+          "type": "string"
+        },
+        "integrity_requirement": {
+          "type": "string"
+        },
+        "freshness": {
+          "type": "string"
+        },
+        "retention": {
+          "type": "string"
+        },
+        "invalidation": {
+          "type": "string"
+        },
+        "privacy_classification": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

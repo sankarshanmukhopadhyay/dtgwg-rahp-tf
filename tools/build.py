@@ -909,6 +909,40 @@ def build_operational_assurance_md(op, out):
     (out / "operational-assurance.md").write_text("\n".join(lines), encoding="utf-8")
 
 
+
+
+def load_portable_catalogue():
+    catalogue_dir = ROOT / "method" / "catalogue"
+    files = {
+        "harm_patterns": "harm-patterns.yaml",
+        "risk_patterns": "risk-patterns.yaml",
+        "control_patterns": "control-patterns.yaml",
+        "guardrail_patterns": "guardrail-patterns.yaml",
+        "assurance_patterns": "assurance-patterns.yaml",
+        "evidence_patterns": "evidence-patterns.yaml",
+    }
+    records = {}
+    for key, filename in files.items():
+        doc = load(catalogue_dir / filename) or {}
+        records[key] = doc.get("records") or []
+    return {"catalogue_version": "1.1.0", "records": records}
+
+def derive_portable_catalogue_coverage(catalogue):
+    records = catalogue["records"]
+    controls = records["control_patterns"]
+    guards = records["guardrail_patterns"]
+    tests = records["assurance_patterns"]
+    risk_ids = {r["id"] for r in records["risk_patterns"]}
+    controlled = {r for c in controls for r in (c.get("risk_patterns") or [])}
+    guarded = {r for g in guards for r in (g.get("risk_patterns") or [])}
+    tested_controls = {c for t in tests for c in (t.get("control_patterns") or [])}
+    return {
+        "counts": {k: len(v) for k, v in records.items()},
+        "risks_without_portable_control": sorted(risk_ids - controlled),
+        "risks_without_portable_guardrail": sorted(risk_ids - guarded),
+        "controls_without_assurance_pattern": sorted({c["id"] for c in controls} - tested_controls),
+    }
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=str(ROOT / "build"))
@@ -920,6 +954,7 @@ def main():
     instance = load(data_dir / "instance.yaml")
     records = load_all(data_dir, instance)
     lifecycle = load(ROOT / "method" / "lifecycle.yaml")
+    portable_catalogue = load_portable_catalogue()
 
     derived = {
         "persona_xrefs": derive_persona_xrefs(records),
@@ -942,6 +977,10 @@ def main():
 
     (out / "rahp.json").write_text(json.dumps({
         "instance": instance["instance"], "records": records}, indent=2, ensure_ascii=False), encoding="utf-8")
+    (out / "portable-assurance.json").write_text(
+        json.dumps(portable_catalogue, indent=2, ensure_ascii=False), encoding="utf-8")
+    (out / "derived" / "portable-catalogue-coverage.json").write_text(
+        json.dumps(derive_portable_catalogue_coverage(portable_catalogue), indent=2, ensure_ascii=False), encoding="utf-8")
 
     for name in ("persona_xrefs", "coverage", "normative", "normative_triage", "operational_assurance", "tf_actions"):
         (out / "derived" / f"{name}.json").write_text(
@@ -964,6 +1003,8 @@ def main():
 
     print("Built:")
     print(f"  {out/'rahp.json'}")
+    print(f"  {out/'portable-assurance.json'}")
+    print(f"  {out/'derived'/'portable-catalogue-coverage.json'}")
     print(f"  {out/'jsonld'}/ ({len([1 for k, v in records.items() if v and k in TYPE_MAP])} files)")
     print(f"  {out/'derived'}/")
     print(f"  {site}/ ({len(NAV)} pages)")

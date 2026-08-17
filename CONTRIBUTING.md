@@ -141,3 +141,7 @@ A finding is not a mandate to edit the core specification. Reviewers must identi
 A PR is ready when: `validate.py` exits 0, every new record has provenance, and
 the description says what triggered the change. A PR that changes a risk score
 should say what evidence moved it.
+
+## Contributing portable assurance patterns
+
+Changes under `method/catalogue/` affect the reusable RAHP method surface. A new portable pattern should describe a mechanism reusable across more than one plausible deployment, use the stable namespace, link to the relevant adjacent pattern layers, and pass `python3 tools/validate_catalogue.py`. Deployment-only findings belong under the appropriate `instances/`, corpus or worked example instead.

@@ -1,0 +1,31 @@
+{
+  "counts": {
+    "harm_patterns": 24,
+    "risk_patterns": 38,
+    "control_patterns": 31,
+    "guardrail_patterns": 12,
+    "assurance_patterns": 19,
+    "evidence_patterns": 15
+  },
+  "risks_without_portable_control": [],
+  "risks_without_portable_guardrail": [
+    "RKP-AGT-03",
+    "RKP-COMP-02",
+    "RKP-COMP-03",
+    "RKP-CRD-02",
+    "RKP-CRD-03",
+    "RKP-CRD-04",
+    "RKP-DEL-02",
+    "RKP-DISC-02",
+    "RKP-DISC-03",
+    "RKP-EXC-02",
+    "RKP-GOV-03",
+    "RKP-ID-02",
+    "RKP-ID-03",
+    "RKP-OPS-01",
+    "RKP-OPS-03",
+    "RKP-PE-02",
+    "RKP-PRV-01"
+  ],
+  "controls_without_assurance_pattern": []
+}

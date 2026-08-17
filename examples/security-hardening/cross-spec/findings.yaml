@@ -13,26 +13,27 @@ review:
     - DTG Credential Spec spec/body.md
   reviewed_against:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    rahp_version: v0.8.0
+    rahp_version: v1.1.0
     original_rahp_version: v0.3-dev
     engine_contract: rahp-engine-contract-v1
-    revalidated_on: '2026-08-16'
-    revalidation_scope: method-and-engine-only; target revision and substantive findings unchanged
+    revalidated_on: '2026-08-17'
+    revalidation_scope: v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target
+      revision unchanged
   summary:
     finding_count: 12
     open_count: 12
-    overall_assessment: Composition is the highest-risk surface because each component can verify successfully
-      while the end-to-end action is still unauthorized, stale, incorrectly scoped, privacy-leaking or based 
-      on the wrong evidence boundary. The most important program-level hardening work is a shared delegation 
-      profile, deterministic task/ceremony provenance binding, status/as-of registry semantics, issuance 
-      idempotency, and verifier APIs that preserve separate validity/authorization/completion outcomes.
+    overall_assessment: Composition is the highest-risk surface because each component can verify successfully while
+      the end-to-end action is still unauthorized, stale, incorrectly scoped, privacy-leaking or based on the wrong
+      evidence boundary. The most important program-level hardening work is a shared delegation profile, deterministic
+      task/ceremony provenance binding, status/as-of registry semantics, issuance idempotency, and verifier APIs
+      that preserve separate validity/authorization/completion outcomes.
   positive_controls:
   - Both specifications explicitly distinguish authentication/cryptographic validity from authorization.
   - Trust Tasks ceremony evidence is not treated as authorization.
-  - Credential taskContext rules explicitly reject interpreting a context-bearing credential as completion 
-    evidence without outcome evidence.
-  - Both architectures are designed to allow companion profiles rather than forcing all semantics into core 
-    wire formats.
+  - Credential taskContext rules explicitly reject interpreting a context-bearing credential as completion evidence
+    without outcome evidence.
+  - Both architectures are designed to allow companion profiles rather than forcing all semantics into core wire
+    formats.
   findings:
   - id: SEC-X-001
     title: Valid task authentication plus valid credential membership does not establish delegated authority
@@ -57,20 +58,18 @@ review:
     - agency
     evidence:
     - source: Trust Tasks SPEC §4.11.4 / §7.2
-      observation: Ceremony participation confers no authority and consumers rely on issuer/proof/local 
-        policy.
+      observation: Ceremony participation confers no authority and consumers rely on issuer/proof/local policy.
     - source: DTG Credential Spec VMC
-      observation: A VMC can name an agent/device/person as a member but does not carry principal/capability 
-        semantics.
+      observation: A VMC can name an agent/device/person as a member but does not carry principal/capability semantics.
     attack: 'A consumer combines two true facts—authenticated task issuer and valid community membership—and infers
       a third fact that neither proves: authority to perform this action for this principal.'
     existing_mitigations:
     - Both specifications independently distinguish authenticity from authorization.
     - RAHP already defines agent delegation controls.
-    residual_gap: No shared delegation artifact/profile binds principal, delegate, task type, scope, 
-      constraints, validity and revocation across both layers.
-    recommendation: Define a DTG delegation/capability profile consumable by Trust Tasks and credential 
-      verifiers. Require high-impact agent actions to present and validate it separately from membership.
+    residual_gap: No shared delegation artifact/profile binds principal, delegate, task type, scope, constraints,
+      validity and revocation across both layers.
+    recommendation: Define a DTG delegation/capability profile consumable by Trust Tasks and credential verifiers.
+      Require high-impact agent actions to present and validate it separately from membership.
     verification:
     - 'End-to-end negative test: authenticated agent + valid VMC + no delegation must fail authorization.'
     rahp:
@@ -88,15 +87,43 @@ review:
       assurance_tests:
       - AT-12
       - AT-13
+      portable_assurance:
+        harm_patterns:
+        - HRM-AUT-04
+        - HRM-SEC-02
+        - HRM-AUT-05
+        risk_patterns:
+        - RKP-DEL-01
+        - RKP-AGT-01
+        - RKP-AUTH-02
+        - RKP-DEL-03
+        control_patterns:
+        - CTP-DEL-01
+        - CTP-AGT-01
+        - CTP-AUTH-02
+        - CTP-DEL-02
+        guardrail_patterns:
+        - GRP-DEL-01
+        - GRP-AGT-01
+        - GRP-AUTH-02
+        assurance_patterns:
+        - ATP-DEL-01
+        - ATP-AGT-01
+        - ATP-AUTH-02
+        evidence_patterns:
+        - EVP-DEL-01
+        - EVP-AUTH-02
+        - EVP-AUTH-01
+        - EVP-DEL-02
     external_alignment:
     - ref: NIST-SP-800-207
       relationship: direct
-      rationale: Authentication and authorization are explicitly discrete functions; combining an 
-        authenticated task with a membership credential still does not establish task-specific authorization.
+      rationale: Authentication and authorization are explicitly discrete functions; combining an authenticated
+        task with a membership credential still does not establish task-specific authorization.
     - ref: NIST-SP-800-207A
       relationship: direct
-      rationale: Application/service identity must be evaluated against granular access policy before action 
-        is permitted.
+      rationale: Application/service identity must be evaluated against granular access policy before action is
+        permitted.
     - ref: OWASP-AGENTIC-2025
       relationship: supports
       rationale: Agentic threat guidance reinforces bounded delegation and prevention of excessive agency.
@@ -123,21 +150,20 @@ review:
     - integrity
     evidence:
     - source: DTG Credential Spec Trust Task Context Binding
-      observation: taskContext contains the originating Trust Task threadId and verifiers need outcome 
-        evidence before inferring completion.
+      observation: taskContext contains the originating Trust Task threadId and verifiers need outcome evidence
+        before inferring completion.
     - source: Trust Tasks SPEC §4.9.1 and §4.11
-      observation: An exchange and a ceremony enactment are different scopes; recent ceremony guidance warns 
-        external specs to choose the correct evidence reference.
-    attack: A verifier locates evidence for the wrong enclosing exchange or treats task-level completion as 
-      completion of the broader ceremony that governed credential issuance.
+      observation: An exchange and a ceremony enactment are different scopes; recent ceremony guidance warns external
+        specs to choose the correct evidence reference.
+    attack: A verifier locates evidence for the wrong enclosing exchange or treats task-level completion as completion
+      of the broader ceremony that governed credential issuance.
     existing_mitigations:
     - Credential spec explicitly says taskContext alone is not completion evidence.
     - Trust Tasks distinguishes innermost exchange ids and ceremony enactments.
-    residual_gap: There is no common cross-spec reference structure that unambiguously identifies both the 
-      task exchange and, when needed, the ceremony evidence/definition commitment.
-    recommendation: Define a credential provenance binding that can reference the innermost task outcome and 
-      optionally a privacy-preserving commitment to ceremony completion without embedding a durable raw 
-      enactment identifier.
+    residual_gap: There is no common cross-spec reference structure that unambiguously identifies both the task
+      exchange and, when needed, the ceremony evidence/definition commitment.
+    recommendation: Define a credential provenance binding that can reference the innermost task outcome and optionally
+      a privacy-preserving commitment to ceremony completion without embedding a durable raw enactment identifier.
     verification:
     - Nested-ceremony vectors prove a verifier cannot satisfy completion using evidence from the wrong scope.
     rahp:
@@ -154,15 +180,44 @@ review:
       assurance_tests:
       - AT-16
       - AT-17
+      portable_assurance:
+        harm_patterns:
+        - HRM-SEC-02
+        - HRM-INF-01
+        - HRM-PRV-02
+        - HRM-PRV-03
+        - HRM-AUT-04
+        - HRM-GOV-02
+        risk_patterns:
+        - RKP-CRD-01
+        - RKP-PRV-02
+        - RKP-COMP-01
+        - RKP-COMP-04
+        control_patterns:
+        - CTP-AUTH-01
+        - CTP-PRV-02
+        - CTP-COMP-01
+        guardrail_patterns:
+        - GRP-AUTH-01
+        - GRP-PRV-01
+        - GRP-COMP-01
+        assurance_patterns:
+        - ATP-AUTH-01
+        - ATP-PRV-01
+        - ATP-COMP-01
+        evidence_patterns:
+        - EVP-AUTH-01
+        - EVP-PRV-01
+        - EVP-COMP-01
     external_alignment:
     - ref: W3C-VC-DM-2.0
       relationship: supports
-      rationale: Credential verification is about the credential and its securing/status mechanisms; external 
-        workflow completion is a distinct evidentiary fact.
+      rationale: Credential verification is about the credential and its securing/status mechanisms; external workflow
+        completion is a distinct evidentiary fact.
     - ref: NIST-SP-800-53-R5
       relationship: supports
-      rationale: Audit/evidence integrity controls support distinguishing a completed process record from an 
-        individual artifact within that process.
+      rationale: Audit/evidence integrity controls support distinguishing a completed process record from an individual
+        artifact within that process.
       clause: AU family; SI-7
   - id: SEC-X-003
     title: Durable taskContext/thread identifiers can become cross-presentation correlation handles
@@ -189,15 +244,15 @@ review:
     - source: DTG Credential Spec Base Structure
       observation: taskContext is an ordinary string property on the credential.
     - source: Trust Tasks ceremony guidance §10.1
-      observation: A durable credential embedding an enactment identifier is called out as a worse correlation
-        handle; selective commitments are recommended for ceremony references.
-    attack: Multiple verifiers correlate presentations of the same credential or link it back to protocol logs
-      using the stable task identifier, defeating otherwise privacy-preserving R-DIDs/ZKPs.
+      observation: A durable credential embedding an enactment identifier is called out as a worse correlation handle;
+        selective commitments are recommended for ceremony references.
+    attack: Multiple verifiers correlate presentations of the same credential or link it back to protocol logs using
+      the stable task identifier, defeating otherwise privacy-preserving R-DIDs/ZKPs.
     existing_mitigations:
     - taskContext is optional except where credential type requires it.
     - ZKP/selective disclosure is encouraged.
-    residual_gap: No explicit rule requires taskContext to be hidden/selectively disclosed or replaced by an 
-      unlinkable commitment during privacy-preserving presentation.
+    residual_gap: No explicit rule requires taskContext to be hidden/selectively disclosed or replaced by an unlinkable
+      commitment during privacy-preserving presentation.
     recommendation: 'Add a privacy profile for provenance references: selective disclosure by default, holder-bindable
       commitments, pairwise disclosure where necessary, and explicit verifier justification for raw task identifiers.'
     verification:
@@ -216,19 +271,41 @@ review:
       assurance_tests:
       - AT-06
       - AT-09
+      portable_assurance:
+        harm_patterns:
+        - HRM-SEC-02
+        - HRM-INF-01
+        - HRM-PRV-02
+        - HRM-PRV-03
+        - HRM-PRV-04
+        risk_patterns:
+        - RKP-CRD-01
+        - RKP-PRV-02
+        - RKP-PRV-01
+        control_patterns:
+        - CTP-AUTH-01
+        - CTP-PRV-02
+        - CTP-PRV-01
+        guardrail_patterns:
+        - GRP-AUTH-01
+        - GRP-PRV-01
+        assurance_patterns:
+        - ATP-AUTH-01
+        - ATP-PRV-01
+        evidence_patterns:
+        - EVP-AUTH-01
+        - EVP-PRV-01
     external_alignment:
     - ref: W3C-VC-DM-2.0
       relationship: direct
-      rationale: VC privacy considerations emphasize correlation risks across presentations and ecosystem 
-        interactions.
+      rationale: VC privacy considerations emphasize correlation risks across presentations and ecosystem interactions.
     - ref: W3C-VC-DI-1.0
       relationship: direct
-      rationale: Unlinkability and network-fingerprinting sections directly support avoiding stable 
-        cross-context identifiers in privacy-preserving presentations.
+      rationale: Unlinkability and network-fingerprinting sections directly support avoiding stable cross-context
+        identifiers in privacy-preserving presentations.
       clause: 6.1 Unlinkability; 6.4 Fingerprinting Network Requests
   - id: SEC-X-004
-    title: One accepted issuance task can mint multiple durable credentials without a shared idempotency 
-      invariant
+    title: One accepted issuance task can mint multiple durable credentials without a shared idempotency invariant
     status: open
     severity: Critical
     exploitability: easy
@@ -243,8 +320,7 @@ review:
     - credential issuer
     preconditions:
     - A credential-issuance Trust Task is retried or replayed.
-    - Issuer lacks durable operation-level idempotency or the credential has no deterministic issuance 
-      correlation.
+    - Issuer lacks durable operation-level idempotency or the credential has no deterministic issuance correlation.
     security_properties:
     - integrity
     - authorization
@@ -252,22 +328,20 @@ review:
     - source: Trust Tasks replay guidance
       observation: Same-recipient idempotency is SHOULD, not mandatory.
     - source: DTG Credential Spec Base Structure
-      observation: Credential id is not listed as a required base field; issuance semantics do not bind one 
-        task instance to one resulting credential.
-    attack: A valid issuance request is processed more than once, minting duplicate 
-      membership/invitation/witness/endorsement credentials or inconsistent edge artifacts. Each credential 
-      can be individually valid.
+      observation: Credential id is not listed as a required base field; issuance semantics do not bind one task
+        instance to one resulting credential.
+    attack: A valid issuance request is processed more than once, minting duplicate membership/invitation/witness/endorsement
+      credentials or inconsistent edge artifacts. Each credential can be individually valid.
     existing_mitigations:
     - Trust Task ids are globally unique.
     - Credential proofs individually authenticate issuers.
-    residual_gap: No cross-spec invariant says how many credentials a task may mint or how duplicate issuance 
-      is detected/reconciled.
-    recommendation: For credential-issuance tasks, require operation-level idempotency keyed to the task 
-      instance and define deterministic duplicate response semantics; record resulting credential 
-      identifiers/digests in outcome evidence.
+    residual_gap: No cross-spec invariant says how many credentials a task may mint or how duplicate issuance is
+      detected/reconciled.
+    recommendation: For credential-issuance tasks, require operation-level idempotency keyed to the task instance
+      and define deterministic duplicate response semantics; record resulting credential identifiers/digests in
+      outcome evidence.
     verification:
-    - Replay the same issuance task through retries/restarts and prove exactly one logical issuance result 
-      exists.
+    - Replay the same issuance task through retries/restarts and prove exactly one logical issuance result exists.
     rahp:
       risks:
       - RK-ID01
@@ -281,18 +355,44 @@ review:
       assurance_tests:
       - AT-07
       - AT-16
+      portable_assurance:
+        harm_patterns:
+        - HRM-SEC-02
+        - HRM-INF-01
+        - HRM-ECO-02
+        - HRM-AUT-04
+        risk_patterns:
+        - RKP-CRD-01
+        - RKP-CRD-03
+        - RKP-OPS-02
+        - RKP-COMP-01
+        control_patterns:
+        - CTP-AUTH-01
+        - CTP-CRD-01
+        - CTP-OPS-02
+        - CTP-COMP-01
+        guardrail_patterns:
+        - GRP-AUTH-01
+        - GRP-OPS-01
+        - GRP-COMP-01
+        assurance_patterns:
+        - ATP-AUTH-01
+        - ATP-COMP-01
+        - ATP-OPS-02
+        evidence_patterns:
+        - EVP-AUTH-01
+        - EVP-COMP-01
+        - EVP-OPS-02
     external_alignment:
     - ref: OWASP-API-2023
       relationship: analogous
-      rationale: Repeated invocation of a sensitive issuance flow is an instance of automated business-flow 
-        abuse.
+      rationale: Repeated invocation of a sensitive issuance flow is an instance of automated business-flow abuse.
       clause: API6:2023 — Unrestricted Access to Sensitive Business Flows
-      url: 
-        https://owasp.org/API-Security/editions/2023/en/0xa6-unrestricted-access-to-sensitive-business-flows/
+      url: https://owasp.org/API-Security/editions/2023/en/0xa6-unrestricted-access-to-sensitive-business-flows/
     - ref: NIST-SP-800-53-R5
       relationship: supports
-      rationale: Access enforcement and session/replay controls support end-to-end idempotency for 
-        authority-changing operations.
+      rationale: Access enforcement and session/replay controls support end-to-end idempotency for authority-changing
+        operations.
       clause: AC-3; SC-23
   - id: SEC-X-005
     title: Authorization and registry state can change between task approval, issuance, and later verification
@@ -322,21 +422,20 @@ review:
     - source: Trust Tasks delegated execution note
       observation: Policy and state are re-evaluated immediately before execution to reduce TOCTOU.
     - source: DTG Credential Spec Security Considerations
-      observation: Verifier must evaluate current issuer authorization and applicable revocation/status 
-        through governance/trust registries.
-    attack: A task approved under one authority state produces a credential after that authority is revoked, 
-      or a credential remains cryptographically valid after the issuer/member status changes. Without 
-      historical semantics, disputes cannot establish which state governed which step.
+      observation: Verifier must evaluate current issuer authorization and applicable revocation/status through
+        governance/trust registries.
+    attack: A task approved under one authority state produces a credential after that authority is revoked, or
+      a credential remains cryptographically valid after the issuer/member status changes. Without historical semantics,
+      disputes cannot establish which state governed which step.
     existing_mitigations:
     - Trust Tasks design already rechecks policy at execution.
     - Credential verification checks issuer authorization/status.
-    residual_gap: The two layers lack a shared as-of/historical authority-state reference and freshness 
-      contract.
-    recommendation: Define a registry query/status profile with current and as-of semantics; issuance outcome 
-      should bind the relevant authority decision/version so later audits can reconstruct legitimacy at T0/T1.
+    residual_gap: The two layers lack a shared as-of/historical authority-state reference and freshness contract.
+    recommendation: Define a registry query/status profile with current and as-of semantics; issuance outcome should
+      bind the relevant authority decision/version so later audits can reconstruct legitimacy at T0/T1.
     verification:
-    - TOCTOU tests revoke authority between consent, execution and verification and produce deterministic 
-      expected outcomes.
+    - TOCTOU tests revoke authority between consent, execution and verification and produce deterministic expected
+      outcomes.
     rahp:
       risks:
       - RK-AI02
@@ -353,21 +452,49 @@ review:
       assurance_tests:
       - AT-12
       - AT-17
+      portable_assurance:
+        harm_patterns:
+        - HRM-AUT-05
+        - HRM-SEC-02
+        - HRM-AUT-04
+        - HRM-INF-01
+        - HRM-ECO-02
+        risk_patterns:
+        - RKP-AUTH-02
+        - RKP-DEL-03
+        - RKP-AUTH-01
+        - RKP-AUTH-03
+        control_patterns:
+        - CTP-AUTH-02
+        - CTP-DEL-02
+        - CTP-AUTH-01
+        - CTP-AUTH-03
+        guardrail_patterns:
+        - GRP-AUTH-02
+        - GRP-AUTH-01
+        - GRP-DEL-01
+        assurance_patterns:
+        - ATP-AUTH-02
+        - ATP-AUTH-01
+        - ATP-DEL-01
+        evidence_patterns:
+        - EVP-AUTH-01
+        - EVP-DEL-02
+        - EVP-AUTH-02
     external_alignment:
     - ref: NIST-SP-800-207
       relationship: direct
-      rationale: Zero trust calls for current-state policy evaluation rather than implicit trust inherited 
-        from a prior decision.
+      rationale: Zero trust calls for current-state policy evaluation rather than implicit trust inherited from
+        a prior decision.
     - ref: W3C-BSL-1.0
       relationship: direct
-      rationale: Credential status and validity-period mechanisms directly address later changes in credential
-        standing.
+      rationale: Credential status and validity-period mechanisms directly address later changes in credential standing.
     - ref: NIST-SP-800-63C-4
       relationship: supports
       rationale: Assertion lifecycle processing reinforces checking current validity at the relying party.
   - id: SEC-X-006
-    title: Agent revocation does not automatically invalidate credentials or outstanding tasks derived from 
-      its former mandate
+    title: Agent revocation does not automatically invalidate credentials or outstanding tasks derived from its
+      former mandate
     status: open
     severity: Critical
     exploitability: plausible
@@ -391,24 +518,23 @@ review:
     - freshness
     evidence:
     - source: RAHP GR-12 / CT-32
-      observation: Existing RAHP model requires operator revocation to propagate to agent invalidation within 
-        an SLA.
+      observation: Existing RAHP model requires operator revocation to propagate to agent invalidation within an
+        SLA.
     - source: Trust Tasks and DTG Credential specs
-      observation: Neither core format defines a common dependency graph from operator mandate to pending task
-        and derived credential status.
-    attack: A revoked agent continues executing queued tasks or presents credentials issued under the old 
-      mandate because each artifact verifies independently and its dependency on the operator is not 
-      machine-enforced.
+      observation: Neither core format defines a common dependency graph from operator mandate to pending task and
+        derived credential status.
+    attack: A revoked agent continues executing queued tasks or presents credentials issued under the old mandate
+      because each artifact verifies independently and its dependency on the operator is not machine-enforced.
     existing_mitigations:
     - Local policy can recheck authorization.
     - Credential registries can revoke individual credentials.
-    residual_gap: There is no standardized revocation propagation relationship or latency SLA across mandate, 
-      tasks and derived credentials.
-    recommendation: Define dependency/status semantics for delegated agents, including invalidation of pending
-      execution grants and policy for credentials issued under the revoked mandate.
+    residual_gap: There is no standardized revocation propagation relationship or latency SLA across mandate, tasks
+      and derived credentials.
+    recommendation: Define dependency/status semantics for delegated agents, including invalidation of pending execution
+      grants and policy for credentials issued under the revoked mandate.
     verification:
-    - Revoking the principal-agent mandate causes pending high-impact tasks to fail and makes dependent 
-      credential status deterministically evaluable within the declared SLA.
+    - Revoking the principal-agent mandate causes pending high-impact tasks to fail and makes dependent credential
+      status deterministically evaluable within the declared SLA.
     rahp:
       risks:
       - RK-AI02
@@ -421,19 +547,47 @@ review:
       - GR-12
       assurance_tests:
       - AT-12
+      portable_assurance:
+        harm_patterns:
+        - HRM-AUT-04
+        - HRM-SEC-02
+        - HRM-AUT-05
+        risk_patterns:
+        - RKP-DEL-01
+        - RKP-AGT-01
+        - RKP-AUTH-02
+        - RKP-DEL-03
+        control_patterns:
+        - CTP-DEL-01
+        - CTP-AGT-01
+        - CTP-AUTH-02
+        - CTP-DEL-02
+        guardrail_patterns:
+        - GRP-DEL-01
+        - GRP-AGT-01
+        - GRP-AUTH-02
+        assurance_patterns:
+        - ATP-DEL-01
+        - ATP-AGT-01
+        - ATP-AUTH-02
+        evidence_patterns:
+        - EVP-DEL-01
+        - EVP-AUTH-02
+        - EVP-AUTH-01
+        - EVP-DEL-02
     external_alignment:
     - ref: OWASP-AGENTIC-2025
       relationship: supports
-      rationale: Agentic security guidance treats excessive/stale agent authority as a major threat and 
-        emphasizes bounded permissions and revocation.
+      rationale: Agentic security guidance treats excessive/stale agent authority as a major threat and emphasizes
+        bounded permissions and revocation.
     - ref: NIST-SP-800-207
       relationship: direct
-      rationale: Continuous, policy-based authorization supports propagating changed subject/service state 
-        into subsequent access decisions.
+      rationale: Continuous, policy-based authorization supports propagating changed subject/service state into
+        subsequent access decisions.
     - ref: W3C-BSL-1.0
       relationship: analogous
-      rationale: Credential revocation/suspension provides the closest standardized pattern for propagating 
-        changed standing to durable credentials.
+      rationale: Credential revocation/suspension provides the closest standardized pattern for propagating changed
+        standing to durable credentials.
   - id: SEC-X-007
     title: Ceremony completion evidence and credential validity can be conflated by relying applications
     status: open
@@ -452,8 +606,7 @@ review:
     - credential
     preconditions:
     - Application receives both a valid credential and some ceremony evidence.
-    - Application uses completion as evidence of claim truth or uses claim validity as evidence the ceremony 
-      completed.
+    - Application uses completion as evidence of claim truth or uses claim validity as evidence the ceremony completed.
     security_properties:
     - provenance
     - authorization
@@ -461,21 +614,21 @@ review:
     - source: Trust Ceremony Receipt spec
       observation: Receipt attests completeness and ordering, not content or authorization.
     - source: DTG Credential Spec Trust Task Context Binding
-      observation: Credential validity and task/ceremony completion are distinct; outcome evidence is 
-        separately required for completion claims.
-    attack: A verifier upgrades the meaning of one artifact with the semantics of the other, for example 
-      treating a completed onboarding ceremony as proof that every credential claim is true or treating a 
-      valid VMC as proof that onboarding completed correctly.
+      observation: Credential validity and task/ceremony completion are distinct; outcome evidence is separately
+        required for completion claims.
+    attack: A verifier upgrades the meaning of one artifact with the semantics of the other, for example treating
+      a completed onboarding ceremony as proof that every credential claim is true or treating a valid VMC as proof
+      that onboarding completed correctly.
     existing_mitigations:
     - Both source specifications explicitly state the distinction.
-    residual_gap: The distinction is prose-level across separate documents and is not represented as typed 
-      verification outcomes/API contracts.
-    recommendation: Define verifier outcome types that separately report credential validity, issuer 
-      authorization, task completion, ceremony completion and governance qualification. Applications should 
-      never receive a single ambiguous boolean.
+    residual_gap: The distinction is prose-level across separate documents and is not represented as typed verification
+      outcomes/API contracts.
+    recommendation: Define verifier outcome types that separately report credential validity, issuer authorization,
+      task completion, ceremony completion and governance qualification. Applications should never receive a single
+      ambiguous boolean.
     verification:
-    - Reference verifier test exposes separate outcome fields and fails applications/tests that collapse them 
-      into one success flag.
+    - Reference verifier test exposes separate outcome fields and fails applications/tests that collapse them into
+      one success flag.
     rahp:
       risks:
       - RK-SC02
@@ -487,18 +640,47 @@ review:
       - GR-16
       assurance_tests:
       - AT-16
+      portable_assurance:
+        harm_patterns:
+        - HRM-AUT-04
+        - HRM-SEC-02
+        - HRM-INF-01
+        - HRM-ECO-02
+        - HRM-GOV-01
+        - HRM-GOV-03
+        risk_patterns:
+        - RKP-AUTH-01
+        - RKP-AUTH-03
+        - RKP-CRD-01
+        - RKP-GOV-01
+        control_patterns:
+        - CTP-AUTH-01
+        - CTP-AUTH-03
+        - CTP-GOV-01
+        guardrail_patterns:
+        - GRP-AUTH-01
+        - GRP-DEL-01
+        - GRP-GOV-01
+        assurance_patterns:
+        - ATP-AUTH-01
+        - ATP-DEL-01
+        - ATP-GOV-01
+        evidence_patterns:
+        - EVP-AUTH-01
+        - EVP-AUTH-02
+        - EVP-GOV-01
     external_alignment:
     - ref: W3C-VC-DM-2.0
       relationship: direct
-      rationale: A verifier evaluates a credential's proof/status and trust context; completion of an external
-        ceremony is a separate assertion.
+      rationale: A verifier evaluates a credential's proof/status and trust context; completion of an external ceremony
+        is a separate assertion.
     - ref: NIST-SP-800-207
       relationship: supports
-      rationale: Resource authorization must be based on the policy-relevant evidence for that resource, not 
-        on unrelated successful process participation.
+      rationale: Resource authorization must be based on the policy-relevant evidence for that resource, not on
+        unrelated successful process participation.
   - id: SEC-X-008
-    title: ZKP credential proofs do not yet compose with Trust Task outcome evidence without privacy or 
-      semantic leakage
+    title: ZKP credential proofs do not yet compose with Trust Task outcome evidence without privacy or semantic
+      leakage
     status: open
     severity: High
     exploitability: plausible
@@ -521,22 +703,22 @@ review:
     - provenance
     evidence:
     - source: DTG Credential Spec ZKP sections
-      observation: Relationship and community-anchored proofs are defined conceptually but detailed protocols 
-        are future work.
+      observation: Relationship and community-anchored proofs are defined conceptually but detailed protocols are
+        future work.
     - source: Trust Tasks ceremony receipt
-      observation: Receipts are bearer evidence and reveal ordered step digests unless a blinded ceremony 
-        design is used.
-    attack: The holder proves the private credential predicate but must disclose a correlatable task/receipt 
-      identifier to establish process provenance, undoing the privacy benefit or exposing ceremony metadata.
+      observation: Receipts are bearer evidence and reveal ordered step digests unless a blinded ceremony design
+        is used.
+    attack: The holder proves the private credential predicate but must disclose a correlatable task/receipt identifier
+      to establish process provenance, undoing the privacy benefit or exposing ceremony metadata.
     existing_mitigations:
     - Credential ZKP support and blinded ceremony design both exist conceptually.
-    residual_gap: There is no joint proof construction for credential predicate + outcome/ceremony provenance 
-      with selective disclosure.
-    recommendation: Define a composition proof profile that can prove required outcome predicates and pinned 
-      ceremony semantics without revealing raw R-DIDs, thread ids, enactment ids or unrelated steps.
+    residual_gap: There is no joint proof construction for credential predicate + outcome/ceremony provenance with
+      selective disclosure.
+    recommendation: Define a composition proof profile that can prove required outcome predicates and pinned ceremony
+      semantics without revealing raw R-DIDs, thread ids, enactment ids or unrelated steps.
     verification:
-    - Proof vectors demonstrate community-anchored relationship plus ceremony-completion predicate with no 
-      stable cross-verifier identifier.
+    - Proof vectors demonstrate community-anchored relationship plus ceremony-completion predicate with no stable
+      cross-verifier identifier.
     rahp:
       risks:
       - RK-CY01
@@ -552,16 +734,44 @@ review:
       assurance_tests:
       - AT-06
       - AT-09
+      portable_assurance:
+        harm_patterns:
+        - HRM-SEC-02
+        - HRM-INF-01
+        - HRM-PRV-02
+        - HRM-PRV-03
+        - HRM-AUT-04
+        risk_patterns:
+        - RKP-CRD-01
+        - RKP-CRD-03
+        - RKP-PRV-02
+        - RKP-COMP-01
+        control_patterns:
+        - CTP-AUTH-01
+        - CTP-CRD-01
+        - CTP-PRV-02
+        - CTP-COMP-01
+        guardrail_patterns:
+        - GRP-AUTH-01
+        - GRP-PRV-01
+        - GRP-COMP-01
+        assurance_patterns:
+        - ATP-AUTH-01
+        - ATP-COMP-01
+        - ATP-PRV-01
+        evidence_patterns:
+        - EVP-AUTH-01
+        - EVP-COMP-01
+        - EVP-PRV-01
     external_alignment:
     - ref: W3C-VC-DI-1.0
       relationship: direct
-      rationale: Selective disclosure and unlinkability are explicit privacy properties; composing credential 
-        proofs with external workflow evidence must preserve them.
+      rationale: Selective disclosure and unlinkability are explicit privacy properties; composing credential proofs
+        with external workflow evidence must preserve them.
       clause: 6.1 Unlinkability; 6.2 Selective Disclosure
     - ref: W3C-VC-DM-2.0
       relationship: supports
-      rationale: VC privacy guidance supports data minimization and avoiding unnecessary correlation across 
-        presentations.
+      rationale: VC privacy guidance supports data minimization and avoiding unnecessary correlation across presentations.
   - id: SEC-X-009
     title: Both layers depend on trust-registry semantics without a shared query/failure contract
     status: open
@@ -590,20 +800,19 @@ review:
     - source: Trust Tasks terminology/authorization model
       observation: Consumers apply their own trust framework to VID resolution and authorization.
     - source: DTG Credential Spec Security/Governance Considerations
-      observation: Issuer authorization, PHC qualification, membership policies and revocation depend on 
-        applicable trust registries/governance frameworks.
-    attack: Two conforming implementations receive the same artifacts but reach different authorization 
-      outcomes because one treats missing registry data as unknown, another as valid-cache, and another as 
-      revoked/not-found.
+      observation: Issuer authorization, PHC qualification, membership policies and revocation depend on applicable
+        trust registries/governance frameworks.
+    attack: Two conforming implementations receive the same artifacts but reach different authorization outcomes
+      because one treats missing registry data as unknown, another as valid-cache, and another as revoked/not-found.
     existing_mitigations:
     - Both specifications correctly keep cryptographic validity distinct from governance authorization.
-    residual_gap: The common dependency is not bound to a shared protocol profile, freshness rule, 
-      historical-state semantics or error taxonomy.
-    recommendation: Adopt a DTG trust-registry query profile for role/authorization/status evidence, including
-      historical as-of queries, signed responses, cache/freshness rules and fail-indeterminate semantics.
+    residual_gap: The common dependency is not bound to a shared protocol profile, freshness rule, historical-state
+      semantics or error taxonomy.
+    recommendation: Adopt a DTG trust-registry query profile for role/authorization/status evidence, including historical
+      as-of queries, signed responses, cache/freshness rules and fail-indeterminate semantics.
     verification:
-    - Interoperability test drives identical registry states/failures through multiple implementations and 
-      obtains the same authorization classification.
+    - Interoperability test drives identical registry states/failures through multiple implementations and obtains
+      the same authorization classification.
     rahp:
       risks:
       - RK-EX02
@@ -619,21 +828,50 @@ review:
       assurance_tests:
       - AT-16
       - AT-17
+      portable_assurance:
+        harm_patterns:
+        - HRM-AUT-05
+        - HRM-SEC-02
+        - HRM-AUT-04
+        - HRM-INF-01
+        - HRM-ECO-02
+        risk_patterns:
+        - RKP-AUTH-02
+        - RKP-DEL-03
+        - RKP-AUTH-01
+        - RKP-AUTH-03
+        control_patterns:
+        - CTP-AUTH-02
+        - CTP-DEL-02
+        - CTP-AUTH-01
+        - CTP-AUTH-03
+        guardrail_patterns:
+        - GRP-AUTH-02
+        - GRP-AUTH-01
+        - GRP-DEL-01
+        assurance_patterns:
+        - ATP-AUTH-02
+        - ATP-AUTH-01
+        - ATP-DEL-01
+        evidence_patterns:
+        - EVP-AUTH-01
+        - EVP-DEL-02
+        - EVP-AUTH-02
     external_alignment:
     - ref: W3C-BSL-1.0
       relationship: direct
-      rationale: Status-list processing specifies validity, caching, integrity, and privacy properties that a 
-        shared registry contract should preserve.
+      rationale: Status-list processing specifies validity, caching, integrity, and privacy properties that a shared
+        registry contract should preserve.
     - ref: OWASP-API-2023
       relationship: analogous
-      rationale: Unsafe consumption of external APIs maps closely to blindly depending on trust-registry 
-        responses without a shared validation/failure contract.
+      rationale: Unsafe consumption of external APIs maps closely to blindly depending on trust-registry responses
+        without a shared validation/failure contract.
       clause: API10:2023 — Unsafe Consumption of APIs
       url: https://owasp.org/API-Security/editions/2023/en/0xaa-unsafe-consumption-of-apis/
     - ref: NIST-SP-800-53-R5
       relationship: supports
-      rationale: External-service and integrity controls support authenticated registry dependencies and 
-        explicit failure handling.
+      rationale: External-service and integrity controls support authenticated registry dependencies and explicit
+        failure handling.
       clause: SA-9; SI-7
   - id: SEC-X-010
     title: Failure and refusal states can be lost before durable credential issuance
@@ -661,20 +899,18 @@ review:
     - source: Trust Tasks §8 / trust-task-next-step
       observation: Error, success and next-step are distinct dispositions; next-step leaves the task open.
     - source: DTG Credential Spec Trust Task Context Binding
-      observation: A credential artifact can be valid while the ceremony/task did not reach the intended 
-        terminal state.
-    attack: An intermediate successful-looking artifact escapes the exchange and triggers credential issuance 
-      even though the task was refused, failed, or remains blocked.
+      observation: A credential artifact can be valid while the ceremony/task did not reach the intended terminal
+        state.
+    attack: An intermediate successful-looking artifact escapes the exchange and triggers credential issuance even
+      though the task was refused, failed, or remains blocked.
     existing_mitigations:
     - taskContext-bearing credentials cannot be interpreted as completion without outcome evidence.
-    residual_gap: The credential spec does not define the exact terminal outcome artifact/profile credential 
-      issuers must verify before issuing each context-dependent credential type.
-    recommendation: Define issuance preconditions per credential type and a machine-verifiable Trust Task 
-      outcome artifact/profile. Issuers must distinguish success, blocked, refusal and failure before minting 
-      durable claims.
+    residual_gap: The credential spec does not define the exact terminal outcome artifact/profile credential issuers
+      must verify before issuing each context-dependent credential type.
+    recommendation: Define issuance preconditions per credential type and a machine-verifiable Trust Task outcome
+      artifact/profile. Issuers must distinguish success, blocked, refusal and failure before minting durable claims.
     verification:
-    - End-to-end fixtures inject blocked/refused/error paths and prove no context-dependent credential is 
-      issued.
+    - End-to-end fixtures inject blocked/refused/error paths and prove no context-dependent credential is issued.
     rahp:
       risks:
       - RK-SC02
@@ -689,19 +925,33 @@ review:
       assurance_tests:
       - AT-16
       - AT-17
+      portable_assurance:
+        harm_patterns:
+        - HRM-SEC-02
+        - HRM-INF-01
+        risk_patterns:
+        - RKP-CRD-01
+        control_patterns:
+        - CTP-AUTH-01
+        guardrail_patterns:
+        - GRP-AUTH-01
+        assurance_patterns:
+        - ATP-AUTH-01
+        evidence_patterns:
+        - EVP-AUTH-01
     external_alignment:
     - ref: NIST-SP-800-53-R5
       relationship: supports
-      rationale: Audit-generation, audit-review, and non-repudiation controls support preserving 
-        refusal/failure evidence across a multi-step authority-changing workflow.
+      rationale: Audit-generation, audit-review, and non-repudiation controls support preserving refusal/failure
+        evidence across a multi-step authority-changing workflow.
       clause: AU-2; AU-6; AU-10
     - ref: NIST-CSF-2.0
       relationship: supports
-      rationale: Detect/Respond outcomes support retaining security-significant failures and using them in 
-        later decision and incident handling.
+      rationale: Detect/Respond outcomes support retaining security-significant failures and using them in later
+        decision and incident handling.
   - id: SEC-X-011
-    title: Supported decision-making and legal delegation are not consistently representable across task and 
-      credential layers
+    title: Supported decision-making and legal delegation are not consistently representable across task and credential
+      layers
     status: open
     severity: Critical
     exploitability: plausible
@@ -719,30 +969,28 @@ review:
     - representation
     preconditions:
     - Participant requires a supporter, guardian, attorney, deputy or co-decision-maker.
-    - Workflow uses generic issuer/recipient and existing DTG credential types without a representation 
-      profile.
+    - Workflow uses generic issuer/recipient and existing DTG credential types without a representation profile.
     security_properties:
     - authorization
     - consent
     - accessibility
     evidence:
     - source: Trust Tasks bilateral document model
-      observation: A document names at most one issuer and one recipient; additional representation semantics 
-        are task-specific.
+      observation: A document names at most one issuer and one recipient; additional representation semantics are
+        task-specific.
     - source: DTG Credential Spec credential taxonomy
       observation: No dedicated supported-consent/legal-delegation binding is defined in the core types.
-    attack: Implementations either impersonate the represented person, exclude them, or invent incompatible 
-      payload/credential conventions. Security checks may validate the wrong controller and treat substitute 
-      decision-making as ordinary self-action.
+    attack: Implementations either impersonate the represented person, exclude them, or invent incompatible payload/credential
+      conventions. Security checks may validate the wrong controller and treat substitute decision-making as ordinary
+      self-action.
     existing_mitigations:
     - RAHP already defines GR-19 and controls for supported decision-making/legal delegation.
-    residual_gap: The existing safeguards are not yet bound into interoperable Trust Task + credential 
-      profiles.
-    recommendation: Define a shared representation profile with distinct principal, representative/supporter, 
-      legal basis, scope, co-signature requirements, notification and revocation semantics.
+    residual_gap: The existing safeguards are not yet bound into interoperable Trust Task + credential profiles.
+    recommendation: Define a shared representation profile with distinct principal, representative/supporter, legal
+      basis, scope, co-signature requirements, notification and revocation semantics.
     verification:
-    - Reference flows cover supported decision, power-of-attorney and guardian cases without collapsing 
-      representative identity into subject identity.
+    - Reference flows cover supported decision, power-of-attorney and guardian cases without collapsing representative
+      identity into subject identity.
     rahp:
       risks:
       - RK-HX04
@@ -757,22 +1005,50 @@ review:
       - GR-19
       assurance_tests:
       - AT-19
+      portable_assurance:
+        harm_patterns:
+        - HRM-AUT-04
+        - HRM-SEC-02
+        - HRM-AUT-05
+        risk_patterns:
+        - RKP-DEL-01
+        - RKP-AGT-01
+        - RKP-AUTH-02
+        - RKP-DEL-03
+        control_patterns:
+        - CTP-DEL-01
+        - CTP-AGT-01
+        - CTP-AUTH-02
+        - CTP-DEL-02
+        guardrail_patterns:
+        - GRP-DEL-01
+        - GRP-AGT-01
+        - GRP-AUTH-02
+        assurance_patterns:
+        - ATP-DEL-01
+        - ATP-AGT-01
+        - ATP-AUTH-02
+        evidence_patterns:
+        - EVP-DEL-01
+        - EVP-AUTH-02
+        - EVP-AUTH-01
+        - EVP-DEL-02
     external_alignment:
     - ref: NIST-SP-800-63-4
       relationship: supports
-      rationale: Digital identity systems distinguish subjects, authenticators, and relying-party decisions 
-        but do not imply exclusive legal capacity; representation needs explicit policy/evidence.
+      rationale: Digital identity systems distinguish subjects, authenticators, and relying-party decisions but
+        do not imply exclusive legal capacity; representation needs explicit policy/evidence.
     - ref: NIST-SP-800-207
       relationship: supports
-      rationale: Access decisions should evaluate the actual authorized subject/delegate and policy rather 
-        than infer authority from identity alone.
+      rationale: Access decisions should evaluate the actual authorized subject/delegate and policy rather than
+        infer authority from identity alone.
     - ref: W3C-VC-DM-2.0
       relationship: contextual
-      rationale: The VC data model can carry representation/delegation claims but leaves their 
-        legal/governance meaning to ecosystem profiles.
+      rationale: The VC data model can carry representation/delegation claims but leaves their legal/governance
+        meaning to ecosystem profiles.
   - id: SEC-X-012
-    title: Organisational and agent identities can satisfy syntactic roles without proving accountable 
-      human/control relationships
+    title: Organisational and agent identities can satisfy syntactic roles without proving accountable human/control
+      relationships
     status: open
     severity: High
     exploitability: plausible
@@ -796,23 +1072,23 @@ review:
     - provenance
     evidence:
     - source: Trust Tasks VID model
-      observation: Any accepted verifiable identifier can occupy issuer/recipient roles under the consumer 
-        trust framework.
+      observation: Any accepted verifiable identifier can occupy issuer/recipient roles under the consumer trust
+        framework.
     - source: DTG Credential Spec VMC
       observation: Members can include non-human entities; governance determines role/standing.
-    attack: A syntactically valid organizational or agent identity is accepted for a role whose real security 
-      requirement is regulated entity standing plus accountable officers/operators. Cryptographic controller 
-      verification substitutes for governance accountability.
+    attack: A syntactically valid organizational or agent identity is accepted for a role whose real security requirement
+      is regulated entity standing plus accountable officers/operators. Cryptographic controller verification substitutes
+      for governance accountability.
     existing_mitigations:
     - Trust registry/governance authorization is explicitly separate from proof verification.
     - RAHP GR-21 defines organizational governance mapping requirements.
-    residual_gap: No shared cross-spec profile requires accountable control relationships to accompany 
-      high-risk organizational/agent actions.
-    recommendation: Bind organizational/agent role authorization to governance-qualified registry evidence 
-      identifying legal entity, responsible officers/operators and permitted credential/task operations.
+    residual_gap: No shared cross-spec profile requires accountable control relationships to accompany high-risk
+      organizational/agent actions.
+    recommendation: Bind organizational/agent role authorization to governance-qualified registry evidence identifying
+      legal entity, responsible officers/operators and permitted credential/task operations.
     verification:
-    - High-risk organizational action fails when cryptographic identity verifies but governance/accountability
-      mapping is absent or stale.
+    - High-risk organizational action fails when cryptographic identity verifies but governance/accountability mapping
+      is absent or stale.
     rahp:
       risks:
       - RK-G05
@@ -828,16 +1104,45 @@ review:
       assurance_tests:
       - AT-21
       - AT-12
+      portable_assurance:
+        harm_patterns:
+        - HRM-AUT-04
+        - HRM-SEC-02
+        - HRM-INF-01
+        - HRM-ECO-02
+        - HRM-GOV-01
+        - HRM-GOV-03
+        risk_patterns:
+        - RKP-AUTH-01
+        - RKP-AUTH-03
+        - RKP-CRD-01
+        - RKP-GOV-01
+        control_patterns:
+        - CTP-AUTH-01
+        - CTP-AUTH-03
+        - CTP-GOV-01
+        guardrail_patterns:
+        - GRP-AUTH-01
+        - GRP-DEL-01
+        - GRP-GOV-01
+        assurance_patterns:
+        - ATP-AUTH-01
+        - ATP-DEL-01
+        - ATP-GOV-01
+        evidence_patterns:
+        - EVP-AUTH-01
+        - EVP-AUTH-02
+        - EVP-GOV-01
     external_alignment:
     - ref: NIST-SP-800-207A
       relationship: direct
-      rationale: Application/service identities need granular authorization policies and cannot be treated as 
-        sufficient evidence of accountable control relationships.
+      rationale: Application/service identities need granular authorization policies and cannot be treated as sufficient
+        evidence of accountable control relationships.
     - ref: OWASP-AGENTIC-2025
       relationship: supports
-      rationale: Agentic security guidance highlights accountability, excessive agency, and the need to bound 
-        autonomous actors to accountable principals.
+      rationale: Agentic security guidance highlights accountability, excessive agency, and the need to bound autonomous
+        actors to accountable principals.
     - ref: W3C-VC-DM-2.0
       relationship: supports
-      rationale: The VC trust model makes relying-party trust decisions separate from syntactic credential 
-        validity or issuer identity.
+      rationale: The VC trust model makes relying-party trust decisions separate from syntactic credential validity
+        or issuer identity.

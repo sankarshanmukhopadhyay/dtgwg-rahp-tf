@@ -1,0 +1,257 @@
+catalogue_version: 1.1.0
+record_type: harm_pattern
+records:
+- id: HRM-AUT-01
+  name: Manipulation
+  family: Autonomy
+  definition: A person or accountable principal is steered toward an outcome through materially misleading, asymmetric
+    or exploitative influence.
+  affected_interests:
+  - autonomy
+  - informed choice
+  example_manifestations:
+  - deceptive interface
+  - agent recommendation optimized against the principal
+- id: HRM-AUT-02
+  name: Coercion
+  family: Autonomy
+  definition: A person faces material penalty, loss or threat unless they accept a system action, disclosure or
+    decision.
+  affected_interests:
+  - autonomy
+  - freedom from coercion
+  example_manifestations:
+  - take-it-or-leave-it disclosure
+  - mandatory participation without viable alternative
+- id: HRM-AUT-03
+  name: Loss of meaningful choice
+  family: Autonomy
+  definition: Nominal consent or choice exists but practical alternatives, information or timing are insufficient
+    for meaningful agency.
+  affected_interests:
+  - autonomy
+  - consent
+  example_manifestations:
+  - dark-pattern consent
+  - no realistic non-digital path
+- id: HRM-AUT-04
+  name: Delegation beyond informed intent
+  family: Autonomy
+  definition: A delegated actor performs or enables an action outside the principal’s reasonably understood mandate.
+  affected_interests:
+  - agency
+  - control
+  example_manifestations:
+  - agent exceeds purpose
+  - downstream delegation expands scope
+- id: HRM-AUT-05
+  name: Inability to withdraw or revoke
+  family: Autonomy
+  definition: A person cannot effectively terminate consent, delegated authority, participation or continued processing.
+  affected_interests:
+  - agency
+  - exit
+  example_manifestations:
+  - revocation not propagated
+  - withdrawal ignored by downstream party
+- id: HRM-ACC-01
+  name: Wrongful exclusion
+  family: Access and inclusion
+  definition: A legitimate person or organization is denied access, participation or recognition without a justified
+    basis.
+  affected_interests:
+  - access
+  - participation
+  example_manifestations:
+  - false rejection
+  - unavailable proofing path
+- id: HRM-ACC-02
+  name: Discriminatory burden
+  family: Access and inclusion
+  definition: A rule or system imposes materially higher burdens on a protected, marginalized or structurally disadvantaged
+    group.
+  affected_interests:
+  - equality
+  - non-discrimination
+  example_manifestations:
+  - social graph privilege
+  - document requirements disproportionately exclude
+- id: HRM-ACC-03
+  name: Accessibility failure
+  family: Access and inclusion
+  definition: A legitimate participant cannot complete a required interaction because accessibility needs are not
+    supported.
+  affected_interests:
+  - accessibility
+  - participation
+  example_manifestations:
+  - inaccessible wallet flow
+  - mandatory visual-only challenge
+- id: HRM-ACC-04
+  name: Infrastructure dependency exclusion
+  family: Access and inclusion
+  definition: Access depends on devices, networks, identity infrastructure or services unavailable to some legitimate
+    participants.
+  affected_interests:
+  - access
+  - continuity
+  example_manifestations:
+  - online-only process
+  - hardware requirement
+- id: HRM-PRV-01
+  name: Unnecessary disclosure
+  family: Privacy
+  definition: Information beyond the minimum necessary is exposed to a party or system.
+  affected_interests:
+  - privacy
+  - data minimization
+  example_manifestations:
+  - over-broad credential
+  - verbose error response
+- id: HRM-PRV-02
+  name: Linkability and correlation
+  family: Privacy
+  definition: Separate interactions can be linked to construct a broader profile of a person, organization or agent.
+  affected_interests:
+  - privacy
+  - contextual integrity
+  example_manifestations:
+  - stable identifier reuse
+  - composed proof fingerprint
+- id: HRM-PRV-03
+  name: Inference beyond disclosed facts
+  family: Privacy
+  definition: Observed data or metadata enables sensitive conclusions not intentionally disclosed.
+  affected_interests:
+  - privacy
+  - contextual integrity
+  example_manifestations:
+  - relationship inference
+  - behavior profiling
+- id: HRM-PRV-04
+  name: Persistent surveillance
+  family: Privacy
+  definition: System operation enables durable observation or reconstruction of activities across time or contexts.
+  affected_interests:
+  - privacy
+  - freedom of association
+  example_manifestations:
+  - registry activity tracking
+  - persistent presentation logs
+- id: HRM-PRV-05
+  name: Secondary use and context collapse
+  family: Privacy
+  definition: Information collected for one purpose or audience is reused in another materially different context.
+  affected_interests:
+  - privacy
+  - purpose limitation
+  example_manifestations:
+  - credential reused for scoring
+  - public metadata used for unrelated profiling
+- id: HRM-ECO-01
+  name: Loss of economic opportunity
+  family: Economic
+  definition: A system decision prevents or materially reduces access to employment, trade, finance or other economic
+    participation.
+  affected_interests:
+  - livelihood
+  - economic participation
+  example_manifestations:
+  - wrongful deplatforming
+  - credential rejection blocks service
+- id: HRM-ECO-02
+  name: Fraudulent or misallocated liability
+  family: Economic
+  definition: A person or organization bears financial or legal consequences for an action they did not authorize
+    or control.
+  affected_interests:
+  - property
+  - liability
+  example_manifestations:
+  - agent purchase beyond mandate
+  - impersonation creates debt
+- id: HRM-GOV-01
+  name: Arbitrary decision
+  family: Governance and due process
+  definition: A consequential decision is taken without consistent rules, sufficient reasons or accountable authority.
+  affected_interests:
+  - due process
+  - fair treatment
+  example_manifestations:
+  - unexplained revocation
+  - ad hoc admission denial
+- id: HRM-GOV-02
+  name: Unavailable appeal or remedy
+  family: Governance and due process
+  definition: An affected party lacks a practical path to contest, correct or obtain remedy for an adverse outcome.
+  affected_interests:
+  - redress
+  - due process
+  example_manifestations:
+  - split responsibility
+  - appeal channel absent
+- id: HRM-GOV-03
+  name: Unaccountable or captured authority
+  family: Governance and due process
+  definition: Decision power is exercised without effective oversight, contestability or independence.
+  affected_interests:
+  - accountability
+  - legitimacy
+  example_manifestations:
+  - registry capture
+  - single operator controls policy and evidence
+- id: HRM-SEC-01
+  name: Impersonation and false attribution
+  family: Security-mediated harm
+  definition: Actions or claims are attributed to the wrong person, organization or agent.
+  affected_interests:
+  - identity
+  - reputation
+  - security
+  example_manifestations:
+  - stolen key accepted as intent
+  - forged endpoint identity
+- id: HRM-SEC-02
+  name: Unauthorized consequential action
+  family: Security-mediated harm
+  definition: A system performs a consequential action without current, sufficient authority from the accountable
+    principal.
+  affected_interests:
+  - agency
+  - property
+  - safety
+  example_manifestations:
+  - unauthorized transfer
+  - agent acts after revocation
+- id: HRM-SEC-03
+  name: Denial or disruption of participation
+  family: Security-mediated harm
+  definition: Security or operational failure prevents legitimate use, continuity, recovery or participation.
+  affected_interests:
+  - availability
+  - access
+  example_manifestations:
+  - status service outage
+  - key recovery deadlock
+- id: HRM-INF-01
+  name: False provenance or trust inference
+  family: Information integrity
+  definition: A party correctly observes an artefact or signature but infers legitimacy, endorsement, authority
+    or quality that it does not establish.
+  affected_interests:
+  - information integrity
+  - reliance
+  example_manifestations:
+  - signed agent card treated as authorization
+  - registry listing treated as certification
+- id: HRM-SAF-01
+  name: Physical or safeguarding exposure
+  family: Safety
+  definition: Digital information or system action materially increases risk of physical harm, stalking, abuse or
+    safeguarding failure.
+  affected_interests:
+  - safety
+  - security
+  example_manifestations:
+  - location exposure
+  - unsafe automated physical action

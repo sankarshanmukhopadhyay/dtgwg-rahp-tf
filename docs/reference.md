@@ -14,6 +14,7 @@ Find generated registers, diagrams, repository coverage and governance-reference
 - [Repository map](diagrams/repository-map.md)
 - [Artefact relationships](diagrams/artefact-relationships.md)
 - [Lifecycle diagram](diagrams/lifecycle.md)
+- [Portable assurance catalogue](portable-assurance-catalogue.md)
 - [Scenario coverage](scenario-coverage.md)
 - [Pages coverage](pages-coverage.md)
 - [Roadmap](../ROADMAP.md)

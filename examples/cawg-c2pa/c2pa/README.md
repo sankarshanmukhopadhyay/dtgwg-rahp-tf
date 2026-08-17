@@ -24,12 +24,12 @@ This worked review is part of the RAHP v0.6.0 CAWG/C2PA external-deployment proo
 | Target commit | `b1703dc0a0420088d3f8b0e5fb11866d0fe931cb` |
 | Target source paths | — |
 | RAHP repository | `sankarshanmukhopadhyay/rahp-toolkit` |
-| RAHP version | `v0.8.0` |
+| RAHP version | `v1.1.0` |
 | Engine contract | `rahp-engine-contract-v1` |
 | RAHP corpus date | 2026-08-16 |
-| Engine/method revalidated on | 2026-08-16 |
+| Engine/method revalidated on | 2026-08-17 |
 | Original RAHP version | `v0.6.0` |
-| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
+| Revalidation scope | v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target revision unchanged |
 
 ### Method
 
@@ -87,6 +87,17 @@ This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conforman
 | Guardrails | — |
 | Assurance tests | — |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-INF-01`, `HRM-ECO-02` |
+| Risks | `RKP-DEL-01`, `RKP-AGT-01`, `RKP-AUTH-01`, `RKP-AUTH-03` |
+| Controls | `CTP-DEL-01`, `CTP-AGT-01`, `CTP-AUTH-01`, `CTP-AUTH-03` |
+| Guardrails | `GRP-DEL-01`, `GRP-AGT-01`, `GRP-AUTH-01` |
+| Assurance | `ATP-DEL-01`, `ATP-AGT-01`, `ATP-AUTH-01` |
+| Evidence | `EVP-DEL-01`, `EVP-AUTH-02`, `EVP-AUTH-01` |
+
 **Evidence**
 
 | Source | Observation |
@@ -120,6 +131,17 @@ Mandate profiles should define decision semantics above C2PA validation, includi
 | Controls | — |
 | Guardrails | — |
 | Assurance tests | — |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-GOV-02`, `HRM-INF-01` |
+| Risks | `RKP-COMP-04` |
+| Controls | `CTP-COMP-01` |
+| Guardrails | `GRP-COMP-01` |
+| Assurance | `ATP-COMP-01` |
+| Evidence | `EVP-COMP-01` |
 
 **Evidence**
 

@@ -12,11 +12,11 @@
 | Target repository | `c2pa-org/specifications` |
 | Target version | 2.4 / tracked main |
 | Target commit | `b1703dc0a0420088d3f8b0e5fb11866d0fe931cb` |
-| RAHP version | `v0.8.0` |
+| RAHP version | `v1.1.0` |
 | Engine contract | `rahp-engine-contract-v1` |
-| Engine/method revalidated on | 2026-08-16 |
+| Engine/method revalidated on | 2026-08-17 |
 | Original RAHP version | `v0.7.0` |
-| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
+| Revalidation scope | v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target revision unchanged |
 | Source paths | — |
 
 ## Overall assessment
@@ -63,6 +63,17 @@ External mappings are evidence links, not claims that the cited organization rev
 | RAHP controls | — |
 | RAHP guardrails | — |
 | RAHP assurance tests | — |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | HRM-SEC-02, HRM-INF-01 |
+| Risks | RKP-CRD-01 |
+| Controls | CTP-AUTH-01 |
+| Guardrails | GRP-AUTH-01 |
+| Assurance | ATP-AUTH-01 |
+| Evidence | EVP-AUTH-01 |
 
 **External standards alignment**
 
@@ -119,6 +130,17 @@ Introduce relying-party profiles declaring required assertion classes and a down
 | RAHP guardrails | — |
 | RAHP assurance tests | — |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | HRM-AUT-04, HRM-SEC-02, HRM-INF-01, HRM-ECO-02 |
+| Risks | RKP-AUTH-01, RKP-AUTH-03 |
+| Controls | CTP-AUTH-01, CTP-AUTH-03 |
+| Guardrails | GRP-AUTH-01, GRP-DEL-01 |
+| Assurance | ATP-AUTH-01, ATP-DEL-01 |
+| Evidence | EVP-AUTH-01, EVP-AUTH-02 |
+
 **External standards alignment**
 
 | External source | Clause / control | Relationship | Rationale |
@@ -173,6 +195,17 @@ Define machine-readable layer-specific validation results and test product UX fo
 | RAHP controls | — |
 | RAHP guardrails | — |
 | RAHP assurance tests | — |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | HRM-GOV-02, HRM-ECO-02 |
+| Risks | RKP-RED-01 |
+| Controls | CTP-RED-01 |
+| Guardrails | GRP-RED-01 |
+| Assurance | ATP-RED-01 |
+| Evidence | EVP-RED-01 |
 
 **External standards alignment**
 

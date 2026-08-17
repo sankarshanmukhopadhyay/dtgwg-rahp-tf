@@ -24,12 +24,12 @@ This worked review is part of the RAHP v0.6.0 CAWG/C2PA external-deployment proo
 | Target commit | `8a9c4925df7e8ccbcabce9d754fc27739e11dc12` |
 | Target source paths | — |
 | RAHP repository | `sankarshanmukhopadhyay/rahp-toolkit` |
-| RAHP version | `v0.8.0` |
+| RAHP version | `v1.1.0` |
 | Engine contract | `rahp-engine-contract-v1` |
 | RAHP corpus date | 2026-08-16 |
-| Engine/method revalidated on | 2026-08-16 |
+| Engine/method revalidated on | 2026-08-17 |
 | Original RAHP version | `v0.6.0` |
-| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
+| Revalidation scope | v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target revision unchanged |
 
 ### Method
 
@@ -87,6 +87,17 @@ This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conforman
 | Guardrails | — |
 | Assurance tests | — |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-INF-01`, `HRM-ECO-02`, `HRM-GOV-01`, `HRM-GOV-03` |
+| Risks | `RKP-AUTH-01`, `RKP-AUTH-03`, `RKP-CRD-01`, `RKP-GOV-01` |
+| Controls | `CTP-AUTH-01`, `CTP-AUTH-03`, `CTP-GOV-01` |
+| Guardrails | `GRP-AUTH-01`, `GRP-DEL-01`, `GRP-GOV-01` |
+| Assurance | `ATP-AUTH-01`, `ATP-DEL-01`, `ATP-GOV-01` |
+| Evidence | `EVP-AUTH-01`, `EVP-AUTH-02`, `EVP-GOV-01` |
+
 **Evidence**
 
 | Source | Observation |
@@ -120,6 +131,17 @@ Define or normatively hook a relying-party governance profile that separates cre
 | Controls | — |
 | Guardrails | — |
 | Assurance tests | — |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-05`, `HRM-SEC-02`, `HRM-INF-01` |
+| Risks | `RKP-AUTH-02`, `RKP-DEL-03`, `RKP-CRD-01` |
+| Controls | `CTP-AUTH-02`, `CTP-DEL-02`, `CTP-AUTH-01` |
+| Guardrails | `GRP-AUTH-02`, `GRP-AUTH-01` |
+| Assurance | `ATP-AUTH-02`, `ATP-AUTH-01` |
+| Evidence | `EVP-AUTH-01`, `EVP-DEL-02` |
 
 **Evidence**
 

@@ -62,5 +62,5 @@ if (cmd === 'conformance') {
     process.exit(fail ? 1 : 0);
 }
 if (!cmd || cmd === 'describe') {
-    console.log('RAHP TypeScript reference SDK v1.0.0\nCommands: validate-profile targets validate-result retention-plan correlate-trigger sha256 trace graph-stats conformance');
+    console.log('RAHP TypeScript reference SDK v1.1.0\nCommands: validate-profile targets validate-result retention-plan correlate-trigger sha256 trace graph-stats conformance');
 }

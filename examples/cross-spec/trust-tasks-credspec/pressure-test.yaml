@@ -1,0 +1,328 @@
+review:
+  id: SR-XSP-001
+  status: complete
+  title: Trust Tasks × DTG Credential Specification cross-specification pressure test
+  reviewed_on: '2026-08-17'
+  target:
+    repository: trustoverip/dtgwg-trust-tasks-tf + trustoverip/dtgwg-cred-spec
+    version: Composition of Trust Tasks fbe196a8 and Credentials WD01 d19f7c9
+    commit: fbe196a8a17ba3f99d0657a64be5ac58621023a1
+    source_paths:
+    - Trust Tasks SPEC.md
+    - DTG Credential Spec spec/body.md
+    - corpora/trust-tasks-credspec-composed.yaml
+  reviewed_against:
+    repository: sankarshanmukhopadhyay/rahp-toolkit
+    rahp_version: v1.1.0
+    corpus_date: '2026-08-17'
+    engine_contract: rahp-engine-contract-v1
+  scope:
+    included:
+    - Authority, credential context, replay, privacy composition, lifecycle skew and cross-boundary redress at the
+      seam between Trust Tasks and the DTG Credential Specification.
+    excluded:
+    - Independent implementation defects not caused or amplified by specification composition.
+  method:
+    workflow: docs/cross-spec-pressure-testing.md
+    rule: A component-level pass does not imply a composition-level pass.
+  summary:
+    finding_count: 6
+    open_count: 6
+    overall_assessment: 'The composition remains a first-class assurance surface: independently valid task, credential,
+      registry and policy facts can still combine into unauthorized, stale, replayed, privacy-invasive or unappealable
+      outcomes unless their semantic and lifecycle contracts are explicit.'
+  findings:
+  - id: F-001
+    title: Credential validity and task authentication do not establish current delegated authority
+    status: open
+    severity: Critical
+    primary_disposition: companion-specification
+    secondary_dispositions:
+    - governance
+    - implementation-guidance
+    scenarios:
+    - XSP-002
+    - XSP-007
+    scenario_patterns:
+    - SP-AUTH-02
+    - SP-DEL-01
+    - SP-DEL-02
+    personas:
+    - P1
+    - P3
+    - P5
+    - P6
+    risks:
+    - RK-AI01
+    controls: []
+    guardrails: []
+    assurance_tests: []
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-AUT-05
+      risk_patterns:
+      - RKP-COMP-01
+      - RKP-AUTH-02
+      control_patterns:
+      - CTP-COMP-01
+      - CTP-AUTH-02
+      guardrail_patterns:
+      - GRP-COMP-01
+      - GRP-AUTH-02
+      assurance_patterns:
+      - ATP-COMP-01
+      - ATP-AUTH-02
+      evidence_patterns:
+      - EVP-COMP-01
+      - EVP-AUTH-01
+    evidence:
+    - source: corpora/trust-tasks-credspec-composed.yaml#xsp-002
+      observation: The composed scenario identifies a semantic or lifecycle seam that remains unsafe even when component-level
+        validation succeeds.
+    harm: A consumer can combine individually valid task and credential facts and still perform an action beyond
+      the principal’s current mandate.
+    recommendation: Define an explicit cross-spec authority contract that carries a bounded delegation reference
+      and requires action-time evaluation of current authority.
+    retest_when:
+    - The two specifications or an adopted companion profile define and test the relevant cross-spec semantic contract.
+  - id: F-002
+    title: Task-bound credentials can become detached from outcome evidence
+    status: open
+    severity: High
+    primary_disposition: companion-specification
+    secondary_dispositions:
+    - governance
+    - implementation-guidance
+    scenarios:
+    - XSP-001
+    scenario_patterns:
+    - SP-COMP-01
+    personas:
+    - P1
+    - P3
+    - P5
+    - P6
+    risks:
+    - RK-EX05
+    controls: []
+    guardrails: []
+    assurance_tests: []
+    portable_assurance:
+      harm_patterns:
+      - HRM-INF-01
+      - HRM-SEC-02
+      risk_patterns:
+      - RKP-CRD-03
+      control_patterns:
+      - CTP-CRD-01
+      guardrail_patterns: []
+      assurance_patterns:
+      - ATP-COMP-01
+      evidence_patterns:
+      - EVP-COMP-01
+    evidence:
+    - source: corpora/trust-tasks-credspec-composed.yaml#xsp-001
+      observation: The composed scenario identifies a semantic or lifecycle seam that remains unsafe even when component-level
+        validation succeeds.
+    harm: A context-bearing credential can be misread later as proof that a task succeeded or that a consequential
+      outcome occurred.
+    recommendation: Keep task context, authorization and completion as separate semantic facts and require outcome
+      evidence for completion claims.
+    retest_when:
+    - The two specifications or an adopted companion profile define and test the relevant cross-spec semantic contract.
+  - id: F-003
+    title: Replay can combine a still-valid credential with a duplicate consequential task
+    status: open
+    severity: High
+    primary_disposition: companion-specification
+    secondary_dispositions:
+    - governance
+    - implementation-guidance
+    scenarios:
+    - XSP-003
+    scenario_patterns:
+    - SP-REPLAY-01
+    - SP-COMP-01
+    personas:
+    - P1
+    - P3
+    - P5
+    - P6
+    risks:
+    - RK-EX05
+    controls: []
+    guardrails: []
+    assurance_tests: []
+    portable_assurance:
+      harm_patterns:
+      - HRM-ECO-02
+      - HRM-SEC-02
+      risk_patterns:
+      - RKP-OPS-02
+      control_patterns:
+      - CTP-OPS-02
+      guardrail_patterns:
+      - GRP-OPS-01
+      assurance_patterns:
+      - ATP-OPS-02
+      evidence_patterns:
+      - EVP-OPS-02
+    evidence:
+    - source: corpora/trust-tasks-credspec-composed.yaml#xsp-003
+      observation: The composed scenario identifies a semantic or lifecycle seam that remains unsafe even when component-level
+        validation succeeds.
+    harm: A valid credential and validly authenticated task can be replayed together and repeat a side effect that
+      the principal authorized only once.
+    recommendation: Define cross-spec freshness and idempotency binding between task identity, credential use and
+      consequential execution.
+    retest_when:
+    - The two specifications or an adopted companion profile define and test the relevant cross-spec semantic contract.
+  - id: F-004
+    title: Composed proofs create correlation not visible in either specification alone
+    status: open
+    severity: High
+    primary_disposition: companion-specification
+    secondary_dispositions:
+    - governance
+    - implementation-guidance
+    scenarios:
+    - XSP-005
+    - XSP-006
+    - XSP-011
+    scenario_patterns:
+    - SP-PRIV-01
+    - SP-PRIV-02
+    - SP-COMP-01
+    personas:
+    - P1
+    - P3
+    - P5
+    - P6
+    risks:
+    - RK-EX05
+    controls: []
+    guardrails: []
+    assurance_tests: []
+    portable_assurance:
+      harm_patterns:
+      - HRM-PRV-02
+      - HRM-PRV-05
+      risk_patterns:
+      - RKP-COMP-03
+      control_patterns:
+      - CTP-PRV-02
+      guardrail_patterns:
+      - GRP-PRV-01
+      assurance_patterns:
+      - ATP-PRV-01
+      evidence_patterns:
+      - EVP-PRV-01
+    evidence:
+    - source: corpora/trust-tasks-credspec-composed.yaml#xsp-005
+      observation: The composed scenario identifies a semantic or lifecycle seam that remains unsafe even when component-level
+        validation succeeds.
+    harm: Multiple individually minimal artefacts, transport metadata and errors can combine into a persistent or
+      identifying profile.
+    recommendation: Require composed disclosure analysis at the Trust Task + credential boundary, including recipient
+      scope and privacy-safe errors.
+    retest_when:
+    - The two specifications or an adopted companion profile define and test the relevant cross-spec semantic contract.
+  - id: F-005
+    title: Offline and asymmetric lifecycle handling can accept stale trust state
+    status: open
+    severity: High
+    primary_disposition: companion-specification
+    secondary_dispositions:
+    - governance
+    - implementation-guidance
+    scenarios:
+    - XSP-009
+    - XSP-010
+    scenario_patterns:
+    - SP-OPS-01
+    - SP-OPS-02
+    - SP-COMP-02
+    personas:
+    - P1
+    - P3
+    - P5
+    - P6
+    risks:
+    - RK-EX05
+    controls: []
+    guardrails: []
+    assurance_tests: []
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-05
+      - HRM-SEC-02
+      - HRM-SEC-03
+      risk_patterns:
+      - RKP-COMP-02
+      control_patterns:
+      - CTP-COMP-02
+      guardrail_patterns: []
+      assurance_patterns:
+      - ATP-COMP-02
+      evidence_patterns:
+      - EVP-COMP-01
+    evidence:
+    - source: corpora/trust-tasks-credspec-composed.yaml#xsp-009
+      observation: The composed scenario identifies a semantic or lifecycle seam that remains unsafe even when component-level
+        validation succeeds.
+    harm: One side can continue under cached credential, registry or policy state after the other side would consider
+      the authority or profile stale.
+    recommendation: Publish status-as-of and safe-degradation rules plus a lifecycle matrix covering offline reconciliation
+      and version migration.
+    retest_when:
+    - The two specifications or an adopted companion profile define and test the relevant cross-spec semantic contract.
+  - id: F-006
+    title: Cross-spec adverse decisions lack a single contestability boundary
+    status: open
+    severity: High
+    primary_disposition: companion-specification
+    secondary_dispositions:
+    - governance
+    - implementation-guidance
+    scenarios:
+    - XSP-012
+    scenario_patterns:
+    - SP-GOV-03
+    - SP-RED-01
+    personas:
+    - P1
+    - P3
+    - P5
+    - P6
+    risks:
+    - RK-EX05
+    controls: []
+    guardrails: []
+    assurance_tests: []
+    portable_assurance:
+      harm_patterns:
+      - HRM-GOV-02
+      - HRM-ECO-02
+      risk_patterns:
+      - RKP-GOV-04
+      control_patterns:
+      - CTP-GOV-03
+      guardrail_patterns:
+      - GRP-RED-01
+      assurance_patterns:
+      - ATP-RED-01
+      evidence_patterns:
+      - EVP-RED-01
+    evidence:
+    - source: corpora/trust-tasks-credspec-composed.yaml#xsp-012
+      observation: The composed scenario identifies a semantic or lifecycle seam that remains unsafe even when component-level
+        validation succeeds.
+    harm: A person may be harmed by an outcome produced jointly by task policy, credential status and registry governance
+      while every component points elsewhere for appeal.
+    recommendation: Define an accountable cross-boundary responsibility map and evidence package sufficient to explain,
+      contest and remedy the outcome.
+    retest_when:
+    - The two specifications or an adopted companion profile define and test the relevant cross-spec semantic contract.

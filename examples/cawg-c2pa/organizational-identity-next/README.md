@@ -24,12 +24,12 @@ This is a RAHP Toolkit v0.7.0 external assurance review. It is not an upstream c
 | Target commit | `ad951176b1d428e027c3c20c48506b2b780a8f77` |
 | Target source paths | — |
 | RAHP repository | `sankarshanmukhopadhyay/rahp-toolkit` |
-| RAHP version | `v0.8.0` |
+| RAHP version | `v1.1.0` |
 | Engine contract | `rahp-engine-contract-v1` |
 | RAHP corpus date | 2026-08-16 |
-| Engine/method revalidated on | 2026-08-16 |
+| Engine/method revalidated on | 2026-08-17 |
 | Original RAHP version | `v0.7.0` |
-| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
+| Revalidation scope | v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target revision unchanged |
 
 ### Method
 
@@ -88,6 +88,17 @@ The 1.1 profile is a strong deployment surface but should pair implementation co
 | Guardrails | — |
 | Assurance tests | — |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-GOV-02`, `HRM-INF-01` |
+| Risks | `RKP-COMP-04` |
+| Controls | `CTP-COMP-01` |
+| Guardrails | `GRP-COMP-01` |
+| Assurance | `ATP-COMP-01` |
+| Evidence | `EVP-COMP-01` |
+
 **Evidence**
 
 | Source | Observation |
@@ -121,6 +132,17 @@ Add paired generator/validator conformance vectors and explicit version-negotiat
 | Controls | — |
 | Guardrails | — |
 | Assurance tests | — |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-INF-01`, `HRM-ECO-02` |
+| Risks | `RKP-AUTH-01`, `RKP-AUTH-03` |
+| Controls | `CTP-AUTH-01`, `CTP-AUTH-03` |
+| Guardrails | `GRP-AUTH-01`, `GRP-DEL-01` |
+| Assurance | `ATP-AUTH-01`, `ATP-DEL-01` |
+| Evidence | `EVP-AUTH-01`, `EVP-AUTH-02` |
 
 **Evidence**
 

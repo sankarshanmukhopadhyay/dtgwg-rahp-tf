@@ -14,9 +14,9 @@
 | Commit | `b1703dc0a0420088d3f8b0e5fb11866d0fe931cb` |
 | RAHP review | `CAWG-COMP-005` — 2 finding(s) |
 | Security review | `SEC-CW-002` — 3 finding(s) |
-| RAHP version | `v0.8.0` |
+| RAHP version | `v1.1.0` |
 | Engine contract | `rahp-engine-contract-v1` |
-| Engine/method revalidated on | 2026-08-16 |
+| Engine/method revalidated on | 2026-08-17 |
 
 ## How to read the combined view
 

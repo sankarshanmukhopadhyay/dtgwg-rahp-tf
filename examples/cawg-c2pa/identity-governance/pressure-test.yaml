@@ -11,13 +11,14 @@ review:
     source_paths: []
   reviewed_against:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    rahp_version: v0.8.0
+    rahp_version: v1.1.0
     corpus_date: '2026-08-16'
     original_rahp_version: v0.7.0
     original_corpus_date: '2026-08-14'
     engine_contract: rahp-engine-contract-v1
-    revalidated_on: '2026-08-16'
-    revalidation_scope: method-and-engine-only; target revision and substantive findings unchanged
+    revalidated_on: '2026-08-17'
+    revalidation_scope: v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target
+      revision unchanged
   scope:
     included:
     - Normative and draft semantics relevant to the named composition or experiment.
@@ -27,8 +28,8 @@ review:
     - Claims that upstream CAWG, DIF, C2PA, GLEIF or W3C endorsed this RAHP assessment.
   method:
     workflow: docs/pressure-testing-a-spec.md
-    rule: Separate cryptographic validity, identity, authority, consent, lifecycle and relying-party trust; 
-      test both isolated and composed failure states.
+    rule: Separate cryptographic validity, identity, authority, consent, lifecycle and relying-party trust; test
+      both isolated and composed failure states.
   summary:
     finding_count: 3
     open_count: 3
@@ -36,8 +37,8 @@ review:
       specification: 1
       companion-specification: 1
       governance: 1
-    overall_assessment: High-value direction, but governance, historical-state and entity-binding semantics 
-      remain mandate blockers.
+    overall_assessment: High-value direction, but governance, historical-state and entity-binding semantics remain
+      mandate blockers.
   findings:
   - id: F-001
     title: Credential-to-registry entity binding is a new high-value trust junction
@@ -48,12 +49,11 @@ review:
     - CRK-14
     evidence:
     - source: https://github.com/decentralized-identity/cawg-identity-assertion/issues/274
-      observation: The proposed X.509 + TRQP model requires a reliable linkage between certificate identity 
-        and the registry entity_id.
-    harm: A valid credential can be associated with the wrong registry entity, producing a false authorization
-      result.
-    recommendation: Normatively bind entity identifiers to credential subjects, define rotation/migration 
-      semantics, and add negative conformance vectors.
+      observation: The proposed X.509 + TRQP model requires a reliable linkage between certificate identity and
+        the registry entity_id.
+    harm: A valid credential can be associated with the wrong registry entity, producing a false authorization result.
+    recommendation: Normatively bind entity identifiers to credential subjects, define rotation/migration semantics,
+      and add negative conformance vectors.
     retest_when:
     - Normative semantics and interoperable test vectors close this failure path.
     scenarios:
@@ -66,6 +66,34 @@ review:
     - P1
     - P3
     - P6
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-ECO-02
+      - HRM-GOV-01
+      - HRM-SEC-03
+      risk_patterns:
+      - RKP-AUTH-01
+      - RKP-AUTH-03
+      - RKP-CRD-01
+      - RKP-GOV-03
+      control_patterns:
+      - CTP-AUTH-01
+      - CTP-AUTH-03
+      - CTP-GOV-02
+      guardrail_patterns:
+      - GRP-AUTH-01
+      - GRP-DEL-01
+      assurance_patterns:
+      - ATP-AUTH-01
+      - ATP-DEL-01
+      - ATP-GOV-02
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-AUTH-02
+      - EVP-GOV-02
   - id: F-002
     title: Current-state TRQP alone cannot answer historical authority
     status: open
@@ -75,11 +103,11 @@ review:
     - CRK-02
     evidence:
     - source: https://github.com/decentralized-identity/cawg-identity-assertion/issues/274
-      observation: The issue explicitly identifies current-vs-publication-time membership as an unresolved 
-        design choice.
+      observation: The issue explicitly identifies current-vs-publication-time membership as an unresolved design
+        choice.
     harm: Content can be judged using present membership rather than authority at publication time.
-    recommendation: Define as-of query semantics or stapled signed authorization evidence with retention and 
-      verification requirements.
+    recommendation: Define as-of query semantics or stapled signed authorization evidence with retention and verification
+      requirements.
     retest_when:
     - Normative semantics and interoperable test vectors close this failure path.
     scenarios:
@@ -92,6 +120,28 @@ review:
     - P1
     - P3
     - P6
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-ECO-02
+      risk_patterns:
+      - RKP-AUTH-01
+      - RKP-AUTH-03
+      - RKP-CRD-01
+      control_patterns:
+      - CTP-AUTH-01
+      - CTP-AUTH-03
+      guardrail_patterns:
+      - GRP-AUTH-01
+      - GRP-DEL-01
+      assurance_patterns:
+      - ATP-AUTH-01
+      - ATP-DEL-01
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-AUTH-02
   - id: F-003
     title: Registry governance can become a participation gate
     status: open
@@ -101,12 +151,12 @@ review:
     - CRK-10
     evidence:
     - source: https://github.com/decentralized-identity/cawg-identity-assertion/issues/263
-      observation: Governance proposals explicitly contemplate governing authorities and trusted registries 
-        controlling who may make particular assertions.
-    harm: Mandated adoption can concentrate effective publication legitimacy in a narrow CA and 
-      governing-authority set.
-    recommendation: Define federation, portability, appeal, alternate trust paths, and relying-party choice 
-      before treating registry membership as mandate-grade authority.
+      observation: Governance proposals explicitly contemplate governing authorities and trusted registries controlling
+        who may make particular assertions.
+    harm: Mandated adoption can concentrate effective publication legitimacy in a narrow CA and governing-authority
+      set.
+    recommendation: Define federation, portability, appeal, alternate trust paths, and relying-party choice before
+      treating registry membership as mandate-grade authority.
     retest_when:
     - Normative semantics and interoperable test vectors close this failure path.
     scenarios:
@@ -119,3 +169,31 @@ review:
     - P1
     - P3
     - P6
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-ECO-02
+      risk_patterns:
+      - RKP-DEL-01
+      - RKP-AGT-01
+      - RKP-AUTH-01
+      - RKP-AUTH-03
+      control_patterns:
+      - CTP-DEL-01
+      - CTP-AGT-01
+      - CTP-AUTH-01
+      - CTP-AUTH-03
+      guardrail_patterns:
+      - GRP-DEL-01
+      - GRP-AGT-01
+      - GRP-AUTH-01
+      assurance_patterns:
+      - ATP-DEL-01
+      - ATP-AGT-01
+      - ATP-AUTH-01
+      evidence_patterns:
+      - EVP-DEL-01
+      - EVP-AUTH-02
+      - EVP-AUTH-01

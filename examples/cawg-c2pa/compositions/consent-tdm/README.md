@@ -24,12 +24,12 @@ This is a RAHP Toolkit v0.7.0 external assurance review. It is not an upstream c
 | Target commit | `0d6916c0c4a87705315bbd3b512827b9b41bb98f` |
 | Target source paths | — |
 | RAHP repository | `sankarshanmukhopadhyay/rahp-toolkit` |
-| RAHP version | `v0.8.0` |
+| RAHP version | `v1.1.0` |
 | Engine contract | `rahp-engine-contract-v1` |
 | RAHP corpus date | 2026-08-16 |
-| Engine/method revalidated on | 2026-08-16 |
+| Engine/method revalidated on | 2026-08-17 |
 | Original RAHP version | `v0.7.0` |
-| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
+| Revalidation scope | v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target revision unchanged |
 
 ### Method
 
@@ -87,6 +87,17 @@ Cross-specification RAHP review: individually valid components are tested for un
 | Guardrails | — |
 | Assurance tests | — |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-INF-01`, `HRM-ECO-02` |
+| Risks | `RKP-DEL-01`, `RKP-AGT-01`, `RKP-AUTH-01`, `RKP-AUTH-03` |
+| Controls | `CTP-DEL-01`, `CTP-AGT-01`, `CTP-AUTH-01`, `CTP-AUTH-03` |
+| Guardrails | `GRP-DEL-01`, `GRP-AGT-01`, `GRP-AUTH-01` |
+| Assurance | `ATP-DEL-01`, `ATP-AGT-01`, `ATP-AUTH-01` |
+| Evidence | `EVP-DEL-01`, `EVP-AUTH-02`, `EVP-AUTH-01` |
+
 **Evidence**
 
 | Source | Observation |
@@ -120,6 +131,17 @@ Define explicit coexistence, supersession and conflict rules between TDM and Con
 | Controls | — |
 | Guardrails | — |
 | Assurance tests | — |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-INF-01`, `HRM-ECO-02`, `HRM-GOV-02` |
+| Risks | `RKP-AUTH-01`, `RKP-AUTH-03`, `RKP-COMP-04` |
+| Controls | `CTP-AUTH-01`, `CTP-AUTH-03`, `CTP-COMP-01` |
+| Guardrails | `GRP-AUTH-01`, `GRP-DEL-01`, `GRP-COMP-01` |
+| Assurance | `ATP-AUTH-01`, `ATP-DEL-01`, `ATP-COMP-01` |
+| Evidence | `EVP-AUTH-01`, `EVP-AUTH-02`, `EVP-COMP-01` |
 
 **Evidence**
 

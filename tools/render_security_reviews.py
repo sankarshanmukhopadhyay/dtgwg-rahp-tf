@@ -121,6 +121,16 @@ def render(review):
         rahp=f.get('rahp') or {}
         lines += [f"### {cell(f.get('id'))} — {cell(f.get('title'))}",'', '| Field | Value |','|---|---|',
                   f"| Status | {cell(f.get('status'))} |",f"| Severity | {cell(f.get('severity'))} |",f"| Exploitability | {cell(f.get('exploitability'))} |",f"| Impact | {cell(f.get('impact'))} |",f"| Detectability | {cell(f.get('detectability'))} |",f"| Propagation | {cell(f.get('propagation'))} |",f"| Primary control plane | `{cell(f.get('primary_control_plane'))}` |",f"| Secondary planes | {', '.join(f'`{cell(x)}`' for x in f.get('secondary_control_planes') or []) or '—'} |",f"| Attack surface | {cell(f.get('attack_surface'))} |",f"| Security properties | {cell(f.get('security_properties'))} |",f"| RAHP risks | {refs(rahp.get('risks'))} |",f"| RAHP controls | {refs(rahp.get('controls'))} |",f"| RAHP guardrails | {refs(rahp.get('guardrails'))} |",f"| RAHP assurance tests | {refs(rahp.get('assurance_tests'))} |",'']
+        portable=rahp.get('portable_assurance') or {}
+        if portable:
+            lines += ['**Portable v1.1 assurance patterns**','',
+                      '| Layer | Patterns |','|---|---|',
+                      f"| Harms | {cell(portable.get('harm_patterns'))} |",
+                      f"| Risks | {cell(portable.get('risk_patterns'))} |",
+                      f"| Controls | {cell(portable.get('control_patterns'))} |",
+                      f"| Guardrails | {cell(portable.get('guardrail_patterns'))} |",
+                      f"| Assurance | {cell(portable.get('assurance_patterns'))} |",
+                      f"| Evidence | {cell(portable.get('evidence_patterns'))} |",'']
         if f.get('external_alignment'):
             lines += ['**External standards alignment**','',
                       '| External source | Clause / control | Relationship | Rationale |',

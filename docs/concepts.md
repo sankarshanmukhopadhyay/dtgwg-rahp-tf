@@ -33,3 +33,7 @@ The relationship model is visualised in [Artefact relationships](diagrams/artefa
 ## Authority is part of assurance
 
 A control is incomplete if no actor has authority to operate it, no evidence shows whether it operated, or no revocation/escalation path exists when it fails. RAHP therefore distinguishes the existence of a risk from the layer with legitimate authority to mitigate it.
+
+## Portable assurance patterns
+
+RAHP v1.1 adds a reusable assurance layer above deployment records. `HRM-*` names harms, `RKP-*` names recurring failure mechanisms, `CTP-*` names control objectives, `GRP-*` defines prohibited-state boundaries, `ATP-*` defines testable propositions and `EVP-*` defines evidence contracts. A finding may map to these patterns through `portable_assurance` while retaining local risk/control IDs and source evidence. See [Assurance knowledge model](assurance-knowledge-model.md).

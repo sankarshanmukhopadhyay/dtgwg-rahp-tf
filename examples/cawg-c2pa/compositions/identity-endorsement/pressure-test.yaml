@@ -11,13 +11,14 @@ review:
     source_paths: []
   reviewed_against:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    rahp_version: v0.8.0
+    rahp_version: v1.1.0
     corpus_date: '2026-08-16'
     original_rahp_version: v0.7.0
     original_corpus_date: '2026-08-14'
     engine_contract: rahp-engine-contract-v1
-    revalidated_on: '2026-08-16'
-    revalidation_scope: method-and-engine-only; target revision and substantive findings unchanged
+    revalidated_on: '2026-08-17'
+    revalidation_scope: v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target
+      revision unchanged
   scope:
     included:
     - Normative and draft semantics relevant to the named composition or experiment.
@@ -27,8 +28,8 @@ review:
     - Claims that upstream CAWG, DIF, C2PA, GLEIF or W3C endorsed this RAHP assessment.
   method:
     workflow: docs/pressure-testing-a-spec.md
-    rule: Separate cryptographic validity, identity, authority, consent, lifecycle and relying-party trust; 
-      test both isolated and composed failure states.
+    rule: Separate cryptographic validity, identity, authority, consent, lifecycle and relying-party trust; test
+      both isolated and composed failure states.
   summary:
     finding_count: 2
     open_count: 2
@@ -47,11 +48,10 @@ review:
     - CRK-08
     evidence:
     - source: https://github.com/decentralized-identity/cawg-endorsement-assertion/issues/12
-      observation: The endorsement issue explicitly raises authority to assert and delegation of that 
-        authority.
+      observation: The endorsement issue explicitly raises authority to assert and delegation of that authority.
     harm: A verified actor can issue an endorsement beyond their underlying authority.
-    recommendation: Require delegation provenance and authority-to-delegate checks that are independent of 
-      identity validation.
+    recommendation: Require delegation provenance and authority-to-delegate checks that are independent of identity
+      validation.
     retest_when:
     - Normative semantics and interoperable test vectors close this failure path.
     scenarios:
@@ -66,6 +66,34 @@ review:
     - P2
     - P3
     - P5
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-ECO-02
+      risk_patterns:
+      - RKP-DEL-01
+      - RKP-AGT-01
+      - RKP-AUTH-01
+      - RKP-AUTH-03
+      control_patterns:
+      - CTP-DEL-01
+      - CTP-AGT-01
+      - CTP-AUTH-01
+      - CTP-AUTH-03
+      guardrail_patterns:
+      - GRP-DEL-01
+      - GRP-AGT-01
+      - GRP-AUTH-01
+      assurance_patterns:
+      - ATP-DEL-01
+      - ATP-AGT-01
+      - ATP-AUTH-01
+      evidence_patterns:
+      - EVP-DEL-01
+      - EVP-AUTH-02
+      - EVP-AUTH-01
   - id: F-002
     title: Onward agent delegation needs an explicit non-transitivity default
     status: open
@@ -75,11 +103,11 @@ review:
     - CRK-25
     evidence:
     - source: https://github.com/decentralized-identity/cawg-identity-assertion/issues/236
-      observation: CAWG is considering delegation for people, organizations and AI agents, but transitivity is
-        a distinct authorization question.
+      observation: CAWG is considering delegation for people, organizations and AI agents, but transitivity is a
+        distinct authorization question.
     harm: An endorsed service or agent can pass authority to a sub-agent beyond the principal’s intent.
-    recommendation: Make sub-delegation prohibited by default unless explicitly authorized with bounded scope,
-      audience, actions and expiry.
+    recommendation: Make sub-delegation prohibited by default unless explicitly authorized with bounded scope, audience,
+      actions and expiry.
     retest_when:
     - Normative semantics and interoperable test vectors close this failure path.
     scenarios:
@@ -92,3 +120,31 @@ review:
     - P1
     - P3
     - P5
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-ECO-02
+      risk_patterns:
+      - RKP-DEL-01
+      - RKP-AGT-01
+      - RKP-AUTH-01
+      - RKP-AUTH-03
+      control_patterns:
+      - CTP-DEL-01
+      - CTP-AGT-01
+      - CTP-AUTH-01
+      - CTP-AUTH-03
+      guardrail_patterns:
+      - GRP-DEL-01
+      - GRP-AGT-01
+      - GRP-AUTH-01
+      assurance_patterns:
+      - ATP-DEL-01
+      - ATP-AGT-01
+      - ATP-AUTH-01
+      evidence_patterns:
+      - EVP-DEL-01
+      - EVP-AUTH-02
+      - EVP-AUTH-01

@@ -24,12 +24,12 @@ This is a RAHP Toolkit v0.7.0 external assurance review. It is not an upstream c
 | Target commit | `2339d9f0d55717c44e0c3f1881cb8b9083337ee6` |
 | Target source paths | — |
 | RAHP repository | `sankarshanmukhopadhyay/rahp-toolkit` |
-| RAHP version | `v0.8.0` |
+| RAHP version | `v1.1.0` |
 | Engine contract | `rahp-engine-contract-v1` |
 | RAHP corpus date | 2026-08-16 |
-| Engine/method revalidated on | 2026-08-16 |
+| Engine/method revalidated on | 2026-08-17 |
 | Original RAHP version | `v0.7.0` |
-| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
+| Revalidation scope | v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target revision unchanged |
 
 ### Method
 
@@ -89,6 +89,17 @@ The VC/VP branch improves portability but needs stronger trust-chain, consent-to
 | Guardrails | — |
 | Assurance tests | — |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-SEC-02`, `HRM-INF-01`, `HRM-SEC-03`, `HRM-GOV-02` |
+| Risks | `RKP-CRD-01`, `RKP-OPS-01`, `RKP-COMP-04` |
+| Controls | `CTP-AUTH-01`, `CTP-OPS-01`, `CTP-COMP-01` |
+| Guardrails | `GRP-AUTH-01`, `GRP-COMP-01` |
+| Assurance | `ATP-AUTH-01`, `ATP-OPS-01`, `ATP-COMP-01` |
+| Evidence | `EVP-AUTH-01`, `EVP-OPS-01`, `EVP-COMP-01` |
+
 **Evidence**
 
 | Source | Observation |
@@ -123,6 +134,17 @@ Define provenance requirements for restated claims, issuer-chain validation, evi
 | Guardrails | — |
 | Assurance tests | — |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-INF-01`, `HRM-ECO-02` |
+| Risks | `RKP-AUTH-01`, `RKP-AUTH-03`, `RKP-CRD-01`, `RKP-AGT-01` |
+| Controls | `CTP-AUTH-01`, `CTP-AUTH-03`, `CTP-AGT-01` |
+| Guardrails | `GRP-AUTH-01`, `GRP-DEL-01`, `GRP-AGT-01` |
+| Assurance | `ATP-AUTH-01`, `ATP-DEL-01`, `ATP-AGT-01` |
+| Evidence | `EVP-AUTH-01`, `EVP-AUTH-02` |
+
 **Evidence**
 
 | Source | Observation |
@@ -156,6 +178,17 @@ Require a verifiable actor-intent or authorization step separable from key custo
 | Controls | — |
 | Guardrails | — |
 | Assurance tests | — |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-SEC-02`, `HRM-INF-01`, `HRM-PRV-02`, `HRM-PRV-03`, `HRM-PRV-04`, `HRM-SEC-03` |
+| Risks | `RKP-CRD-01`, `RKP-PRV-02`, `RKP-PRV-01`, `RKP-OPS-01` |
+| Controls | `CTP-AUTH-01`, `CTP-PRV-02`, `CTP-PRV-01`, `CTP-OPS-01` |
+| Guardrails | `GRP-AUTH-01`, `GRP-PRV-01` |
+| Assurance | `ATP-AUTH-01`, `ATP-PRV-01`, `ATP-OPS-01` |
+| Evidence | `EVP-AUTH-01`, `EVP-PRV-01`, `EVP-OPS-01` |
 
 **Evidence**
 

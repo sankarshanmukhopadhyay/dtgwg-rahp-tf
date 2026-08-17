@@ -11,13 +11,14 @@ review:
     source_paths: []
   reviewed_against:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    rahp_version: v0.8.0
+    rahp_version: v1.1.0
     corpus_date: '2026-08-16'
     original_rahp_version: v0.6.0
     original_corpus_date: '2026-08-14'
     engine_contract: rahp-engine-contract-v1
-    revalidated_on: '2026-08-16'
-    revalidation_scope: method-and-engine-only; target revision and substantive findings unchanged
+    revalidated_on: '2026-08-17'
+    revalidation_scope: v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target
+      revision unchanged
   scope:
     included:
     - Human interpretation of validity, identity, provenance, failure and accessibility.
@@ -26,16 +27,16 @@ review:
     - Legal opinion on whether a signal is enforceable in any jurisdiction.
   method:
     workflow: docs/pressure-testing-a-spec.md
-    rule: Treat cryptographic validity, identity, authority, consent, provenance and relying-party trust as 
-      distinct propositions; route remediation to the narrowest effective control plane.
+    rule: Treat cryptographic validity, identity, authority, consent, provenance and relying-party trust as distinct
+      propositions; route remediation to the narrowest effective control plane.
   summary:
     finding_count: 2
     open_count: 2
     by_primary_disposition:
       implementation-guidance: 2
-    overall_assessment: This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conformance 
-      certification. Findings focus on harms, authority/lifecycle boundaries and composition behaviour that 
-      matter when the specification is adopted or mandated.
+    overall_assessment: This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conformance certification.
+      Findings focus on harms, authority/lifecycle boundaries and composition behaviour that matter when the specification
+      is adopted or mandated.
   findings:
   - id: F-001
     title: Positive verification UI can still encourage users to infer truth or trustworthiness
@@ -46,22 +47,47 @@ review:
     - CRK-11
     evidence:
     - source: https://cawg.io/ux-guidance/1.0/
-      observation: The guidance addresses presentation of provenance and identity verification states, but 
-        cryptographic success cannot establish factual truth or domain-specific trust by itself.
-    harm: A visually prominent verified state can become a trust badge for misinformation, unauthorized claims
-      or misleading organizational assertions.
-    recommendation: Make the distinction between integrity/identity verification and truth/authority a minimum
-      UX requirement, including wording and negative examples for technically valid but substantively disputed
-      content.
+      observation: The guidance addresses presentation of provenance and identity verification states, but cryptographic
+        success cannot establish factual truth or domain-specific trust by itself.
+    harm: A visually prominent verified state can become a trust badge for misinformation, unauthorized claims or
+      misleading organizational assertions.
+    recommendation: Make the distinction between integrity/identity verification and truth/authority a minimum UX
+      requirement, including wording and negative examples for technically valid but substantively disputed content.
     retest_when:
-    - UX conformance/user tests demonstrate that users do not systematically interpret verification as truth 
-      endorsement.
+    - UX conformance/user tests demonstrate that users do not systematically interpret verification as truth endorsement.
     scenario_patterns:
     - SP-COMP-01
     - SP-INTEROP-01
     personas:
     - P3
     - P4
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-ECO-02
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-AUTH-01
+      - RKP-AUTH-03
+      - RKP-COMP-04
+      control_patterns:
+      - CTP-AUTH-01
+      - CTP-AUTH-03
+      - CTP-COMP-01
+      guardrail_patterns:
+      - GRP-AUTH-01
+      - GRP-DEL-01
+      - GRP-COMP-01
+      assurance_patterns:
+      - ATP-AUTH-01
+      - ATP-DEL-01
+      - ATP-COMP-01
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-AUTH-02
+      - EVP-COMP-01
   - id: F-002
     title: Accessibility and failure-state requirements are not yet strong enough for mandatory deployments
     status: open
@@ -71,13 +97,13 @@ review:
     - CRK-13
     evidence:
     - source: https://cawg.io/ux-guidance/1.0/
-      observation: The guidance is intentionally evolutionary and calls for continued user research and 
-        implementation learning.
-    harm: If CAWG/C2PA presentation becomes mandatory, inaccessible disclosure controls or ambiguous 
-      unknown/error states can exclude users or pressure them into unsafe decisions.
-    recommendation: Add normative or profile-level accessibility criteria, minimum error/unknown-state 
-      disclosures, and testing across assistive technologies and low-literacy contexts before procurement 
-      mandates rely on the UX layer.
+      observation: The guidance is intentionally evolutionary and calls for continued user research and implementation
+        learning.
+    harm: If CAWG/C2PA presentation becomes mandatory, inaccessible disclosure controls or ambiguous unknown/error
+      states can exclude users or pressure them into unsafe decisions.
+    recommendation: Add normative or profile-level accessibility criteria, minimum error/unknown-state disclosures,
+      and testing across assistive technologies and low-literacy contexts before procurement mandates rely on the
+      UX layer.
     retest_when:
     - A mandate profile defines accessibility and unknown/error-state acceptance criteria.
     scenario_patterns:
@@ -87,3 +113,36 @@ review:
     - P1
     - P3
     - P4
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-PRV-02
+      - HRM-PRV-03
+      - HRM-ACC-01
+      - HRM-ACC-03
+      risk_patterns:
+      - RKP-DEL-01
+      - RKP-AGT-01
+      - RKP-PRV-02
+      - RKP-EXC-01
+      control_patterns:
+      - CTP-DEL-01
+      - CTP-AGT-01
+      - CTP-PRV-02
+      - CTP-EXC-01
+      guardrail_patterns:
+      - GRP-DEL-01
+      - GRP-AGT-01
+      - GRP-PRV-01
+      - GRP-EXC-01
+      assurance_patterns:
+      - ATP-DEL-01
+      - ATP-AGT-01
+      - ATP-PRV-01
+      - ATP-EXC-01
+      evidence_patterns:
+      - EVP-DEL-01
+      - EVP-AUTH-02
+      - EVP-PRV-01
+      - EVP-INCL-01

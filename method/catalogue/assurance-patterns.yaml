@@ -1,0 +1,333 @@
+catalogue_version: 1.1.0
+record_type: assurance_pattern
+records:
+- id: ATP-AUTH-01
+  name: Authentication/authorization separation test
+  assertion: Identity or credential validity alone never authorizes a consequential action.
+  control_patterns:
+  - CTP-AUTH-01
+  guardrail_patterns:
+  - GRP-AUTH-01
+  preconditions:
+  - system or specification exposes the relevant decision boundary
+  procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
+  expected_result: Identity or credential validity alone never authorizes a consequential action.
+  failure_interpretation: The claimed control or guardrail is not demonstrated for the tested condition.
+  evidence_patterns:
+  - EVP-AUTH-01
+  automation_level: automated
+  assurance_level: A3
+- id: ATP-AUTH-02
+  name: Action-time revocation test
+  assertion: A revoked or expired authority cannot be exercised after the effective revocation/expiry boundary.
+  control_patterns:
+  - CTP-AUTH-02
+  - CTP-DEL-02
+  - CTP-CRD-02
+  guardrail_patterns:
+  - GRP-AUTH-02
+  preconditions:
+  - system or specification exposes the relevant decision boundary
+  procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
+  expected_result: A revoked or expired authority cannot be exercised after the effective revocation/expiry boundary.
+  failure_interpretation: The claimed control or guardrail is not demonstrated for the tested condition.
+  evidence_patterns:
+  - EVP-AUTH-01
+  automation_level: automated
+  assurance_level: A3
+- id: ATP-DEL-01
+  name: Delegation attenuation test
+  assertion: Each downstream delegation is equal to or narrower than the authority received upstream.
+  control_patterns:
+  - CTP-DEL-01
+  - CTP-AUTH-03
+  guardrail_patterns:
+  - GRP-DEL-01
+  preconditions:
+  - system or specification exposes the relevant decision boundary
+  procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
+  expected_result: Each downstream delegation is equal to or narrower than the authority received upstream.
+  failure_interpretation: The claimed control or guardrail is not demonstrated for the tested condition.
+  evidence_patterns:
+  - EVP-DEL-01
+  automation_level: automated
+  assurance_level: A3
+- id: ATP-DEL-02
+  name: Delegation provenance reconstruction
+  assertion: An auditor can reconstruct principal, delegation chain, scope and action for a consequential event.
+  control_patterns:
+  - CTP-DEL-01
+  - CTP-AGT-03
+  guardrail_patterns: []
+  preconditions:
+  - system or specification exposes the relevant decision boundary
+  procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
+  expected_result: An auditor can reconstruct principal, delegation chain, scope and action for a consequential
+    event.
+  failure_interpretation: The claimed control or guardrail is not demonstrated for the tested condition.
+  evidence_patterns:
+  - EVP-DEL-01
+  - EVP-AUD-01
+  automation_level: assisted
+  assurance_level: A3
+- id: ATP-GOV-01
+  name: Independent governance decision test
+  assertion: High-impact governance changes show required independent approval and immutable decision evidence.
+  control_patterns:
+  - CTP-GOV-01
+  guardrail_patterns:
+  - GRP-GOV-01
+  preconditions:
+  - system or specification exposes the relevant decision boundary
+  procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
+  expected_result: High-impact governance changes show required independent approval and immutable decision evidence.
+  failure_interpretation: The claimed control or guardrail is not demonstrated for the tested condition.
+  evidence_patterns:
+  - EVP-GOV-01
+  automation_level: assisted
+  assurance_level: A3
+- id: ATP-GOV-02
+  name: Policy migration test
+  assertion: Artefacts created under prior policy versions follow documented migration, compatibility and retirement
+    rules.
+  control_patterns:
+  - CTP-GOV-02
+  guardrail_patterns: []
+  preconditions:
+  - system or specification exposes the relevant decision boundary
+  procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
+  expected_result: Artefacts created under prior policy versions follow documented migration, compatibility and
+    retirement rules.
+  failure_interpretation: The claimed control or guardrail is not demonstrated for the tested condition.
+  evidence_patterns:
+  - EVP-GOV-02
+  automation_level: assisted
+  assurance_level: A3
+- id: ATP-ID-01
+  name: Role-confusion negative test
+  assertion: Requests with mismatched principal, subject, holder, issuer or operator roles are rejected or escalated.
+  control_patterns:
+  - CTP-ID-01
+  - CTP-ID-02
+  guardrail_patterns:
+  - GRP-ID-01
+  preconditions:
+  - system or specification exposes the relevant decision boundary
+  procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
+  expected_result: Requests with mismatched principal, subject, holder, issuer or operator roles are rejected or
+    escalated.
+  failure_interpretation: The claimed control or guardrail is not demonstrated for the tested condition.
+  evidence_patterns:
+  - EVP-AUTH-01
+  automation_level: automated
+  assurance_level: A3
+- id: ATP-DISC-01
+  name: Discovery non-inference test
+  assertion: A signed or registered discovery record without separate authorization cannot unlock a protected action.
+  control_patterns:
+  - CTP-DISC-01
+  - CTP-DISC-03
+  guardrail_patterns:
+  - GRP-AUTH-01
+  preconditions:
+  - system or specification exposes the relevant decision boundary
+  procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
+  expected_result: A signed or registered discovery record without separate authorization cannot unlock a protected
+    action.
+  failure_interpretation: The claimed control or guardrail is not demonstrated for the tested condition.
+  evidence_patterns:
+  - EVP-AUTH-01
+  automation_level: automated
+  assurance_level: A3
+- id: ATP-DISC-02
+  name: Discovery freshness test
+  assertion: Withdrawn or stale discovery metadata is not used beyond the documented freshness bound.
+  control_patterns:
+  - CTP-DISC-02
+  guardrail_patterns: []
+  preconditions:
+  - system or specification exposes the relevant decision boundary
+  procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
+  expected_result: Withdrawn or stale discovery metadata is not used beyond the documented freshness bound.
+  failure_interpretation: The claimed control or guardrail is not demonstrated for the tested condition.
+  evidence_patterns:
+  - EVP-OPS-01
+  automation_level: automated
+  assurance_level: A3
+- id: ATP-PRV-01
+  name: Composed disclosure review
+  assertion: The combined disclosure set is assessed for linkability, inference and unnecessary attributes.
+  control_patterns:
+  - CTP-PRV-02
+  - CTP-PRV-01
+  - CTP-PRV-03
+  guardrail_patterns:
+  - GRP-PRV-01
+  preconditions:
+  - system or specification exposes the relevant decision boundary
+  procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
+  expected_result: The combined disclosure set is assessed for linkability, inference and unnecessary attributes.
+  failure_interpretation: The claimed control or guardrail is not demonstrated for the tested condition.
+  evidence_patterns:
+  - EVP-PRV-01
+  automation_level: assisted
+  assurance_level: A3
+- id: ATP-EXC-01
+  name: Alternative-path usability test
+  assertion: Representatively affected legitimate participants can complete an alternative path without materially
+    worse unjustified burden.
+  control_patterns:
+  - CTP-EXC-01
+  guardrail_patterns:
+  - GRP-EXC-01
+  preconditions:
+  - system or specification exposes the relevant decision boundary
+  procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
+  expected_result: Representatively affected legitimate participants can complete an alternative path without materially
+    worse unjustified burden.
+  failure_interpretation: The claimed control or guardrail is not demonstrated for the tested condition.
+  evidence_patterns:
+  - EVP-INCL-01
+  automation_level: assisted
+  assurance_level: A3
+- id: ATP-AGT-01
+  name: Agent mandate boundary test
+  assertion: Agent attempts outside purpose, resource, value, time or onward-delegation scope are blocked.
+  control_patterns:
+  - CTP-AGT-01
+  - CTP-AGT-02
+  guardrail_patterns:
+  - GRP-AGT-01
+  preconditions:
+  - system or specification exposes the relevant decision boundary
+  procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
+  expected_result: Agent attempts outside purpose, resource, value, time or onward-delegation scope are blocked.
+  failure_interpretation: The claimed control or guardrail is not demonstrated for the tested condition.
+  evidence_patterns:
+  - EVP-AUTH-02
+  automation_level: automated
+  assurance_level: A3
+- id: ATP-OPS-01
+  name: Dependency outage test
+  assertion: Loss or staleness of a dependency triggers the documented safe degradation behavior.
+  control_patterns:
+  - CTP-OPS-01
+  - CTP-OPS-03
+  guardrail_patterns: []
+  preconditions:
+  - system or specification exposes the relevant decision boundary
+  procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
+  expected_result: Loss or staleness of a dependency triggers the documented safe degradation behavior.
+  failure_interpretation: The claimed control or guardrail is not demonstrated for the tested condition.
+  evidence_patterns:
+  - EVP-OPS-01
+  automation_level: assisted
+  assurance_level: A3
+- id: ATP-OPS-02
+  name: Replay/idempotency test
+  assertion: Replayed or retried requests do not repeat a protected side effect without fresh authorization.
+  control_patterns:
+  - CTP-OPS-02
+  guardrail_patterns:
+  - GRP-OPS-01
+  preconditions:
+  - system or specification exposes the relevant decision boundary
+  procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
+  expected_result: Replayed or retried requests do not repeat a protected side effect without fresh authorization.
+  failure_interpretation: The claimed control or guardrail is not demonstrated for the tested condition.
+  evidence_patterns:
+  - EVP-OPS-02
+  automation_level: automated
+  assurance_level: A3
+- id: ATP-RED-01
+  name: Contestability reconstruction test
+  assertion: An affected party and reviewer can reconstruct the consequential decision and identify an accountable
+    remedy path.
+  control_patterns:
+  - CTP-RED-01
+  - CTP-GOV-03
+  guardrail_patterns:
+  - GRP-RED-01
+  preconditions:
+  - system or specification exposes the relevant decision boundary
+  procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
+  expected_result: An affected party and reviewer can reconstruct the consequential decision and identify an accountable
+    remedy path.
+  failure_interpretation: The claimed control or guardrail is not demonstrated for the tested condition.
+  evidence_patterns:
+  - EVP-RED-01
+  - EVP-AUD-01
+  automation_level: assisted
+  assurance_level: A3
+- id: ATP-COMP-01
+  name: Cross-spec semantic seam test
+  assertion: Each cross-spec fact has a named owner and is not silently substituted for another semantic fact.
+  control_patterns:
+  - CTP-COMP-01
+  - CTP-CRD-01
+  guardrail_patterns:
+  - GRP-COMP-01
+  preconditions:
+  - system or specification exposes the relevant decision boundary
+  procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
+  expected_result: Each cross-spec fact has a named owner and is not silently substituted for another semantic fact.
+  failure_interpretation: The claimed control or guardrail is not demonstrated for the tested condition.
+  evidence_patterns:
+  - EVP-COMP-01
+  automation_level: assisted
+  assurance_level: A3
+- id: ATP-COMP-02
+  name: Cross-spec lifecycle matrix test
+  assertion: Composition behavior is tested across issuance, authorization, execution, revocation, retry, migration
+    and appeal boundaries.
+  control_patterns:
+  - CTP-COMP-02
+  guardrail_patterns: []
+  preconditions:
+  - system or specification exposes the relevant decision boundary
+  procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
+  expected_result: Composition behavior is tested across issuance, authorization, execution, revocation, retry,
+    migration and appeal boundaries.
+  failure_interpretation: The claimed control or guardrail is not demonstrated for the tested condition.
+  evidence_patterns:
+  - EVP-COMP-01
+  automation_level: assisted
+  assurance_level: A3
+- id: ATP-RISK-01
+  name: Control side-effect test
+  assertion: Material privacy, exclusion, autonomy or political-economy side effects of a proposed mitigation are
+    identified and dispositioned.
+  control_patterns:
+  - CTP-RISK-01
+  - CTP-ID-03
+  guardrail_patterns: []
+  preconditions:
+  - system or specification exposes the relevant decision boundary
+  procedure: Exercise positive and negative cases at the stated boundary and inspect recorded evidence.
+  expected_result: Material privacy, exclusion, autonomy or political-economy side effects of a proposed mitigation
+    are identified and dispositioned.
+  failure_interpretation: The claimed control or guardrail is not demonstrated for the tested condition.
+  evidence_patterns:
+  - EVP-RISK-01
+  automation_level: assisted
+  assurance_level: A3
+- id: ATP-PE-01
+  name: Critical dependency exit test
+  assertion: A critical dependency has explicit control ownership, material-change monitoring, a governed response
+    and a viable exit or substitution path.
+  control_patterns:
+  - CTP-PE-01
+  guardrail_patterns:
+  - GRP-PE-01
+  preconditions:
+  - deployment relies on a critical external or concentrated dependency
+  procedure: Simulate a material access, price, surveillance, policy or availability change and verify the documented
+    governance and exit response.
+  expected_result: The deployment identifies the responsible authority and can preserve or deliberately suspend
+    service without silently accepting changed dependency conditions.
+  failure_interpretation: Critical dependency power is not effectively governed or the claimed exit path is not
+    credible.
+  evidence_patterns:
+  - EVP-GOV-01
+  automation_level: assisted
+  assurance_level: A3

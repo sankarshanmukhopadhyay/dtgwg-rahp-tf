@@ -1,0 +1,2554 @@
+{
+  "catalogue_version": "1.1.0",
+  "records": {
+    "harm_patterns": [
+      {
+        "id": "HRM-AUT-01",
+        "name": "Manipulation",
+        "family": "Autonomy",
+        "definition": "A person or accountable principal is steered toward an outcome through materially misleading, asymmetric or exploitative influence.",
+        "affected_interests": [
+          "autonomy",
+          "informed choice"
+        ],
+        "example_manifestations": [
+          "deceptive interface",
+          "agent recommendation optimized against the principal"
+        ]
+      },
+      {
+        "id": "HRM-AUT-02",
+        "name": "Coercion",
+        "family": "Autonomy",
+        "definition": "A person faces material penalty, loss or threat unless they accept a system action, disclosure or decision.",
+        "affected_interests": [
+          "autonomy",
+          "freedom from coercion"
+        ],
+        "example_manifestations": [
+          "take-it-or-leave-it disclosure",
+          "mandatory participation without viable alternative"
+        ]
+      },
+      {
+        "id": "HRM-AUT-03",
+        "name": "Loss of meaningful choice",
+        "family": "Autonomy",
+        "definition": "Nominal consent or choice exists but practical alternatives, information or timing are insufficient for meaningful agency.",
+        "affected_interests": [
+          "autonomy",
+          "consent"
+        ],
+        "example_manifestations": [
+          "dark-pattern consent",
+          "no realistic non-digital path"
+        ]
+      },
+      {
+        "id": "HRM-AUT-04",
+        "name": "Delegation beyond informed intent",
+        "family": "Autonomy",
+        "definition": "A delegated actor performs or enables an action outside the principal’s reasonably understood mandate.",
+        "affected_interests": [
+          "agency",
+          "control"
+        ],
+        "example_manifestations": [
+          "agent exceeds purpose",
+          "downstream delegation expands scope"
+        ]
+      },
+      {
+        "id": "HRM-AUT-05",
+        "name": "Inability to withdraw or revoke",
+        "family": "Autonomy",
+        "definition": "A person cannot effectively terminate consent, delegated authority, participation or continued processing.",
+        "affected_interests": [
+          "agency",
+          "exit"
+        ],
+        "example_manifestations": [
+          "revocation not propagated",
+          "withdrawal ignored by downstream party"
+        ]
+      },
+      {
+        "id": "HRM-ACC-01",
+        "name": "Wrongful exclusion",
+        "family": "Access and inclusion",
+        "definition": "A legitimate person or organization is denied access, participation or recognition without a justified basis.",
+        "affected_interests": [
+          "access",
+          "participation"
+        ],
+        "example_manifestations": [
+          "false rejection",
+          "unavailable proofing path"
+        ]
+      },
+      {
+        "id": "HRM-ACC-02",
+        "name": "Discriminatory burden",
+        "family": "Access and inclusion",
+        "definition": "A rule or system imposes materially higher burdens on a protected, marginalized or structurally disadvantaged group.",
+        "affected_interests": [
+          "equality",
+          "non-discrimination"
+        ],
+        "example_manifestations": [
+          "social graph privilege",
+          "document requirements disproportionately exclude"
+        ]
+      },
+      {
+        "id": "HRM-ACC-03",
+        "name": "Accessibility failure",
+        "family": "Access and inclusion",
+        "definition": "A legitimate participant cannot complete a required interaction because accessibility needs are not supported.",
+        "affected_interests": [
+          "accessibility",
+          "participation"
+        ],
+        "example_manifestations": [
+          "inaccessible wallet flow",
+          "mandatory visual-only challenge"
+        ]
+      },
+      {
+        "id": "HRM-ACC-04",
+        "name": "Infrastructure dependency exclusion",
+        "family": "Access and inclusion",
+        "definition": "Access depends on devices, networks, identity infrastructure or services unavailable to some legitimate participants.",
+        "affected_interests": [
+          "access",
+          "continuity"
+        ],
+        "example_manifestations": [
+          "online-only process",
+          "hardware requirement"
+        ]
+      },
+      {
+        "id": "HRM-PRV-01",
+        "name": "Unnecessary disclosure",
+        "family": "Privacy",
+        "definition": "Information beyond the minimum necessary is exposed to a party or system.",
+        "affected_interests": [
+          "privacy",
+          "data minimization"
+        ],
+        "example_manifestations": [
+          "over-broad credential",
+          "verbose error response"
+        ]
+      },
+      {
+        "id": "HRM-PRV-02",
+        "name": "Linkability and correlation",
+        "family": "Privacy",
+        "definition": "Separate interactions can be linked to construct a broader profile of a person, organization or agent.",
+        "affected_interests": [
+          "privacy",
+          "contextual integrity"
+        ],
+        "example_manifestations": [
+          "stable identifier reuse",
+          "composed proof fingerprint"
+        ]
+      },
+      {
+        "id": "HRM-PRV-03",
+        "name": "Inference beyond disclosed facts",
+        "family": "Privacy",
+        "definition": "Observed data or metadata enables sensitive conclusions not intentionally disclosed.",
+        "affected_interests": [
+          "privacy",
+          "contextual integrity"
+        ],
+        "example_manifestations": [
+          "relationship inference",
+          "behavior profiling"
+        ]
+      },
+      {
+        "id": "HRM-PRV-04",
+        "name": "Persistent surveillance",
+        "family": "Privacy",
+        "definition": "System operation enables durable observation or reconstruction of activities across time or contexts.",
+        "affected_interests": [
+          "privacy",
+          "freedom of association"
+        ],
+        "example_manifestations": [
+          "registry activity tracking",
+          "persistent presentation logs"
+        ]
+      },
+      {
+        "id": "HRM-PRV-05",
+        "name": "Secondary use and context collapse",
+        "family": "Privacy",
+        "definition": "Information collected for one purpose or audience is reused in another materially different context.",
+        "affected_interests": [
+          "privacy",
+          "purpose limitation"
+        ],
+        "example_manifestations": [
+          "credential reused for scoring",
+          "public metadata used for unrelated profiling"
+        ]
+      },
+      {
+        "id": "HRM-ECO-01",
+        "name": "Loss of economic opportunity",
+        "family": "Economic",
+        "definition": "A system decision prevents or materially reduces access to employment, trade, finance or other economic participation.",
+        "affected_interests": [
+          "livelihood",
+          "economic participation"
+        ],
+        "example_manifestations": [
+          "wrongful deplatforming",
+          "credential rejection blocks service"
+        ]
+      },
+      {
+        "id": "HRM-ECO-02",
+        "name": "Fraudulent or misallocated liability",
+        "family": "Economic",
+        "definition": "A person or organization bears financial or legal consequences for an action they did not authorize or control.",
+        "affected_interests": [
+          "property",
+          "liability"
+        ],
+        "example_manifestations": [
+          "agent purchase beyond mandate",
+          "impersonation creates debt"
+        ]
+      },
+      {
+        "id": "HRM-GOV-01",
+        "name": "Arbitrary decision",
+        "family": "Governance and due process",
+        "definition": "A consequential decision is taken without consistent rules, sufficient reasons or accountable authority.",
+        "affected_interests": [
+          "due process",
+          "fair treatment"
+        ],
+        "example_manifestations": [
+          "unexplained revocation",
+          "ad hoc admission denial"
+        ]
+      },
+      {
+        "id": "HRM-GOV-02",
+        "name": "Unavailable appeal or remedy",
+        "family": "Governance and due process",
+        "definition": "An affected party lacks a practical path to contest, correct or obtain remedy for an adverse outcome.",
+        "affected_interests": [
+          "redress",
+          "due process"
+        ],
+        "example_manifestations": [
+          "split responsibility",
+          "appeal channel absent"
+        ]
+      },
+      {
+        "id": "HRM-GOV-03",
+        "name": "Unaccountable or captured authority",
+        "family": "Governance and due process",
+        "definition": "Decision power is exercised without effective oversight, contestability or independence.",
+        "affected_interests": [
+          "accountability",
+          "legitimacy"
+        ],
+        "example_manifestations": [
+          "registry capture",
+          "single operator controls policy and evidence"
+        ]
+      },
+      {
+        "id": "HRM-SEC-01",
+        "name": "Impersonation and false attribution",
+        "family": "Security-mediated harm",
+        "definition": "Actions or claims are attributed to the wrong person, organization or agent.",
+        "affected_interests": [
+          "identity",
+          "reputation",
+          "security"
+        ],
+        "example_manifestations": [
+          "stolen key accepted as intent",
+          "forged endpoint identity"
+        ]
+      },
+      {
+        "id": "HRM-SEC-02",
+        "name": "Unauthorized consequential action",
+        "family": "Security-mediated harm",
+        "definition": "A system performs a consequential action without current, sufficient authority from the accountable principal.",
+        "affected_interests": [
+          "agency",
+          "property",
+          "safety"
+        ],
+        "example_manifestations": [
+          "unauthorized transfer",
+          "agent acts after revocation"
+        ]
+      },
+      {
+        "id": "HRM-SEC-03",
+        "name": "Denial or disruption of participation",
+        "family": "Security-mediated harm",
+        "definition": "Security or operational failure prevents legitimate use, continuity, recovery or participation.",
+        "affected_interests": [
+          "availability",
+          "access"
+        ],
+        "example_manifestations": [
+          "status service outage",
+          "key recovery deadlock"
+        ]
+      },
+      {
+        "id": "HRM-INF-01",
+        "name": "False provenance or trust inference",
+        "family": "Information integrity",
+        "definition": "A party correctly observes an artefact or signature but infers legitimacy, endorsement, authority or quality that it does not establish.",
+        "affected_interests": [
+          "information integrity",
+          "reliance"
+        ],
+        "example_manifestations": [
+          "signed agent card treated as authorization",
+          "registry listing treated as certification"
+        ]
+      },
+      {
+        "id": "HRM-SAF-01",
+        "name": "Physical or safeguarding exposure",
+        "family": "Safety",
+        "definition": "Digital information or system action materially increases risk of physical harm, stalking, abuse or safeguarding failure.",
+        "affected_interests": [
+          "safety",
+          "security"
+        ],
+        "example_manifestations": [
+          "location exposure",
+          "unsafe automated physical action"
+        ]
+      }
+    ],
+    "risk_patterns": [
+      {
+        "id": "RKP-AUTH-01",
+        "name": "Possession mistaken for authority",
+        "family": "Authority and delegation",
+        "description": "Authentication, key possession or identity proof is treated as sufficient evidence that the actor is authorized for the requested action.",
+        "harm_patterns": [
+          "HRM-AUT-04",
+          "HRM-SEC-02",
+          "HRM-INF-01"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-AUTH-02",
+        "name": "Stale authority accepted",
+        "family": "Authority and delegation",
+        "description": "Authority is checked at an earlier lifecycle point and not re-evaluated when a consequential action occurs.",
+        "harm_patterns": [
+          "HRM-AUT-05",
+          "HRM-SEC-02"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-AUTH-03",
+        "name": "Authority scope ambiguity",
+        "family": "Authority and delegation",
+        "description": "Purpose, audience, resource, action, value or time bounds are insufficiently defined or inconsistently interpreted.",
+        "harm_patterns": [
+          "HRM-AUT-04",
+          "HRM-ECO-02",
+          "HRM-SEC-02"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-DEL-01",
+        "name": "Transitive delegation expansion",
+        "family": "Authority and delegation",
+        "description": "A downstream delegate receives or infers broader authority than the upstream principal granted.",
+        "harm_patterns": [
+          "HRM-AUT-04",
+          "HRM-SEC-02"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {
+          "requires": [
+            "delegation",
+            "multi-party or multi-agent execution"
+          ]
+        },
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-DEL-02",
+        "name": "Delegation provenance loss",
+        "family": "Authority and delegation",
+        "description": "An execution chain cannot demonstrate which principal authorized which delegate under what scope.",
+        "harm_patterns": [
+          "HRM-GOV-02",
+          "HRM-ECO-02",
+          "HRM-SEC-02"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-DEL-03",
+        "name": "Revocation propagation failure",
+        "family": "Authority and delegation",
+        "description": "Withdrawal or suspension of delegated authority does not reach all parties or enforcement points before further action.",
+        "harm_patterns": [
+          "HRM-AUT-05",
+          "HRM-SEC-02"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-GOV-01",
+        "name": "Concentrated governance authority",
+        "family": "Governance and capture",
+        "description": "A single actor or tightly aligned group can set, change or enforce rules without independent constraint.",
+        "harm_patterns": [
+          "HRM-GOV-01",
+          "HRM-GOV-03"
+        ],
+        "origin": "governance",
+        "scope": "systemic",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-GOV-02",
+        "name": "Governance capture or collusion",
+        "family": "Governance and capture",
+        "description": "Actors expected to provide independent oversight coordinate, collude or are commonly controlled.",
+        "harm_patterns": [
+          "HRM-GOV-03",
+          "HRM-ACC-02"
+        ],
+        "origin": "governance",
+        "scope": "systemic",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-GOV-03",
+        "name": "Rule change without safe transition",
+        "family": "Governance and capture",
+        "description": "Policy or governance semantics change while old artefacts or dependent implementations remain active without migration rules.",
+        "harm_patterns": [
+          "HRM-GOV-01",
+          "HRM-SEC-03"
+        ],
+        "origin": "governance",
+        "scope": "cross-party",
+        "temporal_mode": "delayed",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-GOV-04",
+        "name": "Responsibility fragmentation",
+        "family": "Governance and capture",
+        "description": "No single accountable path exists for an adverse outcome that spans specifications, operators or trust domains.",
+        "harm_patterns": [
+          "HRM-GOV-02",
+          "HRM-ECO-02"
+        ],
+        "origin": "governance",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-ID-01",
+        "name": "Identity or role misbinding",
+        "family": "Identity and attribution",
+        "description": "Identity layers or roles are substituted or conflated, binding a claim or action to the wrong subject, issuer, holder, operator or principal.",
+        "harm_patterns": [
+          "HRM-SEC-01",
+          "HRM-INF-01"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-ID-02",
+        "name": "Uniqueness assumption failure",
+        "family": "Identity and attribution",
+        "description": "A system assumes uniqueness or one-person/one-actor semantics without a defensible mechanism or stated limitation.",
+        "harm_patterns": [
+          "HRM-GOV-03",
+          "HRM-ACC-02"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-ID-03",
+        "name": "Recovery enables takeover or exclusion",
+        "family": "Identity and attribution",
+        "description": "Recovery is absent, inaccessible or weak enough to enable account/identity takeover.",
+        "harm_patterns": [
+          "HRM-ACC-01",
+          "HRM-SEC-01",
+          "HRM-SEC-03"
+        ],
+        "origin": "operations",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-DISC-01",
+        "name": "Discovery interpreted as endorsement",
+        "family": "Discovery and trust inference",
+        "description": "Presence in a discovery document, registry or directory is treated as certification, endorsement or sufficient trust.",
+        "harm_patterns": [
+          "HRM-INF-01",
+          "HRM-SEC-02"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-DISC-02",
+        "name": "Stale discovery metadata",
+        "family": "Discovery and trust inference",
+        "description": "Cached or unrefreshed discovery metadata preserves obsolete endpoints, keys, capabilities, authority or status.",
+        "harm_patterns": [
+          "HRM-SEC-01",
+          "HRM-SEC-03",
+          "HRM-INF-01"
+        ],
+        "origin": "operations",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-DISC-03",
+        "name": "Registry governance ambiguity",
+        "family": "Discovery and trust inference",
+        "description": "Relying parties cannot determine who may add, remove, suspend or correct registry entries and under what authority.",
+        "harm_patterns": [
+          "HRM-GOV-03",
+          "HRM-INF-01"
+        ],
+        "origin": "governance",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-CRD-01",
+        "name": "Credential validity interpreted as authorization",
+        "family": "Credentials and claims",
+        "description": "A valid credential or proof is treated as permission for an action outside the credential’s actual claim semantics.",
+        "harm_patterns": [
+          "HRM-SEC-02",
+          "HRM-INF-01"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-CRD-02",
+        "name": "Credential status or issuer authority staleness",
+        "family": "Credentials and claims",
+        "description": "Credential validity or issuer authority is evaluated using stale status, registry or governance state.",
+        "harm_patterns": [
+          "HRM-SEC-02",
+          "HRM-SEC-03"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-CRD-03",
+        "name": "Credential context detachment",
+        "family": "Credentials and claims",
+        "description": "A credential bound to a task, ceremony, transaction or context is later reused as a free-standing assurance claim.",
+        "harm_patterns": [
+          "HRM-INF-01",
+          "HRM-SEC-02"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-CRD-04",
+        "name": "Credential audience or purpose expansion",
+        "family": "Credentials and claims",
+        "description": "A credential or secondary credential is forwarded, reused or presented to a broader audience or purpose than intended.",
+        "harm_patterns": [
+          "HRM-PRV-01",
+          "HRM-PRV-05",
+          "HRM-AUT-04"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-PRV-01",
+        "name": "Stable identifier correlation",
+        "family": "Privacy and inference",
+        "description": "Persistent identifiers allow interactions across relying parties or contexts to be correlated.",
+        "harm_patterns": [
+          "HRM-PRV-02",
+          "HRM-PRV-04"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-PRV-02",
+        "name": "Composition fingerprinting",
+        "family": "Privacy and inference",
+        "description": "Individually minimal proofs or metadata become identifying or sensitive when combined.",
+        "harm_patterns": [
+          "HRM-PRV-02",
+          "HRM-PRV-03"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-PRV-03",
+        "name": "Failure channel disclosure",
+        "family": "Privacy and inference",
+        "description": "Errors, diagnostics or status responses reveal sensitive attributes, classifications or relationship information.",
+        "harm_patterns": [
+          "HRM-PRV-01",
+          "HRM-PRV-03"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-EXC-01",
+        "name": "Single-path participation exclusion",
+        "family": "Inclusion and accessibility",
+        "description": "A system requires one identity, device, interaction or proofing path without a viable alternative for legitimate participants.",
+        "harm_patterns": [
+          "HRM-ACC-01",
+          "HRM-ACC-03",
+          "HRM-ACC-04"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-EXC-02",
+        "name": "Social or institutional privilege dependency",
+        "family": "Inclusion and accessibility",
+        "description": "Access depends on pre-existing social, institutional or documentation privilege that is unevenly distributed.",
+        "harm_patterns": [
+          "HRM-ACC-01",
+          "HRM-ACC-02"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-AGT-01",
+        "name": "Agent goal or mandate drift",
+        "family": "Agentic systems",
+        "description": "An autonomous actor optimizes or continues execution in ways that depart from the principal’s current purpose or constraints.",
+        "harm_patterns": [
+          "HRM-AUT-04",
+          "HRM-SEC-02"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-AGT-02",
+        "name": "Secondary credential transitivity",
+        "family": "Agentic systems",
+        "description": "A credential obtained for one agent/task is forwarded or treated as authority for another without explicit onward delegation.",
+        "harm_patterns": [
+          "HRM-AUT-04",
+          "HRM-PRV-05",
+          "HRM-SEC-02"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-AGT-03",
+        "name": "Opaque execution accountability gap",
+        "family": "Agentic systems",
+        "description": "Opaque internal execution is combined with insufficient external action provenance to reconstruct accountability.",
+        "harm_patterns": [
+          "HRM-GOV-02",
+          "HRM-ECO-02"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-OPS-01",
+        "name": "Dependency unavailability or stale fallback",
+        "family": "Operational resilience",
+        "description": "A required registry, status, issuer, policy or network dependency is unavailable and fallback behavior is unsafe or undefined.",
+        "harm_patterns": [
+          "HRM-SEC-03",
+          "HRM-INF-01"
+        ],
+        "origin": "operations",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-OPS-02",
+        "name": "Replay or duplicate side effect",
+        "family": "Operational resilience",
+        "description": "A valid request, proof or task can be replayed or retried in a way that repeats an externally consequential effect.",
+        "harm_patterns": [
+          "HRM-ECO-02",
+          "HRM-SEC-02"
+        ],
+        "origin": "implementation",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-OPS-03",
+        "name": "Cascading invalidation",
+        "family": "Operational resilience",
+        "description": "Compromise, deregistration or withdrawal of a dependency invalidates many downstream artefacts without a safe continuity path.",
+        "harm_patterns": [
+          "HRM-ACC-01",
+          "HRM-SEC-03"
+        ],
+        "origin": "operations",
+        "scope": "systemic",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-RED-01",
+        "name": "Evidence insufficient for contestability",
+        "family": "Accountability and redress",
+        "description": "The system cannot produce durable evidence necessary to explain, contest or remedy a consequential outcome.",
+        "harm_patterns": [
+          "HRM-GOV-02",
+          "HRM-ECO-02"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-COMP-01",
+        "name": "Cross-spec authority mismatch",
+        "family": "Composition",
+        "description": "Two specifications use compatible-looking identity or authorization concepts with materially different semantics.",
+        "harm_patterns": [
+          "HRM-AUT-04",
+          "HRM-SEC-02",
+          "HRM-INF-01"
+        ],
+        "origin": "design",
+        "scope": "systemic",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-COMP-02",
+        "name": "Cross-spec lifecycle mismatch",
+        "family": "Composition",
+        "description": "Validity, status, expiry, revocation or freshness is evaluated at different lifecycle points across dependent specifications.",
+        "harm_patterns": [
+          "HRM-AUT-05",
+          "HRM-SEC-02",
+          "HRM-SEC-03"
+        ],
+        "origin": "design",
+        "scope": "systemic",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-COMP-03",
+        "name": "Cross-system linkability",
+        "family": "Composition",
+        "description": "Composition across protocols exposes identifiers or metadata that defeat privacy separation present in each component.",
+        "harm_patterns": [
+          "HRM-PRV-02",
+          "HRM-PRV-05"
+        ],
+        "origin": "design",
+        "scope": "systemic",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-COMP-04",
+        "name": "Policy or evidence boundary conflict",
+        "family": "Composition",
+        "description": "Dependent systems disagree about which artefact establishes completion, authority, status or an auditable fact.",
+        "harm_patterns": [
+          "HRM-GOV-02",
+          "HRM-INF-01"
+        ],
+        "origin": "design",
+        "scope": "systemic",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-PE-01",
+        "name": "Infrastructure dependency capture",
+        "family": "Political economy",
+        "description": "A critical governance or verification dependency is controlled by an actor that can extract rents, surveil participants or change access conditions.",
+        "harm_patterns": [
+          "HRM-GOV-03",
+          "HRM-PRV-04",
+          "HRM-ACC-04"
+        ],
+        "origin": "ecosystem",
+        "scope": "systemic",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      },
+      {
+        "id": "RKP-PE-02",
+        "name": "Failure cost externalization",
+        "family": "Political economy",
+        "description": "Operators or intermediaries capture benefits while harmed participants bear disproportionate remediation, exclusion or liability costs.",
+        "harm_patterns": [
+          "HRM-ECO-01",
+          "HRM-ECO-02",
+          "HRM-GOV-02"
+        ],
+        "origin": "ecosystem",
+        "scope": "systemic",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": []
+      }
+    ],
+    "control_patterns": [
+      {
+        "id": "CTP-AUTH-01",
+        "name": "Separate authentication from authorization",
+        "control_function": "constrain",
+        "control_objective": "Require an explicit authorization decision independent of identity, authentication, credential validity or discovery integrity.",
+        "risk_patterns": [
+          "RKP-AUTH-01",
+          "RKP-CRD-01",
+          "RKP-DISC-01"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "authorization boundary",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-AUTH-02",
+        "name": "Action-time authority evaluation",
+        "control_function": "prevent",
+        "control_objective": "Evaluate current authority, status, expiry and revocation immediately before a consequential action.",
+        "risk_patterns": [
+          "RKP-AUTH-02",
+          "RKP-CRD-02",
+          "RKP-COMP-02"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "action boundary",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-AUTH-01"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-AUTH-03",
+        "name": "Machine-readable authority envelope",
+        "control_function": "constrain",
+        "control_objective": "Represent audience, action, resource, purpose, value, time and delegation bounds in a form that can be enforced.",
+        "risk_patterns": [
+          "RKP-AUTH-03",
+          "RKP-DEL-01",
+          "RKP-AGT-01"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "policy enforcement point",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-AUTH-02"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-DEL-01",
+        "name": "Delegation chain continuity",
+        "control_function": "constrain",
+        "control_objective": "Preserve the originating principal and bounded authority envelope across each delegation hop.",
+        "risk_patterns": [
+          "RKP-DEL-01",
+          "RKP-DEL-02",
+          "RKP-AGT-02",
+          "RKP-COMP-01"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "delegation boundary",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-DEL-01"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-DEL-02",
+        "name": "Revocation propagation",
+        "control_function": "interrupt",
+        "control_objective": "Distribute revocation/suspension rapidly to every enforcement point that can exercise delegated authority.",
+        "risk_patterns": [
+          "RKP-DEL-03",
+          "RKP-AUTH-02"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "delegation/status boundary",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-DEL-02"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-GOV-01",
+        "name": "Independent governance checks",
+        "control_function": "constrain",
+        "control_objective": "Separate policy creation, approval, enforcement and appeal so no single actor can unilaterally control the full lifecycle.",
+        "risk_patterns": [
+          "RKP-GOV-01",
+          "RKP-GOV-02",
+          "RKP-DISC-03"
+        ],
+        "authority": "governance authority",
+        "enforcement_point": "governance workflow",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-GOV-01"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-GOV-02",
+        "name": "Versioned policy transition",
+        "control_function": "recover",
+        "control_objective": "Publish effective dates, migration rules, compatibility constraints and rollback/retirement handling for governance changes.",
+        "risk_patterns": [
+          "RKP-GOV-03",
+          "RKP-COMP-02"
+        ],
+        "authority": "governance authority",
+        "enforcement_point": "policy lifecycle",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-GOV-02"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-GOV-03",
+        "name": "Cross-boundary responsibility map",
+        "control_function": "remediate",
+        "control_objective": "Assign accountable owners and redress paths for outcomes that span protocols, operators or trust domains.",
+        "risk_patterns": [
+          "RKP-GOV-04",
+          "RKP-RED-01",
+          "RKP-COMP-04"
+        ],
+        "authority": "governance authority",
+        "enforcement_point": "governance/redress boundary",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-RED-01"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-ID-01",
+        "name": "Explicit role binding",
+        "control_function": "prevent",
+        "control_objective": "Bind subject, issuer, holder, operator, principal and relying-party roles explicitly and reject role substitution.",
+        "risk_patterns": [
+          "RKP-ID-01",
+          "RKP-COMP-01"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "verification boundary",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-ID-02",
+        "name": "Recovery with takeover resistance",
+        "control_function": "recover",
+        "control_objective": "Provide accessible recovery with independent checks, notification, delay or quorum protections appropriate to impact.",
+        "risk_patterns": [
+          "RKP-ID-03"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "recovery workflow",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-REC-01"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-DISC-01",
+        "name": "Discovery non-inference rule",
+        "control_function": "constrain",
+        "control_objective": "State and enforce that discoverability, signed metadata or registry presence does not itself establish authorization, certification or endorsement.",
+        "risk_patterns": [
+          "RKP-DISC-01",
+          "RKP-CRD-01"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "relying-party decision",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-DISC-02",
+        "name": "Discovery freshness and withdrawal",
+        "control_function": "detect",
+        "control_objective": "Define cache bounds, refresh rules, withdrawal semantics and stale-state behavior for discovery metadata.",
+        "risk_patterns": [
+          "RKP-DISC-02",
+          "RKP-OPS-01"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "discovery client",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-OPS-01"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-DISC-03",
+        "name": "Registry governance policy",
+        "control_function": "govern",
+        "control_objective": "Publish admission, update, suspension, removal, correction, audit and appeal authority for registry entries.",
+        "risk_patterns": [
+          "RKP-DISC-03",
+          "RKP-GOV-01"
+        ],
+        "authority": "registry governance authority",
+        "enforcement_point": "registry governance",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-GOV-01"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-CRD-01",
+        "name": "Context-bound credential use",
+        "control_function": "constrain",
+        "control_objective": "Bind credential use to intended task, transaction, audience or purpose and reject detached reuse when context is material.",
+        "risk_patterns": [
+          "RKP-CRD-03",
+          "RKP-CRD-04",
+          "RKP-OPS-02"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "credential verifier",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-CRD-02",
+        "name": "Status-as-of semantics",
+        "control_function": "detect",
+        "control_objective": "Define which status and authority state must be evaluated and at what time for issuance, presentation and action.",
+        "risk_patterns": [
+          "RKP-CRD-02",
+          "RKP-COMP-02"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "credential verifier",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-AUTH-01"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-PRV-01",
+        "name": "Pairwise or scoped identifiers",
+        "control_function": "prevent",
+        "control_objective": "Use context-scoped identifiers and minimize stable metadata where correlation is not required.",
+        "risk_patterns": [
+          "RKP-PRV-01",
+          "RKP-COMP-03"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "identifier creation",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-PRV-02",
+        "name": "Composition privacy analysis",
+        "control_function": "detect",
+        "control_objective": "Evaluate privacy and inference risks for the combined disclosure set, not only each credential or artefact independently.",
+        "risk_patterns": [
+          "RKP-PRV-02",
+          "RKP-COMP-03"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "presentation construction",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-PRV-01"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-PRV-03",
+        "name": "Privacy-safe failure responses",
+        "control_function": "prevent",
+        "control_objective": "Limit errors and diagnostics to information necessary for remediation, with sensitive detail protected or authenticated.",
+        "risk_patterns": [
+          "RKP-PRV-03"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "error boundary",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-EXC-01",
+        "name": "Alternative participation path",
+        "control_function": "compensate",
+        "control_objective": "Provide at least one viable alternative when the primary identity, device, accessibility or connectivity path excludes legitimate participants.",
+        "risk_patterns": [
+          "RKP-EXC-01",
+          "RKP-EXC-02"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "user journey",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-INCL-01"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-AGT-01",
+        "name": "Principal intent checkpoint",
+        "control_function": "constrain",
+        "control_objective": "Require step-up confirmation or reauthorization for material scope expansion, high-impact action or changed conditions.",
+        "risk_patterns": [
+          "RKP-AGT-01",
+          "RKP-AUTH-03"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "agent action boundary",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-AUTH-02"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-AGT-02",
+        "name": "Secondary credential non-transitivity",
+        "control_function": "constrain",
+        "control_objective": "Do not forward or reuse secondary credentials across agents or purposes unless onward delegation is explicitly authorized.",
+        "risk_patterns": [
+          "RKP-AGT-02",
+          "RKP-CRD-04"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "agent credential boundary",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-AGT-03",
+        "name": "External action provenance",
+        "control_function": "audit",
+        "control_objective": "Record externally consequential actions, active delegation reference, accountable actor, target, time and outcome without requiring private chain-of-thought.",
+        "risk_patterns": [
+          "RKP-AGT-03",
+          "RKP-DEL-02",
+          "RKP-RED-01"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "audit boundary",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-AUD-01"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-OPS-01",
+        "name": "Safe dependency degradation",
+        "control_function": "contain",
+        "control_objective": "Define fail-closed, defer, bounded-cache or explicit risk-accepted behavior for unavailable dependencies.",
+        "risk_patterns": [
+          "RKP-OPS-01",
+          "RKP-CRD-02"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "dependency boundary",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-OPS-01"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-OPS-02",
+        "name": "Idempotency and anti-replay",
+        "control_function": "prevent",
+        "control_objective": "Bind freshness/uniqueness to consequential requests and make retries idempotent where duplicate effects are unsafe.",
+        "risk_patterns": [
+          "RKP-OPS-02",
+          "RKP-CRD-03"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "execution boundary",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-OPS-02"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-OPS-03",
+        "name": "Dependency invalidation continuity plan",
+        "control_function": "recover",
+        "control_objective": "Define notification, re-verification, grace, replacement and rollback behavior when a dependency is compromised or withdrawn.",
+        "risk_patterns": [
+          "RKP-OPS-03"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "operations/governance",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-GOV-02"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-RED-01",
+        "name": "Contestability evidence package",
+        "control_function": "audit",
+        "control_objective": "Preserve sufficient decision, policy, identity/authority and action evidence to support explanation, appeal and remediation.",
+        "risk_patterns": [
+          "RKP-RED-01",
+          "RKP-GOV-04"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "decision/audit boundary",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-RED-01",
+          "EVP-AUD-01"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-COMP-01",
+        "name": "Cross-spec semantic contract",
+        "control_function": "prevent",
+        "control_objective": "Define ownership and exact semantics of identity, authority, status, completion and evidence facts at each specification seam.",
+        "risk_patterns": [
+          "RKP-COMP-01",
+          "RKP-COMP-04"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "composition boundary",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-COMP-01"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-COMP-02",
+        "name": "Cross-spec lifecycle test matrix",
+        "control_function": "detect",
+        "control_objective": "Test dependent specifications across issue, authorize, present, execute, revoke, retry, migrate and appeal timing boundaries.",
+        "risk_patterns": [
+          "RKP-COMP-02",
+          "RKP-OPS-02"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "conformance testing",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-COMP-01"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-PE-01",
+        "name": "Dependency governance and exit assessment",
+        "control_function": "govern",
+        "control_objective": "Document control, funding, surveillance capability, switching cost, shutdown authority and exit paths for critical dependencies.",
+        "risk_patterns": [
+          "RKP-PE-01",
+          "RKP-PE-02"
+        ],
+        "authority": "deployment governance",
+        "enforcement_point": "governance review",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-GOV-01"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-RISK-01",
+        "name": "Control side-effect assessment",
+        "control_function": "detect",
+        "control_objective": "Assess whether a mitigation introduces, amplifies or redistributes other risks and require explicit disposition of material side effects.",
+        "risk_patterns": [
+          "RKP-EXC-02",
+          "RKP-PRV-01",
+          "RKP-PE-02"
+        ],
+        "authority": "system operator",
+        "enforcement_point": "risk review",
+        "activation": "before or at relevant decision boundary",
+        "failure_behavior": "deny, defer, or escalate rather than silently weaken the assurance claim",
+        "audit_events": [
+          "control-evaluated",
+          "control-failed-or-overridden"
+        ],
+        "evidence_patterns": [
+          "EVP-RISK-01"
+        ],
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-ID-03",
+        "name": "Explicit uniqueness assurance",
+        "control_function": "constrain",
+        "control_objective": "Where uniqueness is required, define the population, assurance mechanism, false-positive/false-negative limits and non-uniqueness fallback explicitly.",
+        "risk_patterns": [
+          "RKP-ID-02"
+        ],
+        "authority": "deployment governance",
+        "enforcement_point": "identity/admission boundary",
+        "activation": "before a decision relies on uniqueness",
+        "failure_behavior": "do not infer uniqueness; use a lower-assurance or alternate path",
+        "audit_events": [
+          "uniqueness-evaluated"
+        ],
+        "evidence_patterns": [
+          "EVP-RISK-01"
+        ],
+        "introduces_or_amplifies_risks": [
+          "RKP-EXC-02",
+          "RKP-PRV-01"
+        ]
+      }
+    ],
+    "guardrail_patterns": [
+      {
+        "id": "GRP-AUTH-01",
+        "name": "No authority by inference",
+        "protected_interest": "principal agency",
+        "prohibited_state": "A consequential action is authorized solely from authentication, possession, credential validity, discovery metadata or registry presence.",
+        "risk_patterns": [
+          "RKP-AUTH-01",
+          "RKP-CRD-01",
+          "RKP-DISC-01"
+        ],
+        "control_patterns": [
+          "CTP-AUTH-01",
+          "CTP-DISC-01"
+        ],
+        "trigger_condition": "before entering or continuing the prohibited state",
+        "enforcement_point": "relevant decision or execution boundary",
+        "failure_mode": "block or suspend the action",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-AUTH-02",
+        "name": "Current authority required",
+        "protected_interest": "principal agency",
+        "prohibited_state": "A consequential action proceeds when required authority, revocation or status state cannot be established at the action boundary.",
+        "risk_patterns": [
+          "RKP-AUTH-02",
+          "RKP-DEL-03"
+        ],
+        "control_patterns": [
+          "CTP-AUTH-02",
+          "CTP-DEL-02"
+        ],
+        "trigger_condition": "before entering or continuing the prohibited state",
+        "enforcement_point": "relevant decision or execution boundary",
+        "failure_mode": "block or suspend the action",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-DEL-01",
+        "name": "Delegation cannot silently expand",
+        "protected_interest": "principal agency",
+        "prohibited_state": "A delegate or downstream actor receives materially broader scope than was granted by the accountable principal.",
+        "risk_patterns": [
+          "RKP-DEL-01",
+          "RKP-AUTH-03"
+        ],
+        "control_patterns": [
+          "CTP-AUTH-03",
+          "CTP-DEL-01"
+        ],
+        "trigger_condition": "before entering or continuing the prohibited state",
+        "enforcement_point": "relevant decision or execution boundary",
+        "failure_mode": "block or suspend the action",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-GOV-01",
+        "name": "No unilateral irreversible governance action",
+        "protected_interest": "due process",
+        "prohibited_state": "One actor can make an irreversible high-impact governance decision without defined independent check or later remedy.",
+        "risk_patterns": [
+          "RKP-GOV-01",
+          "RKP-GOV-02"
+        ],
+        "control_patterns": [
+          "CTP-GOV-01"
+        ],
+        "trigger_condition": "before entering or continuing the prohibited state",
+        "enforcement_point": "relevant decision or execution boundary",
+        "failure_mode": "block or suspend the action",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-ID-01",
+        "name": "No role substitution",
+        "protected_interest": "identity integrity",
+        "prohibited_state": "A verifier substitutes one identity/role layer for another without an explicit binding rule.",
+        "risk_patterns": [
+          "RKP-ID-01"
+        ],
+        "control_patterns": [
+          "CTP-ID-01"
+        ],
+        "trigger_condition": "before entering or continuing the prohibited state",
+        "enforcement_point": "relevant decision or execution boundary",
+        "failure_mode": "block or suspend the action",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-PRV-01",
+        "name": "No unnecessary disclosure",
+        "protected_interest": "privacy",
+        "prohibited_state": "A required flow discloses information not necessary for the stated decision or function.",
+        "risk_patterns": [
+          "RKP-PRV-02",
+          "RKP-PRV-03"
+        ],
+        "control_patterns": [
+          "CTP-PRV-02",
+          "CTP-PRV-03"
+        ],
+        "trigger_condition": "before entering or continuing the prohibited state",
+        "enforcement_point": "relevant decision or execution boundary",
+        "failure_mode": "block or suspend the action",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-EXC-01",
+        "name": "No essential-service single path",
+        "protected_interest": "equitable access",
+        "prohibited_state": "A high-impact or essential participation path has no viable alternative for foreseeable legitimate users excluded by the primary mechanism.",
+        "risk_patterns": [
+          "RKP-EXC-01"
+        ],
+        "control_patterns": [
+          "CTP-EXC-01"
+        ],
+        "trigger_condition": "before entering or continuing the prohibited state",
+        "enforcement_point": "relevant decision or execution boundary",
+        "failure_mode": "block or suspend the action",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-AGT-01",
+        "name": "No agent action beyond current mandate",
+        "protected_interest": "principal agency",
+        "prohibited_state": "An autonomous agent performs a consequential action outside the current bounded mandate.",
+        "risk_patterns": [
+          "RKP-AGT-01",
+          "RKP-AGT-02"
+        ],
+        "control_patterns": [
+          "CTP-AGT-01",
+          "CTP-AGT-02"
+        ],
+        "trigger_condition": "before entering or continuing the prohibited state",
+        "enforcement_point": "relevant decision or execution boundary",
+        "failure_mode": "block or suspend the action",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-OPS-01",
+        "name": "No unsafe replay",
+        "protected_interest": "transaction integrity",
+        "prohibited_state": "A replay or retry can repeat an externally consequential side effect without a new authorized decision.",
+        "risk_patterns": [
+          "RKP-OPS-02"
+        ],
+        "control_patterns": [
+          "CTP-OPS-02"
+        ],
+        "trigger_condition": "before entering or continuing the prohibited state",
+        "enforcement_point": "relevant decision or execution boundary",
+        "failure_mode": "block or suspend the action",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-RED-01",
+        "name": "No consequential decision without contestability evidence",
+        "protected_interest": "due process",
+        "prohibited_state": "A high-impact adverse decision is made without sufficient retained evidence and an accountable appeal/remedy path.",
+        "risk_patterns": [
+          "RKP-RED-01",
+          "RKP-GOV-04"
+        ],
+        "control_patterns": [
+          "CTP-RED-01",
+          "CTP-GOV-03"
+        ],
+        "trigger_condition": "before entering or continuing the prohibited state",
+        "enforcement_point": "relevant decision or execution boundary",
+        "failure_mode": "block or suspend the action",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-COMP-01",
+        "name": "No implicit cross-spec semantic substitution",
+        "protected_interest": "composition integrity",
+        "prohibited_state": "A fact established by one specification is treated as establishing a different authority, completion, identity or status fact in another without an explicit contract.",
+        "risk_patterns": [
+          "RKP-COMP-01",
+          "RKP-COMP-04"
+        ],
+        "control_patterns": [
+          "CTP-COMP-01"
+        ],
+        "trigger_condition": "before entering or continuing the prohibited state",
+        "enforcement_point": "relevant decision or execution boundary",
+        "failure_mode": "block or suspend the action",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-PE-01",
+        "name": "Critical dependency must have governed exit",
+        "protected_interest": "institutional autonomy",
+        "prohibited_state": "A critical dependency can materially change access or surveillance conditions with no documented alternative, exit or governance response.",
+        "risk_patterns": [
+          "RKP-PE-01"
+        ],
+        "control_patterns": [
+          "CTP-PE-01"
+        ],
+        "trigger_condition": "before entering or continuing the prohibited state",
+        "enforcement_point": "relevant decision or execution boundary",
+        "failure_mode": "block or suspend the action",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
+      }
+    ],
+    "assurance_patterns": [
+      {
+        "id": "ATP-AUTH-01",
+        "name": "Authentication/authorization separation test",
+        "assertion": "Identity or credential validity alone never authorizes a consequential action.",
+        "control_patterns": [
+          "CTP-AUTH-01"
+        ],
+        "guardrail_patterns": [
+          "GRP-AUTH-01"
+        ],
+        "preconditions": [
+          "system or specification exposes the relevant decision boundary"
+        ],
+        "procedure": "Exercise positive and negative cases at the stated boundary and inspect recorded evidence.",
+        "expected_result": "Identity or credential validity alone never authorizes a consequential action.",
+        "failure_interpretation": "The claimed control or guardrail is not demonstrated for the tested condition.",
+        "evidence_patterns": [
+          "EVP-AUTH-01"
+        ],
+        "automation_level": "automated",
+        "assurance_level": "A3"
+      },
+      {
+        "id": "ATP-AUTH-02",
+        "name": "Action-time revocation test",
+        "assertion": "A revoked or expired authority cannot be exercised after the effective revocation/expiry boundary.",
+        "control_patterns": [
+          "CTP-AUTH-02",
+          "CTP-DEL-02",
+          "CTP-CRD-02"
+        ],
+        "guardrail_patterns": [
+          "GRP-AUTH-02"
+        ],
+        "preconditions": [
+          "system or specification exposes the relevant decision boundary"
+        ],
+        "procedure": "Exercise positive and negative cases at the stated boundary and inspect recorded evidence.",
+        "expected_result": "A revoked or expired authority cannot be exercised after the effective revocation/expiry boundary.",
+        "failure_interpretation": "The claimed control or guardrail is not demonstrated for the tested condition.",
+        "evidence_patterns": [
+          "EVP-AUTH-01"
+        ],
+        "automation_level": "automated",
+        "assurance_level": "A3"
+      },
+      {
+        "id": "ATP-DEL-01",
+        "name": "Delegation attenuation test",
+        "assertion": "Each downstream delegation is equal to or narrower than the authority received upstream.",
+        "control_patterns": [
+          "CTP-DEL-01",
+          "CTP-AUTH-03"
+        ],
+        "guardrail_patterns": [
+          "GRP-DEL-01"
+        ],
+        "preconditions": [
+          "system or specification exposes the relevant decision boundary"
+        ],
+        "procedure": "Exercise positive and negative cases at the stated boundary and inspect recorded evidence.",
+        "expected_result": "Each downstream delegation is equal to or narrower than the authority received upstream.",
+        "failure_interpretation": "The claimed control or guardrail is not demonstrated for the tested condition.",
+        "evidence_patterns": [
+          "EVP-DEL-01"
+        ],
+        "automation_level": "automated",
+        "assurance_level": "A3"
+      },
+      {
+        "id": "ATP-DEL-02",
+        "name": "Delegation provenance reconstruction",
+        "assertion": "An auditor can reconstruct principal, delegation chain, scope and action for a consequential event.",
+        "control_patterns": [
+          "CTP-DEL-01",
+          "CTP-AGT-03"
+        ],
+        "guardrail_patterns": [],
+        "preconditions": [
+          "system or specification exposes the relevant decision boundary"
+        ],
+        "procedure": "Exercise positive and negative cases at the stated boundary and inspect recorded evidence.",
+        "expected_result": "An auditor can reconstruct principal, delegation chain, scope and action for a consequential event.",
+        "failure_interpretation": "The claimed control or guardrail is not demonstrated for the tested condition.",
+        "evidence_patterns": [
+          "EVP-DEL-01",
+          "EVP-AUD-01"
+        ],
+        "automation_level": "assisted",
+        "assurance_level": "A3"
+      },
+      {
+        "id": "ATP-GOV-01",
+        "name": "Independent governance decision test",
+        "assertion": "High-impact governance changes show required independent approval and immutable decision evidence.",
+        "control_patterns": [
+          "CTP-GOV-01"
+        ],
+        "guardrail_patterns": [
+          "GRP-GOV-01"
+        ],
+        "preconditions": [
+          "system or specification exposes the relevant decision boundary"
+        ],
+        "procedure": "Exercise positive and negative cases at the stated boundary and inspect recorded evidence.",
+        "expected_result": "High-impact governance changes show required independent approval and immutable decision evidence.",
+        "failure_interpretation": "The claimed control or guardrail is not demonstrated for the tested condition.",
+        "evidence_patterns": [
+          "EVP-GOV-01"
+        ],
+        "automation_level": "assisted",
+        "assurance_level": "A3"
+      },
+      {
+        "id": "ATP-GOV-02",
+        "name": "Policy migration test",
+        "assertion": "Artefacts created under prior policy versions follow documented migration, compatibility and retirement rules.",
+        "control_patterns": [
+          "CTP-GOV-02"
+        ],
+        "guardrail_patterns": [],
+        "preconditions": [
+          "system or specification exposes the relevant decision boundary"
+        ],
+        "procedure": "Exercise positive and negative cases at the stated boundary and inspect recorded evidence.",
+        "expected_result": "Artefacts created under prior policy versions follow documented migration, compatibility and retirement rules.",
+        "failure_interpretation": "The claimed control or guardrail is not demonstrated for the tested condition.",
+        "evidence_patterns": [
+          "EVP-GOV-02"
+        ],
+        "automation_level": "assisted",
+        "assurance_level": "A3"
+      },
+      {
+        "id": "ATP-ID-01",
+        "name": "Role-confusion negative test",
+        "assertion": "Requests with mismatched principal, subject, holder, issuer or operator roles are rejected or escalated.",
+        "control_patterns": [
+          "CTP-ID-01",
+          "CTP-ID-02"
+        ],
+        "guardrail_patterns": [
+          "GRP-ID-01"
+        ],
+        "preconditions": [
+          "system or specification exposes the relevant decision boundary"
+        ],
+        "procedure": "Exercise positive and negative cases at the stated boundary and inspect recorded evidence.",
+        "expected_result": "Requests with mismatched principal, subject, holder, issuer or operator roles are rejected or escalated.",
+        "failure_interpretation": "The claimed control or guardrail is not demonstrated for the tested condition.",
+        "evidence_patterns": [
+          "EVP-AUTH-01"
+        ],
+        "automation_level": "automated",
+        "assurance_level": "A3"
+      },
+      {
+        "id": "ATP-DISC-01",
+        "name": "Discovery non-inference test",
+        "assertion": "A signed or registered discovery record without separate authorization cannot unlock a protected action.",
+        "control_patterns": [
+          "CTP-DISC-01",
+          "CTP-DISC-03"
+        ],
+        "guardrail_patterns": [
+          "GRP-AUTH-01"
+        ],
+        "preconditions": [
+          "system or specification exposes the relevant decision boundary"
+        ],
+        "procedure": "Exercise positive and negative cases at the stated boundary and inspect recorded evidence.",
+        "expected_result": "A signed or registered discovery record without separate authorization cannot unlock a protected action.",
+        "failure_interpretation": "The claimed control or guardrail is not demonstrated for the tested condition.",
+        "evidence_patterns": [
+          "EVP-AUTH-01"
+        ],
+        "automation_level": "automated",
+        "assurance_level": "A3"
+      },
+      {
+        "id": "ATP-DISC-02",
+        "name": "Discovery freshness test",
+        "assertion": "Withdrawn or stale discovery metadata is not used beyond the documented freshness bound.",
+        "control_patterns": [
+          "CTP-DISC-02"
+        ],
+        "guardrail_patterns": [],
+        "preconditions": [
+          "system or specification exposes the relevant decision boundary"
+        ],
+        "procedure": "Exercise positive and negative cases at the stated boundary and inspect recorded evidence.",
+        "expected_result": "Withdrawn or stale discovery metadata is not used beyond the documented freshness bound.",
+        "failure_interpretation": "The claimed control or guardrail is not demonstrated for the tested condition.",
+        "evidence_patterns": [
+          "EVP-OPS-01"
+        ],
+        "automation_level": "automated",
+        "assurance_level": "A3"
+      },
+      {
+        "id": "ATP-PRV-01",
+        "name": "Composed disclosure review",
+        "assertion": "The combined disclosure set is assessed for linkability, inference and unnecessary attributes.",
+        "control_patterns": [
+          "CTP-PRV-02",
+          "CTP-PRV-01",
+          "CTP-PRV-03"
+        ],
+        "guardrail_patterns": [
+          "GRP-PRV-01"
+        ],
+        "preconditions": [
+          "system or specification exposes the relevant decision boundary"
+        ],
+        "procedure": "Exercise positive and negative cases at the stated boundary and inspect recorded evidence.",
+        "expected_result": "The combined disclosure set is assessed for linkability, inference and unnecessary attributes.",
+        "failure_interpretation": "The claimed control or guardrail is not demonstrated for the tested condition.",
+        "evidence_patterns": [
+          "EVP-PRV-01"
+        ],
+        "automation_level": "assisted",
+        "assurance_level": "A3"
+      },
+      {
+        "id": "ATP-EXC-01",
+        "name": "Alternative-path usability test",
+        "assertion": "Representatively affected legitimate participants can complete an alternative path without materially worse unjustified burden.",
+        "control_patterns": [
+          "CTP-EXC-01"
+        ],
+        "guardrail_patterns": [
+          "GRP-EXC-01"
+        ],
+        "preconditions": [
+          "system or specification exposes the relevant decision boundary"
+        ],
+        "procedure": "Exercise positive and negative cases at the stated boundary and inspect recorded evidence.",
+        "expected_result": "Representatively affected legitimate participants can complete an alternative path without materially worse unjustified burden.",
+        "failure_interpretation": "The claimed control or guardrail is not demonstrated for the tested condition.",
+        "evidence_patterns": [
+          "EVP-INCL-01"
+        ],
+        "automation_level": "assisted",
+        "assurance_level": "A3"
+      },
+      {
+        "id": "ATP-AGT-01",
+        "name": "Agent mandate boundary test",
+        "assertion": "Agent attempts outside purpose, resource, value, time or onward-delegation scope are blocked.",
+        "control_patterns": [
+          "CTP-AGT-01",
+          "CTP-AGT-02"
+        ],
+        "guardrail_patterns": [
+          "GRP-AGT-01"
+        ],
+        "preconditions": [
+          "system or specification exposes the relevant decision boundary"
+        ],
+        "procedure": "Exercise positive and negative cases at the stated boundary and inspect recorded evidence.",
+        "expected_result": "Agent attempts outside purpose, resource, value, time or onward-delegation scope are blocked.",
+        "failure_interpretation": "The claimed control or guardrail is not demonstrated for the tested condition.",
+        "evidence_patterns": [
+          "EVP-AUTH-02"
+        ],
+        "automation_level": "automated",
+        "assurance_level": "A3"
+      },
+      {
+        "id": "ATP-OPS-01",
+        "name": "Dependency outage test",
+        "assertion": "Loss or staleness of a dependency triggers the documented safe degradation behavior.",
+        "control_patterns": [
+          "CTP-OPS-01",
+          "CTP-OPS-03"
+        ],
+        "guardrail_patterns": [],
+        "preconditions": [
+          "system or specification exposes the relevant decision boundary"
+        ],
+        "procedure": "Exercise positive and negative cases at the stated boundary and inspect recorded evidence.",
+        "expected_result": "Loss or staleness of a dependency triggers the documented safe degradation behavior.",
+        "failure_interpretation": "The claimed control or guardrail is not demonstrated for the tested condition.",
+        "evidence_patterns": [
+          "EVP-OPS-01"
+        ],
+        "automation_level": "assisted",
+        "assurance_level": "A3"
+      },
+      {
+        "id": "ATP-OPS-02",
+        "name": "Replay/idempotency test",
+        "assertion": "Replayed or retried requests do not repeat a protected side effect without fresh authorization.",
+        "control_patterns": [
+          "CTP-OPS-02"
+        ],
+        "guardrail_patterns": [
+          "GRP-OPS-01"
+        ],
+        "preconditions": [
+          "system or specification exposes the relevant decision boundary"
+        ],
+        "procedure": "Exercise positive and negative cases at the stated boundary and inspect recorded evidence.",
+        "expected_result": "Replayed or retried requests do not repeat a protected side effect without fresh authorization.",
+        "failure_interpretation": "The claimed control or guardrail is not demonstrated for the tested condition.",
+        "evidence_patterns": [
+          "EVP-OPS-02"
+        ],
+        "automation_level": "automated",
+        "assurance_level": "A3"
+      },
+      {
+        "id": "ATP-RED-01",
+        "name": "Contestability reconstruction test",
+        "assertion": "An affected party and reviewer can reconstruct the consequential decision and identify an accountable remedy path.",
+        "control_patterns": [
+          "CTP-RED-01",
+          "CTP-GOV-03"
+        ],
+        "guardrail_patterns": [
+          "GRP-RED-01"
+        ],
+        "preconditions": [
+          "system or specification exposes the relevant decision boundary"
+        ],
+        "procedure": "Exercise positive and negative cases at the stated boundary and inspect recorded evidence.",
+        "expected_result": "An affected party and reviewer can reconstruct the consequential decision and identify an accountable remedy path.",
+        "failure_interpretation": "The claimed control or guardrail is not demonstrated for the tested condition.",
+        "evidence_patterns": [
+          "EVP-RED-01",
+          "EVP-AUD-01"
+        ],
+        "automation_level": "assisted",
+        "assurance_level": "A3"
+      },
+      {
+        "id": "ATP-COMP-01",
+        "name": "Cross-spec semantic seam test",
+        "assertion": "Each cross-spec fact has a named owner and is not silently substituted for another semantic fact.",
+        "control_patterns": [
+          "CTP-COMP-01",
+          "CTP-CRD-01"
+        ],
+        "guardrail_patterns": [
+          "GRP-COMP-01"
+        ],
+        "preconditions": [
+          "system or specification exposes the relevant decision boundary"
+        ],
+        "procedure": "Exercise positive and negative cases at the stated boundary and inspect recorded evidence.",
+        "expected_result": "Each cross-spec fact has a named owner and is not silently substituted for another semantic fact.",
+        "failure_interpretation": "The claimed control or guardrail is not demonstrated for the tested condition.",
+        "evidence_patterns": [
+          "EVP-COMP-01"
+        ],
+        "automation_level": "assisted",
+        "assurance_level": "A3"
+      },
+      {
+        "id": "ATP-COMP-02",
+        "name": "Cross-spec lifecycle matrix test",
+        "assertion": "Composition behavior is tested across issuance, authorization, execution, revocation, retry, migration and appeal boundaries.",
+        "control_patterns": [
+          "CTP-COMP-02"
+        ],
+        "guardrail_patterns": [],
+        "preconditions": [
+          "system or specification exposes the relevant decision boundary"
+        ],
+        "procedure": "Exercise positive and negative cases at the stated boundary and inspect recorded evidence.",
+        "expected_result": "Composition behavior is tested across issuance, authorization, execution, revocation, retry, migration and appeal boundaries.",
+        "failure_interpretation": "The claimed control or guardrail is not demonstrated for the tested condition.",
+        "evidence_patterns": [
+          "EVP-COMP-01"
+        ],
+        "automation_level": "assisted",
+        "assurance_level": "A3"
+      },
+      {
+        "id": "ATP-RISK-01",
+        "name": "Control side-effect test",
+        "assertion": "Material privacy, exclusion, autonomy or political-economy side effects of a proposed mitigation are identified and dispositioned.",
+        "control_patterns": [
+          "CTP-RISK-01",
+          "CTP-ID-03"
+        ],
+        "guardrail_patterns": [],
+        "preconditions": [
+          "system or specification exposes the relevant decision boundary"
+        ],
+        "procedure": "Exercise positive and negative cases at the stated boundary and inspect recorded evidence.",
+        "expected_result": "Material privacy, exclusion, autonomy or political-economy side effects of a proposed mitigation are identified and dispositioned.",
+        "failure_interpretation": "The claimed control or guardrail is not demonstrated for the tested condition.",
+        "evidence_patterns": [
+          "EVP-RISK-01"
+        ],
+        "automation_level": "assisted",
+        "assurance_level": "A3"
+      },
+      {
+        "id": "ATP-PE-01",
+        "name": "Critical dependency exit test",
+        "assertion": "A critical dependency has explicit control ownership, material-change monitoring, a governed response and a viable exit or substitution path.",
+        "control_patterns": [
+          "CTP-PE-01"
+        ],
+        "guardrail_patterns": [
+          "GRP-PE-01"
+        ],
+        "preconditions": [
+          "deployment relies on a critical external or concentrated dependency"
+        ],
+        "procedure": "Simulate a material access, price, surveillance, policy or availability change and verify the documented governance and exit response.",
+        "expected_result": "The deployment identifies the responsible authority and can preserve or deliberately suspend service without silently accepting changed dependency conditions.",
+        "failure_interpretation": "Critical dependency power is not effectively governed or the claimed exit path is not credible.",
+        "evidence_patterns": [
+          "EVP-GOV-01"
+        ],
+        "automation_level": "assisted",
+        "assurance_level": "A3"
+      }
+    ],
+    "evidence_patterns": [
+      {
+        "id": "EVP-AUTH-01",
+        "name": "Authorization decision trace",
+        "claim_supported": "Shows identity/authentication inputs separately from current authorization/status evaluation.",
+        "producer": "authorization service or verifier",
+        "consumer": "assessor/auditor",
+        "collection_event": "when the relevant control is exercised or tested",
+        "integrity_requirement": "tamper-evident provenance sufficient to bind evidence to target revision and assessment",
+        "freshness": "per consequential decision",
+        "retention": "retain according to method/evidence-retention.yaml and deployment policy",
+        "invalidation": "invalidate when source revision, policy, authority or test basis materially changes",
+        "privacy_classification": "internal-assurance"
+      },
+      {
+        "id": "EVP-AUTH-02",
+        "name": "Authority envelope fixture",
+        "claim_supported": "Shows enforceable scope, purpose, audience, value, time and delegation limits plus negative vectors.",
+        "producer": "profile/specification test suite",
+        "consumer": "assessor/conformance runner",
+        "collection_event": "when the relevant control is exercised or tested",
+        "integrity_requirement": "tamper-evident provenance sufficient to bind evidence to target revision and assessment",
+        "freshness": "per assessment or event",
+        "retention": "retain according to method/evidence-retention.yaml and deployment policy",
+        "invalidation": "invalidate when source revision, policy, authority or test basis materially changes",
+        "privacy_classification": "internal-assurance"
+      },
+      {
+        "id": "EVP-DEL-01",
+        "name": "Delegation chain trace",
+        "claim_supported": "Binds principal, each delegate, authority attenuation and resulting action.",
+        "producer": "delegation/execution layer",
+        "consumer": "assessor/auditor",
+        "collection_event": "when the relevant control is exercised or tested",
+        "integrity_requirement": "tamper-evident provenance sufficient to bind evidence to target revision and assessment",
+        "freshness": "per consequential action",
+        "retention": "retain according to method/evidence-retention.yaml and deployment policy",
+        "invalidation": "invalidate when source revision, policy, authority or test basis materially changes",
+        "privacy_classification": "internal-assurance"
+      },
+      {
+        "id": "EVP-DEL-02",
+        "name": "Revocation propagation trace",
+        "claim_supported": "Shows revocation effective time and observation/enforcement time at each relevant enforcement point.",
+        "producer": "status/authorization infrastructure",
+        "consumer": "assessor/auditor",
+        "collection_event": "when the relevant control is exercised or tested",
+        "integrity_requirement": "tamper-evident provenance sufficient to bind evidence to target revision and assessment",
+        "freshness": "per revocation event",
+        "retention": "retain according to method/evidence-retention.yaml and deployment policy",
+        "invalidation": "invalidate when source revision, policy, authority or test basis materially changes",
+        "privacy_classification": "internal-assurance"
+      },
+      {
+        "id": "EVP-GOV-01",
+        "name": "Governance decision record",
+        "claim_supported": "Shows authority, reviewers, rationale, version, effective date and approvals for a governance decision.",
+        "producer": "governance authority",
+        "consumer": "participants/auditor",
+        "collection_event": "when the relevant control is exercised or tested",
+        "integrity_requirement": "tamper-evident provenance sufficient to bind evidence to target revision and assessment",
+        "freshness": "per governance decision",
+        "retention": "retain according to method/evidence-retention.yaml and deployment policy",
+        "invalidation": "invalidate when source revision, policy, authority or test basis materially changes",
+        "privacy_classification": "internal-assurance"
+      },
+      {
+        "id": "EVP-GOV-02",
+        "name": "Policy migration record",
+        "claim_supported": "Shows affected versions, migration rules, compatibility tests, notifications and retirement/rollback state.",
+        "producer": "governance/release process",
+        "consumer": "operators/auditor",
+        "collection_event": "when the relevant control is exercised or tested",
+        "integrity_requirement": "tamper-evident provenance sufficient to bind evidence to target revision and assessment",
+        "freshness": "per material policy release",
+        "retention": "retain according to method/evidence-retention.yaml and deployment policy",
+        "invalidation": "invalidate when source revision, policy, authority or test basis materially changes",
+        "privacy_classification": "internal-assurance"
+      },
+      {
+        "id": "EVP-REC-01",
+        "name": "Recovery ceremony evidence",
+        "claim_supported": "Shows recovery checks, approvals, notification and replacement/invalidation events without exposing unnecessary secrets.",
+        "producer": "recovery service",
+        "consumer": "account holder/auditor",
+        "collection_event": "when the relevant control is exercised or tested",
+        "integrity_requirement": "tamper-evident provenance sufficient to bind evidence to target revision and assessment",
+        "freshness": "per recovery event",
+        "retention": "retain according to method/evidence-retention.yaml and deployment policy",
+        "invalidation": "invalidate when source revision, policy, authority or test basis materially changes",
+        "privacy_classification": "sensitive"
+      },
+      {
+        "id": "EVP-OPS-01",
+        "name": "Dependency freshness/outage trace",
+        "claim_supported": "Shows dependency state, freshness age, fallback path and resulting decision.",
+        "producer": "runtime/monitoring layer",
+        "consumer": "operator/assessor",
+        "collection_event": "when the relevant control is exercised or tested",
+        "integrity_requirement": "tamper-evident provenance sufficient to bind evidence to target revision and assessment",
+        "freshness": "per outage or stale-state test",
+        "retention": "retain according to method/evidence-retention.yaml and deployment policy",
+        "invalidation": "invalidate when source revision, policy, authority or test basis materially changes",
+        "privacy_classification": "internal-assurance"
+      },
+      {
+        "id": "EVP-OPS-02",
+        "name": "Replay/idempotency evidence",
+        "claim_supported": "Shows duplicate identifiers, freshness checks and side-effect suppression for replay/retry vectors.",
+        "producer": "execution service",
+        "consumer": "assessor/conformance runner",
+        "collection_event": "when the relevant control is exercised or tested",
+        "integrity_requirement": "tamper-evident provenance sufficient to bind evidence to target revision and assessment",
+        "freshness": "per assessment or event",
+        "retention": "retain according to method/evidence-retention.yaml and deployment policy",
+        "invalidation": "invalidate when source revision, policy, authority or test basis materially changes",
+        "privacy_classification": "internal-assurance"
+      },
+      {
+        "id": "EVP-PRV-01",
+        "name": "Disclosure composition analysis",
+        "claim_supported": "Records disclosed fields/metadata, audiences, correlation surfaces and minimization rationale for the composed transaction.",
+        "producer": "privacy review process",
+        "consumer": "assessor/governance",
+        "collection_event": "when the relevant control is exercised or tested",
+        "integrity_requirement": "tamper-evident provenance sufficient to bind evidence to target revision and assessment",
+        "freshness": "per flow/profile revision",
+        "retention": "retain according to method/evidence-retention.yaml and deployment policy",
+        "invalidation": "invalidate when source revision, policy, authority or test basis materially changes",
+        "privacy_classification": "sensitive"
+      },
+      {
+        "id": "EVP-INCL-01",
+        "name": "Inclusive-path test record",
+        "claim_supported": "Records representative accessibility/exclusion conditions, completion outcomes and burden comparison across alternate paths.",
+        "producer": "usability/accessibility test",
+        "consumer": "governance/assessor",
+        "collection_event": "when the relevant control is exercised or tested",
+        "integrity_requirement": "tamper-evident provenance sufficient to bind evidence to target revision and assessment",
+        "freshness": "per major interaction release",
+        "retention": "retain according to method/evidence-retention.yaml and deployment policy",
+        "invalidation": "invalidate when source revision, policy, authority or test basis materially changes",
+        "privacy_classification": "sensitive"
+      },
+      {
+        "id": "EVP-RED-01",
+        "name": "Appeal and remedy record",
+        "claim_supported": "Binds adverse outcome, explanation evidence, appeal owner, timeline, decision and remedy.",
+        "producer": "governance/redress service",
+        "consumer": "affected party/auditor",
+        "collection_event": "when the relevant control is exercised or tested",
+        "integrity_requirement": "tamper-evident provenance sufficient to bind evidence to target revision and assessment",
+        "freshness": "per adverse decision",
+        "retention": "retain according to method/evidence-retention.yaml and deployment policy",
+        "invalidation": "invalidate when source revision, policy, authority or test basis materially changes",
+        "privacy_classification": "sensitive"
+      },
+      {
+        "id": "EVP-AUD-01",
+        "name": "Consequential action audit record",
+        "claim_supported": "Binds accountable actor, delegation/authority reference, action category, target, time and outcome without private reasoning.",
+        "producer": "execution/audit layer",
+        "consumer": "auditor/affected party",
+        "collection_event": "when the relevant control is exercised or tested",
+        "integrity_requirement": "tamper-evident provenance sufficient to bind evidence to target revision and assessment",
+        "freshness": "per consequential action",
+        "retention": "retain according to method/evidence-retention.yaml and deployment policy",
+        "invalidation": "invalidate when source revision, policy, authority or test basis materially changes",
+        "privacy_classification": "sensitive"
+      },
+      {
+        "id": "EVP-COMP-01",
+        "name": "Cross-spec contract test matrix",
+        "claim_supported": "Records semantic ownership, lifecycle boundary cases, expected outcomes and tested revisions for a composition.",
+        "producer": "cross-spec assurance process",
+        "consumer": "spec maintainers/assessor",
+        "collection_event": "when the relevant control is exercised or tested",
+        "integrity_requirement": "tamper-evident provenance sufficient to bind evidence to target revision and assessment",
+        "freshness": "per composed baseline",
+        "retention": "retain according to method/evidence-retention.yaml and deployment policy",
+        "invalidation": "invalidate when source revision, policy, authority or test basis materially changes",
+        "privacy_classification": "internal-assurance"
+      },
+      {
+        "id": "EVP-RISK-01",
+        "name": "Control side-effect assessment",
+        "claim_supported": "Records risks mitigated, risks introduced/amplified, affected groups and explicit disposition.",
+        "producer": "risk review process",
+        "consumer": "governance/assessor",
+        "collection_event": "when the relevant control is exercised or tested",
+        "integrity_requirement": "tamper-evident provenance sufficient to bind evidence to target revision and assessment",
+        "freshness": "per control design change",
+        "retention": "retain according to method/evidence-retention.yaml and deployment policy",
+        "invalidation": "invalidate when source revision, policy, authority or test basis materially changes",
+        "privacy_classification": "internal-assurance"
+      }
+    ]
+  }
+}

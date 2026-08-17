@@ -1,0 +1,176 @@
+catalogue_version: 1.1.0
+record_type: evidence_pattern
+records:
+- id: EVP-AUTH-01
+  name: Authorization decision trace
+  claim_supported: Shows identity/authentication inputs separately from current authorization/status evaluation.
+  producer: authorization service or verifier
+  consumer: assessor/auditor
+  collection_event: when the relevant control is exercised or tested
+  integrity_requirement: tamper-evident provenance sufficient to bind evidence to target revision and assessment
+  freshness: per consequential decision
+  retention: retain according to method/evidence-retention.yaml and deployment policy
+  invalidation: invalidate when source revision, policy, authority or test basis materially changes
+  privacy_classification: internal-assurance
+- id: EVP-AUTH-02
+  name: Authority envelope fixture
+  claim_supported: Shows enforceable scope, purpose, audience, value, time and delegation limits plus negative vectors.
+  producer: profile/specification test suite
+  consumer: assessor/conformance runner
+  collection_event: when the relevant control is exercised or tested
+  integrity_requirement: tamper-evident provenance sufficient to bind evidence to target revision and assessment
+  freshness: per assessment or event
+  retention: retain according to method/evidence-retention.yaml and deployment policy
+  invalidation: invalidate when source revision, policy, authority or test basis materially changes
+  privacy_classification: internal-assurance
+- id: EVP-DEL-01
+  name: Delegation chain trace
+  claim_supported: Binds principal, each delegate, authority attenuation and resulting action.
+  producer: delegation/execution layer
+  consumer: assessor/auditor
+  collection_event: when the relevant control is exercised or tested
+  integrity_requirement: tamper-evident provenance sufficient to bind evidence to target revision and assessment
+  freshness: per consequential action
+  retention: retain according to method/evidence-retention.yaml and deployment policy
+  invalidation: invalidate when source revision, policy, authority or test basis materially changes
+  privacy_classification: internal-assurance
+- id: EVP-DEL-02
+  name: Revocation propagation trace
+  claim_supported: Shows revocation effective time and observation/enforcement time at each relevant enforcement
+    point.
+  producer: status/authorization infrastructure
+  consumer: assessor/auditor
+  collection_event: when the relevant control is exercised or tested
+  integrity_requirement: tamper-evident provenance sufficient to bind evidence to target revision and assessment
+  freshness: per revocation event
+  retention: retain according to method/evidence-retention.yaml and deployment policy
+  invalidation: invalidate when source revision, policy, authority or test basis materially changes
+  privacy_classification: internal-assurance
+- id: EVP-GOV-01
+  name: Governance decision record
+  claim_supported: Shows authority, reviewers, rationale, version, effective date and approvals for a governance
+    decision.
+  producer: governance authority
+  consumer: participants/auditor
+  collection_event: when the relevant control is exercised or tested
+  integrity_requirement: tamper-evident provenance sufficient to bind evidence to target revision and assessment
+  freshness: per governance decision
+  retention: retain according to method/evidence-retention.yaml and deployment policy
+  invalidation: invalidate when source revision, policy, authority or test basis materially changes
+  privacy_classification: internal-assurance
+- id: EVP-GOV-02
+  name: Policy migration record
+  claim_supported: Shows affected versions, migration rules, compatibility tests, notifications and retirement/rollback
+    state.
+  producer: governance/release process
+  consumer: operators/auditor
+  collection_event: when the relevant control is exercised or tested
+  integrity_requirement: tamper-evident provenance sufficient to bind evidence to target revision and assessment
+  freshness: per material policy release
+  retention: retain according to method/evidence-retention.yaml and deployment policy
+  invalidation: invalidate when source revision, policy, authority or test basis materially changes
+  privacy_classification: internal-assurance
+- id: EVP-REC-01
+  name: Recovery ceremony evidence
+  claim_supported: Shows recovery checks, approvals, notification and replacement/invalidation events without exposing
+    unnecessary secrets.
+  producer: recovery service
+  consumer: account holder/auditor
+  collection_event: when the relevant control is exercised or tested
+  integrity_requirement: tamper-evident provenance sufficient to bind evidence to target revision and assessment
+  freshness: per recovery event
+  retention: retain according to method/evidence-retention.yaml and deployment policy
+  invalidation: invalidate when source revision, policy, authority or test basis materially changes
+  privacy_classification: sensitive
+- id: EVP-OPS-01
+  name: Dependency freshness/outage trace
+  claim_supported: Shows dependency state, freshness age, fallback path and resulting decision.
+  producer: runtime/monitoring layer
+  consumer: operator/assessor
+  collection_event: when the relevant control is exercised or tested
+  integrity_requirement: tamper-evident provenance sufficient to bind evidence to target revision and assessment
+  freshness: per outage or stale-state test
+  retention: retain according to method/evidence-retention.yaml and deployment policy
+  invalidation: invalidate when source revision, policy, authority or test basis materially changes
+  privacy_classification: internal-assurance
+- id: EVP-OPS-02
+  name: Replay/idempotency evidence
+  claim_supported: Shows duplicate identifiers, freshness checks and side-effect suppression for replay/retry vectors.
+  producer: execution service
+  consumer: assessor/conformance runner
+  collection_event: when the relevant control is exercised or tested
+  integrity_requirement: tamper-evident provenance sufficient to bind evidence to target revision and assessment
+  freshness: per assessment or event
+  retention: retain according to method/evidence-retention.yaml and deployment policy
+  invalidation: invalidate when source revision, policy, authority or test basis materially changes
+  privacy_classification: internal-assurance
+- id: EVP-PRV-01
+  name: Disclosure composition analysis
+  claim_supported: Records disclosed fields/metadata, audiences, correlation surfaces and minimization rationale
+    for the composed transaction.
+  producer: privacy review process
+  consumer: assessor/governance
+  collection_event: when the relevant control is exercised or tested
+  integrity_requirement: tamper-evident provenance sufficient to bind evidence to target revision and assessment
+  freshness: per flow/profile revision
+  retention: retain according to method/evidence-retention.yaml and deployment policy
+  invalidation: invalidate when source revision, policy, authority or test basis materially changes
+  privacy_classification: sensitive
+- id: EVP-INCL-01
+  name: Inclusive-path test record
+  claim_supported: Records representative accessibility/exclusion conditions, completion outcomes and burden comparison
+    across alternate paths.
+  producer: usability/accessibility test
+  consumer: governance/assessor
+  collection_event: when the relevant control is exercised or tested
+  integrity_requirement: tamper-evident provenance sufficient to bind evidence to target revision and assessment
+  freshness: per major interaction release
+  retention: retain according to method/evidence-retention.yaml and deployment policy
+  invalidation: invalidate when source revision, policy, authority or test basis materially changes
+  privacy_classification: sensitive
+- id: EVP-RED-01
+  name: Appeal and remedy record
+  claim_supported: Binds adverse outcome, explanation evidence, appeal owner, timeline, decision and remedy.
+  producer: governance/redress service
+  consumer: affected party/auditor
+  collection_event: when the relevant control is exercised or tested
+  integrity_requirement: tamper-evident provenance sufficient to bind evidence to target revision and assessment
+  freshness: per adverse decision
+  retention: retain according to method/evidence-retention.yaml and deployment policy
+  invalidation: invalidate when source revision, policy, authority or test basis materially changes
+  privacy_classification: sensitive
+- id: EVP-AUD-01
+  name: Consequential action audit record
+  claim_supported: Binds accountable actor, delegation/authority reference, action category, target, time and outcome
+    without private reasoning.
+  producer: execution/audit layer
+  consumer: auditor/affected party
+  collection_event: when the relevant control is exercised or tested
+  integrity_requirement: tamper-evident provenance sufficient to bind evidence to target revision and assessment
+  freshness: per consequential action
+  retention: retain according to method/evidence-retention.yaml and deployment policy
+  invalidation: invalidate when source revision, policy, authority or test basis materially changes
+  privacy_classification: sensitive
+- id: EVP-COMP-01
+  name: Cross-spec contract test matrix
+  claim_supported: Records semantic ownership, lifecycle boundary cases, expected outcomes and tested revisions
+    for a composition.
+  producer: cross-spec assurance process
+  consumer: spec maintainers/assessor
+  collection_event: when the relevant control is exercised or tested
+  integrity_requirement: tamper-evident provenance sufficient to bind evidence to target revision and assessment
+  freshness: per composed baseline
+  retention: retain according to method/evidence-retention.yaml and deployment policy
+  invalidation: invalidate when source revision, policy, authority or test basis materially changes
+  privacy_classification: internal-assurance
+- id: EVP-RISK-01
+  name: Control side-effect assessment
+  claim_supported: Records risks mitigated, risks introduced/amplified, affected groups and explicit disposition.
+  producer: risk review process
+  consumer: governance/assessor
+  collection_event: when the relevant control is exercised or tested
+  integrity_requirement: tamper-evident provenance sufficient to bind evidence to target revision and assessment
+  freshness: per control design change
+  retention: retain according to method/evidence-retention.yaml and deployment policy
+  invalidation: invalidate when source revision, policy, authority or test basis materially changes
+  privacy_classification: internal-assurance

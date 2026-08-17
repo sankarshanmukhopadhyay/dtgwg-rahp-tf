@@ -15,11 +15,12 @@ review:
     - specs/trust-ceremony-receipt/0.1/spec.md
   reviewed_against:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    rahp_version: v0.8.0
+    rahp_version: v1.1.0
     original_rahp_version: v0.3-dev
     engine_contract: rahp-engine-contract-v1
-    revalidated_on: '2026-08-16'
-    revalidation_scope: method-and-engine-only; target revision and substantive findings unchanged
+    revalidated_on: '2026-08-17'
+    revalidation_scope: v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target
+      revision unchanged
   summary:
     finding_count: 13
     open_count: 13
@@ -60,25 +61,24 @@ review:
     - freshness
     evidence:
     - source: SPEC.md#101-cross-recipient-replay
-      observation: Same-recipient replay is acknowledged, but consumers handling persistent effects only 
-        SHOULD maintain an idempotency cache keyed on id.
+      observation: Same-recipient replay is acknowledged, but consumers handling persistent effects only SHOULD
+        maintain an idempotency cache keyed on id.
     - source: SPEC.md#73-specification-requirements
-      observation: Specifications already classify sideEffects as none/mutating/destructive and 
-        exposure.actsAsSubject independently.
-    attack: An attacker, retrying intermediary, or reconnecting transport redelivers a previously accepted 
-      request. The proof and recipient binding still verify, so a consumer without durable duplicate 
-      suppression can perform the mutation or authority-bearing action again.
+      observation: Specifications already classify sideEffects as none/mutating/destructive and exposure.actsAsSubject
+        independently.
+    attack: An attacker, retrying intermediary, or reconnecting transport redelivers a previously accepted request.
+      The proof and recipient binding still verify, so a consumer without durable duplicate suppression can perform
+      the mutation or authority-bearing action again.
     existing_mitigations:
     - Producers MUST mint globally unique document ids.
     - The security considerations recommend an idempotency cache.
-    residual_gap: The safeguard is non-mandatory exactly where the framework can already identify high-impact 
-      task classes.
-    recommendation: Require duplicate suppression for mutating, destructive and actsAsSubject requests; define
-      minimum replay-record lifetime and duplicate disposition. Permit operation-level idempotency keys where 
-      document id is insufficient.
+    residual_gap: The safeguard is non-mandatory exactly where the framework can already identify high-impact task
+      classes.
+    recommendation: Require duplicate suppression for mutating, destructive and actsAsSubject requests; define minimum
+      replay-record lifetime and duplicate disposition. Permit operation-level idempotency keys where document id
+      is insufficient.
     verification:
-    - Conformance test delivers the identical destructive request twice and proves only one state transition 
-      occurs.
+    - Conformance test delivers the identical destructive request twice and proves only one state transition occurs.
     - Restart/reconnect tests show replay memory survives for the task-defined relevance window.
     rahp:
       risks:
@@ -94,23 +94,49 @@ review:
       assurance_tests:
       - AT-12
       - AT-16
+      portable_assurance:
+        harm_patterns:
+        - HRM-AUT-04
+        - HRM-SEC-02
+        - HRM-INF-01
+        - HRM-ECO-02
+        risk_patterns:
+        - RKP-AUTH-01
+        - RKP-AUTH-03
+        - RKP-CRD-01
+        - RKP-OPS-02
+        control_patterns:
+        - CTP-AUTH-01
+        - CTP-AUTH-03
+        - CTP-OPS-02
+        guardrail_patterns:
+        - GRP-AUTH-01
+        - GRP-DEL-01
+        - GRP-OPS-01
+        assurance_patterns:
+        - ATP-AUTH-01
+        - ATP-DEL-01
+        - ATP-OPS-02
+        evidence_patterns:
+        - EVP-AUTH-01
+        - EVP-AUTH-02
+        - EVP-OPS-02
     external_alignment:
     - ref: NIST-SP-800-63B-4
       relationship: supports
-      rationale: Replay-resistant authentication and verifier processing reinforce the need to prevent reuse 
-        of previously accepted security-sensitive requests.
+      rationale: Replay-resistant authentication and verifier processing reinforce the need to prevent reuse of
+        previously accepted security-sensitive requests.
       clause: Replay resistance and verifier requirements
     - ref: OWASP-API-2023
       relationship: analogous
-      rationale: API6 treats unrestricted automation of sensitive business flows as a security risk; duplicate
-        execution of a destructive Trust Task is the protocol-level analogue.
+      rationale: API6 treats unrestricted automation of sensitive business flows as a security risk; duplicate execution
+        of a destructive Trust Task is the protocol-level analogue.
       clause: API6:2023 — Unrestricted Access to Sensitive Business Flows
-      url: 
-        https://owasp.org/API-Security/editions/2023/en/0xa6-unrestricted-access-to-sensitive-business-flows/
+      url: https://owasp.org/API-Security/editions/2023/en/0xa6-unrestricted-access-to-sensitive-business-flows/
     - ref: NIST-SP-800-53-R5
       relationship: supports
-      rationale: Access enforcement and session/integrity controls support one-time or idempotent enforcement 
-        for state-changing operations.
+      rationale: Access enforcement and session/integrity controls support one-time or idempotent enforcement for
+        state-changing operations.
       clause: AC-3 Access Enforcement; SC-23 Session Authenticity
   - id: SEC-TT-002
     title: High-impact requests can be authentic but stale
@@ -139,15 +165,14 @@ review:
       observation: issuedAt is SHOULD and expiresAt is MAY; expiry is enforced only when present.
     - source: SPEC.md#73-specification-requirements
       observation: High-impact side-effect/exposure classifications do not impose a freshness profile.
-    attack: A previously valid instruction is delayed, captured, queued, or intentionally replayed after the 
-      principal's intent, mandate, policy, or operational context has changed.
+    attack: A previously valid instruction is delayed, captured, queued, or intentionally replayed after the principal's
+      intent, mandate, policy, or operational context has changed.
     existing_mitigations:
     - Consumers MUST honor expiresAt when supplied.
     - Transport bindings describe freshness guarantees.
-    residual_gap: No framework floor requires high-impact tasks to carry a bounded validity window or maximum 
-      age.
-    recommendation: Require a bounded freshness rule for destructive and actsAsSubject requests, with 
-      task/profile-defined maximum age and fail-closed behavior when freshness cannot be established.
+    residual_gap: No framework floor requires high-impact tasks to carry a bounded validity window or maximum age.
+    recommendation: Require a bounded freshness rule for destructive and actsAsSubject requests, with task/profile-defined
+      maximum age and fail-closed behavior when freshness cannot be established.
     verification:
     - Negative test rejects a correctly signed high-impact request outside its maximum age.
     - Test missing issuedAt/expiresAt against a profile that requires bounded freshness.
@@ -165,11 +190,42 @@ review:
       assurance_tests:
       - AT-12
       - AT-17
+      portable_assurance:
+        harm_patterns:
+        - HRM-AUT-04
+        - HRM-SEC-02
+        - HRM-ECO-02
+        - HRM-SEC-03
+        - HRM-INF-01
+        risk_patterns:
+        - RKP-DEL-01
+        - RKP-AGT-01
+        - RKP-OPS-02
+        - RKP-OPS-01
+        control_patterns:
+        - CTP-DEL-01
+        - CTP-AGT-01
+        - CTP-OPS-02
+        - CTP-OPS-01
+        guardrail_patterns:
+        - GRP-DEL-01
+        - GRP-AGT-01
+        - GRP-OPS-01
+        assurance_patterns:
+        - ATP-DEL-01
+        - ATP-AGT-01
+        - ATP-OPS-02
+        - ATP-OPS-01
+        evidence_patterns:
+        - EVP-DEL-01
+        - EVP-AUTH-02
+        - EVP-OPS-02
+        - EVP-OPS-01
     external_alignment:
     - ref: NIST-SP-800-207
       relationship: supports
-      rationale: Zero trust requires access decisions to be evaluated for the current request rather than 
-        inheriting trust from a previously valid state.
+      rationale: Zero trust requires access decisions to be evaluated for the current request rather than inheriting
+        trust from a previously valid state.
       clause: Continuous evaluation and per-resource authorization
     - ref: NIST-SP-800-63B-4
       relationship: supports
@@ -177,8 +233,8 @@ review:
       clause: Authentication and session lifecycle
     - ref: NIST-SP-800-53-R5
       relationship: supports
-      rationale: Access enforcement and time/replay-related controls support rejecting stale 
-        authorization-bearing requests.
+      rationale: Access enforcement and time/replay-related controls support rejecting stale authorization-bearing
+        requests.
       clause: AC-3 Access Enforcement; SC-23 Session Authenticity
   - id: SEC-TT-003
     title: Transport-based proof omission can create security-profile downgrade ambiguity
@@ -204,26 +260,25 @@ review:
     - non-repudiation
     evidence:
     - source: SPEC.md#471-when-to-include-a-proof
-      observation: proof MAY be omitted when the transport provides end-to-end integrity and authentication; 
-        retained or third-party evidence requires proof.
+      observation: proof MAY be omitted when the transport provides end-to-end integrity and authentication; retained
+        or third-party evidence requires proof.
     - source: SPEC.md#91-what-a-transport-binding-specifies
-      observation: A binding SHOULD state its transport security profile, including freshness and 
-        authentication guarantees.
-    attack: An implementation treats a transport-authenticated request as portable evidence or forwards it 
-      into a context where transport assurances no longer travel with the bytes. The receiving component 
-      cannot distinguish a document that was intentionally portable from one whose authenticity depended on 
-      the original channel.
+      observation: A binding SHOULD state its transport security profile, including freshness and authentication
+        guarantees.
+    attack: An implementation treats a transport-authenticated request as portable evidence or forwards it into
+      a context where transport assurances no longer travel with the bytes. The receiving component cannot distinguish
+      a document that was intentionally portable from one whose authenticity depended on the original channel.
     existing_mitigations:
     - In-band and transport identities are cross-checked.
     - The framework requires proof for transport-independent retained/replayed evidence.
-    residual_gap: Binding security profiles and portability boundaries are SHOULD-level and may be interpreted
-      differently across implementations.
-    recommendation: Define named transport security profiles and require bindings to declare whether 
-      integrity, party identity, confidentiality and freshness survive forwarding/retention. Require proof 
-      before a document crosses a boundary where transport assurance is lost.
+    residual_gap: Binding security profiles and portability boundaries are SHOULD-level and may be interpreted differently
+      across implementations.
+    recommendation: Define named transport security profiles and require bindings to declare whether integrity,
+      party identity, confidentiality and freshness survive forwarding/retention. Require proof before a document
+      crosses a boundary where transport assurance is lost.
     verification:
-    - Binding conformance test demonstrates identical framework behavior with and without in-band proof across
-      forwarding/retention cases.
+    - Binding conformance test demonstrates identical framework behavior with and without in-band proof across forwarding/retention
+      cases.
     rahp:
       risks:
       - RK-SC02
@@ -235,21 +290,49 @@ review:
       - GR-16
       assurance_tests:
       - AT-16
+      portable_assurance:
+        harm_patterns:
+        - HRM-SEC-02
+        - HRM-INF-01
+        - HRM-PRV-01
+        - HRM-PRV-05
+        - HRM-AUT-04
+        - HRM-SEC-03
+        risk_patterns:
+        - RKP-CRD-01
+        - RKP-CRD-04
+        - RKP-AGT-02
+        - RKP-OPS-01
+        control_patterns:
+        - CTP-AUTH-01
+        - CTP-AGT-02
+        - CTP-OPS-01
+        guardrail_patterns:
+        - GRP-AUTH-01
+        - GRP-AGT-01
+        assurance_patterns:
+        - ATP-AUTH-01
+        - ATP-AGT-01
+        - ATP-OPS-01
+        evidence_patterns:
+        - EVP-AUTH-01
+        - EVP-AUTH-02
+        - EVP-OPS-01
     external_alignment:
     - ref: NIST-SP-800-207
       relationship: supports
-      rationale: Zero trust treats authentication and authorization as explicit functions at each protected 
-        resource boundary, supporting re-establishment of assurance when transport context changes.
+      rationale: Zero trust treats authentication and authorization as explicit functions at each protected resource
+        boundary, supporting re-establishment of assurance when transport context changes.
       clause: Zero-trust tenets
     - ref: W3C-VC-DI-1.0
       relationship: analogous
-      rationale: Data Integrity makes authenticity and integrity portable with the secured document; this is 
-        analogous to requiring in-band proof when transport assurances no longer travel with the bytes.
+      rationale: Data Integrity makes authenticity and integrity portable with the secured document; this is analogous
+        to requiring in-band proof when transport assurances no longer travel with the bytes.
       clause: Cryptographic proofs and verification
     - ref: NIST-SP-800-53-R5
       relationship: supports
-      rationale: Transmission confidentiality/integrity and session authenticity controls support explicit 
-        channel-to-message assurance boundaries.
+      rationale: Transmission confidentiality/integrity and session authenticity controls support explicit channel-to-message
+        assurance boundaries.
       clause: SC-8 Transmission Confidentiality and Integrity; SC-23 Session Authenticity
   - id: SEC-TT-004
     title: VID scheme agility can produce authorization-equivalence confusion
@@ -275,24 +358,24 @@ review:
     - identity binding
     evidence:
     - source: SPEC.md#2-terminology
-      observation: VID may be a DID, X.509 subject, OIDC subject, key thumbprint, or other identifier accepted
-        by the consumer trust framework.
+      observation: VID may be a DID, X.509 subject, OIDC subject, key thumbprint, or other identifier accepted by
+        the consumer trust framework.
     - source: SPEC.md#48-the-issuer-and-recipient-members
-      observation: Framework comparisons use exact string equality and consumers may accept non-canonical 
-        forms without normalization.
-    attack: An attacker or integration mismatch presents a logically equivalent but differently encoded 
-      identifier, or pivots between accepted schemes, so authentication succeeds under one representation 
-      while authorization state is attached to another.
+      observation: Framework comparisons use exact string equality and consumers may accept non-canonical forms
+        without normalization.
+    attack: An attacker or integration mismatch presents a logically equivalent but differently encoded identifier,
+      or pivots between accepted schemes, so authentication succeeds under one representation while authorization
+      state is attached to another.
     existing_mitigations:
     - Exact-string comparison prevents silent normalization.
     - Consumers choose accepted VID schemes under their trust framework.
-    residual_gap: The framework intentionally does not define cross-scheme equivalence or a minimum 
-      identity-resolution profile, leaving authorization aliases ecosystem-specific.
+    residual_gap: The framework intentionally does not define cross-scheme equivalence or a minimum identity-resolution
+      profile, leaving authorization aliases ecosystem-specific.
     recommendation: 'Publish an identity-resolution profile for deployments that accept multiple VID schemes: canonicalization,
       equivalence rules, resolver trust, alias management, key rotation and policy-keying requirements.'
     verification:
-    - Tests prove alternate textual or cross-scheme identities cannot inherit authorization without an 
-      explicit alias/equivalence record.
+    - Tests prove alternate textual or cross-scheme identities cannot inherit authorization without an explicit
+      alias/equivalence record.
     rahp:
       risks:
       - RK-ID04
@@ -306,21 +389,42 @@ review:
       assurance_tests:
       - AT-10
       - AT-16
+      portable_assurance:
+        harm_patterns:
+        - HRM-AUT-04
+        - HRM-SEC-02
+        - HRM-INF-01
+        - HRM-ECO-02
+        risk_patterns:
+        - RKP-AUTH-01
+        - RKP-AUTH-03
+        control_patterns:
+        - CTP-AUTH-01
+        - CTP-AUTH-03
+        guardrail_patterns:
+        - GRP-AUTH-01
+        - GRP-DEL-01
+        assurance_patterns:
+        - ATP-AUTH-01
+        - ATP-DEL-01
+        evidence_patterns:
+        - EVP-AUTH-01
+        - EVP-AUTH-02
     external_alignment:
     - ref: NIST-SP-800-63-4
       relationship: supports
-      rationale: Digital identity assurance depends on defined identity proofing, authentication, federation, 
-        and identifier handling rather than assuming representations are equivalent.
+      rationale: Digital identity assurance depends on defined identity proofing, authentication, federation, and
+        identifier handling rather than assuming representations are equivalent.
       clause: Digital identity assurance model
     - ref: NIST-SP-800-207A
       relationship: supports
-      rationale: Application/service authorization policies are identity-aware and therefore require stable, 
-        policy-relevant identity bindings.
+      rationale: Application/service authorization policies are identity-aware and therefore require stable, policy-relevant
+        identity bindings.
       clause: Application and service identity policies
     - ref: OWASP-API-2023
       relationship: analogous
-      rationale: Broken authentication and authorization categories illustrate the risk when identity 
-        representations and authorization state are not consistently bound.
+      rationale: Broken authentication and authorization categories illustrate the risk when identity representations
+        and authorization state are not consistently bound.
       clause: API2:2023 and API5:2023
   - id: SEC-TT-005
     title: Security-critical extension semantics can be ignored across ecosystem boundaries
@@ -346,25 +450,24 @@ review:
     - policy binding
     evidence:
     - source: SPEC.md#451-the-ext-extension-member
-      observation: Consumers MUST ignore ext namespaces they do not recognize and producers MUST NOT rely on 
-        framework-level meaning for them.
+      observation: Consumers MUST ignore ext namespaces they do not recognize and producers MUST NOT rely on framework-level
+        meaning for them.
     - source: docs/design-notes/trust-ceremonies.md
-      observation: The ceremony design uses ext for protocol-specific mechanism claims while deliberately 
-        denying them framework semantics.
-    attack: A document is accepted by an intermediary that understands a security extension and then forwarded
-      or re-evaluated by one that ignores it, causing a constraint that mattered to the producer to disappear 
-      from the decision path.
+      observation: The ceremony design uses ext for protocol-specific mechanism claims while deliberately denying
+        them framework semantics.
+    attack: A document is accepted by an intermediary that understands a security extension and then forwarded or
+      re-evaluated by one that ignores it, causing a constraint that mattered to the producer to disappear from
+      the decision path.
     existing_mitigations:
     - Specifications must opt into ext explicitly.
     - Consumers may require their own namespace under local policy.
-    residual_gap: There is no standard way to declare that a particular extension is critical-to-process or 
-      that forwarding must fail if it is not understood.
-    recommendation: Define a companion critical-extension convention or require security-relevant profiles to 
-      move mandatory semantics into the task schema. Do not use ignorable ext as the sole carrier of 
-      authorization or safety constraints.
+    residual_gap: There is no standard way to declare that a particular extension is critical-to-process or that
+      forwarding must fail if it is not understood.
+    recommendation: Define a companion critical-extension convention or require security-relevant profiles to move
+      mandatory semantics into the task schema. Do not use ignorable ext as the sole carrier of authorization or
+      safety constraints.
     verification:
-    - Interoperability test shows an unknown security-critical extension cannot be silently downgraded during 
-      forwarding.
+    - Interoperability test shows an unknown security-critical extension cannot be silently downgraded during forwarding.
     rahp:
       risks:
       - RK-SC02
@@ -379,17 +482,45 @@ review:
       assurance_tests:
       - AT-12
       - AT-16
+      portable_assurance:
+        harm_patterns:
+        - HRM-AUT-04
+        - HRM-SEC-02
+        - HRM-INF-01
+        - HRM-ECO-02
+        - HRM-PRV-01
+        - HRM-PRV-05
+        risk_patterns:
+        - RKP-AUTH-01
+        - RKP-AUTH-03
+        - RKP-CRD-04
+        - RKP-AGT-02
+        control_patterns:
+        - CTP-AUTH-01
+        - CTP-AUTH-03
+        - CTP-AGT-02
+        guardrail_patterns:
+        - GRP-AUTH-01
+        - GRP-DEL-01
+        - GRP-AGT-01
+        assurance_patterns:
+        - ATP-AUTH-01
+        - ATP-DEL-01
+        - ATP-AGT-01
+        evidence_patterns:
+        - EVP-AUTH-01
+        - EVP-AUTH-02
     external_alignment:
     - ref: OWASP-API-2023
       relationship: analogous
-      rationale: Security misconfiguration is the closest API analogue to ecosystem participants silently 
-        ignoring a security-relevant extension they do not understand.
+      rationale: Security misconfiguration is the closest API analogue to ecosystem participants silently ignoring
+        a security-relevant extension they do not understand.
       clause: API8:2023 — Security Misconfiguration
       url: https://owasp.org/API-Security/editions/2023/en/0xa8-security-misconfiguration/
     - ref: NIST-SP-800-53-R5
       relationship: supports
-      rationale: Configuration management and access-enforcement controls support fail-safe handling of 
-        security-relevant policy inputs.
+      rationale: Configuration management and access-enforcement controls support fail-safe handling of security-relevant
+        policy inputs.
       clause: CM family; AC-3 Access Enforcement
   - id: SEC-TT-006
     title: Mutable draft specifications weaken reproducible security validation
@@ -416,23 +547,22 @@ review:
     - auditability
     evidence:
     - source: SPEC.md#52-compatibility-rules
-      observation: Draft artifacts may receive in-place editorial/normalization changes and breaking changes 
-        may use minor increments.
+      observation: Draft artifacts may receive in-place editorial/normalization changes and breaking changes may
+        use minor increments.
     - source: SPEC.md#53-maturity-levels
-      observation: Draft specifications and schemas may change without notice while producers may still emit 
-        documents against them.
-    attack: A retained document is later validated against registry material whose exact prose/schema state 
-      differs from the state used at issuance, weakening forensic reconstruction or dispute resolution.
+      observation: Draft specifications and schemas may change without notice while producers may still emit documents
+        against them.
+    attack: A retained document is later validated against registry material whose exact prose/schema state differs
+      from the state used at issuance, weakening forensic reconstruction or dispute resolution.
     existing_mitigations:
     - Candidate and standard maturity levels provide stronger stability.
     - Ceremony definitions use definitionDigest to pin mutable external semantics.
-    residual_gap: Ordinary Trust Task documents do not have an equivalent immutable revision pin for draft 
-      task definitions.
-    recommendation: For documents emitted against draft specifications, support an immutable revision digest 
-      or snapshot reference; require archival retrieval rules for evidence-bearing deployments.
+    residual_gap: Ordinary Trust Task documents do not have an equivalent immutable revision pin for draft task
+      definitions.
+    recommendation: For documents emitted against draft specifications, support an immutable revision digest or
+      snapshot reference; require archival retrieval rules for evidence-bearing deployments.
     verification:
-    - A retained draft document can be validated years later against the exact schema/spec revision originally
-      used.
+    - A retained draft document can be validated years later against the exact schema/spec revision originally used.
     rahp:
       risks:
       - RK-SY03
@@ -447,22 +577,36 @@ review:
       assurance_tests:
       - AT-16
       - AT-17
+      portable_assurance:
+        harm_patterns:
+        - HRM-GOV-02
+        - HRM-ECO-02
+        risk_patterns:
+        - RKP-RED-01
+        control_patterns:
+        - CTP-RED-01
+        guardrail_patterns:
+        - GRP-RED-01
+        assurance_patterns:
+        - ATP-RED-01
+        evidence_patterns:
+        - EVP-RED-01
     external_alignment:
     - ref: OWASP-API-2023
       relationship: analogous
-      rationale: Improper inventory management explicitly calls out deployed API/version drift; mutable draft 
-        semantics create a similar inability to know what contract governed a historical exchange.
+      rationale: Improper inventory management explicitly calls out deployed API/version drift; mutable draft semantics
+        create a similar inability to know what contract governed a historical exchange.
       clause: API9:2023 — Improper Inventory Management
       url: https://owasp.org/API-Security/editions/2023/en/0xa9-improper-inventory-management/
     - ref: NIST-SP-800-53-R5
       relationship: supports
-      rationale: Configuration management, system-component inventory, and developer configuration management 
-        support immutable or traceable baselines.
+      rationale: Configuration management, system-component inventory, and developer configuration management support
+        immutable or traceable baselines.
       clause: CM-8 System Component Inventory; SA-10 Developer Configuration Management
     - ref: NIST-CSF-2.0
       relationship: supports
-      rationale: Identify and Govern outcomes support maintaining authoritative inventories, change 
-        governance, and traceability of cybersecurity-relevant assets.
+      rationale: Identify and Govern outcomes support maintaining authoritative inventories, change governance,
+        and traceability of cybersecurity-relevant assets.
   - id: SEC-TT-007
     title: Dynamic registry resolution remains an availability and semantic-integrity dependency
     status: open
@@ -487,24 +631,24 @@ review:
     - provenance
     evidence:
     - source: SPEC.md#103-schema-validation-dos
-      observation: Dynamic schemas must be authenticated and can become a validation DoS surface; 
-        build-embedded schemas are explicitly safer.
+      observation: Dynamic schemas must be authenticated and can become a validation DoS surface; build-embedded
+        schemas are explicitly safer.
     - source: specs/trust-ceremony-receipt/0.1/spec.md
       observation: An unresolvable definition makes a receipt unverifiable, not invalid.
-    attack: An attacker or outage prevents resolution of security-critical definitions, or serves divergent 
-      content where immutability is not locally pinned, causing fail-open behavior, inconsistent validation, 
-      or loss of evidence availability.
+    attack: An attacker or outage prevents resolution of security-critical definitions, or serves divergent content
+      where immutability is not locally pinned, causing fail-open behavior, inconsistent validation, or loss of
+      evidence availability.
     existing_mitigations:
     - Candidate/standard registry artifacts are intended to be stable.
     - Definition digests pin ceremony semantics.
-    residual_gap: Caching, offline verification, multi-origin availability and failure disposition remain 
-      largely deployment-specific.
-    recommendation: Publish an operational hardening profile for authenticated artifact pinning, immutable 
-      caches, offline verification, mirror/fallback strategy and explicit fail-closed behavior where 
-      authorization depends on unresolved material.
+    residual_gap: Caching, offline verification, multi-origin availability and failure disposition remain largely
+      deployment-specific.
+    recommendation: Publish an operational hardening profile for authenticated artifact pinning, immutable caches,
+      offline verification, mirror/fallback strategy and explicit fail-closed behavior where authorization depends
+      on unresolved material.
     verification:
-    - Chaos test removes registry/network access and confirms expected behavior for cached, uncached and 
-      mismatched artifacts.
+    - Chaos test removes registry/network access and confirms expected behavior for cached, uncached and mismatched
+      artifacts.
     rahp:
       risks:
       - RK-EX02
@@ -519,22 +663,48 @@ review:
       assurance_tests:
       - AT-10
       - AT-16
+      portable_assurance:
+        harm_patterns:
+        - HRM-AUT-04
+        - HRM-SEC-02
+        - HRM-INF-01
+        - HRM-ECO-02
+        - HRM-SEC-03
+        risk_patterns:
+        - RKP-AUTH-01
+        - RKP-AUTH-03
+        - RKP-OPS-01
+        control_patterns:
+        - CTP-AUTH-01
+        - CTP-AUTH-03
+        - CTP-OPS-01
+        guardrail_patterns:
+        - GRP-AUTH-01
+        - GRP-DEL-01
+        assurance_patterns:
+        - ATP-AUTH-01
+        - ATP-DEL-01
+        - ATP-OPS-01
+        evidence_patterns:
+        - EVP-AUTH-01
+        - EVP-AUTH-02
+        - EVP-OPS-01
     external_alignment:
     - ref: OWASP-API-2023
       relationship: analogous
-      rationale: API10 warns against implicitly trusting integrated external services; a registry/schema 
-        resolver is exactly such an upstream security dependency.
+      rationale: API10 warns against implicitly trusting integrated external services; a registry/schema resolver
+        is exactly such an upstream security dependency.
       clause: API10:2023 — Unsafe Consumption of APIs
       url: https://owasp.org/API-Security/editions/2023/en/0xaa-unsafe-consumption-of-apis/
     - ref: NIST-SP-800-53-R5
       relationship: supports
-      rationale: External-system-services, information-integrity, and contingency controls support 
-        authenticating, pinning, monitoring, and surviving failure of registry dependencies.
+      rationale: External-system-services, information-integrity, and contingency controls support authenticating,
+        pinning, monitoring, and surviving failure of registry dependencies.
       clause: SA-9 External System Services; SI-7 Software, Firmware, and Information Integrity
     - ref: NIST-CSF-2.0
       relationship: supports
-      rationale: Protect and resilience outcomes support maintaining critical operation when external 
-        dependencies fail.
+      rationale: Protect and resilience outcomes support maintaining critical operation when external dependencies
+        fail.
   - id: SEC-TT-008
     title: Capability discovery does not fully negotiate a mutually secure execution profile
     status: open
@@ -552,8 +722,7 @@ review:
     - downgrade
     preconditions:
     - Both parties support the same Type URI.
-    - They differ in VID methods, proof suites, transport security, freshness, authorization or required 
-      extensions.
+    - They differ in VID methods, proof suites, transport security, freshness, authorization or required extensions.
     security_properties:
     - authentication
     - authorization
@@ -562,18 +731,18 @@ review:
     - source: SPEC.md#11-discovery-and-capability-negotiation
       observation: Discovery advertises supported Type URIs and is advisory.
     - source: specs/trust-task-discovery/0.1/spec.md
-      observation: Expanded responses may advertise requiredExt, but proof requirement is optional because 
-        transport authentication is assumed.
-    attack: A producer treats task support as executable compatibility and falls back to a weaker 
-      identity/proof/binding combination when the preferred security profile is unavailable.
+      observation: Expanded responses may advertise requiredExt, but proof requirement is optional because transport
+        authentication is assumed.
+    attack: A producer treats task support as executable compatibility and falls back to a weaker identity/proof/binding
+      combination when the preferred security profile is unavailable.
     existing_mitigations:
     - Every actual request still runs the consumer validation pipeline.
     - Discovery may advertise requiredExt policy.
-    residual_gap: There is no general anti-downgrade negotiation of VID schemes, proof suites, transport 
-      profiles, freshness profiles or delegation requirements.
-    recommendation: Define a security-capability profile for discovery with explicit anti-downgrade rules. 
-      Keep Type URI discovery advisory, but let parties determine a mutually acceptable verification profile 
-      before sending high-impact work.
+    residual_gap: There is no general anti-downgrade negotiation of VID schemes, proof suites, transport profiles,
+      freshness profiles or delegation requirements.
+    recommendation: Define a security-capability profile for discovery with explicit anti-downgrade rules. Keep
+      Type URI discovery advisory, but let parties determine a mutually acceptable verification profile before sending
+      high-impact work.
     verification:
     - Negotiation tests show no fallback to a weaker profile without explicit policy authorization.
     rahp:
@@ -588,21 +757,52 @@ review:
       - GR-16
       assurance_tests:
       - AT-16
+      portable_assurance:
+        harm_patterns:
+        - HRM-AUT-04
+        - HRM-SEC-02
+        - HRM-INF-01
+        - HRM-SEC-01
+        - HRM-SEC-03
+        risk_patterns:
+        - RKP-DEL-01
+        - RKP-AGT-01
+        - RKP-DISC-01
+        - RKP-DISC-02
+        control_patterns:
+        - CTP-DEL-01
+        - CTP-AGT-01
+        - CTP-DISC-01
+        - CTP-DISC-02
+        guardrail_patterns:
+        - GRP-DEL-01
+        - GRP-AGT-01
+        - GRP-AUTH-01
+        assurance_patterns:
+        - ATP-DEL-01
+        - ATP-AGT-01
+        - ATP-DISC-01
+        - ATP-DISC-02
+        evidence_patterns:
+        - EVP-DEL-01
+        - EVP-AUTH-02
+        - EVP-AUTH-01
+        - EVP-OPS-01
     external_alignment:
     - ref: NIST-SP-800-207A
       relationship: supports
-      rationale: Granular application-level authorization requires identity and policy attributes that are 
-        actually enforceable at runtime; task-name discovery alone is insufficient.
+      rationale: Granular application-level authorization requires identity and policy attributes that are actually
+        enforceable at runtime; task-name discovery alone is insufficient.
       clause: Application/service identity and access-control policy
     - ref: OWASP-API-2023
       relationship: analogous
-      rationale: Security misconfiguration and API inventory risks support explicit negotiation/documentation 
-        of the security properties an endpoint actually supports.
+      rationale: Security misconfiguration and API inventory risks support explicit negotiation/documentation of
+        the security properties an endpoint actually supports.
       clause: API8:2023; API9:2023
     - ref: NIST-SP-800-53-R5
       relationship: supports
-      rationale: System-and-services acquisition and configuration controls support explicit, testable 
-        security capabilities at integration boundaries.
+      rationale: System-and-services acquisition and configuration controls support explicit, testable security
+        capabilities at integration boundaries.
       clause: SA and CM control families
   - id: SEC-TT-009
     title: Delegated execution is fail-open unless deployments opt into policy enforcement
@@ -628,25 +828,23 @@ review:
     - agency
     evidence:
     - source: docs/design-notes/delegated-trust-task-execution.md#3-the-invariant
-      observation: The note states the safety invariant is conditional, enforcement is opt-in, and the default
-        baseline allows everything.
+      observation: The note states the safety invariant is conditional, enforcement is opt-in, and the default baseline
+        allows everything.
     - source: SPEC.md#73-specification-requirements
-      observation: sideEffects and exposure classifications are descriptive and MUST NOT themselves derive a 
-        consent requirement.
-    attack: A relying party or agent submits a destructive or actsAsSubject task to a deployment that is 
-      technically conforming but has not enabled the policy layer. The executor performs it without human 
-      approval because no framework requirement establishes a minimum safety floor.
+      observation: sideEffects and exposure classifications are descriptive and MUST NOT themselves derive a consent
+        requirement.
+    attack: A relying party or agent submits a destructive or actsAsSubject task to a deployment that is technically
+      conforming but has not enabled the policy layer. The executor performs it without human approval because no
+      framework requirement establishes a minimum safety floor.
     existing_mitigations:
     - High-impact task classifications exist.
-    - The reference design supports requireConsent, exact payload digests, state pins and policy 
-      re-evaluation.
+    - The reference design supports requireConsent, exact payload digests, state pins and policy re-evaluation.
     residual_gap: The safe path is deployment-conditional rather than a named conformance/deployment profile.
-    recommendation: Define a governance/security deployment profile for delegated execution. High-impact 
-      delegated actions should fail closed unless explicitly pre-authorized or covered by a live human-consent
-      policy.
+    recommendation: Define a governance/security deployment profile for delegated execution. High-impact delegated
+      actions should fail closed unless explicitly pre-authorized or covered by a live human-consent policy.
     verification:
-    - A deployment claiming the profile cannot start with enforcement disabled and cannot execute 
-      destructive/actsAsSubject work without a matching authorization rule.
+    - A deployment claiming the profile cannot start with enforcement disabled and cannot execute destructive/actsAsSubject
+      work without a matching authorization rule.
     rahp:
       risks:
       - RK-AI01
@@ -661,21 +859,47 @@ review:
       assurance_tests:
       - AT-12
       - AT-19
+      portable_assurance:
+        harm_patterns:
+        - HRM-AUT-04
+        - HRM-SEC-02
+        - HRM-GOV-01
+        - HRM-GOV-03
+        risk_patterns:
+        - RKP-DEL-01
+        - RKP-AGT-01
+        - RKP-GOV-01
+        control_patterns:
+        - CTP-DEL-01
+        - CTP-AGT-01
+        - CTP-GOV-01
+        guardrail_patterns:
+        - GRP-DEL-01
+        - GRP-AGT-01
+        - GRP-GOV-01
+        assurance_patterns:
+        - ATP-DEL-01
+        - ATP-AGT-01
+        - ATP-GOV-01
+        evidence_patterns:
+        - EVP-DEL-01
+        - EVP-AUTH-02
+        - EVP-GOV-01
     external_alignment:
     - ref: NIST-SP-800-207
       relationship: direct
-      rationale: Zero trust explicitly separates authentication from authorization and requires policy-based 
-        access decisions rather than implicit trust.
+      rationale: Zero trust explicitly separates authentication from authorization and requires policy-based access
+        decisions rather than implicit trust.
       clause: Zero-trust tenets
     - ref: NIST-SP-800-207A
       relationship: direct
-      rationale: Application/service identities require granular authorization policies at the application 
-        layer, directly supporting fail-closed delegated execution.
+      rationale: Application/service identities require granular authorization policies at the application layer,
+        directly supporting fail-closed delegated execution.
       clause: Application-level access-control policy
     - ref: OWASP-AGENTIC-2025
       relationship: supports
-      rationale: Agentic threat guidance treats excessive or insufficiently constrained agency as a core risk 
-        and recommends explicit policy/permission boundaries.
+      rationale: Agentic threat guidance treats excessive or insufficiently constrained agency as a core risk and
+        recommends explicit policy/permission boundaries.
   - id: SEC-TT-010
     title: Revoked consent devices can remain effective for in-flight approvals
     status: open
@@ -704,19 +928,17 @@ review:
         approver set is rechecked but device-enrolment revocation is not wired to it.'
     - source: docs/design-notes/delegated-trust-task-execution.md#7
       observation: Policy and approver set are re-evaluated before execution.
-    attack: An attacker retains or obtains a valid approval from a device that has since been removed. If the 
-      device remains inside the logical approver set, execution can proceed even though the concrete 
-      authorization endpoint was revoked.
+    attack: An attacker retains or obtains a valid approval from a device that has since been removed. If the device
+      remains inside the logical approver set, execution can proceed even though the concrete authorization endpoint
+      was revoked.
     existing_mitigations:
     - Single-use grants, payload digest and state pinning prevent reuse/substitution.
     - Policy and approver-set membership are rechecked.
-    residual_gap: Concrete device enrollment/revocation is not part of the final execution-time authorization 
-      check.
-    recommendation: Bind approvals to a revocable approver credential/device identifier and revalidate that 
-      credential immediately before execution.
+    residual_gap: Concrete device enrollment/revocation is not part of the final execution-time authorization check.
+    recommendation: Bind approvals to a revocable approver credential/device identifier and revalidate that credential
+      immediately before execution.
     verification:
-    - Test revokes a device after approval but before apply; execution must fail and require a fresh approval 
-      path.
+    - Test revokes a device after approval but before apply; execution must fail and require a fresh approval path.
     rahp:
       risks:
       - RK-AI02
@@ -728,17 +950,45 @@ review:
       - GR-12
       assurance_tests:
       - AT-12
+      portable_assurance:
+        harm_patterns:
+        - HRM-AUT-05
+        - HRM-SEC-02
+        - HRM-AUT-04
+        - HRM-INF-01
+        - HRM-ECO-02
+        risk_patterns:
+        - RKP-AUTH-02
+        - RKP-DEL-03
+        - RKP-AUTH-01
+        - RKP-AUTH-03
+        control_patterns:
+        - CTP-AUTH-02
+        - CTP-DEL-02
+        - CTP-AUTH-01
+        - CTP-AUTH-03
+        guardrail_patterns:
+        - GRP-AUTH-02
+        - GRP-AUTH-01
+        - GRP-DEL-01
+        assurance_patterns:
+        - ATP-AUTH-02
+        - ATP-AUTH-01
+        - ATP-DEL-01
+        evidence_patterns:
+        - EVP-AUTH-01
+        - EVP-DEL-02
+        - EVP-AUTH-02
     external_alignment:
     - ref: NIST-SP-800-63B-4
       relationship: direct
-      rationale: Authenticator-management guidance covers lifecycle events such as revocation and replacement;
-        approval evidence should not remain effective after the authenticating device/credential is 
-        invalidated.
+      rationale: Authenticator-management guidance covers lifecycle events such as revocation and replacement; approval
+        evidence should not remain effective after the authenticating device/credential is invalidated.
       clause: Authenticator lifecycle management
     - ref: NIST-SP-800-207
       relationship: supports
-      rationale: Continuous evaluation supports re-checking device/subject state before privileged execution 
-        rather than relying only on an earlier approval.
+      rationale: Continuous evaluation supports re-checking device/subject state before privileged execution rather
+        than relying only on an earlier approval.
   - id: SEC-TT-011
     title: Consent anti-fatigue controls do not bound distinct-payload prompt floods
     status: open
@@ -763,19 +1013,19 @@ review:
     - human factors
     evidence:
     - source: docs/design-notes/delegated-trust-task-execution.md#13-consent-fatigue
-      observation: Replay prompts are deduplicated, but a one-byte payload change creates a fresh push; 
-        per-origin budgets on denial are noted as not yet built.
-    attack: An attacker varies otherwise equivalent payloads to generate repeated legitimate-looking prompts, 
-      conditioning the user to approve mechanically or degrading availability of the consent channel.
+      observation: Replay prompts are deduplicated, but a one-byte payload change creates a fresh push; per-origin
+        budgets on denial are noted as not yet built.
+    attack: An attacker varies otherwise equivalent payloads to generate repeated legitimate-looking prompts, conditioning
+      the user to approve mechanically or degrading availability of the consent channel.
     existing_mitigations:
     - Replay deduplication, idempotent rejection and cross-device digest matching exist.
-    residual_gap: Distinct-payload flood control is not complete and the remaining risk directly targets human
-      approval quality.
-    recommendation: Implement per-origin/task-family prompt budgets, exponential backoff and abuse telemetry 
-      while preserving an emergency path for legitimate high-priority requests.
+    residual_gap: Distinct-payload flood control is not complete and the remaining risk directly targets human approval
+      quality.
+    recommendation: Implement per-origin/task-family prompt budgets, exponential backoff and abuse telemetry while
+      preserving an emergency path for legitimate high-priority requests.
     verification:
-    - Adversarial test sends many unique payloads from one origin and demonstrates bounded prompt volume 
-      without suppressing explicit recovery flows.
+    - Adversarial test sends many unique payloads from one origin and demonstrates bounded prompt volume without
+      suppressing explicit recovery flows.
     rahp:
       risks:
       - RK-AI04
@@ -789,18 +1039,31 @@ review:
       assurance_tests:
       - AT-14
       - AT-15
+      portable_assurance:
+        harm_patterns:
+        - HRM-GOV-02
+        - HRM-ECO-02
+        risk_patterns:
+        - RKP-RED-01
+        control_patterns:
+        - CTP-RED-01
+        guardrail_patterns:
+        - GRP-RED-01
+        assurance_patterns:
+        - ATP-RED-01
+        evidence_patterns:
+        - EVP-RED-01
     external_alignment:
     - ref: OWASP-AGENTIC-2025
       relationship: supports
-      rationale: Agentic threat modelling recognizes risks from autonomous repetition, manipulation of 
-        agent/human decision loops, and excessive agency.
+      rationale: Agentic threat modelling recognizes risks from autonomous repetition, manipulation of agent/human
+        decision loops, and excessive agency.
     - ref: OWASP-API-2023
       relationship: analogous
-      rationale: API6 addresses abuse of legitimate sensitive business flows through excessive automated use; 
-        prompt flooding is the human-approval analogue.
+      rationale: API6 addresses abuse of legitimate sensitive business flows through excessive automated use; prompt
+        flooding is the human-approval analogue.
       clause: API6:2023 — Unrestricted Access to Sensitive Business Flows
-      url: 
-        https://owasp.org/API-Security/editions/2023/en/0xa6-unrestricted-access-to-sensitive-business-flows/
+      url: https://owasp.org/API-Security/editions/2023/en/0xa6-unrestricted-access-to-sensitive-business-flows/
   - id: SEC-TT-012
     title: Bearer ceremony receipts create durable correlation and disclosure risk
     status: open
@@ -829,19 +1092,18 @@ review:
     - source: specs/trust-ceremony-receipt/0.1/spec.md#security--privacy
       observation: 'The salt is visible to receipt holders, who can confirm guessed low-entropy step payloads; sensitive
         ceremonies are expected to use enactmentPrivacy: blinded.'
-    attack: A receipt holder correlates the same enactment across contexts or confirms likely low-entropy 
-      steps. Because audience binding is deliberately absent, later presentations create a reusable 
-      correlation handle.
+    attack: A receipt holder correlates the same enactment across contexts or confirms likely low-entropy steps.
+      Because audience binding is deliberately absent, later presentations create a reusable correlation handle.
     existing_mitigations:
     - Blinded enactment privacy is available by ceremony design.
     - Receipt claim is deliberately limited to completeness and ordering.
-    residual_gap: There is no general selective-disclosure presentation profile for receipts or minimum 
-      privacy guidance by ceremony sensitivity.
-    recommendation: Define a receipt privacy profile covering blinded enactments, selective disclosure/derived
-      proofs, retention and disclosure minimization.
+    residual_gap: There is no general selective-disclosure presentation profile for receipts or minimum privacy
+      guidance by ceremony sensitivity.
+    recommendation: Define a receipt privacy profile covering blinded enactments, selective disclosure/derived proofs,
+      retention and disclosure minimization.
     verification:
-    - Privacy test demonstrates two unrelated verifiers cannot correlate a blinded receipt presentation unless
-      the holder intentionally reveals the link.
+    - Privacy test demonstrates two unrelated verifiers cannot correlate a blinded receipt presentation unless the
+      holder intentionally reveals the link.
     rahp:
       risks:
       - RK-ID05
@@ -856,21 +1118,49 @@ review:
       assurance_tests:
       - AT-06
       - AT-09
+      portable_assurance:
+        harm_patterns:
+        - HRM-SEC-02
+        - HRM-INF-01
+        - HRM-PRV-01
+        - HRM-PRV-05
+        - HRM-AUT-04
+        - HRM-PRV-02
+        risk_patterns:
+        - RKP-CRD-01
+        - RKP-CRD-04
+        - RKP-AGT-02
+        - RKP-PRV-02
+        control_patterns:
+        - CTP-AUTH-01
+        - CTP-AGT-02
+        - CTP-PRV-02
+        guardrail_patterns:
+        - GRP-AUTH-01
+        - GRP-AGT-01
+        - GRP-PRV-01
+        assurance_patterns:
+        - ATP-AUTH-01
+        - ATP-AGT-01
+        - ATP-PRV-01
+        evidence_patterns:
+        - EVP-AUTH-01
+        - EVP-AUTH-02
+        - EVP-PRV-01
     external_alignment:
     - ref: W3C-VC-DM-2.0
       relationship: supports
-      rationale: The VC privacy model emphasizes minimizing correlation across presentations and ecosystem 
-        interactions; durable bearer evidence can become a correlation surface.
+      rationale: The VC privacy model emphasizes minimizing correlation across presentations and ecosystem interactions;
+        durable bearer evidence can become a correlation surface.
       clause: Privacy Considerations
     - ref: W3C-VC-DI-1.0
       relationship: supports
-      rationale: Unlinkability and fingerprinting considerations directly reinforce minimizing stable 
-        correlation handles in portable evidence.
+      rationale: Unlinkability and fingerprinting considerations directly reinforce minimizing stable correlation
+        handles in portable evidence.
       clause: 6.1 Unlinkability; 6.4 Fingerprinting Network Requests
     - ref: NIST-CSF-2.0
       relationship: contextual
-      rationale: Protect outcomes provide broader confidentiality/privacy-risk framing for durable evidence 
-        artifacts.
+      rationale: Protect outcomes provide broader confidentiality/privacy-risk framing for durable evidence artifacts.
   - id: SEC-TT-013
     title: Parser and validation resource limits are advisory for network-facing consumers
     status: open
@@ -893,23 +1183,20 @@ review:
     - availability
     evidence:
     - source: SPEC.md#102-parser-hardening
-      observation: Body size and parse-depth limits are SHOULD recommendations with deployment-dependent 
-        defaults.
+      observation: Body size and parse-depth limits are SHOULD recommendations with deployment-dependent defaults.
     - source: SPEC.md#103-schema-validation-dos
-      observation: Per-validation timeout is SHOULD for consumers compiling schemas from arbitrary 
-        authorities.
-    attack: An unauthenticated producer sends deeply nested/large JSON or payloads selected to trigger 
-      pathological schema evaluation, consuming memory/CPU before authorization is reached.
+      observation: Per-validation timeout is SHOULD for consumers compiling schemas from arbitrary authorities.
+    attack: An unauthenticated producer sends deeply nested/large JSON or payloads selected to trigger pathological
+      schema evaluation, consuming memory/CPU before authorization is reached.
     existing_mitigations:
     - The specification explicitly identifies both parser and schema-validation DoS.
     - Dynamic schemas must be authenticated before trust.
-    residual_gap: Critical resource bounds remain advisory and therefore cannot be relied on across conforming
-      network-facing deployments.
-    recommendation: Require every transport binding or deployment profile to state enforceable maximum 
-      document size, nesting depth, schema compilation policy and validation budget.
+    residual_gap: Critical resource bounds remain advisory and therefore cannot be relied on across conforming network-facing
+      deployments.
+    recommendation: Require every transport binding or deployment profile to state enforceable maximum document
+      size, nesting depth, schema compilation policy and validation budget.
     verification:
-    - Fuzz/DoS tests demonstrate bounded CPU/memory for oversized, deeply nested and regex-pathological 
-      inputs.
+    - Fuzz/DoS tests demonstrate bounded CPU/memory for oversized, deeply nested and regex-pathological inputs.
     rahp:
       risks:
       - RK-EX02
@@ -923,15 +1210,36 @@ review:
       assurance_tests:
       - AT-16
       - AT-17
+      portable_assurance:
+        harm_patterns:
+        - HRM-AUT-04
+        - HRM-SEC-02
+        - HRM-INF-01
+        - HRM-ECO-02
+        risk_patterns:
+        - RKP-AUTH-01
+        - RKP-AUTH-03
+        control_patterns:
+        - CTP-AUTH-01
+        - CTP-AUTH-03
+        guardrail_patterns:
+        - GRP-AUTH-01
+        - GRP-DEL-01
+        assurance_patterns:
+        - ATP-AUTH-01
+        - ATP-DEL-01
+        evidence_patterns:
+        - EVP-AUTH-01
+        - EVP-AUTH-02
     external_alignment:
     - ref: OWASP-API-2023
       relationship: direct
-      rationale: API4 explicitly covers CPU, memory, bandwidth, and other resource exhaustion from API 
-        requests; unconstrained parsing/schema validation is a direct instance of this class.
+      rationale: API4 explicitly covers CPU, memory, bandwidth, and other resource exhaustion from API requests;
+        unconstrained parsing/schema validation is a direct instance of this class.
       clause: API4:2023 — Unrestricted Resource Consumption
       url: https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/
     - ref: NIST-SP-800-53-R5
       relationship: supports
-      rationale: Denial-of-service protection and input-validation controls support explicit bounds for parser
-        and validator resource use.
+      rationale: Denial-of-service protection and input-validation controls support explicit bounds for parser and
+        validator resource use.
       clause: SC-5 Denial-of-Service Protection; SI-10 Information Input Validation

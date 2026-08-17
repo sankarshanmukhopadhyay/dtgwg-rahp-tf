@@ -1,0 +1,207 @@
+catalogue_version: 1.1.0
+record_type: guardrail_pattern
+records:
+- id: GRP-AUTH-01
+  name: No authority by inference
+  protected_interest: principal agency
+  prohibited_state: A consequential action is authorized solely from authentication, possession, credential validity,
+    discovery metadata or registry presence.
+  risk_patterns:
+  - RKP-AUTH-01
+  - RKP-CRD-01
+  - RKP-DISC-01
+  control_patterns:
+  - CTP-AUTH-01
+  - CTP-DISC-01
+  trigger_condition: before entering or continuing the prohibited state
+  enforcement_point: relevant decision or execution boundary
+  failure_mode: block or suspend the action
+  fail_behavior: closed
+  override_permitted: false
+  override_authority: null
+  evidence_required: true
+- id: GRP-AUTH-02
+  name: Current authority required
+  protected_interest: principal agency
+  prohibited_state: A consequential action proceeds when required authority, revocation or status state cannot be
+    established at the action boundary.
+  risk_patterns:
+  - RKP-AUTH-02
+  - RKP-DEL-03
+  control_patterns:
+  - CTP-AUTH-02
+  - CTP-DEL-02
+  trigger_condition: before entering or continuing the prohibited state
+  enforcement_point: relevant decision or execution boundary
+  failure_mode: block or suspend the action
+  fail_behavior: closed
+  override_permitted: false
+  override_authority: null
+  evidence_required: true
+- id: GRP-DEL-01
+  name: Delegation cannot silently expand
+  protected_interest: principal agency
+  prohibited_state: A delegate or downstream actor receives materially broader scope than was granted by the accountable
+    principal.
+  risk_patterns:
+  - RKP-DEL-01
+  - RKP-AUTH-03
+  control_patterns:
+  - CTP-AUTH-03
+  - CTP-DEL-01
+  trigger_condition: before entering or continuing the prohibited state
+  enforcement_point: relevant decision or execution boundary
+  failure_mode: block or suspend the action
+  fail_behavior: closed
+  override_permitted: false
+  override_authority: null
+  evidence_required: true
+- id: GRP-GOV-01
+  name: No unilateral irreversible governance action
+  protected_interest: due process
+  prohibited_state: One actor can make an irreversible high-impact governance decision without defined independent
+    check or later remedy.
+  risk_patterns:
+  - RKP-GOV-01
+  - RKP-GOV-02
+  control_patterns:
+  - CTP-GOV-01
+  trigger_condition: before entering or continuing the prohibited state
+  enforcement_point: relevant decision or execution boundary
+  failure_mode: block or suspend the action
+  fail_behavior: closed
+  override_permitted: false
+  override_authority: null
+  evidence_required: true
+- id: GRP-ID-01
+  name: No role substitution
+  protected_interest: identity integrity
+  prohibited_state: A verifier substitutes one identity/role layer for another without an explicit binding rule.
+  risk_patterns:
+  - RKP-ID-01
+  control_patterns:
+  - CTP-ID-01
+  trigger_condition: before entering or continuing the prohibited state
+  enforcement_point: relevant decision or execution boundary
+  failure_mode: block or suspend the action
+  fail_behavior: closed
+  override_permitted: false
+  override_authority: null
+  evidence_required: true
+- id: GRP-PRV-01
+  name: No unnecessary disclosure
+  protected_interest: privacy
+  prohibited_state: A required flow discloses information not necessary for the stated decision or function.
+  risk_patterns:
+  - RKP-PRV-02
+  - RKP-PRV-03
+  control_patterns:
+  - CTP-PRV-02
+  - CTP-PRV-03
+  trigger_condition: before entering or continuing the prohibited state
+  enforcement_point: relevant decision or execution boundary
+  failure_mode: block or suspend the action
+  fail_behavior: closed
+  override_permitted: false
+  override_authority: null
+  evidence_required: true
+- id: GRP-EXC-01
+  name: No essential-service single path
+  protected_interest: equitable access
+  prohibited_state: A high-impact or essential participation path has no viable alternative for foreseeable legitimate
+    users excluded by the primary mechanism.
+  risk_patterns:
+  - RKP-EXC-01
+  control_patterns:
+  - CTP-EXC-01
+  trigger_condition: before entering or continuing the prohibited state
+  enforcement_point: relevant decision or execution boundary
+  failure_mode: block or suspend the action
+  fail_behavior: closed
+  override_permitted: false
+  override_authority: null
+  evidence_required: true
+- id: GRP-AGT-01
+  name: No agent action beyond current mandate
+  protected_interest: principal agency
+  prohibited_state: An autonomous agent performs a consequential action outside the current bounded mandate.
+  risk_patterns:
+  - RKP-AGT-01
+  - RKP-AGT-02
+  control_patterns:
+  - CTP-AGT-01
+  - CTP-AGT-02
+  trigger_condition: before entering or continuing the prohibited state
+  enforcement_point: relevant decision or execution boundary
+  failure_mode: block or suspend the action
+  fail_behavior: closed
+  override_permitted: false
+  override_authority: null
+  evidence_required: true
+- id: GRP-OPS-01
+  name: No unsafe replay
+  protected_interest: transaction integrity
+  prohibited_state: A replay or retry can repeat an externally consequential side effect without a new authorized
+    decision.
+  risk_patterns:
+  - RKP-OPS-02
+  control_patterns:
+  - CTP-OPS-02
+  trigger_condition: before entering or continuing the prohibited state
+  enforcement_point: relevant decision or execution boundary
+  failure_mode: block or suspend the action
+  fail_behavior: closed
+  override_permitted: false
+  override_authority: null
+  evidence_required: true
+- id: GRP-RED-01
+  name: No consequential decision without contestability evidence
+  protected_interest: due process
+  prohibited_state: A high-impact adverse decision is made without sufficient retained evidence and an accountable
+    appeal/remedy path.
+  risk_patterns:
+  - RKP-RED-01
+  - RKP-GOV-04
+  control_patterns:
+  - CTP-RED-01
+  - CTP-GOV-03
+  trigger_condition: before entering or continuing the prohibited state
+  enforcement_point: relevant decision or execution boundary
+  failure_mode: block or suspend the action
+  fail_behavior: closed
+  override_permitted: false
+  override_authority: null
+  evidence_required: true
+- id: GRP-COMP-01
+  name: No implicit cross-spec semantic substitution
+  protected_interest: composition integrity
+  prohibited_state: A fact established by one specification is treated as establishing a different authority, completion,
+    identity or status fact in another without an explicit contract.
+  risk_patterns:
+  - RKP-COMP-01
+  - RKP-COMP-04
+  control_patterns:
+  - CTP-COMP-01
+  trigger_condition: before entering or continuing the prohibited state
+  enforcement_point: relevant decision or execution boundary
+  failure_mode: block or suspend the action
+  fail_behavior: closed
+  override_permitted: false
+  override_authority: null
+  evidence_required: true
+- id: GRP-PE-01
+  name: Critical dependency must have governed exit
+  protected_interest: institutional autonomy
+  prohibited_state: A critical dependency can materially change access or surveillance conditions with no documented
+    alternative, exit or governance response.
+  risk_patterns:
+  - RKP-PE-01
+  control_patterns:
+  - CTP-PE-01
+  trigger_condition: before entering or continuing the prohibited state
+  enforcement_point: relevant decision or execution boundary
+  failure_mode: block or suspend the action
+  fail_behavior: closed
+  override_permitted: false
+  override_authority: null
+  evidence_required: true

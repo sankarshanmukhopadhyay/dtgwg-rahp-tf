@@ -2,6 +2,7 @@
 """Validate canonical RAHP security-hardening review records."""
 from __future__ import annotations
 import pathlib,re,subprocess,sys
+from portable_catalogue import validate_block
 try:
     import yaml
 except ImportError:
@@ -82,6 +83,7 @@ def main():
                 if not a.get('rationale'): errors.append(f'{p}: external_alignment[{i}] rationale required')
                 if a.get('url') and not str(a.get('url')).startswith('https://'): errors.append(f'{p}: external_alignment[{i}] url must use https')
             rahp=f.get('rahp') or {}
+            validate_block(rahp.get('portable_assurance'), p, errors, required=True)
             for kind,valid in known.items():
                 refs=rahp.get(kind) or []
                 if not isinstance(refs,list): errors.append(f'{p}: rahp.{kind} must be list'); continue

@@ -24,12 +24,12 @@ This worked review is part of the RAHP v0.6.0 CAWG/C2PA external-deployment proo
 | Target commit | `c862069e5ea2668f12a9346ef07e4b793045076f` |
 | Target source paths | — |
 | RAHP repository | `sankarshanmukhopadhyay/rahp-toolkit` |
-| RAHP version | `v0.8.0` |
+| RAHP version | `v1.1.0` |
 | Engine contract | `rahp-engine-contract-v1` |
 | RAHP corpus date | 2026-08-16 |
-| Engine/method revalidated on | 2026-08-16 |
+| Engine/method revalidated on | 2026-08-17 |
 | Original RAHP version | `v0.6.0` |
-| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
+| Revalidation scope | v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target revision unchanged |
 
 ### Method
 
@@ -87,6 +87,17 @@ This is a bounded RAHP v0.6.0 readiness pressure test, not an upstream conforman
 | Guardrails | — |
 | Assurance tests | — |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-PRV-01`, `HRM-PRV-05` |
+| Risks | `RKP-DEL-01`, `RKP-AGT-01`, `RKP-CRD-04`, `RKP-AGT-02` |
+| Controls | `CTP-DEL-01`, `CTP-AGT-01`, `CTP-AGT-02` |
+| Guardrails | `GRP-DEL-01`, `GRP-AGT-01` |
+| Assurance | `ATP-DEL-01`, `ATP-AGT-01` |
+| Evidence | `EVP-DEL-01`, `EVP-AUTH-02` |
+
 **Evidence**
 
 | Source | Observation |
@@ -120,6 +131,17 @@ Mandates should pair the profile with an explicit trust policy defining accepted
 | Controls | — |
 | Guardrails | — |
 | Assurance tests | — |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-INF-01`, `HRM-ECO-02` |
+| Risks | `RKP-AUTH-01`, `RKP-AUTH-03`, `RKP-CRD-01` |
+| Controls | `CTP-AUTH-01`, `CTP-AUTH-03` |
+| Guardrails | `GRP-AUTH-01`, `GRP-DEL-01` |
+| Assurance | `ATP-AUTH-01`, `ATP-DEL-01` |
+| Evidence | `EVP-AUTH-01`, `EVP-AUTH-02` |
 
 **Evidence**
 

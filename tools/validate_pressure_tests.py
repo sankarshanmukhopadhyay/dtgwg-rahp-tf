@@ -12,6 +12,7 @@ import pathlib
 import re
 import subprocess
 import sys
+from portable_catalogue import validate_block
 
 try:
     import yaml
@@ -156,6 +157,8 @@ def main() -> int:
             for ref in finding.get("scenarios") or []:
                 if ref not in corpus_scenarios:
                     errors.append(f"{prefix}: scenarios reference {ref!r} does not resolve in corpora/")
+
+            validate_block(finding.get("portable_assurance"), prefix, errors, required=True)
 
             evidence = finding.get("evidence") or []
             if not isinstance(evidence, list):

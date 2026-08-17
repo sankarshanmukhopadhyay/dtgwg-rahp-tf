@@ -31,6 +31,9 @@ jobs:
       - name: Validate RAHP artefacts
         run: python3 tools/validate.py
 
+      - name: Validate portable assurance catalogue
+        run: python3 tools/validate_catalogue.py
+
       - name: Validate portable method invariants
         run: python3 tools/validate_v04_method.py
 

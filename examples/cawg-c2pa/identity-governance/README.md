@@ -24,12 +24,12 @@ This is a RAHP Toolkit v0.7.0 external assurance review. It is not an upstream c
 | Target commit | `5f1908d4f5bf6c89d02d671ae5051f893df92dc9` |
 | Target source paths | — |
 | RAHP repository | `sankarshanmukhopadhyay/rahp-toolkit` |
-| RAHP version | `v0.8.0` |
+| RAHP version | `v1.1.0` |
 | Engine contract | `rahp-engine-contract-v1` |
 | RAHP corpus date | 2026-08-16 |
-| Engine/method revalidated on | 2026-08-16 |
+| Engine/method revalidated on | 2026-08-17 |
 | Original RAHP version | `v0.7.0` |
-| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
+| Revalidation scope | v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target revision unchanged |
 
 ### Method
 
@@ -90,6 +90,17 @@ High-value direction, but governance, historical-state and entity-binding semant
 | Guardrails | — |
 | Assurance tests | — |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-INF-01`, `HRM-ECO-02`, `HRM-GOV-01`, `HRM-SEC-03` |
+| Risks | `RKP-AUTH-01`, `RKP-AUTH-03`, `RKP-CRD-01`, `RKP-GOV-03` |
+| Controls | `CTP-AUTH-01`, `CTP-AUTH-03`, `CTP-GOV-02` |
+| Guardrails | `GRP-AUTH-01`, `GRP-DEL-01` |
+| Assurance | `ATP-AUTH-01`, `ATP-DEL-01`, `ATP-GOV-02` |
+| Evidence | `EVP-AUTH-01`, `EVP-AUTH-02`, `EVP-GOV-02` |
+
 **Evidence**
 
 | Source | Observation |
@@ -124,6 +135,17 @@ Normatively bind entity identifiers to credential subjects, define rotation/migr
 | Guardrails | — |
 | Assurance tests | — |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-INF-01`, `HRM-ECO-02` |
+| Risks | `RKP-AUTH-01`, `RKP-AUTH-03`, `RKP-CRD-01` |
+| Controls | `CTP-AUTH-01`, `CTP-AUTH-03` |
+| Guardrails | `GRP-AUTH-01`, `GRP-DEL-01` |
+| Assurance | `ATP-AUTH-01`, `ATP-DEL-01` |
+| Evidence | `EVP-AUTH-01`, `EVP-AUTH-02` |
+
 **Evidence**
 
 | Source | Observation |
@@ -157,6 +179,17 @@ Define as-of query semantics or stapled signed authorization evidence with reten
 | Controls | — |
 | Guardrails | — |
 | Assurance tests | — |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-INF-01`, `HRM-ECO-02` |
+| Risks | `RKP-DEL-01`, `RKP-AGT-01`, `RKP-AUTH-01`, `RKP-AUTH-03` |
+| Controls | `CTP-DEL-01`, `CTP-AGT-01`, `CTP-AUTH-01`, `CTP-AUTH-03` |
+| Guardrails | `GRP-DEL-01`, `GRP-AGT-01`, `GRP-AUTH-01` |
+| Assurance | `ATP-DEL-01`, `ATP-AGT-01`, `ATP-AUTH-01` |
+| Evidence | `EVP-DEL-01`, `EVP-AUTH-02`, `EVP-AUTH-01` |
 
 **Evidence**
 

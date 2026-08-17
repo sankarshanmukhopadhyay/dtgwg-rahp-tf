@@ -11,13 +11,14 @@ review:
     source_paths: []
   reviewed_against:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    rahp_version: v0.8.0
+    rahp_version: v1.1.0
     corpus_date: '2026-08-16'
     original_rahp_version: v0.7.0
     original_corpus_date: '2026-08-14'
     engine_contract: rahp-engine-contract-v1
-    revalidated_on: '2026-08-16'
-    revalidation_scope: method-and-engine-only; target revision and substantive findings unchanged
+    revalidated_on: '2026-08-17'
+    revalidation_scope: v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target
+      revision unchanged
   scope:
     included:
     - Normative and draft semantics relevant to the named composition or experiment.
@@ -27,8 +28,8 @@ review:
     - Claims that upstream CAWG, DIF, C2PA, GLEIF or W3C endorsed this RAHP assessment.
   method:
     workflow: docs/pressure-testing-a-spec.md
-    rule: Separate cryptographic validity, identity, authority, consent, lifecycle and relying-party trust; 
-      test both isolated and composed failure states.
+    rule: Separate cryptographic validity, identity, authority, consent, lifecycle and relying-party trust; test
+      both isolated and composed failure states.
   summary:
     finding_count: 2
     open_count: 2
@@ -47,8 +48,8 @@ review:
     - CRK-16
     evidence:
     - source: https://github.com/decentralized-identity/cawg-identity-assertion/issues/274
-      observation: TRQP introduces current authorization over an identity whose credential lifecycle is 
-        independently validated.
+      observation: TRQP introduces current authorization over an identity whose credential lifecycle is independently
+        validated.
     harm: Policy drift can turn the same tuple into a different authorization outcome over time.
     recommendation: Bind authorization decisions to policy/version/time evidence and test historical replay.
     retest_when:
@@ -63,6 +64,38 @@ review:
     - P1
     - P3
     - P6
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-ECO-02
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-AUTH-01
+      - RKP-AUTH-03
+      - RKP-OPS-02
+      - RKP-COMP-04
+      control_patterns:
+      - CTP-AUTH-01
+      - CTP-AUTH-03
+      - CTP-OPS-02
+      - CTP-COMP-01
+      guardrail_patterns:
+      - GRP-AUTH-01
+      - GRP-DEL-01
+      - GRP-OPS-01
+      - GRP-COMP-01
+      assurance_patterns:
+      - ATP-AUTH-01
+      - ATP-DEL-01
+      - ATP-OPS-02
+      - ATP-COMP-01
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-AUTH-02
+      - EVP-OPS-02
+      - EVP-COMP-01
   - id: F-002
     title: Registry outage must not silently downgrade to identity-only trust
     status: open
@@ -73,10 +106,9 @@ review:
     evidence:
     - source: https://github.com/decentralized-identity/cawg-identity-assertion/issues/275
       observation: TRQP adds a network-resolved authority decision after identity verification.
-    harm: A validator may accept identity while dropping the higher-layer authorization check during degraded 
-      operation.
-    recommendation: Define fail-closed/fail-indeterminate profiles and expose authorization-unavailable 
-      separately from identity-valid.
+    harm: A validator may accept identity while dropping the higher-layer authorization check during degraded operation.
+    recommendation: Define fail-closed/fail-indeterminate profiles and expose authorization-unavailable separately
+      from identity-valid.
     retest_when:
     - Normative semantics and interoperable test vectors close this failure path.
     scenarios:
@@ -87,3 +119,35 @@ review:
     personas:
     - P3
     - P6
+    portable_assurance:
+      harm_patterns:
+      - HRM-AUT-04
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-ECO-02
+      - HRM-SEC-03
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-AUTH-01
+      - RKP-AUTH-03
+      - RKP-OPS-01
+      - RKP-COMP-04
+      control_patterns:
+      - CTP-AUTH-01
+      - CTP-AUTH-03
+      - CTP-OPS-01
+      - CTP-COMP-01
+      guardrail_patterns:
+      - GRP-AUTH-01
+      - GRP-DEL-01
+      - GRP-COMP-01
+      assurance_patterns:
+      - ATP-AUTH-01
+      - ATP-DEL-01
+      - ATP-OPS-01
+      - ATP-COMP-01
+      evidence_patterns:
+      - EVP-AUTH-01
+      - EVP-AUTH-02
+      - EVP-OPS-01
+      - EVP-COMP-01

@@ -26,12 +26,12 @@ The target revision, review scope, RAHP baseline, summary and complete finding r
 | Target commit | `d19f7c9cac364fab8e50cf434513ef53fef80e37` |
 | Target source paths | `spec/intro.md`, `spec/body.md` |
 | RAHP repository | `sankarshanmukhopadhyay/rahp-toolkit` |
-| RAHP version | `v0.8.0` |
+| RAHP version | `v1.1.0` |
 | Engine contract | `rahp-engine-contract-v1` |
 | RAHP corpus date | 2026-08-16 |
-| Engine/method revalidated on | 2026-08-16 |
+| Engine/method revalidated on | 2026-08-17 |
 | Original RAHP version | `v0.3-dev` |
-| Revalidation scope | method-and-engine-only; target revision and substantive findings unchanged |
+| Revalidation scope | v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target revision unchanged |
 
 ### Method
 
@@ -102,6 +102,17 @@ Working Draft 01 is materially stronger than the earlier credential draft in pri
 | Guardrails | [GR-01 — Genesis Policy Documentation](../../build/site/catalogue.html#GR-01) |
 | Assurance tests | [AT-01 — Genesis policy artefact exists, is version-controlled, and was committed before any Phase …](../../build/site/catalogue.html#AT-01) |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-SEC-02`, `HRM-INF-01` |
+| Risks | `RKP-CRD-01` |
+| Controls | `CTP-AUTH-01` |
+| Guardrails | `GRP-AUTH-01` |
+| Assurance | `ATP-AUTH-01` |
+| Evidence | `EVP-AUTH-01` |
+
 **Evidence**
 
 | Source | Observation |
@@ -142,6 +153,17 @@ Define both VMC directions normatively, including issuer/subject rules, binding 
 | Guardrails | [GR-12 — Agent Delegation Scope Constraint](../../build/site/catalogue.html#GR-12), [GR-13 — Agent Audit Logging](../../build/site/catalogue.html#GR-13) |
 | Assurance tests | [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../build/site/catalogue.html#AT-12), [AT-13 — Agent credential operations visible in operator audit log with all required fields](../../build/site/catalogue.html#AT-13) |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-INF-01`, `HRM-ECO-02` |
+| Risks | `RKP-DEL-01`, `RKP-AGT-01`, `RKP-AUTH-01`, `RKP-AUTH-03` |
+| Controls | `CTP-DEL-01`, `CTP-AGT-01`, `CTP-AUTH-01`, `CTP-AUTH-03` |
+| Guardrails | `GRP-DEL-01`, `GRP-AGT-01`, `GRP-AUTH-01` |
+| Assurance | `ATP-DEL-01`, `ATP-AGT-01`, `ATP-AUTH-01` |
+| Evidence | `EVP-DEL-01`, `EVP-AUTH-02`, `EVP-AUTH-01` |
+
 **Evidence**
 
 | Source | Observation |
@@ -176,6 +198,17 @@ Add an explicit semantic non-inference rule: a VMC may establish membership of a
 | Controls | [CT-12 — IDVP Security Approval Criteria](../../build/site/catalogue.html#CT-12), [CT-13 — IDVP Deregistration Handling Protocol](../../build/site/catalogue.html#CT-13), [CT-23 — Mandatory Pre-Revocation Notice](../../build/site/catalogue.html#CT-23), [CT-24 — Privacy-Preserving Revocation Disclosure](../../build/site/catalogue.html#CT-24), [CT-25 — Credential Renewal Workflow](../../build/site/catalogue.html#CT-25), [CT-26 — VTC-Scoped Revocation](../../build/site/catalogue.html#CT-26), [CT-32 — Agent Liveness Check on Operator VMC](../../build/site/catalogue.html#CT-32) |
 | Guardrails | [GR-05 — IDVP Registry Standing](../../build/site/catalogue.html#GR-05), [GR-08 — Revocation Due Process](../../build/site/catalogue.html#GR-08), [GR-09 — Privacy-Preserving Revocation Disclosure](../../build/site/catalogue.html#GR-09), [GR-12 — Agent Delegation Scope Constraint](../../build/site/catalogue.html#GR-12) |
 | Assurance tests | [AT-05 — IDVP DID not in trust registry with correct role → VTA rejects IDVC presentation](../../build/site/catalogue.html#AT-05), [AT-08 — Revocation notice delivered to member within SLA; appeals path accessible within 24 hours](../../build/site/catalogue.html#AT-08), [AT-09 — Default revocation status disclosure does not expose member real-world identity](../../build/site/catalogue.html#AT-09), [AT-12 — Agent exceeding capability constraints rejected by VTA PEP; operator VMC revocation propag…](../../build/site/catalogue.html#AT-12) |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-05`, `HRM-SEC-02`, `HRM-AUT-04`, `HRM-INF-01`, `HRM-ECO-02` |
+| Risks | `RKP-AUTH-02`, `RKP-DEL-03`, `RKP-AUTH-01`, `RKP-AUTH-03` |
+| Controls | `CTP-AUTH-02`, `CTP-DEL-02`, `CTP-AUTH-01`, `CTP-AUTH-03` |
+| Guardrails | `GRP-AUTH-02`, `GRP-AUTH-01`, `GRP-DEL-01` |
+| Assurance | `ATP-AUTH-02`, `ATP-AUTH-01`, `ATP-DEL-01` |
+| Evidence | `EVP-AUTH-01`, `EVP-DEL-02`, `EVP-AUTH-02` |
 
 **Evidence**
 
@@ -212,6 +245,17 @@ Define a normative lifecycle/status contract or a mandatory profile hook: how st
 | Guardrails | [GR-06 — Privacy-Preserving Proofing Option](../../build/site/catalogue.html#GR-06), [GR-09 — Privacy-Preserving Revocation Disclosure](../../build/site/catalogue.html#GR-09), [GR-18 — R-DID Migration Phase Gate](../../build/site/catalogue.html#GR-18) |
 | Assurance tests | [AT-06 — At least one ZKP / selective disclosure path is available and functional in Phase 4 UX](../../build/site/catalogue.html#AT-06), [AT-09 — Default revocation status disclosure does not expose member real-world identity](../../build/site/catalogue.html#AT-09), [AT-18 — VTC trust registry records a migration trigger date for R-DID adoption; all VRCs issued af…](../../build/site/catalogue.html#AT-18) |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-PRV-02`, `HRM-PRV-03`, `HRM-ECO-02`, `HRM-SEC-02`, `HRM-GOV-01`, `HRM-SEC-03` |
+| Risks | `RKP-PRV-02`, `RKP-OPS-02`, `RKP-GOV-03`, `RKP-COMP-02` |
+| Controls | `CTP-PRV-02`, `CTP-OPS-02`, `CTP-GOV-02`, `CTP-COMP-02` |
+| Guardrails | `GRP-PRV-01`, `GRP-OPS-01` |
+| Assurance | `ATP-PRV-01`, `ATP-OPS-02`, `ATP-GOV-02`, `ATP-COMP-02` |
+| Evidence | `EVP-PRV-01`, `EVP-OPS-02`, `EVP-GOV-02`, `EVP-COMP-01` |
+
 **Evidence**
 
 | Source | Observation |
@@ -246,6 +290,17 @@ Define when the bootstrap exception applies, what event ends it, whether new rel
 | Controls | [CT-27 — Audited ZKP Library Requirement](../../build/site/catalogue.html#CT-27), [CT-28 — ZKP Conformance Testing](../../build/site/catalogue.html#CT-28) |
 | Guardrails | [GR-06 — Privacy-Preserving Proofing Option](../../build/site/catalogue.html#GR-06), [GR-07 — Uniqueness Enforcement Mechanism](../../build/site/catalogue.html#GR-07) |
 | Assurance tests | [AT-06 — At least one ZKP / selective disclosure path is available and functional in Phase 4 UX](../../build/site/catalogue.html#AT-06), [AT-07 — Uniqueness enforcement mechanism is documented; if none exists, risk acceptance is signed …](../../build/site/catalogue.html#AT-07) |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-SEC-02`, `HRM-INF-01`, `HRM-PRV-02`, `HRM-PRV-03`, `HRM-ECO-02`, `HRM-SEC-03` |
+| Risks | `RKP-CRD-01`, `RKP-PRV-02`, `RKP-OPS-02`, `RKP-OPS-01` |
+| Controls | `CTP-AUTH-01`, `CTP-PRV-02`, `CTP-OPS-02`, `CTP-OPS-01` |
+| Guardrails | `GRP-AUTH-01`, `GRP-PRV-01`, `GRP-OPS-01` |
+| Assurance | `ATP-AUTH-01`, `ATP-PRV-01`, `ATP-OPS-02`, `ATP-OPS-01` |
+| Evidence | `EVP-AUTH-01`, `EVP-PRV-01`, `EVP-OPS-02`, `EVP-OPS-01` |
 
 **Evidence**
 
@@ -282,6 +337,17 @@ Keep the credential specification proof-format agnostic, but normatively referen
 | Guardrails | [GR-01 — Genesis Policy Documentation](../../build/site/catalogue.html#GR-01), [GR-02 — Time-Bounded Initiator Authority](../../build/site/catalogue.html#GR-02) |
 | Assurance tests | [AT-01 — Genesis policy artefact exists, is version-controlled, and was committed before any Phase …](../../build/site/catalogue.html#AT-01), [AT-02 — VTA PEP rejects Phase 2 invitation attempts after documented initiator authority expiry](../../build/site/catalogue.html#AT-02) |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-INF-01`, `HRM-ECO-02`, `HRM-GOV-01`, `HRM-GOV-03` |
+| Risks | `RKP-AUTH-01`, `RKP-AUTH-03`, `RKP-CRD-01`, `RKP-GOV-01` |
+| Controls | `CTP-AUTH-01`, `CTP-AUTH-03`, `CTP-GOV-01` |
+| Guardrails | `GRP-AUTH-01`, `GRP-DEL-01`, `GRP-GOV-01` |
+| Assurance | `ATP-AUTH-01`, `ATP-DEL-01`, `ATP-GOV-01` |
+| Evidence | `EVP-AUTH-01`, `EVP-AUTH-02`, `EVP-GOV-01` |
+
 **Evidence**
 
 | Source | Observation |
@@ -317,6 +383,17 @@ Define conformance claim levels or terminology that separates schema/protocol co
 | Guardrails | [GR-19 — Supported Decision-Making and Legal Delegation Pathway](../../build/site/catalogue.html#GR-19) |
 | Assurance tests | [AT-19 — For any VTC that has admitted or intends to admit participants under supported or substitu…](../../build/site/catalogue.html#AT-19) |
 
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-SEC-02`, `HRM-INF-01` |
+| Risks | `RKP-CRD-01` |
+| Controls | `CTP-AUTH-01` |
+| Guardrails | `GRP-AUTH-01` |
+| Assurance | `ATP-AUTH-01` |
+| Evidence | `EVP-AUTH-01` |
+
 **Evidence**
 
 | Source | Observation |
@@ -351,6 +428,17 @@ Assign representation and supported-consent semantics to a named companion speci
 | Controls | [CT-63 — Organisational Credential Type Definition](../../build/site/catalogue.html#CT-63), [CT-64 — Organisational Governance Conformance Mapping](../../build/site/catalogue.html#CT-64) |
 | Guardrails | [GR-21 — Organisational Identity Governance Mapping](../../build/site/catalogue.html#GR-21) |
 | Assurance tests | [AT-21 — For any regulated organisation admitted as a VTC member: (1) legal identifier and regulato…](../../build/site/catalogue.html#AT-21) |
+
+**Portable v1.1 assurance patterns**
+
+| Layer | Patterns |
+|---|---|
+| Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-INF-01`, `HRM-ECO-02` |
+| Risks | `RKP-AUTH-01`, `RKP-AUTH-03`, `RKP-CRD-01` |
+| Controls | `CTP-AUTH-01`, `CTP-AUTH-03` |
+| Guardrails | `GRP-AUTH-01`, `GRP-DEL-01` |
+| Assurance | `ATP-AUTH-01`, `ATP-DEL-01` |
+| Evidence | `EVP-AUTH-01`, `EVP-AUTH-02` |
 
 **Evidence**
 
