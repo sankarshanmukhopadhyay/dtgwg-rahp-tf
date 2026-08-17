@@ -81,3 +81,8 @@ Pressure-test README projections are also checked for links back to the root cat
 ## v1.1 structured-data routing
 
 The v1.1 Pages contract explicitly separates **canonical source routes** from **human reader routes**. Structured sources such as `corpora/*.yaml` and `method/catalogue/*.yaml` remain byte-oriented machine-readable artefacts. Jekyll generates themed sibling routes by removing the structured-data extension, for example `corpora/trust-tasks.yaml` → `corpora/trust-tasks/` and `method/catalogue/risk-patterns.yaml` → `method/catalogue/risk-patterns/`. Post-build validation requires both surfaces and rejects a build that replaces canonical structured data with HTML.
+
+
+### Projected Markdown route stability
+
+Repository `README.md` files become directory indexes. Other projected Markdown files render as same-directory `.html` siblings rather than nested directory indexes, preserving relative links to adjacent evidence and generated catalogue pages.

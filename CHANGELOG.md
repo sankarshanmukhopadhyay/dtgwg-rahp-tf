@@ -24,6 +24,7 @@ parent: Reference
 - Render structured-data reader views on clean sibling routes such as `/corpora/dtg-zkp/` and `/method/catalogue/risk-patterns/` so GitHub Pages serves them through the Just-the-Docs HTML shell.
 - Add scenario-corpus and portable-assurance catalogue browser indexes, plus a `/method/catalog/` compatibility route.
 - Strengthen post-Jekyll validation to require both canonical structured sources and themed human projections.
+- Preserve source-directory relative-link semantics for projected Markdown: `README.md` renders as a directory index, while other Markdown files render as same-directory `.html` siblings instead of nested `.../index.html` routes.
 
 ### Qualification refresh
 - Qualify all maintained live example repositories against current default-branch HEAD.

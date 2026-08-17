@@ -11,18 +11,27 @@ module RahpPagesProjection
   TOP_LEVEL_MARKDOWN = %w[README.md ADOPTION.md QUICKSTART.md CONTRIBUTING.md ROADMAP.md CHANGELOG.md].freeze
 
   class ProjectionPage < Jekyll::Page
-    def initialize(site, output_route, title, body, source_path = nil)
+    def initialize(site, output_route, title, body, source_path = nil, directory_index: true)
       @site = site
       @base = site.source
-      @dir = output_route.sub(%r{^/}, "").sub(%r{/$}, "")
-      @name = "index.md"
+      normalized = output_route.sub(%r{^/}, "").sub(%r{/$}, "")
+      if directory_index
+        @dir = normalized
+        @name = "index.md"
+        permalink = "/#{@dir}/"
+      else
+        @dir = File.dirname(normalized)
+        @dir = "" if @dir == "."
+        @name = File.basename(normalized).sub(/\.html\z/i, ".md")
+        permalink = "/#{normalized}"
+      end
       process(@name)
       self.data = {
         "layout" => "default",
         "title" => title,
         "has_toc" => true,
         "nav_exclude" => true,
-        "permalink" => "/#{@dir}/"
+        "permalink" => permalink
       }
       self.data["source_path"] = source_path if source_path
       self.content = body
@@ -50,9 +59,9 @@ module RahpPagesProjection
         raw = File.read(path)
         next if raw.start_with?("---\n") # already a normal Jekyll page
         relative = relative_path(site, path)
-        route = human_route(relative)
-        site.pages << ProjectionPage.new(site, route, markdown_title(relative, raw), markdown_body(site, relative, raw), relative)
-        rendered_routes << "/#{route}/"
+        route, directory_index = markdown_route(relative)
+        site.pages << ProjectionPage.new(site, route, markdown_title(relative, raw), markdown_body(site, relative, raw), relative, directory_index: directory_index)
+        rendered_routes << (directory_index ? "/#{route}/" : "/#{route}")
       end
 
       # Structured repository files remain static and machine-readable at their
@@ -91,8 +100,20 @@ module RahpPagesProjection
 
     def human_route(relative)
       ext = File.extname(relative)
-      route = STRUCTURED_EXTENSIONS.include?(ext.downcase) ? relative.delete_suffix(ext) : relative.sub(/\.md\z/i, "")
-      route.sub(%r{/README\z}i, "")
+      STRUCTURED_EXTENSIONS.include?(ext.downcase) ? relative.delete_suffix(ext) : relative.sub(/\.md\z/i, "")
+    end
+
+    # Preserve Markdown-relative link semantics. A source such as
+    # examples/x/SECURITY_REVIEW.md commonly links to sibling findings.yaml.
+    # Rendering it as SECURITY_REVIEW/index.html changes the relative base and
+    # breaks those links. README files are directory indexes; all other
+    # Markdown projections stay in their source directory as *.html.
+    def markdown_route(relative)
+      if File.basename(relative).casecmp("README.md").zero?
+        [File.dirname(relative).sub(%r{^\.$}, ""), true]
+      else
+        [relative.sub(/\.md\z/i, ".html"), false]
+      end
     end
 
     def parse_structured(path, raw)

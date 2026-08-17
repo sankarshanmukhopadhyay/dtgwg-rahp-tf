@@ -98,6 +98,20 @@ class TestJtdBaseUrlRegression(unittest.TestCase):
             self.assertNotEqual(run.returncode, 0)
             self.assertIn("human-readable projection missing Just-the-Docs shell", run.stdout)
 
+    def test_markdown_projection_keeps_sibling_relative_links_in_source_directory(self):
+        with tempfile.TemporaryDirectory() as td:
+            site = pathlib.Path(td)
+            materialize_common_site(site)
+            review_dir = site / "examples" / "security-hardening" / "fixture"
+            review_dir.mkdir(parents=True, exist_ok=True)
+            (review_dir / "findings.yaml").write_text("findings: []\n", encoding="utf-8")
+            (review_dir / "SECURITY_REVIEW.html").write_text(
+                '<!doctype html><html><body><a href="findings.yaml">findings</a></body></html>',
+                encoding="utf-8",
+            )
+            run = subprocess.run([sys.executable, str(VALIDATOR), str(site)], cwd=ROOT, capture_output=True, text=True)
+            self.assertEqual(run.returncode, 0, run.stdout + run.stderr)
+
 
 if __name__ == "__main__":
     unittest.main()
