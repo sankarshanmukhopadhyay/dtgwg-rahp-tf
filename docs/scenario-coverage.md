@@ -13,10 +13,10 @@ This view summarizes how the current domain corpora exercise RAHP's portable sce
 
 | Corpus | Adapter | Scenarios |
 |---|---|---:|
-| DTG Credential Specification scenario corpus | [`credential-spec.yaml`](../corpora/credential-spec.yaml) | 16 |
-| DTG ZKP pressure-test use-case corpus | [`dtg-zkp.yaml`](../corpora/dtg-zkp.yaml) | 30 |
-| Trust Tasks × Credential Spec composed scenario corpus | [`trust-tasks-credspec-composed.yaml`](../corpora/trust-tasks-credspec-composed.yaml) | 12 |
-| Trust Tasks scenario corpus | [`trust-tasks.yaml`](../corpora/trust-tasks.yaml) | 16 |
+| DTG Credential Specification scenario corpus | [credential-spec](../corpora/credential-spec/) | 16 |
+| DTG ZKP pressure-test use-case corpus | [dtg-zkp](../corpora/dtg-zkp/) | 30 |
+| Trust Tasks × Credential Spec composed scenario corpus | [trust-tasks-credspec-composed](../corpora/trust-tasks-credspec-composed/) | 12 |
+| Trust Tasks scenario corpus | [trust-tasks](../corpora/trust-tasks/) | 16 |
 
 ## Portable-pattern coverage
 

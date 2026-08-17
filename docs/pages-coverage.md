@@ -14,14 +14,14 @@ The Pages site is intended to expose the **maximum useful human-readable surface
 | Repository surface | Pages treatment |
 |---|---|
 | Guided Markdown documentation | Rendered with Just the Docs and included in search/navigation where appropriate. |
-| Canonical YAML/JSON/JSON-LD under `corpora/`, `method/`, `data/`, `build/derived/`, `build/jsonld/`, and `examples/` | Rendered at the original file path as a readable structured-data page, with a link back to canonical GitHub source. |
+| Canonical YAML/JSON/JSON-LD under `corpora/`, `method/`, `data/`, `build/derived/`, `build/jsonld/`, and `examples/` | Preserved unchanged at the original machine-readable path; a sibling clean route renders the same record through Just the Docs. |
 | Generated evidence views under `build/site/` | Published as generated HTML drill-down surfaces. |
 | Top-level guides and worked example Markdown without Jekyll front matter | Rendered at their original `.md` paths as JTD pages, with canonical-source links. |
 | Repository archive/legacy material | Published through a clearly labelled Historical Library. Structured records receive readable projections; frozen legacy HTML is served intact; retained DOCX/XLSX files have committed reading companions while the original binaries remain downloadable. |
 | Tooling and Python source | Kept in GitHub rather than duplicated into the documentation site. |
 
 {: .evidence }
-A URL such as [`/corpora/dtg-zkp.yaml`](../corpora/dtg-zkp.yaml) is therefore a **human-readable projection** on GitHub Pages. The corresponding file in the GitHub repository remains the canonical YAML used by validation and automation.
+A URL such as [`/corpora/dtg-zkp.yaml`](../corpora/dtg-zkp.yaml) remains the **canonical machine-readable YAML**. Its sibling [`/corpora/dtg-zkp/`](../corpora/dtg-zkp/) is the human-readable Just-the-Docs projection generated from that YAML. This split avoids serving HTML behind a `.yaml` MIME boundary while keeping automation-compatible source URLs stable.
 
 ## Publishing flow
 
@@ -31,7 +31,7 @@ flowchart TB
     VAL --> GEN[Rebuild generated evidence]
     GEN --> JTD[Jekyll + Just the Docs]
     JTD --> DOCS[Guided documentation]
-    JTD --> DATA[Structured-data projections]
+    JTD --> DATA[Clean-route structured-data projections]
     JTD --> EVID[Generated evidence pages]
     DOCS --> SITE[GitHub Pages artifact]
     DATA --> SITE
@@ -47,7 +47,7 @@ The deployment pipeline fails before publication when canonical validation fails
 
 ## v0.4 operational assurance
 
-The Pages projection also renders the v0.4 structured method and instance additions,
+The Pages projection also publishes clean-route reader views for the v0.4 structured method and instance additions,
 including `data/rule-profiles.yaml`, `data/evidence-artifacts.yaml`,
 `method/non-human-actors.yaml`, and `method/schema/delegation-scope.schema.json`.
 Reader guides for normative triage, operational assurance, agent delegation governance,
@@ -76,3 +76,8 @@ The required Pages contract now includes the A2A worked-example guide, its full 
 
 Pressure-test README projections are also checked for links back to the root catalogue. The renderer computes those links from each example's actual directory depth so nested CAWG/C2PA compositions and shallower A2A examples both resolve correctly.
 
+
+
+## v1.1 structured-data routing
+
+The v1.1 Pages contract explicitly separates **canonical source routes** from **human reader routes**. Structured sources such as `corpora/*.yaml` and `method/catalogue/*.yaml` remain byte-oriented machine-readable artefacts. Jekyll generates themed sibling routes by removing the structured-data extension, for example `corpora/trust-tasks.yaml` → `corpora/trust-tasks/` and `method/catalogue/risk-patterns.yaml` → `method/catalogue/risk-patterns/`. Post-build validation requires both surfaces and rejects a build that replaces canonical structured data with HTML.

@@ -9,6 +9,8 @@ has_toc: true
 
 RAHP v1.1 adds a **method-level assurance knowledge model** that can be reused across deployments without importing DTG, CAWG/C2PA or any other deployment's governance state. The catalogue is canonical in `method/catalogue/`; this page is a human-readable index.
 
+For direct browsing, use the [portable assurance catalogue browser](../method/catalogue/). It provides generated Just-the-Docs views for each YAML catalogue while preserving the YAML files themselves as the canonical machine-readable sources. The compatibility route [`/method/catalog/`](../method/catalog/) points readers to the same catalogue.
+
 The chain is:
 
 ```text

@@ -76,7 +76,15 @@ def source_target_exists(page: Path, href: str) -> bool:
     elif target.suffix.lower() == ".md":
         candidates.extend([target.with_suffix(".html")])
     elif target.suffix == "":
-        candidates.extend([target.with_suffix(".md"), target / "README.md", target / "index.md"])
+        candidates.extend([
+            target.with_suffix(".md"),
+            target / "README.md",
+            target / "index.md",
+            target.with_suffix(".yaml"),
+            target.with_suffix(".yml"),
+            target.with_suffix(".json"),
+            target.with_suffix(".jsonld"),
+        ])
 
     return any(candidate.exists() for candidate in candidates)
 

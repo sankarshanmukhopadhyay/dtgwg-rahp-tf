@@ -8,17 +8,20 @@ parent: Learn RAHP
 ---
 # Scenario corpora
 
+Use the [Scenario corpora browser](../corpora/) for themed reader views of each packaged YAML corpus. Canonical `.yaml` URLs remain raw machine-readable sources; human projections use clean sibling routes such as `/corpora/trust-tasks/`.
+
+
 Scenario corpora connect domain-specific use cases to portable RAHP pressure-test patterns. They are **adapters**, not normative forks: source projects retain authority over their own scenario meaning and identifiers.
 
 ## Available corpora
 
 | Corpus | Source | Purpose | Scenario count |
 |---|---|---|---:|
-| [DTG ZKP](../corpora/dtg-zkp.yaml) | `sankarshanmukhopadhyay/dtgwg-zkp-tf` | ZKP implementation and governance stress cases | 30 |
-| [Trust Tasks](../corpora/trust-tasks.yaml) | `trustoverip/dtgwg-trust-tasks-tf` | Task identity, proof, replay, transport, versioning, delegation and privacy | 16 |
-| [DTG Credential Spec](../corpora/credential-spec.yaml) | `trustoverip/dtgwg-cred-spec` | Credential lifecycle, relationship semantics, privacy, authority and task context | 16 |
-| [Trust Tasks × CredSpec](../corpora/trust-tasks-credspec-composed.yaml) | RAHP-authored cross-spec adapter | Emergent failure modes at the task/credential seam | 12 |
-| [CAWG/C2PA](../corpora/cawg.yaml) | Multi-source external CAWG/C2PA portfolio | Identity, governance, consent, delegation, metadata, privacy, UX, security and mandate-readiness interactions | 36 |
+| [DTG ZKP](../corpora/dtg-zkp/) | `sankarshanmukhopadhyay/dtgwg-zkp-tf` | ZKP implementation and governance stress cases | 30 |
+| [Trust Tasks](../corpora/trust-tasks/) | `trustoverip/dtgwg-trust-tasks-tf` | Task identity, proof, replay, transport, versioning, delegation and privacy | 16 |
+| [DTG Credential Spec](../corpora/credential-spec/) | `trustoverip/dtgwg-cred-spec` | Credential lifecycle, relationship semantics, privacy, authority and task context | 16 |
+| [Trust Tasks × CredSpec](../corpora/trust-tasks-credspec-composed/) | RAHP-authored cross-spec adapter | Emergent failure modes at the task/credential seam | 12 |
+| [CAWG/C2PA](../corpora/cawg/) | Multi-source external CAWG/C2PA portfolio | Identity, governance, consent, delegation, metadata, privacy, UX, security and mandate-readiness interactions | 36 |
 
 Together these adapters expose **110 scenario test vectors** to the RAHP pressure-testing workflow. The CAWG/C2PA corpus is intentionally multi-source: its primary source and additional specification repositories are declared without inventing a DTG Portfolio Monitor relationship.
 

@@ -11,22 +11,20 @@ module RahpPagesProjection
   TOP_LEVEL_MARKDOWN = %w[README.md ADOPTION.md QUICKSTART.md CONTRIBUTING.md ROADMAP.md CHANGELOG.md].freeze
 
   class ProjectionPage < Jekyll::Page
-    def initialize(site, relative_path, title, body)
+    def initialize(site, output_route, title, body, source_path = nil)
       @site = site
       @base = site.source
-      @dir = File.dirname(relative_path)
-      @dir = "" if @dir == "."
-      # Use a Markdown source extension internally so Jekyll runs the Markdown converter,
-      # but publish to the original repository path through permalink.
-      @name = "#{File.basename(relative_path)}.md"
+      @dir = output_route.sub(%r{^/}, "").sub(%r{/$}, "")
+      @name = "index.md"
       process(@name)
       self.data = {
         "layout" => "default",
         "title" => title,
         "has_toc" => true,
         "nav_exclude" => true,
-        "permalink" => "/#{relative_path}"
+        "permalink" => "/#{@dir}/"
       }
+      self.data["source_path"] = source_path if source_path
       self.content = body
     end
   end
@@ -36,27 +34,31 @@ module RahpPagesProjection
     priority :low
 
     def generate(site)
-      rendered_relpaths = []
+      rendered_routes = []
       structured_files(site).each do |path|
         relative = relative_path(site, path)
         raw = File.read(path)
         parsed = parse_structured(path, raw)
         next if parsed.nil?
         title = structured_title(relative, parsed)
-        site.pages << ProjectionPage.new(site, relative, title, structured_body(site, relative, parsed, raw))
-        rendered_relpaths << "/#{relative}"
+        route = human_route(relative)
+        site.pages << ProjectionPage.new(site, route, title, structured_body(site, relative, parsed, raw), relative)
+        rendered_routes << "/#{route}/"
       end
 
       markdown_files(site).each do |path|
         raw = File.read(path)
         next if raw.start_with?("---\n") # already a normal Jekyll page
         relative = relative_path(site, path)
-        site.pages << ProjectionPage.new(site, relative, markdown_title(relative, raw), markdown_body(site, relative, raw))
-        rendered_relpaths << "/#{relative}"
+        route = human_route(relative)
+        site.pages << ProjectionPage.new(site, route, markdown_title(relative, raw), markdown_body(site, relative, raw), relative)
+        rendered_routes << "/#{route}/"
       end
 
-      site.static_files.reject! { |file| rendered_relpaths.include?(file.relative_path) }
-      Jekyll.logger.info "RAHP Pages projection:", "rendered #{rendered_relpaths.length} repository files"
+      # Structured repository files remain static and machine-readable at their
+      # canonical .yaml/.json paths. Human-readable projections are emitted on
+      # clean directory routes so GitHub Pages serves them as HTML.
+      Jekyll.logger.info "RAHP Pages projection:", "rendered #{rendered_routes.length} human-readable routes"
     end
 
     private
@@ -85,6 +87,12 @@ module RahpPagesProjection
 
     def relative_path(site, path)
       path.delete_prefix(site.source + File::SEPARATOR)
+    end
+
+    def human_route(relative)
+      ext = File.extname(relative)
+      route = STRUCTURED_EXTENSIONS.include?(ext.downcase) ? relative.delete_suffix(ext) : relative.sub(/\.md\z/i, "")
+      route.sub(%r{/README\z}i, "")
     end
 
     def parse_structured(path, raw)
@@ -140,6 +148,8 @@ module RahpPagesProjection
       lines << ""
       if parsed.is_a?(Hash) && parsed["corpus"].is_a?(Hash)
         lines.concat(corpus_summary(parsed["corpus"]))
+      elsif path.start_with?("method/catalogue/") && parsed.is_a?(Hash) && parsed["records"].is_a?(Array)
+        lines.concat(catalogue_summary(parsed))
       elsif parsed.is_a?(Hash) && parsed["review"].is_a?(Hash)
         lines.concat(review_summary(parsed["review"]))
       elsif path.end_with?("persona.jsonld") && parsed.is_a?(Hash)
@@ -178,6 +188,37 @@ module RahpPagesProjection
       out
     end
 
+
+
+    def catalogue_summary(parsed)
+      records = Array(parsed["records"]).select { |item| item.is_a?(Hash) }
+      record_type = parsed["record_type"] || "pattern"
+      out = [
+        "## Catalogue metadata",
+        "",
+        "| Field | Value |",
+        "|---|---|",
+        "| Catalogue version | `#{escape_cell(parsed['catalogue_version'])}` |",
+        "| Record type | `#{escape_cell(record_type)}` |",
+        "| Record count | #{records.length} |",
+        ""
+      ]
+
+      unless records.empty?
+        out += [
+          "## Pattern index",
+          "",
+          "| ID | Name | Family / function | Primary relationship |",
+          "|---|---|---|---|"
+        ]
+        records.each do |record|
+          family = record["family"] || record["control_function"] || record["assurance_level"] || record["privacy_classification"] || record["protected_interest"]
+          relation = Array(record["harm_patterns"] || record["risk_patterns"] || record["control_patterns"] || record["evidence_patterns"] || record["guardrail_patterns"]).first(4).map { |v| "`#{v}`" }.join(", ")
+          out << "| `#{escape_cell(record['id'])}` | #{escape_cell(record['name'])} | #{escape_cell(family)} | #{relation} |"
+        end
+      end
+      out
+    end
 
     def review_summary(review)
       target = review["target"].is_a?(Hash) ? review["target"] : {}

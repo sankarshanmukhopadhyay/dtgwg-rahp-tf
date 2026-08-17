@@ -19,6 +19,12 @@ parent: Reference
 - Revalidate and rerender curated examples against v1.1.0 while preserving pinned target revisions.
 - Expand scenario patterns and cross-spec documentation for authority, delegation, discovery, redress, political economy, lifecycle skew and control side effects.
 - Keep `rahp-engine-contract-v1` and result schema version 1 stable; v1.1 is additive.
+### Pages rendering refresh
+- Preserve canonical `.yaml`, `.json` and `.jsonld` routes as machine-readable structured data instead of replacing those paths with generated HTML.
+- Render structured-data reader views on clean sibling routes such as `/corpora/dtg-zkp/` and `/method/catalogue/risk-patterns/` so GitHub Pages serves them through the Just-the-Docs HTML shell.
+- Add scenario-corpus and portable-assurance catalogue browser indexes, plus a `/method/catalog/` compatibility route.
+- Strengthen post-Jekyll validation to require both canonical structured sources and themed human projections.
+
 ### Qualification refresh
 - Qualify all maintained live example repositories against current default-branch HEAD.
 - Record longitudinal finding deltas without overwriting the original pinned evidence.

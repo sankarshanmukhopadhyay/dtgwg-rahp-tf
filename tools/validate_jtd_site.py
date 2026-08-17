@@ -7,7 +7,7 @@ import sys
 ROOT = Path(__file__).resolve().parent.parent
 SITE = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else ROOT / '_site'
 
-REQUIRED_PROJECTIONS = [
+REQUIRED_STRUCTURED_SOURCES = [
     'corpora/dtg-zkp.yaml',
     'corpora/trust-tasks.yaml',
     'corpora/credential-spec.yaml',
@@ -21,6 +21,12 @@ REQUIRED_PROJECTIONS = [
     'method/non-human-actors.yaml',
     'method/schema/delegation-scope.schema.json',
     'method/conformance-claim-template.yaml',
+    'method/catalogue/harm-patterns.yaml',
+    'method/catalogue/risk-patterns.yaml',
+    'method/catalogue/control-patterns.yaml',
+    'method/catalogue/guardrail-patterns.yaml',
+    'method/catalogue/assurance-patterns.yaml',
+    'method/catalogue/evidence-patterns.yaml',
     'examples/a2a/pressure-test.yaml',
     'archive/historical-builds/persona.jsonld',
     'archive/historical-builds/risk.jsonld',
@@ -30,6 +36,23 @@ REQUIRED_PROJECTIONS = [
     'archive/historical-builds/scenario.jsonld',
     'archive/historical-builds/user_story.jsonld',
 ]
+
+REQUIRED_HUMAN_PROJECTIONS = [
+    'corpora/dtg-zkp/index.html',
+    'corpora/trust-tasks/index.html',
+    'corpora/credential-spec/index.html',
+    'corpora/trust-tasks-credspec-composed/index.html',
+    'corpora/cawg/index.html',
+    'method/catalogue/index.html',
+    'method/catalog/index.html',
+    'method/catalogue/harm-patterns/index.html',
+    'method/catalogue/risk-patterns/index.html',
+    'method/catalogue/control-patterns/index.html',
+    'method/catalogue/guardrail-patterns/index.html',
+    'method/catalogue/assurance-patterns/index.html',
+    'method/catalogue/evidence-patterns/index.html',
+]
+
 REQUIRED_DOCS = [
     'index.html',
     'docs/using-an-ai-agent.html',
@@ -109,14 +132,28 @@ def resolve_site_target(path_text):
             return candidate
     return target
 
-for required in REQUIRED_DOCS + REQUIRED_PROJECTIONS:
+for required in REQUIRED_DOCS:
     target = resolve_site_target(required)
     if not target.exists():
-        errors.append(f'missing required Pages projection: {required}')
-    elif required.endswith(('.yaml', '.yml', '.json', '.jsonld')):
+        errors.append(f'missing required Pages route: {required}')
+
+for required in REQUIRED_STRUCTURED_SOURCES:
+    target = SITE / required
+    if not target.exists():
+        errors.append(f'missing canonical structured source: {required}')
+    else:
         head = target.read_text(errors='ignore')[:1000].lower()
-        if '<!doctype html' not in head and '<html' not in head:
-            errors.append(f'structured-data path was not rendered as HTML: {required}')
+        if '<!doctype html' in head or '<html' in head:
+            errors.append(f'canonical structured source was replaced by HTML: {required}')
+
+for required in REQUIRED_HUMAN_PROJECTIONS:
+    target = resolve_site_target(required)
+    if not target.exists():
+        errors.append(f'missing human-readable structured-data projection: {required}')
+    else:
+        rendered = target.read_text(errors='ignore').lower()
+        if '<html' not in rendered or 'id="main-content"' not in rendered:
+            errors.append(f'human-readable projection missing Just-the-Docs shell: {required}')
 
 for required in REQUIRED_JTD_SHELL:
     target = resolve_site_target(required)
@@ -183,4 +220,4 @@ if errors:
     print(f'JTD site validation failed: {len(errors)} error(s).')
     raise SystemExit(1)
 
-print(f'JTD site validation clean: {len(htmls)} HTML page(s); required structured-data projections present.')
+print(f'JTD site validation clean: {len(htmls)} HTML page(s); canonical structured sources and human projections present.')

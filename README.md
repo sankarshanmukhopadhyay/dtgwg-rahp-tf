@@ -12,12 +12,12 @@ RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-test
 | Goal | Start here |
 |---|---|
 | Understand the method | [How RAHP works](docs/how-rahp-works.md) and [Concepts](docs/concepts.md) |
-| Browse reusable harm/risk/control patterns | [Portable assurance catalogue](docs/portable-assurance-catalogue.md) |
+| Browse reusable harm/risk/control patterns | [Portable assurance catalogue](method/catalogue/) and [catalogue guide](docs/portable-assurance-catalogue.md) |
 | Configure your own repositories | [Configuration-driven adoption](docs/configuration.md) and [Adopting RAHP](ADOPTION.md) |
 | Run a risks-and-harms review | [Pressure-testing a specification](docs/pressure-testing-a-spec.md) |
 | Run a security/adversarial review | [Security and hardening review](docs/security-hardening-review.md) |
 | Run both lenses together | [Review modes](docs/review-modes.md) |
-| Exercise scenario stress conditions | [Scenario-driven pressure testing](docs/scenario-driven-pressure-testing.md) |
+| Exercise scenario stress conditions | [Scenario corpora browser](corpora/) and [Scenario-driven pressure testing](docs/scenario-driven-pressure-testing.md) |
 | Use AI assistance with human accountability | [AI-assisted RAHP](docs/ai-assisted-process.md) and [AI use and accountability](#ai-assisted-use-and-accountability) |
 | Understand portability and deployment boundaries | [Portability](docs/portability.md) |
 | Inspect the CAWG/C2PA external deployment | [CAWG/C2PA instance](docs/cawg-instance.md) |
