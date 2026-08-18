@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "assessment": {
+    "id": "DTG-AR-2026-003",
+    "key": "dtg:repository:sankarshanmukhopadhyay/dtgwg-zkp-tf",
+    "triggers": [
+      "rahp-toolkit#11"
+    ]
+  },
+  "target": {
+    "repository": "sankarshanmukhopadhyay/dtgwg-zkp-tf",
+    "baseline_revision": "9a1ae81465e1da9f5c06ccd500a70708eb2511a6",
+    "reviewed_revision": "a67ba80cf231a77b9608646c117f80a64d89567b"
+  },
+  "mode": "combined",
+  "status": "dispositioned",
+  "findings": [],
+  "disposition": {
+    "outcome": "no-material-assurance-impact",
+    "summary": "Material strengthening of cross-spec traceability and assurance; residual dependencies remain explicit retest triggers.",
+    "decided_at": "2026-08-18T17:14:00+05:30"
+  },
+  "evidence": [
+    {
+      "id": "DTG-AR-2026-003-RECORD",
+      "class": "durable",
+      "description": "Human-readable durable assessment record in 2026-08-zkp-fork.md"
+    }
+  ],
+  "closure": {
+    "eligible_issues": [
+      11
+    ],
+    "reviewed_revision": "a67ba80cf231a77b9608646c117f80a64d89567b"
+  },
+  "retest_triggers": [
+    "material ZKP fork change",
+    "Trust Tasks baseline change",
+    "Credential Specification baseline change",
+    "new active VDS/Agent Names/HTX binding"
+  ]
+}

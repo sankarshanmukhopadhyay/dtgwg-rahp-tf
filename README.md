@@ -171,12 +171,14 @@ These are **deployment-local records**, not the portable `HRM/RKP/CTP/GRP/ATP/EV
 - **CAWG/C2PA deployment:** an independently scoped, branch-aware external deployment with its own local risk namespace and monitoring state. See [CAWG/C2PA instance](docs/cawg-instance.md).
 - **A2A:** an agent-protocol worked pressure test focused on discovery, delegation, callback trust, secondary credentials, and action provenance. See [A2A worked example](docs/a2a-example.md).
 - **Trust Tasks × DTG Credential Specification:** a first-class cross-specification assessment showing how individually reasonable components can still produce authority, lifecycle, privacy, replay, and redress failures when composed. See [Cross-spec pressure testing](docs/cross-spec-pressure-testing.md).
+- **W3C DID Resolution v1:** a pinned Candidate Recommendation pressure test separating evidence retrieval, authority, freshness, resolver privacy and dereferencing assurance. See [`examples/w3c-did-resolution-2026-cr/`](examples/w3c-did-resolution-2026-cr/README.md).
+- **DID Resolution × UN/CEFACT GRID/GTR:** a maintained cross-specification example that keeps technical DID control separate from registrar authority and relying-party trust decisions. See [`examples/cross-spec/did-resolution-grid-gtr/`](examples/cross-spec/did-resolution-grid-gtr/README.md).
 
 The current maintained example estate has also been qualified against the live HEAD of 11 represented repositories. See [v1.1 HEAD qualification](docs/head-qualification.md).
 
 ## Monitoring and reassessment
 
-`tools/instance_monitor.py` provides reusable `repository@branch` source monitoring for static deployment profiles. `tools/issue_watch.py` provides an allow-listed early-warning channel for selected upstream architecture or governance issues. `tools/publish_assessment_issues.py` converts material observations into stable assessment work items where the deployment has explicitly enabled that workflow.
+`tools/instance_monitor.py` provides reusable `repository@branch` source monitoring for static deployment profiles. Assessment identities remain repository-scoped on `main` and become branch-scoped for non-main targets, preventing independent assurance objects from being coalesced. Role-aware materiality profiles let implementations include source/tests while specifications emphasize normative/schema surfaces. `tools/issue_watch.py` provides an allow-listed early-warning channel for selected upstream architecture or governance issues. `tools/publish_assessment_issues.py` converts material observations into stable assessment work items, and `tools/reconcile_assessment_issues.py` can produce or explicitly apply an evidence-backed closure plan after every durable assessment associated with an issue is dispositioned.
 
 A monitoring event means **the assessment baseline may be stale**. It does not mean the upstream specification is defective. A reviewer must inspect the change and decide whether RAHP, security, or combined evidence needs revision.
 

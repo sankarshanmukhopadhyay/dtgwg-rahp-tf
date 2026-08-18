@@ -1,0 +1,169 @@
+review:
+  id: SR-006
+  status: complete
+  title: W3C DID Resolution v1 Candidate Recommendation pressure test
+  reviewed_on: '2026-08-18'
+  target:
+    repository: w3c/did-resolution
+    document: https://www.w3.org/TR/2026/CR-did-resolution-1.0-20260806/
+    version: Candidate Recommendation Snapshot 06 August 2026
+    commit: 13bd245a54d84a11d16ce6a04da70e8cd8dac4ba
+    source_paths:
+    - §4 DID Resolution
+    - §5-6 DID URL Dereferencing
+    - §8 DID Resolution Architectures
+    - §9 DID Resolution Result
+    - §11 Errors
+    - §12 Bindings
+    - §13 Security Considerations
+    - §14 Privacy Considerations
+  reviewed_against:
+    repository: sankarshanmukhopadhyay/rahp-toolkit
+    rahp_version: v1.1.0
+    corpus_date: '2026-08-18'
+    engine_contract: rahp-engine-contract-v1
+  scope:
+    included:
+    - core DID resolution semantics
+    - local, remote, proxied, verifiable and unverifiable resolution
+    - cache, freshness, version and deactivation semantics
+    - resolver and DID-method proof boundaries
+    - privacy of resolution activity
+    - DID URL dereferencing security boundary
+    excluded:
+    - assurance properties specific to any one DID method
+    - cryptographic review of individual verification suites
+    - downstream authorization policy not claimed by DID Resolution
+  method:
+    workflow: docs/pressure-testing-a-spec.md
+    rule: Separate evidence retrieval from authority and trust decisions; prefer existing portable patterns before adding catalogue objects.
+  summary:
+    finding_count: 6
+    open_count: 6
+    overall_assessment: >-
+      Core DID Resolution is conditionally acceptable as evidence-retrieval infrastructure. The
+      Candidate Recommendation identifies many relevant security and privacy risks, but important
+      assurance boundaries remain dependent on relying-party policy, deployment controls and method-
+      specific semantics. DID URL dereferencing receives a separate, less mature disposition because
+      it adds resource selection and network retrieval to the core resolution boundary.
+  findings:
+  - id: F-001
+    title: Resolution success can be over-interpreted as authority or trust
+    status: open
+    severity: Critical
+    primary_disposition: implementation-guidance
+    secondary_dispositions: [specification, governance]
+    risks: [CRK-01, CRK-14]
+    portable_assurance:
+      harm_patterns: [HRM-INF-01, HRM-SEC-02, HRM-AUT-04]
+      risk_patterns: [RKP-DISC-01, RKP-CRD-01, RKP-AUTH-01]
+      control_patterns: [CTP-DISC-01, CTP-AUTH-01]
+      guardrail_patterns: [GRP-AUTH-01]
+      assurance_patterns: [ATP-AUTH-01]
+      evidence_patterns: [EVP-AUTH-01]
+    evidence:
+    - source: DID Resolution core result semantics
+      observation: A successful or verifiable result can establish resolution/verification evidence without establishing authorization, legal authority, governance status, endorsement or relying-purpose fitness.
+    harm: A downstream verifier can promote technical identifier control into an unsupported consequential trust decision.
+    recommendation: Make the non-inference contract explicit in relying-party profiles and machine-verifiable assurance tests; do not treat successful resolution as authorization.
+    retest_when: [resolution result semantics or relying-party guidance materially changes]
+  - id: F-002
+    title: Cached valid state can become stale authority state
+    status: open
+    severity: High
+    primary_disposition: operational-policy
+    secondary_dispositions: [implementation-guidance]
+    risks: [CRK-09, CRK-21]
+    portable_assurance:
+      harm_patterns: [HRM-INF-01, HRM-SEC-02]
+      risk_patterns: [RKP-DISC-02, RKP-AUTH-02, RKP-CRD-02, RKP-COMP-02, RKP-OPS-01]
+      control_patterns: [CTP-DISC-02, CTP-AUTH-02]
+      guardrail_patterns: [GRP-AUTH-02, GRP-OPS-02]
+      assurance_patterns: [ATP-AUTH-01]
+      evidence_patterns: [EVP-AUTH-01, EVP-OPS-01]
+    evidence:
+    - source: caching, versioning and DID document metadata
+      observation: Version/deactivation metadata exists, but consequential reliance still requires a policy for observation time, cache state, acceptable age and failure to obtain current authoritative state.
+    harm: Rotated, compromised or deactivated verification material may continue to satisfy later verification from stale cache state.
+    recommendation: Bind consequential reliance to an explicit freshness contract including source, observation time, version, cache state and acceptable maximum age.
+    retest_when: [normative freshness/cache assurance requirements are added]
+  - id: F-003
+    title: Remote resolution can create correlation and surveillance evidence
+    status: open
+    severity: High
+    primary_disposition: governance
+    secondary_dispositions: [operational-policy]
+    risks: [CRK-19]
+    portable_assurance:
+      harm_patterns: [HRM-PRV-02, HRM-PRV-03, HRM-PRV-04, HRM-PRV-05]
+      risk_patterns: [RKP-PRV-01, RKP-PRV-02, RKP-PRV-03]
+      control_patterns: [CTP-PRV-01, CTP-PRV-02]
+      guardrail_patterns: [GRP-PRV-01, GRP-PRV-02]
+      assurance_patterns: []
+      evidence_patterns: []
+    evidence:
+    - source: remote/proxied resolver architecture and privacy considerations
+      observation: The fact and sequence of DID lookups can reveal sensitive relationships even when DID Document contents are public.
+    harm: Resolver logs and telemetry can reconstruct interaction graphs or sensitive institutional/social relationships.
+    recommendation: Require deployment-specific logging, retention, telemetry, secondary-use and resolver-selection controls; prefer local/privacy-preserving resolution where feasible.
+    retest_when: [privacy requirements for network resolution materially strengthen]
+  - id: F-004
+    title: Responsibility and redress are fragmented across the resolution chain
+    status: open
+    severity: High
+    primary_disposition: governance
+    secondary_dispositions: [implementation-guidance]
+    risks: [CRK-15]
+    portable_assurance:
+      harm_patterns: [HRM-GOV-02, HRM-ECO-02]
+      risk_patterns: [RKP-GOV-04]
+      control_patterns: [CTP-GOV-03]
+      guardrail_patterns: [GRP-RED-01]
+      assurance_patterns: []
+      evidence_patterns: [EVP-RED-01]
+    evidence:
+    - source: method, resolver, proxy and binding architectures
+      observation: A harmful outcome can span application, resolver, proxy, DID method and registry components even where each claims local correctness.
+    harm: Affected parties may be unable to identify the responsible component, governing authority or correction path after stale/incorrect resolution contributes to harm.
+    recommendation: Maintain an assurance responsibility map and sufficient provenance to reconstruct the resolution path and identify remediation ownership.
+    retest_when: [standardized responsibility/provenance evidence is defined]
+  - id: F-005
+    title: Resolver proof can be mistaken for method or current-state proof
+    status: open
+    severity: High
+    primary_disposition: implementation-guidance
+    secondary_dispositions: [specification]
+    risks: [CRK-12]
+    portable_assurance:
+      harm_patterns: [HRM-INF-01]
+      risk_patterns: [RKP-DISC-01, RKP-AUTH-01]
+      control_patterns: [CTP-DISC-01]
+      guardrail_patterns: [GRP-AUTH-01]
+      assurance_patterns: []
+      evidence_patterns: []
+    evidence:
+    - source: resolver-added versus method-level proof semantics
+      observation: A resolver signature can establish resolver provenance without proving that the underlying method state is authoritative, independently verified or current.
+    harm: Additional cryptographic evidence can create false confidence by silently promoting a weaker provenance claim into a stronger trust claim.
+    recommendation: Expose proof class/assurance semantics so applications can distinguish resolver provenance, method verification, registry verification, historical verification and current-state assurance.
+    retest_when: [proof metadata gains explicit assurance semantics]
+  - id: F-006
+    title: DID URL dereferencing materially expands the attack and privacy surface
+    status: open
+    severity: Critical
+    primary_disposition: specification
+    secondary_dispositions: [implementation-guidance, runtime-control]
+    risks: [CRK-22]
+    portable_assurance:
+      harm_patterns: [HRM-INF-01, HRM-PRV-02, HRM-SEC-02]
+      risk_patterns: [RKP-OPS-01, RKP-COMP-02, RKP-PRV-02]
+      control_patterns: [CTP-OPS-02, CTP-PRV-02]
+      guardrail_patterns: [GRP-OPS-02, GRP-PRV-02]
+      assurance_patterns: [ATP-OPS-02]
+      evidence_patterns: [EVP-OPS-01]
+    evidence:
+    - source: DID URL dereferencing sections and security considerations
+      observation: Dereferencing adds resource selection, service endpoint interpretation, URL construction and potentially new network requests; the CR also marks dereferencing as a feature at risk.
+    harm: A resolver/dereferencer can cross from identifier-state retrieval into SSRF-like access, redirect/loop exhaustion, parser differentials, path/query ambiguity or privacy leakage.
+    recommendation: Maintain a separate assurance disposition and combined security test suite for dereferencing; a positive core-resolution assessment must not imply dereferencing approval.
+    retest_when: [dereferencing architecture stabilizes or feature-at-risk status changes]

@@ -30,3 +30,7 @@ to those records.
 Closing a generated queue issue means the named revision was reviewed and dispositioned;
 it does **not** mean every upstream design discussion is finished. Later material source
 changes start a new assessment cycle after the reviewed baseline.
+
+## Evidence-backed issue closure
+
+Review sidecars may declare `closure.eligible_issues` after a named revision is dispositioned. `tools/reconcile_assessment_issues.py` aggregates the deployment queue and only produces a closure candidate when every assessment record referencing that issue is both dispositioned and explicitly closure-eligible. Its default mode is read-only; `--apply` requires an explicit repository and GitHub token.

@@ -3,26 +3,67 @@
   "assessment": {
     "id": "DTG-AR-2026-002",
     "key": "dtg:repository:OpenVTC/verifiable-trust-infrastructure",
-    "triggers": ["rahp-toolkit#2"]
+    "triggers": [
+      "rahp-toolkit#2",
+      "rahp-toolkit#8"
+    ]
   },
   "target": {
     "repository": "OpenVTC/verifiable-trust-infrastructure",
-    "baseline_revision": "a879926704382c72cec24f8b1367194f7fb087fa",
-    "reviewed_revision": "1c20e3157597952d174fa2e884609f5b938923be"
+    "baseline_revision": "1c20e3157597952d174fa2e884609f5b938923be",
+    "reviewed_revision": "187ad9cde4cf5c5f8add3732a661816a650d631c"
   },
   "mode": "combined",
   "status": "dispositioned",
   "findings": [
-    {"id": "F-001", "title": "Runtime tenant configuration makes attestation evidence load-bearing", "status": "watch"},
-    {"id": "F-002", "title": "Parent-controlled availability remains outside enclave integrity guarantees", "status": "watch"}
+    {
+      "id": "F-003",
+      "title": "Onboarding depends on verification of attested configuration",
+      "status": "watch"
+    },
+    {
+      "id": "F-004",
+      "title": "Parent retains availability and routing influence",
+      "status": "residual-risk"
+    },
+    {
+      "id": "F-006",
+      "title": "IACA trust-anchor lifecycle is an authority dependency",
+      "status": "watch"
+    },
+    {
+      "id": "F-007",
+      "title": "Certificate revocation is deliberately not checked",
+      "status": "accepted-limitation"
+    },
+    {
+      "id": "F-008",
+      "title": "Non-extractable keys trade recoverability for stronger custody",
+      "status": "operational-control"
+    }
   ],
   "disposition": {
     "outcome": "findings-raised",
-    "summary": "Reviewed architecture materially strengthens attested tenant configuration while retaining operational dependencies for future monitoring.",
-    "decided_at": "2026-08-16T06:08:00+05:30"
+    "summary": "Conditionally acceptable; strong implementation controls with explicit trust-anchor, revocation, recoverability and availability dependencies.",
+    "decided_at": "2026-08-18T17:14:00+05:30"
   },
   "evidence": [
-    {"id": "DTG-AR-2026-002-RECORD", "class": "durable", "description": "Human-readable durable assessment record in 2026-08-verifiable-trust-infrastructure.md"}
+    {
+      "id": "DTG-AR-2026-002-RECORD",
+      "class": "durable",
+      "description": "Human-readable durable assessment record in 2026-08-verifiable-trust-infrastructure.md"
+    }
   ],
-  "retest_triggers": ["material VTI repository change", "attestation contract change", "tenant configuration trust-boundary change"]
+  "closure": {
+    "eligible_issues": [
+      8
+    ],
+    "reviewed_revision": "187ad9cde4cf5c5f8add3732a661816a650d631c"
+  },
+  "retest_triggers": [
+    "material VTI repository change",
+    "IACA trust-anchor lifecycle change",
+    "mdoc status/revocation support change",
+    "internal-key recovery/custody change"
+  ]
 }

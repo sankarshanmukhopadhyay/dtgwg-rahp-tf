@@ -56,4 +56,11 @@ A portable deployment may maintain risks or other assessment vocabulary that bel
 
 Portability also applies to operational monitoring. `tools/instance_monitor.py` reads a static deployment profile, tracks each `repository@branch` revision, records material changes, and emits review events. `tools/publish_assessment_issues.py` can turn those events into deduplicated issues in the RAHP review repository. This keeps source monitoring and review workflow reusable without coupling an external deployment to the DTG Portfolio Monitor. A discovered or configured GitHub repository with no commit history is represented as `status: no-commits` and does not abort the wider monitoring run; other HTTP/API failures remain errors so operational faults are not silently hidden.
 
+### Assessment identity and materiality
+
+Repository monitoring is target-aware. Main-branch targets retain the portable `instance:repository:owner/repo` assessment key, while non-main branches use `instance:repository:owner/repo@branch` so experimental or governance branches cannot coalesce into the same assurance work item.
+
+Materiality is also role-aware. A deployment may add `assessment.materiality.role_profiles` keyed by the target `context.type`. This lets a normative specification emphasize specification/schema surfaces while a reference implementation treats implementation code and tests as assurance-relevant evidence. Target-specific `scope.include` entries and deployment-wide `always_material_paths` remain additive.
+
+
 `tools/issue_watch.py` provides an independent **allow-listed issue early-warning channel**. A deployment owns its issue registry, labels, state and affected-review mapping. The toolkit does not discover or ingest every issue automatically, and issue text never becomes normative evidence merely because it is watched. CAWG/C2PA and DTG both use this mechanism with separate registries, demonstrating that situational monitoring is part of the portable operational layer rather than a CAWG-specific feature.

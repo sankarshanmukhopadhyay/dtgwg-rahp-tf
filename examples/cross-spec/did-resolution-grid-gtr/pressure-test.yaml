@@ -1,0 +1,231 @@
+review:
+  id: XSR-003
+  status: complete
+  title: W3C DID Resolution v1 × UN/CEFACT GRID/GTR cross-specification pressure test
+  reviewed_on: '2026-08-18'
+  target:
+    repository: w3c/did-resolution
+    document: https://www.w3.org/TR/2026/CR-did-resolution-1.0-20260806/
+    version: Candidate Recommendation Snapshot 06 August 2026 composed with UN/CEFACT GRID/GTR public-review material
+    commit: 13bd245a54d84a11d16ce6a04da70e8cd8dac4ba
+    source_paths:
+    - W3C DID Resolution v1 Candidate Recommendation Snapshot 06 August 2026
+    - UN/CEFACT GRID/GTR public-review working material observed August 2026
+  composition_targets:
+  - name: W3C DID Resolution v1
+    repository: w3c/did-resolution
+    document: https://www.w3.org/TR/2026/CR-did-resolution-1.0-20260806/
+    version: Candidate Recommendation Snapshot 06 August 2026
+    commit: 13bd245a54d84a11d16ce6a04da70e8cd8dac4ba
+  - name: UN/CEFACT GRID/GTR
+    document: https://opensource.unicc.org/un/unece/uncefact/gtr/
+    version: public-review working material observed August 2026
+    pinning_note: GRID/GTR is treated as the governed composition dependency; source references and effective-time evidence remain explicit per finding.
+  reviewed_against:
+    repository: sankarshanmukhopadhyay/rahp-toolkit
+    rahp_version: v1.1.0
+    corpus_date: '2026-08-18'
+    engine_contract: rahp-engine-contract-v1
+  scope:
+    included:
+    - DID resolution as technical identifier-state and verification-material evidence
+    - GRID registrar authority, recognition, scope and lifecycle evidence
+    - temporal and historical verification across both layers
+    - resolver provenance, privacy and downgrade behaviour
+    - DID URL dereferencing where introduced into a GRID verification flow
+    excluded:
+    - claims that W3C or UN/CEFACT endorses this RAHP assessment
+    - legal opinion on any particular registrar or jurisdiction
+  method:
+    workflow: docs/cross-spec-pressure-testing.md
+    rule: Preserve proposition boundaries across the composition and prohibit technical identifier control from silently becoming registrar authority or relying-party authorization.
+  summary:
+    finding_count: 8
+    open_count: 8
+    by_primary_disposition:
+      governance: 3
+      implementation-guidance: 2
+      operational-policy: 1
+      specification: 1
+      runtime-control: 1
+    overall_assessment: >-
+      The composition is viable but not assurance-closed. DID Resolution supplies technical
+      identifier-state and verification-material evidence; GRID must supply the legal/governance
+      proposition of registrar authority, recognition, scope and lifecycle. Neither layer may
+      silently substitute for the other.
+  assurance_chain:
+  - proposition: DID resolves successfully
+    establishes: technical identifier/control evidence according to the DID method and resolution path
+    does_not_establish: registrar authority
+  - proposition: GRID authority record is valid for the relevant time/scope
+    establishes: registrar authority/recognition evidence under GRID governance
+    does_not_establish: correctness of every registrar-issued downstream assertion
+  - proposition: DIA or registrar assertion verifies
+    establishes: attributable registrar-issued assertion evidence
+    does_not_establish: current authorization outside its governed scope/time
+  - proposition: registration evidence is valid
+    establishes: subject/asset assertion evidence
+    does_not_establish: relying-party acceptance
+  - proposition: relying-party policy is satisfied
+    establishes: local trust/authorization decision
+  findings:
+  - id: F-001
+    title: Successful DID resolution can be over-read as registrar authority
+    status: open
+    severity: Critical
+    primary_disposition: implementation-guidance
+    secondary_dispositions: [governance]
+    risks: [CRK-01, CRK-14]
+    evidence:
+    - source: https://www.w3.org/TR/2026/CR-did-resolution-1.0-20260806/
+      observation: DID Resolution establishes identifier-state and verification-material evidence, not GRID registrar authority or legal/governance recognition.
+    harm: Technical DID control is promoted into legal/governance authority without checking the GRID authority record.
+    recommendation: 'Enforce a non-inference rule: DID resolution evidence is an input to, never a substitute for, GRID authority evaluation; retain the GRID record/version and relying-policy decision trace.'
+    retest_when: [GRID or DID Resolution defines a materially different authority-binding contract]
+    portable_assurance:
+      harm_patterns: [HRM-INF-01, HRM-SEC-02]
+      risk_patterns: [RKP-DISC-01, RKP-AUTH-01]
+      control_patterns: [CTP-DISC-01, CTP-AUTH-01]
+      guardrail_patterns: [GRP-AUTH-01]
+      assurance_patterns: [ATP-AUTH-01]
+      evidence_patterns: [EVP-AUTH-01]
+  - id: F-002
+    title: GRID withdrawal or key compromise can diverge from previously issued DIA state
+    status: open
+    severity: Critical
+    primary_disposition: governance
+    secondary_dispositions: [operational-policy]
+    risks: [CRK-09, CRK-21]
+    evidence:
+    - source: UN/CEFACT GRID/GTR lifecycle and historical-verification public-review material
+      observation: A previously valid technical verification path can remain cryptographically usable after registrar authority or verification material ceases to be current.
+    harm: A stale DID/DIA path may continue to verify after withdrawal, suspension, compromise or authority change.
+    recommendation: Bind verification to effective-time lifecycle state, explicit current/historical status semantics and authoritative record version.
+    retest_when: [GRID lifecycle/status semantics or historical-verification rules materially change]
+    portable_assurance:
+      harm_patterns: [HRM-INF-01, HRM-SEC-02]
+      risk_patterns: [RKP-AUTH-02, RKP-CRD-02, RKP-COMP-02]
+      control_patterns: [CTP-AUTH-02, CTP-DISC-02]
+      guardrail_patterns: [GRP-AUTH-02]
+      assurance_patterns: [ATP-AUTH-01]
+      evidence_patterns: [EVP-AUTH-01]
+  - id: F-003
+    title: Historical and as-of authority cannot rely on current resolution alone
+    status: open
+    severity: High
+    primary_disposition: governance
+    secondary_dispositions: [implementation-guidance]
+    risks: [CRK-02, CRK-21]
+    evidence:
+    - source: UN/CEFACT GRID/GTR historical and as-of verification public-review material
+      observation: Current discovery state alone cannot prove whether registrar authority and verification material were valid at a prior transaction time.
+    harm: Audit, financing, insurance or dispute verification may be unable to reconstruct the applicable authority state at time T.
+    recommendation: Maintain logically separate historical verification records and an explicit as-of evaluation contract carrying requested time, evaluation time, selected record/version, historical key/status and provenance.
+    retest_when: [GRID publishes normative historical/as-of verification semantics]
+    portable_assurance:
+      harm_patterns: [HRM-INF-01, HRM-GOV-02]
+      risk_patterns: [RKP-AUTH-02, RKP-COMP-02]
+      control_patterns: [CTP-AUTH-02]
+      guardrail_patterns: [GRP-AUTH-02]
+      assurance_patterns: [ATP-AUTH-01]
+      evidence_patterns: [EVP-AUTH-01, EVP-RED-01]
+  - id: F-004
+    title: Resolver provenance and assurance downgrades can be hidden
+    status: open
+    severity: High
+    primary_disposition: implementation-guidance
+    secondary_dispositions: [runtime-control]
+    risks: [CRK-12, CRK-15]
+    evidence:
+    - source: https://www.w3.org/TR/2026/CR-did-resolution-1.0-20260806/
+      observation: Local, remote, proxied, verifiable and unverifiable resolution paths can provide materially different assurance while returning structurally usable results.
+    harm: A proxied or unverifiable resolution path is consumed as if it had the assurance of direct method verification.
+    recommendation: Preserve resolution path, proof class and downgrade indicators through the GRID verification workflow; fail indeterminate rather than silently lowering assurance.
+    retest_when: [resolution provenance or verification-strength metadata becomes normative]
+    portable_assurance:
+      harm_patterns: [HRM-INF-01, HRM-SEC-02]
+      risk_patterns: [RKP-DISC-01, RKP-OPS-01]
+      control_patterns: [CTP-DISC-01, CTP-OPS-02]
+      guardrail_patterns: [GRP-OPS-02]
+      assurance_patterns: [ATP-OPS-02]
+      evidence_patterns: [EVP-OPS-01]
+  - id: F-005
+    title: Resolver observation can expose sensitive GRID relationship queries
+    status: open
+    severity: High
+    primary_disposition: operational-policy
+    secondary_dispositions: [governance]
+    risks: [CRK-19]
+    evidence:
+    - source: https://www.w3.org/TR/2026/CR-did-resolution-1.0-20260806/#privacy-considerations
+      observation: Network resolution exposes lookup activity to resolver infrastructure even when the resolved document itself is public.
+    harm: Resolver logs can reveal which registrars, entities or authority relationships a relying party is evaluating.
+    recommendation: Minimize network resolution, logs, retention and secondary use; support privacy-preserving or local resolution where feasible and retain a deployment privacy policy as evidence.
+    retest_when: [resolver privacy requirements or GRID deployment architecture materially changes]
+    portable_assurance:
+      harm_patterns: [HRM-PRV-02, HRM-PRV-03, HRM-PRV-04]
+      risk_patterns: [RKP-PRV-01, RKP-PRV-02]
+      control_patterns: [CTP-PRV-01, CTP-PRV-02]
+      guardrail_patterns: [GRP-PRV-01, GRP-PRV-02]
+      assurance_patterns: []
+      evidence_patterns: []
+  - id: F-006
+    title: DID control can be over-read as legal-identity equivalence
+    status: open
+    severity: High
+    primary_disposition: governance
+    secondary_dispositions: [implementation-guidance]
+    risks: [CRK-14]
+    evidence:
+    - source: GRID/GTR registrar authority model composed with DID Resolution
+      observation: Control of DID verification material does not independently prove that the controller is the legal registrar or entity represented in GRID.
+    harm: A technically valid DID controller is treated as the legally/governance-recognized registrar without an independently governed binding.
+    recommendation: Bind DID identifiers to GRID legal/governance records through explicit mapping provenance, effective period and governing authority evidence.
+    retest_when: [GRID publishes a normative identifier-to-registrar binding model]
+    portable_assurance:
+      harm_patterns: [HRM-INF-01, HRM-SEC-02]
+      risk_patterns: [RKP-AUTH-01]
+      control_patterns: [CTP-AUTH-01]
+      guardrail_patterns: [GRP-AUTH-01]
+      assurance_patterns: [ATP-AUTH-01]
+      evidence_patterns: [EVP-AUTH-01]
+  - id: F-007
+    title: DID URL dereferencing adds an unnecessary attack boundary to GRID verification
+    status: open
+    severity: High
+    primary_disposition: runtime-control
+    secondary_dispositions: [specification, implementation-guidance]
+    risks: [CRK-22]
+    evidence:
+    - source: https://www.w3.org/TR/2026/CR-did-resolution-1.0-20260806/
+      observation: DID URL dereferencing adds resource selection, service endpoint interpretation, URL construction and potentially further network retrieval beyond core identifier-state resolution.
+    harm: A GRID workflow that follows DID service resources inherits SSRF-like, redirect, path/query ambiguity, loop and availability risks.
+    recommendation: Use bounded dereferencing profiles only where necessary, enforce destination/resource controls, and keep core registrar-authority evaluation independent of unconstrained resource retrieval.
+    retest_when: [dereferencing architecture stabilizes or GRID adopts a normative dereferencing profile]
+    portable_assurance:
+      harm_patterns: [HRM-SEC-02, HRM-PRV-02]
+      risk_patterns: [RKP-OPS-01, RKP-COMP-02]
+      control_patterns: [CTP-OPS-02]
+      guardrail_patterns: [GRP-OPS-02]
+      assurance_patterns: [ATP-OPS-02]
+      evidence_patterns: [EVP-OPS-01]
+  - id: F-008
+    title: Accountability and redress fragment across GRID, resolver and DID-method layers
+    status: open
+    severity: High
+    primary_disposition: governance
+    secondary_dispositions: [implementation-guidance]
+    risks: [CRK-15]
+    evidence:
+    - source: composed GRID, resolver, DID method and relying-party responsibility chain
+      observation: A harmful result may cross multiple independently operated and governed components even where each component behaved correctly according to its local contract.
+    harm: An affected party cannot determine who supplied stale or incorrect evidence, which authority governed the component, or who owns remediation.
+    recommendation: Maintain a cross-boundary responsibility map, operator/governing-authority identity, auditable decision trace and contestation route.
+    retest_when: [cross-boundary provenance or redress contracts materially change]
+    portable_assurance:
+      harm_patterns: [HRM-GOV-02, HRM-ECO-02]
+      risk_patterns: [RKP-GOV-04]
+      control_patterns: [CTP-GOV-03]
+      guardrail_patterns: [GRP-RED-01]
+      assurance_patterns: []
+      evidence_patterns: [EVP-RED-01]

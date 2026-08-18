@@ -13,76 +13,99 @@ nav_exclude: true
 **Mode:** combined RAHP + security  
 **Status:** dispositioned  
 **Disposition:** findings-raised  
-**Reviewed revision:** `1c20e3157597952d174fa2e884609f5b938923be`
+**Reviewed revision:** `187ad9cde4cf5c5f8add3732a661816a650d631c`
 
 ## Scope
 
-This review dispositions RAHP toolkit issue #2 and covers
-`a879926704382c72cec24f8b1367194f7fb087fa` through
-`1c20e3157597952d174fa2e884609f5b938923be` in
-`OpenVTC/verifiable-trust-infrastructure`.
+This assessment extends the existing VTI review through
+`1c20e3157597952d174fa2e884609f5b938923be` →
+`187ad9cde4cf5c5f8add3732a661816a650d631c` and dispositions RAHP toolkit
+issue **#8**.
 
-The material change is the Nitro/TEE configuration and attestation work: fleet
-instances can use a common enclave image while receiving a constrained tenant-specific
-configuration overlay at runtime. That changes the trust boundary around who supplies
-configuration, what the enclave can accept, and what evidence a tenant or relying party
-must verify before treating the instance as correctly configured.
+The review intentionally includes implementation code that the previous generic
+materiality filter did not classify as material. The role-aware monitoring change in this
+repository now treats source and test surfaces of a reference implementation as assurance
+evidence.
 
 ## Material assurance changes
 
-The reviewed implementation includes several safeguards that materially constrain the
-new runtime-configuration risk:
+The revision adds or materially changes:
 
-1. a typed tenant overlay with unknown-field rejection rather than unrestricted
-   whole-configuration injection;
-2. fail-closed behavior for missing or malformed fleet configuration;
-3. restrictions around KMS account/key selection and configuration provenance;
-4. attestation evidence binding the effective secret-free configuration view to the
-   enclave report;
-5. required image/PCR and tenant KMS-key pinning before obtaining the stronger verified
-   attestation result;
-6. explicit separation between authenticated configuration evidence and policy-approved
-   configuration evidence; and
-7. additional tests for envelope parsing, timeout behavior, routing changes and fleet
-   build paths.
+- ISO mdoc ingestion, verification, storage and presentation;
+- configured IACA trust anchors for mdoc issuer validation;
+- holder/device-key binding for mdoc credentials;
+- presentation over OID4VP;
+- non-extractable internal signing keys;
+- key-management and credential-exchange service paths; and
+- Trust Tasks integration and related conformance behaviour.
 
-These are substantial mitigations. The design does not make the parent environment
-trusted; instead it narrows what parent-controlled configuration can express and gives
-an external verifier evidence with which to reject an unacceptable configuration.
+The mdoc trust implementation fails closed when no anchors are configured, verifies the
+Document Signer against a configured CA anchor, checks certificate validity and signing
+usage, and deliberately keeps the X.509 trust-store decision explicit at the VTA boundary.
+Internal signing keys are intentionally non-exportable, excluded from mnemonic recovery
+and backup export, and prohibited for `did:webvh` update signing where irreversible key
+loss would strand the identity.
 
 ## Findings and follow-up
 
-### F-003 — onboarding depends on verification of the attested configuration
+### F-003 — attested configuration verification remains required
 
-The architecture is safe only if the tenant or relying workflow actually verifies the
-nonce-bound attestation, approved image/PCR and expected tenant KMS key before granting
-trust or onboarding authority. Merely exposing an attestation endpoint is not the same
-as consuming it as a gate.
+The prior TEE finding remains applicable: production trust requires the consuming workflow
+to verify nonce-bound attestation, approved measurements and expected tenant KMS material.
+Exposure of evidence is not equivalent to policy consumption.
 
-**Disposition:** treat the verification step as required assurance evidence for a
-production deployment and retain it in deployment documentation/conformance tests.
+**Status:** watch.
 
-### F-004 — the parent retains availability and routing influence
+### F-004 — parent availability/routing influence remains outside attestation
 
-Attestation prevents a malicious parent from silently presenting an unapproved
-configuration as approved, but it does not prevent the parent from withholding,
-delaying or disrupting configuration delivery or related routing. Those are
-availability/corrigibility concerns rather than configuration-integrity failures.
+A parent can still delay or disrupt configuration/routing even when it cannot forge an
+approved attested configuration.
 
-**Disposition:** document the residual availability boundary and ensure operators do
-not interpret successful attestation as evidence of availability or liveness.
+**Status:** residual operational risk.
+
+### F-006 — IACA trust-anchor lifecycle is now a first-class authority dependency
+
+mdoc verification depends on a configured set of IACA roots. The implementation correctly
+fails closed for an empty set and validates the leaf against an accepted root, but the
+assurance proposition "this issuer is currently trusted for this relying purpose" depends
+on how anchors are sourced, approved, updated, withdrawn and audited.
+
+**Disposition:** require deployment evidence identifying trust-anchor provenance, approving
+authority, effective period and change history. Do not infer issuer authority merely from a
+cryptographically valid chain.
+
+### F-007 — certificate revocation is deliberately not checked
+
+The mdoc trust module explicitly does not perform CRL/OCSP checking. Short certificate
+validity mitigates but does not eliminate compromise/revocation risk.
+
+**Disposition:** document this as an assurance limitation. Profiles requiring current
+revocation knowledge must supply an external status mechanism and explicit fail-open/
+fail-closed policy.
+
+### F-008 — non-extractable keys trade recoverability for stronger custody
+
+Internal keys strengthen custody by refusing export even to administrators, but loss of the
+KMS key or sealed storage permanently destroys signing capability. In non-TEE deployments,
+operator disk access remains inside the protection boundary.
+
+**Disposition:** require key-origin and recoverability classification in deployment policy,
+with explicit prohibition on using unrecoverable keys where loss would permanently strand
+an identity/control chain.
 
 ## Assurance disposition
 
-The reviewed delta changes the TEE trust boundary materially but also contains
-purpose-built controls for the major configuration-integrity and tenant-isolation
-risks introduced by that change. The assessment therefore raises the two operational
-assurance findings above rather than a blocking defect.
+The reviewed revision is **conditionally acceptable with explicit residual operational and
+lifecycle dependencies**. The implementation adds strong fail-closed and non-exportability
+controls and makes important trust decisions visible rather than implicit. No blocking defect
+is raised against the reviewed SHA.
 
-`1c20e3157597952d174fa2e884609f5b938923be` becomes the reviewed DTG RAHP baseline for
-this target.
+This record closes RAHP toolkit issue **#8** for revision
+`187ad9cde4cf5c5f8add3732a661816a650d631c` and establishes that SHA as the
+new DTG RAHP baseline.
 
 ## Sources
 
-- <https://github.com/OpenVTC/verifiable-trust-infrastructure/compare/a879926704382c72cec24f8b1367194f7fb087fa...1c20e3157597952d174fa2e884609f5b938923be>
-- <https://github.com/OpenVTC/verifiable-trust-infrastructure/commit/277b926f7e4a90d77ca4975c4280abd96fd62edb>
+- <https://github.com/OpenVTC/verifiable-trust-infrastructure/compare/1c20e3157597952d174fa2e884609f5b938923be...187ad9cde4cf5c5f8add3732a661816a650d631c>
+- <https://github.com/OpenVTC/verifiable-trust-infrastructure/blob/187ad9cde4cf5c5f8add3732a661816a650d631c/docs/02-vta/internal-keys.md>
+- <https://github.com/OpenVTC/verifiable-trust-infrastructure/blob/187ad9cde4cf5c5f8add3732a661816a650d631c/vta-vault/src/mdoc_trust.rs>

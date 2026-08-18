@@ -2,24 +2,49 @@ version: 1
 instance:
   id: cawg
   title: CAWG/C2PA RAHP assessment instance
-  description: >-
-    External, branch-aware RAHP deployment for the specifications linked from
-    cawg.io/specs and their C2PA technical-specification dependency.
+  description: External, branch-aware RAHP deployment for the specifications linked
+    from cawg.io/specs and their C2PA technical-specification dependency.
   profile: profiles/cawg/rahp.yaml
   review_repository: sankarshanmukhopadhyay/rahp-toolkit
 assessment:
   default_mode: combined
   materiality:
     always_material_paths:
-      - "**/*.adoc"
-      - "**/*.md"
-      - "**/*.json"
-      - "**/*.cddl"
-      - "specifications/**"
-      - ".github/workflows/**"
+    - '**/*.adoc'
+    - '**/*.md'
+    - '**/*.json'
+    - '**/*.cddl'
+    - specifications/**
+    - .github/workflows/**
+    role_profiles:
+      normative-specification:
+      - README.md
+      - '**/*.adoc'
+      - '**/*.md'
+      - '**/*.json'
+      - '**/*.cddl'
+      - specifications/**
+      - .github/workflows/**
+      ratified-specification:
+      - README.md
+      - '**/*.adoc'
+      - '**/*.md'
+      - '**/*.json'
+      - '**/*.cddl'
+      - specifications/**
+      - .github/workflows/**
+      experimental-specification:
+      - README.md
+      - '**/*.adoc'
+      - '**/*.md'
+      - '**/*.json'
+      - '**/*.cddl'
+      - specifications/**
   issue:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    labels: [assessment-required, cawg-instance]
+    labels:
+    - assessment-required
+    - cawg-instance
 reviews:
   root: instances/cawg/reviews
 state:

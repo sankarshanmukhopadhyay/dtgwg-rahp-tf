@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "assessment": {
+    "id": "CAWG-AR-2026-001",
+    "key": "cawg:repository:decentralized-identity/cawg-identity-assertion",
+    "triggers": [
+      "rahp-toolkit#12"
+    ]
+  },
+  "target": {
+    "repository": "decentralized-identity/cawg-identity-assertion",
+    "baseline_revision": "8a9c4925df7e8ccbcabce9d754fc27739e11dc12",
+    "reviewed_revision": "8851770a46221729b4e0d92cbfcad484b245cc71"
+  },
+  "mode": "combined",
+  "status": "dispositioned",
+  "findings": [],
+  "disposition": {
+    "outcome": "no-material-assurance-impact",
+    "summary": "Publication/ratification metadata only; no normative assurance semantics changed.",
+    "decided_at": "2026-08-18T17:14:00+05:30"
+  },
+  "closure": {
+    "eligible_issues": [
+      12
+    ],
+    "reviewed_revision": "8851770a46221729b4e0d92cbfcad484b245cc71"
+  },
+  "evidence": [
+    {
+      "id": "CAWG-AR-2026-001-RECORD",
+      "class": "durable",
+      "description": "Human-readable durable assessment record stored beside this normalized result."
+    }
+  ]
+}

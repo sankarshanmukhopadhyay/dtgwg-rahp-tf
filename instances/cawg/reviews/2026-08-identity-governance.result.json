@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "assessment": {
+    "id": "CAWG-AR-2026-002",
+    "key": "cawg:repository:decentralized-identity/cawg-identity-assertion@governance",
+    "triggers": [
+      "rahp-toolkit#12"
+    ]
+  },
+  "target": {
+    "repository": "decentralized-identity/cawg-identity-assertion",
+    "baseline_revision": "5f1908d4f5bf6c89d02d671ae5051f893df92dc9",
+    "reviewed_revision": "5a2795bd752da9e60ef04536ec6eb44167c929eb"
+  },
+  "mode": "combined",
+  "status": "dispositioned",
+  "findings": [
+    {
+      "id": "CAWG-F-001",
+      "title": "TRQP trust-registry semantics remain exploratory",
+      "status": "watch"
+    }
+  ],
+  "disposition": {
+    "outcome": "no-material-assurance-impact",
+    "summary": "Assurance-relevant TRQP direction, but current text is explicitly non-final and contains unresolved TODOs.",
+    "decided_at": "2026-08-18T17:14:00+05:30"
+  },
+  "closure": {
+    "eligible_issues": [
+      12
+    ],
+    "reviewed_revision": "5a2795bd752da9e60ef04536ec6eb44167c929eb"
+  },
+  "retest_triggers": [
+    "governance branch TRQP TODOs become normative",
+    "trust-registry validation semantics change"
+  ],
+  "evidence": [
+    {
+      "id": "CAWG-AR-2026-002-RECORD",
+      "class": "durable",
+      "description": "Human-readable durable assessment record stored beside this normalized result."
+    }
+  ]
+}

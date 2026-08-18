@@ -65,13 +65,11 @@ flowchart LR
   A --> X[Close issue at reviewed revision]
 ```
 
-`tools/instance_monitor.py` implements the portable static-profile monitor. Empty or not-yet-initialised repositories are recorded as `status: no-commits` and skipped until a head revision exists; this condition does not stop review of the remaining targets. State keys use
-`repository@branch`, so multiple tracked branches of the same upstream repository are independent.
-`tools/publish_assessment_issues.py` deduplicates GitHub issues by event title and creates the
-configured labels if needed.
+`tools/instance_monitor.py` implements the portable static-profile monitor. Empty or not-yet-initialised repositories are recorded as `status: no-commits` and skipped until a head revision exists; this condition does not stop review of the remaining targets. State keys use `repository@branch`, and assessment keys are also branch-aware for non-main targets. The main branch retains the backward-compatible `cawg:repository:owner/repo` key; experimental branches use `cawg:repository:owner/repo@branch`. This prevents governance, VC/VP and vLEI experiments in the same repository from collapsing into one assurance work item.
 
-The scheduled/manual `.github/workflows/instance-watch.yml` runs both the existing DTG discovery
-adapter and this external profile monitor, files assessment issues, and persists observed revisions.
+`tools/publish_assessment_issues.py` deduplicates/coalesces by assessment identity and creates the configured labels if needed. Role-aware materiality profiles ensure that the files considered assurance-relevant match the target type rather than relying on one generic documentation-oriented scope.
+
+The scheduled/manual `.github/workflows/instance-watch.yml` runs both the existing DTG discovery adapter and this external profile monitor, files assessment issues, and persists observed revisions. After human disposition, `tools/reconcile_assessment_issues.py` can verify that every assessment associated with a generated issue is dispositioned before preparing or applying closure.
 
 ## What a change issue means
 

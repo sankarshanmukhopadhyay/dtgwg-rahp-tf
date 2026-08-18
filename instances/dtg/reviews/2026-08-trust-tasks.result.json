@@ -3,26 +3,60 @@
   "assessment": {
     "id": "DTG-AR-2026-001",
     "key": "dtg:repository:trustoverip/dtgwg-trust-tasks-tf",
-    "triggers": ["rahp-toolkit#1", "rahp-toolkit#3", "rahp-toolkit#4"]
+    "triggers": [
+      "rahp-toolkit#1",
+      "rahp-toolkit#3",
+      "rahp-toolkit#4",
+      "rahp-toolkit#7",
+      "rahp-toolkit#9"
+    ]
   },
   "target": {
     "repository": "trustoverip/dtgwg-trust-tasks-tf",
-    "baseline_revision": "fbe196a8a17ba3f99d0657a64be5ac58621023a1",
-    "reviewed_revision": "8eb7509ffabf6cc095eec20cb7d8d0120ff59ef3"
+    "baseline_revision": "8eb7509ffabf6cc095eec20cb7d8d0120ff59ef3",
+    "reviewed_revision": "7e0d755f5b815498c861cacecee5cae49b3f14eb"
   },
   "mode": "combined",
   "status": "dispositioned",
   "findings": [
-    {"id": "F-001", "title": "Retained outcome evidence remains a cross-specification dependency", "status": "watch"},
-    {"id": "F-002", "title": "Semantic task control is not yet fully closed", "status": "watch"}
+    {
+      "id": "F-001",
+      "title": "Retained outcome evidence remains a cross-specification dependency",
+      "status": "watch"
+    },
+    {
+      "id": "F-002",
+      "title": "Semantic task control substantially closed; compensation remains domain-specific",
+      "status": "resolved-framework-gap"
+    },
+    {
+      "id": "F-005",
+      "title": "Supervising-principal control depends on local policy evidence",
+      "status": "watch"
+    }
   ],
   "disposition": {
     "outcome": "findings-raised",
-    "summary": "Net assurance strengthening; continuing composition and corrigibility dependencies remain watched.",
-    "decided_at": "2026-08-16T06:08:00+05:30"
+    "summary": "Net material assurance strengthening; generic task-control gap closed, with retained cross-specification and supervisory-authority dependencies.",
+    "decided_at": "2026-08-18T17:14:00+05:30"
   },
   "evidence": [
-    {"id": "DTG-AR-2026-001-RECORD", "class": "durable", "description": "Human-readable durable assessment record in 2026-08-trust-tasks.md"}
+    {
+      "id": "DTG-AR-2026-001-RECORD",
+      "class": "durable",
+      "description": "Human-readable durable assessment record in 2026-08-trust-tasks.md"
+    }
   ],
-  "retest_triggers": ["material Trust Tasks repository change", "normative change resolving retained outcome evidence", "normative task-control change"]
+  "closure": {
+    "eligible_issues": [
+      7,
+      9
+    ],
+    "reviewed_revision": "7e0d755f5b815498c861cacecee5cae49b3f14eb"
+  },
+  "retest_triggers": [
+    "material Trust Tasks repository change",
+    "retained outcome evidence semantics change",
+    "delegation/supervisory authority profile change"
+  ]
 }

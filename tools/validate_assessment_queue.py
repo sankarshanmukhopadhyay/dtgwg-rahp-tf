@@ -15,7 +15,7 @@ def validate(path: Path) -> list[str]:
         errors.append(f"{path}: unsupported version {data.get('version')!r}")
     seen_ids: set[str] = set()
     seen_keys: set[str] = set()
-    issue_numbers: set[int] = set()
+    issue_entries: dict[int, list[dict]] = {}
     for entry in data.get("dispositions") or []:
         aid = entry.get("assessment_id")
         key = entry.get("assessment_key")
@@ -48,9 +48,17 @@ def validate(path: Path) -> list[str]:
         for number in entry.get("rahp_issues") or []:
             if not isinstance(number, int) or number <= 0:
                 errors.append(f"{path}: {aid}: invalid RAHP issue number {number!r}")
-            if number in issue_numbers:
-                errors.append(f"{path}: RAHP issue #{number} is dispositioned more than once")
-            issue_numbers.add(number)
+            issue_entries.setdefault(number, []).append(entry)
+    for number, entries in sorted(issue_entries.items()):
+        if len(entries) <= 1:
+            continue
+        if not all(bool(entry.get("legacy_coalesced_issue")) for entry in entries):
+            keys = ", ".join(str(entry.get("assessment_key")) for entry in entries)
+            errors.append(
+                f"{path}: RAHP issue #{number} is dispositioned by multiple assessments "
+                f"without legacy_coalesced_issue=true on every entry: {keys}"
+            )
+
     for entry in data.get("open_generated_assessments") or []:
         if not isinstance(entry, dict) or not entry.get("assessment_key"):
             errors.append(f"{path}: open_generated_assessments entries require assessment_key")

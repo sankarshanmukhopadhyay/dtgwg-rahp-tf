@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "baselined_at": "2026-08-18T17:14:00+05:30",
+  "open_generated_assessments": [],
+  "dispositions": [
+    {
+      "assessment_id": "CAWG-AR-2026-001",
+      "assessment_key": "cawg:repository:decentralized-identity/cawg-identity-assertion",
+      "review": "instances/cawg/reviews/2026-08-identity-main-ratification.md",
+      "reviewed_revision": "8851770a46221729b4e0d92cbfcad484b245cc71",
+      "rahp_issues": [
+        12
+      ],
+      "disposition": "no-material-assurance-impact",
+      "legacy_coalesced_issue": true
+    },
+    {
+      "assessment_id": "CAWG-AR-2026-002",
+      "assessment_key": "cawg:repository:decentralized-identity/cawg-identity-assertion@governance",
+      "review": "instances/cawg/reviews/2026-08-identity-governance.md",
+      "reviewed_revision": "5a2795bd752da9e60ef04536ec6eb44167c929eb",
+      "rahp_issues": [
+        12
+      ],
+      "disposition": "no-material-assurance-impact",
+      "legacy_coalesced_issue": true
+    }
+  ]
+}

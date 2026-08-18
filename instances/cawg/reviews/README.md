@@ -7,3 +7,7 @@ upstream revisions back to this instance and trigger re-review.
 
 The instance is observational. A finding may recommend an upstream specification change, but the
 RAHP toolkit does not claim CAWG, DIF, or C2PA governance authority.
+
+## Branch-specific durable records
+
+A repository can contain several independently monitored assurance targets. Durable records therefore use the branch-aware assessment identity emitted by `tools/instance_monitor.py`. A generated issue is closure-eligible only when every durable assessment associated with that issue explicitly marks it eligible for closure. This prevents a disposition on one branch from silently closing unresolved work on another branch.

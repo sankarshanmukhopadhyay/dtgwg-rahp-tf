@@ -43,10 +43,32 @@ def compare(repo: str, base: str, head: str) -> dict[str, Any]:
     return api_json(f"https://api.github.com/repos/{repo}/compare/{base}...{head}")
 
 
+def target_role(target: dict[str, Any]) -> str | None:
+    return (target.get("context") or {}).get("type") or target.get("role")
+
+
 def material_paths(target: dict[str, Any], cfg: dict[str, Any]) -> list[str]:
     scoped = (target.get("scope") or {}).get("include") or []
-    default = ((cfg.get("assessment") or {}).get("materiality") or {}).get("always_material_paths") or []
-    return list(dict.fromkeys([*scoped, *default]))
+    materiality = (cfg.get("assessment") or {}).get("materiality") or {}
+    default = materiality.get("always_material_paths") or []
+    profiles = materiality.get("role_profiles") or {}
+    role = target_role(target)
+    role_paths = profiles.get(role, []) if role else []
+    return list(dict.fromkeys([*scoped, *default, *role_paths]))
+
+
+def path_matches(name: str, pattern: str) -> bool:
+    """Match repository paths with predictable root-file semantics.
+
+    Python's fnmatch does not let ``**/SPEC.md`` match a root ``SPEC.md``.
+    Git-style monitoring scopes normally expect that behaviour, so also try the
+    pattern with a leading ``**/`` removed. Matching remains case-sensitive.
+    """
+    if fnmatch.fnmatch(name, pattern):
+        return True
+    if pattern.startswith("**/"):
+        return fnmatch.fnmatch(name, pattern[3:])
+    return False
 
 
 def classify(target: dict[str, Any], files: list[dict[str, Any]], cfg: dict[str, Any]) -> tuple[bool, list[str]]:
@@ -54,13 +76,26 @@ def classify(target: dict[str, Any], files: list[dict[str, Any]], cfg: dict[str,
     matched = []
     for f in files:
         name = f.get("filename", "")
-        if any(fnmatch.fnmatch(name, pat) for pat in patterns):
+        if any(path_matches(name, pat) for pat in patterns):
             matched.append(name)
     return bool(matched), sorted(set(matched))
 
 
 def state_key(target: dict[str, Any]) -> str:
     return f"{target['repository']}@{target.get('branch', 'main')}"
+
+
+def assessment_key(instance_id: str, target: dict[str, Any]) -> str:
+    """Return a stable assessment identity without collapsing branch targets.
+
+    Main-branch repository keys retain the v0.7 key shape for compatibility.
+    Non-main targets add ``@branch`` because they are independent assurance
+    objects with separate revisions and dispositions.
+    """
+    repo = target["repository"]
+    branch = target.get("branch", "main")
+    suffix = "" if branch == "main" else f"@{branch}"
+    return f"{instance_id}:repository:{repo}{suffix}"
 
 
 def event_body(instance: dict[str, Any], target: dict[str, Any], old: str, new: str,
@@ -149,7 +184,7 @@ def main() -> int:
             events.append({
                 "instance": instance_id,
                 "target_id": target.get("id"),
-                "assessment_key": f"{instance_id}:repository:{repo}",
+                "assessment_key": assessment_key(instance_id, target),
                 "source": "repository-change",
                 "repository": repo,
                 "branch": branch,

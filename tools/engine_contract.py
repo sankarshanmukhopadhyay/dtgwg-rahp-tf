@@ -38,6 +38,12 @@ def semantic_errors(result:dict[str,Any])->list[str]:
             out.append(f"dispositioned result must not depend on ephemeral evidence {ev.get('id','?')}")
     if result.get('status')=='dispositioned' and (result.get('disposition') or {}).get('outcome')=='pending':
         out.append('dispositioned result cannot have pending outcome')
+    closure=result.get('closure')
+    if closure:
+        if result.get('status')!='dispositioned':
+            out.append('issue closure eligibility requires a dispositioned result')
+        if closure.get('reviewed_revision') != (result.get('target') or {}).get('reviewed_revision'):
+            out.append('closure.reviewed_revision must equal target.reviewed_revision')
     return out
 
 def validate_result(path:pathlib.Path,quiet=False)->bool:
