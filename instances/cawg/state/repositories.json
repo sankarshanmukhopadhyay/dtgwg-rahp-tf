@@ -2,8 +2,9 @@
   "version": 1,
   "targets": {
     "decentralized-identity/cawg-identity-assertion@main": {
-      "sha": "8a9c4925df7e8ccbcabce9d754fc27739e11dc12",
-      "observed_at": "2026-08-14T00:00:00Z"
+      "sha": "8851770a46221729b4e0d92cbfcad484b245cc71",
+      "status": "active",
+      "observed_at": "2026-08-18T04:18:03.349391+00:00"
     },
     "decentralized-identity/cawg-metadata-assertion@main": {
       "sha": "64069e062b6dfa1105844a773fdfd80a69356b72",
@@ -34,9 +35,9 @@
       "observed_at": "2026-08-14T00:00:00Z"
     },
     "decentralized-identity/cawg-identity-assertion@governance": {
-      "sha": "5f1908d4f5bf6c89d02d671ae5051f893df92dc9",
+      "sha": "5a2795bd752da9e60ef04536ec6eb44167c929eb",
       "status": "active",
-      "observed_at": "2026-08-14T04:58:45.156989+00:00"
+      "observed_at": "2026-08-18T04:18:04.373307+00:00"
     },
     "decentralized-identity/cawg-identity-assertion@w3c-vc-credential-support": {
       "sha": "2339d9f0d55717c44e0c3f1881cb8b9083337ee6",
