@@ -57,6 +57,9 @@ jobs:
 
       - name: Validate selected issue-watch registries
         run: python3 tools/validate_issue_watch_registries.py
+
+      - name: Validate RAHP-only issue publication policy
+        run: python3 tools/validate_issue_publication_policy.py
       - name: Validate DTG example cross-specification profile
         run: python3 tools/validate_cross_spec_registry.py --registry profiles/dtg/cross-spec-tests.yaml
 

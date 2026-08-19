@@ -20,6 +20,24 @@ from typing import Any
 KEY_RE = re.compile(r"<!--\s*rahp-assessment-key:([^>]+?)\s*-->")
 LEGACY_DTG_RE = re.compile(r"<!--\s*rahp-dtg-change:([^@>]+)@[^>]+-->")
 
+# Publication authority invariant for this RAHP distribution. Assessment targets and
+# upstream remediation repositories are evidence metadata only; automated issue
+# creation is confined to the RAHP review repository.
+CANONICAL_RAHP_ISSUE_REPOSITORY = "sankarshanmukhopadhyay/rahp-toolkit"
+
+
+def enforce_publication_repository(repository: str) -> str:
+    """Reject any attempt to publish RAHP work items outside the RAHP repository."""
+    repo = (repository or "").strip()
+    if repo != CANONICAL_RAHP_ISSUE_REPOSITORY:
+        raise ValueError(
+            "RAHP issue publication is confined to "
+            f"{CANONICAL_RAHP_ISSUE_REPOSITORY}; refused destination {repo!r}. "
+            "Target/upstream repositories may be recorded as evidence or remediation "
+            "metadata but must never receive automated RAHP issues."
+        )
+    return repo
+
 
 def request(method: str, url: str, token: str, payload=None):
     data = json.dumps(payload).encode() if payload is not None else None
@@ -139,9 +157,17 @@ def coalesce_issue(repo: str, issue: dict[str, Any], event: dict[str, Any], toke
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--events", type=Path, required=True)
-    ap.add_argument("--repository", required=True)
+    ap.add_argument(
+        "--repository",
+        default=CANONICAL_RAHP_ISSUE_REPOSITORY,
+        help="RAHP issue repository; non-canonical destinations are rejected",
+    )
     ap.add_argument("--result-json", type=Path, help="write created/coalesced issue references")
     args = ap.parse_args()
+    try:
+        args.repository = enforce_publication_repository(args.repository)
+    except ValueError as exc:
+        raise SystemExit(str(exc)) from exc
     token = os.getenv("GITHUB_TOKEN") or os.getenv("GH_TOKEN")
     if not token:
         raise SystemExit("GITHUB_TOKEN or GH_TOKEN is required")

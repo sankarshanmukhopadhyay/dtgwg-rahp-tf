@@ -28,7 +28,7 @@ on:
         default: profiles/resilience/default.yaml
         type: string
       upstream_repository:
-        description: Repository to recommend for upstream findings (defaults to target repository)
+        description: Metadata-only repository to recommend for human-reviewed remediation; RAHP never files there
         required: false
         type: string
       publish_rahp_issue:
@@ -139,7 +139,7 @@ jobs:
         run: >-
           python3 tools/publish_assessment_issues.py
           --events build/resilience/issue-events.json
-          --repository "${{ github.repository }}"
+          --repository "sankarshanmukhopadhyay/rahp-toolkit"
           --result-json build/resilience/publish-result.json
 
       - name: Add assessment to workflow summary

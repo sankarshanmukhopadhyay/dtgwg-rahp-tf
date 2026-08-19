@@ -35,6 +35,16 @@ class AssessmentQueueTests(unittest.TestCase):
             "<!-- rahp-trigger:dtg:issue:example/repo#7@2026-08-16T00:00:00Z -->",
         )
 
+    def test_canonical_rahp_repository_is_allowed(self):
+        self.assertEqual(
+            MOD.enforce_publication_repository(MOD.CANONICAL_RAHP_ISSUE_REPOSITORY),
+            MOD.CANONICAL_RAHP_ISSUE_REPOSITORY,
+        )
+
+    def test_upstream_repository_is_rejected_as_publication_destination(self):
+        with self.assertRaises(ValueError):
+            MOD.enforce_publication_repository("OpenVTC/openvtc")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -192,6 +192,8 @@ The GitHub Actions workflow `distributed-resilience-assessment.yml` can run agai
 
 A monitoring event means **the assessment baseline may be stale**. It does not mean the upstream specification is defective. A reviewer must inspect the change and decide whether RAHP, security, or combined evidence needs revision.
 
+**Issue-publication invariant:** RAHP automation creates and coalesces GitHub issues only in `sankarshanmukhopadhyay/rahp-toolkit`. Assessed repositories and declared upstream repositories are evidence/remediation metadata, never automated publication destinations. Upstream-ready recommendations may be included in a RAHP issue for human review, but filing outside RAHP is always a separate human-controlled action. The publisher rejects non-RAHP destinations at runtime.
+
 ## AI-assisted use and accountability
 
 AI systems may assist with corpus review, change analysis, scenario generation, cross-reference discovery, evidence organization, or drafting candidate findings. AI output is **not**, by itself, assurance evidence and does not become a durable RAHP finding without human review.

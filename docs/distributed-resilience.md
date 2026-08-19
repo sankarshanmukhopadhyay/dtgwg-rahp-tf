@@ -160,7 +160,7 @@ target_repository: OpenVTC/openvtc
 target_ref: Cypress
 target_type: mixed
 profile_path: examples/resilience/openvtc-cypress/profile.yaml
-upstream_repository: OpenVTC/openvtc
+upstream_repository: OpenVTC/openvtc  # recommendation metadata only; never an automated issue destination
 ```
 
 This produces a revision-pinned RAHP assessment and upstream-ready recommendations without making OpenVTC concepts part of the portable catalogue.
@@ -168,3 +168,8 @@ This produces a revision-pinned RAHP assessment and upstream-ready recommendatio
 ## Extending DRARM
 
 Add a risk only when it describes a reusable amplification/failure pattern rather than an ecosystem-specific defect. Every risk must declare a trigger, failure mechanism, controls, assurance evidence, upstream control plane, retest condition and at least one detector/evidence adapter. Ecosystem-specific terminology belongs in profiles, corpora or worked assessments.
+
+
+### Issue-publication boundary
+
+DRARM may identify an upstream repository that owns a remediation, but that field is recommendation metadata only. All automated DRARM/RAHP issue creation is confined to `sankarshanmukhopadhyay/rahp-toolkit`. A RAHP issue may contain an upstream-ready title, body, evidence, and retest checklist; creating an issue in the assessed repository requires an explicit human action outside RAHP automation.

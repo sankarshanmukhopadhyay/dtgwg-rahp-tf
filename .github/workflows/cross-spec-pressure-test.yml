@@ -67,7 +67,7 @@ jobs:
         run: >-
           python3 tools/publish_assessment_issues.py
           --events build/cross-spec-review-events.json
-          --repository "${{ github.repository }}"
+          --repository "sankarshanmukhopadhyay/rahp-toolkit"
           --result-json build/cross-spec-publish-result.json
 
       - name: Add review to workflow summary

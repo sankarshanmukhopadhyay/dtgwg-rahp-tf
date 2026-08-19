@@ -650,3 +650,8 @@ rules — remains the frame for Q4 and for future independent adopters.
 - [ ] Add fleet simulation adapters for DR-A5 evidence.
 - [ ] Add cross-spec DRARM composition assertions to the generic cross-spec runner.
 
+
+
+## Automated issue publication boundary
+
+RAHP workflows MUST create or coalesce assessment work items only in `sankarshanmukhopadhyay/rahp-toolkit`. Source, target, monitored, portfolio, and upstream-remediation repositories MUST NOT be used as automated issue destinations. Upstream-ready recommendations are evidence artifacts for human-controlled follow-up, preserving external project authority and preventing automation from speaking in another project's governance control plane.
