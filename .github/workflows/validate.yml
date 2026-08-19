@@ -58,6 +58,12 @@ jobs:
       - name: Validate DTG example cross-specification profile
         run: python3 tools/validate_cross_spec_registry.py --registry profiles/dtg/cross-spec-tests.yaml
 
+      - name: Validate CAWG/C2PA cross-specification profile
+        run: python3 tools/validate_cross_spec_registry.py --registry profiles/cawg/cross-spec-tests.yaml
+
+      - name: Validate portfolio cross-specification launchers
+        run: python3 tools/validate_cross_spec_workflows.py
+
       - name: Validate durable assessment queue state
         run: python3 tools/validate_assessment_queue.py
 

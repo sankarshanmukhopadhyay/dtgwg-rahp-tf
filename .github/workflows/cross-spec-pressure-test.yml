@@ -1,6 +1,16 @@
 name: Run cross-specification pressure test
 
 on:
+  workflow_call:
+    inputs:
+      registry_path:
+        description: Profile registry path (for example profiles/<ecosystem>/cross-spec-tests.yaml)
+        required: true
+        type: string
+      composition_id:
+        description: Runnable composition ID from that profile registry
+        required: true
+        type: string
   workflow_dispatch:
     inputs:
       registry_path:

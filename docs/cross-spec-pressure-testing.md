@@ -56,6 +56,13 @@ Cross-specification execution is **profile-owned, not DTG-owned**. RAHP core pro
 
 The manual **Run cross-specification pressure test** workflow accepts two explicit inputs: `registry_path` and `composition_id`. Nothing in the executor auto-loads DTG. A CAWG/C2PA deployment can therefore point at a CAWG-owned registry and run without evaluating, validating or publishing DTG compositions.
 
+For operators focused on the bundled example portfolios, RAHP also exposes two thin convenience launchers:
+
+- **Run DTG cross-specification pressure test** fixes the registry to `profiles/dtg/cross-spec-tests.yaml` and presents all eight runnable DTG compositions as a dropdown. Its default is `trust-tasks--credential-spec`.
+- **Run CAWG/C2PA cross-specification pressure test** fixes the registry to `profiles/cawg/cross-spec-tests.yaml` and presents all five runnable CAWG/C2PA compositions as a dropdown. Its default is `c2pa--cawg-portfolio`.
+
+These launchers contain no assessment logic. They call the generic workflow through `workflow_call`, passing only the selected composition and profile registry. `tools/validate_cross_spec_workflows.py` checks that each launcher's dropdown exactly matches the `runnable: true` entries in its registry, preventing UI and assurance-state drift. The generic workflow remains the extension point for any other ecosystem.
+
 A composition is `runnable: true` only when its profile supplies a composed corpus and assessment record. `evidence_grade` distinguishes source-pinned/source-informed assessments from scenario-baseline assessments where upstream material is not yet sufficiently normative.
 
 A manual workflow run:

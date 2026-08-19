@@ -2,6 +2,8 @@
 ## Unreleased
 
 ### Added
+- Add dedicated DTG and CAWG/C2PA manual cross-specification launcher workflows with synchronized composition dropdowns and sensible defaults. Both delegate to the ecosystem-neutral reusable workflow rather than duplicating assessment logic.
+- Add workflow/registry drift validation so portfolio launchers cannot expose missing, stale or non-runnable composition IDs.
 - Activated all eight declared DTG cross-specification assurance seams with composed corpora and review baselines.
 - Added DTG VDS and Agent Names interface-assumption corpora with explicit `scenario-baseline` evidence grading.
 - Added profile-scoped cross-spec review identity and generic registry validation.
