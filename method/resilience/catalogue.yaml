@@ -1,0 +1,388 @@
+version: 1
+id: distributed-resilience-amplification
+name: Distributed Resilience and Amplification Risk Model
+short_name: DRARM
+purpose: >-
+  Portable RAHP catalogue for identifying distributed-system behaviours that can
+  amplify load, failure, recovery traffic, memory pressure, duplicate effects or
+  dependency stress across implementations, specifications and composed systems.
+principles:
+  - id: DRP-01
+    statement: Every retry domain has one accountable retry owner.
+  - id: DRP-02
+    statement: Recovery work is bounded in attempts, time, concurrency and resource use.
+  - id: DRP-03
+    statement: Fleet recovery is desynchronised where shared failure can align clients.
+  - id: DRP-04
+    statement: Backpressure preserves both availability and evidence; silent destructive loss is prohibited.
+  - id: DRP-05
+    statement: Duplicate delivery cannot create duplicate consequential effects.
+  - id: DRP-06
+    statement: Terminal failure, quarantine and operator intervention are observable and auditable.
+assurance_levels:
+  DR-A1: Control or behaviour is documented.
+  DR-A2: Control is evidenced in implementation or normative requirements.
+  DR-A3: Control has an automated conformance test.
+  DR-A4: Behaviour is measured under induced failure or load.
+  DR-A5: Fleet-scale or adversarial amplification behaviour is demonstrated within declared bounds.
+risks:
+  - id: RLA-001
+    title: Retry storm
+    category: retry-amplification
+    severity: High
+    applies_to: [implementation, specification, architecture, composed-system]
+    trigger: Shared dependency failure, timeout or connectivity loss causes repeated attempts.
+    failure: Retries become a material source of additional load and delay recovery.
+    required_controls: [bounded-retries, exponential-backoff, jitter, retry-budget, terminal-state]
+    evidence_required: [retry-policy, retry-test, terminal-failure-evidence]
+    upstream_control_plane: implementation-and-specification
+    retest_when: Retry policy, timeout ownership, transport stack or dependency topology changes.
+    detectors: [retry-without-bounds, retry-without-backoff, retry-without-jitter]
+  - id: RLA-002
+    title: Reconnect herd
+    category: synchronization-amplification
+    severity: High
+    applies_to: [implementation, specification, architecture, composed-system]
+    trigger: A shared transport or mediator recovers after many clients observed the same outage.
+    failure: Clients reconnect on aligned schedules and overload the recovering service.
+    required_controls: [reconnect-jitter, reconnect-cap, fleet-spread]
+    evidence_required: [reconnect-policy, fleet-recovery-test]
+    upstream_control_plane: implementation
+    retest_when: Reconnect scheduler, transport SDK or deployment scale changes.
+    detectors: [reconnect-without-jitter]
+  - id: RLA-003
+    title: Startup stampede
+    category: synchronization-amplification
+    severity: High
+    applies_to: [implementation, architecture, composed-system]
+    trigger: Deployment, power or regional recovery starts many instances together.
+    failure: Immediate maintenance, refresh, pickup and health work aligns across the fleet.
+    required_controls: [startup-spread, priority-separation, concurrency-bounds]
+    evidence_required: [startup-scheduler-test]
+    upstream_control_plane: implementation
+    retest_when: Startup lifecycle or scheduled background work changes.
+    detectors: [periodic-work-without-initial-jitter]
+  - id: RLA-004
+    title: Retry multiplication
+    category: retry-amplification
+    severity: Critical
+    applies_to: [implementation, specification, architecture, composed-system]
+    trigger: Application, transport, intermediary and dependency layers each retry the same logical operation.
+    failure: Attempt volume multiplies across layers and may duplicate consequential actions.
+    required_controls: [retry-owner, correlation-id, retry-budget, idempotency]
+    evidence_required: [failure-domain-map, retry-ownership-test]
+    upstream_control_plane: architecture-and-specification
+    retest_when: A retrying layer, intermediary or protocol binding is added or changed.
+    detectors: [multiple-retry-layers]
+  - id: RLA-005
+    title: Unbounded queue growth
+    category: queue-amplification
+    severity: Critical
+    applies_to: [implementation, architecture]
+    trigger: Producer throughput exceeds consumer throughput for a sustained interval.
+    failure: Memory or storage grows without a declared bound, degrading or terminating the process.
+    required_controls: [queue-bound, overload-policy, queue-metrics, admission-control]
+    evidence_required: [queue-capacity-test, overload-test, resource-measurements]
+    upstream_control_plane: implementation
+    retest_when: Queue type, producer count, consumer rate or payload limit changes.
+    detectors: [unbounded-channel, unbounded-queue]
+  - id: RLA-006
+    title: Destructive overflow
+    category: queue-amplification
+    severity: Critical
+    applies_to: [implementation, specification, architecture]
+    trigger: A bounded buffer fills after upstream acknowledgement or deletion.
+    failure: Overflow silently destroys data that cannot be recovered from its source.
+    required_controls: [ack-after-handoff, recoverable-overflow, loss-evidence]
+    evidence_required: [overflow-test, ack-order-test]
+    upstream_control_plane: implementation-and-protocol
+    retest_when: Acknowledgement, handoff or buffer semantics change.
+    detectors: [drop-on-full, ack-before-handoff]
+  - id: RLA-007
+    title: Fan-out amplification
+    category: concurrency-amplification
+    severity: High
+    applies_to: [implementation, architecture, composed-system]
+    trigger: One input, account or relationship set causes many simultaneous downstream operations.
+    failure: Unbounded concurrency overloads a dependency or local scheduler.
+    required_controls: [concurrency-bound, batching, admission-control]
+    evidence_required: [fanout-test, concurrency-metric]
+    upstream_control_plane: implementation
+    retest_when: Relationship cardinality or batch implementation changes.
+    detectors: [spawn-in-loop-without-semaphore, gather-without-limit]
+  - id: RLA-008
+    title: Poison-message redelivery loop
+    category: recovery-amplification
+    severity: High
+    applies_to: [implementation, specification, architecture]
+    trigger: A permanently unprocessable message remains eligible for redelivery.
+    failure: The same item consumes resources indefinitely or blocks later work.
+    required_controls: [attempt-accounting, quarantine, dead-letter-policy, operator-evidence]
+    evidence_required: [poison-message-test, quarantine-record]
+    upstream_control_plane: implementation-and-protocol
+    retest_when: Validation, acknowledgement or stored-message pickup changes.
+    detectors: [nack-without-quarantine, redelivery-without-attempt-limit]
+  - id: RLA-009
+    title: Head-of-line blocking
+    category: queue-amplification
+    severity: High
+    applies_to: [implementation, specification, architecture]
+    trigger: One slow or invalid item blocks unrelated work behind it.
+    failure: Healthy work becomes unavailable because ordering and failure isolation are coupled.
+    required_controls: [failure-isolation, bounded-processing-time, quarantine-or-skip-policy]
+    evidence_required: [hol-test]
+    upstream_control_plane: implementation-and-protocol
+    retest_when: Ordering or batch semantics change.
+    detectors: [serial-queue-with-unbounded-work]
+  - id: RLA-010
+    title: Timeout amplification
+    category: dependency-amplification
+    severity: High
+    applies_to: [implementation, specification, architecture, composed-system]
+    trigger: Nested layers each apply independent timeout and retry windows.
+    failure: User-visible latency and resource occupancy greatly exceed the logical operation budget.
+    required_controls: [deadline-propagation, timeout-budget, cancellation]
+    evidence_required: [timeout-tree, deadline-test]
+    upstream_control_plane: architecture-and-implementation
+    retest_when: Dependency or timeout topology changes.
+    detectors: [nested-timeouts-without-deadline]
+  - id: RLA-011
+    title: Cascading dependency failure
+    category: dependency-amplification
+    severity: Critical
+    applies_to: [implementation, specification, architecture, composed-system]
+    trigger: A failing dependency causes callers to consume increasing resources while waiting or retrying.
+    failure: Failure propagates to otherwise healthy components.
+    required_controls: [circuit-breaker-or-equivalent, isolation, dependency-budget, degraded-mode]
+    evidence_required: [dependency-failure-test, recovery-test]
+    upstream_control_plane: architecture-and-implementation
+    retest_when: Dependency graph or degraded mode changes.
+    detectors: [dependency-call-with-retry-no-breaker]
+  - id: RLA-012
+    title: Partial-outage amplification
+    category: dependency-amplification
+    severity: High
+    applies_to: [implementation, architecture, composed-system]
+    trigger: Some endpoints or partitions fail while others remain healthy.
+    failure: Load concentrates on surviving capacity or failure detection churns between paths.
+    required_controls: [endpoint-health, load-shed, failover-budget, recovery-hysteresis]
+    evidence_required: [partial-outage-test]
+    upstream_control_plane: implementation-and-deployment
+    retest_when: Routing, failover or discovery changes.
+    detectors: [failover-without-hysteresis]
+  - id: RLA-013
+    title: Cache stampede
+    category: synchronization-amplification
+    severity: Medium
+    applies_to: [implementation, architecture]
+    trigger: Many callers observe an expired or absent cache entry simultaneously.
+    failure: A dependency receives duplicate recomputation or resolution traffic.
+    required_controls: [single-flight-or-equivalent, negative-cache, expiry-jitter]
+    evidence_required: [cache-miss-concurrency-test]
+    upstream_control_plane: implementation
+    retest_when: Cache lifecycle changes.
+    detectors: [cache-without-singleflight]
+  - id: RLA-014
+    title: Ack-loss duplicate processing
+    category: duplicate-effect-amplification
+    severity: Critical
+    applies_to: [implementation, specification, architecture, composed-system]
+    trigger: A consequential operation succeeds but its acknowledgement is lost.
+    failure: Redelivery repeats the operation and creates duplicate effects.
+    required_controls: [idempotency-key, deduplication-window, stable-operation-id]
+    evidence_required: [lost-ack-test, dedupe-test]
+    upstream_control_plane: protocol-and-implementation
+    retest_when: Message identifiers, acknowledgement or persistence changes.
+    detectors: [retry-without-idempotency]
+  - id: RLA-015
+    title: Backpressure collapse
+    category: queue-amplification
+    severity: Critical
+    applies_to: [implementation, architecture, composed-system]
+    trigger: A slow consumer propagates blocking or overflow into upstream components.
+    failure: The system chooses between silent loss, unbounded growth or systemic stall without a governed overload state.
+    required_controls: [overload-policy, admission-control, recoverability, pressure-metrics]
+    evidence_required: [slow-consumer-test, overload-state-evidence]
+    upstream_control_plane: architecture-and-implementation
+    retest_when: Buffer, subscriber or acknowledgement topology changes.
+    detectors: [unbounded-channel, blocking-chain, silent-lag-drop]
+  - id: RLA-016
+    title: Restart-loop amplification
+    category: recovery-amplification
+    severity: High
+    applies_to: [implementation, architecture, deployment]
+    trigger: Failure causes process or component restart without stable recovery criteria.
+    failure: Restart repeatedly recreates the triggering load or corrupts recovery state.
+    required_controls: [restart-budget, backoff, stable-state-check, crash-loop-evidence]
+    evidence_required: [restart-loop-test]
+    upstream_control_plane: implementation-and-deployment
+    retest_when: Supervisor or recovery policy changes.
+    detectors: [restart-without-budget]
+  - id: RLA-017
+    title: Work amplification by malformed input
+    category: adversarial-amplification
+    severity: High
+    applies_to: [implementation, specification]
+    trigger: Small or cheap input causes disproportionate parsing, validation, cryptographic or resolution work.
+    failure: Attacker or accidental input exhausts CPU, memory or downstream requests.
+    required_controls: [input-size-bound, complexity-bound, early-rejection, work-budget]
+    evidence_required: [adversarial-input-test, resource-measurements]
+    upstream_control_plane: specification-and-implementation
+    retest_when: Parser, schema, crypto or resolver behaviour changes.
+    detectors: [unbounded-input, recursive-resolution-without-depth]
+  - id: RLA-018
+    title: Recursive resolution amplification
+    category: dependency-amplification
+    severity: High
+    applies_to: [implementation, specification, architecture, composed-system]
+    trigger: Resolution of one identifier or authority record recursively resolves additional references.
+    failure: Depth or breadth grows without explicit bounds and magnifies external calls.
+    required_controls: [resolution-depth-bound, cycle-detection, resolution-budget, cache]
+    evidence_required: [cycle-test, depth-test]
+    upstream_control_plane: specification-and-implementation
+    retest_when: Resolution graph semantics change.
+    detectors: [recursive-resolution-without-depth]
+  - id: RLA-019
+    title: Webhook or callback feedback loop
+    category: event-amplification
+    severity: High
+    applies_to: [implementation, specification, architecture, composed-system]
+    trigger: An emitted event causes an action that emits an equivalent triggering event.
+    failure: Event traffic loops across components or organizations.
+    required_controls: [event-origin, loop-detection, hop-limit, idempotency]
+    evidence_required: [feedback-loop-test]
+    upstream_control_plane: protocol-and-implementation
+    retest_when: Event subscriptions or callback topology changes.
+    detectors: [webhook-without-origin-or-hop-limit]
+  - id: RLA-020
+    title: Broadcast amplification
+    category: event-amplification
+    severity: High
+    applies_to: [implementation, specification, architecture]
+    trigger: One event is broadcast to a dynamic subscriber population.
+    failure: Subscriber count or lag creates disproportionate memory, CPU or delivery traffic.
+    required_controls: [subscriber-bound, lag-policy, broadcast-metrics]
+    evidence_required: [subscriber-scale-test, lag-test]
+    upstream_control_plane: implementation
+    retest_when: Subscriber topology changes.
+    detectors: [broadcast-without-subscriber-bound]
+  - id: RLA-021
+    title: Scheduler synchronization
+    category: synchronization-amplification
+    severity: Medium
+    applies_to: [implementation, deployment, composed-system]
+    trigger: Identical cron or periodic intervals align work across replicas or tenants.
+    failure: Predictable load spikes degrade shared dependencies.
+    required_controls: [schedule-jitter, partitioning, concurrency-bound]
+    evidence_required: [scheduled-load-test]
+    upstream_control_plane: implementation-and-deployment
+    retest_when: Scheduled jobs change.
+    detectors: [periodic-work-without-initial-jitter]
+  - id: RLA-022
+    title: Recovery replay surge
+    category: recovery-amplification
+    severity: High
+    applies_to: [implementation, architecture, composed-system]
+    trigger: A recovered client or service replays accumulated work immediately.
+    failure: Backlog drain overwhelms the recovered system or dependencies.
+    required_controls: [replay-rate-limit, batch-bound, recovery-priority, backlog-metrics]
+    evidence_required: [backlog-recovery-test]
+    upstream_control_plane: implementation
+    retest_when: Persistence or recovery pickup changes.
+    detectors: [backlog-drain-without-rate-limit]
+  - id: RLA-023
+    title: Lease or lock renewal herd
+    category: synchronization-amplification
+    severity: Medium
+    applies_to: [implementation, architecture]
+    trigger: Many leases or locks share the same duration and renewal threshold.
+    failure: Renewal traffic spikes or simultaneous expiry causes mass reacquisition.
+    required_controls: [renewal-jitter, fencing-token, expiry-spread]
+    evidence_required: [lease-recovery-test]
+    upstream_control_plane: implementation
+    retest_when: Lease/lock policy changes.
+    detectors: [fixed-lease-renewal-without-jitter]
+  - id: RLA-024
+    title: Circuit-breaker herd on half-open
+    category: recovery-amplification
+    severity: High
+    applies_to: [implementation, architecture]
+    trigger: Many callers transition from open to half-open simultaneously.
+    failure: Probe traffic recreates overload at the dependency during recovery.
+    required_controls: [half-open-probe-bound, recovery-jitter, shared-health-state]
+    evidence_required: [breaker-recovery-test]
+    upstream_control_plane: implementation
+    retest_when: Circuit-breaker policy changes.
+    detectors: [breaker-without-half-open-bound]
+  - id: RLA-025
+    title: Observability amplification
+    category: operational-amplification
+    severity: Medium
+    applies_to: [implementation, deployment]
+    trigger: Failure path emits logs, traces or metrics per retry, item or subscriber without sampling/bounds.
+    failure: Telemetry consumes material resources or overwhelms observability dependencies during incidents.
+    required_controls: [log-rate-limit, metric-cardinality-bound, trace-sampling]
+    evidence_required: [failure-telemetry-load-test]
+    upstream_control_plane: implementation-and-deployment
+    retest_when: Telemetry instrumentation changes.
+    detectors: [log-in-retry-loop]
+  - id: RLA-026
+    title: Metric cardinality explosion
+    category: operational-amplification
+    severity: High
+    applies_to: [implementation, deployment]
+    trigger: Unbounded identifiers, DIDs, URLs, errors or tenant values become metric labels.
+    failure: Metrics backend memory and cost grow with attacker- or workload-controlled cardinality.
+    required_controls: [label-allowlist, cardinality-bound, aggregation]
+    evidence_required: [metric-cardinality-test]
+    upstream_control_plane: implementation
+    retest_when: Metric labels change.
+    detectors: [dynamic-metric-label]
+  - id: RLA-027
+    title: Unbounded task or thread creation
+    category: concurrency-amplification
+    severity: Critical
+    applies_to: [implementation, architecture]
+    trigger: Input cardinality directly controls spawned tasks, futures or threads.
+    failure: Scheduler, memory or file descriptors are exhausted.
+    required_controls: [worker-bound, semaphore, queue-bound]
+    evidence_required: [concurrency-saturation-test]
+    upstream_control_plane: implementation
+    retest_when: Parallel execution strategy changes.
+    detectors: [spawn-in-loop-without-semaphore]
+  - id: RLA-028
+    title: Unbounded pagination or collection
+    category: data-amplification
+    severity: High
+    applies_to: [implementation, specification]
+    trigger: Remote collection follows pages until exhaustion without a total item/page budget.
+    failure: One logical operation consumes unbounded network, memory or processing work.
+    required_controls: [page-limit, item-limit, continuation-evidence]
+    evidence_required: [pagination-bound-test]
+    upstream_control_plane: implementation-and-specification
+    retest_when: Collection APIs change.
+    detectors: [pagination-without-limit]
+  - id: RLA-029
+    title: Retry-after non-compliance
+    category: retry-amplification
+    severity: High
+    applies_to: [implementation, specification]
+    trigger: Dependency explicitly signals a retry delay or rate limit.
+    failure: Client retries earlier than permitted, extending overload or triggering bans.
+    required_controls: [retry-after-respect, server-hint-cap, jitter]
+    evidence_required: [retry-after-test]
+    upstream_control_plane: implementation-and-protocol
+    retest_when: HTTP/API retry policy changes.
+    detectors: [retry-without-retry-after]
+  - id: RLA-030
+    title: Cross-tenant noisy-neighbour amplification
+    category: resource-amplification
+    severity: Critical
+    applies_to: [implementation, architecture, deployment, composed-system]
+    trigger: One tenant, identity, repository or account can consume shared retry, queue or concurrency budgets.
+    failure: One actor degrades availability for unrelated actors.
+    required_controls: [per-principal-budget, fair-queueing-or-equivalent, tenant-metrics]
+    evidence_required: [multi-tenant-saturation-test]
+    upstream_control_plane: architecture-and-implementation
+    retest_when: Multi-tenant resource sharing changes.
+    detectors: [global-budget-without-principal-partition]

@@ -176,6 +176,16 @@ These are **deployment-local records**, not the portable `HRM/RKP/CTP/GRP/ATP/EV
 
 The current maintained example estate has also been qualified against the live HEAD of 11 represented repositories. See [v1.1 HEAD qualification](docs/head-qualification.md).
 
+## Distributed resilience and amplification
+
+RAHP includes the portable **Distributed Resilience and Amplification Risk Model (DRARM)** for retry storms, reconnect herds, retry multiplication, queue/backpressure collapse, fan-out, poison messages, cascading dependency failure and related amplification risks. It can assess implementations, specifications, architecture bundles and composed systems without coupling the method to DTG, OpenVTC or another ecosystem.
+
+```bash
+python3 tools/rahp.py resilience --path ../target --repository owner/repository --revision <tag-or-commit>
+```
+
+The GitHub Actions workflow `distributed-resilience-assessment.yml` can run against a repository tag/commit or a standalone specification URL, produce machine-readable evidence, and create/coalesce a RAHP work item containing upstream-ready filing recommendations. See [Distributed resilience and amplification](docs/distributed-resilience.md).
+
 ## Monitoring and reassessment
 
 `tools/instance_monitor.py` provides reusable `repository@branch` source monitoring for static deployment profiles. Assessment identities remain repository-scoped on `main` and become branch-scoped for non-main targets, preventing independent assurance objects from being coalesced. Role-aware materiality profiles let implementations include source/tests while specifications emphasize normative/schema surfaces. `tools/issue_watch.py` provides an allow-listed early-warning channel for selected upstream architecture or governance issues. `tools/publish_assessment_issues.py` converts material observations into stable assessment work items, and `tools/reconcile_assessment_issues.py` can produce or explicitly apply an evidence-backed closure plan after every durable assessment associated with an issue is dispositioned.

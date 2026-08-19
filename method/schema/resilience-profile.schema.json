@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/rahp/schema/resilience-profile.schema.json",
+  "title": "RAHP distributed resilience assessment profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "profile", "target"],
+  "properties": {
+    "version": {"const": 1},
+    "profile": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "title"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+        "title": {"type": "string", "minLength": 1},
+        "description": {"type": "string"}
+      }
+    },
+    "target": {
+      "type": "object", "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {"enum": ["implementation", "specification", "architecture", "deployment", "composed-system", "mixed"]},
+        "include": {"type": "array", "items": {"type": "string"}},
+        "exclude": {"type": "array", "items": {"type": "string"}},
+        "languages": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "rules": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "include": {"type": "array", "items": {"type": "string", "pattern": "^RLA-[0-9]{3}$"}, "uniqueItems": true},
+        "exclude": {"type": "array", "items": {"type": "string", "pattern": "^RLA-[0-9]{3}$"}, "uniqueItems": true},
+        "detector_overrides": {"type": "object", "additionalProperties": {"enum": ["enabled", "disabled", "review-only"]}}
+      }
+    },
+    "thresholds": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "publish": {"enum": ["high-confidence", "all-findings", "findings-and-review-gaps"]},
+        "max_file_bytes": {"type": "integer", "minimum": 1024},
+        "max_files": {"type": "integer", "minimum": 1}
+      }
+    },
+    "upstream": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "repository": {"type": "string"},
+        "issue_labels": {"type": "array", "items": {"type": "string"}},
+        "filing_policy": {"enum": ["recommend-only", "eligible-for-auto-file"]}
+      }
+    },
+    "context": {"type": "object", "additionalProperties": true}
+  }
+}

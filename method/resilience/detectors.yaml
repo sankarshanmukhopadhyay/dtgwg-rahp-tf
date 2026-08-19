@@ -1,0 +1,185 @@
+version: 1
+# Detectors are conservative evidence signals. A match is not automatically a defect.
+# `finding_on_match` is used only where the matched construct itself is hazardous.
+# `review_on_match` asks for a control/evidence check around a construct.
+detectors:
+  retry-without-bounds:
+    mode: review_on_match
+    globs: ['**/*.rs','**/*.py','**/*.ts','**/*.js','**/*.go','**/*.java','**/*.md','**/*.yaml','**/*.yml']
+    any: ['retry','retries','retrying']
+    control_any: ['max_retries','max_attempt','retry_limit','retry budget','bounded retr','deadline','expires_at','retry_deadline']
+    prompt: Retry behaviour is present; verify attempts or total retry lifetime are explicitly bounded.
+  retry-without-backoff:
+    mode: review_on_match
+    any: ['retry','retries','retrying']
+    control_any: ['backoff','exponential','delay','sleep']
+    prompt: Retry behaviour is present; verify repeated attempts are paced with a governed backoff.
+  retry-without-jitter:
+    mode: review_on_match
+    any: ['backoff','retry']
+    control_any: ['jitter','random','rand::','thread_rng','fastrand']
+    prompt: Backoff is present; verify fleet-visible retries are desynchronised with jitter where shared failures can align clients.
+  reconnect-without-jitter:
+    mode: review_on_match
+    any: ['reconnect','reconnection']
+    control_any: ['jitter','random','rand::','thread_rng','fastrand']
+    prompt: Reconnection is implemented; verify reconnect timing cannot align a client fleet.
+  periodic-work-without-initial-jitter:
+    mode: review_on_match
+    any: ['interval(','interval_at(','tokio::time::interval','setinterval(','cron','schedule.every','sleep(60','sleep(300']
+    control_any: ['jitter','random','rand::','initial_delay','start_at','delay_queue']
+    prompt: Periodic work is present; verify the first run is spread across replicas when it is maintenance rather than user-triggered work.
+  multiple-retry-layers:
+    mode: evidence_gap
+    any: ['retry','reconnect','outbox','delivery']
+    control_any: ['retry owner','retry_owner','failure domain','retry ownership']
+    prompt: Multiple delivery/recovery constructs are present; require an explicit retry-owner map by failure domain.
+  unbounded-channel:
+    mode: finding_on_match
+    globs: ['**/*.rs','**/*.py','**/*.ts','**/*.tsx','**/*.js','**/*.jsx','**/*.go','**/*.java','**/*.kt','**/*.swift','**/*.c','**/*.cc','**/*.cpp','**/*.cs']
+    any: ['unbounded_channel','unbounded::','channel::unbounded','unbounded_sender','unboundedreceiver']
+    prompt: An unbounded asynchronous channel can turn sustained producer/consumer imbalance into memory exhaustion.
+  unbounded-queue:
+    mode: review_on_match
+    any: ['vecdeque','queue','deque','backlog']
+    control_any: ['capacity','max_','limit','bounded','semaphore']
+    prompt: Queue/backlog structure is present; verify a hard resource bound or governed spill/overload strategy.
+  drop-on-full:
+    mode: review_on_match
+    globs: ['**/*.rs','**/*.py','**/*.ts','**/*.tsx','**/*.js','**/*.jsx','**/*.go','**/*.java','**/*.kt','**/*.swift','**/*.c','**/*.cc','**/*.cpp','**/*.cs']
+    any: ['try_send','full(','queue full','channel full']
+    context_any: ['drop','dropped','discard']
+    prompt: Full-buffer handling appears to drop work; verify the source remains recoverable and loss is explicit.
+  ack-before-handoff:
+    mode: review_on_match
+    any: ['ack','acknowledge']
+    context_any: ['send','queue','handoff','dispatch']
+    prompt: Acknowledgement and local handoff coexist; verify acknowledgement occurs only after durable/recoverable handoff.
+  spawn-in-loop-without-semaphore:
+    mode: review_on_match
+    any: ['tokio::spawn','asyncio.create_task','create_task(','go func(','thread::spawn','executor.submit']
+    control_any: ['semaphore','buffer_unordered','join_set','workers','max_concurrency','concurrency_limit']
+    prompt: Dynamic task creation is present; verify input cardinality cannot create unbounded concurrent work.
+  gather-without-limit:
+    mode: review_on_match
+    any: ['join_all','gather(','promise.all']
+    control_any: ['buffer_unordered','semaphore','chunk','batch','limit']
+    prompt: Batch concurrency is present; verify the batch has a declared maximum cardinality.
+  nack-without-quarantine:
+    mode: review_on_match
+    any: ['nack','not ack','unacked','unacknowledged','redeliver']
+    control_any: ['quarantine','dead letter','dead_letter','poison','max_delivery','attempt_count']
+    prompt: Redelivery is possible; verify permanently invalid items reach a terminal quarantine/dead-letter state with evidence.
+  redelivery-without-attempt-limit:
+    mode: review_on_match
+    any: ['redeliver','redelivery','re-deliver']
+    control_any: ['attempt','max_','quarantine','dead letter']
+    prompt: Redelivery exists; verify attempt accounting and terminal handling for poison items.
+  serial-queue-with-unbounded-work:
+    mode: evidence_gap
+    any: ['queue','channel','receiver']
+    control_any: ['timeout','deadline','quarantine','parallel','concurrency']
+    prompt: Queue processing is present; require evidence that one item cannot indefinitely block unrelated work.
+  nested-timeouts-without-deadline:
+    mode: review_on_match
+    any: ['timeout(','timeout::','with_timeout','request_timeout']
+    control_any: ['deadline','budget','remaining_time','cancel']
+    prompt: Timeouts are present; verify nested operations consume a common deadline rather than multiplying latency windows.
+  dependency-call-with-retry-no-breaker:
+    mode: review_on_match
+    any: ['retry']
+    control_any: ['circuit','breaker','load shed','load_shed','degraded']
+    prompt: Dependency retries are present; verify prolonged failure has an explicit load-shed/degraded-state control.
+  failover-without-hysteresis:
+    mode: review_on_match
+    any: ['failover','fallback','alternate endpoint','secondary endpoint']
+    control_any: ['hysteresis','cooldown','health window','stable for','jitter']
+    prompt: Failover exists; verify recovery does not flap between unhealthy and healthy paths.
+  cache-without-singleflight:
+    mode: review_on_match
+    any: ['cache','ttl']
+    control_any: ['singleflight','single flight','coalesce','mutex','oncecell','negative cache','negative_cache']
+    prompt: Cached dependency work is present; verify concurrent misses are coalesced and failures can be negatively cached.
+  retry-without-idempotency:
+    mode: review_on_match
+    any: ['retry','redeliver','at-least-once','at least once']
+    control_any: ['idempot','dedup','operation_id','message_id','correlation_id']
+    prompt: At-least-once/retry behaviour exists; verify duplicate delivery cannot duplicate consequential effects.
+  blocking-chain:
+    mode: review_on_match
+    any: ['blocking_send','send().await','recv().await']
+    context_any: ['channel','queue']
+    prompt: Blocking channel operations are present; verify pressure cannot recursively stall unrelated upstream delivery.
+  silent-lag-drop:
+    mode: review_on_match
+    globs: ['**/*.rs','**/*.py','**/*.ts','**/*.tsx','**/*.js','**/*.jsx','**/*.go','**/*.java','**/*.kt','**/*.swift','**/*.c','**/*.cc','**/*.cpp','**/*.cs']
+    any: ['lagged','receiver lagged']
+    context_any: ['ignore','continue','drop','silent']
+    prompt: Subscriber lag handling may discard work; require explicit recoverability or durable evidence of loss.
+  restart-without-budget:
+    mode: evidence_gap
+    any: ['restart','supervisor','respawn','crash loop','crashloop']
+    control_any: ['backoff','budget','max_restart','restart_limit','stable']
+    prompt: Restart/supervision behaviour exists; verify a crash loop has bounded recovery and an observable terminal state.
+  unbounded-input:
+    mode: review_on_match
+    any: ['read_to_end','read_to_string','body().await','bytes().await','multipart']
+    control_any: ['content_length','max_size','limit','take(','body_limit','size_limit']
+    prompt: Input can be materialized in memory; verify an attacker-controlled size bound is applied before expensive work.
+  recursive-resolution-without-depth:
+    mode: review_on_match
+    any: ['resolve(','resolver','resolution']
+    control_any: ['max_depth','depth_limit','cycle','visited','resolution_budget']
+    prompt: Resolution is present; verify recursive references have depth/breadth budgets and cycle detection.
+  webhook-without-origin-or-hop-limit:
+    mode: review_on_match
+    any: ['webhook','callback url','callback_url']
+    control_any: ['origin','hop','loop','event_id','idempot']
+    prompt: Callback/webhook behaviour exists; verify loop detection and stable event identity across hops.
+  broadcast-without-subscriber-bound:
+    mode: review_on_match
+    any: ['broadcast::channel','broadcast channel','publish to all','subscriber']
+    control_any: ['capacity','max_subscriber','subscriber_limit','lag']
+    prompt: Broadcast/subscriber delivery exists; verify subscriber count and lag behaviour are bounded and observable.
+  backlog-drain-without-rate-limit:
+    mode: review_on_match
+    any: ['backlog','pickup','stored mail','stored message','replay']
+    control_any: ['batch','limit','rate','max_','page_size']
+    prompt: Recovery/backlog pickup exists; verify backlog drain cannot surge into a recovering dependency.
+  fixed-lease-renewal-without-jitter:
+    mode: review_on_match
+    any: ['lease','renewal','renew lease','lock ttl']
+    control_any: ['jitter','random','spread','fencing']
+    prompt: Lease renewal exists; verify renewal/expiry is not fleet-synchronised and stale holders are fenced.
+  breaker-without-half-open-bound:
+    mode: review_on_match
+    any: ['circuit breaker','circuit_breaker','half-open','half_open']
+    control_any: ['probe','max_requests','permit','semaphore','jitter']
+    prompt: Circuit breaking exists; verify half-open recovery admits only a bounded probe set.
+  log-in-retry-loop:
+    mode: review_on_match
+    any: ['retry','reconnect']
+    context_any: ['log','warn!','error!','info!','logger.']
+    control_any: ['rate_limit','sample','throttle','once']
+    prompt: Retry paths emit telemetry; verify incident traffic cannot create a telemetry storm.
+  dynamic-metric-label:
+    mode: review_on_match
+    any: ['labels(','with_label_values','attributes(','tag(']
+    context_any: ['did','url','error','user','tenant','repo','message']
+    control_any: ['allowlist','bucket','normalize','cardinality']
+    prompt: Dynamic values appear in metric labels; verify cardinality is bounded independently of attacker/workload identifiers.
+  pagination-without-limit:
+    mode: review_on_match
+    any: ['next_page','page +=','page+=','continuation','cursor']
+    control_any: ['max_pages','page_limit','item_limit','per_page','limit']
+    prompt: Pagination is present; verify a logical operation has total page/item/work bounds.
+  retry-without-retry-after:
+    mode: evidence_gap
+    any: ['retry','429','rate limit','rate_limit']
+    control_any: ['retry-after','retry_after','x-ratelimit-reset','rate_limit_reset']
+    prompt: Retry/rate-limit handling is present; verify server-provided retry timing is respected and bounded.
+  global-budget-without-principal-partition:
+    mode: evidence_gap
+    any: ['semaphore','rate limit','rate_limit','concurrency limit','queue limit']
+    control_any: ['tenant','principal','account','identity','per_user','per_tenant','fair']
+    prompt: A global resource bound exists; verify one principal cannot consume the entire shared budget.

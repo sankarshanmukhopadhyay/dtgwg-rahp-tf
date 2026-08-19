@@ -57,4 +57,14 @@ python3 tools/review.py --help
 A reviewer can scaffold and run a **RAHP pressure test**, a **security-hardening review**, or a **combined review** that preserves both analytical lenses and generates a cross-lens synthesis. See [`docs/review-modes.md`](docs/review-modes.md).
 
 `tools/review.py` is an orchestration tool, not a static vulnerability scanner: the findings must be produced from examination of the target specification or document, while the repository tooling handles canonical records, rendering, validation, reference resolution, and combined reporting.
+## Run a distributed-resilience assessment
+
+```bash
+python3 tools/rahp.py resilience \
+  --path ../target-repository \
+  --repository owner/repository \
+  --revision <tag-or-commit>
+```
+
+Use `examples/resilience/openvtc-cypress/profile.yaml` as a worked profile example, not as a dependency.
 

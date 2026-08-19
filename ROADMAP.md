@@ -639,3 +639,14 @@ sensitivity label) is implemented in v0.4 as `EV-*` contracts. v0.5 field work n
 needs to populate those contracts with real assessment evidence. The three-layer
 rule profile — core object rules, working-group adoption rules, runtime-readiness
 rules — remains the frame for Q4 and for future independent adopters.
+## Distributed resilience and amplification
+
+- [x] Portable DRARM catalogue and assurance levels.
+- [x] Conservative static evidence adapter for implementations/specifications.
+- [x] Revision-pinned JSON/Markdown evidence outputs.
+- [x] Stable/coalesced RAHP issue publication with upstream-ready filing guidance.
+- [x] Generic and OpenVTC Cypress reference profiles.
+- [ ] Add dynamic load/fault-injection adapters for DR-A4 evidence.
+- [ ] Add fleet simulation adapters for DR-A5 evidence.
+- [ ] Add cross-spec DRARM composition assertions to the generic cross-spec runner.
+

@@ -1,0 +1,27 @@
+version: 1
+profile:
+  id: openvtc-cypress
+  title: OpenVTC Cypress distributed resilience profile
+  description: Reference profile for the OpenVTC Cypress tagged release; it maps the target but does not change DRARM semantics.
+target:
+  type: mixed
+  include:
+    - '**/*.rs'
+    - '**/*.toml'
+    - '**/*.md'
+    - '**/*.yaml'
+    - '**/*.yml'
+  exclude:
+    - 'target/**'
+    - '.git/**'
+thresholds:
+  publish: findings-and-review-gaps
+  max_file_bytes: 1048576
+  max_files: 20000
+upstream:
+  repository: OpenVTC/openvtc
+  issue_labels: [resilience, assurance]
+  filing_policy: recommend-only
+context:
+  release: Cypress
+  reference_only: true

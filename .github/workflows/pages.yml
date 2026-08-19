@@ -33,6 +33,8 @@ jobs:
 
       - name: Validate portable assurance catalogue
         run: python3 tools/validate_catalogue.py
+      - name: Validate distributed resilience model
+        run: python3 tools/validate_resilience.py
       - name: Validate RAHP glossary
         run: python3 tools/validate_glossary.py
       - name: Validate portable catalogue documentation

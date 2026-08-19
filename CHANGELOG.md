@@ -20,6 +20,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- **Distributed Resilience and Amplification Risk Model (DRARM).** Adds a portable 30-risk catalogue covering retry, synchronization, queue, concurrency, dependency, duplicate-effect, event, recovery, operational and multi-tenant amplification. Includes machine-readable profiles/results, conservative evidence detectors, CLI execution, conformance tests and a one-click GitHub Action for repository tags/commits or standalone specification URLs. Generated RAHP assessment issues include evidence, required controls, assurance artifacts, the appropriate upstream control plane, and ready-to-file upstream issue text while preserving `recommend-only` filing authority by default.
+
 ### Documentation
 
 - Add a manual DTG cross-specification GitHub Actions workflow that publishes/coalesces a durable WG review issue, preserves an artifact copy, and emits upstream-ready finding sections.

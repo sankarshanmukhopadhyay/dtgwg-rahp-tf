@@ -179,6 +179,19 @@ def cmd_review(a: argparse.Namespace) -> None:
     print("\nConfigured review scaffold(s) created. Inspect target material and populate findings before rendering/validation.")
 
 
+
+def cmd_resilience(a: argparse.Namespace) -> None:
+    profile = a.profile or (ROOT / "profiles" / "resilience" / "default.yaml")
+    cmd = [sys.executable, str(ROOT / "tools" / "resilience_assess.py"),
+           "--target", str(a.path), "--profile", str(profile)]
+    if a.repository: cmd += ["--repository", a.repository]
+    if a.revision: cmd += ["--revision", a.revision]
+    if a.json: cmd += ["--json", str(a.json)]
+    if a.markdown: cmd += ["--markdown", str(a.markdown)]
+    if a.events: cmd += ["--events", str(a.events)]
+    subprocess.run(cmd, cwd=ROOT, check=True)
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     sub = ap.add_subparsers(dest="command", required=True)
@@ -193,6 +206,12 @@ def main() -> None:
     rv.add_argument("--config", type=pathlib.Path, required=True); rv.add_argument("--target"); rv.add_argument("--all", action="store_true")
     rv.add_argument("--mode", choices=["rahp","security","combined"]); rv.add_argument("--offline", action="store_true"); rv.add_argument("--force", action="store_true")
     rv.add_argument("--reviewed-on", default=dt.date.today().isoformat()); rv.add_argument("--dry-run", action="store_true", help="resolve configuration and show review scaffolding commands without writing files"); rv.set_defaults(func=cmd_review)
+    dr = sub.add_parser("resilience", help="run the portable Distributed Resilience and Amplification Risk Model")
+    dr.add_argument("--path", type=pathlib.Path, required=True, help="checked-out repository or extracted target directory")
+    dr.add_argument("--profile", type=pathlib.Path, help="DRARM profile; defaults to profiles/resilience/default.yaml")
+    dr.add_argument("--repository"); dr.add_argument("--revision")
+    dr.add_argument("--json", type=pathlib.Path); dr.add_argument("--markdown", type=pathlib.Path); dr.add_argument("--events", type=pathlib.Path)
+    dr.set_defaults(func=cmd_resilience)
     a = ap.parse_args()
     if hasattr(a, "all") and not a.all and not a.target:
         ap.error("specify --target ID or --all")

@@ -1,0 +1,15 @@
+version: 1
+profile:
+  id: generic-distributed-system
+  title: Generic distributed-system resilience assessment
+  description: Portable default profile for implementation, specification and mixed targets.
+target:
+  type: mixed
+  include: ['**/*']
+  exclude: ['.git/**','node_modules/**','vendor/**','target/**','dist/**','build/**','_site/**','archive/**']
+thresholds:
+  publish: high-confidence
+  max_file_bytes: 1048576
+  max_files: 20000
+upstream:
+  filing_policy: recommend-only

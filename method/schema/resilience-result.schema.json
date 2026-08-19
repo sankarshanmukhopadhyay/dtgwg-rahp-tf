@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/rahp/schema/resilience-result.schema.json",
+  "title": "RAHP distributed resilience assessment result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "model", "target", "summary", "findings", "evidence_manifest"],
+  "properties": {
+    "version": {"const": 1},
+    "model": {"const": "distributed-resilience-amplification"},
+    "target": {
+      "type": "object", "additionalProperties": true,
+      "required": ["path", "type"],
+      "properties": {"path": {"type": "string"}, "type": {"type": "string"}, "repository": {"type": "string"}, "revision": {"type": "string"}}
+    },
+    "summary": {
+      "type": "object", "additionalProperties": false,
+      "required": ["rules_evaluated", "finding_count", "review_gap_count", "pass_count"],
+      "properties": {
+        "rules_evaluated": {"type": "integer", "minimum": 0},
+        "finding_count": {"type": "integer", "minimum": 0},
+        "review_gap_count": {"type": "integer", "minimum": 0},
+        "pass_count": {"type": "integer", "minimum": 0},
+        "files_scanned": {"type": "integer", "minimum": 0}
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": true,
+        "required": ["id", "risk_id", "title", "status", "severity", "confidence", "evidence", "recommendation", "upstream_filing"],
+        "properties": {
+          "id": {"type": "string"}, "risk_id": {"type": "string"}, "title": {"type": "string"},
+          "status": {"enum": ["finding", "review-required", "pass"]},
+          "severity": {"type": "string"}, "confidence": {"enum": ["high", "medium", "low"]},
+          "evidence": {"type": "array", "items": {"type": "object", "additionalProperties": true}},
+          "recommendation": {"type": "string"},
+          "upstream_filing": {"type": "object", "additionalProperties": true}
+        }
+      }
+    },
+    "evidence_manifest": {"type": "array", "items": {"type": "object", "additionalProperties": true}}
+  }
+}
