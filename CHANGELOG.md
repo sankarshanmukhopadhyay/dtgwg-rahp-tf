@@ -1,3 +1,16 @@
+
+## Unreleased
+
+### Added
+- Activated all eight declared DTG cross-specification assurance seams with composed corpora and review baselines.
+- Added DTG VDS and Agent Names interface-assumption corpora with explicit `scenario-baseline` evidence grading.
+- Added profile-scoped cross-spec review identity and generic registry validation.
+
+### Changed
+- Made the manual cross-specification GitHub Actions workflow ecosystem-neutral: operators now provide a profile registry path and composition ID.
+- Moved canonical DTG cross-spec execution metadata to `profiles/dtg/cross-spec-tests.yaml`; `instances/dtg/cross-spec-tests.yaml` is a migration pointer only.
+- Extended pressure-test evidence validation to allow explicit non-commit evidence pins for scenario-baseline assessments while retaining commit requirements for `source-pinned` reviews.
+
 ## [Unreleased]
 
 ### Documentation

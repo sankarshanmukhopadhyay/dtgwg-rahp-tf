@@ -97,3 +97,72 @@ sources:
     observed_on: '2026-08-14'
   review_policy: Scenario semantics are RAHP-owned. Upstream specification or tracked architecture-issue changes require review
     before re-baselining.
+- corpus_id: CORPUS-DTG-VDS
+  corpus_file: corpora/vds.yaml
+  update_mode: assisted
+  source:
+    repository: trustoverip/dtgwg-vds-tf
+    branch: main
+    paths:
+    - README.md
+  review_policy: This is an interface-assumption baseline. Promote to source-pinned only after sufficient normative source
+    text exists and is human-reviewed.
+- corpus_id: CORPUS-DTG-AGENT-NAMES
+  corpus_file: corpora/agent-names.yaml
+  update_mode: assisted
+  source:
+    repository: trustoverip/dtgwg-agent-names-tf
+    branch: main
+    paths:
+    - README.md
+  review_policy: This is an interface-assumption baseline. Promote to source-pinned only after sufficient normative source
+    text exists and is human-reviewed.
+- corpus_id: CORPUS-CREDSPEC-ZKP-COMPOSED
+  corpus_file: corpora/credential-spec-zkp-composed.yaml
+  update_mode: derived
+  dependencies:
+  - CORPUS-DTG-CREDSPEC
+  - CORPUS-DTG-ZKP
+  review_policy: Recomposition is required whenever either dependency is semantically re-baselined.
+- corpus_id: CORPUS-CREDSPEC-VDS-COMPOSED
+  corpus_file: corpora/credential-spec-vds-composed.yaml
+  update_mode: derived
+  dependencies:
+  - CORPUS-DTG-CREDSPEC
+  - CORPUS-DTG-VDS
+  review_policy: Recomposition is required whenever either dependency is semantically re-baselined.
+- corpus_id: CORPUS-TT-ZKP-COMPOSED
+  corpus_file: corpora/trust-tasks-zkp-composed.yaml
+  update_mode: derived
+  dependencies:
+  - CORPUS-TRUST-TASKS
+  - CORPUS-DTG-ZKP
+  review_policy: Recomposition is required whenever either dependency is semantically re-baselined.
+- corpus_id: CORPUS-TT-VDS-COMPOSED
+  corpus_file: corpora/trust-tasks-vds-composed.yaml
+  update_mode: derived
+  dependencies:
+  - CORPUS-TRUST-TASKS
+  - CORPUS-DTG-VDS
+  review_policy: Recomposition is required whenever either dependency is semantically re-baselined.
+- corpus_id: CORPUS-ZKP-VDS-COMPOSED
+  corpus_file: corpora/zkp-vds-composed.yaml
+  update_mode: derived
+  dependencies:
+  - CORPUS-DTG-ZKP
+  - CORPUS-DTG-VDS
+  review_policy: Recomposition is required whenever either dependency is semantically re-baselined.
+- corpus_id: CORPUS-AGENTNAMES-TT-COMPOSED
+  corpus_file: corpora/agent-names-trust-tasks-composed.yaml
+  update_mode: derived
+  dependencies:
+  - CORPUS-DTG-AGENT-NAMES
+  - CORPUS-TRUST-TASKS
+  review_policy: Recomposition is required whenever either dependency is semantically re-baselined.
+- corpus_id: CORPUS-AGENTNAMES-CREDSPEC-COMPOSED
+  corpus_file: corpora/agent-names-credential-spec-composed.yaml
+  update_mode: derived
+  dependencies:
+  - CORPUS-DTG-AGENT-NAMES
+  - CORPUS-DTG-CREDSPEC
+  review_policy: Recomposition is required whenever either dependency is semantically re-baselined.

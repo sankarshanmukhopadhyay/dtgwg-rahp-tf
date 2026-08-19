@@ -9,7 +9,6 @@ from typing import Any
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_REGISTRY = ROOT / "instances/dtg/cross-spec-tests.yaml"
 
 
 def load_yaml(path: Path) -> dict[str, Any]:
@@ -48,6 +47,7 @@ def render_issue(item: dict[str, Any], assessment: dict[str, Any], run_url: str 
         f"# Cross-specification pressure test: {item['title']}", "",
         "> This is the durable RAHP review record for a manually invoked cross-specification pressure test. It is evidence for Working Group review; it does not itself change either upstream specification.", "",
         "## Review status", "",
+        f"- Profile: `{item.get('_profile_id', 'unknown')}`",
         f"- Composition ID: `{item['id']}`",
         f"- Priority: **{item.get('priority', 'unspecified')}**",
         f"- RAHP assessment: `{item['assessment']}`",
@@ -63,7 +63,8 @@ def render_issue(item: dict[str, Any], assessment: dict[str, Any], run_url: str 
         f"Open findings: **{summary.get('open_count', sum(1 for f in findings if f.get('status') == 'open'))}** of **{summary.get('finding_count', len(findings))}**.", "",
         "## Scope and provenance", "",
         f"- Reviewed composition/version: `{target.get('version', 'not recorded')}`",
-        f"- Evidence pin: `{target.get('commit', 'not recorded')}`",
+        f"- Evidence grade: `{review.get('evidence_grade', item.get('evidence_grade', 'not recorded'))}`",
+        f"- Evidence pin: `{target.get('commit') or target.get('evidence_pin', 'not recorded')}`",
         f"- RAHP version: `{(review.get('reviewed_against') or {}).get('rahp_version', 'not recorded')}`",
         f"- Corpus: `{item.get('corpus_id', 'not recorded')}`",
         f"- Assurance focus: {md_list(item.get('assurance_focus', []))}", "",
@@ -132,12 +133,14 @@ def render_issue(item: dict[str, Any], assessment: dict[str, Any], run_url: str 
 
 
 def event_for(item: dict[str, Any], body: str) -> dict[str, Any]:
+    profile_id = item.get("_profile_id", "external")
+    labels = item.get("_issue_labels") or ["assessment-required", "cross-specification"]
     return {
-        "assessment_key": f"dtg:cross-spec:{item['id']}",
+        "assessment_key": f"{profile_id}:cross-spec:{item['id']}",
         "source": "manual-cross-spec-pressure-test",
         "title": f"[Cross-spec] {item['title']} pressure-test review",
         "body": body,
-        "labels": ["assessment-required", "dtg-instance", "cross-specification"],
+        "labels": labels,
         "repository": " + ".join(c.get("repository", "") for c in item.get("components", [])),
         "theme": "cross-specification-assurance",
         "affected_reviews": [item.get("assessment", "")],
@@ -147,13 +150,19 @@ def event_for(item: dict[str, Any], body: str) -> dict[str, Any]:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("composition_id")
-    ap.add_argument("--registry", type=Path, default=DEFAULT_REGISTRY)
+    ap.add_argument("--registry", type=Path, required=True, help="Profile-owned cross-spec registry path")
     ap.add_argument("--output", type=Path, default=ROOT / "build/cross-spec-review.md")
     ap.add_argument("--events", type=Path, default=ROOT / "build/cross-spec-review-events.json")
     ap.add_argument("--run-url", default="")
     args = ap.parse_args()
-    registry = load_yaml(args.registry)
+    registry_path = args.registry if args.registry.is_absolute() else ROOT / args.registry
+    registry = load_yaml(registry_path)
+    if registry.get("deprecated") and registry.get("canonical_registry"):
+        registry = load_yaml(ROOT / registry["canonical_registry"])
     item = composition(registry, args.composition_id)
+    profile = registry.get("profile") or {}
+    item["_profile_id"] = profile.get("id", "external")
+    item["_issue_labels"] = profile.get("issue_labels") or ["assessment-required", "cross-specification"]
     assessment = load_yaml(ROOT / item["assessment"])
     body = render_issue(item, assessment, args.run_url)
     args.output.parent.mkdir(parents=True, exist_ok=True)

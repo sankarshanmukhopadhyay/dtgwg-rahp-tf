@@ -1,14 +1,16 @@
-name: Run DTG cross-specification pressure test
+name: Run cross-specification pressure test
 
 on:
   workflow_dispatch:
     inputs:
-      composition_id:
-        description: Maintained cross-specification composition to assess
+      registry_path:
+        description: Profile registry path (for example profiles/<ecosystem>/cross-spec-tests.yaml)
         required: true
-        type: choice
-        options:
-          - trust-tasks--credential-spec
+        type: string
+      composition_id:
+        description: Runnable composition ID from that profile registry
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -24,18 +26,27 @@ jobs:
           python-version: '3.11'
       - run: pip install -r requirements.txt
 
-      - name: Validate declared cross-specification registry
-        run: python3 tools/validate_cross_spec_registry.py
+      - name: Validate selected profile registry
+        run: python3 tools/validate_cross_spec_registry.py --registry "${{ inputs.registry_path }}"
 
-      - name: Validate cross-specification evidence baseline
+      - name: Resolve selected composition
+        id: selection
+        run: >-
+          python3 tools/cross_spec_selection.py
+          --registry "${{ inputs.registry_path }}"
+          --composition "${{ inputs.composition_id }}"
+          --github-output "$GITHUB_OUTPUT"
+
+      - name: Validate selected composition evidence
         run: |
-          python3 tools/validate_scenario_corpora.py
-          python3 tools/validate_pressure_tests.py
+          python3 tools/validate_scenario_corpora.py --registry "${{ inputs.registry_path }}" --composition "${{ inputs.composition_id }}"
+          python3 tools/validate_pressure_tests.py --file "${{ steps.selection.outputs.assessment }}"
 
-      - name: Prepare detailed WG review record
+      - name: Prepare detailed review record
         run: >-
           python3 tools/cross_spec_review.py
           "${{ inputs.composition_id }}"
+          --registry "${{ inputs.registry_path }}"
           --output build/cross-spec-review.md
           --events build/cross-spec-review-events.json
           --run-url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"

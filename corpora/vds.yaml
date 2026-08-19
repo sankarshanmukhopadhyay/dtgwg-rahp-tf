@@ -1,0 +1,43 @@
+corpus:
+  id: CORPUS-DTG-VDS
+  title: DTG VDS interface-assumption corpus
+  source_repository: trustoverip/dtgwg-vds-tf
+  source_path: README.md
+  source_commit: interface-assumption-baseline
+  adapter_version: '1.0'
+  description: RAHP adapter for the currently thin DTG VDS task-force repository. Until normative VDS text is published, these
+    scenarios are interface-assumption probes and MUST NOT be represented as normative conformance claims.
+  evidence_grade: scenario-baseline
+  scenarios:
+  - id: VDS-BASE-001
+    title: Persistent relationship state outlives current authority
+    domain: Persistent state
+    primary_goal: Prevent historical relationship state from being treated as current authority
+    primary_pressure: Lifecycle persistence
+    priority: P0
+    scenario_patterns:
+    - SP-GOV-01
+  - id: VDS-BASE-002
+    title: Graph traversal broadens the audience for relationship evidence
+    domain: Privacy
+    primary_goal: Prevent graph topology from silently expanding disclosure
+    primary_pressure: Topology disclosure
+    priority: P0
+    scenario_patterns:
+    - SP-PRIV-02
+  - id: VDS-BASE-003
+    title: Conflicting graph assertions lack a deterministic authority rule
+    domain: Authority
+    primary_goal: Keep authority provenance explicit when assertions conflict
+    primary_pressure: Authority ambiguity
+    priority: P0
+    scenario_patterns:
+    - SP-AUTH-02
+  - id: VDS-BASE-004
+    title: Superseded graph state remains independently discoverable
+    domain: Lifecycle
+    primary_goal: Make supersession and historical state explicit
+    primary_pressure: Stale state
+    priority: P0
+    scenario_patterns:
+    - SP-COMP-02

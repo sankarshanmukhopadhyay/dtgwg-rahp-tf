@@ -1,0 +1,172 @@
+version: 2
+profile:
+  id: dtg
+  title: DTG example cross-specification assurance pack
+  namespace: dtg
+  issue_labels:
+  - assessment-required
+  - dtg-instance
+  - cross-specification
+  description: Optional RAHP example profile for DTG. RAHP core does not require or auto-load this profile.
+issue_repository: sankarshanmukhopadhyay/rahp-toolkit
+purpose: Declared DTG cross-specification assurance seams. This registry is profile-owned example data; RAHP core remains
+  ecosystem-neutral.
+compositions:
+- id: trust-tasks--credential-spec
+  title: "Trust Tasks \xD7 DTG Credential Specification"
+  status: maintained
+  runnable: true
+  priority: P0
+  evidence_grade: source-pinned
+  corpus_id: CORPUS-TT-CREDSPEC-COMPOSED
+  assessment: examples/cross-spec/trust-tasks-credspec/pressure-test.yaml
+  components:
+  - repository: trustoverip/dtgwg-trust-tasks-tf
+    corpus_id: CORPUS-TRUST-TASKS
+    upstream_issue_target: true
+  - repository: trustoverip/dtgwg-cred-spec
+    corpus_id: CORPUS-DTG-CREDSPEC
+    upstream_issue_target: true
+  assurance_focus:
+  - authority-and-delegation
+  - lifecycle-and-revocation
+  - replay-and-idempotency
+  - privacy-composition
+  - redress-and-contestability
+- id: credential-spec--zkp
+  title: "DTG Credential Specification \xD7 ZKP"
+  status: maintained
+  runnable: true
+  priority: P0
+  evidence_grade: source-informed
+  corpus_id: CORPUS-CREDSPEC-ZKP-COMPOSED
+  assessment: examples/cross-spec/credential-spec--zkp/pressure-test.yaml
+  components:
+  - repository: trustoverip/dtgwg-cred-spec
+    corpus_id: CORPUS-DTG-CREDSPEC
+    upstream_issue_target: true
+  - repository: trustoverip/dtgwg-zkp-tf
+    corpus_id: CORPUS-DTG-ZKP
+    upstream_issue_target: true
+  assurance_focus:
+  - proof-semantics
+  - authority
+  - lifecycle
+  - privacy-composition
+- id: credential-spec--vds
+  title: "DTG Credential Specification \xD7 VDS"
+  status: maintained
+  runnable: true
+  priority: P0
+  evidence_grade: scenario-baseline
+  corpus_id: CORPUS-CREDSPEC-VDS-COMPOSED
+  assessment: examples/cross-spec/credential-spec--vds/pressure-test.yaml
+  components:
+  - repository: trustoverip/dtgwg-cred-spec
+    corpus_id: CORPUS-DTG-CREDSPEC
+    upstream_issue_target: true
+  - repository: trustoverip/dtgwg-vds-tf
+    corpus_id: CORPUS-DTG-VDS
+    upstream_issue_target: true
+  assurance_focus:
+  - persistent-state
+  - authority
+  - lifecycle
+  - provenance
+- id: trust-tasks--zkp
+  title: "Trust Tasks \xD7 ZKP"
+  status: maintained
+  runnable: true
+  priority: P0
+  evidence_grade: source-informed
+  corpus_id: CORPUS-TT-ZKP-COMPOSED
+  assessment: examples/cross-spec/trust-tasks--zkp/pressure-test.yaml
+  components:
+  - repository: trustoverip/dtgwg-trust-tasks-tf
+    corpus_id: CORPUS-TRUST-TASKS
+    upstream_issue_target: true
+  - repository: trustoverip/dtgwg-zkp-tf
+    corpus_id: CORPUS-DTG-ZKP
+    upstream_issue_target: true
+  assurance_focus:
+  - proof-versus-authority
+  - delegation
+  - replay
+  - freshness
+- id: trust-tasks--vds
+  title: "Trust Tasks \xD7 VDS"
+  status: maintained
+  runnable: true
+  priority: P1
+  evidence_grade: scenario-baseline
+  corpus_id: CORPUS-TT-VDS-COMPOSED
+  assessment: examples/cross-spec/trust-tasks--vds/pressure-test.yaml
+  components:
+  - repository: trustoverip/dtgwg-trust-tasks-tf
+    corpus_id: CORPUS-TRUST-TASKS
+    upstream_issue_target: true
+  - repository: trustoverip/dtgwg-vds-tf
+    corpus_id: CORPUS-DTG-VDS
+    upstream_issue_target: true
+  assurance_focus:
+  - persistent-state-versus-current-authority
+  - lifecycle
+  - auditability
+- id: zkp--vds
+  title: "ZKP \xD7 VDS"
+  status: maintained
+  runnable: true
+  priority: P1
+  evidence_grade: scenario-baseline
+  corpus_id: CORPUS-ZKP-VDS-COMPOSED
+  assessment: examples/cross-spec/zkp--vds/pressure-test.yaml
+  components:
+  - repository: trustoverip/dtgwg-zkp-tf
+    corpus_id: CORPUS-DTG-ZKP
+    upstream_issue_target: true
+  - repository: trustoverip/dtgwg-vds-tf
+    corpus_id: CORPUS-DTG-VDS
+    upstream_issue_target: true
+  assurance_focus:
+  - linkability
+  - selective-disclosure
+  - lifecycle
+  - provenance
+- id: agent-names--trust-tasks
+  title: "Agent Names \xD7 Trust Tasks"
+  status: maintained
+  runnable: true
+  priority: P1
+  evidence_grade: scenario-baseline
+  corpus_id: CORPUS-AGENTNAMES-TT-COMPOSED
+  assessment: examples/cross-spec/agent-names--trust-tasks/pressure-test.yaml
+  components:
+  - repository: trustoverip/dtgwg-agent-names-tf
+    corpus_id: CORPUS-DTG-AGENT-NAMES
+    upstream_issue_target: true
+  - repository: trustoverip/dtgwg-trust-tasks-tf
+    corpus_id: CORPUS-TRUST-TASKS
+    upstream_issue_target: true
+  assurance_focus:
+  - identity-versus-authority
+  - delegation
+  - controller-semantics
+- id: agent-names--credential-spec
+  title: "Agent Names \xD7 DTG Credential Specification"
+  status: maintained
+  runnable: true
+  priority: P1
+  evidence_grade: scenario-baseline
+  corpus_id: CORPUS-AGENTNAMES-CREDSPEC-COMPOSED
+  assessment: examples/cross-spec/agent-names--credential-spec/pressure-test.yaml
+  components:
+  - repository: trustoverip/dtgwg-agent-names-tf
+    corpus_id: CORPUS-DTG-AGENT-NAMES
+    upstream_issue_target: true
+  - repository: trustoverip/dtgwg-cred-spec
+    corpus_id: CORPUS-DTG-CREDSPEC
+    upstream_issue_target: true
+  assurance_focus:
+  - identifier-semantics
+  - subject-control
+  - authority

@@ -1,0 +1,132 @@
+corpus:
+  id: CORPUS-TT-ZKP-COMPOSED
+  title: "Trust Tasks \xD7 ZKP composed scenario corpus"
+  adapter_version: '1.0'
+  description: "RAHP-authored cross-specification scenarios for the Trust Tasks \xD7 ZKP seam. These XSP IDs are RAHP assessment\
+    \ artefacts, not upstream identifiers."
+  evidence_grade: source-informed
+  depends_on:
+  - corpus_id: CORPUS-TRUST-TASKS
+  - corpus_id: CORPUS-DTG-ZKP
+  assurance_catalogue: method/catalogue/
+  scenarios:
+  - id: XSP-TZ-001
+    title: Proof of a predicate is treated as delegation to perform the task
+    domain: Cross-spec / delegation
+    primary_goal: Keep proof satisfaction separate from delegated authority
+    primary_pressure: Proof-versus-authority
+    priority: P0
+    scenario_patterns:
+    - SP-DEL-01
+    - SP-COMP-01
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-AUT-04
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-COMP-01
+      - RKP-AUTH-02
+      control_patterns:
+      - CTP-COMP-01
+      - CTP-AUTH-02
+      guardrail_patterns:
+      - GRP-COMP-01
+      - GRP-AUTH-02
+      assurance_patterns:
+      - ATP-COMP-01
+      - ATP-AUTH-02
+      evidence_patterns:
+      - EVP-COMP-01
+      - EVP-AUTH-01
+  - id: XSP-TZ-002
+    title: Proof subject differs from the principal authorized by the task
+    domain: Cross-spec / identity
+    primary_goal: Bind proof subject/controller semantics to task principal
+    primary_pressure: Principal mismatch
+    priority: P0
+    scenario_patterns:
+    - SP-AUTH-01
+    - SP-COMP-01
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-AUT-04
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-COMP-01
+      - RKP-AUTH-02
+      control_patterns:
+      - CTP-COMP-01
+      - CTP-AUTH-02
+      guardrail_patterns:
+      - GRP-COMP-01
+      - GRP-AUTH-02
+      assurance_patterns:
+      - ATP-COMP-01
+      - ATP-AUTH-02
+      evidence_patterns:
+      - EVP-COMP-01
+      - EVP-AUTH-01
+  - id: XSP-TZ-003
+    title: Valid proof is replayed into another task or side effect
+    domain: Cross-spec / replay
+    primary_goal: Bind proof to a single task context and action scope
+    primary_pressure: Composite replay
+    priority: P0
+    scenario_patterns:
+    - SP-REPLAY-01
+    - SP-COMP-01
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-AUT-04
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-COMP-01
+      - RKP-AUTH-02
+      control_patterns:
+      - CTP-COMP-01
+      - CTP-AUTH-02
+      guardrail_patterns:
+      - GRP-COMP-01
+      - GRP-AUTH-02
+      assurance_patterns:
+      - ATP-COMP-01
+      - ATP-AUTH-02
+      evidence_patterns:
+      - EVP-COMP-01
+      - EVP-AUTH-01
+  - id: XSP-TZ-004
+    title: Delegation is withdrawn after proof generation but before execution
+    domain: Cross-spec / lifecycle
+    primary_goal: Re-evaluate delegation at the action boundary
+    primary_pressure: Freshness gap
+    priority: P0
+    scenario_patterns:
+    - SP-GOV-01
+    - SP-COMP-01
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-AUT-04
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-COMP-01
+      - RKP-AUTH-02
+      control_patterns:
+      - CTP-COMP-01
+      - CTP-AUTH-02
+      guardrail_patterns:
+      - GRP-COMP-01
+      - GRP-AUTH-02
+      assurance_patterns:
+      - ATP-COMP-01
+      - ATP-AUTH-02
+      evidence_patterns:
+      - EVP-COMP-01
+      - EVP-AUTH-01

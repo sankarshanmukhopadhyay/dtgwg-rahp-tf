@@ -1,0 +1,132 @@
+corpus:
+  id: CORPUS-AGENTNAMES-TT-COMPOSED
+  title: "Agent Names \xD7 Trust Tasks composed scenario corpus"
+  adapter_version: '1.0'
+  description: "RAHP-authored cross-specification scenarios for the Agent Names \xD7 Trust Tasks seam. These XSP IDs are RAHP\
+    \ assessment artefacts, not upstream identifiers."
+  evidence_grade: scenario-baseline
+  depends_on:
+  - corpus_id: CORPUS-DTG-AGENT-NAMES
+  - corpus_id: CORPUS-TRUST-TASKS
+  assurance_catalogue: method/catalogue/
+  scenarios:
+  - id: XSP-AT-XS-001
+    title: Resolvable agent name is treated as task authority
+    domain: Cross-spec / authority
+    primary_goal: Separate agent naming from delegated mandate
+    primary_pressure: Name-to-authority substitution
+    priority: P1
+    scenario_patterns:
+    - SP-DEL-01
+    - SP-COMP-01
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-AUT-04
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-COMP-01
+      - RKP-AUTH-02
+      control_patterns:
+      - CTP-COMP-01
+      - CTP-AUTH-02
+      guardrail_patterns:
+      - GRP-COMP-01
+      - GRP-AUTH-02
+      assurance_patterns:
+      - ATP-COMP-01
+      - ATP-AUTH-02
+      evidence_patterns:
+      - EVP-COMP-01
+      - EVP-AUTH-01
+  - id: XSP-AT-XS-002
+    title: Agent controller changes while an existing task remains executable
+    domain: Cross-spec / lifecycle
+    primary_goal: Bind task authority to current controller state
+    primary_pressure: Controller drift
+    priority: P1
+    scenario_patterns:
+    - SP-GOV-01
+    - SP-COMP-01
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-AUT-04
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-COMP-01
+      - RKP-AUTH-02
+      control_patterns:
+      - CTP-COMP-01
+      - CTP-AUTH-02
+      guardrail_patterns:
+      - GRP-COMP-01
+      - GRP-AUTH-02
+      assurance_patterns:
+      - ATP-COMP-01
+      - ATP-AUTH-02
+      evidence_patterns:
+      - EVP-COMP-01
+      - EVP-AUTH-01
+  - id: XSP-AT-XS-003
+    title: Task principal and named agent are conflated across delegation hops
+    domain: Cross-spec / identity
+    primary_goal: Preserve principal, delegate and controller roles
+    primary_pressure: Role confusion
+    priority: P1
+    scenario_patterns:
+    - SP-AUTH-01
+    - SP-COMP-01
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-AUT-04
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-COMP-01
+      - RKP-AUTH-02
+      control_patterns:
+      - CTP-COMP-01
+      - CTP-AUTH-02
+      guardrail_patterns:
+      - GRP-COMP-01
+      - GRP-AUTH-02
+      assurance_patterns:
+      - ATP-COMP-01
+      - ATP-AUTH-02
+      evidence_patterns:
+      - EVP-COMP-01
+      - EVP-AUTH-01
+  - id: XSP-AT-XS-004
+    title: Stable agent name enables cross-task correlation beyond need
+    domain: Cross-spec / privacy
+    primary_goal: Limit correlation introduced by naming
+    primary_pressure: Correlation
+    priority: P1
+    scenario_patterns:
+    - SP-PRIV-02
+    - SP-COMP-01
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-AUT-04
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-COMP-01
+      - RKP-AUTH-02
+      control_patterns:
+      - CTP-COMP-01
+      - CTP-AUTH-02
+      guardrail_patterns:
+      - GRP-COMP-01
+      - GRP-AUTH-02
+      assurance_patterns:
+      - ATP-COMP-01
+      - ATP-AUTH-02
+      evidence_patterns:
+      - EVP-COMP-01
+      - EVP-AUTH-01

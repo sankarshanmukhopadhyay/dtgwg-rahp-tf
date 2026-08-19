@@ -170,7 +170,7 @@ The bundled DTG exemplar currently contains:
 These are **deployment-local records**, not the portable `HRM/RKP/CTP/GRP/ATP/EVP` method catalogue.
 - **CAWG/C2PA deployment:** an independently scoped, branch-aware external deployment with its own local risk namespace and monitoring state. See [CAWG/C2PA instance](docs/cawg-instance.md).
 - **A2A:** an agent-protocol worked pressure test focused on discovery, delegation, callback trust, secondary credentials, and action provenance. See [A2A worked example](docs/a2a-example.md).
-- **Trust Tasks × DTG Credential Specification:** a first-class cross-specification assessment showing how individually reasonable components can still produce authority, lifecycle, privacy, replay, and redress failures when composed. See [Cross-spec pressure testing](docs/cross-spec-pressure-testing.md). The maintained DTG composition can also be invoked manually through GitHub Actions; the run publishes a durable RAHP issue for WG circulation and includes upstream-ready issue candidates without auto-filing normative changes.
+- **Cross-specification pressure testing:** a profile-driven capability for testing emergent failures between specifications without coupling RAHP core to any ecosystem. The optional DTG profile now demonstrates eight runnable seams; the same generic GitHub Actions workflow can execute a CAWG/C2PA or other profile by supplying that profile registry path and composition ID. Runs publish durable RAHP review issues with upstream-ready candidate sections but do not auto-file normative changes. See [Cross-spec pressure testing](docs/cross-spec-pressure-testing.md).
 - **W3C DID Resolution v1:** a pinned Candidate Recommendation pressure test separating evidence retrieval, authority, freshness, resolver privacy and dereferencing assurance. See [`examples/w3c-did-resolution-2026-cr/`](examples/w3c-did-resolution-2026-cr/README.md).
 - **DID Resolution × UN/CEFACT GRID/GTR:** a maintained cross-specification example that keeps technical DID control separate from registrar authority and relying-party trust decisions. See [`examples/cross-spec/did-resolution-grid-gtr/`](examples/cross-spec/did-resolution-grid-gtr/README.md).
 
@@ -224,3 +224,8 @@ Release history is maintained in [CHANGELOG.md](CHANGELOG.md) and [release docum
 RAHP Toolkit preserves its DTG origin as provenance while operating as a portable, independently reusable assurance toolkit.
 
 **CC-BY 4.0 — reuse with attribution.**
+
+
+### Optional ecosystem profiles
+
+RAHP core is ecosystem-neutral. Deployment-specific registries and policy live under `profiles/<ecosystem>/` or `instances/<ecosystem>/`; they are loaded only when an operator explicitly selects them. The DTG cross-spec registry is an example pack at `profiles/dtg/cross-spec-tests.yaml`, not a core dependency.

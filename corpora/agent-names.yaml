@@ -1,0 +1,43 @@
+corpus:
+  id: CORPUS-DTG-AGENT-NAMES
+  title: DTG Agent Names interface-assumption corpus
+  source_repository: trustoverip/dtgwg-agent-names-tf
+  source_path: README.md
+  source_commit: interface-assumption-baseline
+  adapter_version: '1.0'
+  description: RAHP adapter for the currently thin DTG Agent Names task-force repository. Until normative naming semantics
+    are published, these scenarios test interface assumptions only and MUST NOT be represented as normative conformance claims.
+  evidence_grade: scenario-baseline
+  scenarios:
+  - id: AN-BASE-001
+    title: Resolvable agent name is treated as proof of controller identity
+    domain: Identity
+    primary_goal: Separate resolution from controller authentication
+    primary_pressure: Identity substitution
+    priority: P0
+    scenario_patterns:
+    - SP-AUTH-01
+  - id: AN-BASE-002
+    title: Agent name is treated as delegated authority
+    domain: Delegation
+    primary_goal: Separate naming from authorization and delegated mandate
+    primary_pressure: Authority substitution
+    priority: P0
+    scenario_patterns:
+    - SP-DEL-01
+  - id: AN-BASE-003
+    title: Agent name changes controller without lifecycle evidence
+    domain: Lifecycle
+    primary_goal: Make controller and ownership changes auditable
+    primary_pressure: Controller drift
+    priority: P0
+    scenario_patterns:
+    - SP-GOV-01
+  - id: AN-BASE-004
+    title: Stable agent name becomes a cross-context correlation handle
+    domain: Privacy
+    primary_goal: Prevent naming from creating unnecessary linkability
+    primary_pressure: Correlation
+    priority: P0
+    scenario_patterns:
+    - SP-PRIV-02

@@ -8,6 +8,7 @@ deployment can own risk identifiers without importing them into DTG data.
 """
 from __future__ import annotations
 
+import argparse
 import pathlib
 import re
 import subprocess
@@ -51,6 +52,9 @@ def dispositions() -> set[str]:
 
 
 def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--file", type=pathlib.Path, help="Validate one pressure-test YAML instead of the entire repository")
+    args = ap.parse_args()
     pattern_doc = load_yaml(ROOT / "method" / "scenario-patterns.yaml")
     known_patterns = {str(p.get("id")) for p in pattern_doc.get("patterns", []) if p.get("id")}
     corpus_scenarios = set()
@@ -68,7 +72,7 @@ def main() -> int:
     allowed_status = {"in-progress", "complete", "open", "monitoring", "resolved", "superseded"}
     allowed_severity = {"Low", "Medium", "High", "Critical"}
 
-    files = sorted(ROOT.glob("examples/**/pressure-test.yaml"))
+    files = [args.file if args.file.is_absolute() else ROOT / args.file] if args.file else sorted(ROOT.glob("examples/**/pressure-test.yaml"))
     if not files:
         print("ERROR no examples/**/pressure-test.yaml files found")
         return 1
@@ -92,12 +96,18 @@ def main() -> int:
             errors.append(f"{rel}: review.status={review.get('status')!r} is not permitted")
 
         target = review.get("target") or {}
-        for field in ("repository", "version", "commit"):
+        for field in ("repository", "version"):
             if not target.get(field):
                 errors.append(f"{rel}: review.target.{field} is required")
         commit = str(target.get("commit") or "")
+        evidence_pin = str(target.get("evidence_pin") or "")
+        if not commit and not evidence_pin:
+            errors.append(f"{rel}: review.target requires commit or evidence_pin")
         if commit and not re.fullmatch(r"[0-9a-fA-F]{40}", commit):
             errors.append(f"{rel}: review.target.commit must be a full 40-character commit SHA")
+        grade = str(review.get("evidence_grade") or "source-pinned")
+        if grade == "source-pinned" and not commit:
+            errors.append(f"{rel}: source-pinned assessment requires review.target.commit")
 
         against = review.get("reviewed_against") or {}
         if not against.get("rahp_version"):
@@ -182,11 +192,12 @@ def main() -> int:
         print(f"\nPressure-test validation failed: {len(errors)} error(s) across {len(files)} review file(s).")
         return 1
 
-    renderer = ROOT / "tools" / "render_pressure_tests.py"
-    rendered = subprocess.run([sys.executable, str(renderer), "--check"], cwd=ROOT, text=True)
-    if rendered.returncode != 0:
-        print("\nPressure-test validation failed: generated Markdown is missing or stale.")
-        return 1
+    if not args.file:
+        renderer = ROOT / "tools" / "render_pressure_tests.py"
+        rendered = subprocess.run([sys.executable, str(renderer), "--check"], cwd=ROOT, text=True)
+        if rendered.returncode != 0:
+            print("\nPressure-test validation failed: generated Markdown is missing or stale.")
+            return 1
 
     risk_catalogues = [str(p.relative_to(ROOT)) for p in catalogue_paths("risks.yaml") if p.exists()]
     print(f"Pressure-test validation clean: {len(files)} review file(s), {findings_seen} finding(s), all references resolved, Markdown current.")

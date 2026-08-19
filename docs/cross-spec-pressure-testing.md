@@ -52,7 +52,11 @@ A cross-spec finding should identify whether the remediation belongs primarily t
 
 ## Manual GitHub Actions execution and WG review record
 
-The DTG deployment declares supported seams in [`instances/dtg/cross-spec-tests.yaml`](../instances/dtg/cross-spec-tests.yaml). A composition becomes selectable in the **Run DTG cross-specification pressure test** workflow only after it has a reviewed composed corpus and durable assessment record. Candidate seams remain visible in the registry but cannot be invoked accidentally.
+Cross-specification execution is **profile-owned, not DTG-owned**. RAHP core provides the generic workflow and validators; an ecosystem supplies its own registry, component adapters, composed corpora and reviewed assessment records. The DTG example pack declares its seams in [`profiles/dtg/cross-spec-tests.yaml`](../profiles/dtg/cross-spec-tests.yaml).
+
+The manual **Run cross-specification pressure test** workflow accepts two explicit inputs: `registry_path` and `composition_id`. Nothing in the executor auto-loads DTG. A CAWG/C2PA deployment can therefore point at a CAWG-owned registry and run without evaluating, validating or publishing DTG compositions.
+
+A composition is `runnable: true` only when its profile supplies a composed corpus and assessment record. `evidence_grade` distinguishes source-pinned/source-informed assessments from scenario-baseline assessments where upstream material is not yet sufficiently normative.
 
 A manual workflow run:
 
@@ -64,7 +68,7 @@ A manual workflow run:
 
 The RAHP issue is the **WG circulation URL and evidence hub**. It contains an **Upstream issue candidates** section with one ready-to-triage block per open finding. Upstream filing is intentionally human-controlled: a WG or maintainer first confirms which specification owns the semantic contract, then files the relevant block upstream and links the upstream issue back to the RAHP review. This prevents an assurance tool from asserting normative ownership on behalf of an upstream project.
 
-Repeated manual runs use a stable `dtg:cross-spec:<composition-id>` assessment key. If the corresponding RAHP work item is still open, new triggers are coalesced into that issue rather than producing duplicate WG review URLs.
+Repeated manual runs use a stable `<profile-id>:cross-spec:<composition-id>` assessment key. If the corresponding RAHP work item is still open, new triggers are coalesced into that issue rather than producing duplicate WG review URLs.
 
 ## v1.1 portable assurance mapping
 
@@ -73,3 +77,21 @@ Cross-spec reviews should map local findings to portable `RKP-*`, `CTP-*`, `GRP-
 The maintained worked assessment is [`examples/cross-spec/trust-tasks-credspec/pressure-test.yaml`](../examples/cross-spec/trust-tasks-credspec/pressure-test.yaml), with a generated readable view in its README. A combined synthesis also links this RAHP review to the existing composition security threat model.
 
 A useful closure condition is therefore stronger than “both component specifications validate”: the composition should demonstrate semantic ownership, lifecycle alignment, authority continuity, privacy composition and contestability evidence at the seam.
+
+
+## Profile isolation
+
+RAHP treats ecosystem content as optional deployment packs:
+
+```text
+RAHP core
+  tools/ + method/ + generic workflow
+        │
+        ├── profiles/dtg/   -> optional DTG registry and deployment metadata
+        ├── profiles/cawg/  -> optional CAWG/C2PA deployment metadata
+        └── profiles/<x>/   -> another ecosystem
+```
+
+The core workflow does not enumerate ecosystem IDs. Operators explicitly select a registry path. Profile-scoped assessment keys and labels prevent findings from different ecosystems from being coalesced together.
+
+The DTG pack currently exposes eight runnable seams. VDS and Agent Names seams are marked `scenario-baseline` because their upstream repositories are currently too thin to support the same source evidence grade as mature specifications. They are executable assurance hypotheses, not normative conformance claims.

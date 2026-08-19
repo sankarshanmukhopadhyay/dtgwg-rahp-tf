@@ -1,0 +1,132 @@
+corpus:
+  id: CORPUS-TT-VDS-COMPOSED
+  title: "Trust Tasks \xD7 VDS composed scenario corpus"
+  adapter_version: '1.0'
+  description: "RAHP-authored cross-specification scenarios for the Trust Tasks \xD7 VDS seam. These XSP IDs are RAHP assessment\
+    \ artefacts, not upstream identifiers."
+  evidence_grade: scenario-baseline
+  depends_on:
+  - corpus_id: CORPUS-TRUST-TASKS
+  - corpus_id: CORPUS-DTG-VDS
+  assurance_catalogue: method/catalogue/
+  scenarios:
+  - id: XSP-TV-001
+    title: Persistent relationship edge is treated as current task authority
+    domain: Cross-spec / authority
+    primary_goal: Separate durable relationship evidence from current delegated authority
+    primary_pressure: Persistent authority drift
+    priority: P1
+    scenario_patterns:
+    - SP-AUTH-02
+    - SP-COMP-01
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-AUT-04
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-COMP-01
+      - RKP-AUTH-02
+      control_patterns:
+      - CTP-COMP-01
+      - CTP-AUTH-02
+      guardrail_patterns:
+      - GRP-COMP-01
+      - GRP-AUTH-02
+      assurance_patterns:
+      - ATP-COMP-01
+      - ATP-AUTH-02
+      evidence_patterns:
+      - EVP-COMP-01
+      - EVP-AUTH-01
+  - id: XSP-TV-002
+    title: Task cancellation is not reflected in persistent relationship state
+    domain: Cross-spec / lifecycle
+    primary_goal: Reconcile task lifecycle with durable graph state
+    primary_pressure: Cancellation lag
+    priority: P1
+    scenario_patterns:
+    - SP-COMP-02
+    - SP-COMP-01
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-AUT-04
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-COMP-01
+      - RKP-AUTH-02
+      control_patterns:
+      - CTP-COMP-01
+      - CTP-AUTH-02
+      guardrail_patterns:
+      - GRP-COMP-01
+      - GRP-AUTH-02
+      assurance_patterns:
+      - ATP-COMP-01
+      - ATP-AUTH-02
+      evidence_patterns:
+      - EVP-COMP-01
+      - EVP-AUTH-01
+  - id: XSP-TV-003
+    title: Graph traversal widens task scope beyond the explicit delegation
+    domain: Cross-spec / delegation
+    primary_goal: Prevent transitive graph relationships from widening task authority
+    primary_pressure: Scope amplification
+    priority: P1
+    scenario_patterns:
+    - SP-DEL-02
+    - SP-COMP-01
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-AUT-04
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-COMP-01
+      - RKP-AUTH-02
+      control_patterns:
+      - CTP-COMP-01
+      - CTP-AUTH-02
+      guardrail_patterns:
+      - GRP-COMP-01
+      - GRP-AUTH-02
+      assurance_patterns:
+      - ATP-COMP-01
+      - ATP-AUTH-02
+      evidence_patterns:
+      - EVP-COMP-01
+      - EVP-AUTH-01
+  - id: XSP-TV-004
+    title: Historical task relationship is discoverable without redress context
+    domain: Cross-spec / governance
+    primary_goal: Preserve contestability and status context with retained relationship evidence
+    primary_pressure: Context persistence
+    priority: P1
+    scenario_patterns:
+    - SP-RED-01
+    - SP-COMP-01
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-AUT-04
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-COMP-01
+      - RKP-AUTH-02
+      control_patterns:
+      - CTP-COMP-01
+      - CTP-AUTH-02
+      guardrail_patterns:
+      - GRP-COMP-01
+      - GRP-AUTH-02
+      assurance_patterns:
+      - ATP-COMP-01
+      - ATP-AUTH-02
+      evidence_patterns:
+      - EVP-COMP-01
+      - EVP-AUTH-01

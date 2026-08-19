@@ -1,0 +1,97 @@
+version: 2
+profile:
+  id: cawg-c2pa
+  title: CAWG/C2PA cross-specification assurance pack
+  namespace: cawg-c2pa
+  issue_labels:
+    - assessment-required
+    - cawg-instance
+    - cross-specification
+  description: >-
+    Optional external RAHP profile for CAWG/C2PA composition testing. It is
+    independent of the DTG example profile and does not load DTG execution metadata.
+issue_repository: sankarshanmukhopadhyay/rahp-toolkit
+purpose: >-
+  Profile-owned cross-specification seams for the existing CAWG/C2PA worked
+  assessments. Upstream projects retain specification and governance authority.
+compositions:
+  - id: consent--training-data-mining
+    title: Consent × Training/Data Mining
+    status: maintained
+    runnable: true
+    priority: P0
+    evidence_grade: source-pinned
+    corpus_id: CORPUS-CAWG
+    assessment: examples/cawg-c2pa/compositions/consent-tdm/pressure-test.yaml
+    components:
+      - repository: decentralized-identity/cawg-consent-assertion
+        corpus_id: CORPUS-CAWG
+        upstream_issue_target: true
+      - repository: decentralized-identity/cawg-training-and-data-mining-assertion
+        corpus_id: CORPUS-CAWG
+        upstream_issue_target: true
+    assurance_focus: [consent, purpose-limitation, lifecycle, downstream-use]
+  - id: identity--endorsement
+    title: Identity × Endorsement / Delegation
+    status: maintained
+    runnable: true
+    priority: P0
+    evidence_grade: source-pinned
+    corpus_id: CORPUS-CAWG
+    assessment: examples/cawg-c2pa/compositions/identity-endorsement/pressure-test.yaml
+    components:
+      - repository: decentralized-identity/cawg-identity-assertion
+        corpus_id: CORPUS-CAWG
+        upstream_issue_target: true
+      - repository: decentralized-identity/cawg-endorsement-assertion
+        corpus_id: CORPUS-CAWG
+        upstream_issue_target: true
+    assurance_focus: [identity, delegation, endorsement, authority]
+  - id: identity--governance
+    title: Identity × Governance/TRQP
+    status: maintained
+    runnable: true
+    priority: P0
+    evidence_grade: source-pinned
+    corpus_id: CORPUS-CAWG
+    assessment: examples/cawg-c2pa/compositions/identity-governance/pressure-test.yaml
+    components:
+      - repository: decentralized-identity/cawg-identity-assertion
+        corpus_id: CORPUS-CAWG
+        upstream_issue_target: true
+      - repository: decentralized-identity/cawg-identity-assertion
+        corpus_id: CORPUS-CAWG
+        upstream_issue_target: true
+    assurance_focus: [authority, governance, trust-registry, verifier-policy]
+  - id: identity--metadata
+    title: Identity × Metadata
+    status: maintained
+    runnable: true
+    priority: P1
+    evidence_grade: source-pinned
+    corpus_id: CORPUS-CAWG
+    assessment: examples/cawg-c2pa/compositions/identity-metadata/pressure-test.yaml
+    components:
+      - repository: decentralized-identity/cawg-identity-assertion
+        corpus_id: CORPUS-CAWG
+        upstream_issue_target: true
+      - repository: decentralized-identity/cawg-metadata-assertion
+        corpus_id: CORPUS-CAWG
+        upstream_issue_target: true
+    assurance_focus: [identity, metadata-composition, privacy, provenance]
+  - id: c2pa--cawg-portfolio
+    title: C2PA × CAWG portfolio stack
+    status: maintained
+    runnable: true
+    priority: P0
+    evidence_grade: source-pinned
+    corpus_id: CORPUS-CAWG
+    assessment: examples/cawg-c2pa/compositions/portfolio-stack/pressure-test.yaml
+    components:
+      - repository: c2pa-org/specifications
+        corpus_id: CORPUS-CAWG
+        upstream_issue_target: true
+      - repository: decentralized-identity/cawg-identity-assertion
+        corpus_id: CORPUS-CAWG
+        upstream_issue_target: true
+    assurance_focus: [content-provenance, identity, authority, composition]

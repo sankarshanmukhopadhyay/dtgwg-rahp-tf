@@ -20,10 +20,19 @@ Scenario corpora connect domain-specific use cases to portable RAHP pressure-tes
 | [DTG ZKP](../corpora/dtg-zkp/) | `sankarshanmukhopadhyay/dtgwg-zkp-tf` | ZKP implementation and governance stress cases | 30 |
 | [Trust Tasks](../corpora/trust-tasks/) | `trustoverip/dtgwg-trust-tasks-tf` | Task identity, proof, replay, transport, versioning, delegation and privacy | 16 |
 | [DTG Credential Spec](../corpora/credential-spec/) | `trustoverip/dtgwg-cred-spec` | Credential lifecycle, relationship semantics, privacy, authority and task context | 16 |
-| [Trust Tasks × CredSpec](../corpora/trust-tasks-credspec-composed/) | RAHP-authored cross-spec adapter | Emergent failure modes at the task/credential seam | 12 |
+| [Trust Tasks × CredSpec](../corpora/trust-tasks-credspec-composed/) | RAHP-authored DTG profile adapter | Emergent failure modes at the task/credential seam | 12 |
+| VDS interface baseline | `trustoverip/dtgwg-vds-tf` | Scenario-baseline probes while normative VDS text remains thin | 4 |
+| Agent Names interface baseline | `trustoverip/dtgwg-agent-names-tf` | Scenario-baseline probes separating naming, control and authority | 4 |
+| CredSpec × ZKP | RAHP-authored DTG profile adapter | Proof semantics, lifecycle, authority and privacy composition | 4 |
+| CredSpec × VDS | RAHP-authored DTG profile adapter | Persistent state, lifecycle, authority and provenance | 4 |
+| Trust Tasks × ZKP | RAHP-authored DTG profile adapter | Proof-versus-authority, delegation, replay and freshness | 4 |
+| Trust Tasks × VDS | RAHP-authored DTG profile adapter | Persistent relationship state versus current task authority | 4 |
+| ZKP × VDS | RAHP-authored DTG profile adapter | Linkability, selective disclosure, lifecycle and provenance | 4 |
+| Agent Names × Trust Tasks | RAHP-authored DTG profile adapter | Naming versus principal/delegate/task authority | 4 |
+| Agent Names × CredSpec | RAHP-authored DTG profile adapter | Identifier, subject/controller and issuer-authority semantics | 4 |
 | [CAWG/C2PA](../corpora/cawg/) | Multi-source external CAWG/C2PA portfolio | Identity, governance, consent, delegation, metadata, privacy, UX, security and mandate-readiness interactions | 36 |
 
-Together these adapters expose **110 scenario test vectors** to the RAHP pressure-testing workflow. The CAWG/C2PA corpus is intentionally multi-source: its primary source and additional specification repositories are declared without inventing a DTG Portfolio Monitor relationship.
+Together these adapters expose **146 scenario test vectors** to the RAHP pressure-testing workflow. The CAWG/C2PA corpus is intentionally multi-source: its primary source and additional specification repositories are declared without inventing a DTG Portfolio Monitor relationship.
 
 ## Why separate corpora from patterns?
 
@@ -74,9 +83,9 @@ The Credential Spec adapter focuses on:
 - holder/controller compromise;
 - accessibility and cross-community recognition.
 
-## Cross-spec composed corpus
+## Cross-spec composed corpora
 
-Some of the most consequential failures are not owned by either specification alone. The composed corpus therefore tests conditions such as:
+Some of the most consequential failures are not owned by either specification alone. The profile-owned composed corpora test conditions such as:
 
 - credential authority changing between task authorization and execution;
 - replaying a task with a still-valid credential;
@@ -89,6 +98,8 @@ Some of the most consequential failures are not owned by either specification al
 - responsibility fragmentation during appeal or redress.
 
 The `XSP-*` identifiers are RAHP-owned because these are deliberately synthesized interaction scenarios rather than copied source use cases.
+
+**Evidence grades matter.** Mature, pinned source material can support `source-pinned` or `source-informed` assessments. Thin or pre-normative upstream repositories are represented as `scenario-baseline`: the seam is runnable, but the resulting findings are assurance hypotheses for WG/maintainer disposition rather than normative conformance claims.
 
 ## CAWG/C2PA corpus
 

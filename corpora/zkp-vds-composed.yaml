@@ -1,0 +1,131 @@
+corpus:
+  id: CORPUS-ZKP-VDS-COMPOSED
+  title: "ZKP \xD7 VDS composed scenario corpus"
+  adapter_version: '1.0'
+  description: "RAHP-authored cross-specification scenarios for the ZKP \xD7 VDS seam. These XSP IDs are RAHP assessment artefacts,\
+    \ not upstream identifiers."
+  evidence_grade: scenario-baseline
+  depends_on:
+  - corpus_id: CORPUS-DTG-ZKP
+  - corpus_id: CORPUS-DTG-VDS
+  assurance_catalogue: method/catalogue/
+  scenarios:
+  - id: XSP-ZV-001
+    title: Graph membership proof becomes a stable correlation handle
+    domain: Cross-spec / privacy
+    primary_goal: Preserve unlinkability across graph membership proofs
+    primary_pressure: Linkability
+    priority: P1
+    scenario_patterns:
+    - SP-PRIV-02
+    - SP-COMP-01
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-AUT-04
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-COMP-01
+      - RKP-AUTH-02
+      control_patterns:
+      - CTP-COMP-01
+      - CTP-AUTH-02
+      guardrail_patterns:
+      - GRP-COMP-01
+      - GRP-AUTH-02
+      assurance_patterns:
+      - ATP-COMP-01
+      - ATP-AUTH-02
+      evidence_patterns:
+      - EVP-COMP-01
+      - EVP-AUTH-01
+  - id: XSP-ZV-002
+    title: Selective graph disclosure hides provenance required for trust evaluation
+    domain: Cross-spec / provenance
+    primary_goal: Retain sufficient provenance without over-disclosure
+    primary_pressure: Provenance loss
+    priority: P1
+    scenario_patterns:
+    - SP-COMP-01
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-AUT-04
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-COMP-01
+      - RKP-AUTH-02
+      control_patterns:
+      - CTP-COMP-01
+      - CTP-AUTH-02
+      guardrail_patterns:
+      - GRP-COMP-01
+      - GRP-AUTH-02
+      assurance_patterns:
+      - ATP-COMP-01
+      - ATP-AUTH-02
+      evidence_patterns:
+      - EVP-COMP-01
+      - EVP-AUTH-01
+  - id: XSP-ZV-003
+    title: Revoked graph membership remains provable from stale witness state
+    domain: Cross-spec / lifecycle
+    primary_goal: Bind membership proofs to current graph state
+    primary_pressure: Stale witness
+    priority: P1
+    scenario_patterns:
+    - SP-GOV-01
+    - SP-COMP-01
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-AUT-04
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-COMP-01
+      - RKP-AUTH-02
+      control_patterns:
+      - CTP-COMP-01
+      - CTP-AUTH-02
+      guardrail_patterns:
+      - GRP-COMP-01
+      - GRP-AUTH-02
+      assurance_patterns:
+      - ATP-COMP-01
+      - ATP-AUTH-02
+      evidence_patterns:
+      - EVP-COMP-01
+      - EVP-AUTH-01
+  - id: XSP-ZV-004
+    title: Proof verifies but relying party cannot determine graph authority semantics
+    domain: Cross-spec / authority
+    primary_goal: Separate proof verification from authority interpretation
+    primary_pressure: Semantic ambiguity
+    priority: P1
+    scenario_patterns:
+    - SP-AUTH-02
+    - SP-COMP-01
+    portable_assurance:
+      harm_patterns:
+      - HRM-SEC-02
+      - HRM-INF-01
+      - HRM-AUT-04
+      - HRM-GOV-02
+      risk_patterns:
+      - RKP-COMP-01
+      - RKP-AUTH-02
+      control_patterns:
+      - CTP-COMP-01
+      - CTP-AUTH-02
+      guardrail_patterns:
+      - GRP-COMP-01
+      - GRP-AUTH-02
+      assurance_patterns:
+      - ATP-COMP-01
+      - ATP-AUTH-02
+      evidence_patterns:
+      - EVP-COMP-01
+      - EVP-AUTH-01
