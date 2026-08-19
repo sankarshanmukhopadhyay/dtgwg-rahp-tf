@@ -13,7 +13,7 @@
     },
     "trustoverip/dtgwg-ux-tf": {
       "status": "no-commits",
-      "observed_at": "2026-08-18T04:17:55.244304+00:00"
+      "observed_at": "2026-08-19T04:18:42.662734+00:00"
     },
     "trustoverip/dtgwg-general": {
       "sha": "fa15044225ff447ad6564983a5ce0732b80cbdc1",
@@ -31,9 +31,9 @@
       "observed_at": "2026-08-14T04:58:41.021584+00:00"
     },
     "trustoverip/dtgwg-cred-tf": {
-      "sha": "200acbaa47a422b173652ed2c3dc961c4fbc9e7a",
+      "sha": "d8e317ee6ec13c327f2bc96022be6190500432ae",
       "status": "active",
-      "observed_at": "2026-08-14T04:58:41.471991+00:00"
+      "observed_at": "2026-08-19T04:18:44.528668+00:00"
     },
     "trustoverip/dtgwg-rahp-tf": {
       "sha": "ce954decb4394c6de98282dee6c7c8c18392de63",
@@ -42,7 +42,7 @@
     },
     "trustoverip/dtgwg-rcards-tf": {
       "status": "no-commits",
-      "observed_at": "2026-08-18T04:17:58.229745+00:00"
+      "observed_at": "2026-08-19T04:18:45.373173+00:00"
     },
     "trustoverip/dtgwg-vds-tf": {
       "sha": "99eacacedd1729d20528a2ec65ff5288d103ec5e",
@@ -60,14 +60,14 @@
       "observed_at": "2026-08-14T04:58:43.379592+00:00"
     },
     "OpenVTC/openvtc": {
-      "sha": "3797dd09a9367cd45e92fe40a53f4a00decaf947",
+      "sha": "cd1be4260f69468f15ef7ed149df3f2e946d7b91",
       "status": "active",
-      "observed_at": "2026-08-18T04:18:00.379469+00:00"
+      "observed_at": "2026-08-19T04:18:47.212754+00:00"
     },
     "OpenVTC/verifiable-trust-infrastructure": {
-      "sha": "10d74fc50297c817ce90327044ffa1052f48f31a",
+      "sha": "4a556b59e8609e9dfff7ec0ba155bbeccb099868",
       "status": "active",
-      "observed_at": "2026-08-18T04:18:01.052930+00:00"
+      "observed_at": "2026-08-19T04:18:48.211346+00:00"
     },
     "sankarshanmukhopadhyay/dtgwg-cred-tf": {
       "sha": "200acbaa47a422b173652ed2c3dc961c4fbc9e7a",

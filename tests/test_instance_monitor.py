@@ -37,13 +37,57 @@ class InstanceMonitorTests(unittest.TestCase):
                 }
             }
         }
-        material, matched = MOD.classify(
+        classification, matched = MOD.classify(
             target,
             [{"filename": "vta-vault/src/receive.rs"}, {"filename": "Cargo.lock"}],
             cfg,
         )
-        self.assertTrue(material)
+        self.assertEqual(classification, "assessment")
         self.assertEqual(matched, ["vta-vault/src/receive.rs"])
+
+    def test_documentation_only_change_can_be_triaged_for_configured_role(self):
+        target = {
+            "repository": "example/task-force",
+            "context": {"type": "task-force-workspace"},
+            "scope": {"include": ["README.md", "docs/**", "specs/**"]},
+        }
+        cfg = {
+            "assessment": {
+                "materiality": {
+                    "documentation_paths": ["README.md", "docs/**"],
+                    "documentation_triage_roles": ["task-force-workspace"],
+                }
+            }
+        }
+        classification, matched = MOD.classify(
+            target,
+            [{"filename": "README.md"}],
+            cfg,
+        )
+        self.assertEqual(classification, "triage")
+        self.assertEqual(matched, ["README.md"])
+
+    def test_normative_change_still_requires_assessment(self):
+        target = {
+            "repository": "example/task-force",
+            "context": {"type": "task-force-workspace"},
+            "scope": {"include": ["README.md", "specs/**"]},
+        }
+        cfg = {
+            "assessment": {
+                "materiality": {
+                    "documentation_paths": ["README.md", "docs/**"],
+                    "documentation_triage_roles": ["task-force-workspace"],
+                }
+            }
+        }
+        classification, matched = MOD.classify(
+            target,
+            [{"filename": "README.md"}, {"filename": "specs/protocol.md"}],
+            cfg,
+        )
+        self.assertEqual(classification, "assessment")
+        self.assertEqual(matched, ["README.md", "specs/protocol.md"])
 
 
 if __name__ == "__main__":

@@ -1,4 +1,9 @@
 
+### Unreleased
+
+- Refined repository-change monitoring so configured documentation-only changes on triage-enabled repository roles produce `change-triage` records instead of automatic RAHP assessments. This distinguishes canonical-source/topology movement from substantive assurance changes while preserving an auditable classification step.
+- Added regression coverage for the DTG Credentials Task Force relocation pattern that triggered issue #16; specification-path changes continue to require assessment.
+
 ## Unreleased
 
 ### Added

@@ -47,7 +47,7 @@ def ensure_label(repo: str, label: str, token: str):
     except RuntimeError as exc:
         if " 404 " not in str(exc):
             raise
-    palette = {"assessment-required": "d73a4a", "cawg-instance": "1d76db", "dtg-instance": "5319e7", "cross-specification": "8250df"}
+    palette = {"assessment-required": "d73a4a", "cawg-instance": "1d76db", "dtg-instance": "5319e7", "cross-specification": "8250df", "change-triage": "d4c5f9"}
     request("POST", f"https://api.github.com/repos/{repo}/labels", token,
             {"name": label, "color": palette.get(label, "6f42c1"), "description": "RAHP automated assessment workflow"})
 

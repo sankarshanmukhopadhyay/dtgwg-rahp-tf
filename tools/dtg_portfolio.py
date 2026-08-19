@@ -101,7 +101,7 @@ def compare(repo: str, base: str, head: str) -> dict[str,Any]:
 def path_matches(path: str, patterns: list[str]) -> bool:
     return any(fnmatch.fnmatch(path,p) or pathlib.PurePosixPath(path).match(p) for p in patterns)
 
-def classify(target: dict[str,Any], files: list[dict[str,Any]], cfg: dict[str,Any]) -> tuple[bool,list[str],list[str]]:
+def classify(target: dict[str,Any], files: list[dict[str,Any]], cfg: dict[str,Any]) -> tuple[str,list[str],list[str]]:
     mc=cfg["assessment"]["materiality"]
     configured=target.get("material_paths",[])
     always=mc.get("always_material_paths",[])
@@ -116,8 +116,25 @@ def classify(target: dict[str,Any], files: list[dict[str,Any]], cfg: dict[str,An
     if target.get("reporting_weight") in mc.get("review_weights",[]) and files:
         reasons.append(f"portfolio reporting weight is {target.get('reporting_weight')}")
     if target.get("lifecycle")=="transitional" and not mc.get("include_transitional",True):
-        return False, matched, ["transitional repository excluded by DTG instance policy"]
-    return bool(matched), matched, reasons
+        return "ignore", matched, ["transitional repository excluded by DTG instance policy"]
+    if not matched:
+        return "ignore", matched, reasons
+
+    # Some repository roles use README/docs as operational routing surfaces rather
+    # than normative specification text. For those roles, documentation-only
+    # movement is significant enough to record, but should be triaged before a
+    # full RAHP/security assessment is opened. This prevents canonical-source
+    # relocations and repository housekeeping from becoming false-positive
+    # assurance work while preserving an auditable governance signal.
+    documentation = mc.get("documentation_paths", [])
+    triage_roles = set(mc.get("documentation_triage_roles", []))
+    role = target.get("role")
+    docs_only = bool(documentation) and all(path_matches(p, documentation) for p in matched)
+    if role in triage_roles and docs_only:
+        reasons.append("all material matches are documentation/routing paths for a triage-enabled repository role")
+        return "triage", matched, reasons
+
+    return "assessment", matched, reasons
 
 def assessment_key(repo: str) -> str:
     return f"dtg:repository:{repo}"
@@ -199,6 +216,67 @@ from the portable RAHP toolkit. Other adopters do not inherit this portfolio, qu
 or DTG governance state.
 """
 
+def triage_body(target:dict[str,Any], old:str, new:str, comp:dict[str,Any], matched:list[str], reasons:list[str]) -> str:
+    files=comp.get("files",[])
+    commits=comp.get("commits",[])
+    rows="\n".join(f"| `{f['filename']}` | {f.get('status','')} | +{f.get('additions',0)} / -{f.get('deletions',0)} | {'yes' if f['filename'] in matched else 'no'} |" for f in files[:100])
+    commit_rows="\n".join(f"- `{c['sha'][:12]}` {c['commit']['message'].splitlines()[0]}" for c in commits[:50])
+    why="\n".join(f"- {r}" for r in reasons) or "- Documentation/routing change requires classification."
+    return f"""# DTG change classification required
+
+{issue_mark(target['repository'],new)}
+
+A change in a repository tracked by the DTG Portfolio Monitor intersects configured
+material paths, but the changed material is limited to documentation/routing surfaces
+for a repository role configured for **triage before assessment**.
+
+This is a **classification queue record**, not a RAHP finding and not an assessment
+requirement. Its purpose is to distinguish substantive assurance changes from repository
+topology, canonical-source relocation, editorial routing, or other operational changes.
+
+## Target
+
+| Field | Value |
+|---|---|
+| Repository | `{target['repository']}` |
+| Workstream | `{target.get('workstream') or 'n/a'}` |
+| Role | `{target.get('role') or 'n/a'}` |
+| Lifecycle | `{target.get('lifecycle')}` |
+| Previous observed SHA | `{old}` |
+| Current SHA | `{new}` |
+| Compare | https://github.com/{target['repository']}/compare/{old}...{new} |
+
+## Why classification is required
+
+{why}
+
+## Changed files
+
+| File | Status | Delta | In configured scope |
+|---|---|---:|---|
+{rows or '| _No file metadata returned_ | | | |'}
+
+## Commits in the change window
+
+{commit_rows or '- No commit metadata returned.'}
+
+## Required classification
+
+Choose one disposition:
+
+- **assessment-required** — semantics, assurance assumptions, security properties, governance dependencies, or interoperability behaviour changed;
+- **topology-change** — canonical source, repository ownership/location, or portfolio routing changed without changing the governed semantics;
+- **editorial/no-assurance-impact** — the change does not alter assurance-relevant behaviour.
+
+If `assessment-required`, open or promote an assessment work item for this revision.
+For the other dispositions, record the classification evidence and update portfolio/canonical-source metadata where necessary without running a RAHP/security assessment.
+
+## Governance note
+
+Classification is intentionally separate from assessment. A material operational change
+can require attention without implying that substantive RAHP review is warranted.
+"""
+
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("command", choices=["sync","check"])
@@ -276,18 +354,28 @@ def main():
         if old==new: continue
         try:
             comp=compare(repo,old,new)
-            material,matched,reasons=classify(t,comp.get("files",[]),cfg)
+            classification,matched,reasons=classify(t,comp.get("files",[]),cfg)
         except Exception as exc:
-            material=True; matched=[]; reasons=[f"unable to compare prior SHA cleanly; conservative review required ({exc})"]
+            classification="assessment"; matched=[]; reasons=[f"unable to compare prior SHA cleanly; conservative review required ({exc})"]
             comp={"files":[],"commits":[]}
-        if material:
+        if classification == "assessment":
             events.append({"target":t,"old":old,"new":new,"matched":matched,"reasons":reasons,
                            "assessment_key": assessment_key(repo),
                            "source": "repository-change",
                            "repository": repo,
+                           "event_class": "assessment-required",
                            "title":f"[RAHP review required] {repo}: {old[:7]} → {new[:7]}",
                            "body":issue_body(t,old,new,comp,matched,reasons),
                            "labels": cfg.get("assessment",{}).get("issue",{}).get("labels",["assessment-required","dtg-instance"])})
+        elif classification == "triage":
+            events.append({"target":t,"old":old,"new":new,"matched":matched,"reasons":reasons,
+                           "assessment_key": f"dtg:classification:{repo}",
+                           "source": "repository-change",
+                           "repository": repo,
+                           "event_class": "change-triage",
+                           "title":f"[Change triage] {repo}: {old[:7]} → {new[:7]}",
+                           "body":triage_body(t,old,new,comp,matched,reasons),
+                           "labels": ["change-triage","dtg-instance"]})
         state["repositories"][repo]={"sha":new,"status":"active","observed_at":datetime.now(timezone.utc).isoformat()}
     state_path.write_text(json.dumps(state,indent=2)+"\n")
     events_path=ROOT/"instances/dtg/generated/review-events.json"

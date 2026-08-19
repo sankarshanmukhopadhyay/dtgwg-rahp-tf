@@ -28,6 +28,9 @@ assessment:
     documentation_paths:
     - README.md
     - docs/**
+    documentation_triage_roles:
+    - task-force-workspace
+    - legacy-or-transition
     role_profiles:
       normative-specification:
       - README.md

@@ -71,14 +71,24 @@ def path_matches(name: str, pattern: str) -> bool:
     return False
 
 
-def classify(target: dict[str, Any], files: list[dict[str, Any]], cfg: dict[str, Any]) -> tuple[bool, list[str]]:
+def classify(target: dict[str, Any], files: list[dict[str, Any]], cfg: dict[str, Any]) -> tuple[str, list[str]]:
     patterns = material_paths(target, cfg)
     matched = []
     for f in files:
         name = f.get("filename", "")
         if any(path_matches(name, pat) for pat in patterns):
             matched.append(name)
-    return bool(matched), sorted(set(matched))
+    matched = sorted(set(matched))
+    if not matched:
+        return "ignore", matched
+    materiality = (cfg.get("assessment") or {}).get("materiality") or {}
+    documentation = materiality.get("documentation_paths") or []
+    triage_roles = set(materiality.get("documentation_triage_roles") or [])
+    role = target_role(target)
+    docs_only = bool(documentation) and all(any(path_matches(name, pat) for pat in documentation) for name in matched)
+    if role in triage_roles and docs_only:
+        return "triage", matched
+    return "assessment", matched
 
 
 def state_key(target: dict[str, Any]) -> str:
@@ -174,12 +184,12 @@ def main() -> int:
             continue
         try:
             comp = compare(repo, old, new)
-            material, matched = classify(target, comp.get("files") or [], cfg)
+            classification, matched = classify(target, comp.get("files") or [], cfg)
         except Exception as exc:
-            material, matched = True, []
+            classification, matched = "assessment", []
             comp = {"commits": []}
             print(f"warning: comparison failed for {key}: {exc}")
-        if material:
+        if classification == "assessment":
             instance_id = instance.get("id") or "external"
             events.append({
                 "instance": instance_id,
@@ -193,6 +203,30 @@ def main() -> int:
                 "title": f"[RAHP review required] {target.get('id')}: {old[:7]} → {new[:7]}",
                 "body": event_body(instance, target, old, new, comp, matched),
                 "labels": ((cfg.get("assessment") or {}).get("issue") or {}).get("labels") or ["assessment-required"],
+            })
+        elif classification == "triage":
+            instance_id = instance.get("id") or "external"
+            events.append({
+                "instance": instance_id,
+                "target_id": target.get("id"),
+                "assessment_key": f"{instance_id}:classification:{repo}{'' if branch == 'main' else '@' + branch}",
+                "source": "repository-change",
+                "repository": repo,
+                "branch": branch,
+                "old": old,
+                "new": new,
+                "event_class": "change-triage",
+                "title": f"[Change triage] {target.get('id')}: {old[:7]} → {new[:7]}",
+                "body": event_body(instance, target, old, new, comp, matched).replace(
+                    "## RAHP assessment trigger", "## RAHP change-classification trigger"
+                ).replace(
+                    "detected a material change requiring review.",
+                    "detected a documentation-only material change that requires classification before assessment."
+                ).replace(
+                    "2. Re-run the target RAHP/security/combined review as appropriate.",
+                    "2. Classify the change as assessment-required, topology-change, or editorial/no-assurance-impact. Run RAHP/security review only when the first disposition applies."
+                ),
+                "labels": ["change-triage", f"{instance_id}-instance"],
             })
         state["targets"][key] = {"sha": new, "status": "active", "observed_at": datetime.now(timezone.utc).isoformat()}
 

@@ -16,7 +16,19 @@ The DTG deployment uses **three complementary signals** to decide when existing 
 
 ## 2. Repository source drift
 
-For each resolved target, the DTG monitor records the observed revision and compares material-path changes. A material source change can create an `assessment-required` queue issue. This answers **what normative, draft, schema, workflow or materially relevant documentation changed?**
+For each resolved target, the DTG monitor records the observed revision and compares material-path changes. Materiality and assessment are deliberately separate decisions. A normative, schema, workflow, implementation or otherwise assurance-relevant change can create an `assessment-required` queue issue. A documentation-only change on a role configured for pre-assessment triage creates a `change-triage` record instead. This answers **what changed, and does that change actually warrant assurance assessment?**
+
+### Change classification before assessment
+
+Repository topology and specification semantics are not the same thing. A README can change because normative requirements changed, but it can also change because a specification moved to a new canonical repository. Treating both events as automatically assessment-worthy creates queue noise and weakens the meaning of `assessment-required`.
+
+The DTG deployment therefore supports three dispositions for triaged documentation/routing changes:
+
+- **assessment-required** — the delta changes semantics, assurance assumptions, security properties, governance dependencies or interoperability behaviour;
+- **topology-change** — canonical source, repository ownership/location or portfolio routing changed without changing the governed semantics;
+- **editorial/no-assurance-impact** — no assurance-relevant behaviour changed.
+
+Only the first disposition proceeds to RAHP/security/combined assessment. Topology changes should update portfolio and canonical-source metadata and retain the classification evidence.
 
 ## 3. Selected upstream issue drift
 

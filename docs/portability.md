@@ -62,5 +62,7 @@ Repository monitoring is target-aware. Main-branch targets retain the portable `
 
 Materiality is also role-aware. A deployment may add `assessment.materiality.role_profiles` keyed by the target `context.type`. This lets a normative specification emphasize specification/schema surfaces while a reference implementation treats implementation code and tests as assurance-relevant evidence. Target-specific `scope.include` entries and deployment-wide `always_material_paths` remain additive.
 
+Deployments may also configure `assessment.materiality.documentation_paths` together with `documentation_triage_roles`. When every matched material path is documentation/routing material and the target role is explicitly triage-enabled, the portable monitor emits a `change-triage` event rather than an `assessment-required` event. This is intentionally opt-in: specifications whose Markdown files are normative remain assessment-sensitive unless the deployment explicitly classifies their role otherwise.
+
 
 `tools/issue_watch.py` provides an independent **allow-listed issue early-warning channel**. A deployment owns its issue registry, labels, state and affected-review mapping. The toolkit does not discover or ingest every issue automatically, and issue text never becomes normative evidence merely because it is watched. CAWG/C2PA and DTG both use this mechanism with separate registries, demonstrating that situational monitoring is part of the portable operational layer rather than a CAWG-specific feature.
