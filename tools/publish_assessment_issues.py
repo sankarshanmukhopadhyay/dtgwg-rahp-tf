@@ -47,7 +47,7 @@ def ensure_label(repo: str, label: str, token: str):
     except RuntimeError as exc:
         if " 404 " not in str(exc):
             raise
-    palette = {"assessment-required": "d73a4a", "cawg-instance": "1d76db", "dtg-instance": "5319e7"}
+    palette = {"assessment-required": "d73a4a", "cawg-instance": "1d76db", "dtg-instance": "5319e7", "cross-specification": "8250df"}
     request("POST", f"https://api.github.com/repos/{repo}/labels", token,
             {"name": label, "color": palette.get(label, "6f42c1"), "description": "RAHP automated assessment workflow"})
 
@@ -140,6 +140,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--events", type=Path, required=True)
     ap.add_argument("--repository", required=True)
+    ap.add_argument("--result-json", type=Path, help="write created/coalesced issue references")
     args = ap.parse_args()
     token = os.getenv("GITHUB_TOKEN") or os.getenv("GH_TOKEN")
     if not token:
@@ -153,6 +154,7 @@ def main() -> int:
     open_by_key = open_issue_by_key(issues)
     known_titles = {i.get("title", "") for i in issues}
     created = coalesced = 0
+    published: list[dict[str, Any]] = []
 
     for event in events:
         key = event.get("assessment_key")
@@ -162,6 +164,7 @@ def main() -> int:
         if target:
             if coalesce_issue(args.repository, target, event, token):
                 coalesced += 1
+            published.append({"action": "coalesced", "number": target.get("number"), "url": target.get("html_url"), "assessment_key": key or related})
             continue
 
         title = event["title"]
@@ -181,8 +184,12 @@ def main() -> int:
         known_titles.add(title)
         if key:
             open_by_key[key] = issue
+        published.append({"action": "created", "number": issue.get("number"), "url": issue.get("html_url"), "assessment_key": key})
         created += 1
 
+    if args.result_json:
+        args.result_json.parent.mkdir(parents=True, exist_ok=True)
+        args.result_json.write_text(json.dumps({"issues": published}, indent=2) + "\n", encoding="utf-8")
     print(f"created {created} issue(s); coalesced {coalesced} event(s)")
     return 0
 

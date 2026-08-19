@@ -55,6 +55,8 @@ jobs:
 
       - name: Validate selected issue-watch registries
         run: python3 tools/validate_issue_watch_registries.py
+      - name: Validate DTG cross-specification registry
+        run: python3 tools/validate_cross_spec_registry.py
 
       - name: Validate durable assessment queue state
         run: python3 tools/validate_assessment_queue.py

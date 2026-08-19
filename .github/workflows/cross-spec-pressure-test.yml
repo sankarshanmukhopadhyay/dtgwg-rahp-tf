@@ -1,0 +1,69 @@
+name: Run DTG cross-specification pressure test
+
+on:
+  workflow_dispatch:
+    inputs:
+      composition_id:
+        description: Maintained cross-specification composition to assess
+        required: true
+        type: choice
+        options:
+          - trust-tasks--credential-spec
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  assess:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+
+      - name: Validate declared cross-specification registry
+        run: python3 tools/validate_cross_spec_registry.py
+
+      - name: Validate cross-specification evidence baseline
+        run: |
+          python3 tools/validate_scenario_corpora.py
+          python3 tools/validate_pressure_tests.py
+
+      - name: Prepare detailed WG review record
+        run: >-
+          python3 tools/cross_spec_review.py
+          "${{ inputs.composition_id }}"
+          --output build/cross-spec-review.md
+          --events build/cross-spec-review-events.json
+          --run-url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+      - name: Publish durable RAHP review issue
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: >-
+          python3 tools/publish_assessment_issues.py
+          --events build/cross-spec-review-events.json
+          --repository "${{ github.repository }}"
+          --result-json build/cross-spec-publish-result.json
+
+      - name: Add review to workflow summary
+        if: always()
+        run: |
+          cat build/cross-spec-review.md >> "$GITHUB_STEP_SUMMARY"
+          if [ -f build/cross-spec-publish-result.json ]; then
+            echo '' >> "$GITHUB_STEP_SUMMARY"
+            echo '## Published issue' >> "$GITHUB_STEP_SUMMARY"
+            jq -r '.issues[] | "- [\(.action) #\(.number)](\(.url))"' build/cross-spec-publish-result.json >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cross-spec-review-${{ inputs.composition_id }}
+          path: |
+            build/cross-spec-review.md
+            build/cross-spec-review-events.json
+            build/cross-spec-publish-result.json

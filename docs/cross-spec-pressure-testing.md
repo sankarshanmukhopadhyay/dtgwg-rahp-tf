@@ -49,6 +49,23 @@ For each composed scenario, reviewers should ask:
 
 A cross-spec finding should identify whether the remediation belongs primarily to Trust Tasks, CredSpec, both, or an external governance/runtime layer. RAHP's `primary_disposition` remains the routing mechanism; the scenario corpus supplies the test condition, not the ownership decision.
 
+
+## Manual GitHub Actions execution and WG review record
+
+The DTG deployment declares supported seams in [`instances/dtg/cross-spec-tests.yaml`](../instances/dtg/cross-spec-tests.yaml). A composition becomes selectable in the **Run DTG cross-specification pressure test** workflow only after it has a reviewed composed corpus and durable assessment record. Candidate seams remain visible in the registry but cannot be invoked accidentally.
+
+A manual workflow run:
+
+1. validates the declared composition;
+2. renders a detailed assessment record from the pinned RAHP evidence;
+3. files or coalesces a durable issue in the RAHP Toolkit repository;
+4. uploads the rendered review packet as a workflow artifact; and
+5. exposes the resulting issue URL in the workflow summary.
+
+The RAHP issue is the **WG circulation URL and evidence hub**. It contains an **Upstream issue candidates** section with one ready-to-triage block per open finding. Upstream filing is intentionally human-controlled: a WG or maintainer first confirms which specification owns the semantic contract, then files the relevant block upstream and links the upstream issue back to the RAHP review. This prevents an assurance tool from asserting normative ownership on behalf of an upstream project.
+
+Repeated manual runs use a stable `dtg:cross-spec:<composition-id>` assessment key. If the corresponding RAHP work item is still open, new triggers are coalesced into that issue rather than producing duplicate WG review URLs.
+
 ## v1.1 portable assurance mapping
 
 Cross-spec reviews should map local findings to portable `RKP-*`, `CTP-*`, `GRP-*`, `ATP-*` and `EVP-*` patterns where a reusable mechanism exists. This does **not** replace deployment-specific risks or disposition; it makes the seam comparable across ecosystems.

@@ -2,6 +2,9 @@
 
 ### Documentation
 
+- Add a manual DTG cross-specification GitHub Actions workflow that publishes/coalesces a durable WG review issue, preserves an artifact copy, and emits upstream-ready finding sections.
+- Add a governed DTG cross-specification registry separating runnable maintained assessments from candidate seams.
+
 - Expanded contribution workflows for catalogue, capabilities and specification pressure tests.
 
 ### Generated assurance site
