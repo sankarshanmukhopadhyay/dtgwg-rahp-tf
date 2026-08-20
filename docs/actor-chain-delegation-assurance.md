@@ -2,6 +2,7 @@
 layout: default
 title: Actor-chain delegation assurance
 nav_order: 74
+parent: Run assessments
 ---
 # Actor-chain delegation assurance
 
