@@ -1,0 +1,1 @@
+{"version":1,"assessment_id":"AR-001","finding_id":"F-001","owner_plane":{"type":"target-repository","repository":"example/spec"},"requested_outcomes":["consequential mutations converge to one logical effect"],"required_evidence":["lost-response-test"],"publication":{"eligibility":"eligible","mode":"governed","status":"awaiting-approval"}}

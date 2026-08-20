@@ -1,0 +1,1 @@
+{"proposition":{"id":"ATP-OPS-02","subject":"retry-safety","target":"example/vulnerable"},"signals":[{"id":"RLA-004","type":"risk-indicator","confidence":"high"}],"control_evidence":[{"id":"CTP-OPS-02","status":"absent"}],"assurance_evidence":[],"residual":{"status":"finding","severity":"critical","reason":"Consequential retries are observed without an idempotency control."}}
