@@ -34,7 +34,7 @@ v1.1.0 introduced the portable method-level assurance catalogue for reusable har
 
 Delivered:
 
-- 149 portable `HRM/RKP/CTP/GRP/ATP/EVP` patterns;
+- the portable `HRM/RKP/CTP/GRP/ATP/EVP` knowledge model;
 - catalogue schema and machine validation;
 - catalogue-aware pressure-test, security-review and scenario validation;
 - a governed simple-English glossary;
@@ -110,4 +110,4 @@ The roadmap does not make these default RAHP behaviours:
 
 ## Historical roadmap
 
-The full pre-v1.2 roadmap, including early DTG migration history, v0.x architecture decisions and the original governed finding-to-issue design, is retained at `archive/pre-v1.2/ROADMAP-pre-v1.2.md`.
+The full pre-v1.2 roadmap, including early DTG migration history, v0.x architecture decisions and the original governed finding-to-issue design, is retained at `archive/pre-v1.2/ROADMAP-pre-v1.2.txt`.
