@@ -5,7 +5,7 @@ Release v1.2.0 · CC-BY 4.0
 
 RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-testing standards, protocols, implementations and composed systems against human harms, governance failures, adversarial conditions and resilience risks.
 
-> **Project identity:** RAHP Toolkit is the portable method and engine contract. DTG, CAWG/C2PA and other portfolios are independently scoped deployments and examples. No deployment defines the portable method for another adopter.
+> **Project identity:** RAHP Toolkit is the portable method and engine contract. DTG, CAWG/C2PA and other portfolios are independently scoped deployments and examples. No deployment defines the portable method for another adopter. The **Bundled DTG exemplar** preserves project provenance and exercises the toolkit without making DTG a core dependency.
 
 ## What changed in v1.2
 
@@ -42,15 +42,15 @@ See the [v1.2.0 release notes](docs/releases/v1.2.0.md), [assurance evaluation](
 
 ## Portable assurance model
 
-The reusable catalogue under `method/catalogue/` contains 149 assurance patterns:
+The reusable catalogue under `method/catalogue/` contains **162 assurance patterns**:
 
 | Prefix | Pattern type | Count |
 |---|---|---:|
 | `HRM-*` | Human-harm patterns | 24 |
-| `RKP-*` | Risk patterns | 38 |
-| `CTP-*` | Control patterns | 31 |
-| `GRP-*` | Guardrail patterns | 22 |
-| `ATP-*` | Assurance-test patterns | 19 |
+| `RKP-*` | Risk patterns | 43 |
+| `CTP-*` | Control patterns | 35 |
+| `GRP-*` | Guardrail patterns | 25 |
+| `ATP-*` | Assurance-test patterns | 20 |
 | `EVP-*` | Evidence patterns | 15 |
 
 The catalogue is complemented by a governed simple-English glossary under `method/glossary/`. Structured method data is authoritative; Markdown, JSON, JSON-LD and rendered site views are derived publication surfaces.
@@ -112,7 +112,7 @@ npm run build:ts
 npm run test:ts
 ```
 
-## Assurance lifecycle
+## Current architecture
 
 ```mermaid
 flowchart TB
@@ -126,6 +126,10 @@ flowchart TB
   H --> I[Remediation manifest]
   I --> J[Retest]
   J --> K[Resolved / residual / regression]
+
+  M[Portable RAHP method] --> F
+  P[Deployment profile] --> F
+  X[Deployment-owned state] --> F
 ```
 
 The portability invariant is **shared method and engine contract, independent deployment context**. `rahp-engine-contract-v1`, normalized result schema version `1`, and `rahp-evidence-retention-v1` remain the stable compatibility boundaries in v1.2.
