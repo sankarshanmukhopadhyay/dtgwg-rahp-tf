@@ -327,8 +327,8 @@ records:
 - id: RKP-CRD-01
   name: Credential validity interpreted as authorization
   family: Credentials and claims
-  description: A valid credential or proof is treated as permission for an action outside the credential’s actual
-    claim semantics.
+  description: "A valid credential or proof is treated as permission for an action outside the credential\u2019\
+    s actual claim semantics."
   harm_patterns:
   - HRM-SEC-02
   - HRM-INF-01
@@ -506,8 +506,8 @@ records:
 - id: RKP-AGT-01
   name: Agent goal or mandate drift
   family: Agentic systems
-  description: An autonomous actor optimizes or continues execution in ways that depart from the principal’s current
-    purpose or constraints.
+  description: "An autonomous actor optimizes or continues execution in ways that depart from the principal\u2019\
+    s current purpose or constraints."
   harm_patterns:
   - HRM-AUT-04
   - HRM-SEC-02
@@ -769,3 +769,122 @@ records:
       choose, exit or seek remedy.
     condition: Applies to high-impact or involuntary use where materially affected parties lack meaningful choice,
       exit or remedy.
+- id: RKP-DEL-04
+  name: Attribution lineage mistaken for authority
+  family: Authority and delegation
+  description: Caller-supplied delegation or actor-lineage metadata is treated as proof that the represented grants
+    actually existed or remain valid.
+  harm_patterns:
+  - HRM-AUT-04
+  - HRM-SEC-02
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability:
+    requires:
+    - delegation
+    - lineage or actor-chain metadata
+  related_patterns:
+  - RKP-AUTH-01
+  - RKP-DEL-02
+  guardrail_requirement:
+    status: required
+    rationale: Attribution metadata can be syntactically valid while fabricated, so consequential action requires
+      independent authority evidence.
+    condition: null
+- id: RKP-DEL-05
+  name: Delegation lineage mutation
+  family: Authority and delegation
+  description: A delegating or forwarding actor rewrites prior lineage hops, making later audit unable to distinguish
+    the forwarded representation from the chain originally received.
+  harm_patterns:
+  - HRM-GOV-02
+  - HRM-SEC-02
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability:
+    requires:
+    - delegation
+    - multi-hop forwarding
+  related_patterns:
+  - RKP-DEL-02
+  guardrail_requirement:
+    status: required
+    rationale: Prior-hop mutation destroys independent attribution evidence unless the received representation is
+      retained or integrity-bound.
+    condition: null
+- id: RKP-DEL-06
+  name: Delegation evidence-state collapse
+  family: Authority and delegation
+  description: Missing, unresolvable, invalid, expired or revoked delegation evidence is collapsed into a generic
+    denial or success state, obscuring what was actually established.
+  harm_patterns:
+  - HRM-GOV-02
+  - HRM-SEC-02
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability: {}
+  related_patterns:
+  - RKP-AUTH-02
+  - RKP-DEL-03
+  guardrail_requirement:
+    status: required
+    rationale: Distinct evidence and lifecycle states are necessary for safe enforcement, audit reconstruction and
+      redress.
+    condition: null
+- id: RKP-DEL-07
+  name: Delegation evidence cross-context replay
+  family: Authority and delegation
+  description: A content or proof reference valid in one trust domain is replayed in another because the referenced
+    commitment is not bound to the relevant context or domain.
+  harm_patterns:
+  - HRM-AUT-04
+  - HRM-SEC-02
+  origin: design
+  scope: cross-party
+  temporal_mode: immediate
+  reversibility: costly
+  observability: detectable
+  applicability:
+    requires:
+    - delegation
+    - portable evidence references
+  related_patterns:
+  - RKP-OPS-02
+  guardrail_requirement:
+    status: required
+    rationale: Context-free evidence references can preserve byte integrity while misbinding authority semantics.
+    condition: null
+- id: RKP-PRV-04
+  name: Delegation lineage correlation exposure
+  family: Privacy and data protection
+  description: Multi-hop actor lineage unnecessarily discloses durable principal or agent identifiers across contexts,
+    creating a correlation surface beyond what the relying decision requires.
+  harm_patterns:
+  - HRM-PRV-01
+  - HRM-AUT-03
+  origin: design
+  scope: cross-party
+  temporal_mode: cumulative
+  reversibility: costly
+  observability: detectable
+  applicability:
+    requires:
+    - multi-hop delegation
+    - shared lineage metadata
+  related_patterns:
+  - RKP-PRV-02
+  - RKP-DEL-02
+  guardrail_requirement:
+    status: required
+    rationale: Auditability should not require unnecessary durable cross-context correlation when a less disclosing
+      proof can satisfy the assurance objective.
+    condition: null

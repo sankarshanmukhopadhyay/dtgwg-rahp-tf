@@ -109,3 +109,8 @@ RAHP evaluates whether an assurance obligation is covered **at the correct contr
 - [Agent delegation governance](agent-delegation-governance.md)
 - [Persona model](personas.md)
 - [RAHP catalogue](../build/site/catalogue.html)
+
+
+## Actor-chain follow-up
+
+A2A issue #2028 was reviewed separately on 2026-08-20 as an informative proposal. It sharpens the original delegation findings without changing the pinned A2A v1.0 target. RAHP now carries reusable patterns for lineage-as-authority confusion, prior-hop mutation, evidence-state collapse, cross-context evidence replay, and lineage correlation exposure. See [Actor-chain delegation assurance](actor-chain-delegation-assurance.md).

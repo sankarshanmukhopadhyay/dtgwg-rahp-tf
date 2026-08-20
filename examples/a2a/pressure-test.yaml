@@ -185,8 +185,8 @@ review:
       - EVP-DEL-02
       - EVP-OPS-01
   - id: F-003
-    title: A2A task delegation does not by itself preserve the originating principal’s authority envelope across
-      agent hops
+    title: "A2A task delegation does not by itself preserve the originating principal\u2019s authority envelope\
+      \ across agent hops"
     status: open
     severity: High
     primary_disposition: companion-specification
@@ -213,8 +213,8 @@ review:
       observation: A2A explicitly supports collaboration and delegation between independent agents while preserving
         opaque execution.
     - source: docs/topics/enterprise-ready.md#authorization
-      observation: Authorization is the A2A server’s responsibility and is specific to the agent implementation,
-        data, backend resources and enterprise policy.
+      observation: "Authorization is the A2A server\u2019s responsibility and is specific to the agent implementation,\
+        \ data, backend resources and enterprise policy."
     harm: An upstream agent can be authorised to perform a bounded task while a downstream agent sees only a technically
       valid request. Purpose, human approval conditions, resource limits, expiry, revocation and permitted delegation
       depth can be lost between hops.
@@ -283,9 +283,9 @@ review:
     - source: docs/topics/enterprise-ready.md#authorization
       observation: The remote agent is responsible for enforcing authorization before sensitive backend actions
         and is instructed to apply least privilege.
-    harm: A secondary credential can be technically valid yet broader than the task’s delegated authority. Without
-      audience, purpose and delegation-depth binding, credential possession can be mistaken for permission to forward,
-      exchange or reuse it with additional downstream agents.
+    harm: "A secondary credential can be technically valid yet broader than the task\u2019s delegated authority.\
+      \ Without audience, purpose and delegation-depth binding, credential possession can be mistaken for permission\
+      \ to forward, exchange or reuse it with additional downstream agents."
     recommendation: Define a companion credential/delegation profile or implementation contract requiring audience,
       resource, purpose, lifetime and delegation-depth restrictions for secondary credentials, with an explicit
       rule that credentials are non-transitive unless the principal authorised onward delegation.
@@ -444,3 +444,26 @@ review:
       evidence_patterns:
       - EVP-DEL-01
       - EVP-AUTH-02
+  supplemental_actor_chain_assessment:
+    reviewed_on: '2026-08-20'
+    upstream_reference: a2aproject/A2A#2028
+    status: informative-proposal-review
+    normative_status: 'Issue #2028 is not treated as adopted A2A v1.0 text.'
+    applicable_patterns:
+    - RKP-DEL-04
+    - RKP-DEL-05
+    - RKP-DEL-06
+    - RKP-DEL-07
+    - RKP-PRV-04
+    required_guardrails:
+    - GRP-DEL-03
+    - GRP-DEL-04
+    - GRP-DEL-05
+    - GRP-PRV-02
+    key_invariants:
+    - Actor lineage is attribution metadata, not authority.
+    - Monotonic scope narrowing is a well-formedness check, not proof of grant.
+    - Prior hops are append-only where the chain is represented as audit history.
+    - Missing, unresolvable, invalid, revoked/expired and denied evidence states remain distinct.
+    - Portable evidence references are context-bound where replay changes authority meaning.
+    - Lineage disclosure is minimized to the relying and audit purpose.

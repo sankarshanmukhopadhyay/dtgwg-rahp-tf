@@ -1194,6 +1194,149 @@
           "rationale": "Failure costs are not always avoidable. A guardrail is required when affected people cannot reasonably choose, exit or seek remedy.",
           "condition": "Applies to high-impact or involuntary use where materially affected parties lack meaningful choice, exit or remedy."
         }
+      },
+      {
+        "id": "RKP-DEL-04",
+        "name": "Attribution lineage mistaken for authority",
+        "family": "Authority and delegation",
+        "description": "Caller-supplied delegation or actor-lineage metadata is treated as proof that the represented grants actually existed or remain valid.",
+        "harm_patterns": [
+          "HRM-AUT-04",
+          "HRM-SEC-02"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {
+          "requires": [
+            "delegation",
+            "lineage or actor-chain metadata"
+          ]
+        },
+        "related_patterns": [
+          "RKP-AUTH-01",
+          "RKP-DEL-02"
+        ],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "Attribution metadata can be syntactically valid while fabricated, so consequential action requires independent authority evidence.",
+          "condition": null
+        }
+      },
+      {
+        "id": "RKP-DEL-05",
+        "name": "Delegation lineage mutation",
+        "family": "Authority and delegation",
+        "description": "A delegating or forwarding actor rewrites prior lineage hops, making later audit unable to distinguish the forwarded representation from the chain originally received.",
+        "harm_patterns": [
+          "HRM-GOV-02",
+          "HRM-SEC-02"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {
+          "requires": [
+            "delegation",
+            "multi-hop forwarding"
+          ]
+        },
+        "related_patterns": [
+          "RKP-DEL-02"
+        ],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "Prior-hop mutation destroys independent attribution evidence unless the received representation is retained or integrity-bound.",
+          "condition": null
+        }
+      },
+      {
+        "id": "RKP-DEL-06",
+        "name": "Delegation evidence-state collapse",
+        "family": "Authority and delegation",
+        "description": "Missing, unresolvable, invalid, expired or revoked delegation evidence is collapsed into a generic denial or success state, obscuring what was actually established.",
+        "harm_patterns": [
+          "HRM-GOV-02",
+          "HRM-SEC-02"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {},
+        "related_patterns": [
+          "RKP-AUTH-02",
+          "RKP-DEL-03"
+        ],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "Distinct evidence and lifecycle states are necessary for safe enforcement, audit reconstruction and redress.",
+          "condition": null
+        }
+      },
+      {
+        "id": "RKP-DEL-07",
+        "name": "Delegation evidence cross-context replay",
+        "family": "Authority and delegation",
+        "description": "A content or proof reference valid in one trust domain is replayed in another because the referenced commitment is not bound to the relevant context or domain.",
+        "harm_patterns": [
+          "HRM-AUT-04",
+          "HRM-SEC-02"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "immediate",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {
+          "requires": [
+            "delegation",
+            "portable evidence references"
+          ]
+        },
+        "related_patterns": [
+          "RKP-OPS-02"
+        ],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "Context-free evidence references can preserve byte integrity while misbinding authority semantics.",
+          "condition": null
+        }
+      },
+      {
+        "id": "RKP-PRV-04",
+        "name": "Delegation lineage correlation exposure",
+        "family": "Privacy and data protection",
+        "description": "Multi-hop actor lineage unnecessarily discloses durable principal or agent identifiers across contexts, creating a correlation surface beyond what the relying decision requires.",
+        "harm_patterns": [
+          "HRM-PRV-01",
+          "HRM-AUT-03"
+        ],
+        "origin": "design",
+        "scope": "cross-party",
+        "temporal_mode": "cumulative",
+        "reversibility": "costly",
+        "observability": "detectable",
+        "applicability": {
+          "requires": [
+            "multi-hop delegation",
+            "shared lineage metadata"
+          ]
+        },
+        "related_patterns": [
+          "RKP-PRV-02",
+          "RKP-DEL-02"
+        ],
+        "guardrail_requirement": {
+          "status": "required",
+          "rationale": "Auditability should not require unnecessary durable cross-context correlation when a less disclosing proof can satisfy the assurance objective.",
+          "condition": null
+        }
       }
     ],
     "control_patterns": [
@@ -1873,6 +2016,93 @@
           "RKP-EXC-02",
           "RKP-PRV-01"
         ]
+      },
+      {
+        "id": "CTP-DEL-03",
+        "name": "Independent delegation evidence resolution",
+        "risk_patterns": [
+          "RKP-DEL-04",
+          "RKP-DEL-06"
+        ],
+        "authority": "relying party or authorization service",
+        "enforcement_point": "delegated action authorization boundary",
+        "activation": "before consequential delegated action",
+        "failure_behavior": "deny, defer, or escalate when required authority evidence is not independently established",
+        "audit_events": [
+          "lineage-well-formedness-evaluated",
+          "delegation-evidence-resolution-attempted",
+          "authority-decision-recorded"
+        ],
+        "evidence_patterns": [
+          "EVP-AUTH-01"
+        ],
+        "control_function": "verify",
+        "control_objective": "Keep attribution lineage separate from authority by resolving grant evidence outside caller-supplied lineage metadata.",
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-DEL-04",
+        "name": "Append-only lineage integrity",
+        "risk_patterns": [
+          "RKP-DEL-05"
+        ],
+        "authority": "protocol implementation or relying party",
+        "enforcement_point": "delegation forwarding boundary",
+        "activation": "on receive and before forward",
+        "failure_behavior": "retain received-chain digest and reject or flag mutation when append-only semantics are required",
+        "audit_events": [
+          "lineage-received",
+          "lineage-forwarded",
+          "lineage-mutation-detected"
+        ],
+        "evidence_patterns": [
+          "EVP-OPS-01"
+        ],
+        "control_function": "detect",
+        "control_objective": "Detect or prevent rewriting of prior delegation lineage hops across receive and forwarding boundaries.",
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-DEL-05",
+        "name": "Context-bound delegation evidence",
+        "risk_patterns": [
+          "RKP-DEL-07"
+        ],
+        "authority": "evidence issuer and verifier",
+        "enforcement_point": "evidence creation and verification boundary",
+        "activation": "before evidence is relied upon across contexts",
+        "failure_behavior": "reject or mark indeterminate when required context binding is absent or mismatched",
+        "audit_events": [
+          "evidence-context-checked",
+          "evidence-context-mismatch"
+        ],
+        "evidence_patterns": [
+          "EVP-AUTH-01"
+        ],
+        "control_function": "constrain",
+        "control_objective": "Bind portable delegation evidence references to the context or trust domain in which their authority semantics apply.",
+        "introduces_or_amplifies_risks": []
+      },
+      {
+        "id": "CTP-PRV-04",
+        "name": "Delegation lineage minimization",
+        "risk_patterns": [
+          "RKP-PRV-04"
+        ],
+        "authority": "data controller or protocol implementer",
+        "enforcement_point": "lineage disclosure boundary",
+        "activation": "before lineage crosses a party or trust-domain boundary",
+        "failure_behavior": "minimize, pseudonymize, selectively disclose, or refuse unnecessary lineage fields",
+        "audit_events": [
+          "lineage-disclosure-reviewed",
+          "lineage-minimization-applied"
+        ],
+        "evidence_patterns": [
+          "EVP-OPS-01"
+        ],
+        "control_function": "minimize",
+        "control_objective": "Disclose only the delegation-lineage attributes required for the relying decision and accountable audit purpose.",
+        "introduces_or_amplifies_risks": []
       }
     ],
     "guardrail_patterns": [
@@ -2270,11 +2500,13 @@
         "prohibited_state": "Stable identifiers or combined protocol data enable cross-context correlation that is not needed for the declared purpose.",
         "risk_patterns": [
           "RKP-PRV-01",
-          "RKP-COMP-03"
+          "RKP-COMP-03",
+          "RKP-PRV-04"
         ],
         "control_patterns": [
           "CTP-PRV-01",
-          "CTP-PRV-02"
+          "CTP-PRV-02",
+          "CTP-PRV-04"
         ],
         "trigger_condition": "before stable identifiers or combined data are disclosed across contexts",
         "enforcement_point": "identifier creation and presentation composition boundary",
@@ -2317,6 +2549,64 @@
         "trigger_condition": "before recovery changes control of a high-impact identity, account or credential",
         "enforcement_point": "recovery workflow",
         "failure_mode": "stop recovery or require stronger independent recovery evidence",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-DEL-03",
+        "name": "No authority from lineage alone",
+        "protected_interest": "principal agency",
+        "prohibited_state": "A consequential delegated action is authorized solely because a caller-supplied actor or delegation chain is internally well formed.",
+        "risk_patterns": [
+          "RKP-DEL-04",
+          "RKP-DEL-06"
+        ],
+        "control_patterns": [
+          "CTP-DEL-03"
+        ],
+        "trigger_condition": "before delegated authority is relied upon",
+        "enforcement_point": "authorization or execution boundary",
+        "failure_mode": "block, defer, or escalate until independent authority evidence is established",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-DEL-04",
+        "name": "No silent lineage rewrite",
+        "protected_interest": "accountability",
+        "prohibited_state": "A forwarding actor modifies a prior delegation hop while the system continues to represent the lineage as append-only audit history.",
+        "risk_patterns": [
+          "RKP-DEL-05"
+        ],
+        "control_patterns": [
+          "CTP-DEL-04"
+        ],
+        "trigger_condition": "on delegated forwarding",
+        "enforcement_point": "receive/forward boundary",
+        "failure_mode": "reject or record a mutation finding",
+        "fail_behavior": "closed",
+        "override_permitted": false,
+        "override_authority": null,
+        "evidence_required": true
+      },
+      {
+        "id": "GRP-DEL-05",
+        "name": "No cross-context authority by replay",
+        "protected_interest": "principal agency",
+        "prohibited_state": "Delegation evidence from one context is accepted as authority in another without a valid context/domain binding.",
+        "risk_patterns": [
+          "RKP-DEL-07"
+        ],
+        "control_patterns": [
+          "CTP-DEL-05"
+        ],
+        "trigger_condition": "before cross-context evidence reliance",
+        "enforcement_point": "authority verification boundary",
+        "failure_mode": "reject or mark authority indeterminate",
         "fail_behavior": "closed",
         "override_permitted": false,
         "override_authority": null,
@@ -2536,7 +2826,8 @@
         "control_patterns": [
           "CTP-PRV-02",
           "CTP-PRV-01",
-          "CTP-PRV-03"
+          "CTP-PRV-03",
+          "CTP-PRV-04"
         ],
         "guardrail_patterns": [
           "GRP-PRV-01",
@@ -2756,6 +3047,34 @@
         "failure_interpretation": "Critical dependency power is not effectively governed or the claimed exit path is not credible.",
         "evidence_patterns": [
           "EVP-GOV-01"
+        ],
+        "automation_level": "assisted",
+        "assurance_level": "A3"
+      },
+      {
+        "id": "ATP-DEL-03",
+        "name": "Actor-lineage authority separation test",
+        "assertion": "Actor or delegation lineage remains attribution evidence only; independent grant evidence, append-only integrity and context binding are tested before consequential authority is inferred.",
+        "control_patterns": [
+          "CTP-DEL-03",
+          "CTP-DEL-04",
+          "CTP-DEL-05"
+        ],
+        "guardrail_patterns": [
+          "GRP-DEL-03",
+          "GRP-DEL-04",
+          "GRP-DEL-05"
+        ],
+        "preconditions": [
+          "system or specification carries multi-hop actor or delegation lineage"
+        ],
+        "procedure": "Exercise fabricated-but-monotone, scope-escalation, prior-hop-mutation, missing/unresolvable/invalid evidence, revocation/expiry and cross-context replay cases; inspect retained received/forwarded lineage evidence and the independently resolved authority decision.",
+        "expected_result": "Lineage well-formedness never establishes authority by itself; prior-hop mutation and context replay are detected or fail closed, and evidence/lifecycle states remain distinguishable.",
+        "failure_interpretation": "The system can convert self-reported lineage into authority, lose audit integrity, or misclassify evidence and lifecycle failures.",
+        "evidence_patterns": [
+          "EVP-DEL-01",
+          "EVP-DEL-02",
+          "EVP-OPS-02"
         ],
         "automation_level": "assisted",
         "assurance_level": "A3"

@@ -558,3 +558,74 @@ records:
   introduces_or_amplifies_risks:
   - RKP-EXC-02
   - RKP-PRV-01
+- id: CTP-DEL-03
+  name: Independent delegation evidence resolution
+  risk_patterns:
+  - RKP-DEL-04
+  - RKP-DEL-06
+  authority: relying party or authorization service
+  enforcement_point: delegated action authorization boundary
+  activation: before consequential delegated action
+  failure_behavior: deny, defer, or escalate when required authority evidence is not independently established
+  audit_events:
+  - lineage-well-formedness-evaluated
+  - delegation-evidence-resolution-attempted
+  - authority-decision-recorded
+  evidence_patterns:
+  - EVP-AUTH-01
+  control_function: verify
+  control_objective: Keep attribution lineage separate from authority by resolving grant evidence outside caller-supplied
+    lineage metadata.
+  introduces_or_amplifies_risks: []
+- id: CTP-DEL-04
+  name: Append-only lineage integrity
+  risk_patterns:
+  - RKP-DEL-05
+  authority: protocol implementation or relying party
+  enforcement_point: delegation forwarding boundary
+  activation: on receive and before forward
+  failure_behavior: retain received-chain digest and reject or flag mutation when append-only semantics are required
+  audit_events:
+  - lineage-received
+  - lineage-forwarded
+  - lineage-mutation-detected
+  evidence_patterns:
+  - EVP-OPS-01
+  control_function: detect
+  control_objective: Detect or prevent rewriting of prior delegation lineage hops across receive and forwarding
+    boundaries.
+  introduces_or_amplifies_risks: []
+- id: CTP-DEL-05
+  name: Context-bound delegation evidence
+  risk_patterns:
+  - RKP-DEL-07
+  authority: evidence issuer and verifier
+  enforcement_point: evidence creation and verification boundary
+  activation: before evidence is relied upon across contexts
+  failure_behavior: reject or mark indeterminate when required context binding is absent or mismatched
+  audit_events:
+  - evidence-context-checked
+  - evidence-context-mismatch
+  evidence_patterns:
+  - EVP-AUTH-01
+  control_function: constrain
+  control_objective: Bind portable delegation evidence references to the context or trust domain in which their
+    authority semantics apply.
+  introduces_or_amplifies_risks: []
+- id: CTP-PRV-04
+  name: Delegation lineage minimization
+  risk_patterns:
+  - RKP-PRV-04
+  authority: data controller or protocol implementer
+  enforcement_point: lineage disclosure boundary
+  activation: before lineage crosses a party or trust-domain boundary
+  failure_behavior: minimize, pseudonymize, selectively disclose, or refuse unnecessary lineage fields
+  audit_events:
+  - lineage-disclosure-reviewed
+  - lineage-minimization-applied
+  evidence_patterns:
+  - EVP-OPS-01
+  control_function: minimize
+  control_objective: Disclose only the delegation-lineage attributes required for the relying decision and accountable
+    audit purpose.
+  introduces_or_amplifies_risks: []

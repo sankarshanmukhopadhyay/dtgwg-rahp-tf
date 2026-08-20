@@ -165,6 +165,7 @@ records:
   - CTP-PRV-02
   - CTP-PRV-01
   - CTP-PRV-03
+  - CTP-PRV-04
   guardrail_patterns:
   - GRP-PRV-01
   - GRP-PRV-02
@@ -339,5 +340,32 @@ records:
     credible.
   evidence_patterns:
   - EVP-GOV-01
+  automation_level: assisted
+  assurance_level: A3
+- id: ATP-DEL-03
+  name: Actor-lineage authority separation test
+  assertion: Actor or delegation lineage remains attribution evidence only; independent grant evidence, append-only
+    integrity and context binding are tested before consequential authority is inferred.
+  control_patterns:
+  - CTP-DEL-03
+  - CTP-DEL-04
+  - CTP-DEL-05
+  guardrail_patterns:
+  - GRP-DEL-03
+  - GRP-DEL-04
+  - GRP-DEL-05
+  preconditions:
+  - system or specification carries multi-hop actor or delegation lineage
+  procedure: Exercise fabricated-but-monotone, scope-escalation, prior-hop-mutation, missing/unresolvable/invalid
+    evidence, revocation/expiry and cross-context replay cases; inspect retained received/forwarded lineage evidence
+    and the independently resolved authority decision.
+  expected_result: Lineage well-formedness never establishes authority by itself; prior-hop mutation and context
+    replay are detected or fail closed, and evidence/lifecycle states remain distinguishable.
+  failure_interpretation: The system can convert self-reported lineage into authority, lose audit integrity, or
+    misclassify evidence and lifecycle failures.
+  evidence_patterns:
+  - EVP-DEL-01
+  - EVP-DEL-02
+  - EVP-OPS-02
   automation_level: assisted
   assurance_level: A3

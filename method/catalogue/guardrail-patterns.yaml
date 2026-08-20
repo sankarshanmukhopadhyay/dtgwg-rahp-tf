@@ -336,9 +336,11 @@ records:
   risk_patterns:
   - RKP-PRV-01
   - RKP-COMP-03
+  - RKP-PRV-04
   control_patterns:
   - CTP-PRV-01
   - CTP-PRV-02
+  - CTP-PRV-04
   trigger_condition: before stable identifiers or combined data are disclosed across contexts
   enforcement_point: identifier creation and presentation composition boundary
   failure_mode: use scoped identifiers, reduce disclosure, or document why correlation is necessary
@@ -374,6 +376,55 @@ records:
   trigger_condition: before recovery changes control of a high-impact identity, account or credential
   enforcement_point: recovery workflow
   failure_mode: stop recovery or require stronger independent recovery evidence
+  fail_behavior: closed
+  override_permitted: false
+  override_authority: null
+  evidence_required: true
+- id: GRP-DEL-03
+  name: No authority from lineage alone
+  protected_interest: principal agency
+  prohibited_state: A consequential delegated action is authorized solely because a caller-supplied actor or delegation
+    chain is internally well formed.
+  risk_patterns:
+  - RKP-DEL-04
+  - RKP-DEL-06
+  control_patterns:
+  - CTP-DEL-03
+  trigger_condition: before delegated authority is relied upon
+  enforcement_point: authorization or execution boundary
+  failure_mode: block, defer, or escalate until independent authority evidence is established
+  fail_behavior: closed
+  override_permitted: false
+  override_authority: null
+  evidence_required: true
+- id: GRP-DEL-04
+  name: No silent lineage rewrite
+  protected_interest: accountability
+  prohibited_state: A forwarding actor modifies a prior delegation hop while the system continues to represent the
+    lineage as append-only audit history.
+  risk_patterns:
+  - RKP-DEL-05
+  control_patterns:
+  - CTP-DEL-04
+  trigger_condition: on delegated forwarding
+  enforcement_point: receive/forward boundary
+  failure_mode: reject or record a mutation finding
+  fail_behavior: closed
+  override_permitted: false
+  override_authority: null
+  evidence_required: true
+- id: GRP-DEL-05
+  name: No cross-context authority by replay
+  protected_interest: principal agency
+  prohibited_state: Delegation evidence from one context is accepted as authority in another without a valid context/domain
+    binding.
+  risk_patterns:
+  - RKP-DEL-07
+  control_patterns:
+  - CTP-DEL-05
+  trigger_condition: before cross-context evidence reliance
+  enforcement_point: authority verification boundary
+  failure_mode: reject or mark authority indeterminate
   fail_behavior: closed
   override_permitted: false
   override_authority: null
