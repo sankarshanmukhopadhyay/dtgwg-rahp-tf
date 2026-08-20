@@ -1,0 +1,24 @@
+version: 1
+id: rahp-resilience-assurance-map-v1
+purpose: >-
+  Map DRARM resilience signals into the portable RAHP assurance graph where a semantic
+  mapping exists. Unmapped rules remain resilience signals and MUST NOT be forced into
+  an unrelated portable pattern merely to create graph coverage.
+mappings:
+  RLA-004:
+    risk: RKP-OPS-02
+    control: CTP-OPS-02
+    guardrail: GRP-OPS-01
+    assurance: ATP-OPS-02
+    rationale: Retry multiplication can cause replay or duplicate consequential side effects.
+  RLA-012:
+    risk: RKP-OPS-01
+    control: CTP-OPS-01
+    rationale: Partial outage is a dependency-unavailability condition requiring safe degradation.
+unmapped:
+  RLA-006:
+    rationale: Destructive overflow requires a future portable queue-loss/backpressure pattern before direct mapping.
+  RLA-009:
+    rationale: Head-of-line blocking requires a future portable work-isolation pattern before direct mapping.
+  RLA-013:
+    rationale: Cache stampede is retained as a resilience signal until a semantically exact portable pattern exists.

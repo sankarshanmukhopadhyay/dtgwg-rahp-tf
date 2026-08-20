@@ -1,0 +1,1 @@
+{"version":1,"assessment_id":"AR-001","previous_finding":"F-001","previous_revision":"abc123","retested_revision":"def456","outcome":"resolved","closure_evidence":[{"id":"ATP-OPS-02","result":"pass","uri":"tests/lost-response.json"}]}

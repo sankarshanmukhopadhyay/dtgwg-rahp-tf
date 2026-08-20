@@ -7,60 +7,17 @@ parent: Implement RAHP
 ---
 # RAHP engine contract
 
-v0.8 makes the execution boundary explicit so RAHP can support more than one
-implementation language without making Python behaviour normative.
+The stable v1 engine boundary is language-neutral. The candidate v1.2 capability extends it additively so a conforming implementation can represent evidence classification, residual assurance evaluation, governed remediation, and evidence-based retesting without making Python or TypeScript behaviour normative.
 
-The portable contract is defined by:
-
-- `method/engine-contract.yaml` — lifecycle, operations and invariants;
-- `method/schema/rahp-result.schema.json` — normalized assessment result;
-- `method/evidence-retention.yaml` — evidence/storage classes;
-- `tests/conformance/engine/` — implementation-neutral fixtures.
-
-The execution lifecycle is:
+The v1.2 lifecycle is:
 
 ```text
-source → observation → trigger → assessment → finding → disposition → baseline
+source → observation → trigger → assessment → evidence → evaluation
+       → finding → disposition → remediation → retest → baseline
 ```
 
-An implementation may use Python, TypeScript, Rust, Java, Go or another language. A
-conforming implementation must preserve these object boundaries and produce results
-that validate against the common schema and fixtures.
+A detector signal is not automatically a finding. Evidence must be classified, relevant controls and assurance tests credited, and the residual state recorded. A result with zero findings is not equivalent to assured when unresolved assurance gaps, review-required propositions, or unassessed propositions remain.
 
-## What is normative and what is not
+The normalized result remains schema version `1`. The extension adds optional `assurance_summary`, `evaluations`, `remediations`, and `retests` fields, preserving existing v1.1 result compatibility.
 
-The portable schemas, controlled method data, lifecycle invariants and conformance
-fixtures define the contract. The current Python commands are a **reference adapter**
-and operational implementation; their internal functions, filesystem layout and
-libraries are not an API that another implementation must reproduce.
-
-This distinction is deliberate. It enables a TypeScript SDK to arrive without
-redefining RAHP, and later permits a Rust/WASM implementation to prove portability by
-running the same conformance suite.
-
-## Reference commands
-
-```bash
-python3 tools/engine_contract.py describe
-python3 tools/engine_contract.py validate-result result.json
-python3 tools/engine_contract.py retention-plan result.json
-```
-
-CI runs `tools/validate_engine_contract.py` to verify the contract, retention policy
-and conformance fixtures together.
-
-## Normalized result
-
-A result records:
-
-- stable assessment identity and triggers;
-- repository/source and reviewed revision;
-- review mode and lifecycle status;
-- findings;
-- disposition;
-- evidence manifest entries; and
-- observable retest triggers.
-
-The normalized result is intentionally smaller than a run workspace. It is the
-portable interchange object between an engine, CI, a future TypeScript SDK, reporting
-systems and durable deployment assurance state.
+Normative portable surfaces are `method/engine-contract.yaml`, the schemas under `method/schema/`, retention policy, mappings, and shared conformance fixtures. Reference implementations may use richer internal logic but must preserve normalized proposition, evidence, reasoning, and lifecycle semantics.

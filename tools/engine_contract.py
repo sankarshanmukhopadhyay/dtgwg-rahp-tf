@@ -38,6 +38,20 @@ def semantic_errors(result:dict[str,Any])->list[str]:
             out.append(f"dispositioned result must not depend on ephemeral evidence {ev.get('id','?')}")
     if result.get('status')=='dispositioned' and (result.get('disposition') or {}).get('outcome')=='pending':
         out.append('dispositioned result cannot have pending outcome')
+    evaluations=result.get('evaluations') or []
+    declared=result.get('assurance_summary')
+    if declared is not None:
+        states=('assured','controlled','finding','assurance-gap','review-required','not-assessed','not-applicable')
+        actual={k:0 for k in states}
+        for item in evaluations:
+            state=((item.get('residual') or {}).get('status'))
+            if state in actual: actual[state]+=1
+        for key,value in declared.items():
+            if key not in actual: out.append(f'assurance_summary contains unknown state {key}')
+            elif value != actual[key]: out.append(f'assurance_summary.{key} must equal {actual[key]}')
+    if not result.get('findings') and declared and (declared.get('assurance-gap',0) or declared.get('review-required',0) or declared.get('not-assessed',0)):
+        if (result.get('disposition') or {}).get('outcome')=='no-material-assurance-impact':
+            out.append('zero findings with unresolved assurance states cannot be dispositioned as no-material-assurance-impact')
     closure=result.get('closure')
     if closure:
         if result.get('status')!='dispositioned':
@@ -66,7 +80,6 @@ def retention_plan(result:dict[str,Any])->dict[str,Any]:
                         'retention_days':spec.get('default_retention_days'),
                         'action': 'commit' if spec['repository']=='allowed' else ('manifest-only' if spec['repository']=='manifest-only' else 'do-not-commit')})
     return {'policy':policy['id'],'assessment':result['assessment']['id'],'actions':actions}
-
 
 def correlate_trigger(observation:dict[str,Any], assessments:list[dict[str,Any]])->dict[str,Any]:
     key=observation.get('assessment_key')

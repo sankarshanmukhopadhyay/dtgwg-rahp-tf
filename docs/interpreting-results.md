@@ -7,8 +7,18 @@ parent: Run assessments
 ---
 # Interpreting RAHP results
 
-A RAHP finding is evidence that a harm pathway or assurance gap deserves treatment. It is **not** by itself evidence that the reviewed specification must contain the mitigation.
+A RAHP result is not a binary pass/fail statement. The v1.2 model separates **signals**, **controls**, **assurance evidence**, and the **residual conclusion** so a mature target can receive explicit control credit without unresolved evidence gaps being hidden by a green status.
 
-Prioritise findings by consequence, affected parties, likelihood, reversibility, power asymmetry, evidence strength, and whether the system can detect/control the failure at runtime.
+| State | Meaning |
+|---|---|
+| `assured` | The proposition is positively supported by sufficient evidence. |
+| `controlled` | A relevant risk exists, but an evidenced control and assurance test support the required outcome. |
+| `finding` | Evidence supports an actionable residual defect or unsafe condition. |
+| `assurance-gap` | A control/property may exist, but required assurance evidence is incomplete. |
+| `review-required` | Available evidence cannot safely determine the residual state. |
+| `not-assessed` | The proposition was not evaluated sufficiently. |
+| `not-applicable` | The proposition is outside the applicable scope. |
 
-For every finding, separate three questions: **Is the risk real? Who has authority to control it? What evidence proves the control is effective?** This separation prevents standards from absorbing obligations they cannot enforce and prevents governance bodies from assuming technical mechanisms provide legitimacy they do not possess.
+**Zero findings is not equivalent to assured.** A report with `0 findings + 7 assurance-gap` records no confirmed defect, but it also records seven unresolved assurance obligations. Dashboards and downstream automation must preserve that distinction.
+
+For every potential finding, ask: **What signal exists? What control is present? What evidence demonstrates the control? What residual gap remains?** Then separately ask who has authority to remediate it.

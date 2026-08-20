@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/rahp/schema/assurance-evaluation.schema.json",
+  "title": "RAHP assurance evaluation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["proposition", "signals", "control_evidence", "assurance_evidence", "residual"],
+  "properties": {
+    "proposition": {"type":"object","additionalProperties":false,"required":["id","subject"],"properties":{"id":{"type":"string","minLength":1},"subject":{"type":"string","minLength":1},"target":{"type":"string"}}},
+    "signals": {"type":"array","items":{"type":"object","additionalProperties":false,"required":["id","type","confidence"],"properties":{"id":{"type":"string","minLength":1},"type":{"enum":["risk-indicator","control-indicator","assurance-indicator","contradictory-evidence"]},"confidence":{"enum":["low","medium","high"]},"description":{"type":"string"}}}},
+    "control_evidence": {"type":"array","items":{"$ref":"#/$defs/evidenceAssertion"}},
+    "assurance_evidence": {"type":"array","items":{"$ref":"#/$defs/evidenceAssertion"}},
+    "residual": {"type":"object","additionalProperties":false,"required":["status","reason"],"properties":{"status":{"enum":["assured","controlled","finding","assurance-gap","review-required","not-assessed","not-applicable"]},"severity":{"enum":["informational","low","medium","high","critical"]},"reason":{"type":"string","minLength":1},"missing":{"type":"array","items":{"type":"string"},"uniqueItems":true}}}
+  },
+  "$defs": {
+    "evidenceAssertion": {"type":"object","additionalProperties":false,"required":["id","status"],"properties":{"id":{"type":"string","minLength":1},"status":{"enum":["present","absent","partial","pass","fail","unknown"]},"evidence":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["path","context","authority"],"properties":{"path":{"type":"string","minLength":1},"context":{"enum":["normative-spec","implementation","test","deployment","governance","operational-evidence","build-infrastructure","documentation","example","historical"]},"authority":{"enum":["normative","authoritative","supporting","informative","incidental"]},"assertion":{"type":"string"}}}}}}
+  }
+}
