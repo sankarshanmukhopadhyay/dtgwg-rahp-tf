@@ -1,73 +1,81 @@
 # RAHP Toolkit
 
 **Risk Assessment & Harms Prevention**  
-Release v1.1.0 · CC-BY 4.0
+Release v1.2.0 · CC-BY 4.0
 
-RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-testing standards and technical specifications against human harms, risk, governance weaknesses, and adversarial or security failure conditions.
+RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-testing standards, protocols, implementations and composed systems against human harms, governance failures, adversarial conditions and resilience risks.
 
-It combines a reusable assurance method with configuration-driven review tooling, scenario corpora, source-change monitoring, validation, and evidence generation. The portable method is independent of any one standards community or deployment.
+> **Project identity:** RAHP Toolkit is the portable method and engine contract. DTG, CAWG/C2PA and other portfolios are independently scoped deployments and examples. No deployment defines the portable method for another adopter. The **Bundled DTG exemplar** preserves project provenance and exercises the toolkit without making DTG a core dependency.
 
-> **Project identity:** RAHP Toolkit is the project. DTG and CAWG/C2PA are separately scoped deployments that use it. DTG is the historical origin and bundled exemplar. Neither deployment defines the portable method for another adopter.
+## What changed in v1.2
 
-## What RAHP produces
+RAHP v1.2 moves from signal-centric review to **evidence-driven assurance**.
 
-A RAHP assessment is intended to leave a traceable assurance chain:
+A detector signal is not automatically a finding. RAHP evaluates the relevant risk proposition against typed evidence, credited controls, assurance evidence and target context before assigning a residual assurance state.
 
 ```text
 target + pinned revision
-  → affected people and scenarios
-  → harm and risk hypotheses
-  → controls and guardrails
-  → assurance tests and evidence
-  → finding + disposition
-  → recommendation at the correct control plane
-  → observable retest trigger
+  → signals and assurance propositions
+  → typed evidence
+  → control credit
+  → assurance evidence
+  → residual assurance conclusion
+  → governed remediation
+  → evidence-based retest
 ```
 
-RAHP does **not** assume every finding belongs in the specification being reviewed. A finding may route to a companion specification, governance framework, implementation guidance, runtime control, operational policy, formal risk acceptance, or no change when the concern is already addressed or out of scope.
+The seven normalized residual states are:
 
-## Current v1.1 assurance model
+| State | Meaning |
+|---|---|
+| `assured` | Required propositions are supported by sufficient evidence. |
+| `controlled` | The risk exists, but effective controls and assurance evidence are present. |
+| `finding` | Evidence supports an actionable residual defect. |
+| `assurance-gap` | The control/property may exist, but evidence is incomplete. |
+| `review-required` | Automation cannot safely determine the conclusion. |
+| `not-assessed` | The proposition was not sufficiently evaluated. |
+| `not-applicable` | The proposition is outside applicable scope. |
 
-v1.1 separates the reusable method from deployment-owned assessment state.
+**Zero findings is not equivalent to assured.** A result can contain no confirmed findings while still carrying unresolved assurance gaps or review obligations.
 
-The portable catalogue under `method/catalogue/` currently contains **149 reusable assurance patterns**:
+See the [v1.2.0 release notes](docs/releases/v1.2.0.md), [assurance evaluation](docs/assurance-evaluation.md), [evidence classification](docs/evidence-classification.md), [interpreting results](docs/interpreting-results.md), and [remediation lifecycle](docs/remediation-lifecycle.md).
+
+## Portable assurance model
+
+The reusable catalogue under `method/catalogue/` contains **162 assurance patterns**:
 
 | Prefix | Pattern type | Count |
 |---|---|---:|
 | `HRM-*` | Human-harm patterns | 24 |
-| `RKP-*` | Risk patterns | 38 |
-| `CTP-*` | Control patterns | 31 |
-| `GRP-*` | Guardrail patterns | 22 |
-| `ATP-*` | Assurance-test patterns | 19 |
+| `RKP-*` | Risk patterns | 43 |
+| `CTP-*` | Control patterns | 35 |
+| `GRP-*` | Guardrail patterns | 25 |
+| `ATP-*` | Assurance-test patterns | 20 |
 | `EVP-*` | Evidence patterns | 15 |
 
-All portable risks have controls, all controls map to assurance patterns, and all risks that **require** a guardrail have one. `RKP-PE-02` remains explicitly conditional because failure-cost externalization needs a guardrail only where materially affected parties lack meaningful choice, exit, or remedy.
-
-RAHP also includes a governed **56-term simple-English glossary** under `method/glossary/`. Structured YAML is authoritative; Markdown, JSON, JSON-LD, and generated site views are derived outputs.
-
-See [Assurance knowledge model](docs/assurance-knowledge-model.md), [portable catalogue](docs/portable-assurance-catalogue.md), [Glossary](docs/glossary.md), and [v1.1.0 release notes](docs/releases/v1.1.0.md).
+The catalogue is complemented by a governed simple-English glossary under `method/glossary/`. Structured method data is authoritative; Markdown, JSON, JSON-LD and rendered site views are derived publication surfaces.
 
 ## Start here
 
 | Goal | Start here |
 |---|---|
 | Understand the method | [How RAHP works](docs/how-rahp-works.md) and [Concepts](docs/concepts.md) |
-| Understand RAHP terminology | [Glossary](docs/glossary.md) |
-| Browse portable assurance patterns | [Portable assurance catalogue](method/catalogue/) and [catalogue guide](docs/portable-assurance-catalogue.md) |
-| Inspect generated assurance coverage | [Portable catalogue view](build/site/portable-catalogue.html) and [assurance graph](build/site/assurance-graph.html) |
-| Configure your own repositories | [Configuration-driven adoption](docs/configuration.md) and [Adopting RAHP](ADOPTION.md) |
+| Understand v1.2 assurance conclusions | [Assurance evaluation](docs/assurance-evaluation.md) and [Interpreting results](docs/interpreting-results.md) |
+| Understand evidence weight | [Evidence classification](docs/evidence-classification.md) |
+| Browse reusable assurance patterns | [Portable catalogue](method/catalogue/) and [catalogue guide](docs/portable-assurance-catalogue.md) |
 | Run a risks-and-harms review | [Pressure-testing a specification](docs/pressure-testing-a-spec.md) |
 | Run a security/adversarial review | [Security and hardening review](docs/security-hardening-review.md) |
-| Run both lenses together | [Review modes](docs/review-modes.md) |
-| Exercise scenario stress conditions | [Scenario corpora browser](corpora/) and [Scenario-driven pressure testing](docs/scenario-driven-pressure-testing.md) |
-| Understand portability and deployment boundaries | [Portability](docs/portability.md) |
-| Understand the stable engine boundary | [Engine contract](docs/engine-contract.md) |
-| Contribute to RAHP | [How to contribute](docs/how-to-contribute.md) |
-| Inspect current example HEAD qualification | [v1.1 HEAD qualification](docs/head-qualification.md) |
+| Run both lenses | [Review modes](docs/review-modes.md) |
+| Run resilience analysis | [Distributed resilience and amplification](docs/distributed-resilience.md) |
+| Test composed specifications | [Cross-spec pressure testing](docs/cross-spec-pressure-testing.md) |
+| Configure another portfolio | [Configuration](docs/configuration.md) and [Adopting RAHP](ADOPTION.md) |
+| Understand portability | [Portability](docs/portability.md) |
+| Implement the engine contract | [Engine contract](docs/engine-contract.md) |
+| Contribute | [How to contribute](docs/how-to-contribute.md) and [CONTRIBUTING.md](CONTRIBUTING.md) |
 
 ## Quick start
 
-Install the Python dependencies and validate the minimal portable configuration:
+Install the Python dependencies and validate the portable configuration:
 
 ```bash
 pip install -r requirements.txt
@@ -82,9 +90,7 @@ Run the unified review entry point:
 python3 tools/review.py --help
 ```
 
-A reviewer may run `rahp`, `security`, or `combined` mode. The tooling scaffolds, validates, and renders review evidence; it does not replace the human judgement needed to produce defensible findings.
-
-To validate the repository and generated assurance evidence:
+Validate the repository and conformance surfaces:
 
 ```bash
 python3 tools/validate.py
@@ -93,135 +99,77 @@ python3 tools/validate_glossary.py
 python3 tools/validate_pressure_tests.py
 python3 tools/validate_security_reviews.py
 python3 tools/validate_combined_reviews.py
+python3 tools/validate_engine_contract.py
 python3 tools/build.py
 python3 tools/validate_reference_links.py
+```
+
+Build and exercise the TypeScript reference implementation:
+
+```bash
+npm install
+npm run build:ts
+npm run test:ts
 ```
 
 ## Current architecture
 
 ```mermaid
 flowchart TB
-  A[Adopter / Standards WG / Reviewer] --> P[Deployment profile YAML]
-  M[Portable RAHP method] --> E[Portable engine and validators]
-  K[Portable assurance catalogue] --> E
-  G[Simple-English glossary] --> E
-  P --> E
-  I[Deployment-owned state / local vocabulary] --> E
-  C[Optional scenario corpora] --> E
-  E --> R[RAHP / Security / Combined review]
-  R --> O[Normalized result · findings · disposition]
-  O --> X[Durable record / evidence manifest]
-  R --> T[Ephemeral .rahp workspace]
-  E --> W[Source-change monitoring]
-  W --> Q[Coalesced assessment work queue]
+  A[Target revision] --> B[Evidence collection]
+  B --> C[Signals and propositions]
+  C --> D[Control credit]
+  D --> E[Assurance evidence]
+  E --> F[Residual evaluation]
+  F --> G[Finding / gap / controlled / assured]
+  G --> H[Disposition]
+  H --> I[Remediation manifest]
+  I --> J[Retest]
+  J --> K[Resolved / residual / regression]
 
-  E --> D1[DTG exemplar deployment]
-  E --> D2[CAWG/C2PA external deployment]
-  E --> D3[A2A worked example]
-  E --> D4[Your deployment]
+  M[Portable RAHP method] --> F
+  P[Deployment profile] --> F
+  X[Deployment-owned state] --> F
 ```
 
-The portability invariant is **shared method and engine contract, independent deployment context**. The stable `rahp-engine-contract-v1` boundary remains language-neutral. Independent Python and TypeScript implementations are required to agree on shared normalized-result and evidence-retention behaviours through conformance fixtures.
+The portability invariant is **shared method and engine contract, independent deployment context**. `rahp-engine-contract-v1`, normalized result schema version `1`, and `rahp-evidence-retention-v1` remain the stable compatibility boundaries in v1.2.
 
-Normal run exhaust lives under ignored `.rahp/` workspaces. Git retains compact dispositions, evidence manifests, deployment state, and deliberately promoted examples rather than every generated review.
+## Evidence-driven resilience
 
-## Repository map
+RAHP includes the portable **Distributed Resilience and Amplification Risk Model (DRARM)** for retry storms, reconnect herds, retry multiplication, queue/backpressure collapse, fan-out, poison messages, cascading dependency failure and related amplification risks.
 
-| Path | Role |
-|---|---|
-| `method/` | Portable lifecycle, catalogue, glossary, controlled vocabularies, schemas, and engine/configuration contracts. |
-| `tools/` | Portable orchestration, validation, monitoring, rendering, and build tooling. |
-| `profiles/<id>/` | Deployment configuration: repositories, branches, scope, context, and allowed review modes. |
-| `instances/<id>/` | Deployment-owned state, review records, and optional local assurance vocabulary. |
-| `corpora/` | Optional domain scenario adapters mapped to portable `SP-*` stress patterns. |
-| `examples/` | Curated worked assessments and adoption fixtures. |
-| `data/` | Bundled DTG exemplar catalogue retained for compatibility and deployment evidence; **not the portable RAHP method**. |
-| `build/` | Generated evidence, machine-readable artefacts, and layered assurance-site views. Do not hand-edit generated outputs. |
-| `docs/` | Guided documentation for adopters, reviewers, contributors, and bundled deployments. |
-| `archive/` | Historical provenance only; not current authority. |
-
-See the [repository map](docs/diagrams/repository-map.md) and [portability contract](docs/portability.md).
-
-## Worked examples and deployment proof
-
-RAHP includes several deliberately different examples to test portability and composition:
-
-- **DTG exemplar:** the historical deployment with local `RK/CT/GR/AT` governance and assurance state. See [DTG instance](docs/dtg-instance.md).
-
-The bundled DTG exemplar currently contains:
-
-| Prefix | Type | Count |
-|---|---|---:|
-| `RK-xx` | Risk | 48 |
-| `CT-xx` | Control | 73 |
-| `GR-xx` | Guardrail | 25 |
-| `AT-xx` | Assurance test | 25 |
-| `M-xx` | Trust metric | 40 |
-| `US-xx` | User story | 36 |
-| `SC-xx` | Scenario | 33 |
-| `EPIC-xx` | Capability cluster | 21 |
-| `P/D/M/B/EC` | Persona | 22 |
-| `REC-x` | Standards recommendation | 9 |
-| `RA-xxx` | Risk acceptance | 3 |
-| `GP-xxx` | Governance precedent | 3 |
-| `RP-xxx` | Governance rule profile | 1 |
-| `EV-xxx` | Evidence artefact | 5 |
-
-These are **deployment-local records**, not the portable `HRM/RKP/CTP/GRP/ATP/EVP` method catalogue.
-- **CAWG/C2PA deployment:** an independently scoped, branch-aware external deployment with its own local risk namespace and monitoring state. See [CAWG/C2PA instance](docs/cawg-instance.md).
-- **A2A:** an agent-protocol worked pressure test focused on discovery, delegation, callback trust, secondary credentials, and action provenance. See [A2A worked example](docs/a2a-example.md).
-- **Cross-specification pressure testing:** a profile-driven capability for testing emergent failures between specifications without coupling RAHP core to any ecosystem. The generic GitHub Actions workflow remains available for any profile. Thin DTG and CAWG/C2PA launcher workflows provide synchronized dropdowns and portfolio defaults while delegating execution to that same generic workflow, so convenience does not create ecosystem-specific engine logic. Runs publish durable RAHP review issues with upstream-ready candidate sections but do not auto-file normative changes. See [Cross-spec pressure testing](docs/cross-spec-pressure-testing.md).
-- **W3C DID Resolution v1:** a pinned Candidate Recommendation pressure test separating evidence retrieval, authority, freshness, resolver privacy and dereferencing assurance. See [`examples/w3c-did-resolution-2026-cr/`](examples/w3c-did-resolution-2026-cr/README.md).
-- **DID Resolution × UN/CEFACT GRID/GTR:** a maintained cross-specification example that keeps technical DID control separate from registrar authority and relying-party trust decisions. See [`examples/cross-spec/did-resolution-grid-gtr/`](examples/cross-spec/did-resolution-grid-gtr/README.md).
-
-The current maintained example estate has also been qualified against the live HEAD of 11 represented repositories. See [v1.1 HEAD qualification](docs/head-qualification.md).
-
-## Distributed resilience and amplification
-
-RAHP includes the portable **Distributed Resilience and Amplification Risk Model (DRARM)** for retry storms, reconnect herds, retry multiplication, queue/backpressure collapse, fan-out, poison messages, cascading dependency failure and related amplification risks. It can assess implementations, specifications, architecture bundles and composed systems without coupling the method to DTG, OpenVTC or another ecosystem.
+In v1.2 DRARM is a specialized signal provider. Resilience signals map into portable `RKP-*`, `CTP-*`, `GRP-*` and `ATP-*` patterns only where semantic equivalence exists; unmatched rules remain explicitly unmapped rather than being forced into misleading relationships.
 
 ```bash
 python3 tools/rahp.py resilience --path ../target --repository owner/repository --revision <tag-or-commit>
 ```
 
-The GitHub Actions workflow `distributed-resilience-assessment.yml` can run against a repository tag/commit or a standalone specification URL, produce machine-readable evidence, and create/coalesce a RAHP work item containing upstream-ready filing recommendations. See [Distributed resilience and amplification](docs/distributed-resilience.md).
+## Remediation and authority
 
-## Monitoring and reassessment
+RAHP separates observation, assessment and publication authority.
 
-`tools/instance_monitor.py` provides reusable `repository@branch` source monitoring for static deployment profiles. Assessment identities remain repository-scoped on `main` and become branch-scoped for non-main targets, preventing independent assurance objects from being coalesced. Role-aware materiality profiles let implementations include source/tests while specifications emphasize normative/schema surfaces. `tools/issue_watch.py` provides an allow-listed early-warning channel for selected upstream architecture or governance issues. `tools/publish_assessment_issues.py` converts material observations into stable assessment work items, and `tools/reconcile_assessment_issues.py` can produce or explicitly apply an evidence-backed closure plan after every durable assessment associated with an issue is dispositioned.
+A remediation manifest can identify the repository or control plane that owns a change, the required outcome and the evidence needed for closure. It does **not** by itself authorize RAHP to create or modify work in an upstream repository.
 
-A monitoring event means **the assessment baseline may be stale**. It does not mean the upstream specification is defective. A reviewer must inspect the change and decide whether RAHP, security, or combined evidence needs revision.
+The default automation boundary remains conservative: RAHP deployment automation creates/coalesces its own assurance work items; external publication requires a separate governance decision or explicit mandate.
 
-**Issue-publication invariant:** RAHP automation creates and coalesces GitHub issues only in `sankarshanmukhopadhyay/rahp-toolkit`. Assessed repositories and declared upstream repositories are evidence/remediation metadata, never automated publication destinations. Upstream-ready recommendations may be included in a RAHP issue for human review, but filing outside RAHP is always a separate human-controlled action. The publisher rejects non-RAHP destinations at runtime.
+## Repository map
 
-## AI-assisted use and accountability
+| Path | Role |
+|---|---|
+| `method/` | Portable lifecycle, catalogue, schemas, glossary, mappings and engine/version contracts. |
+| `tools/` | Portable orchestration, validation, monitoring, rendering and build tooling. |
+| `profiles/<id>/` | Deployment configuration and cross-specification registries. |
+| `instances/<id>/` | Deployment-owned state, review records and local assurance vocabulary. |
+| `corpora/` | Optional scenario adapters mapped to portable stress patterns. |
+| `examples/` | Curated worked assessments and portability fixtures. |
+| `packages/` | TypeScript schema/core/graph/CLI reference implementation. |
+| `build/` | Generated evidence and publication views. Do not hand-edit generated outputs. |
+| `docs/` | Guided documentation and release notes. |
+| `archive/` | Historical provenance; not current authority. |
 
-AI systems may assist with corpus review, change analysis, scenario generation, cross-reference discovery, evidence organization, or drafting candidate findings. AI output is **not**, by itself, assurance evidence and does not become a durable RAHP finding without human review.
+## Compatibility and releases
 
-Where AI materially affects an assessment, the durable record should preserve enough provenance to show what assistance occurred and that a human reviewed the conclusion. RAHP does not require prompt histories, hidden reasoning, or unnecessary execution exhaust.
-
-See [AI-assisted RAHP](docs/ai-assisted-process.md).
-
-## Contribution model
-
-Contributions should preserve layer authority:
-
-- reusable method semantics belong in `method/`;
-- deployment configuration belongs in `profiles/<id>/`;
-- deployment state and local vocabulary belong in `instances/<id>/`;
-- generated output belongs in `build/` only through the build tools.
-
-The documentation provides sequential workflows for:
-
-1. [extending harms, risks, controls, guardrails, assurance, or evidence patterns](docs/contributing-catalogue.md);
-2. [adding a toolkit capability](docs/contributing-capability.md); and
-3. [adding a specification pressure test](docs/contributing-pressure-test.md).
-
-Start with [How to contribute](docs/how-to-contribute.md) and [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## Releases and compatibility
-
-v1.1 extends the portable method with the assurance catalogue, governed glossary, guardrail applicability semantics, cross-spec examples, and generated assurance views while preserving these stable compatibility boundaries:
+RAHP v1.2 is an additive minor release. Existing v1.1 normalized results remain valid. The stable boundaries are:
 
 ```text
 rahp-engine-contract-v1
@@ -229,15 +177,18 @@ normalized result schema version 1
 rahp-evidence-retention-v1
 ```
 
+Breaking method or normalized-result changes follow `method/versioning.yaml` and require the corresponding major/schema transition rather than being introduced silently.
+
 Release history is maintained in [CHANGELOG.md](CHANGELOG.md) and [release documentation](docs/releases/).
+
+## AI-assisted use and accountability
+
+AI systems may assist with review, change analysis, scenario generation, evidence organization and drafting. AI output is not, by itself, assurance evidence and does not become a durable finding without review. Durable records should preserve enough provenance to identify material assistance and the accountable human or governance disposition without requiring prompt histories or hidden reasoning.
+
+See [AI-assisted RAHP](docs/ai-assisted-process.md).
 
 ## License and provenance
 
-RAHP Toolkit preserves its DTG origin as provenance while operating as a portable, independently reusable assurance toolkit.
+RAHP Toolkit preserves its DTG origin as provenance while operating as an independently reusable assurance toolkit.
 
 **CC-BY 4.0 — reuse with attribution.**
-
-
-### Optional ecosystem profiles
-
-RAHP core is ecosystem-neutral. Deployment-specific registries and policy live under `profiles/<ecosystem>/` or `instances/<ecosystem>/`; they are loaded only when an operator explicitly selects them. The DTG cross-spec registry is an example pack at `profiles/dtg/cross-spec-tests.yaml`, not a core dependency.

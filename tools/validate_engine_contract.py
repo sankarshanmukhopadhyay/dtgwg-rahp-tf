@@ -36,7 +36,7 @@ def main():
             want=sorted(exp['retention'].get('repository_classes') or [])
             if got!=want: errors+=fail(f'{result_path.parent.name}: retention repository classes {got}, expected {want}')
     versioning=yaml.safe_load((ROOT/'method/versioning.yaml').read_text())
-    if versioning.get('stable_release')!='v1.1.0': errors+=fail('stable release metadata must remain v1.1.0 until v1.2 is intentionally published')
+    if versioning.get('stable_release')!='v1.2.0': errors+=fail('stable release metadata must be v1.2.0 for the published evidence-driven assurance baseline')
     if versioning.get('contracts',{}).get('engine')!=contract.get('id'): errors+=fail('versioning engine contract id mismatch')
     from engine_contract import correlate_trigger
     lifecycle=sorted((ROOT/'tests/conformance/lifecycle').glob('*/input.json'))
@@ -63,6 +63,6 @@ def main():
     for result_path in durable:
         if not validate_result(result_path,quiet=True): errors+=fail(f'durable normalized result invalid: {result_path.relative_to(ROOT)}')
     if errors: print(f'Engine contract validation failed: {errors} error(s)'); return 1
-    print(f'Engine contract valid: {len(fixtures)} result fixture(s); {len(assurance_fixtures)} assurance fixture(s); {len(lifecycle)} lifecycle fixture(s); {len(durable)} durable normalized result(s); candidate v1.2 assurance extensions valid; stable release remains v1.1.0')
+    print(f'Engine contract valid: {len(fixtures)} result fixture(s); {len(assurance_fixtures)} assurance fixture(s); {len(lifecycle)} lifecycle fixture(s); {len(durable)} durable normalized result(s); v1.2 assurance extensions valid; stable release v1.2.0')
     return 0
 if __name__=='__main__': raise SystemExit(main())
