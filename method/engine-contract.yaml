@@ -6,7 +6,18 @@ purpose: >-
   v1.2 extends the v1 contract additively with evidence classification, residual assurance
   evaluation, governed remediation manifests, and evidence-based retesting.
 execution_model:
-  stages: [source, observation, trigger, assessment, evidence, evaluation, finding, disposition, remediation, retest, baseline]
+  stages:
+    - source
+    - observation
+    - trigger
+    - assessment
+    - evidence
+    - evaluation
+    - finding
+    - disposition
+    - remediation
+    - retest
+    - baseline
   invariants:
     - An observation is not automatically a new assessment.
     - Multiple triggers may be correlated into one open assessment.
@@ -20,19 +31,45 @@ execution_model:
     - A disposition records the reviewed revision and the decision made.
     - A baseline advances only after a disposition is durable.
 operations:
-  - {id: validate-profile, inputs: [rahp-config], outputs: [validation-result]}
-  - {id: enumerate-targets, inputs: [rahp-config], outputs: [target-set]}
-  - {id: observe-source, inputs: [target, prior-baseline], outputs: [observation]}
-  - {id: correlate-trigger, inputs: [observation, open-assessments], outputs: [trigger-correlation]}
-  - {id: scaffold-assessment, inputs: [target, trigger-correlation, review-mode], outputs: [assessment-workspace]}
-  - {id: classify-evidence, inputs: [assessment-workspace], outputs: [typed-evidence]}
-  - {id: evaluate-assurance, inputs: [signals, typed-evidence, assurance-propositions], outputs: [assurance-evaluations]}
-  - {id: validate-assessment, inputs: [assessment-workspace], outputs: [validation-result]}
-  - {id: normalize-result, inputs: [assessment-workspace, assurance-evaluations], outputs: [rahp-result]}
-  - {id: plan-retention, inputs: [rahp-result, retention-policy], outputs: [retention-plan]}
-  - {id: plan-remediation, inputs: [rahp-result, authority-boundary], outputs: [remediation-manifest]}
-  - {id: evaluate-retest, inputs: [prior-assurance-evaluation, current-assurance-evaluation], outputs: [retest-record]}
-  - {id: promote-disposition, inputs: [rahp-result, retention-plan], outputs: [durable-assurance-record]}
+  - id: validate-profile
+    inputs: [rahp-config]
+    outputs: [validation-result]
+  - id: enumerate-targets
+    inputs: [rahp-config]
+    outputs: [target-set]
+  - id: observe-source
+    inputs: [target, prior-baseline]
+    outputs: [observation]
+  - id: correlate-trigger
+    inputs: [observation, open-assessments]
+    outputs: [trigger-correlation]
+  - id: scaffold-assessment
+    inputs: [target, trigger-correlation, review-mode]
+    outputs: [assessment-workspace]
+  - id: classify-evidence
+    inputs: [assessment-workspace]
+    outputs: [typed-evidence]
+  - id: evaluate-assurance
+    inputs: [signals, typed-evidence, assurance-propositions]
+    outputs: [assurance-evaluations]
+  - id: validate-assessment
+    inputs: [assessment-workspace]
+    outputs: [validation-result]
+  - id: normalize-result
+    inputs: [assessment-workspace, assurance-evaluations]
+    outputs: [rahp-result]
+  - id: plan-retention
+    inputs: [rahp-result, retention-policy]
+    outputs: [retention-plan]
+  - id: plan-remediation
+    inputs: [rahp-result, authority-boundary]
+    outputs: [remediation-manifest]
+  - id: evaluate-retest
+    inputs: [prior-assurance-evaluation, current-assurance-evaluation]
+    outputs: [retest-record]
+  - id: promote-disposition
+    inputs: [rahp-result, retention-plan]
+    outputs: [durable-assurance-record]
 result_schema: method/schema/rahp-result.schema.json
 assurance_evaluation_schema: method/schema/assurance-evaluation.schema.json
 remediation_schema: method/schema/remediation-manifest.schema.json
