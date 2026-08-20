@@ -7,7 +7,7 @@ parent: Reference
 ---
 # Changelog
 
-This file records current release-level changes. The complete pre-v1.2 changelog, including accumulated historical `Unreleased` sections, is preserved at `archive/pre-v1.2/CHANGELOG-pre-v1.2.md`.
+This file records current release-level changes. The complete pre-v1.2 changelog, including accumulated historical `Unreleased` sections, is preserved at `archive/pre-v1.2/CHANGELOG-pre-v1.2.txt`.
 
 ## v1.2.0 — 2026-08-20
 
@@ -59,7 +59,7 @@ See [v1.2.0 release notes](docs/releases/v1.2.0.md).
 
 ## v1.1.0 — 2026-08-17
 
-- Added the portable 149-pattern `HRM/RKP/CTP/GRP/ATP/EVP` assurance catalogue.
+- Added the portable assurance knowledge model and catalogue.
 - Added catalogue validation, catalogue-aware review mappings and portable scenario stress patterns.
 - Added the governed simple-English glossary and explicit guardrail applicability semantics.
 - Expanded maintained DTG, CAWG/C2PA, A2A and cross-specification examples.
@@ -79,4 +79,4 @@ See [v1.0.0 release notes](docs/releases/v1.0.0.md).
 
 ## Historical releases
 
-Detailed v0.x and early v1 release notes remain under [`docs/releases/`](docs/releases/). The full pre-v1.2 changelog is retained for provenance under `archive/pre-v1.2/`.
+Detailed v0.x and early v1 release notes remain under [`docs/releases/`](docs/releases/). The full pre-v1.2 changelog is retained for provenance at `archive/pre-v1.2/CHANGELOG-pre-v1.2.txt`.
