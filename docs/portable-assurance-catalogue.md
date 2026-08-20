@@ -630,6 +630,61 @@ Operators or intermediaries capture benefits while harmed participants bear disp
 | Condition | Applies to high-impact or involuntary use where materially affected parties lack meaningful choice, exit or remedy. |
 | Harm Patterns | `HRM-ECO-01`, `HRM-ECO-02`, `HRM-GOV-02` |
 
+### RKP-DEL-04 — Attribution lineage mistaken for authority
+
+Caller-supplied delegation or actor-lineage metadata is treated as proof that the represented grants actually existed or remain valid.
+
+| Field | Value |
+|---|---|
+| Family | Authority and delegation |
+| Guardrail requirement | required |
+| Why | Attribution metadata can be syntactically valid while fabricated, so consequential action requires independent authority evidence. |
+| Harm Patterns | `HRM-AUT-04`, `HRM-SEC-02` |
+
+### RKP-DEL-05 — Delegation lineage mutation
+
+A delegating or forwarding actor rewrites prior lineage hops, making later audit unable to distinguish the forwarded representation from the chain originally received.
+
+| Field | Value |
+|---|---|
+| Family | Authority and delegation |
+| Guardrail requirement | required |
+| Why | Prior-hop mutation destroys independent attribution evidence unless the received representation is retained or integrity-bound. |
+| Harm Patterns | `HRM-GOV-02`, `HRM-SEC-02` |
+
+### RKP-DEL-06 — Delegation evidence-state collapse
+
+Missing, unresolvable, invalid, expired or revoked delegation evidence is collapsed into a generic denial or success state, obscuring what was actually established.
+
+| Field | Value |
+|---|---|
+| Family | Authority and delegation |
+| Guardrail requirement | required |
+| Why | Distinct evidence and lifecycle states are necessary for safe enforcement, audit reconstruction and redress. |
+| Harm Patterns | `HRM-GOV-02`, `HRM-SEC-02` |
+
+### RKP-DEL-07 — Delegation evidence cross-context replay
+
+A content or proof reference valid in one trust domain is replayed in another because the referenced commitment is not bound to the relevant context or domain.
+
+| Field | Value |
+|---|---|
+| Family | Authority and delegation |
+| Guardrail requirement | required |
+| Why | Context-free evidence references can preserve byte integrity while misbinding authority semantics. |
+| Harm Patterns | `HRM-AUT-04`, `HRM-SEC-02` |
+
+### RKP-PRV-04 — Delegation lineage correlation exposure
+
+Multi-hop actor lineage unnecessarily discloses durable principal or agent identifiers across contexts, creating a correlation surface beyond what the relying decision requires.
+
+| Field | Value |
+|---|---|
+| Family | Privacy and data protection |
+| Guardrail requirement | required |
+| Why | Auditability should not require unnecessary durable cross-context correlation when a less disclosing proof can satisfy the assurance objective. |
+| Harm Patterns | `HRM-PRV-01`, `HRM-AUT-03` |
+
 ## Control patterns
 
 ### CTP-AUTH-01 — Separate authentication from authorization
@@ -935,6 +990,46 @@ Where uniqueness is required, define the population, assurance mechanism, false-
 | Risk Patterns | `RKP-ID-02` |
 | Evidence Patterns | `EVP-RISK-01` |
 
+### CTP-DEL-03 — Independent delegation evidence resolution
+
+Keep attribution lineage separate from authority by resolving grant evidence outside caller-supplied lineage metadata.
+
+| Field | Value |
+|---|---|
+| Control function | verify |
+| Risk Patterns | `RKP-DEL-04`, `RKP-DEL-06` |
+| Evidence Patterns | `EVP-AUTH-01` |
+
+### CTP-DEL-04 — Append-only lineage integrity
+
+Detect or prevent rewriting of prior delegation lineage hops across receive and forwarding boundaries.
+
+| Field | Value |
+|---|---|
+| Control function | detect |
+| Risk Patterns | `RKP-DEL-05` |
+| Evidence Patterns | `EVP-OPS-01` |
+
+### CTP-DEL-05 — Context-bound delegation evidence
+
+Bind portable delegation evidence references to the context or trust domain in which their authority semantics apply.
+
+| Field | Value |
+|---|---|
+| Control function | constrain |
+| Risk Patterns | `RKP-DEL-07` |
+| Evidence Patterns | `EVP-AUTH-01` |
+
+### CTP-PRV-04 — Delegation lineage minimization
+
+Disclose only the delegation-lineage attributes required for the relying decision and accountable audit purpose.
+
+| Field | Value |
+|---|---|
+| Control function | minimize |
+| Risk Patterns | `RKP-PRV-04` |
+| Evidence Patterns | `EVP-OPS-01` |
+
 ## Guardrail patterns
 
 ### GRP-AUTH-01 — No authority by inference
@@ -1134,8 +1229,8 @@ Stable identifiers or combined protocol data enable cross-context correlation th
 | Field | Value |
 |---|---|
 | Protected interest | privacy |
-| Risk Patterns | `RKP-PRV-01`, `RKP-COMP-03` |
-| Control Patterns | `CTP-PRV-01`, `CTP-PRV-02` |
+| Risk Patterns | `RKP-PRV-01`, `RKP-COMP-03`, `RKP-PRV-04` |
+| Control Patterns | `CTP-PRV-01`, `CTP-PRV-02`, `CTP-PRV-04` |
 
 ### GRP-ID-02 — No load-bearing uniqueness claim without evidence
 
@@ -1156,6 +1251,36 @@ A recovery path for a high-impact account or identity can bypass normal protecti
 | Protected interest | identity continuity and access |
 | Risk Patterns | `RKP-ID-03` |
 | Control Patterns | `CTP-ID-02` |
+
+### GRP-DEL-03 — No authority from lineage alone
+
+A consequential delegated action is authorized solely because a caller-supplied actor or delegation chain is internally well formed.
+
+| Field | Value |
+|---|---|
+| Protected interest | principal agency |
+| Risk Patterns | `RKP-DEL-04`, `RKP-DEL-06` |
+| Control Patterns | `CTP-DEL-03` |
+
+### GRP-DEL-04 — No silent lineage rewrite
+
+A forwarding actor modifies a prior delegation hop while the system continues to represent the lineage as append-only audit history.
+
+| Field | Value |
+|---|---|
+| Protected interest | accountability |
+| Risk Patterns | `RKP-DEL-05` |
+| Control Patterns | `CTP-DEL-04` |
+
+### GRP-DEL-05 — No cross-context authority by replay
+
+Delegation evidence from one context is accepted as authority in another without a valid context/domain binding.
+
+| Field | Value |
+|---|---|
+| Protected interest | principal agency |
+| Risk Patterns | `RKP-DEL-07` |
+| Control Patterns | `CTP-DEL-05` |
 
 ## Assurance patterns
 
@@ -1264,7 +1389,7 @@ The combined disclosure set is assessed for linkability, inference and unnecessa
 | Field | Value |
 |---|---|
 | Assurance level | A3 |
-| Control Patterns | `CTP-PRV-02`, `CTP-PRV-01`, `CTP-PRV-03` |
+| Control Patterns | `CTP-PRV-02`, `CTP-PRV-01`, `CTP-PRV-03`, `CTP-PRV-04` |
 | Guardrail Patterns | `GRP-PRV-01`, `GRP-PRV-02` |
 | Evidence Patterns | `EVP-PRV-01` |
 
@@ -1366,6 +1491,17 @@ A critical dependency has explicit control ownership, material-change monitoring
 | Control Patterns | `CTP-PE-01` |
 | Guardrail Patterns | `GRP-PE-01` |
 | Evidence Patterns | `EVP-GOV-01` |
+
+### ATP-DEL-03 — Actor-lineage authority separation test
+
+Actor or delegation lineage remains attribution evidence only; independent grant evidence, append-only integrity and context binding are tested before consequential authority is inferred.
+
+| Field | Value |
+|---|---|
+| Assurance level | A3 |
+| Control Patterns | `CTP-DEL-03`, `CTP-DEL-04`, `CTP-DEL-05` |
+| Guardrail Patterns | `GRP-DEL-03`, `GRP-DEL-04`, `GRP-DEL-05` |
+| Evidence Patterns | `EVP-DEL-01`, `EVP-DEL-02`, `EVP-OPS-02` |
 
 ## Evidence patterns
 
