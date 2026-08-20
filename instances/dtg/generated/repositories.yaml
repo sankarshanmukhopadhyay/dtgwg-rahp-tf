@@ -27,6 +27,27 @@ repositories:
   - rahp
   - security
   - combined
+- id: trustoverip-dtgwg-trust-tasks-spec
+  repository: trustoverip/dtgwg-trust-tasks-spec
+  branch: main
+  context:
+    title: trustoverip/dtgwg-trust-tasks-spec
+    type: normative-specification
+    description: DTG instance target discovered from portfolio-monitor; workstream=trust-tasks;
+      lifecycle=active; reporting_weight=critical.
+  scope:
+    include:
+    - README.md
+    - spec/**
+    - specs.json
+    - docs/**
+    - schemas/**
+    - '**/*spec*.md'
+    - .github/workflows/**
+  reviews:
+  - rahp
+  - security
+  - combined
 - id: trustoverip-dtgwg-htx-tf
   repository: trustoverip/dtgwg-htx-tf
   branch: main
@@ -337,6 +358,6 @@ output:
 governance:
   namespace: dtg
 extensions:
-  generated_at: '2026-08-19T04:18:41.020495+00:00'
+  generated_at: '2026-08-20T04:18:21.483524+00:00'
   source_registry: sankarshanmukhopadhyay/dtg-portfolio-monitor
   fork_owner: sankarshanmukhopadhyay
