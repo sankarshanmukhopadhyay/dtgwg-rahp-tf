@@ -1,0 +1,14 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://example.org/rahp/schema/remediation-manifest.schema.json",
+  "title":"RAHP remediation manifest",
+  "type":"object","additionalProperties":false,
+  "required":["version","assessment_id","finding_id","owner_plane","requested_outcomes","required_evidence","publication"],
+  "properties":{
+    "version":{"const":1},"assessment_id":{"type":"string","minLength":1},"finding_id":{"type":"string","minLength":1},
+    "owner_plane":{"type":"object","additionalProperties":false,"required":["type"],"properties":{"type":{"enum":["target-repository","companion-specification","governance","implementation-guidance","runtime-control","operational-policy","external-governance"]},"repository":{"type":"string"},"authority":{"type":"string"}}},
+    "requested_outcomes":{"type":"array","minItems":1,"items":{"type":"string","minLength":1}},
+    "required_evidence":{"type":"array","items":{"type":"string","minLength":1},"uniqueItems":true},
+    "publication":{"type":"object","additionalProperties":false,"required":["eligibility","mode","status"],"properties":{"eligibility":{"enum":["eligible","ineligible","needs-triage"]},"mode":{"enum":["governed","manual","none"]},"status":{"enum":["awaiting-approval","approved","published","not-required","rejected"]},"uri":{"type":"string"}}}
+  }
+}
