@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the stable v1.2 engine, assurance, retention and conformance contracts."""
+"""Validate the stable v1 engine plus candidate v1.2 assurance extensions."""
 from __future__ import annotations
 import json,pathlib,sys
 try:import yaml,jsonschema
@@ -24,7 +24,7 @@ def main():
             plan=retention_plan(load_result(result_path));got=sorted({a['class'] for a in plan['actions'] if a['action']=='commit'});want=sorted(exp['retention'].get('repository_classes') or [])
             if got!=want:errors+=fail(f'{result_path.parent.name}: retention repository classes {got}, expected {want}')
     versioning=yaml.safe_load((ROOT/'method/versioning.yaml').read_text())
-    if versioning.get('stable_release')!='v1.2.0':errors+=fail('versioning contract must identify v1.2.0 stable release')
+    if versioning.get('stable_release')!='v1.1.0':errors+=fail('stable release metadata must remain v1.1.0 until v1.2 is intentionally published')
     lifecycle=sorted((ROOT/'tests/conformance/lifecycle').glob('*/input.json'))
     for ip in lifecycle:
         inp=json.loads(ip.read_text());exp=json.loads((ip.parent/'expected.json').read_text());got=correlate_trigger(inp['observation'],inp.get('open_assessments') or [])
@@ -44,5 +44,5 @@ def main():
     for result_path in durable:
         if not validate_result(result_path,quiet=True):errors+=fail(f'durable normalized result invalid: {result_path.relative_to(ROOT)}')
     if errors:print(f'Engine contract validation failed: {errors} error(s)');return 1
-    print(f'Engine contract valid: {len(fixtures)} result fixture(s); {len(assurance_fixtures)} assurance fixture(s); {len(lifecycle)} lifecycle fixture(s); {len(durable)} durable normalized result(s); stable v1.2 assurance/versioning/retention contract valid');return 0
+    print(f'Engine contract valid: {len(fixtures)} result fixture(s); {len(assurance_fixtures)} assurance fixture(s); {len(lifecycle)} lifecycle fixture(s); {len(durable)} durable normalized result(s); candidate v1.2 assurance extensions valid');return 0
 if __name__=='__main__':raise SystemExit(main())
