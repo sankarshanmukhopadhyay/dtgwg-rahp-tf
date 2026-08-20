@@ -1,1 +1,13 @@
-{"name":"@rahp/core","version":"1.1.0","type":"module","main":"dist/index.js","types":"dist/index.d.ts","scripts":{"build":"tsc -p tsconfig.json"},"dependencies":{"@rahp/schema":"1.1.0"}}
+{
+  "name": "@rahp/core",
+  "version": "1.1.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@rahp/schema": "1.1.0"
+  }
+}

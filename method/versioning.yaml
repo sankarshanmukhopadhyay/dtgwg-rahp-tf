@@ -24,5 +24,7 @@ conformance:
     - method/schema/rahp-result.schema.json
     - method/evidence-retention.yaml
     - method/versioning.yaml
-  reference_implementations: [python, typescript]
+  reference_implementations:
+    - python
+    - typescript
   rule: Implementations MUST agree on shared conformance fixtures for operations they claim.
