@@ -7,16 +7,16 @@
 | Field | Value |
 |---|---|
 | Combined review | `COMB-X-001` |
-| Status | complete |
-| Reviewed on | 2026-08-17 |
+| Status | monitoring |
+| Reviewed on | 2026-08-22 |
 | Target | `trustoverip/dtgwg-trust-tasks-tf + trustoverip/dtgwg-cred-spec` |
-| Version | Composition of Trust Tasks fbe196a8 and Credentials WD01 d19f7c9 |
-| Commit | `fbe196a8a17ba3f99d0657a64be5ac58621023a1` |
-| RAHP review | `SR-XSP-001` — 6 finding(s) |
+| Version | Mixed-baseline synthesis: RAHP at Trust Tasks 2a40f6bd / Credentials b89f389a; security at Trust Tasks fbe196a8 / Credentials d19f7c9 |
+| Commit | `—` |
+| RAHP review | `SR-XSP-001` — 3 finding(s) |
 | Security review | `SEC-X-001` — 12 finding(s) |
-| RAHP version | `v1.1.0` |
+| RAHP version | `v1.2` |
 | Engine contract | `rahp-engine-contract-v1` |
-| Engine/method revalidated on | 2026-08-17 |
+| Engine/method revalidated on | 2026-08-22 |
 
 ## How to read the combined view
 
@@ -26,16 +26,13 @@ The RAHP lens asks what harms, governance failures, assurance gaps, and affected
 
 | RAHP finding | Security finding | Shared RAHP context |
 |---|---|---|
-| `F-001` — Credential validity and task authentication do not establish current delegated authority | `SEC-X-001` — Valid task authentication plus valid credential membership does not establish delegated authority | `RK-AI01` |
-| `F-001` — Credential validity and task authentication do not establish current delegated authority | `SEC-X-012` — Organisational and agent identities can satisfy syntactic roles without proving accountable human/control relationships | `RK-AI01` |
+| `F-001` — Authority and lifecycle coherence remains a cross-specification assurance gap | `SEC-X-001` — Valid task authentication plus valid credential membership does not establish delegated authority | `RK-AI01` |
+| `F-001` — Authority and lifecycle coherence remains a cross-specification assurance gap | `SEC-X-012` — Organisational and agent identities can satisfy syntactic roles without proving accountable human/control relationships | `RK-AI01` |
 
 ## RAHP-only findings
 
-- `F-002` — Task-bound credentials can become detached from outcome evidence
-- `F-003` — Replay can combine a still-valid credential with a duplicate consequential task
-- `F-004` — Composed proofs create correlation not visible in either specification alone
-- `F-005` — Offline and asymmetric lifecycle handling can accept stale trust state
-- `F-006` — Cross-spec adverse decisions lack a single contestability boundary
+- `F-002` — Execution, outcome binding and replay remain incompletely composed
+- `F-003` — Privacy composition and contestability remain cross-boundary governance obligations
 
 ## Security-only findings
 
@@ -53,3 +50,6 @@ The RAHP lens asks what harms, governance failures, assurance gaps, and affected
 ## Reviewer synthesis notes
 
 - Portable assurance patterns provide the shared semantic bridge between the RAHP and security lenses without replacing deployment-specific findings.
+- The RAHP lens is current at Trust Tasks 2a40f6bd3b13c85c49123174fdbe4354b3c48d81 and Credential Specification b89f389abbdae77ba60b673c0836c781c2b54169.
+- The security lens remains source-pinned at Trust Tasks fbe196a8a17ba3f99d0657a64be5ac58621023a1 and Credential Specification d19f7c9cac364fab8e50cf434513ef53fef80e37.
+- Do not interpret this mixed-baseline synthesis as evidence that the current revisions have completed combined RAHP + security review. A security rerun is the retest condition for returning this record to complete status with a common target pin.
