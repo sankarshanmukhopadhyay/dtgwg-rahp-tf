@@ -12,91 +12,132 @@ nav_exclude: true
 **Assessment key:** `dtg:repository:trustoverip/dtgwg-trust-tasks-tf`  
 **Mode:** combined RAHP + security  
 **Status:** dispositioned  
-**Disposition:** findings-raised  
-**Reviewed revision:** `7e0d755f5b815498c861cacecee5cae49b3f14eb`
+**Disposition:** assurance-strengthened-with-residual-cross-spec-gaps  
+**Reviewed revision:** `2a40f6bd3b13c85c49123174fdbe4354b3c48d81`
 
 ## Scope and trigger consolidation
 
-This assessment extends the earlier review through the material change window
-`8eb7509ffabf6cc095eec20cb7d8d0120ff59ef3` →
-`7e0d755f5b815498c861cacecee5cae49b3f14eb` and consolidates RAHP toolkit
-issues **#7** and **#9** into the existing durable assessment record.
+This durable record now covers the Trust Tasks material change windows through
+`2a40f6bd3b13c85c49123174fdbe4354b3c48d81` and closes the assessment queue
+record in RAHP toolkit issue **#20**.
 
-Issue #9 observed closure of upstream Trust Tasks issue #204. That observation is
-not treated as normative evidence on its own. The resulting repository changes are
-inside the #7 revision window and are the evidence used for this disposition.
+The immediately preceding reviewed baseline was
+`7e0d755f5b815498c861cacecee5cae49b3f14eb`. The new window contains 13 commits,
+including the VTA context, service and WebVH lifecycle task families plus HTTPS
+binding 0.2.
+
+Issue #20 initially observed `a8cc6f3373525716a19747b834460a225ff08516`.
+The monitor subsequently advanced to `2a40f6bd3b13c85c49123174fdbe4354b3c48d81`;
+this assessment intentionally reviews the later SHA because it is a direct descendant
+and therefore subsumes the queued revision.
 
 ## Material assurance changes
 
-The new delta completes a major portion of the previously open corrigibility surface:
+The reviewed delta materially expands the normative surface, but it also makes several
+important governance properties explicit and machine-testable:
 
-1. **Semantic task control is now specified.** `trust-task-control/0.1` defines
-   `cancel`, `suspend`, and `resume` as protocol-level operations rather than
-   transport cancellation.
-2. **Proof remains separate from authority.** The control specification explicitly
-   states that proof establishes who asked, not whether the caller may control the
-   task. The initiator is the default authority floor; broader supervisory authority
-   remains local policy/governance.
-3. **Control is evaluated at effect time.** Consumers must re-evaluate valid control
-   operations before irreversible or externally visible effects, making race handling
-   part of the execution pipeline rather than an advisory note.
-4. **Cancellation does not pretend to roll back history.** Responses distinguish
-   `applied`, `appliedWithEffects`, `alreadyCompleted`, and `unknownTask`, and must
-   describe prior externally visible effects when cancellation arrives too late.
-5. **Cancelled work remains replay-resistant.** Consumers retain the cancellation
-   record through the acceptance window so redelivery of the original task is absorbed.
-6. **Out-of-order control is recognized.** A consumer is advised to record a control
-   operation that arrives before the target task and reject the later-arriving task.
-7. **Authorization evidence was propagated to consequential specifications.** The
-   revision also adds explicit authorization statements across multiple task types and
-   tightens consumer conformance behaviour.
-8. **Task identity is strengthened for retained evidence.** Citations now bind a task
-   digest rather than an identifier alone, reducing ambiguity when evidence is reused.
+1. **Authentication is explicitly separated from authorization.** VTA task specifications
+   state that proof establishes who authored a request while role/scope checks determine
+   whether it may execute.
+2. **Authority is scoped to the affected object.** Context creation requires administrator
+   authority over the VTA or parent scope; destructive context deletion requires administrator
+   authority over the target context.
+3. **Destructive operations preserve attributable evidence.** Proof is mandatory for deletion,
+   with the audit record treated as the surviving evidence after keys, DIDs or scoped content
+   are removed.
+4. **Destructive semantics are explicit.** Context deletion is all-or-nothing by default,
+   refuses non-empty deletion unless `force` is explicit, and distinguishes successful response
+   transport from the semantic `deleted` result.
+5. **Scope inheritance is explicit.** Nested contexts inherit parent reachability, making the
+   authority consequence of hierarchy observable rather than implicit.
+6. **Lifecycle task families are now first-class specification surfaces.** Context, service,
+   WebVH DID and server operations expose distinct create/update/delete/disable/drain/rollback
+   semantics instead of collapsing them into generic implementation behaviour.
+7. **HTTPS endpoint ownership is clarified.** Binding 0.2 defines the advertised endpoint as
+   the Trust Task base, defines `TrustTaskHTTPS` DID service discovery, and prevents endpoint
+   interpretation from being left to incompatible client assumptions.
+8. **Generated bindings and CI guardrails accompany the normative additions.** TypeScript and
+   Rust bindings plus validation workflows materially improve evidence that schemas and generated
+   interfaces remain synchronized.
+
+## Residual-state classification
+
+| Proposition | Residual state | Assessment |
+|---|---|---|
+| Proof identifies the caller independently of transport | `controlled` | Normatively required for consequential VTA tasks and bound into audit evidence. |
+| Role/scope authorization is evaluated separately from proof | `controlled` | Explicit authorization sections define the distinction and target scope. |
+| Context/service/DID lifecycle operations expose distinguishable semantics | `controlled` | Dedicated task families and schemas make the state transitions reviewable and testable. |
+| Destructive deletion produces attributable evidence and explicit destructive intent | `controlled` | Mandatory proof, non-empty refusal, and `force` semantics provide enforceable controls. |
+| Cross-system delegated authority can be verified at action time | `assurance-gap` | Trust Tasks correctly leaves broader mandate/delegation evidence to local policy or companion profiles. |
+| Duplicate consequential execution is prevented across task + credential composition | `assurance-gap` | Component semantics improve replay handling, but cross-spec freshness/idempotency binding remains external. |
+| Credential/status/policy lifecycle is synchronized with Trust Task lifecycle | `assurance-gap` | The task lifecycle is explicit; composed status-as-of and safe-degradation rules remain undefined. |
+| Cross-context privacy impact is bounded across task, credential, transport and error evidence | `review-required` | New VTA and endpoint surfaces increase the number of observable artifacts; composition analysis remains necessary. |
+| Adverse outcomes have an accountable cross-boundary contestability path | `review-required` | Component audit evidence improves explainability, but responsibility allocation remains a governance/profile concern. |
 
 ## Findings and follow-up
 
 ### F-001 — retained outcome evidence remains a cross-specification dependency
 
-Trust Tasks issue #173 still demonstrates that a DTG credential verifier may rely on a
-retained outcome document outside the original bilateral exchange. Error provenance,
-terminal-state semantics and proof requirements must remain aligned between Trust Tasks
-and the Credential Specification.
+Trust Task context and outcome evidence can be retained and consumed outside the original
+exchange. The Credential Specification now strengthens edge binding by requiring a VWC digest,
+but the broader contract between authorization, task completion, retained outcome evidence and
+credential interpretation remains a composition responsibility.
 
-**Disposition:** retain the cross-specification watch. This is not a defect introduced by
-this revision.
+**Residual state:** `assurance-gap`  
+**Disposition:** retain as a cross-specification watch; addressed in the refreshed #15 assessment.
 
-### F-002 — semantic task control is substantially closed; compensation remains domain-specific
+### F-002 — generic task-control and lifecycle observability are materially strengthened
 
-The previous finding that task control itself was not normatively closed is resolved by
-this revision. A remaining boundary is intentionally outside the generic framework:
-rollback/compensation for irreversible effects is domain-specific. The protocol now makes
-that boundary observable by requiring effect reporting rather than implying rollback.
+The earlier framework-level corrigibility gap remains closed. The new VTA lifecycle families
+further improve explicitness around destructive operations, rollback boundaries, disable/drain
+states and object ownership.
 
-**Disposition:** close the generic corrigibility gap. Retest compensation semantics only
-where a consequential task/profile claims reversibility or automated remediation.
+**Residual state:** `controlled`  
+**Disposition:** no new Trust Tasks defect raised.
 
-### F-005 — supervising-principal control depends on local policy evidence
+### F-005 — supervising-principal and delegated authority remain profile/governance dependencies
 
-The specification allows a consumer to recognize a mandate holder, supervising principal,
-or organization as authorized to control a task initiated by its agent. This is the right
-architecture, but cross-system interoperability still depends on the relying deployment
-being able to evidence that supervisory authority and its current scope.
+The specification consistently separates proof from authorization and defines role checks, which
+is the correct architectural boundary. Interoperability still depends on deployments being able
+to evidence the current mandate, scope and revocation state of a supervising principal or agent.
 
-**Disposition:** watch as a deployment/cross-specification assurance dependency; do not
-require Trust Tasks itself to define a universal delegation model.
+**Residual state:** `assurance-gap`  
+**Disposition:** retain as a deployment/cross-specification dependency; do not require Trust Tasks
+to define a universal delegation model.
+
+## Security review disposition
+
+No new blocking security defect is raised against `2a40f6bd3b13c85c49123174fdbe4354b3c48d81`.
+The most security-relevant additions strengthen attribution, scope checks, destructive-operation
+explicitness, endpoint ownership and schema/binding validation. The residual risks arise when
+Trust Tasks is composed with credentials, delegation evidence, cached status, privacy-sensitive
+proofs or external governance systems.
 
 ## Assurance disposition
 
-The revision is a **net material strengthening** of authority separation, corrigibility,
-replay handling, retained evidence and action-time control. No blocking RAHP or security
-defect is raised against the reviewed SHA.
+The revision is a **net material assurance strengthening** and is suitable to become the reviewed
+Trust Tasks baseline for downstream composition reviews.
 
-This record closes the generated assessment cycle represented by RAHP toolkit issues
-**#7 and #9** and advances the reviewed baseline to
-`7e0d755f5b815498c861cacecee5cae49b3f14eb`.
+RAHP toolkit issue **#20** is therefore eligible for closure. Its closure does not assert that all
+Trust Tasks compositions are safe; it records that the queued repository revision has been reviewed
+and that its residual risks are explicitly classified.
+
+The downstream Trust Tasks × Credential Specification review in **#15** must use this reviewed SHA
+rather than the older `fbe196a8` baseline.
+
+## Retest triggers
+
+Retest this assessment when any of the following occurs:
+
+- a material Trust Tasks repository change affecting authority, lifecycle, replay or privacy;
+- a generic delegation/supervisory-authority profile is introduced;
+- retained outcome evidence semantics change;
+- cross-task idempotency/freshness semantics become normative;
+- VTA lifecycle tasks move maturity level or materially alter destructive/rollback semantics.
 
 ## Sources
 
-- <https://github.com/trustoverip/dtgwg-trust-tasks-tf/compare/8eb7509ffabf6cc095eec20cb7d8d0120ff59ef3...7e0d755f5b815498c861cacecee5cae49b3f14eb>
-- <https://github.com/trustoverip/dtgwg-trust-tasks-tf/blob/7e0d755f5b815498c861cacecee5cae49b3f14eb/specs/trust-task-control/0.1/spec.md>
-- <https://github.com/trustoverip/dtgwg-trust-tasks-tf/issues/204>
+- <https://github.com/trustoverip/dtgwg-trust-tasks-tf/compare/7e0d755f5b815498c861cacecee5cae49b3f14eb...2a40f6bd3b13c85c49123174fdbe4354b3c48d81>
+- <https://github.com/trustoverip/dtgwg-trust-tasks-tf/blob/2a40f6bd3b13c85c49123174fdbe4354b3c48d81/specs/vta/contexts/create/1.0/spec.md>
+- <https://github.com/trustoverip/dtgwg-trust-tasks-tf/blob/2a40f6bd3b13c85c49123174fdbe4354b3c48d81/specs/vta/contexts/delete/1.0/spec.md>
+- <https://github.com/trustoverip/dtgwg-trust-tasks-tf/blob/2a40f6bd3b13c85c49123174fdbe4354b3c48d81/bindings/https/0.2/spec.md>
