@@ -15,45 +15,10 @@
   "target": {
     "repository": "trustoverip/dtgwg-trust-tasks-tf",
     "baseline_revision": "7e0d755f5b815498c861cacecee5cae49b3f14eb",
-    "queued_revision": "a8cc6f3373525716a19747b834460a225ff08516",
     "reviewed_revision": "2a40f6bd3b13c85c49123174fdbe4354b3c48d81"
   },
   "mode": "combined",
   "status": "dispositioned",
-  "residual_states": [
-    {
-      "id": "P-AUTH-PROOF-SEPARATION",
-      "state": "controlled"
-    },
-    {
-      "id": "P-LIFECYCLE-EXPLICITNESS",
-      "state": "controlled"
-    },
-    {
-      "id": "P-DESTRUCTIVE-AUDIT",
-      "state": "controlled"
-    },
-    {
-      "id": "P-DELEGATED-AUTHORITY",
-      "state": "assurance-gap"
-    },
-    {
-      "id": "P-CROSS-SPEC-REPLAY",
-      "state": "assurance-gap"
-    },
-    {
-      "id": "P-CROSS-SPEC-LIFECYCLE",
-      "state": "assurance-gap"
-    },
-    {
-      "id": "P-COMPOSED-PRIVACY",
-      "state": "review-required"
-    },
-    {
-      "id": "P-CROSS-BOUNDARY-REDRESS",
-      "state": "review-required"
-    }
-  ],
   "findings": [
     {
       "id": "F-001",
@@ -71,8 +36,75 @@
       "status": "assurance-gap"
     }
   ],
+  "evaluations": [
+    {
+      "proposition": "P-AUTH-PROOF-SEPARATION",
+      "signals": [],
+      "control_evidence": [],
+      "assurance_evidence": [],
+      "residual": {"status": "controlled"}
+    },
+    {
+      "proposition": "P-LIFECYCLE-EXPLICITNESS",
+      "signals": [],
+      "control_evidence": [],
+      "assurance_evidence": [],
+      "residual": {"status": "controlled"}
+    },
+    {
+      "proposition": "P-DESTRUCTIVE-AUDIT",
+      "signals": [],
+      "control_evidence": [],
+      "assurance_evidence": [],
+      "residual": {"status": "controlled"}
+    },
+    {
+      "proposition": "P-DELEGATED-AUTHORITY",
+      "signals": [],
+      "control_evidence": [],
+      "assurance_evidence": [],
+      "residual": {"status": "assurance-gap"}
+    },
+    {
+      "proposition": "P-CROSS-SPEC-REPLAY",
+      "signals": [],
+      "control_evidence": [],
+      "assurance_evidence": [],
+      "residual": {"status": "assurance-gap"}
+    },
+    {
+      "proposition": "P-CROSS-SPEC-LIFECYCLE",
+      "signals": [],
+      "control_evidence": [],
+      "assurance_evidence": [],
+      "residual": {"status": "assurance-gap"}
+    },
+    {
+      "proposition": "P-COMPOSED-PRIVACY",
+      "signals": [],
+      "control_evidence": [],
+      "assurance_evidence": [],
+      "residual": {"status": "review-required"}
+    },
+    {
+      "proposition": "P-CROSS-BOUNDARY-REDRESS",
+      "signals": [],
+      "control_evidence": [],
+      "assurance_evidence": [],
+      "residual": {"status": "review-required"}
+    }
+  ],
+  "assurance_summary": {
+    "assured": 0,
+    "controlled": 3,
+    "finding": 0,
+    "assurance-gap": 3,
+    "review-required": 2,
+    "not-assessed": 0,
+    "not-applicable": 0
+  },
   "disposition": {
-    "outcome": "assurance-strengthened-with-residual-cross-spec-gaps",
+    "outcome": "findings-raised",
     "summary": "The VTA lifecycle families and HTTPS binding materially strengthen attribution, authorization boundaries, lifecycle observability, destructive-operation evidence and endpoint ownership. Residual risk is concentrated at cross-spec delegation, replay/freshness, lifecycle synchronization, privacy and redress seams.",
     "decided_at": "2026-08-22T05:03:00+05:30"
   },
@@ -81,11 +113,6 @@
       "id": "DTG-AR-2026-001-RECORD",
       "class": "durable",
       "description": "Human-readable durable assessment record in 2026-08-trust-tasks.md"
-    },
-    {
-      "id": "DTG-AR-2026-001-COMPARE",
-      "class": "source-pinned",
-      "description": "GitHub comparison from 7e0d755f to 2a40f6bd"
     }
   ],
   "closure": {
