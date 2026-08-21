@@ -8,55 +8,99 @@
       "rahp-toolkit#3",
       "rahp-toolkit#4",
       "rahp-toolkit#7",
-      "rahp-toolkit#9"
+      "rahp-toolkit#9",
+      "rahp-toolkit#20"
     ]
   },
   "target": {
     "repository": "trustoverip/dtgwg-trust-tasks-tf",
-    "baseline_revision": "8eb7509ffabf6cc095eec20cb7d8d0120ff59ef3",
-    "reviewed_revision": "7e0d755f5b815498c861cacecee5cae49b3f14eb"
+    "baseline_revision": "7e0d755f5b815498c861cacecee5cae49b3f14eb",
+    "queued_revision": "a8cc6f3373525716a19747b834460a225ff08516",
+    "reviewed_revision": "2a40f6bd3b13c85c49123174fdbe4354b3c48d81"
   },
   "mode": "combined",
   "status": "dispositioned",
+  "residual_states": [
+    {
+      "id": "P-AUTH-PROOF-SEPARATION",
+      "state": "controlled"
+    },
+    {
+      "id": "P-LIFECYCLE-EXPLICITNESS",
+      "state": "controlled"
+    },
+    {
+      "id": "P-DESTRUCTIVE-AUDIT",
+      "state": "controlled"
+    },
+    {
+      "id": "P-DELEGATED-AUTHORITY",
+      "state": "assurance-gap"
+    },
+    {
+      "id": "P-CROSS-SPEC-REPLAY",
+      "state": "assurance-gap"
+    },
+    {
+      "id": "P-CROSS-SPEC-LIFECYCLE",
+      "state": "assurance-gap"
+    },
+    {
+      "id": "P-COMPOSED-PRIVACY",
+      "state": "review-required"
+    },
+    {
+      "id": "P-CROSS-BOUNDARY-REDRESS",
+      "state": "review-required"
+    }
+  ],
   "findings": [
     {
       "id": "F-001",
       "title": "Retained outcome evidence remains a cross-specification dependency",
-      "status": "watch"
+      "status": "assurance-gap"
     },
     {
       "id": "F-002",
-      "title": "Semantic task control substantially closed; compensation remains domain-specific",
-      "status": "resolved-framework-gap"
+      "title": "Generic task-control and lifecycle observability are materially strengthened",
+      "status": "controlled"
     },
     {
       "id": "F-005",
-      "title": "Supervising-principal control depends on local policy evidence",
-      "status": "watch"
+      "title": "Supervising-principal and delegated authority remain profile/governance dependencies",
+      "status": "assurance-gap"
     }
   ],
   "disposition": {
-    "outcome": "findings-raised",
-    "summary": "Net material assurance strengthening; generic task-control gap closed, with retained cross-specification and supervisory-authority dependencies.",
-    "decided_at": "2026-08-18T17:14:00+05:30"
+    "outcome": "assurance-strengthened-with-residual-cross-spec-gaps",
+    "summary": "The VTA lifecycle families and HTTPS binding materially strengthen attribution, authorization boundaries, lifecycle observability, destructive-operation evidence and endpoint ownership. Residual risk is concentrated at cross-spec delegation, replay/freshness, lifecycle synchronization, privacy and redress seams.",
+    "decided_at": "2026-08-22T05:03:00+05:30"
   },
   "evidence": [
     {
       "id": "DTG-AR-2026-001-RECORD",
       "class": "durable",
       "description": "Human-readable durable assessment record in 2026-08-trust-tasks.md"
+    },
+    {
+      "id": "DTG-AR-2026-001-COMPARE",
+      "class": "source-pinned",
+      "description": "GitHub comparison from 7e0d755f to 2a40f6bd"
     }
   ],
   "closure": {
     "eligible_issues": [
       7,
-      9
+      9,
+      20
     ],
-    "reviewed_revision": "7e0d755f5b815498c861cacecee5cae49b3f14eb"
+    "reviewed_revision": "2a40f6bd3b13c85c49123174fdbe4354b3c48d81"
   },
   "retest_triggers": [
-    "material Trust Tasks repository change",
+    "material Trust Tasks repository change affecting authority, lifecycle, replay or privacy",
+    "delegation or supervisory-authority profile change",
     "retained outcome evidence semantics change",
-    "delegation/supervisory authority profile change"
+    "cross-task idempotency or freshness semantics change",
+    "VTA lifecycle maturity or destructive-operation semantics change"
   ]
 }
