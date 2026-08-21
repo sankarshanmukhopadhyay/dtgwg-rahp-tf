@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "assessment": {
+    "id": "DTG-AR-2026-004",
+    "key": "dtg:repository:OpenVTC/openvtc",
+    "triggers": ["rahp-toolkit#26"]
+  },
+  "target": {
+    "repository": "OpenVTC/openvtc",
+    "baseline_revision": "df623ec303a90e83ed60a2f84e63db3efb3f0cc1",
+    "reviewed_revision": "4fc64d711724cdbd23f94507b4e3743f99f00dcd"
+  },
+  "mode": "combined",
+  "status": "dispositioned",
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "Recovery authority requires pre-established governance evidence",
+      "residual_state": "assurance-gap",
+      "owner": "deployment / VTA governance profile"
+    },
+    {
+      "id": "F-002",
+      "title": "VTA-authoritative reconstruction expands confidentiality exposure",
+      "residual_state": "review-required",
+      "owner": "deployment privacy/governance profile"
+    },
+    {
+      "id": "F-003",
+      "title": "Application-state concurrency remains a cross-repository dependency",
+      "residual_state": "assurance-gap",
+      "owner": "OpenVTC + VTI integration boundary"
+    }
+  ],
+  "disposition": {
+    "outcome": "findings-raised",
+    "summary": "Net material strengthening of recoverability and authority separation; residual recovery-governance, privacy and concurrency obligations remain explicitly owned and retestable.",
+    "decided_at": "2026-08-22T05:08:00+05:30"
+  },
+  "evidence": [
+    {
+      "id": "DTG-AR-2026-004-RECORD",
+      "class": "durable",
+      "description": "Human-readable durable assessment record in 2026-08-openvtc-recovery.md"
+    }
+  ],
+  "closure": {
+    "eligible_issues": [26],
+    "reviewed_revision": "4fc64d711724cdbd23f94507b4e3743f99f00dcd"
+  },
+  "retest_triggers": [
+    "recovery authority or approver model change",
+    "VTA application-state concurrency semantics change",
+    "OpenVTC reconstruction data model change",
+    "deployment privacy profile change"
+  ]
+}
