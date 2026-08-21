@@ -10,32 +10,18 @@
     "baseline_revision": "7e3a99c25ffbe6a81ff66faab03c237c00ccc321",
     "reviewed_revision": "9c58c8c27044e44e8601f6ab13f1bcac1376eb1f"
   },
-  "mode": "combined-triage",
+  "mode": "combined",
   "status": "dispositioned",
   "findings": [],
-  "residual_states": [
-    {
-      "id": "R-001",
-      "state": "controlled",
-      "statement": "Softbinding registry membership is descriptive metadata and does not itself confer security, assurance or conformance credit."
-    }
-  ],
   "disposition": {
     "outcome": "no-material-assurance-impact",
     "summary": "Additive softbinding registry entries do not change C2PA or CAWG assurance semantics; algorithm security remains an implementation/profile concern.",
     "decided_at": "2026-08-22T05:08:00+05:30"
   },
   "evidence": [
-    {
-      "id": "CAWG-AR-2026-003-RECORD",
-      "class": "durable",
-      "description": "Human-readable durable assessment record in 2026-08-c2pa-softbinding-registry.md"
-    }
+    {"id":"CAWG-AR-2026-003-RECORD","class":"durable","description":"Human-readable durable assessment record in 2026-08-c2pa-softbinding-registry.md"}
   ],
-  "closure": {
-    "eligible_issues": [28],
-    "reviewed_revision": "9c58c8c27044e44e8601f6ab13f1bcac1376eb1f"
-  },
+  "closure": {"eligible_issues":[28],"reviewed_revision":"9c58c8c27044e44e8601f6ab13f1bcac1376eb1f"},
   "retest_triggers": [
     "softbinding algorithm becomes normative or required by a conformance profile",
     "softbinding registry semantics change",
