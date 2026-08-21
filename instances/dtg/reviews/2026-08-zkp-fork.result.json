@@ -13,35 +13,18 @@
   "mode": "combined",
   "status": "dispositioned",
   "findings": [
-    {
-      "id": "F-001",
-      "title": "Construction-dependent conformance coverage remains incomplete",
-      "residual_state": "review-required",
-      "owner": "ZKP construction-selection / conformance workstream"
-    },
-    {
-      "id": "F-002",
-      "title": "Cross-spec authority and lifecycle dependencies remain external",
-      "residual_state": "assurance-gap",
-      "owner": "cross-specification companion profiles"
-    }
+    {"id":"F-001","title":"Construction-dependent conformance coverage remains incomplete","status":"open","residual_state":"review-required","owner":"ZKP construction-selection / conformance workstream"},
+    {"id":"F-002","title":"Cross-spec authority and lifecycle dependencies remain external","status":"open","residual_state":"assurance-gap","owner":"cross-specification companion profiles"}
   ],
   "disposition": {
-    "outcome": "no-blocking-assurance-impact",
+    "outcome": "no-material-assurance-impact",
     "summary": "Material strengthening of executable evidence, release integrity and conformance honesty; remaining construction blockers and cross-spec dependencies are explicit residual states rather than false passes.",
     "decided_at": "2026-08-22T05:08:00+05:30"
   },
   "evidence": [
-    {
-      "id": "DTG-AR-2026-003-RECORD",
-      "class": "durable",
-      "description": "Human-readable durable assessment record in 2026-08-zkp-fork.md"
-    }
+    {"id":"DTG-AR-2026-003-RECORD","class":"durable","description":"Human-readable durable assessment record in 2026-08-zkp-fork.md"}
   ],
-  "closure": {
-    "eligible_issues": [11, 27],
-    "reviewed_revision": "546babc471130af751ed3a117a0d476f5e0a7e03"
-  },
+  "closure": {"eligible_issues":[11,27],"reviewed_revision":"546babc471130af751ed3a117a0d476f5e0a7e03"},
   "retest_triggers": [
     "material ZKP fork change",
     "construction selection or executable proof adapter change",
