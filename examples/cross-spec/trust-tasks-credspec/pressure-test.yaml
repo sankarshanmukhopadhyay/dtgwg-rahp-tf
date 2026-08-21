@@ -1,14 +1,13 @@
 review:
   id: SR-XSP-001
-  status: dispositioned
+  status: complete
   title: Trust Tasks × DTG Credential Specification cross-specification pressure test
   reviewed_on: '2026-08-22'
   target:
     repository: trustoverip/dtgwg-trust-tasks-tf + trustoverip/dtgwg-cred-spec
     version: Composition of Trust Tasks 2a40f6bd and Credentials b89f389a
-    commits:
-      trust_tasks: 2a40f6bd3b13c85c49123174fdbe4354b3c48d81
-      credential_spec: b89f389abbdae77ba60b673c0836c781c2b54169
+    commit: 2a40f6bd3b13c85c49123174fdbe4354b3c48d81
+    companion_commit: b89f389abbdae77ba60b673c0836c781c2b54169
     source_paths:
       - Trust Tasks SPEC.md and VTA lifecycle specifications
       - DTG Credential Spec spec/body.md
@@ -34,24 +33,15 @@ review:
   method:
     workflow: docs/cross-spec-pressure-testing.md
     rule: A component-level pass does not imply a composition-level pass.
-  reassessment_evidence:
-    - source: instances/dtg/reviews/2026-08-trust-tasks.md
-      observation: Trust Tasks through 2a40f6bd is a net assurance strengthening, with proof/authorization separation, explicit VTA lifecycle semantics and destructive-operation evidence classified as controlled.
-    - source: https://github.com/trustoverip/dtgwg-cred-spec/commit/b89f389abbdae77ba60b673c0836c781c2b54169
-      observation: The VWC digest is now required, binding a witness credential to a specific VRC edge when the referenced VRC is available to the verifier.
   summary:
-    previous_finding_count: 6
-    consolidated_theme_count: 3
-    open_theme_count: 3
+    finding_count: 3
+    open_count: 3
     overall_assessment: >-
-      The refreshed composition is materially stronger than the 2026-08-17 baseline, but the remaining risk is concentrated at three cross-specification seams. These are not adequately resolved by component-level conformance alone and should be owned as companion-profile or governance contracts with executable retest conditions.
-  themes:
-    - id: XSP-THEME-01
-      title: Authority and lifecycle coherence
-      supersedes:
-        - F-001
-        - F-005
-      residual_state: assurance-gap
+      The refreshed composition is materially stronger than the 2026-08-17 baseline, but three cross-specification assurance seams remain open. The six prior findings are consolidated into authority/lifecycle, execution/outcome/replay, and privacy/contestability themes with explicit ownership and retest conditions.
+  findings:
+    - id: F-001
+      title: Authority and lifecycle coherence remains a cross-specification assurance gap
+      status: open
       severity: Critical
       primary_disposition: companion-specification
       secondary_dispositions:
@@ -62,30 +52,63 @@ review:
         - XSP-007
         - XSP-009
         - XSP-010
+      scenario_patterns:
+        - SP-AUTH-02
+        - SP-DEL-01
+        - SP-DEL-02
+        - SP-OPS-01
+        - SP-OPS-02
+        - SP-COMP-02
+      personas:
+        - P1
+        - P3
+        - P5
+        - P6
+      risks:
+        - RK-AI01
+      controls: []
+      guardrails: []
+      assurance_tests: []
+      portable_assurance:
+        harm_patterns:
+          - HRM-AUT-04
+          - HRM-SEC-02
+          - HRM-INF-01
+          - HRM-AUT-05
+        risk_patterns:
+          - RKP-COMP-01
+          - RKP-AUTH-02
+          - RKP-COMP-02
+        control_patterns:
+          - CTP-COMP-01
+          - CTP-AUTH-02
+          - CTP-COMP-02
+        guardrail_patterns:
+          - GRP-COMP-01
+          - GRP-AUTH-02
+        assurance_patterns:
+          - ATP-COMP-01
+          - ATP-AUTH-02
+          - ATP-COMP-02
+        evidence_patterns:
+          - EVP-COMP-01
+          - EVP-AUTH-01
       evidence:
         - source: instances/dtg/reviews/2026-08-trust-tasks.md
-          observation: Trust Tasks now explicitly separates proof from role/scope authorization and defines lifecycle operations, but does not define a universal cross-system delegation model or synchronized credential/status policy.
+          observation: Trust Tasks through 2a40f6bd explicitly separates proof from role/scope authorization and strengthens lifecycle semantics, but does not define a universal cross-system delegation model or synchronized credential/status policy.
         - source: corpora/trust-tasks-credspec-composed.yaml#xsp-002
-          observation: Individually valid task and credential facts can still be combined beyond a principal's current mandate unless current delegated authority is evaluated at action time.
+          observation: Individually valid task and credential facts can still be combined beyond a principal's current mandate unless delegated authority is evaluated at action time.
       harm: >-
         A consumer can execute a consequential task using valid component evidence while relying on stale, revoked or out-of-scope delegated authority, especially when credential, registry and task lifecycle views diverge.
       recommendation: >-
-        Define a cross-spec authority and lifecycle contract carrying a bounded delegation reference, authority scope, status-as-of evidence, revocation semantics and safe-degradation rules. Require evaluation at the point of consequential execution.
-      owner: companion profile / deployment governance authority
+        Define a cross-spec authority and lifecycle contract carrying bounded delegation, authority scope, status-as-of evidence, revocation semantics and safe-degradation rules, and require evaluation at consequential execution time.
       retest_when:
         - A companion profile or normative specification defines current delegated-authority verification across Trust Tasks and credentials.
         - The profile defines lifecycle synchronization, offline status-as-of semantics and safe degradation.
-      acceptance_tests:
-        - A revoked delegation is rejected even when task proof and credential signatures remain valid.
-        - Cached status older than the profile's permitted freshness window causes deterministic safe degradation.
-        - Parent/supervisory authority cannot exceed the explicit scope encoded or referenced by the delegation evidence.
 
-    - id: XSP-THEME-02
-      title: Execution, outcome binding and replay
-      supersedes:
-        - F-002
-        - F-003
-      residual_state: assurance-gap
+    - id: F-002
+      title: Execution, outcome binding and replay remain incompletely composed
+      status: open
       severity: High
       primary_disposition: companion-specification
       secondary_dispositions:
@@ -93,32 +116,53 @@ review:
       scenarios:
         - XSP-001
         - XSP-003
-      strengthening:
-        - The Credential Specification now requires the VWC digest, strengthening edge binding.
-        - Trust Tasks exposes more explicit task and lifecycle semantics and retains stronger audit evidence.
+      scenario_patterns:
+        - SP-COMP-01
+        - SP-REPLAY-01
+      personas:
+        - P1
+        - P3
+        - P5
+        - P6
+      risks:
+        - RK-EX05
+      controls: []
+      guardrails: []
+      assurance_tests: []
+      portable_assurance:
+        harm_patterns:
+          - HRM-INF-01
+          - HRM-SEC-02
+          - HRM-ECO-02
+        risk_patterns:
+          - RKP-CRD-03
+          - RKP-OPS-02
+        control_patterns:
+          - CTP-CRD-01
+          - CTP-OPS-02
+        guardrail_patterns:
+          - GRP-OPS-01
+        assurance_patterns:
+          - ATP-COMP-01
+          - ATP-OPS-02
+        evidence_patterns:
+          - EVP-COMP-01
+          - EVP-OPS-02
       evidence:
         - source: https://github.com/trustoverip/dtgwg-cred-spec/commit/b89f389abbdae77ba60b673c0836c781c2b54169
-          observation: A conforming VWC now requires a digest binding it to the specific VRC edge, but the digest does not itself prove task completion or one-time execution.
+          observation: The VWC digest is now required and strengthens edge binding, but it does not itself prove task completion or one-time execution.
         - source: corpora/trust-tasks-credspec-composed.yaml#xsp-003
           observation: A valid credential and valid task can still be replayed together unless the composition binds freshness, task identity, credential use and side-effect execution.
       harm: >-
         A credential can be correctly bound to an edge yet still be misinterpreted as proof of successful task completion, or reused with a duplicate consequential task to repeat an effect authorized only once.
       recommendation: >-
-        Define a cross-spec execution contract that separates task context, authority, completion and outcome evidence; bind credential use to the task instance and consequential execution with freshness and idempotency semantics.
-      owner: companion profile / specification maintainers
+        Define a cross-spec execution contract that separates task context, authority, completion and outcome evidence, and bind credential use to the task instance and consequential execution with freshness and idempotency semantics.
       retest_when:
         - A normative profile defines outcome evidence and one-time or idempotent execution binding across the two specifications.
-      acceptance_tests:
-        - A VWC cannot be interpreted as completion evidence without the required outcome artifact.
-        - Reuse of the same task/credential execution binding is rejected or deterministically returns the prior outcome without repeating side effects.
-        - A credential bound to one task context cannot authorize a different consequential task instance without a new binding.
 
-    - id: XSP-THEME-03
-      title: Privacy composition and contestability
-      supersedes:
-        - F-004
-        - F-006
-      residual_state: review-required
+    - id: F-003
+      title: Privacy composition and contestability remain cross-boundary governance obligations
+      status: open
       severity: High
       primary_disposition: governance
       secondary_dispositions:
@@ -129,28 +173,60 @@ review:
         - XSP-006
         - XSP-011
         - XSP-012
+      scenario_patterns:
+        - SP-PRIV-01
+        - SP-PRIV-02
+        - SP-COMP-01
+        - SP-GOV-03
+        - SP-RED-01
+      personas:
+        - P1
+        - P3
+        - P5
+        - P6
+      risks:
+        - RK-EX05
+      controls: []
+      guardrails: []
+      assurance_tests: []
+      portable_assurance:
+        harm_patterns:
+          - HRM-PRV-02
+          - HRM-PRV-05
+          - HRM-GOV-02
+          - HRM-ECO-02
+        risk_patterns:
+          - RKP-COMP-03
+          - RKP-GOV-04
+        control_patterns:
+          - CTP-PRV-02
+          - CTP-GOV-03
+        guardrail_patterns:
+          - GRP-PRV-01
+          - GRP-RED-01
+        assurance_patterns:
+          - ATP-PRV-01
+          - ATP-RED-01
+        evidence_patterns:
+          - EVP-PRV-01
+          - EVP-RED-01
       evidence:
         - source: instances/dtg/reviews/2026-08-trust-tasks.md
           observation: New VTA lifecycle and HTTPS discovery surfaces improve explicitness but add observable artifacts whose combined privacy impact is not bounded by either component specification alone.
         - source: corpora/trust-tasks-credspec-composed.yaml#xsp-012
           observation: Adverse outcomes can still span task policy, credential status and registry governance without a single accountable contestability boundary.
       harm: >-
-        Individually minimal proofs, task identifiers, endpoint metadata, status checks, errors and retained evidence can compose into durable correlation, while an affected person may still lack a single evidence package and accountable path for contesting a cross-spec decision.
+        Individually minimal proofs, task identifiers, endpoint metadata, status checks, errors and retained evidence can compose into durable correlation, while an affected person may lack a single evidence package and accountable path for contesting a cross-spec decision.
       recommendation: >-
-        Require composed disclosure analysis and define a cross-boundary evidence and responsibility contract: recipient scoping, privacy-safe errors, retention limits, explanation evidence, responsible authority and contest/remedy routing.
-      owner: deployment governance authority with specification/profile support
+        Require composed disclosure analysis and define a cross-boundary evidence and responsibility contract covering recipient scoping, privacy-safe errors, retention, explanation evidence, responsible authority and contest/remedy routing.
       retest_when:
         - A privacy profile bounds disclosure and correlation across the composed exchange.
         - A governance profile defines the accountable decision owner, evidence package and contest/remedy path.
-      acceptance_tests:
-        - The composed transcript can be evaluated for disclosure beyond the minimum predicates required by the relying decision.
-        - Error and endpoint metadata do not expose durable cross-context correlators beyond the profile's declared allowance.
-        - An adverse decision produces a machine-addressable evidence package and identifies the authority responsible for review and remedy.
 
   closure:
     issue: 15
     disposition: reassessed-and-consolidated
     rationale: >-
-      The dependency on issue #20 is satisfied by DTG-AR-2026-001 at Trust Tasks revision 2a40f6bd. The six original findings remain substantively relevant but are consolidated into three actionable cross-specification remediation themes with explicit owners and retest conditions.
+      The dependency on issue #20 is satisfied by DTG-AR-2026-001 at Trust Tasks revision 2a40f6bd. The six original findings remain substantively relevant but are consolidated into three actionable cross-specification findings with explicit owners and retest conditions.
     downstream_work: >-
-      The three themes should be carried into companion-profile or upstream governance discussions. Issue closure records completion of the RAHP assessment cycle, not acceptance of the residual risks.
+      Issue closure records completion of the RAHP assessment cycle, not acceptance or resolution of the residual risks.

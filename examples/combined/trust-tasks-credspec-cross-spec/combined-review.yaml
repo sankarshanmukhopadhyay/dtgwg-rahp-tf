@@ -1,21 +1,26 @@
 review:
   id: COMB-X-001
-  status: complete
+  status: monitoring
   title: Trust Tasks × DTG Credential Specification combined composition review
-  reviewed_on: '2026-08-17'
+  reviewed_on: '2026-08-22'
   target:
     repository: trustoverip/dtgwg-trust-tasks-tf + trustoverip/dtgwg-cred-spec
-    version: Composition of Trust Tasks fbe196a8 and Credentials WD01 d19f7c9
-    commit: fbe196a8a17ba3f99d0657a64be5ac58621023a1
+    version: 'Mixed-baseline synthesis: RAHP at Trust Tasks 2a40f6bd / Credentials b89f389a; security at Trust Tasks fbe196a8 / Credentials d19f7c9'
+    rahp_commit: 2a40f6bd3b13c85c49123174fdbe4354b3c48d81
+    rahp_companion_commit: b89f389abbdae77ba60b673c0836c781c2b54169
+    security_commit: fbe196a8a17ba3f99d0657a64be5ac58621023a1
+    security_companion_commit: d19f7c9cac364fab8e50cf434513ef53fef80e37
   rahp_review: ../../cross-spec/trust-tasks-credspec/pressure-test.yaml
   security_review: ../../security-hardening/cross-spec/findings.yaml
-  summary: v1.1 cross-lens synthesis of human-harm/composition risks and adversarial security findings at the Trust
-    Tasks × Credential Specification seam.
+  summary: >-
+    Cross-lens synthesis linking the current RAHP reassessment to the last source-pinned security review. This record is monitoring rather than a current combined-assurance attestation because the security lens has not yet been rerun against the 2026-08-22 Trust Tasks and Credential Specification revisions.
   notes:
-  - Portable assurance patterns provide the shared semantic bridge between the RAHP and security lenses without
-    replacing deployment-specific findings.
+    - Portable assurance patterns provide the shared semantic bridge between the RAHP and security lenses without replacing deployment-specific findings.
+    - The RAHP lens is current at Trust Tasks 2a40f6bd3b13c85c49123174fdbe4354b3c48d81 and Credential Specification b89f389abbdae77ba60b673c0836c781c2b54169.
+    - The security lens remains source-pinned at Trust Tasks fbe196a8a17ba3f99d0657a64be5ac58621023a1 and Credential Specification d19f7c9cac364fab8e50cf434513ef53fef80e37.
+    - Do not interpret this mixed-baseline synthesis as evidence that the current revisions have completed combined RAHP + security review. A security rerun is the retest condition for returning this record to complete status with a common target pin.
   reviewed_against:
-    rahp_version: v1.1.0
+    rahp_version: v1.2
     engine_contract: rahp-engine-contract-v1
-    revalidated_on: '2026-08-17'
-    revalidation_scope: catalogue-aware cross-spec composition synthesis
+    revalidated_on: '2026-08-22'
+    revalidation_scope: mixed-baseline cross-spec composition synthesis with explicit evidence provenance

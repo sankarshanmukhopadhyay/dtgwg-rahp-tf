@@ -15,13 +15,13 @@ This v1.1 worked example exercises the portable assurance catalogue against a **
 | Review ID | `SR-XSP-001` |
 | Status | complete |
 | Title | Trust Tasks × DTG Credential Specification cross-specification pressure test |
-| Reviewed on | 2026-08-17 |
+| Reviewed on | 2026-08-22 |
 | Target repository | `trustoverip/dtgwg-trust-tasks-tf + trustoverip/dtgwg-cred-spec` |
-| Target version | Composition of Trust Tasks fbe196a8 and Credentials WD01 d19f7c9 |
-| Target commit | `fbe196a8a17ba3f99d0657a64be5ac58621023a1` |
-| Target source paths | `Trust Tasks SPEC.md`, `DTG Credential Spec spec/body.md`, `corpora/trust-tasks-credspec-composed.yaml` |
+| Target version | Composition of Trust Tasks 2a40f6bd and Credentials b89f389a |
+| Target commit | `2a40f6bd3b13c85c49123174fdbe4354b3c48d81` |
+| Target source paths | `Trust Tasks SPEC.md and VTA lifecycle specifications`, `DTG Credential Spec spec/body.md`, `corpora/trust-tasks-credspec-composed.yaml` |
 | RAHP repository | `sankarshanmukhopadhyay/rahp-toolkit` |
-| RAHP version | `v1.1.0` |
+| RAHP version | `v1.2` |
 | Engine contract | `rahp-engine-contract-v1` |
 | RAHP corpus date | 2026-08-17 |
 
@@ -36,7 +36,11 @@ This v1.1 worked example exercises the portable assurance catalogue against a **
 
 **Included**
 
-- Authority, credential context, replay, privacy composition, lifecycle skew and cross-boundary redress at the seam between Trust Tasks and the DTG Credential Specification.
+- Authority and delegation at the Trust Task + credential seam.
+- Execution/outcome binding, replay and idempotency.
+- Lifecycle skew across task, credential, registry and policy state.
+- Privacy composition across task, credential, transport and error evidence.
+- Cross-boundary redress and contestability.
 
 **Excluded**
 
@@ -46,27 +50,24 @@ This v1.1 worked example exercises the portable assurance catalogue against a **
 
 | Measure | Value |
 |---|---:|
-| Findings | 6 |
-| Open findings | 6 |
+| Findings | 3 |
+| Open findings | 3 |
 
 **Overall assessment**
 
-The composition remains a first-class assurance surface: independently valid task, credential, registry and policy facts can still combine into unauthorized, stale, replayed, privacy-invasive or unappealable outcomes unless their semantic and lifecycle contracts are explicit.
+The refreshed composition is materially stronger than the 2026-08-17 baseline, but three cross-specification assurance seams remain open. The six prior findings are consolidated into authority/lifecycle, execution/outcome/replay, and privacy/contestability themes with explicit ownership and retest conditions.
 
 ### Finding index
 
 | ID | Finding | Severity | Status | Primary disposition | RAHP risks |
 |---|---|---|---|---|---|
-| `F-001` | Credential validity and task authentication do not establish current delegated authority | Critical | open | Companion Specification | [RK-AI01 — Agent Credential Scope Creep](../../../build/site/catalogue.html#RK-AI01) |
-| `F-002` | Task-bound credentials can become detached from outcome evidence | High | open | Companion Specification | [RK-EX05 — Organisational Identity Architecture Gap](../../../build/site/catalogue.html#RK-EX05) |
-| `F-003` | Replay can combine a still-valid credential with a duplicate consequential task | High | open | Companion Specification | [RK-EX05 — Organisational Identity Architecture Gap](../../../build/site/catalogue.html#RK-EX05) |
-| `F-004` | Composed proofs create correlation not visible in either specification alone | High | open | Companion Specification | [RK-EX05 — Organisational Identity Architecture Gap](../../../build/site/catalogue.html#RK-EX05) |
-| `F-005` | Offline and asymmetric lifecycle handling can accept stale trust state | High | open | Companion Specification | [RK-EX05 — Organisational Identity Architecture Gap](../../../build/site/catalogue.html#RK-EX05) |
-| `F-006` | Cross-spec adverse decisions lack a single contestability boundary | High | open | Companion Specification | [RK-EX05 — Organisational Identity Architecture Gap](../../../build/site/catalogue.html#RK-EX05) |
+| `F-001` | Authority and lifecycle coherence remains a cross-specification assurance gap | Critical | open | Companion Specification | [RK-AI01 — Agent Credential Scope Creep](../../../build/site/catalogue.html#RK-AI01) |
+| `F-002` | Execution, outcome binding and replay remain incompletely composed | High | open | Companion Specification | [RK-EX05 — Organisational Identity Architecture Gap](../../../build/site/catalogue.html#RK-EX05) |
+| `F-003` | Privacy composition and contestability remain cross-boundary governance obligations | High | open | Governance | [RK-EX05 — Organisational Identity Architecture Gap](../../../build/site/catalogue.html#RK-EX05) |
 
 ### Detailed findings
 
-#### F-001 — Credential validity and task authentication do not establish current delegated authority
+#### F-001 — Authority and lifecycle coherence remains a cross-specification assurance gap
 
 | Field | Value |
 |---|---|
@@ -74,8 +75,8 @@ The composition remains a first-class assurance surface: independently valid tas
 | Status | open |
 | Primary disposition | Companion Specification |
 | Secondary dispositions | Governance, Implementation Guidance |
-| Scenarios | `XSP-002`, `XSP-007` |
-| Scenario patterns | `SP-AUTH-02`, `SP-DEL-01`, `SP-DEL-02` |
+| Scenarios | `XSP-002`, `XSP-007`, `XSP-009`, `XSP-010` |
+| Scenario patterns | `SP-AUTH-02`, `SP-DEL-01`, `SP-DEL-02`, `SP-OPS-01`, `SP-OPS-02`, `SP-COMP-02` |
 | Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P5 — Delegated Service / Agent Operator](../../../build/site/catalogue.html#P5), [P6 — Registry / Discovery / Trust-Service Operator](../../../build/site/catalogue.html#P6) |
 | Risks | [RK-AI01 — Agent Credential Scope Creep](../../../build/site/catalogue.html#RK-AI01) |
 | Controls | — |
@@ -87,40 +88,42 @@ The composition remains a first-class assurance surface: independently valid tas
 | Layer | Patterns |
 |---|---|
 | Harms | `HRM-AUT-04`, `HRM-SEC-02`, `HRM-INF-01`, `HRM-AUT-05` |
-| Risks | `RKP-COMP-01`, `RKP-AUTH-02` |
-| Controls | `CTP-COMP-01`, `CTP-AUTH-02` |
+| Risks | `RKP-COMP-01`, `RKP-AUTH-02`, `RKP-COMP-02` |
+| Controls | `CTP-COMP-01`, `CTP-AUTH-02`, `CTP-COMP-02` |
 | Guardrails | `GRP-COMP-01`, `GRP-AUTH-02` |
-| Assurance | `ATP-COMP-01`, `ATP-AUTH-02` |
+| Assurance | `ATP-COMP-01`, `ATP-AUTH-02`, `ATP-COMP-02` |
 | Evidence | `EVP-COMP-01`, `EVP-AUTH-01` |
 
 **Evidence**
 
 | Source | Observation |
 |---|---|
-| `corpora/trust-tasks-credspec-composed.yaml#xsp-002` | The composed scenario identifies a semantic or lifecycle seam that remains unsafe even when component-level validation succeeds. |
+| `instances/dtg/reviews/2026-08-trust-tasks.md` | Trust Tasks through 2a40f6bd explicitly separates proof from role/scope authorization and strengthens lifecycle semantics, but does not define a universal cross-system delegation model or synchronized credential/status policy. |
+| `corpora/trust-tasks-credspec-composed.yaml#xsp-002` | Individually valid task and credential facts can still be combined beyond a principal's current mandate unless delegated authority is evaluated at action time. |
 
 **Potential harm**
 
-A consumer can combine individually valid task and credential facts and still perform an action beyond the principal’s current mandate.
+A consumer can execute a consequential task using valid component evidence while relying on stale, revoked or out-of-scope delegated authority, especially when credential, registry and task lifecycle views diverge.
 
 **Recommended treatment**
 
-Define an explicit cross-spec authority contract that carries a bounded delegation reference and requires action-time evaluation of current authority.
+Define a cross-spec authority and lifecycle contract carrying bounded delegation, authority scope, status-as-of evidence, revocation semantics and safe-degradation rules, and require evaluation at consequential execution time.
 
 **Retest when**
 
-- The two specifications or an adopted companion profile define and test the relevant cross-spec semantic contract.
+- A companion profile or normative specification defines current delegated-authority verification across Trust Tasks and credentials.
+- The profile defines lifecycle synchronization, offline status-as-of semantics and safe degradation.
 
-#### F-002 — Task-bound credentials can become detached from outcome evidence
+#### F-002 — Execution, outcome binding and replay remain incompletely composed
 
 | Field | Value |
 |---|---|
 | Severity | High |
 | Status | open |
 | Primary disposition | Companion Specification |
-| Secondary dispositions | Governance, Implementation Guidance |
-| Scenarios | `XSP-001` |
-| Scenario patterns | `SP-COMP-01` |
+| Secondary dispositions | Implementation Guidance |
+| Scenarios | `XSP-001`, `XSP-003` |
+| Scenario patterns | `SP-COMP-01`, `SP-REPLAY-01` |
 | Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P5 — Delegated Service / Agent Operator](../../../build/site/catalogue.html#P5), [P6 — Registry / Discovery / Trust-Service Operator](../../../build/site/catalogue.html#P6) |
 | Risks | [RK-EX05 — Organisational Identity Architecture Gap](../../../build/site/catalogue.html#RK-EX05) |
 | Controls | — |
@@ -131,86 +134,42 @@ Define an explicit cross-spec authority contract that carries a bounded delegati
 
 | Layer | Patterns |
 |---|---|
-| Harms | `HRM-INF-01`, `HRM-SEC-02` |
-| Risks | `RKP-CRD-03` |
-| Controls | `CTP-CRD-01` |
-| Guardrails | — |
-| Assurance | `ATP-COMP-01` |
-| Evidence | `EVP-COMP-01` |
-
-**Evidence**
-
-| Source | Observation |
-|---|---|
-| `corpora/trust-tasks-credspec-composed.yaml#xsp-001` | The composed scenario identifies a semantic or lifecycle seam that remains unsafe even when component-level validation succeeds. |
-
-**Potential harm**
-
-A context-bearing credential can be misread later as proof that a task succeeded or that a consequential outcome occurred.
-
-**Recommended treatment**
-
-Keep task context, authorization and completion as separate semantic facts and require outcome evidence for completion claims.
-
-**Retest when**
-
-- The two specifications or an adopted companion profile define and test the relevant cross-spec semantic contract.
-
-#### F-003 — Replay can combine a still-valid credential with a duplicate consequential task
-
-| Field | Value |
-|---|---|
-| Severity | High |
-| Status | open |
-| Primary disposition | Companion Specification |
-| Secondary dispositions | Governance, Implementation Guidance |
-| Scenarios | `XSP-003` |
-| Scenario patterns | `SP-REPLAY-01`, `SP-COMP-01` |
-| Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P5 — Delegated Service / Agent Operator](../../../build/site/catalogue.html#P5), [P6 — Registry / Discovery / Trust-Service Operator](../../../build/site/catalogue.html#P6) |
-| Risks | [RK-EX05 — Organisational Identity Architecture Gap](../../../build/site/catalogue.html#RK-EX05) |
-| Controls | — |
-| Guardrails | — |
-| Assurance tests | — |
-
-**Portable v1.1 assurance patterns**
-
-| Layer | Patterns |
-|---|---|
-| Harms | `HRM-ECO-02`, `HRM-SEC-02` |
-| Risks | `RKP-OPS-02` |
-| Controls | `CTP-OPS-02` |
+| Harms | `HRM-INF-01`, `HRM-SEC-02`, `HRM-ECO-02` |
+| Risks | `RKP-CRD-03`, `RKP-OPS-02` |
+| Controls | `CTP-CRD-01`, `CTP-OPS-02` |
 | Guardrails | `GRP-OPS-01` |
-| Assurance | `ATP-OPS-02` |
-| Evidence | `EVP-OPS-02` |
+| Assurance | `ATP-COMP-01`, `ATP-OPS-02` |
+| Evidence | `EVP-COMP-01`, `EVP-OPS-02` |
 
 **Evidence**
 
 | Source | Observation |
 |---|---|
-| `corpora/trust-tasks-credspec-composed.yaml#xsp-003` | The composed scenario identifies a semantic or lifecycle seam that remains unsafe even when component-level validation succeeds. |
+| `https://github.com/trustoverip/dtgwg-cred-spec/commit/b89f389abbdae77ba60b673c0836c781c2b54169` | The VWC digest is now required and strengthens edge binding, but it does not itself prove task completion or one-time execution. |
+| `corpora/trust-tasks-credspec-composed.yaml#xsp-003` | A valid credential and valid task can still be replayed together unless the composition binds freshness, task identity, credential use and side-effect execution. |
 
 **Potential harm**
 
-A valid credential and validly authenticated task can be replayed together and repeat a side effect that the principal authorized only once.
+A credential can be correctly bound to an edge yet still be misinterpreted as proof of successful task completion, or reused with a duplicate consequential task to repeat an effect authorized only once.
 
 **Recommended treatment**
 
-Define cross-spec freshness and idempotency binding between task identity, credential use and consequential execution.
+Define a cross-spec execution contract that separates task context, authority, completion and outcome evidence, and bind credential use to the task instance and consequential execution with freshness and idempotency semantics.
 
 **Retest when**
 
-- The two specifications or an adopted companion profile define and test the relevant cross-spec semantic contract.
+- A normative profile defines outcome evidence and one-time or idempotent execution binding across the two specifications.
 
-#### F-004 — Composed proofs create correlation not visible in either specification alone
+#### F-003 — Privacy composition and contestability remain cross-boundary governance obligations
 
 | Field | Value |
 |---|---|
 | Severity | High |
 | Status | open |
-| Primary disposition | Companion Specification |
-| Secondary dispositions | Governance, Implementation Guidance |
-| Scenarios | `XSP-005`, `XSP-006`, `XSP-011` |
-| Scenario patterns | `SP-PRIV-01`, `SP-PRIV-02`, `SP-COMP-01` |
+| Primary disposition | Governance |
+| Secondary dispositions | Companion Specification, Implementation Guidance |
+| Scenarios | `XSP-005`, `XSP-006`, `XSP-011`, `XSP-012` |
+| Scenario patterns | `SP-PRIV-01`, `SP-PRIV-02`, `SP-COMP-01`, `SP-GOV-03`, `SP-RED-01` |
 | Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P5 — Delegated Service / Agent Operator](../../../build/site/catalogue.html#P5), [P6 — Registry / Discovery / Trust-Service Operator](../../../build/site/catalogue.html#P6) |
 | Risks | [RK-EX05 — Organisational Identity Architecture Gap](../../../build/site/catalogue.html#RK-EX05) |
 | Controls | — |
@@ -221,120 +180,32 @@ Define cross-spec freshness and idempotency binding between task identity, crede
 
 | Layer | Patterns |
 |---|---|
-| Harms | `HRM-PRV-02`, `HRM-PRV-05` |
-| Risks | `RKP-COMP-03` |
-| Controls | `CTP-PRV-02` |
-| Guardrails | `GRP-PRV-01` |
-| Assurance | `ATP-PRV-01` |
-| Evidence | `EVP-PRV-01` |
+| Harms | `HRM-PRV-02`, `HRM-PRV-05`, `HRM-GOV-02`, `HRM-ECO-02` |
+| Risks | `RKP-COMP-03`, `RKP-GOV-04` |
+| Controls | `CTP-PRV-02`, `CTP-GOV-03` |
+| Guardrails | `GRP-PRV-01`, `GRP-RED-01` |
+| Assurance | `ATP-PRV-01`, `ATP-RED-01` |
+| Evidence | `EVP-PRV-01`, `EVP-RED-01` |
 
 **Evidence**
 
 | Source | Observation |
 |---|---|
-| `corpora/trust-tasks-credspec-composed.yaml#xsp-005` | The composed scenario identifies a semantic or lifecycle seam that remains unsafe even when component-level validation succeeds. |
+| `instances/dtg/reviews/2026-08-trust-tasks.md` | New VTA lifecycle and HTTPS discovery surfaces improve explicitness but add observable artifacts whose combined privacy impact is not bounded by either component specification alone. |
+| `corpora/trust-tasks-credspec-composed.yaml#xsp-012` | Adverse outcomes can still span task policy, credential status and registry governance without a single accountable contestability boundary. |
 
 **Potential harm**
 
-Multiple individually minimal artefacts, transport metadata and errors can combine into a persistent or identifying profile.
+Individually minimal proofs, task identifiers, endpoint metadata, status checks, errors and retained evidence can compose into durable correlation, while an affected person may lack a single evidence package and accountable path for contesting a cross-spec decision.
 
 **Recommended treatment**
 
-Require composed disclosure analysis at the Trust Task + credential boundary, including recipient scope and privacy-safe errors.
+Require composed disclosure analysis and define a cross-boundary evidence and responsibility contract covering recipient scoping, privacy-safe errors, retention, explanation evidence, responsible authority and contest/remedy routing.
 
 **Retest when**
 
-- The two specifications or an adopted companion profile define and test the relevant cross-spec semantic contract.
-
-#### F-005 — Offline and asymmetric lifecycle handling can accept stale trust state
-
-| Field | Value |
-|---|---|
-| Severity | High |
-| Status | open |
-| Primary disposition | Companion Specification |
-| Secondary dispositions | Governance, Implementation Guidance |
-| Scenarios | `XSP-009`, `XSP-010` |
-| Scenario patterns | `SP-OPS-01`, `SP-OPS-02`, `SP-COMP-02` |
-| Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P5 — Delegated Service / Agent Operator](../../../build/site/catalogue.html#P5), [P6 — Registry / Discovery / Trust-Service Operator](../../../build/site/catalogue.html#P6) |
-| Risks | [RK-EX05 — Organisational Identity Architecture Gap](../../../build/site/catalogue.html#RK-EX05) |
-| Controls | — |
-| Guardrails | — |
-| Assurance tests | — |
-
-**Portable v1.1 assurance patterns**
-
-| Layer | Patterns |
-|---|---|
-| Harms | `HRM-AUT-05`, `HRM-SEC-02`, `HRM-SEC-03` |
-| Risks | `RKP-COMP-02` |
-| Controls | `CTP-COMP-02` |
-| Guardrails | — |
-| Assurance | `ATP-COMP-02` |
-| Evidence | `EVP-COMP-01` |
-
-**Evidence**
-
-| Source | Observation |
-|---|---|
-| `corpora/trust-tasks-credspec-composed.yaml#xsp-009` | The composed scenario identifies a semantic or lifecycle seam that remains unsafe even when component-level validation succeeds. |
-
-**Potential harm**
-
-One side can continue under cached credential, registry or policy state after the other side would consider the authority or profile stale.
-
-**Recommended treatment**
-
-Publish status-as-of and safe-degradation rules plus a lifecycle matrix covering offline reconciliation and version migration.
-
-**Retest when**
-
-- The two specifications or an adopted companion profile define and test the relevant cross-spec semantic contract.
-
-#### F-006 — Cross-spec adverse decisions lack a single contestability boundary
-
-| Field | Value |
-|---|---|
-| Severity | High |
-| Status | open |
-| Primary disposition | Companion Specification |
-| Secondary dispositions | Governance, Implementation Guidance |
-| Scenarios | `XSP-012` |
-| Scenario patterns | `SP-GOV-03`, `SP-RED-01` |
-| Personas | [P1 — Principal / Rights-Bearing Party](../../../build/site/catalogue.html#P1), [P3 — Relying Party / Verifier](../../../build/site/catalogue.html#P3), [P5 — Delegated Service / Agent Operator](../../../build/site/catalogue.html#P5), [P6 — Registry / Discovery / Trust-Service Operator](../../../build/site/catalogue.html#P6) |
-| Risks | [RK-EX05 — Organisational Identity Architecture Gap](../../../build/site/catalogue.html#RK-EX05) |
-| Controls | — |
-| Guardrails | — |
-| Assurance tests | — |
-
-**Portable v1.1 assurance patterns**
-
-| Layer | Patterns |
-|---|---|
-| Harms | `HRM-GOV-02`, `HRM-ECO-02` |
-| Risks | `RKP-GOV-04` |
-| Controls | `CTP-GOV-03` |
-| Guardrails | `GRP-RED-01` |
-| Assurance | `ATP-RED-01` |
-| Evidence | `EVP-RED-01` |
-
-**Evidence**
-
-| Source | Observation |
-|---|---|
-| `corpora/trust-tasks-credspec-composed.yaml#xsp-012` | The composed scenario identifies a semantic or lifecycle seam that remains unsafe even when component-level validation succeeds. |
-
-**Potential harm**
-
-A person may be harmed by an outcome produced jointly by task policy, credential status and registry governance while every component points elsewhere for appeal.
-
-**Recommended treatment**
-
-Define an accountable cross-boundary responsibility map and evidence package sufficient to explain, contest and remedy the outcome.
-
-**Retest when**
-
-- The two specifications or an adopted companion profile define and test the relevant cross-spec semantic contract.
+- A privacy profile bounds disclosure and correlation across the composed exchange.
+- A governance profile defines the accountable decision owner, evidence package and contest/remedy path.
 
 <!-- END GENERATED PRESSURE TEST -->
 
