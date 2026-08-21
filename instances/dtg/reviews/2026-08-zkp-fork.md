@@ -13,6 +13,7 @@ nav_exclude: true
 **Mode:** combined RAHP + security  
 **Status:** dispositioned  
 **Disposition:** no-blocking-assurance-impact  
+**Assessment queue disposition:** `no-material-assurance-impact`  
 **Reviewed revision:** `546babc471130af751ed3a117a0d476f5e0a7e03`
 
 ## Scope
