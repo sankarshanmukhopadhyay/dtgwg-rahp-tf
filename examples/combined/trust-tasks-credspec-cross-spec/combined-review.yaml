@@ -5,7 +5,7 @@ review:
   reviewed_on: '2026-08-22'
   target:
     repository: trustoverip/dtgwg-trust-tasks-tf + trustoverip/dtgwg-cred-spec
-    version: Mixed-baseline synthesis: RAHP at Trust Tasks 2a40f6bd / Credentials b89f389a; security at Trust Tasks fbe196a8 / Credentials d19f7c9
+    version: 'Mixed-baseline synthesis: RAHP at Trust Tasks 2a40f6bd / Credentials b89f389a; security at Trust Tasks fbe196a8 / Credentials d19f7c9'
     rahp_commit: 2a40f6bd3b13c85c49123174fdbe4354b3c48d81
     rahp_companion_commit: b89f389abbdae77ba60b673c0836c781c2b54169
     security_commit: fbe196a8a17ba3f99d0657a64be5ac58621023a1
