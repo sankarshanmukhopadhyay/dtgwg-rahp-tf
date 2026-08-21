@@ -1,19 +1,20 @@
 {
   "version": 1,
-  "baselined_at": "2026-08-18T17:14:00+05:30",
+  "baselined_at": "2026-08-22T05:23:14+05:30",
   "open_generated_assessments": [],
   "dispositions": [
     {
       "assessment_id": "DTG-AR-2026-001",
       "assessment_key": "dtg:repository:trustoverip/dtgwg-trust-tasks-tf",
       "review": "instances/dtg/reviews/2026-08-trust-tasks.md",
-      "reviewed_revision": "7e0d755f5b815498c861cacecee5cae49b3f14eb",
+      "reviewed_revision": "2a40f6bd3b13c85c49123174fdbe4354b3c48d81",
       "rahp_issues": [
         1,
         3,
         4,
         7,
-        9
+        9,
+        20
       ],
       "disposition": "findings-raised"
     },
@@ -32,9 +33,10 @@
       "assessment_id": "DTG-AR-2026-003",
       "assessment_key": "dtg:repository:sankarshanmukhopadhyay/dtgwg-zkp-tf",
       "review": "instances/dtg/reviews/2026-08-zkp-fork.md",
-      "reviewed_revision": "a67ba80cf231a77b9608646c117f80a64d89567b",
+      "reviewed_revision": "546babc471130af751ed3a117a0d476f5e0a7e03",
       "rahp_issues": [
-        11
+        11,
+        27
       ],
       "disposition": "no-material-assurance-impact"
     }
