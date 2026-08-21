@@ -1,69 +1,92 @@
 ---
-title: "DTG review: ZKP fork RAHP v1.1 and interoperability refresh"
+title: "DTG review: ZKP fork RAHP v1.1 and executable-evidence refresh"
 parent: DTG RAHP review record
 nav_order: 30
 layout: default
 nav_exclude: true
 ---
 
-# DTG review: ZKP fork RAHP v1.1 and interoperability refresh
+# DTG review: ZKP fork RAHP v1.1 and executable-evidence refresh
 
 **Assessment ID:** `DTG-AR-2026-003`  
 **Assessment key:** `dtg:repository:sankarshanmukhopadhyay/dtgwg-zkp-tf`  
 **Mode:** combined RAHP + security  
 **Status:** dispositioned  
-**Disposition:** no-material-assurance-impact  
-**Reviewed revision:** `a67ba80cf231a77b9608646c117f80a64d89567b`
+**Disposition:** no-blocking-assurance-impact  
+**Reviewed revision:** `546babc471130af751ed3a117a0d476f5e0a7e03`
 
 ## Scope
 
-This review covers `9a1ae81465e1da9f5c06ccd500a70708eb2511a6` →
-`a67ba80cf231a77b9608646c117f80a64d89567b` and dispositions RAHP toolkit
-issue **#11**.
+This review now covers the previously dispositioned assurance/interoperability refresh and
+advances the durable baseline through the material change window
+`4034bd23f9c4421bd87d000f787cb7f2afaddf77` →
+`546babc471130af751ed3a117a0d476f5e0a7e03`, dispositioning RAHP toolkit
+issue **#27**.
 
-The change window is principally an assurance/interoperability refresh rather than a new
-cryptographic primitive. It adds a machine-readable cross-specification assurance register,
-requirements-to-assurance traceability, authority/evidence boundaries and new/rerun pressure
-tests against the current Trust Tasks and Credential Specification baselines.
+The new window is principally a **conformance and evidence execution release**, not a new
+cryptographic construction. It establishes a complete repository validation gate, semantic
+fixtures, a fixture-backed harness adapter, external-evidence governance and a v0.5.0 release
+evidence package.
 
-## Assessment
+## Material assurance changes
 
-The revision improves the fork's assurance posture in five material ways:
+1. **Semantic assurance is executable.** Eleven new fixtures cover revocation timing,
+   constrained-device ceilings, mediated proving, attestation-schema correlation,
+   governed context and lifecycle bounds.
+2. **Fixtures are evaluated rather than merely table-matched.** The harness adds a
+   semantic fixture adapter that derives outcomes from repository-owned JSON.
+3. **Repository validation is consolidated.** A single quality gate executes 19
+   validators, harness unit tests and deterministic manifests.
+4. **Execution coverage is explicit.** 27 of 96 protocol cases are executable; the
+   remaining 69 are not presented as passing. They remain explicitly blocked on
+   construction selection.
+5. **External evidence cannot silently become normative.** The evidence register records
+   licence and provenance status and prevents unverified external material from becoming
+   vendored content, CI dependencies or conformance evidence.
+6. **Upstream synchronisation is made more resilient.** Drift reporting is preserved even
+   where issue creation is unavailable, reducing the chance that fork divergence is hidden.
+7. **Generated artifacts are excluded.** Python bytecode is removed and repository
+   cleanliness is part of release acceptance.
 
-1. **Cross-spec dependencies are pinned.** Pressure tests identify reviewed upstream
-   revisions and explicit retest triggers rather than relying on undated narrative links.
-2. **Proof remains subordinate to authority.** Trust Task × ZKP scenarios test that proof
-   possession/validity cannot substitute for action authority, delegation scope or current
-   lifecycle status.
-3. **Effect-time re-evaluation is modeled.** New task-lifecycle scenarios ask which evidence
-   must be re-evaluated when work is delayed, suspended or resumed.
-4. **Witness evidence is bounded.** Witness/edge-digest scenarios test replay, correlation
-   and exact relationship binding rather than treating witness participation as authority.
-5. **Implementation evidence is kept non-normative.** OpenVTC implementations are tracked as
-   evidence sources without being promoted into the source of specification semantics.
+## Residual assurance states
 
-The cross-spec assurance register explicitly pins Trust Tasks to
-`7e0d755f5b815498c861cacecee5cae49b3f14eb`, matching the newly dispositioned
-Trust Tasks review in this RAHP instance.
+### Construction-dependent conformance coverage
 
-## Residual dependencies
+**Residual state:** `review-required`
 
-- Credential linkage remains sensitive to correlation and subject/controller-binding semantics.
-- Delegation/current-authority semantics remain external governance dependencies.
-- Exploratory VDS, Agent Names and HTX relationships are intentionally not represented as
-  active bindings until the ZKP profile actually depends on them.
+The 69 construction-blocked cases remain outside executable cryptographic conformance.
+This is correctly represented as an explicit blocker rather than a false pass.
 
-These are correctly represented as retest triggers rather than silently assumed closure.
+**Owner:** ZKP construction-selection / conformance workstream.  
+**Retest condition:** construction selection enables executable proof-system adapters and
+those cases acquire deterministic pass/fail evidence.
+
+### Cross-spec authority and lifecycle dependencies
+
+**Residual state:** `assurance-gap`
+
+Proof validity still does not establish current delegated authority, relying-party purpose
+or action-time lifecycle state. These remain composition obligations with Trust Tasks,
+Credential Specification and governance profiles.
+
+**Owner:** cross-specification companion profiles.  
+**Retest condition:** adopted profiles expose and test authority, purpose, audience,
+freshness and revocation semantics at the composed decision boundary.
 
 ## Assurance disposition
 
-No new blocking assurance or security defect is introduced by this change window. The delta
-is a **material strengthening of traceability and cross-specification assurance discipline**.
+No new blocking assurance or security defect is introduced by the reviewed window. The
+delta is a **material strengthening of evidence execution, release integrity and
+conformance honesty**.
 
-This record closes RAHP toolkit issue **#11** for revision
-`a67ba80cf231a77b9608646c117f80a64d89567b`.
+The most important assurance property is that incomplete cryptographic coverage is not
+rendered green: executable cases are distinguished from governed construction blockers.
+
+This record closes RAHP toolkit issue **#27** for revision
+`546babc471130af751ed3a117a0d476f5e0a7e03`.
 
 ## Sources
 
-- <https://github.com/sankarshanmukhopadhyay/dtgwg-zkp-tf/compare/9a1ae81465e1da9f5c06ccd500a70708eb2511a6...a67ba80cf231a77b9608646c117f80a64d89567b>
-- <https://github.com/sankarshanmukhopadhyay/dtgwg-zkp-tf/blob/a67ba80cf231a77b9608646c117f80a64d89567b/docs/implementation-guide/interoperability/cross-spec-assurance-register.yaml>
+- <https://github.com/sankarshanmukhopadhyay/dtgwg-zkp-tf/compare/4034bd23f9c4421bd87d000f787cb7f2afaddf77...546babc471130af751ed3a117a0d476f5e0a7e03>
+- <https://github.com/sankarshanmukhopadhyay/dtgwg-zkp-tf/blob/546babc471130af751ed3a117a0d476f5e0a7e03/RELEASE_NOTES_v0.5.0.md>
+- <https://github.com/sankarshanmukhopadhyay/dtgwg-zkp-tf/blob/546babc471130af751ed3a117a0d476f5e0a7e03/conformance-harness/examples/semantic-fixture-manifest.json>
