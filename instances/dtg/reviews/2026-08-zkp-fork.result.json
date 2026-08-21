@@ -3,22 +3,33 @@
   "assessment": {
     "id": "DTG-AR-2026-003",
     "key": "dtg:repository:sankarshanmukhopadhyay/dtgwg-zkp-tf",
-    "triggers": [
-      "rahp-toolkit#11"
-    ]
+    "triggers": ["rahp-toolkit#11", "rahp-toolkit#27"]
   },
   "target": {
     "repository": "sankarshanmukhopadhyay/dtgwg-zkp-tf",
     "baseline_revision": "9a1ae81465e1da9f5c06ccd500a70708eb2511a6",
-    "reviewed_revision": "a67ba80cf231a77b9608646c117f80a64d89567b"
+    "reviewed_revision": "546babc471130af751ed3a117a0d476f5e0a7e03"
   },
   "mode": "combined",
   "status": "dispositioned",
-  "findings": [],
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "Construction-dependent conformance coverage remains incomplete",
+      "residual_state": "review-required",
+      "owner": "ZKP construction-selection / conformance workstream"
+    },
+    {
+      "id": "F-002",
+      "title": "Cross-spec authority and lifecycle dependencies remain external",
+      "residual_state": "assurance-gap",
+      "owner": "cross-specification companion profiles"
+    }
+  ],
   "disposition": {
-    "outcome": "no-material-assurance-impact",
-    "summary": "Material strengthening of cross-spec traceability and assurance; residual dependencies remain explicit retest triggers.",
-    "decided_at": "2026-08-18T17:14:00+05:30"
+    "outcome": "no-blocking-assurance-impact",
+    "summary": "Material strengthening of executable evidence, release integrity and conformance honesty; remaining construction blockers and cross-spec dependencies are explicit residual states rather than false passes.",
+    "decided_at": "2026-08-22T05:08:00+05:30"
   },
   "evidence": [
     {
@@ -28,13 +39,12 @@
     }
   ],
   "closure": {
-    "eligible_issues": [
-      11
-    ],
-    "reviewed_revision": "a67ba80cf231a77b9608646c117f80a64d89567b"
+    "eligible_issues": [11, 27],
+    "reviewed_revision": "546babc471130af751ed3a117a0d476f5e0a7e03"
   },
   "retest_triggers": [
     "material ZKP fork change",
+    "construction selection or executable proof adapter change",
     "Trust Tasks baseline change",
     "Credential Specification baseline change",
     "new active VDS/Agent Names/HTX binding"
