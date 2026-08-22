@@ -2,6 +2,7 @@ version: 1
 development_target: 1.5.0
 capabilities:
   - id: assurance-lineage
+    roadmap_term: Durable assessment and finding lineage
     schemas:
       - method/schema/assessment-lineage.schema.json
       - method/schema/finding-lineage.schema.json
@@ -14,6 +15,7 @@ capabilities:
       - finding-lineage
       - canonical identity
   - id: remediation-retest
+    roadmap_term: Governed remediation and retest
     schemas:
       - method/schema/remediation-manifest.schema.json
       - method/schema/retest.schema.json
@@ -28,6 +30,7 @@ capabilities:
       - closure evidence
       - authority
   - id: assurance-graph-impact
+    roadmap_term: Assurance graph and impact analysis
     schemas:
       - method/schema/assurance-graph.schema.json
       - method/schema/impact-analysis.schema.json
@@ -42,6 +45,7 @@ capabilities:
       - retest_required
       - reachability
   - id: evidence-freshness-delta
+    roadmap_term: Evidence provenance, freshness and delta
     schemas:
       - method/schema/evidence-manifest.schema.json
       - method/schema/assurance-freshness.schema.json
@@ -57,6 +61,7 @@ capabilities:
       - retest-required
       - assurance delta
   - id: authority-policy-gates
+    roadmap_term: Executable authority and policy gates
     schemas:
       - method/schema/authority.schema.json
       - method/schema/gate-policy.schema.json
@@ -72,3 +77,31 @@ capabilities:
       - INDETERMINATE
       - accept-risk
       - policy evaluation
+  - id: portfolio-presentation
+    roadmap_term: Portfolio and deployment presentation
+    schemas:
+      - method/schema/assurance-posture.schema.json
+    tools:
+      - tools/assurance_posture.py
+      - tools/validate_v15_release.py
+    tests:
+      - tests/test_assurance_posture.py
+    documentation: docs/assurance-posture.md
+    required_terms:
+      - assurance score
+      - gate_blocked
+      - authority_blocked
+      - operational posture
+  - id: release-qualification
+    roadmap_term: Release qualification
+    schemas: []
+    tools:
+      - tools/validate_v15_release.py
+    tests:
+      - tests/test_v15_release_qualification.py
+    documentation: docs/v1.5-release-runbook.md
+    required_terms:
+      - qualification contract
+      - random
+      - release decision
+      - release-cut commit

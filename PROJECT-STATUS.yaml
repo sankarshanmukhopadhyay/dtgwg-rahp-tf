@@ -2,6 +2,8 @@ project: rahp-toolkit
 stable_release: 1.2.0
 development_target: 1.5.0
 release_status: unreleased
+qualification_status: cut-ready
+qualification_contract: method/v1.5-release-qualification.yaml
 compatibility:
   engine_contract: rahp-engine-contract-v1
   normalized_result_schema: 1
@@ -25,5 +27,7 @@ release_naming:
     from the butterfly species listed by the recorded source. The selected
     common name and scientific name SHOULD be recorded in the release notes.
 release_intent: >-
-  Accumulate additive capability commits on main until the continuous governed
-  assurance lifecycle is qualified for a v1.5.0 release.
+  Continuous Governed Assurance has satisfied the repository qualification
+  gates and is cut-ready. The release-cut change should now be mechanical:
+  select the butterfly name, finalize v1.5.0 release metadata/version surfaces,
+  tag, and publish without introducing new method semantics.

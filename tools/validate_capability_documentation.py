@@ -16,6 +16,7 @@ def main() -> int:
     data = yaml.safe_load(REGISTRY.read_text(encoding="utf-8"))
     errors: list[str] = []
     ids: list[str] = []
+    roadmap = ROADMAP.read_text(encoding="utf-8")
 
     if data.get("development_target") != "1.5.0":
         errors.append("capability documentation registry must target v1.5.0")
@@ -28,6 +29,12 @@ def main() -> int:
         if cid in ids:
             errors.append(f"duplicate capability id: {cid}")
         ids.append(cid)
+
+        roadmap_term = capability.get("roadmap_term")
+        if not roadmap_term:
+            errors.append(f"{cid}: missing roadmap_term")
+        elif roadmap_term not in roadmap:
+            errors.append(f"{cid}: ROADMAP.md missing capability term {roadmap_term!r}")
 
         for field in ("schemas", "tools", "tests"):
             for rel in capability.get(field) or []:
@@ -46,23 +53,11 @@ def main() -> int:
             if str(term).lower() not in lower:
                 errors.append(f"{cid}: documentation {doc_rel} missing required semantic term {term!r}")
 
-    roadmap = ROADMAP.read_text(encoding="utf-8")
-    required_headings = [
-        "Durable assessment and finding lineage",
-        "Governed remediation and retest",
-        "Assurance graph and impact analysis",
-        "Evidence provenance and assurance freshness",
-        "Executable authority and policy gates",
-    ]
-    for heading in required_headings:
-        if heading not in roadmap:
-            errors.append(f"ROADMAP.md missing v1.5 capability heading: {heading}")
-
     if errors:
         for error in errors:
             print("ERROR:", error)
         return 1
-    print(f"PASS capability documentation sync: {len(ids)} v1.5 capabilities have implementation, test and rendered-documentation coverage.")
+    print(f"PASS capability documentation sync: {len(ids)} v1.5 capabilities have implementation, test, roadmap and rendered-documentation coverage.")
     return 0
 
 
