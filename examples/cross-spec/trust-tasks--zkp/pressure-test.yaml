@@ -20,11 +20,29 @@ review:
     zkp: b37d52fca4ab64ef759d4952b13757f3b23cb20b
   reviewed_against:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    rahp_version: v1.2
+    rahp_version: v1.5.0
     corpus_date: '2026-08-19'
     engine_contract: rahp-engine-contract-v1
+    evidence_retention_contract: rahp-evidence-retention-v1
+    normalized_result_schema: '1'
     revalidated_on: '2026-08-22'
-    revalidation_scope: Trust Tasks baseline advanced through DTG-AR-2026-001; ZKP implementation-guidance evidence advanced through DTG-AR-2026-003 while upstream normative ZKP remains at b37d52fc.
+    reassessed_on: '2026-08-22'
+    revalidation_scope: Trust Tasks baseline advanced through DTG-AR-2026-001; ZKP implementation-guidance evidence advanced through DTG-AR-2026-003 while upstream normative ZKP remains at b37d52fc; v1.5 adds current-baseline lineage and posture.
+  lineage:
+    prior_rahp_version: v1.2
+    prior_record: history/pre-v1.5.yaml
+    transition: reassessed
+    evidence_freshness: retained
+  assurance:
+    residual_state: finding
+    policy_gate: FAIL
+    gate_reason: One Critical and one High cross-specification obligation remain unresolved.
+    assurance_delta:
+      disposition: retained
+      summary: The two consolidated composition obligations remain open; v1.5 adds explicit current posture and evidence-lineage semantics without promoting fork-local guidance to normative authority.
+      finding_lineage:
+        F-001: unchanged
+        F-002: unchanged
   scope:
     included:
       - Proof validity versus current delegated authority at task execution time.
@@ -105,7 +123,6 @@ review:
         - A companion profile defines a machine-verifiable delegation/mandate reference and its binding to the Trust Task and ZKP transcript.
         - Negative tests prove that valid proof plus revoked, expired or out-of-scope delegation fails before consequential execution.
         - Replay or retry tests prove that a proof/task pair cannot repeat a one-time side effect outside the declared execution semantics.
-
     - id: F-002
       title: Task-specific relying context, provenance and privacy binding remains incomplete
       status: open
@@ -162,7 +179,6 @@ review:
         - A composition profile specifies the canonical task-context commitment and the verifier-visible semantics it establishes and does not establish.
         - Cross-task and cross-audience negative vectors reject proof reuse outside the authorized task/purpose boundary.
         - Privacy vectors demonstrate that provenance can be established without leaking an unnecessary durable cross-context correlator.
-
   closure:
     issue: 17
     disposition: reassessed-and-consolidated

@@ -11,14 +11,31 @@ review:
     source_paths: []
   reviewed_against:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    rahp_version: v1.1.0
+    rahp_version: v1.5.0
     corpus_date: '2026-08-16'
     original_rahp_version: v0.7.0
     original_corpus_date: '2026-08-14'
     engine_contract: rahp-engine-contract-v1
+    evidence_retention_contract: rahp-evidence-retention-v1
+    normalized_result_schema: '1'
     revalidated_on: '2026-08-17'
-    revalidation_scope: v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target
-      revision unchanged
+    reassessed_on: '2026-08-22'
+    revalidation_scope: v1.5 current-baseline migration plus portable assurance catalogue, lineage, evidence-freshness and posture revalidation; pinned target revision unchanged
+  lineage:
+    prior_rahp_version: v1.1.0
+    prior_record: history/pre-v1.5.yaml
+    transition: reassessed
+    evidence_freshness: retained
+  assurance:
+    residual_state: finding
+    policy_gate: FAIL
+    gate_reason: Two unresolved High composition findings remain.
+    assurance_delta:
+      disposition: retained
+      summary: v1.5 changes the governed evidence lifecycle and current posture, not the source-pinned substantive findings.
+      finding_lineage:
+        F-001: unchanged
+        F-002: unchanged
   scope:
     included:
     - Normative and draft semantics relevant to the named composition or experiment.

@@ -1,0 +1,12 @@
+schema_version: 1
+kind: rahp-example-history-pointer
+example_id: SR-XSP-002
+canonical_path: examples/cross-spec/credential-spec--zkp/pressure-test.yaml
+prior_baseline:
+  rahp_version: v1.1.0
+  git_blob_sha: d9ba5b4a84220c2ade93fc0ba239e04aaa2cf198
+  reviewed_on: '2026-08-19'
+  target_revision: b89f389abbdae77ba60b673c0836c781c2b54169
+preservation:
+  policy: immutable-through-git-history
+  rationale: The canonical example is maintained on the current stable RAHP baseline; this pointer preserves the exact pre-v1.5 blob identity and assessment provenance.

@@ -1,0 +1,12 @@
+schema_version: 1
+kind: rahp-example-history-pointer
+example_id: CAWG-COMP-005
+canonical_path: examples/cawg-c2pa/compositions/portfolio-stack/pressure-test.yaml
+prior_baseline:
+  rahp_version: v1.1.0
+  git_blob_sha: 1650673f3a8f29424a5b9f72d29778fd04f4f006
+  reviewed_on: '2026-08-17'
+  target_revision: b1703dc0a0420088d3f8b0e5fb11866d0fe931cb
+preservation:
+  policy: immutable-through-git-history
+  rationale: The canonical example is maintained on the current stable RAHP baseline; this pointer preserves the exact pre-v1.5 blob identity and assessment provenance.

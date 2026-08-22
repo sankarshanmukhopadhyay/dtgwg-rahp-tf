@@ -1,6 +1,6 @@
 # Trust Tasks × DTG Credential Specification cross-specification example
 
-This v1.1 worked example exercises the portable assurance catalogue against a **composition**, not a single specification. It uses the `XSP-*` corpus scenarios to show how portable `RKP-*`, `CTP-*`, `GRP-*`, `ATP-*` and `EVP-*` patterns can be applied while the deployment-specific DTG risk catalogue remains separate.
+This v1.5 worked example exercises the portable assurance catalogue against a **composition**, not a single specification. It uses the `XSP-*` corpus scenarios to show how portable `RKP-*`, `CTP-*`, `GRP-*`, `ATP-*` and `EVP-*` patterns can be applied while the deployment-specific DTG risk catalogue remains separate.
 
 <!-- BEGIN GENERATED PRESSURE TEST -->
 
@@ -21,7 +21,7 @@ This v1.1 worked example exercises the portable assurance catalogue against a **
 | Target commit | `2a40f6bd3b13c85c49123174fdbe4354b3c48d81` |
 | Target source paths | `Trust Tasks SPEC.md and VTA lifecycle specifications`, `DTG Credential Spec spec/body.md`, `corpora/trust-tasks-credspec-composed.yaml` |
 | RAHP repository | `sankarshanmukhopadhyay/rahp-toolkit` |
-| RAHP version | `v1.2` |
+| RAHP version | `v1.5.0` |
 | Engine contract | `rahp-engine-contract-v1` |
 | RAHP corpus date | 2026-08-17 |
 
