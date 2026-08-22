@@ -15,6 +15,15 @@ portability:
     DTG, OpenVTC, ARPA, CAWG/C2PA, and other project-specific assessments MAY
     demonstrate portable capabilities but MUST NOT become dependencies of the
     portable method or core conformance contract.
+release_naming:
+  applies_from: 1.5.0
+  convention: west-bengal-butterfly
+  source: https://en.wikipedia.org/wiki/List_of_butterflies_of_West_Bengal
+  selection: random-at-release-time
+  policy: >-
+    Each v1.5.x and later release receives a release name selected at random
+    from the butterfly species listed by the recorded source. The selected
+    common name and scientific name SHOULD be recorded in the release notes.
 release_intent: >-
   Accumulate additive capability commits on main until the continuous governed
   assurance lifecycle is qualified for a v1.5.0 release.
