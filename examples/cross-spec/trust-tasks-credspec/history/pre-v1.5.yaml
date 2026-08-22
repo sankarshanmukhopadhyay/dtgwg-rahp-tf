@@ -1,0 +1,13 @@
+schema_version: 1
+kind: rahp-example-history-pointer
+example_id: SR-XSP-001
+canonical_path: examples/cross-spec/trust-tasks-credspec/pressure-test.yaml
+prior_baseline:
+  rahp_version: v1.2
+  git_blob_sha: 12c0f0623765cae9682bb473cf036bb20369eb7e
+  reviewed_on: '2026-08-22'
+  target_revision: 2a40f6bd3b13c85c49123174fdbe4354b3c48d81
+  companion_revision: b89f389abbdae77ba60b673c0836c781c2b54169
+preservation:
+  policy: immutable-through-git-history
+  rationale: The canonical example is maintained on the current stable RAHP baseline; this pointer preserves the exact pre-v1.5 blob identity and assessment provenance.
