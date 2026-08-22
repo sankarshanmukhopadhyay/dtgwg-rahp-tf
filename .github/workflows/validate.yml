@@ -35,6 +35,10 @@ jobs:
         run: python3 tools/validate_assurance_graph.py
       - name: Validate evidence provenance, freshness and assurance delta
         run: python3 tools/validate_evidence_freshness_delta.py
+      - name: Validate executable authority and policy gates
+        run: python3 tools/validate_authority_policy_gates.py
+      - name: Validate v1.5 capability documentation synchronization
+        run: python3 tools/validate_capability_documentation.py
 
       - name: Validate persona analytical richness
         run: python3 tools/validate_persona_quality.py

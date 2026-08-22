@@ -1,0 +1,36 @@
+version: 1
+authority_id: AUTH-PAYMENTS-ASSURANCE-001
+issuer: example:governance-board
+subject: example:assurance-operator
+status: active
+valid_from: "2026-08-01T00:00:00Z"
+valid_until: "2027-08-01T00:00:00Z"
+grants:
+  - action: observe
+    scope:
+      kind: assessment
+      id: example:specification:payments-api
+  - action: assess
+    scope:
+      kind: assessment
+      id: example:specification:payments-api
+  - action: disposition
+    scope:
+      kind: assessment
+      id: example:specification:payments-api
+  - action: publish
+    scope:
+      kind: assessment
+      id: example:specification:payments-api
+    constraints:
+      - release gate must PASS
+  - action: close
+    scope:
+      kind: remediation
+      id: REM-PAYMENTS-AUTHORIZATION-001
+    constraints:
+      - closure evidence must satisfy remediation acceptance criteria
+evidence:
+  - id: delegation-record-001
+    locator: https://example.org/governance/delegations/001
+    digest: sha256:example-delegation-digest

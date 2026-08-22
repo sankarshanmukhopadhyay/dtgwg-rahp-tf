@@ -101,11 +101,13 @@ This means DTG, OpenVTC, ARPA, CAWG/C2PA and other maintained examples are evide
 
 5. **Executable authority and policy gates**
    - model who may observe, assess, disposition, remediate, publish, accept risk, close and reopen;
-   - reject lifecycle transitions that exceed delegated authority;
-   - support `PASS`, `FAIL` and `INDETERMINATE` gate outcomes so uncertainty is not silently converted into success or failure.
+   - reject lifecycle transitions that exceed delegated authority or scope;
+   - preserve suspension, revocation and expiry as executable authority state;
+   - support `PASS`, `FAIL` and `INDETERMINATE` gate outcomes so uncertainty is not silently converted into success or failure;
+   - keep gate computation separate from the authority required to perform the governed action.
 
 6. **Portfolio and deployment presentation**
-   - render current assurance, changed assurance, critical residual obligations, evidence gaps, stale assessments, remediation state and retest history;
+   - render current assurance, changed assurance, critical residual obligations, evidence gaps, stale assessments, remediation state, retest history and authority/gate posture;
    - avoid synthetic assurance percentages that collapse materially different states;
    - ensure portfolio dashboards remain views over portable assurance records rather than an alternative source of authority.
 
@@ -113,18 +115,22 @@ This means DTG, OpenVTC, ARPA, CAWG/C2PA and other maintained examples are evide
    - demonstrate Python/TypeScript conformance and v1.2 result compatibility;
    - test assessment reconstruction independently from GitHub issue state;
    - prove regression detection, freshness invalidation, impact selection and unauthorized-transition rejection;
+   - prove policy-gate `PASS`/`FAIL`/`INDETERMINATE` behavior without allowing gates to mint authority;
    - qualify at least one deployment-neutral fixture plus multiple independent real-world deployments.
 
 ### Current implementation status
 
-Four v1.5 development tranches are now represented in the portable contracts:
+Five v1.5 development tranches are now represented in the portable contracts:
 
 - durable assessment and finding lineage, with deployment-neutral fixtures and stable identities independent of work-item trackers;
 - governed remediation and executable retest lineage, including acceptance criteria, closure evidence and authority-aware disposition;
 - assurance graph and deterministic impact analysis, with explicit edge propagation semantics and machine-readable retest candidate selection;
-- evidence provenance, conservative assurance freshness and machine-readable assurance delta, including baseline-to-current evidence succession and explicit uncertainty preservation.
+- evidence provenance, conservative assurance freshness and machine-readable assurance delta, including baseline-to-current evidence succession and explicit uncertainty preservation;
+- executable scoped authority and portable policy gates, including active/suspended/revoked/expired authority state, explicit action/scope grants and three-valued gate outcomes.
 
-See [Assurance lineage](docs/assurance-lineage.md), [Remediation and retesting](docs/remediation-lifecycle.md), [Assurance graph and impact analysis](docs/assurance-graph-impact.md), and [Evidence provenance and freshness](docs/evidence-freshness-delta.md).
+The capability-to-documentation registry at `method/capability-documentation.yaml` now tracks these implemented workstreams and CI verifies their schema/tool/test/documentation coverage plus required semantic terms.
+
+See [Assurance lineage](docs/assurance-lineage.md), [Remediation and retesting](docs/remediation-lifecycle.md), [Assurance graph and impact analysis](docs/assurance-graph-impact.md), [Evidence provenance and freshness](docs/evidence-freshness-delta.md), and [Authority and policy gates](docs/authority-policy-gates.md).
 
 ### v1.5 release gate
 
@@ -147,7 +153,11 @@ remediation evidence attached
         ↓
 retest executed
         ↓
-authority-valid disposition
+policy gate evaluated as PASS | FAIL | INDETERMINATE
+        ↓
+required authority independently verified
+        ↓
+authority-valid disposition/publication
         ↓
 current assurance state published
 ```
@@ -157,8 +167,9 @@ The release must preserve:
 ```text
 portable method
 independent deployment context
-authority separation
+authority separation and revocation
 evidence provenance
+documentation synchronization
 stable v1 compatibility
 ```
 
@@ -172,6 +183,7 @@ The roadmap does not make these default RAHP behaviours:
 
 - automatic filing into arbitrary upstream repositories;
 - treating observation permission as publication authority;
+- treating policy-gate `PASS` as a delegation or risk-acceptance decision;
 - equating detector absence with assurance;
 - coupling the portable method to DTG, CAWG/C2PA, OpenVTC, ARPA or any other deployment;
 - requiring project-specific vocabulary, repository structure or governance roles in portable core;

@@ -1,0 +1,7 @@
+assurance:
+  freshness: current
+  open_critical_findings: 1
+evidence:
+  integrity_verified: true
+authority:
+  publish_authorized: true

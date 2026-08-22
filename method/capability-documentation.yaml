@@ -1,0 +1,74 @@
+version: 1
+development_target: 1.5.0
+capabilities:
+  - id: assurance-lineage
+    schemas:
+      - method/schema/assessment-lineage.schema.json
+      - method/schema/finding-lineage.schema.json
+    tools:
+      - tools/validate_assurance_lineage.py
+    tests: []
+    documentation: docs/assurance-lineage.md
+    required_terms:
+      - assessment identity
+      - finding-lineage
+      - canonical identity
+  - id: remediation-retest
+    schemas:
+      - method/schema/remediation-manifest.schema.json
+      - method/schema/retest.schema.json
+    tools:
+      - tools/retest.py
+      - tools/validate_remediation_retest_lineage.py
+    tests:
+      - tests/test_remediation_retest_lineage.py
+    documentation: docs/remediation-lifecycle.md
+    required_terms:
+      - acceptance criteria
+      - closure evidence
+      - authority
+  - id: assurance-graph-impact
+    schemas:
+      - method/schema/assurance-graph.schema.json
+      - method/schema/impact-analysis.schema.json
+    tools:
+      - tools/impact.py
+      - tools/validate_assurance_graph.py
+    tests:
+      - tests/test_assurance_graph_impact.py
+    documentation: docs/assurance-graph-impact.md
+    required_terms:
+      - impact
+      - retest_required
+      - reachability
+  - id: evidence-freshness-delta
+    schemas:
+      - method/schema/evidence-manifest.schema.json
+      - method/schema/assurance-freshness.schema.json
+      - method/schema/assurance-delta.schema.json
+    tools:
+      - tools/assurance_state.py
+      - tools/validate_evidence_freshness_delta.py
+    tests:
+      - tests/test_evidence_freshness_delta.py
+    documentation: docs/evidence-freshness-delta.md
+    required_terms:
+      - evidence provenance
+      - retest-required
+      - assurance delta
+  - id: authority-policy-gates
+    schemas:
+      - method/schema/authority.schema.json
+      - method/schema/gate-policy.schema.json
+    tools:
+      - tools/authority.py
+      - tools/policy_gate.py
+      - tools/validate_authority_policy_gates.py
+    tests:
+      - tests/test_authority_policy_gates.py
+    documentation: docs/authority-policy-gates.md
+    required_terms:
+      - revocable
+      - INDETERMINATE
+      - accept-risk
+      - policy evaluation
