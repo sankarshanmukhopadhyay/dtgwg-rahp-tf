@@ -1,11 +1,13 @@
 # RAHP Toolkit
 
 **Risk Assessment & Harms Prevention**  
-Release v1.2.0 · CC-BY 4.0
+Release v1.2.0 (stable) · Development target v1.5.0 · CC-BY 4.0
 
 RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-testing standards, protocols, implementations and composed systems against human harms, governance failures, adversarial conditions and resilience risks.
 
-> **Project identity:** RAHP Toolkit is the portable method and engine contract. DTG, CAWG/C2PA and other portfolios are independently scoped deployments and examples. No deployment defines the portable method for another adopter. The **Bundled DTG exemplar** preserves project provenance and exercises the toolkit without making DTG a core dependency.
+> **Project identity:** RAHP Toolkit is the portable method and engine contract. DTG, CAWG/C2PA, OpenVTC, ARPA and other portfolios or projects are independently scoped deployments and examples. No deployment defines the portable method for another adopter. Real-world projects may demonstrate RAHP capabilities, but portable core contracts must remain usable by an unrelated specification, repository, service, dataset or governance process without inheriting project-specific semantics. The **Bundled DTG exemplar** remains part of project provenance and an exercised deployment, not a core dependency.
+
+> **Development status:** v1.2.0 remains the stable public baseline. Additive capabilities are accumulating on `main` toward **v1.5.0 — Continuous Governed Assurance**; no v1.3.x or v1.4.x releases are planned. See [PROJECT-STATUS.yaml](PROJECT-STATUS.yaml), the [roadmap](ROADMAP.md), and [assurance lineage](docs/assurance-lineage.md).
 
 ## What changed in v1.2
 
@@ -62,6 +64,7 @@ The catalogue is complemented by a governed simple-English glossary under `metho
 | Understand the method | [How RAHP works](docs/how-rahp-works.md) and [Concepts](docs/concepts.md) |
 | Understand v1.2 assurance conclusions | [Assurance evaluation](docs/assurance-evaluation.md) and [Interpreting results](docs/interpreting-results.md) |
 | Understand evidence weight | [Evidence classification](docs/evidence-classification.md) |
+| Understand durable reassessment history | [Assurance lineage](docs/assurance-lineage.md) |
 | Browse reusable assurance patterns | [Portable catalogue](method/catalogue/) and [catalogue guide](docs/portable-assurance-catalogue.md) |
 | Run a risks-and-harms review | [Pressure-testing a specification](docs/pressure-testing-a-spec.md) |
 | Run a security/adversarial review | [Security and hardening review](docs/security-hardening-review.md) |
@@ -96,6 +99,7 @@ Validate the repository and conformance surfaces:
 python3 tools/validate.py
 python3 tools/validate_catalogue.py
 python3 tools/validate_glossary.py
+python3 tools/validate_assurance_lineage.py
 python3 tools/validate_pressure_tests.py
 python3 tools/validate_security_reviews.py
 python3 tools/validate_combined_reviews.py
@@ -132,7 +136,7 @@ flowchart TB
   X[Deployment-owned state] --> F
 ```
 
-The portability invariant is **shared method and engine contract, independent deployment context**. `rahp-engine-contract-v1`, normalized result schema version `1`, and `rahp-evidence-retention-v1` remain the stable compatibility boundaries in v1.2.
+The portability invariant is **shared method and engine contract, independent deployment context**. `rahp-engine-contract-v1`, normalized result schema version `1`, and `rahp-evidence-retention-v1` remain the stable compatibility boundaries while v1.5 capabilities are developed additively.
 
 ## Evidence-driven resilience
 
@@ -169,7 +173,7 @@ The default automation boundary remains conservative: RAHP deployment automation
 
 ## Compatibility and releases
 
-RAHP v1.2 is an additive minor release. Existing v1.1 normalized results remain valid. The stable boundaries are:
+RAHP v1.2.0 remains the stable release while v1.5.0 is developed as an additive minor release programme. Existing v1.1 and v1.2 normalized results remain valid. The stable boundaries are:
 
 ```text
 rahp-engine-contract-v1

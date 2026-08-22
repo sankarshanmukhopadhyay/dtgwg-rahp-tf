@@ -62,37 +62,98 @@ Status: **stable compatibility baseline**. See [v1.0.0 release notes](docs/relea
 
 ---
 
-# Next priorities
+# Next release target
 
-## v1.3 — Assurance operations and remediation evidence
+## v1.5.0 — Continuous Governed Assurance
 
-The next minor release should operationalize the v1.2 assurance model without weakening its authority boundaries.
+RAHP will accumulate additive capability commits on `main` until the continuous governed assurance lifecycle is qualified as a coherent release. No v1.3.x or v1.4.x releases are planned. The stable public baseline remains v1.2.0 until v1.5.0 is ready.
 
-Candidate scope:
+The v1.5 programme turns evidence-driven point-in-time assessment into durable, continuously governed assurance while preserving the v1 compatibility boundary and deployment independence.
 
-1. **Assessment-to-remediation correlation**
-   - generate durable remediation manifests from dispositioned RAHP findings;
-   - correlate upstream work items back to immutable assessment/finding IDs;
-   - keep external publication separately authorized.
+### Portability invariant
 
-2. **Retest automation**
-   - run a retest against a new target revision;
-   - compare residual assurance states;
-   - emit machine-readable `resolved`, `residual` or `regression` evidence;
-   - never auto-close external issues solely because a detector no longer fires.
+Every v1.5 capability MUST be defined first as a portable method, schema, engine or conformance contract. Project-specific deployments may demonstrate or stress-test that capability, but must not define core semantics or become core dependencies.
 
-3. **Assurance evidence requirements**
-   - make missing tests, metrics, fixtures and operational evidence executable work products;
-   - support profile-specific evidence obligations without coupling core RAHP to a portfolio.
+This means DTG, OpenVTC, ARPA, CAWG/C2PA and other maintained examples are evidence that the portable method works in materially different environments. A completely unrelated specification, repository, service, dataset or governance process must be able to use the same core contracts without inheriting those projects' vocabulary, authority structures or repository layouts.
 
-4. **Signal-to-noise qualification**
-   - measure observations, triggers, findings, suppressed signals and publication candidates across maintained portfolios;
-   - use the evidence to calibrate thresholds and controlled publication policies.
+### Development workstreams
 
-5. **Generated assurance views**
-   - render residual-state summaries, credited controls, missing evidence, remediation state and retest history in GitHub Pages.
+1. **Durable assessment and finding lineage**
+   - separate stable assessment identity from individual assessment runs;
+   - preserve finding evolution across `introduced`, `unchanged`, `reclassified`, `consolidated`, `split`, `superseded`, `resolved` and `regressed` transitions;
+   - treat issue trackers and queues as operational work-item views rather than canonical assurance identity;
+   - validate the core contract using deployment-neutral fixtures.
 
-Release gate: **machine-verifiable evidence that the operational lifecycle preserves the v1.2 distinction between signal, finding, assurance gap, remediation authority and closure evidence.**
+2. **Governed remediation and retest**
+   - correlate findings to remediation obligations and acceptance evidence;
+   - retest against changed targets without equating detector absence with closure;
+   - preserve risk-acceptance, publication and external-change authority boundaries.
+
+3. **Assurance graph and impact analysis**
+   - connect targets, requirements, evidence, risks, controls, tests, findings, remediations and governance authorities;
+   - identify which assurance conclusions may be affected by a material target change;
+   - keep profile-specific graph data outside the portable method contract.
+
+4. **Evidence provenance and assurance freshness**
+   - make evidence origin, revision, production mechanism, integrity and authority class machine-readable;
+   - distinguish current, potentially stale, stale, superseded and retest-required assurance;
+   - produce machine-readable assurance deltas between assessment runs.
+
+5. **Executable authority and policy gates**
+   - model who may observe, assess, disposition, remediate, publish, accept risk, close and reopen;
+   - reject lifecycle transitions that exceed delegated authority;
+   - support `PASS`, `FAIL` and `INDETERMINATE` gate outcomes so uncertainty is not silently converted into success or failure.
+
+6. **Portfolio and deployment presentation**
+   - render current assurance, changed assurance, critical residual obligations, evidence gaps, stale assessments, remediation state and retest history;
+   - avoid synthetic assurance percentages that collapse materially different states;
+   - ensure portfolio dashboards remain views over portable assurance records rather than an alternative source of authority.
+
+7. **Release qualification**
+   - demonstrate Python/TypeScript conformance and v1.2 result compatibility;
+   - test assessment reconstruction independently from GitHub issue state;
+   - prove regression detection, freshness invalidation, impact selection and unauthorized-transition rejection;
+   - qualify at least one deployment-neutral fixture plus multiple independent real-world deployments.
+
+### Current implementation status
+
+The first v1.5 development tranche establishes portable assessment/finding lineage schemas, neutral conformance fixtures, CI validation and explicit project-status metadata. See [Assurance lineage](docs/assurance-lineage.md).
+
+### v1.5 release gate
+
+v1.5.0 is releasable when RAHP can demonstrate the following end-to-end lifecycle with machine-verifiable evidence:
+
+```text
+material target change
+        ↓
+affected assurance identified
+        ↓
+existing evidence retained, weakened or invalidated
+        ↓
+assessment rerun where required
+        ↓
+assurance delta produced
+        ↓
+residual obligation governed
+        ↓
+remediation evidence attached
+        ↓
+retest executed
+        ↓
+authority-valid disposition
+        ↓
+current assurance state published
+```
+
+The release must preserve:
+
+```text
+portable method
+independent deployment context
+authority separation
+evidence provenance
+stable v1 compatibility
+```
 
 ## Future major-version boundary
 
@@ -106,6 +167,7 @@ The roadmap does not make these default RAHP behaviours:
 - treating observation permission as publication authority;
 - equating detector absence with assurance;
 - coupling the portable method to DTG, CAWG/C2PA, OpenVTC, ARPA or any other deployment;
+- requiring project-specific vocabulary, repository structure or governance roles in portable core;
 - requiring a third implementation language without demonstrated adopter need.
 
 ## Historical roadmap

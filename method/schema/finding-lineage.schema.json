@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rahp.dev/schema/finding-lineage.schema.json",
+  "title": "RAHP Finding Lineage",
+  "description": "Portable lineage contract for findings that evolve across assessment runs without depending on any particular project, platform, or issue tracker.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "assessment_id", "finding_id", "history"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "assessment_id": {"type": "string", "minLength": 3},
+    "finding_id": {"type": "string", "minLength": 1},
+    "history": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/revision"}
+    }
+  },
+  "$defs": {
+    "revision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["run_id", "state", "transition"],
+      "properties": {
+        "run_id": {"type": "string", "minLength": 1},
+        "state": {
+          "enum": ["open", "controlled", "assurance-gap", "resolved", "accepted", "superseded", "not-applicable"]
+        },
+        "transition": {
+          "enum": ["introduced", "unchanged", "reclassified", "consolidated", "split", "superseded", "resolved", "regressed"]
+        },
+        "severity": {
+          "enum": ["critical", "high", "medium", "low", "informational"]
+        },
+        "title": {"type": "string", "minLength": 1},
+        "predecessors": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/findingRef"},
+          "uniqueItems": true
+        },
+        "successors": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/findingRef"},
+          "uniqueItems": true
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        },
+        "disposition": {"type": "string"}
+      }
+    },
+    "findingRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assessment_id", "finding_id", "run_id"],
+      "properties": {
+        "assessment_id": {"type": "string", "minLength": 3},
+        "finding_id": {"type": "string", "minLength": 1},
+        "run_id": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}
