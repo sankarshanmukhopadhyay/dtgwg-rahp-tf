@@ -1,0 +1,40 @@
+version: 1
+remediation_id: REM-example-payments-001
+assessment_id: example:specification:payments-api
+assessment_run_id: run-2026-08-20
+finding_id: F-example-payments-001
+finding_run_id: run-2026-08-20
+status: retest-required
+owner_plane:
+  type: target-repository
+  repository: example/payments-api
+  authority: specification-maintainer
+  uri: https://example.invalid/specifications/payments-api
+requested_outcomes:
+  - Bind payment authorization to an idempotency key and reject replay outside the authorized execution context.
+acceptance_criteria:
+  - id: AC-001
+    proposition: A repeated consequential payment request with the same authorization cannot execute twice.
+    evidence_required:
+      - conformance-test
+required_evidence:
+  - conformance-test
+retest_triggers:
+  - type: target-change
+    subject: authorization-and-idempotency
+    description: Retest after the normative authorization or replay requirements change.
+authority:
+  propose:
+    - assurance-reviewer
+  approve:
+    - specification-maintainer
+  implement:
+    - specification-maintainer
+  accept_risk:
+    - governance-owner
+  close:
+    - assurance-owner
+publication:
+  eligibility: eligible
+  mode: governed
+  status: not-required
