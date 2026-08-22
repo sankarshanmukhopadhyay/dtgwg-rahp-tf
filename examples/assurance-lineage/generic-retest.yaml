@@ -1,0 +1,23 @@
+version: 1
+retest_id: RT-example-payments-001
+remediation_id: REM-example-payments-001
+assessment_id: example:specification:payments-api
+previous_run_id: run-2026-08-20
+current_run_id: run-2026-08-22
+previous_finding: F-example-payments-001
+previous_revision: 1.1.0
+retested_revision: 1.1.1
+acceptance_criteria:
+  - AC-001
+outcome: resolved
+closure_evidence:
+  - id: EV-conformance-001
+    criterion_id: AC-001
+    result: pass
+    uri: https://example.invalid/evidence/conformance-001.json
+    digest: sha256:0123456789abcdef
+disposition:
+  status: eligible-for-closure
+  actor: assurance-owner
+  authority_basis: remediation authority.close
+  decided_at: '2026-08-22T01:00:00Z'
