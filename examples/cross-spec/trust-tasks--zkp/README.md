@@ -1,4 +1,4 @@
-# Trust Tasks × ZKP cross-specification pressure test baseline
+# Trust Tasks × ZKP cross-specification pressure test
 
 This is a RAHP profile-owned cross-specification worked assessment. The YAML record is canonical.
 
@@ -14,16 +14,18 @@ This is a RAHP profile-owned cross-specification worked assessment. The YAML rec
 |---|---|
 | Review ID | `SR-XSP-004` |
 | Status | complete |
-| Title | Trust Tasks × ZKP cross-specification pressure test baseline |
-| Reviewed on | 2026-08-19 |
+| Title | Trust Tasks × ZKP cross-specification pressure test |
+| Reviewed on | 2026-08-22 |
 | Target repository | `trustoverip/dtgwg-trust-tasks-tf + trustoverip/dtgwg-zkp-tf` |
-| Target version | RAHP cross-spec baseline for Trust Tasks × ZKP |
-| Target commit | `fbe196a8a17ba3f99d0657a64be5ac58621023a1` |
-| Target source paths | `corpora/trust-tasks-zkp-composed.yaml` |
+| Target version | Composition of Trust Tasks 2a40f6bd and ZKP upstream b37d52fc, informed by fork 546babc |
+| Target commit | `2a40f6bd3b13c85c49123174fdbe4354b3c48d81` |
+| Target source paths | `Trust Tasks VTA lifecycle specifications`, `ZKP proof-of-liveness-requirements.md v0.3`, `ZKP fork proof-of-liveness-requirements.md v0.4 working draft`, `corpora/trust-tasks-zkp-composed.yaml` |
 | RAHP repository | `sankarshanmukhopadhyay/rahp-toolkit` |
-| RAHP version | `v1.1.0` |
+| RAHP version | `v1.2` |
 | Engine contract | `rahp-engine-contract-v1` |
 | RAHP corpus date | 2026-08-19 |
+| Engine/method revalidated on | 2026-08-22 |
+| Revalidation scope | Trust Tasks baseline advanced through DTG-AR-2026-001; ZKP implementation-guidance evidence advanced through DTG-AR-2026-003 while upstream normative ZKP remains at b37d52fc. |
 
 ### Method
 
@@ -36,39 +38,37 @@ This is a RAHP profile-owned cross-specification worked assessment. The YAML rec
 
 **Included**
 
-- proof-versus-authority
-- delegation
-- replay
-- freshness
-- Emergent interaction failures at the declared composition seam.
+- Proof validity versus current delegated authority at task execution time.
+- Delegation scope, revocation and lifecycle state across the proof/task boundary.
+- Task-specific purpose, audience, provenance and replay binding.
+- Cross-context reuse and privacy effects created by combining proof and task metadata.
 
 **Excluded**
 
 - Independent implementation defects not caused or amplified by composition.
-- Normative conformance claims where an upstream repository does not yet publish sufficient normative text.
+- Treating fork-local ZKP working-draft language as ratified upstream normative text.
 
 ### Summary
 
 | Measure | Value |
 |---|---:|
-| Findings | 3 |
-| Open findings | 3 |
+| Findings | 2 |
+| Open findings | 2 |
 
 **Overall assessment**
 
-Trust Tasks × ZKP is runnable as a RAHP cross-specification assurance seam. Evidence grade is source-informed; findings are review hypotheses/evidence-backed composition risks and require WG or maintainer disposition before being represented as upstream defects.
+Both component boundaries are materially stronger than in the original assessment. Trust Tasks now separates proof/authentication from scoped authorization and exposes explicit lifecycle semantics; ZKP v0.3 states that holder-key control is not agent authority, binds proofs to audience/session/policy/freshness context, and treats delegation as separate evidence. The original three findings therefore consolidate into two residual cross-specification obligations: action-time authority/lifecycle/reuse binding, and task-specific relying-context/provenance/privacy binding. These are companion-profile obligations rather than evidence of a new defect in either component specification.
 
 ### Finding index
 
 | ID | Finding | Severity | Status | Primary disposition | RAHP risks |
 |---|---|---|---|---|---|
-| `F-001` | Trust Tasks × ZKP: authority and lifecycle semantics require an explicit composition contract | Critical | open | Companion Specification | [RK-G01 — Genesis Policy Capture](../../../build/site/catalogue.html#RK-G01) |
-| `F-002` | Trust Tasks × ZKP: relying context can be lost across the specification boundary | High | open | Companion Specification | [RK-G01 — Genesis Policy Capture](../../../build/site/catalogue.html#RK-G01) |
-| `F-003` | Trust Tasks × ZKP: cross-context reuse can amplify privacy, replay or scope risk | High | open | Companion Specification | [RK-G01 — Genesis Policy Capture](../../../build/site/catalogue.html#RK-G01) |
+| `F-001` | Action-time authority, lifecycle and reuse binding remains a cross-specification assurance gap | Critical | open | Companion Specification | [RK-G01 — Genesis Policy Capture](../../../build/site/catalogue.html#RK-G01) |
+| `F-002` | Task-specific relying context, provenance and privacy binding remains incomplete | High | open | Companion Specification | [RK-G01 — Genesis Policy Capture](../../../build/site/catalogue.html#RK-G01) |
 
 ### Detailed findings
 
-#### F-001 — Trust Tasks × ZKP: authority and lifecycle semantics require an explicit composition contract
+#### F-001 — Action-time authority, lifecycle and reuse binding remains a cross-specification assurance gap
 
 | Field | Value |
 |---|---|
@@ -76,8 +76,8 @@ Trust Tasks × ZKP is runnable as a RAHP cross-specification assurance seam. Evi
 | Status | open |
 | Primary disposition | Companion Specification |
 | Secondary dispositions | Governance, Implementation Guidance |
-| Scenarios | `XSP-TZ-001`, `XSP-TZ-002` |
-| Scenario patterns | `SP-AUTH-01`, `SP-COMP-01`, `SP-DEL-01` |
+| Scenarios | `XSP-TZ-001`, `XSP-TZ-002`, `XSP-TZ-004` |
+| Scenario patterns | `SP-AUTH-01`, `SP-COMP-01`, `SP-DEL-01`, `SP-GOV-01` |
 | Personas | [D1 — Daniel Wright](../../../build/site/catalogue.html#D1) |
 | Risks | [RK-G01 — Genesis Policy Capture](../../../build/site/catalogue.html#RK-G01) |
 | Controls | — |
@@ -99,166 +99,26 @@ Trust Tasks × ZKP is runnable as a RAHP cross-specification assurance seam. Evi
 
 | Source | Observation |
 |---|---|
-| `corpora/trust-tasks-zkp-composed.yaml#xsp-tz-001` | The RAHP composed scenario exposes a failure mode that can arise only at the interaction boundary; component-level validation alone does not establish a safe composed decision. |
+| `instances/dtg/reviews/2026-08-trust-tasks.md` | Trust Tasks through 2a40f6bd explicitly separates proof from role/scope authorization and strengthens lifecycle semantics, but does not define a universal cross-system delegation or mandate model. |
+| `https://github.com/trustoverip/dtgwg-zkp-tf/blob/b37d52fca4ab64ef759d4952b13757f3b23cb20b/proof-of-liveness-requirements.md` | ZKP v0.3 explicitly states key control is not agent authority and models agent authorization as separate delegation evidence with scope, duration and revocation. |
+| `instances/dtg/reviews/2026-08-zkp-fork.md` | Fork-local v0.4 implementation guidance further strengthens freshness, revocation and assurance boundaries but intentionally does not define a delegation protocol. |
+| `corpora/trust-tasks-zkp-composed.yaml#xsp-tz-004` | The composed scenario preserves the failure case where delegated authority changes after proof generation but before consequential task execution. |
 
 **Potential harm**
 
-Proof of a predicate is treated as delegation to perform the task. Without an explicit composition contract, a verifier or runtime can infer more authority, currency or scope than either component establishes on its own.
+A ZK proof can be cryptographically valid and fresh for its presentation transcript while the principal's mandate for the consequential Trust Task is revoked, expired, out of scope or otherwise no longer effective. Treating proof freshness as mandate freshness can therefore authorize an action neither component independently permits.
 
 **Recommended treatment**
 
-Define and test an explicit cross-spec semantic contract naming the authority owner, lifecycle check and enforcement point for the composed decision.
+Define a Trust Tasks × ZKP companion contract that binds the proof request to the consequential task and requires a separate action-time delegated-authority decision covering principal, delegate, task/action, scope, constraints, validity interval and revocation state. The execution boundary must re-evaluate mandate state immediately before the side effect and must not infer authority from proof validity, holder binding or liveness/personhood predicates.
 
 **Retest when**
 
-- R
-- e
-- -
-- r
-- u
-- n
-- —
-- t
-- h
-- i
-- s
-- —
-- c
-- o
-- m
-- p
-- o
-- s
-- i
-- t
-- i
-- o
-- n
-- —
-- a
-- f
-- t
-- e
-- r
-- —
-- t
-- h
-- e
-- —
-- o
-- w
-- n
-- i
-- n
-- g
-- —
-- s
-- p
-- e
-- c
-- i
-- f
-- i
-- c
-- a
-- t
-- i
-- o
-- n
-- s
-- —
-- o
-- r
-- —
-- c
-- o
-- m
-- p
-- a
-- n
-- i
-- o
-- n
-- —
-- g
-- u
-- i
-- d
-- a
-- n
-- c
-- e
-- —
-- d
-- e
-- f
-- i
-- n
-- e
-- —
-- t
-- h
-- e
-- —
-- r
-- e
-- l
-- e
-- v
-- a
-- n
-- t
-- —
-- s
-- e
-- m
-- a
-- n
-- t
-- i
-- c
-- —
-- c
-- o
-- n
-- t
-- r
-- a
-- c
-- t
-- —
-- a
-- n
-- d
-- —
-- e
-- x
-- e
-- c
-- u
-- t
-- a
-- b
-- l
-- e
-- —
-- n
-- e
-- g
-- a
-- t
-- i
-- v
-- e
-- —
-- t
-- e
-- s
-- t
-- s
-- .
+- A companion profile defines a machine-verifiable delegation/mandate reference and its binding to the Trust Task and ZKP transcript.
+- Negative tests prove that valid proof plus revoked, expired or out-of-scope delegation fails before consequential execution.
+- Replay or retry tests prove that a proof/task pair cannot repeat a one-time side effect outside the declared execution semantics.
 
-#### F-002 — Trust Tasks × ZKP: relying context can be lost across the specification boundary
+#### F-002 — Task-specific relying context, provenance and privacy binding remains incomplete
 
 | Field | Value |
 |---|---|
@@ -289,354 +149,23 @@ Define and test an explicit cross-spec semantic contract naming the authority ow
 
 | Source | Observation |
 |---|---|
-| `corpora/trust-tasks-zkp-composed.yaml#xsp-tz-003` | The RAHP composed scenario exposes a failure mode that can arise only at the interaction boundary; component-level validation alone does not establish a safe composed decision. |
+| `https://github.com/trustoverip/dtgwg-zkp-tf/blob/b37d52fca4ab64ef759d4952b13757f3b23cb20b/proof-of-liveness-requirements.md` | ZKP v0.3 requires transcript binding to protocol/profile, verifier or audience, challenge, session, requested predicates, policy version and expiry boundary, and defines context-dependent unlinkability rather than universal unlinkability. |
+| `instances/dtg/reviews/2026-08-trust-tasks.md` | Trust Tasks now exposes explicit task and lifecycle semantics, but the specifications do not jointly define which task provenance and outcome facts must be committed into a privacy-preserving proof transcript. |
+| `corpora/trust-tasks-zkp-composed.yaml#xsp-tz-003` | A valid proof can still be reused at the composition seam if the relying party cannot establish that its purpose, task instance, audience and side-effect context are the ones the prover authorized. |
 
 **Potential harm**
 
-Valid proof is replayed into another task or side effect. Without an explicit composition contract, a verifier or runtime can infer more authority, currency or scope than either component establishes on its own.
+A proof generated for a legitimate purpose can be replayed or semantically upgraded into another Trust Task, while raw task identifiers, lifecycle metadata or retained evidence can also create correlation channels that defeat the intended ZKP privacy boundary.
 
 **Recommended treatment**
 
-Carry the minimum provenance, purpose, audience and status context needed for a relying party to distinguish verification success from an authorization or trust decision.
+Define the minimum task-specific commitment carried into the ZKP transcript or companion evidence: task type/action, purpose, audience, task-instance or privacy-preserving task commitment, relevant policy/version, freshness boundary and outcome-evidence semantics. Require disclosure minimization so task correlation handles are not exposed merely to prove provenance, and keep proof verification, task completion and authorization as separate machine-readable outcomes.
 
 **Retest when**
 
-- R
-- e
-- -
-- r
-- u
-- n
-- —
-- t
-- h
-- i
-- s
-- —
-- c
-- o
-- m
-- p
-- o
-- s
-- i
-- t
-- i
-- o
-- n
-- —
-- a
-- f
-- t
-- e
-- r
-- —
-- t
-- h
-- e
-- —
-- o
-- w
-- n
-- i
-- n
-- g
-- —
-- s
-- p
-- e
-- c
-- i
-- f
-- i
-- c
-- a
-- t
-- i
-- o
-- n
-- s
-- —
-- o
-- r
-- —
-- c
-- o
-- m
-- p
-- a
-- n
-- i
-- o
-- n
-- —
-- g
-- u
-- i
-- d
-- a
-- n
-- c
-- e
-- —
-- d
-- e
-- f
-- i
-- n
-- e
-- —
-- t
-- h
-- e
-- —
-- r
-- e
-- l
-- e
-- v
-- a
-- n
-- t
-- —
-- s
-- e
-- m
-- a
-- n
-- t
-- i
-- c
-- —
-- c
-- o
-- n
-- t
-- r
-- a
-- c
-- t
-- —
-- a
-- n
-- d
-- —
-- e
-- x
-- e
-- c
-- u
-- t
-- a
-- b
-- l
-- e
-- —
-- n
-- e
-- g
-- a
-- t
-- i
-- v
-- e
-- —
-- t
-- e
-- s
-- t
-- s
-- .
-
-#### F-003 — Trust Tasks × ZKP: cross-context reuse can amplify privacy, replay or scope risk
-
-| Field | Value |
-|---|---|
-| Severity | High |
-| Status | open |
-| Primary disposition | Companion Specification |
-| Secondary dispositions | Governance, Implementation Guidance |
-| Scenarios | `XSP-TZ-004` |
-| Scenario patterns | `SP-COMP-01`, `SP-GOV-01` |
-| Personas | [D1 — Daniel Wright](../../../build/site/catalogue.html#D1) |
-| Risks | [RK-G01 — Genesis Policy Capture](../../../build/site/catalogue.html#RK-G01) |
-| Controls | — |
-| Guardrails | — |
-| Assurance tests | — |
-
-**Portable v1.1 assurance patterns**
-
-| Layer | Patterns |
-|---|---|
-| Harms | `HRM-SEC-02`, `HRM-INF-01`, `HRM-AUT-04`, `HRM-GOV-02` |
-| Risks | `RKP-COMP-01`, `RKP-AUTH-02` |
-| Controls | `CTP-COMP-01`, `CTP-AUTH-02` |
-| Guardrails | `GRP-COMP-01`, `GRP-AUTH-02` |
-| Assurance | `ATP-COMP-01`, `ATP-AUTH-02` |
-| Evidence | `EVP-COMP-01`, `EVP-AUTH-01` |
-
-**Evidence**
-
-| Source | Observation |
-|---|---|
-| `corpora/trust-tasks-zkp-composed.yaml#xsp-tz-004` | The RAHP composed scenario exposes a failure mode that can arise only at the interaction boundary; component-level validation alone does not establish a safe composed decision. |
-
-**Potential harm**
-
-Delegation is withdrawn after proof generation but before execution. Without an explicit composition contract, a verifier or runtime can infer more authority, currency or scope than either component establishes on its own.
-
-**Recommended treatment**
-
-Add negative composition tests for cross-context reuse, correlation and scope amplification; require a fresh decision when the relevant authority or lifecycle state changes.
-
-**Retest when**
-
-- R
-- e
-- -
-- r
-- u
-- n
-- —
-- t
-- h
-- i
-- s
-- —
-- c
-- o
-- m
-- p
-- o
-- s
-- i
-- t
-- i
-- o
-- n
-- —
-- a
-- f
-- t
-- e
-- r
-- —
-- t
-- h
-- e
-- —
-- o
-- w
-- n
-- i
-- n
-- g
-- —
-- s
-- p
-- e
-- c
-- i
-- f
-- i
-- c
-- a
-- t
-- i
-- o
-- n
-- s
-- —
-- o
-- r
-- —
-- c
-- o
-- m
-- p
-- a
-- n
-- i
-- o
-- n
-- —
-- g
-- u
-- i
-- d
-- a
-- n
-- c
-- e
-- —
-- d
-- e
-- f
-- i
-- n
-- e
-- —
-- t
-- h
-- e
-- —
-- r
-- e
-- l
-- e
-- v
-- a
-- n
-- t
-- —
-- s
-- e
-- m
-- a
-- n
-- t
-- i
-- c
-- —
-- c
-- o
-- n
-- t
-- r
-- a
-- c
-- t
-- —
-- a
-- n
-- d
-- —
-- e
-- x
-- e
-- c
-- u
-- t
-- a
-- b
-- l
-- e
-- —
-- n
-- e
-- g
-- a
-- t
-- i
-- v
-- e
-- —
-- t
-- e
-- s
-- t
-- s
-- .
+- A composition profile specifies the canonical task-context commitment and the verifier-visible semantics it establishes and does not establish.
+- Cross-task and cross-audience negative vectors reject proof reuse outside the authorized task/purpose boundary.
+- Privacy vectors demonstrate that provenance can be established without leaking an unnecessary durable cross-context correlator.
 
 <!-- END GENERATED PRESSURE TEST -->
 
