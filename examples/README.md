@@ -56,7 +56,7 @@ OpenVTC and ARPA assessments remain in the reassessment queue where refreshed ta
 
 ## Validation
 
-The v1.5 release qualification validator checks that:
+The validation boundary checks that:
 
 - the registry declares RAHP v1.5.0 as current;
 - every canonical maintained example exists and itself declares RAHP v1.5.0;
@@ -64,10 +64,13 @@ The v1.5 release qualification validator checks that:
 - historical provenance pointers exist for migrated pre-v1.5 examples;
 - normalized residual states are valid;
 - prior-baseline lineage and assurance deltas are explicit;
+- rendered sibling README blocks remain synchronized with canonical YAML;
 - deployment-specific example semantics remain outside the portable method and engine contract.
 
 Run:
 
 ```bash
 python3 tools/validate_v15_release.py
+python3 tools/validate_current_examples.py
+python3 tools/validate_pressure_tests.py
 ```
