@@ -1,8 +1,8 @@
 # C2PA × CAWG portfolio stack composition pressure test
 
-> **v0.8 revalidation:** this curated review has been mechanically revalidated against `rahp-engine-contract-v1` and the current RAHP catalogues on 2026-08-16. The target commit and original substantive review date remain unchanged; this does not claim a new upstream-target reassessment.
+> **v1.5 current baseline:** this curated review is maintained against RAHP v1.5.0 while retaining the pinned target commit and original substantive review evidence. The baseline migration adds governed lineage, evidence-freshness and posture semantics; it does not claim a new upstream-target revision.
 
-This is a RAHP Toolkit v0.7.0 external assurance review. It is not an upstream conformance or governance decision.
+This is a RAHP Toolkit v1.5.0 external assurance review. It is not an upstream conformance or governance decision.
 
 <!-- BEGIN GENERATED PRESSURE TEST -->
 
@@ -24,12 +24,12 @@ This is a RAHP Toolkit v0.7.0 external assurance review. It is not an upstream c
 | Target commit | `b1703dc0a0420088d3f8b0e5fb11866d0fe931cb` |
 | Target source paths | — |
 | RAHP repository | `sankarshanmukhopadhyay/rahp-toolkit` |
-| RAHP version | `v1.1.0` |
+| RAHP version | `v1.5.0` |
 | Engine contract | `rahp-engine-contract-v1` |
 | RAHP corpus date | 2026-08-16 |
 | Engine/method revalidated on | 2026-08-17 |
 | Original RAHP version | `v0.7.0` |
-| Revalidation scope | v1.1 portable assurance catalogue mapping plus method/engine revalidation; pinned target revision unchanged |
+| Revalidation scope | v1.5 current-baseline migration plus portable assurance catalogue, lineage, evidence-freshness and posture revalidation; pinned target revision unchanged |
 
 ### Method
 
