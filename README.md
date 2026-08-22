@@ -1,37 +1,17 @@
 # RAHP Toolkit
 
 **Risk Assessment & Harms Prevention**  
-Release v1.2.0 (stable) · v1.5.0 release qualification candidate · CC-BY 4.0
+Release v1.5.0 (stable) · Purple Leaf Blue · CC-BY 4.0
 
 RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-testing standards, protocols, implementations and composed systems against human harms, governance failures, adversarial conditions and resilience risks.
 
 > **Project identity:** RAHP Toolkit is the portable method and engine contract. DTG, CAWG/C2PA, OpenVTC, ARPA and other portfolios or projects are independently scoped deployments and examples. No deployment defines the portable method for another adopter. Real-world projects may demonstrate RAHP capabilities, but portable core contracts must remain usable by an unrelated specification, repository, service, dataset or governance process without inheriting project-specific semantics. The **Bundled DTG exemplar** remains part of project provenance and an exercised deployment, not a core dependency.
 
-> **Release status:** v1.2.0 remains the stable published baseline. The accumulated v1.5.0 **Continuous Governed Assurance** work is now represented as a release-qualification candidate. `method/v1.5-release-qualification.yaml` and `tools/validate_v15_release.py` define the machine-verifiable cut-readiness gate. No v1.3.x or v1.4.x releases are planned. See [PROJECT-STATUS.yaml](PROJECT-STATUS.yaml), the [roadmap](ROADMAP.md), [assurance posture](docs/assurance-posture.md), and the [v1.5 release runbook](docs/v1.5-release-runbook.md).
+> **Release status:** v1.5.0 **Purple Leaf Blue** (*Amblypodia anita*) is the stable release of **Continuous Governed Assurance**. `method/v1.5-release-qualification.yaml` and `tools/validate_v15_release.py` define the machine-verifiable qualification boundary. See the [v1.5.0 release notes](docs/releases/v1.5.0.md), [PROJECT-STATUS.yaml](PROJECT-STATUS.yaml), the [roadmap](ROADMAP.md), [assurance posture](docs/assurance-posture.md), and the [v1.5 release runbook](docs/v1.5-release-runbook.md).
 
-## Stable v1.2 assurance model
+## Continuous Governed Assurance — v1.5
 
-RAHP v1.2 moved from signal-centric review to **evidence-driven assurance**. A detector signal is not automatically a finding. RAHP evaluates the relevant risk proposition against typed evidence, credited controls, assurance evidence and target context before assigning a residual assurance state.
-
-The seven normalized residual states are:
-
-| State | Meaning |
-|---|---|
-| `assured` | Required propositions are supported by sufficient evidence. |
-| `controlled` | The risk exists, but effective controls and assurance evidence are present. |
-| `finding` | Evidence supports an actionable residual defect. |
-| `assurance-gap` | The control/property may exist, but evidence is incomplete. |
-| `review-required` | Automation cannot safely determine the conclusion. |
-| `not-assessed` | The proposition was not sufficiently evaluated. |
-| `not-applicable` | The proposition is outside applicable scope. |
-
-**Zero findings is not equivalent to assured.** A result can contain no confirmed findings while still carrying unresolved assurance gaps or review obligations.
-
-See the [v1.2.0 release notes](docs/releases/v1.2.0.md), [assurance evaluation](docs/assurance-evaluation.md), [evidence classification](docs/evidence-classification.md), [interpreting results](docs/interpreting-results.md), and [remediation lifecycle](docs/remediation-lifecycle.md).
-
-## Continuous Governed Assurance — v1.5 candidate
-
-The v1.5 programme extends the evidence-driven baseline into a durable operational lifecycle:
+v1.5 extends the evidence-driven baseline into a durable operational lifecycle:
 
 ```text
 material target change
@@ -47,7 +27,21 @@ material target change
   → portable assurance posture
 ```
 
-Implemented portable capabilities are:
+The seven normalized residual states remain:
+
+| State | Meaning |
+|---|---|
+| `assured` | Required propositions are supported by sufficient evidence. |
+| `controlled` | The risk exists, but effective controls and assurance evidence are present. |
+| `finding` | Evidence supports an actionable residual defect. |
+| `assurance-gap` | The control/property may exist, but evidence is incomplete. |
+| `review-required` | Automation cannot safely determine the conclusion. |
+| `not-assessed` | The proposition was not sufficiently evaluated. |
+| `not-applicable` | The proposition is outside applicable scope. |
+
+**Zero findings is not equivalent to assured.** A result can contain no confirmed findings while still carrying unresolved assurance gaps or review obligations.
+
+Implemented portable capabilities include:
 
 - durable assessment and finding lineage;
 - governed remediation and executable retest;
@@ -55,7 +49,7 @@ Implemented portable capabilities are:
 - evidence provenance, freshness and assurance delta;
 - executable scoped authority and three-valued policy gates;
 - portable assurance posture for operational/portfolio presentation;
-- machine-verifiable v1.5 release qualification.
+- machine-verifiable release qualification.
 
 These are portable core contracts. Project-specific deployments test adoption but do not define the method.
 
@@ -87,7 +81,7 @@ The catalogue is complemented by a governed simple-English glossary under `metho
 | Track evidence provenance, freshness and change | [Evidence provenance and freshness](docs/evidence-freshness-delta.md) |
 | Enforce scoped authority and release gates | [Authority and policy gates](docs/authority-policy-gates.md) |
 | Render actionable current posture | [Assurance posture](docs/assurance-posture.md) |
-| Qualify/cut v1.5.0 | [v1.5 release runbook](docs/v1.5-release-runbook.md) |
+| Understand the v1.5 release boundary | [v1.5 release runbook](docs/v1.5-release-runbook.md) |
 | Browse reusable assurance patterns | [Portable catalogue](method/catalogue/) and [catalogue guide](docs/portable-assurance-catalogue.md) |
 | Run a risks-and-harms review | [Pressure-testing a specification](docs/pressure-testing-a-spec.md) |
 | Run a security/adversarial review | [Security and hardening review](docs/security-hardening-review.md) |
@@ -116,7 +110,7 @@ Run the unified review entry point:
 python3 tools/review.py --help
 ```
 
-Validate the repository and current v1.5 qualification surfaces:
+Validate the repository and v1.5 qualification surfaces:
 
 ```bash
 python3 tools/validate.py
@@ -178,7 +172,7 @@ flowchart TB
   T[Deployment-owned state] --> E
 ```
 
-The portability invariant is **shared method and engine contract, independent deployment context**. `rahp-engine-contract-v1`, normalized result schema version `1`, and `rahp-evidence-retention-v1` remain the stable compatibility boundaries through the v1.5 release candidate.
+The portability invariant is **shared method and engine contract, independent deployment context**. `rahp-engine-contract-v1`, normalized result schema version `1`, and `rahp-evidence-retention-v1` remain the stable compatibility boundaries in v1.5.0.
 
 ## Operational posture, policy and authority
 
@@ -211,7 +205,7 @@ The registry is a synchronization control, not a replacement for review: structu
 
 ## Compatibility and releases
 
-RAHP v1.2.0 remains the stable release until the v1.5.0 GitHub release is actually cut. Existing v1.1 and v1.2 normalized results remain valid. The stable boundaries are:
+RAHP v1.5.0 is the stable release. Existing v1.1 and v1.2 normalized results remain valid. The stable boundaries are:
 
 ```text
 rahp-engine-contract-v1
@@ -221,7 +215,7 @@ rahp-evidence-retention-v1
 
 Breaking method or normalized-result changes follow `method/versioning.yaml` and require the corresponding major/schema transition rather than being introduced silently.
 
-Release history is maintained in [CHANGELOG.md](CHANGELOG.md) and [release documentation](docs/releases/). From v1.5.x onward, release presentation metadata follows the [West Bengal butterfly naming policy](docs/release-naming.md); semantic versioning remains the compatibility authority. The butterfly is selected at random only when the release is otherwise ready to cut.
+Release history is maintained in [CHANGELOG.md](CHANGELOG.md) and [release documentation](docs/releases/). From v1.5.x onward, release presentation metadata follows the [West Bengal butterfly naming policy](docs/release-naming.md); semantic versioning remains the compatibility authority.
 
 ## AI-assisted use and accountability
 

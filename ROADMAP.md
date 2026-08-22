@@ -9,25 +9,9 @@ parent: Reference
 
 This roadmap records the current portable RAHP direction. Historical pre-v1.2 roadmap material is preserved under `archive/pre-v1.2/` and is not current authority.
 
-## v1.2.0 — Evidence-Driven Assurance (stable baseline)
+## v1.5.0 — Continuous Governed Assurance (stable release)
 
-Status: **stable public release**.
-
-v1.2 established typed assurance conclusions, first-class control credit, evidence classification, explicit zero-finding semantics, governed remediation/retest records, DRARM mappings, and Python/TypeScript conformance while preserving:
-
-```text
-rahp-engine-contract-v1
-normalized result schema version 1
-rahp-evidence-retention-v1
-```
-
-See [v1.2.0 release notes](docs/releases/v1.2.0.md).
-
-## Next release
-
-### v1.5.0 — Continuous Governed Assurance
-
-Status: **release qualification candidate**. No v1.3.x or v1.4.x releases are planned.
+Status: **stable public release — Purple Leaf Blue (*Amblypodia anita*)**.
 
 v1.5 turns evidence-driven point-in-time assessment into durable, continuously governed assurance while preserving the v1 compatibility boundary and deployment independence.
 
@@ -37,41 +21,40 @@ Every v1.5 capability is defined first as a portable method, schema, engine or c
 
 A completely unrelated specification, repository, implementation, service, dataset, governance process or composed system must be able to use the same core contracts.
 
-## Implemented v1.5 workstreams
+### Delivered workstreams
 
-1. **Durable assessment and finding lineage — implemented**
-   - stable assessment identity is independent of run identity and work-item trackers;
-   - finding evolution supports introduced, unchanged, reclassified, consolidated, split, superseded, resolved and regressed transitions.
+1. **Durable assessment and finding lineage**
+   - stable assessment identity independent of run identity and work-item trackers;
+   - explicit finding evolution across introduced, unchanged, reclassified, consolidated, split, superseded, resolved and regressed transitions.
 
-2. **Governed remediation and retest — implemented**
-   - remediation obligations carry acceptance criteria, retest triggers and closure evidence;
+2. **Governed remediation and retest**
+   - remediation obligations with acceptance criteria, retest triggers and closure evidence;
    - detector absence is not closure;
    - risk acceptance and closure remain separate authority-bearing actions.
 
-3. **Assurance graph and impact analysis — implemented**
+3. **Assurance graph and impact analysis**
    - portable dependency graph with explicit impact-propagation semantics;
    - deterministic affected-assessment and retest candidate selection;
    - graph reachability is selection evidence, not an assurance conclusion.
 
-4. **Evidence provenance, freshness and delta — implemented**
+4. **Evidence provenance, freshness and delta**
    - machine-readable evidence source, revision, producer, integrity and authority metadata;
    - current, potentially-stale, stale, retest-required, superseded and indeterminate freshness;
    - machine-readable assurance deltas and regression/resolution semantics.
 
-5. **Executable authority and policy gates — implemented**
+5. **Executable authority and policy gates**
    - independently scoped observe, assess, disposition, remediate, publish, accept-risk, close and reopen authority;
-   - suspension, revocation and expiry are executable states;
+   - suspension, revocation and expiry as executable states;
    - policy gates return PASS, FAIL or INDETERMINATE without minting authority.
 
-6. **Portfolio and deployment presentation — implemented**
+6. **Portfolio and deployment presentation**
    - portable assurance posture separates conclusion, freshness, remediation, gate and authority state;
    - actionable counts expose stale/retest work, evidence gaps, blockers and changed assessments;
    - no synthetic assurance percentage is produced.
 
-7. **Release qualification — implemented as a machine-verifiable candidate gate**
-   - `method/v1.5-release-qualification.yaml` defines required capabilities, compatibility boundaries, neutral evidence, portability constraints and cut policy;
-   - `tools/validate_v15_release.py` validates capability completeness, portability, deterministic posture evidence and naming policy;
-   - CI runs the qualification validator alongside the full repository suite;
+7. **Release qualification**
+   - `method/v1.5-release-qualification.yaml` defines required capabilities, compatibility boundaries, neutral evidence, portability constraints and release policy;
+   - `tools/validate_v15_release.py` validates capability completeness, portability, deterministic posture evidence and release naming policy;
    - capability/documentation synchronization remains an executable gate.
 
 ## v1.5 end-to-end lifecycle
@@ -102,28 +85,29 @@ portable assurance posture
 
 The lifecycle preserves uncertainty and authority boundaries at every step.
 
-## Release qualification evidence
+## Compatibility
 
-v1.5.0 is cut-ready only when all of the following are green together:
+The stable v1 compatibility boundaries remain:
 
-- deployment-neutral lineage, remediation/retest, impact, freshness/delta, authority/gate and posture fixtures;
-- Python/TypeScript stable-engine conformance;
-- v1.2 compatibility metadata;
-- documentation synchronization and information-architecture validation;
-- generated-evidence freshness and reference-link validation;
-- Just the Docs build and rendered Pages coverage;
-- project-specific deployment validations without making those deployments core dependencies;
-- `python3 tools/validate_v15_release.py`.
+```text
+rahp-engine-contract-v1
+normalized result schema version 1
+rahp-evidence-retention-v1
+```
 
-See [Assurance posture](docs/assurance-posture.md) and the [v1.5 release runbook](docs/v1.5-release-runbook.md).
+v1.5.0 is additive within that boundary. Existing v1.1 and v1.2 normalized results remain valid.
 
-## Final release-cut boundary
+See [v1.5.0 release notes](docs/releases/v1.5.0.md), [Assurance posture](docs/assurance-posture.md), and the [v1.5 release runbook](docs/v1.5-release-runbook.md).
 
-Once qualification passes, the final v1.5.0 release change should be deliberately mechanical. It will select the West Bengal butterfly release name at random, update version/release metadata, finalize v1.5.0 release notes, rerun the gates, tag the exact commit and publish the GitHub release.
+## v1.2.0 — Evidence-Driven Assurance
 
-No new method semantics should enter through the release-cut commit. Any semantic change requires a separate PR and renewed qualification.
+v1.2 established typed assurance conclusions, first-class control credit, evidence classification, explicit zero-finding semantics, governed remediation/retest records, DRARM mappings, and Python/TypeScript conformance.
 
-## Future major-version boundary
+See [v1.2.0 release notes](docs/releases/v1.2.0.md).
+
+## Future work
+
+Subsequent v1.5.x releases may refine implementation, adoption and operational tooling without breaking the stable v1 contracts. Each v1.5.x release receives its own randomly selected West Bengal butterfly release name at release time.
 
 A v2 release is required for breaking changes to the stable method or normalized-result compatibility boundary.
 

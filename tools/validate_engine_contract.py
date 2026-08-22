@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Validate the stable v1 engine contract, retention policy and conformance fixtures."""
 from __future__ import annotations
-import json, pathlib, sys
+import json, pathlib, re, sys
 try:
     import yaml, jsonschema
 except ImportError:
@@ -36,8 +36,12 @@ def main():
             want=sorted(exp['retention'].get('repository_classes') or [])
             if got!=want: errors+=fail(f'{result_path.parent.name}: retention repository classes {got}, expected {want}')
     versioning=yaml.safe_load((ROOT/'method/versioning.yaml').read_text())
-    if versioning.get('stable_release')!='v1.2.0': errors+=fail('stable release metadata must be v1.2.0 for the published evidence-driven assurance baseline')
-    if versioning.get('contracts',{}).get('engine')!=contract.get('id'): errors+=fail('versioning engine contract id mismatch')
+    stable_release=str(versioning.get('stable_release',''))
+    if not re.fullmatch(r'v1\.\d+\.\d+', stable_release): errors+=fail('stable release metadata must identify a v1.x semantic version')
+    contracts=versioning.get('contracts',{})
+    if contracts.get('engine')!=contract.get('id'): errors+=fail('versioning engine contract id mismatch')
+    if contracts.get('result_schema')!=1: errors+=fail('stable v1 normalized result schema must remain version 1')
+    if contracts.get('evidence_retention')!='rahp-evidence-retention-v1': errors+=fail('stable v1 evidence retention contract must remain rahp-evidence-retention-v1')
     from engine_contract import correlate_trigger
     lifecycle=sorted((ROOT/'tests/conformance/lifecycle').glob('*/input.json'))
     if not lifecycle: errors+=fail('no lifecycle conformance fixtures')
@@ -63,6 +67,6 @@ def main():
     for result_path in durable:
         if not validate_result(result_path,quiet=True): errors+=fail(f'durable normalized result invalid: {result_path.relative_to(ROOT)}')
     if errors: print(f'Engine contract validation failed: {errors} error(s)'); return 1
-    print(f'Engine contract valid: {len(fixtures)} result fixture(s); {len(assurance_fixtures)} assurance fixture(s); {len(lifecycle)} lifecycle fixture(s); {len(durable)} durable normalized result(s); v1.2 assurance extensions valid; stable release v1.2.0')
+    print(f'Engine contract valid: {len(fixtures)} result fixture(s); {len(assurance_fixtures)} assurance fixture(s); {len(lifecycle)} lifecycle fixture(s); {len(durable)} durable normalized result(s); stable contracts preserved at {stable_release}')
     return 0
 if __name__=='__main__': raise SystemExit(main())

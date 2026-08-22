@@ -33,11 +33,20 @@ class V15ReleaseQualificationTests(unittest.TestCase):
         self.assertEqual(status["compatibility"]["normalized_result_schema"], 1)
         self.assertEqual(status["compatibility"]["evidence_retention_contract"], "rahp-evidence-retention-v1")
 
-    def test_butterfly_name_is_deferred_until_release_cut(self):
+    def test_butterfly_release_state_is_governed(self):
         status = yaml.safe_load((ROOT / "PROJECT-STATUS.yaml").read_text())
         self.assertEqual(status["release_naming"]["selection"], "random-at-release-time")
-        self.assertEqual(status["stable_release"], "1.2.0")
-        self.assertEqual(status["release_status"], "unreleased")
+        if status["release_status"] == "unreleased":
+            self.assertEqual(status["stable_release"], "1.2.0")
+            self.assertIn(status["qualification_status"], {"candidate", "cut-ready"})
+            self.assertNotIn("release_name", status)
+        else:
+            self.assertEqual(status["release_status"], "released")
+            self.assertEqual(status["stable_release"], "1.5.0")
+            self.assertEqual(status["qualification_status"], "qualified")
+            self.assertEqual(status["release_name"]["common_name"], "Purple Leaf Blue")
+            self.assertEqual(status["release_name"]["scientific_name"], "Amblypodia anita")
+            self.assertTrue((ROOT / "docs/releases/v1.5.0.md").is_file())
 
 
 if __name__ == "__main__":

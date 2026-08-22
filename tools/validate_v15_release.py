@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the RAHP v1.5 release-candidate qualification contract."""
+"""Validate the RAHP v1.5 qualification and release-state contract."""
 from __future__ import annotations
 import json, sys
 from pathlib import Path
@@ -15,14 +15,36 @@ def main() -> int:
     q = yaml.safe_load(MANIFEST.read_text(encoding="utf-8"))
     status = yaml.safe_load((ROOT / "PROJECT-STATUS.yaml").read_text(encoding="utf-8"))
     registry = yaml.safe_load((ROOT / "method" / "capability-documentation.yaml").read_text(encoding="utf-8"))
+    package = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))
     errors: list[str] = []
 
     if status.get("development_target") != "1.5.0":
         errors.append("PROJECT-STATUS development_target must remain 1.5.0")
-    if status.get("qualification_status") not in {"candidate", "cut-ready"}:
-        errors.append("PROJECT-STATUS qualification_status must be candidate or cut-ready")
-    if status.get("stable_release") != "1.2.0" or status.get("release_status") != "unreleased":
-        errors.append("qualification PR must not mark v1.5.0 released before the release-cut commit")
+
+    release_status = status.get("release_status")
+    qualification_status = status.get("qualification_status")
+    stable_release = status.get("stable_release")
+
+    if release_status == "unreleased":
+        if qualification_status not in {"candidate", "cut-ready"}:
+            errors.append("unreleased v1.5 state requires qualification_status candidate or cut-ready")
+        if stable_release != "1.2.0":
+            errors.append("unreleased v1.5 state must preserve v1.2.0 as stable_release")
+    elif release_status == "released":
+        if qualification_status != "qualified":
+            errors.append("released v1.5 state requires qualification_status qualified")
+        if stable_release != "1.5.0":
+            errors.append("released v1.5 state requires stable_release 1.5.0")
+        if package.get("version") != "1.5.0":
+            errors.append("released v1.5 state requires package version 1.5.0")
+        release_notes = ROOT / "docs" / "releases" / "v1.5.0.md"
+        if not release_notes.exists():
+            errors.append("released v1.5 state requires docs/releases/v1.5.0.md")
+        release_name = status.get("release_name") or {}
+        if not release_name.get("common_name") or not release_name.get("scientific_name"):
+            errors.append("released v1.5 state requires recorded common/scientific butterfly release name")
+    else:
+        errors.append("PROJECT-STATUS release_status must be unreleased or released")
 
     compat = status.get("compatibility") or {}
     for key, expected in (q.get("stable_compatibility") or {}).items():
@@ -82,13 +104,14 @@ def main() -> int:
     if naming.get("selection") != "random-at-release-time":
         errors.append("West Bengal butterfly naming must remain random-at-release-time")
     if (q.get("release_cut") or {}).get("butterfly_name_selection") != "random-at-release-time":
-        errors.append("release qualification manifest must defer butterfly selection until release time")
+        errors.append("release qualification manifest must require butterfly selection at release time")
 
     if errors:
         for error in errors:
             print(f"ERROR: {error}")
         return 1
-    print("PASS v1.5 qualification: capability completeness, compatibility, portability, demonstrations, posture evidence, documentation and release-cut policy satisfied.")
+    state = "released" if release_status == "released" else qualification_status
+    print(f"PASS v1.5 {state}: capability completeness, compatibility, portability, demonstrations, posture evidence, documentation and release-state policy satisfied.")
     return 0
 
 if __name__ == "__main__":
