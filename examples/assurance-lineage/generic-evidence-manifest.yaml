@@ -1,23 +1,23 @@
 version: 1
-evidence_id: evidence:payments-auth-test:run-2026-08-22
+evidence_id: evidence:payments-auth-test:run-2026-08-20
 evidence_type: test-result
 source:
   kind: repository
   locator: https://example.org/payments-api
-  revision: rev-2026-08-22-b
+  revision: rev-2026-08-20-a
   path: tests/authorization-revoked.json
 producer:
   mechanism: example-conformance-runner
   version: "1.0"
   workflow: portable-fixture
   actor: example:test-operator
-observed_at: "2026-08-22T00:00:00Z"
+observed_at: "2026-08-20T00:00:00Z"
 validity:
-  valid_from: "2026-08-22T00:00:00Z"
+  valid_from: "2026-08-20T00:00:00Z"
   retest_on_source_change: true
 integrity:
   algorithm: sha256
-  digest: 7c3a9f2d8e6d16b7e1e7c0f6bb4c91f468cb9ad6c39a7d5bd87a1ad11f4d8a01
+  digest: 34aee5b9c0b642bbf8f518457279220c7d76eab13e9e1234432b86af36897a31
 authority:
   class: authoritative
   issuer: example:test-operator
