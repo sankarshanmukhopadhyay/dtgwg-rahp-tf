@@ -7,7 +7,7 @@ RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-test
 
 > **Project identity:** RAHP Toolkit is the portable method and engine contract. DTG, CAWG/C2PA, OpenVTC, ARPA and other portfolios or projects are independently scoped deployments and examples. No deployment defines the portable method for another adopter. Real-world projects may demonstrate RAHP capabilities, but portable core contracts must remain usable by an unrelated specification, repository, service, dataset or governance process without inheriting project-specific semantics. The **Bundled DTG exemplar** remains part of project provenance and an exercised deployment, not a core dependency.
 
-> **Development status:** v1.2.0 remains the stable public baseline. Additive capabilities are accumulating on `main` toward **v1.5.0 — Continuous Governed Assurance**; no v1.3.x or v1.4.x releases are planned. See [PROJECT-STATUS.yaml](PROJECT-STATUS.yaml), the [roadmap](ROADMAP.md), and [assurance lineage](docs/assurance-lineage.md).
+> **Development status:** v1.2.0 remains the stable public baseline. Additive capabilities are accumulating on `main` toward **v1.5.0 — Continuous Governed Assurance**; no v1.3.x or v1.4.x releases are planned. Current v1.5 development covers [assurance lineage](docs/assurance-lineage.md), [governed remediation and retesting](docs/remediation-lifecycle.md), [assurance graph and impact analysis](docs/assurance-graph-impact.md), [evidence provenance, freshness and assurance delta](docs/evidence-freshness-delta.md), and [executable authority and policy gates](docs/authority-policy-gates.md). See [PROJECT-STATUS.yaml](PROJECT-STATUS.yaml) and the [roadmap](ROADMAP.md).
 
 ## What changed in v1.2
 
@@ -65,6 +65,10 @@ The catalogue is complemented by a governed simple-English glossary under `metho
 | Understand v1.2 assurance conclusions | [Assurance evaluation](docs/assurance-evaluation.md) and [Interpreting results](docs/interpreting-results.md) |
 | Understand evidence weight | [Evidence classification](docs/evidence-classification.md) |
 | Understand durable reassessment history | [Assurance lineage](docs/assurance-lineage.md) |
+| Govern remediation and evidence-based retesting | [Remediation and retesting](docs/remediation-lifecycle.md) |
+| Select reassessments after material change | [Assurance graph and impact analysis](docs/assurance-graph-impact.md) |
+| Track evidence provenance, freshness and change | [Evidence provenance and freshness](docs/evidence-freshness-delta.md) |
+| Enforce scoped authority and release gates | [Authority and policy gates](docs/authority-policy-gates.md) |
 | Browse reusable assurance patterns | [Portable catalogue](method/catalogue/) and [catalogue guide](docs/portable-assurance-catalogue.md) |
 | Run a risks-and-harms review | [Pressure-testing a specification](docs/pressure-testing-a-spec.md) |
 | Run a security/adversarial review | [Security and hardening review](docs/security-hardening-review.md) |
@@ -93,13 +97,18 @@ Run the unified review entry point:
 python3 tools/review.py --help
 ```
 
-Validate the repository and conformance surfaces:
+Validate the repository and v1.5 development conformance surfaces:
 
 ```bash
 python3 tools/validate.py
 python3 tools/validate_catalogue.py
 python3 tools/validate_glossary.py
 python3 tools/validate_assurance_lineage.py
+python3 tools/validate_remediation_retest_lineage.py
+python3 tools/validate_assurance_graph.py
+python3 tools/validate_evidence_freshness_delta.py
+python3 tools/validate_authority_policy_gates.py
+python3 tools/validate_capability_documentation.py
 python3 tools/validate_pressure_tests.py
 python3 tools/validate_security_reviews.py
 python3 tools/validate_combined_reviews.py
@@ -131,9 +140,19 @@ flowchart TB
   I --> J[Retest]
   J --> K[Resolved / residual / regression]
 
-  M[Portable RAHP method] --> F
-  P[Deployment profile] --> F
-  X[Deployment-owned state] --> F
+  A --> L[Impact analysis]
+  L --> M[Freshness evaluation]
+  M --> N[Reassessment / assurance delta]
+  N --> H
+  N --> O[Policy gate]
+  P[Declared authority] --> Q[Authority check]
+  O --> R[PASS / FAIL / INDETERMINATE]
+  Q --> S[Governed action if authorized]
+  R --> S
+
+  T[Portable RAHP method] --> F
+  U[Deployment profile] --> F
+  V[Deployment-owned state] --> F
 ```
 
 The portability invariant is **shared method and engine contract, independent deployment context**. `rahp-engine-contract-v1`, normalized result schema version `1`, and `rahp-evidence-retention-v1` remain the stable compatibility boundaries while v1.5 capabilities are developed additively.
@@ -148,19 +167,27 @@ In v1.2 DRARM is a specialized signal provider. Resilience signals map into port
 python3 tools/rahp.py resilience --path ../target --repository owner/repository --revision <tag-or-commit>
 ```
 
-## Remediation and authority
+## Remediation, policy and authority
 
-RAHP separates observation, assessment and publication authority.
+RAHP separates observation, assessment, disposition, publication, risk acceptance and closure authority.
 
 A remediation manifest can identify the repository or control plane that owns a change, the required outcome and the evidence needed for closure. It does **not** by itself authorize RAHP to create or modify work in an upstream repository.
 
+Portable authority grants can bind actions such as `observe`, `assess`, `disposition`, `remediate`, `publish`, `accept-risk`, `close` and `reopen` to explicit scopes and lifecycle state. Policy gates can return `PASS`, `FAIL` or `INDETERMINATE`, but a gate result never creates authority. External publication or risk acceptance requires a separately established mandate.
+
 The default automation boundary remains conservative: RAHP deployment automation creates/coalesces its own assurance work items; external publication requires a separate governance decision or explicit mandate.
+
+## Documentation synchronization
+
+`method/capability-documentation.yaml` is the machine-readable registry for implemented v1.5 capability surfaces. It binds each capability to its schemas, tools, tests, primary rendered documentation and required semantic terms. CI runs `tools/validate_capability_documentation.py` so implementation and documentation drift becomes a testable failure.
+
+The registry is a synchronization control, not a replacement for review: structured method contracts remain authoritative and rendered documentation remains a publication surface that must accurately explain them.
 
 ## Repository map
 
 | Path | Role |
 |---|---|
-| `method/` | Portable lifecycle, catalogue, schemas, glossary, mappings and engine/version contracts. |
+| `method/` | Portable lifecycle, catalogue, schemas, glossary, mappings, capability/documentation registry and engine/version contracts. |
 | `tools/` | Portable orchestration, validation, monitoring, rendering and build tooling. |
 | `profiles/<id>/` | Deployment configuration and cross-specification registries. |
 | `instances/<id>/` | Deployment-owned state, review records and local assurance vocabulary. |
@@ -183,7 +210,7 @@ rahp-evidence-retention-v1
 
 Breaking method or normalized-result changes follow `method/versioning.yaml` and require the corresponding major/schema transition rather than being introduced silently.
 
-Release history is maintained in [CHANGELOG.md](CHANGELOG.md) and [release documentation](docs/releases/).
+Release history is maintained in [CHANGELOG.md](CHANGELOG.md) and [release documentation](docs/releases/). From v1.5.x onward, release presentation metadata follows the [West Bengal butterfly naming policy](docs/release-naming.md); semantic versioning remains the compatibility authority.
 
 ## AI-assisted use and accountability
 
