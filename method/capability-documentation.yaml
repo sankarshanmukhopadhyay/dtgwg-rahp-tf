@@ -72,3 +72,29 @@ capabilities:
       - INDETERMINATE
       - accept-risk
       - policy evaluation
+  - id: portfolio-presentation
+    schemas:
+      - method/schema/assurance-posture.schema.json
+    tools:
+      - tools/assurance_posture.py
+      - tools/validate_v15_release.py
+    tests:
+      - tests/test_assurance_posture.py
+    documentation: docs/assurance-posture.md
+    required_terms:
+      - assurance score
+      - gate_blocked
+      - authority_blocked
+      - operational posture
+  - id: release-qualification
+    schemas: []
+    tools:
+      - tools/validate_v15_release.py
+    tests:
+      - tests/test_assurance_posture.py
+    documentation: docs/v1.5-release-runbook.md
+    required_terms:
+      - qualification contract
+      - random
+      - release decision
+      - release-cut commit
