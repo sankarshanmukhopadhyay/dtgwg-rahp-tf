@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/rahp/schema/assurance-posture.schema.json",
+  "title": "RAHP portable assurance posture",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "generated_at", "scope", "records", "summary"],
+  "properties": {
+    "version": {"const": 1},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["project", "repository", "portfolio", "specification", "implementation", "service", "deployment", "composition", "other"]},
+        "label": {"type": "string"}
+      }
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["assessment_id", "conclusion", "freshness", "remediation", "gate", "authority"],
+        "properties": {
+          "assessment_id": {"type": "string", "minLength": 1},
+          "conclusion": {"enum": ["assured", "controlled", "finding", "assurance-gap", "review-required", "not-assessed", "not-applicable"]},
+          "severity": {"enum": ["informational", "low", "medium", "high", "critical"]},
+          "freshness": {"enum": ["current", "potentially-stale", "stale", "retest-required", "superseded", "indeterminate"]},
+          "remediation": {"enum": ["none", "open", "in-progress", "retest-pending", "resolved", "accepted-risk", "indeterminate"]},
+          "gate": {"enum": ["PASS", "FAIL", "INDETERMINATE", "not-evaluated"]},
+          "authority": {"enum": ["authorized", "denied", "indeterminate", "not-required", "not-evaluated"]},
+          "changed_since_baseline": {"type": "boolean", "default": false},
+          "evidence_gaps": {"type": "integer", "minimum": 0, "default": 0}
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total", "action_required", "stale_or_retest", "evidence_gaps", "gate_blocked", "authority_blocked"],
+      "properties": {
+        "total": {"type": "integer", "minimum": 0},
+        "action_required": {"type": "integer", "minimum": 0},
+        "stale_or_retest": {"type": "integer", "minimum": 0},
+        "evidence_gaps": {"type": "integer", "minimum": 0},
+        "gate_blocked": {"type": "integer", "minimum": 0},
+        "authority_blocked": {"type": "integer", "minimum": 0},
+        "changed": {"type": "integer", "minimum": 0}
+      }
+    },
+    "notes": {"type": "array", "items": {"type": "string"}}
+  }
+}
