@@ -117,7 +117,13 @@ This means DTG, OpenVTC, ARPA, CAWG/C2PA and other maintained examples are evide
 
 ### Current implementation status
 
-The first v1.5 development tranche establishes portable assessment/finding lineage schemas, neutral conformance fixtures, CI validation and explicit project-status metadata. See [Assurance lineage](docs/assurance-lineage.md).
+Three v1.5 development tranches are now represented in the portable contracts:
+
+- durable assessment and finding lineage, with deployment-neutral fixtures and stable identities independent of work-item trackers;
+- governed remediation and executable retest lineage, including acceptance criteria, closure evidence and authority-aware disposition;
+- assurance graph and deterministic impact analysis, with explicit edge propagation semantics and machine-readable retest candidate selection.
+
+See [Assurance lineage](docs/assurance-lineage.md), [Remediation and retesting](docs/remediation-lifecycle.md), and [Assurance graph and impact analysis](docs/assurance-graph-impact.md).
 
 ### v1.5 release gate
 
