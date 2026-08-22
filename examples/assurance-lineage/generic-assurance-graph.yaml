@@ -1,0 +1,82 @@
+version: 1
+graph_id: example:payments-api:assurance-graph
+description: Deployment-neutral fixture demonstrating deterministic impact propagation.
+nodes:
+  - id: target:payments-api
+    type: target
+    label: Example Payments API Specification
+    revision:
+      system: release
+      value: 1.1.0
+  - id: req:authorization
+    type: requirement
+    label: Consequential payment requests require explicit authorization.
+  - id: control:authorization-check
+    type: control
+    label: Authorization is checked before execution.
+  - id: test:authorization-revoked
+    type: assurance-test
+    label: Revoked authorization is rejected before execution.
+  - id: evidence:test-run
+    type: evidence
+    label: Passing authorization-revocation test evidence.
+  - id: assessment:payments-auth
+    type: assessment
+    label: Payments authorization assurance assessment
+    assessment_id: example:specification:payments-api
+  - id: finding:authorization-gap
+    type: finding
+    label: Historical authorization lifecycle gap
+    finding_id: F-001
+  - id: remediation:authorization-gap
+    type: remediation
+    label: Governed authorization lifecycle remediation
+edges:
+  - id: e1
+    source: req:authorization
+    target: target:payments-api
+    type: depends-on
+    impact_propagation: target-to-source
+    rationale: A target revision change can invalidate requirements derived from that target.
+  - id: e2
+    source: control:authorization-check
+    target: req:authorization
+    type: implements
+    impact_propagation: target-to-source
+    rationale: A changed requirement can invalidate the control claim implementing it.
+  - id: e3
+    source: test:authorization-revoked
+    target: control:authorization-check
+    type: tests
+    impact_propagation: target-to-source
+    rationale: A changed control obligation can require a test to be reconsidered.
+  - id: e4
+    source: evidence:test-run
+    target: test:authorization-revoked
+    type: produces
+    impact_propagation: target-to-source
+    rationale: A changed test can stale evidence produced under the earlier test contract.
+  - id: e5
+    source: assessment:payments-auth
+    target: req:authorization
+    type: depends-on
+    impact_propagation: target-to-source
+    rationale: The assessment depends on the requirement semantics.
+  - id: e6
+    source: assessment:payments-auth
+    target: evidence:test-run
+    type: depends-on
+    impact_propagation: target-to-source
+    rationale: The assessment depends on attributed test evidence.
+  - id: e7
+    source: finding:authorization-gap
+    target: assessment:payments-auth
+    type: evaluated-by
+    impact_propagation: target-to-source
+    rationale: Reassessment can alter the finding state.
+  - id: e8
+    source: remediation:authorization-gap
+    target: finding:authorization-gap
+    type: remediates
+    impact_propagation: target-to-source
+    rationale: A changed finding can require remediation to be revisited.
