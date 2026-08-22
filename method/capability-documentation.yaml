@@ -91,7 +91,7 @@ capabilities:
     tools:
       - tools/validate_v15_release.py
     tests:
-      - tests/test_assurance_posture.py
+      - tests/test_v15_release_qualification.py
     documentation: docs/v1.5-release-runbook.md
     required_terms:
       - qualification contract
