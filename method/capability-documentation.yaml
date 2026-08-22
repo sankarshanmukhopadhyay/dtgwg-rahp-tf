@@ -11,7 +11,7 @@ capabilities:
     documentation: docs/assurance-lineage.md
     required_terms:
       - assessment identity
-      - finding lineage
+      - finding-lineage
       - canonical identity
   - id: remediation-retest
     schemas:
