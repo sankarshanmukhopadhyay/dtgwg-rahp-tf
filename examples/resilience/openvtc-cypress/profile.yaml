@@ -2,7 +2,7 @@ version: 1
 profile:
   id: openvtc-cypress
   title: OpenVTC Cypress distributed resilience profile
-  description: Reference profile for the OpenVTC Cypress tagged release; it maps the target but does not change DRARM semantics.
+  description: Reference profile for the OpenVTC Cypress assessment and its v1.5 maintainer-feedback disposition; it maps target evidence without changing portable DRARM semantics.
 target:
   type: mixed
   include:
@@ -18,6 +18,14 @@ thresholds:
   publish: findings-and-review-gaps
   max_file_bytes: 1048576
   max_files: 20000
+rules:
+  detector_overrides:
+    # Maintainer evidence in rahp-toolkit#18 demonstrates that an unbounded
+    # DIDComm handoff can be an intentional loss-avoidance trade-off after
+    # upstream acknowledgement. The construct remains review-required until
+    # queue-depth and slow-consumer evidence verifies the control claim; it is
+    # not promoted to a Critical finding from syntax alone in this profile.
+    unbounded-channel: review-only
 upstream:
   repository: OpenVTC/openvtc
   issue_labels: [resilience, assurance]
@@ -25,3 +33,6 @@ upstream:
 context:
   release: Cypress
   reference_only: true
+  maintainer_feedback_issue: https://github.com/sankarshanmukhopadhyay/rahp-toolkit/issues/18
+  current_reassessment_issue: https://github.com/sankarshanmukhopadhyay/rahp-toolkit/issues/46
+  disposition_record: examples/resilience/openvtc-cypress/maintainer-disposition.yaml
