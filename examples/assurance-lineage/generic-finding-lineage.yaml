@@ -1,0 +1,23 @@
+schema_version: 1
+assessment_id: example:specification:payments-api
+finding_id: AUTH-001
+history:
+  - run_id: run-2026-08-01
+    state: open
+    transition: introduced
+    severity: high
+    title: Payment authorization can outlive the initiating mandate
+    evidence_refs:
+      - evidence/run-2026-08-01.yaml#AUTH-001
+  - run_id: run-2026-08-20
+    state: controlled
+    transition: reclassified
+    severity: medium
+    title: Payment authorization is bounded but retest evidence remains required
+    predecessors:
+      - assessment_id: example:specification:payments-api
+        finding_id: AUTH-001
+        run_id: run-2026-08-01
+    evidence_refs:
+      - evidence/run-2026-08-20.yaml#AUTH-001
+    disposition: The revised specification adds action-time mandate evaluation; runtime conformance evidence remains required.
