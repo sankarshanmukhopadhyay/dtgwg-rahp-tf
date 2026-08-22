@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/rahp/schema/assurance-graph.schema.json",
+  "title": "RAHP portable assurance graph",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "graph_id", "nodes", "edges"],
+  "properties": {
+    "version": {"const": 1},
+    "graph_id": {"type": "string", "minLength": 1},
+    "description": {"type": "string"},
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "type", "label"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "type": {
+            "enum": [
+              "target", "component", "composition", "requirement", "evidence",
+              "risk", "harm", "control", "guardrail", "assurance-test",
+              "assessment", "finding", "remediation", "authority", "other"
+            ]
+          },
+          "label": {"type": "string", "minLength": 1},
+          "uri": {"type": "string"},
+          "revision": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["system", "value"],
+            "properties": {
+              "system": {"type": "string", "minLength": 1},
+              "value": {"type": "string", "minLength": 1},
+              "uri": {"type": "string"}
+            }
+          },
+          "assessment_id": {"type": "string", "minLength": 1},
+          "finding_id": {"type": "string", "minLength": 1},
+          "attributes": {"type": "object", "additionalProperties": true}
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source", "target", "type", "impact_propagation"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "source": {"type": "string", "minLength": 1},
+          "target": {"type": "string", "minLength": 1},
+          "type": {
+            "enum": [
+              "depends-on", "implements", "governs", "authorizes", "supports",
+              "contradicts", "mitigates", "tests", "affects", "supersedes",
+              "remediates", "requires", "composes-with", "produces", "evaluated-by",
+              "other"
+            ]
+          },
+          "impact_propagation": {
+            "enum": ["source-to-target", "target-to-source", "both", "none"]
+          },
+          "rationale": {"type": "string"}
+        }
+      }
+    }
+  }
+}
