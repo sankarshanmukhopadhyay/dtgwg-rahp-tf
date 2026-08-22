@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Assurance lineage"
-parent: Assurance
+parent: Run assessments
 nav_order: 8
 has_toc: true
 ---
