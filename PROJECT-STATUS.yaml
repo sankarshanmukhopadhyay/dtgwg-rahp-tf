@@ -1,6 +1,6 @@
 project: rahp-toolkit
 stable_release: 1.5.0
-development_target: 1.5.x
+development_target: 1.5.0
 release_status: released
 qualification_status: qualified
 qualification_contract: method/v1.5-release-qualification.yaml
@@ -31,6 +31,6 @@ release_naming:
     from the butterfly species listed by the recorded source. The selected
     common name and scientific name SHOULD be recorded in the release notes.
 release_intent: >-
-  v1.5.0 Continuous Governed Assurance is the stable published release line.
-  Subsequent v1.5.x maintenance releases must preserve the qualified portable
-  contracts and select their own West Bengal butterfly release name at release time.
+  v1.5.0 Continuous Governed Assurance is the stable release. Subsequent v1.5.x
+  maintenance releases must preserve the qualified portable contracts and select
+  their own West Bengal butterfly release name at release time.
