@@ -1,0 +1,31 @@
+scope:
+  id: example:payments-assurance
+  kind: specification
+  label: Example Payments API assurance surface
+records:
+  - assessment_id: example:payments:authorization
+    conclusion: controlled
+    severity: high
+    freshness: current
+    remediation: resolved
+    gate: PASS
+    authority: authorized
+    changed_since_baseline: true
+    evidence_gaps: 0
+  - assessment_id: example:payments:replay
+    conclusion: assurance-gap
+    severity: high
+    freshness: retest-required
+    remediation: retest-pending
+    gate: INDETERMINATE
+    authority: not-evaluated
+    changed_since_baseline: true
+    evidence_gaps: 2
+  - assessment_id: example:payments:documentation
+    conclusion: not-applicable
+    freshness: current
+    remediation: none
+    gate: not-evaluated
+    authority: not-required
+    changed_since_baseline: false
+    evidence_gaps: 0
