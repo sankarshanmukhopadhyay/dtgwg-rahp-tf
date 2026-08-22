@@ -15,7 +15,7 @@ historical/versioned evidence -> original RAHP version preserved
 
 For maintained pressure tests, the canonical `pressure-test.yaml` therefore records the current RAHP baseline directly. Older assessment provenance is not silently rewritten or discarded: each migrated example has a `history/pre-v1.5.yaml` pointer that records the original RAHP version and exact Git blob SHA, while Git history retains the full prior content.
 
-`examples/current-baselines.yaml` is the machine-readable index for the current maintained example set. It records:
+`examples/current-baselines.yaml` is the machine-readable index for the current maintained pressure-test set. It records:
 
 - the stable RAHP release used by canonical examples;
 - target and companion revision pins;
@@ -43,7 +43,7 @@ A finding may remain unchanged across toolkit releases. Rebaselining does not im
 
 ## Maintained examples on v1.5.0
 
-The canonical v1.5 examples currently include:
+The canonical v1.5 pressure-test examples currently include:
 
 - CAWG/C2PA portfolio composition;
 - DTG Trust Tasks × Credential Specification;
@@ -52,19 +52,34 @@ The canonical v1.5 examples currently include:
 
 Each canonical record directly declares `reviewed_against.rahp_version: v1.5.0` and includes v1.5 evidence-lineage and assurance-posture fields.
 
-OpenVTC and ARPA assessments remain in the reassessment queue where refreshed target/runtime evidence is required before a current executable assessment can be asserted safely. Their queue status does not prevent the maintained examples above from using the current toolkit baseline.
+## Maintainer-feedback resilience exemplar
+
+`examples/resilience/openvtc-cypress/` is maintained as a different kind of example: it demonstrates how DRARM evidence is dispositioned after a target maintainer supplies counter-evidence, sharper implementation evidence, ownership information, and remediation records.
+
+Its machine-readable `maintainer-disposition.yaml` intentionally includes multiple transition types:
+
+- a finding weakened and narrowed;
+- a detector-backed finding weakened to `review-required` after a credible architectural rationale;
+- findings strengthened by maintainer investigation;
+- a review gap promoted when stronger evidence appears;
+- a distinct review gap retained rather than incorrectly merged into another failure mode.
+
+The example also demonstrates a critical method rule: a documented rationale may justify additional review, but **does not itself produce `controlled` or `assured`**. Executable evidence remains necessary.
+
+ARPA remains in the reassessment queue where refreshed target/runtime evidence is required before a current executable assessment can be asserted safely.
 
 ## Validation
 
 The validation boundary checks that:
 
 - the registry declares RAHP v1.5.0 as current;
-- every canonical maintained example exists and itself declares RAHP v1.5.0;
-- every canonical maintained example carries explicit lineage and current assurance posture;
+- every canonical maintained pressure-test example exists and itself declares RAHP v1.5.0;
+- every canonical maintained pressure-test example carries explicit lineage and current assurance posture;
 - historical provenance pointers exist for migrated pre-v1.5 examples;
 - normalized residual states are valid;
 - prior-baseline lineage and assurance deltas are explicit;
 - rendered sibling README blocks remain synchronized with canonical YAML;
+- the OpenVTC resilience exemplar retains its machine-readable maintainer-feedback transitions and review-only queue override;
 - deployment-specific example semantics remain outside the portable method and engine contract.
 
 Run:
@@ -72,5 +87,6 @@ Run:
 ```bash
 python3 tools/validate_v15_release.py
 python3 tools/validate_current_examples.py
+python3 tools/validate_resilience.py
 python3 tools/validate_pressure_tests.py
 ```
