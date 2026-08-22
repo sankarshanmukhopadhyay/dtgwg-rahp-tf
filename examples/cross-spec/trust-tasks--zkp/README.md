@@ -1,6 +1,6 @@
 # Trust Tasks × ZKP cross-specification pressure test
 
-This is a RAHP profile-owned cross-specification worked assessment. The YAML record is canonical.
+This is a RAHP v1.5 profile-owned cross-specification worked assessment. The YAML record is canonical.
 
 <!-- BEGIN GENERATED PRESSURE TEST -->
 
@@ -21,11 +21,11 @@ This is a RAHP profile-owned cross-specification worked assessment. The YAML rec
 | Target commit | `2a40f6bd3b13c85c49123174fdbe4354b3c48d81` |
 | Target source paths | `Trust Tasks VTA lifecycle specifications`, `ZKP proof-of-liveness-requirements.md v0.3`, `ZKP fork proof-of-liveness-requirements.md v0.4 working draft`, `corpora/trust-tasks-zkp-composed.yaml` |
 | RAHP repository | `sankarshanmukhopadhyay/rahp-toolkit` |
-| RAHP version | `v1.2` |
+| RAHP version | `v1.5.0` |
 | Engine contract | `rahp-engine-contract-v1` |
 | RAHP corpus date | 2026-08-19 |
 | Engine/method revalidated on | 2026-08-22 |
-| Revalidation scope | Trust Tasks baseline advanced through DTG-AR-2026-001; ZKP implementation-guidance evidence advanced through DTG-AR-2026-003 while upstream normative ZKP remains at b37d52fc. |
+| Revalidation scope | Trust Tasks baseline advanced through DTG-AR-2026-001; ZKP implementation-guidance evidence advanced through DTG-AR-2026-003 while upstream normative ZKP remains at b37d52fc; v1.5 adds current-baseline lineage and posture. |
 
 ### Method
 
