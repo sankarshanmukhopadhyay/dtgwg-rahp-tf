@@ -100,6 +100,38 @@ def main() -> int:
     if "score" in actual.get("summary", {}):
         errors.append("portable posture must not expose a synthetic assurance score")
 
+    example_registry_path = ROOT / "examples" / "current-baselines.yaml"
+    if not example_registry_path.exists():
+        errors.append("maintained example baseline registry missing: examples/current-baselines.yaml")
+    else:
+        example_registry = yaml.safe_load(example_registry_path.read_text(encoding="utf-8")) or {}
+        current = example_registry.get("current_rahp_release") or {}
+        if current.get("version") != "v1.5.0":
+            errors.append("maintained example registry must declare RAHP v1.5.0 as current")
+        if not (example_registry.get("policy") or {}).get("historical_records_are_immutable"):
+            errors.append("maintained example registry must preserve historical records as immutable")
+        examples = example_registry.get("maintained_examples") or []
+        if len(examples) < 4:
+            errors.append("v1.5 maintained example registry must contain at least four independent examples")
+        seen: set[str] = set()
+        for example in examples:
+            eid = example.get("id")
+            if not eid or eid in seen:
+                errors.append(f"maintained example id missing or duplicated: {eid!r}")
+            seen.add(eid)
+            detail = example.get("detailed_record")
+            if not detail or not (ROOT / detail).exists():
+                errors.append(f"maintained example {eid} detailed record missing: {detail!r}")
+            baseline = example.get("current_baseline") or {}
+            if baseline.get("rahp_version") != "v1.5.0":
+                errors.append(f"maintained example {eid} current baseline is not v1.5.0")
+            if baseline.get("residual_state") not in {"assured", "controlled", "finding", "assurance-gap", "review-required", "not-assessed", "not-applicable"}:
+                errors.append(f"maintained example {eid} has invalid residual state")
+            prior = example.get("prior_baseline") or {}
+            delta = example.get("assurance_delta") or {}
+            if not prior.get("rahp_version") or not delta.get("disposition"):
+                errors.append(f"maintained example {eid} must preserve prior baseline and explicit assurance delta")
+
     naming = status.get("release_naming", {})
     if naming.get("selection") != "random-at-release-time":
         errors.append("West Bengal butterfly naming must remain random-at-release-time")
@@ -111,7 +143,7 @@ def main() -> int:
             print(f"ERROR: {error}")
         return 1
     state = "released" if release_status == "released" else qualification_status
-    print(f"PASS v1.5 {state}: capability completeness, compatibility, portability, demonstrations, posture evidence, documentation and release-state policy satisfied.")
+    print(f"PASS v1.5 {state}: capability completeness, compatibility, portability, demonstrations, posture evidence, maintained-example baselines, documentation and release-state policy satisfied.")
     return 0
 
 if __name__ == "__main__":
