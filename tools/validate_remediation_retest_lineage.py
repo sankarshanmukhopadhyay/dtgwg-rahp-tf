@@ -18,26 +18,20 @@ def load_yaml(name: str):
     return yaml.safe_load((FIXTURE_DIR / name).read_text(encoding="utf-8"))
 
 
-def validate(doc, schema_name: str):
+def schema_errors(doc, schema_name: str) -> list[str]:
     schema = json.loads((SCHEMA_DIR / schema_name).read_text(encoding="utf-8"))
-    return sorted(Draft202012Validator(schema, format_checker=FormatChecker()).iter_errors(doc), key=lambda e: list(e.path))
+    out = []
+    for err in sorted(Draft202012Validator(schema, format_checker=FormatChecker()).iter_errors(doc), key=lambda e: list(e.path)):
+        loc = ".".join(str(p) for p in err.absolute_path) or "(record)"
+        out.append(f"{loc}: {err.message}")
+    return out
 
 
-def main() -> int:
-    remediation = load_yaml("generic-remediation.yaml")
-    retest = load_yaml("generic-retest.yaml")
+def semantic_errors(remediation: dict, retest: dict) -> list[str]:
     errors: list[str] = []
 
-    for label, doc, schema in [
-        ("remediation", remediation, "remediation-manifest.schema.json"),
-        ("retest", retest, "retest.schema.json"),
-    ]:
-        for err in validate(doc, schema):
-            loc = ".".join(str(p) for p in err.absolute_path) or "(record)"
-            errors.append(f"{label} schema {loc}: {err.message}")
-
     if remediation.get("remediation_id") != retest.get("remediation_id"):
-        errors.append("retest remediation_id does not resolve to the remediation fixture")
+        errors.append("retest remediation_id does not resolve to the remediation")
     if remediation.get("assessment_id") != retest.get("assessment_id"):
         errors.append("retest assessment_id does not match remediation assessment_id")
     if remediation.get("finding_id") != retest.get("previous_finding"):
@@ -50,7 +44,7 @@ def main() -> int:
     if not referenced.issubset(criteria):
         errors.append("retest references acceptance criteria not defined by remediation")
 
-    evidence_by_criterion = {}
+    evidence_by_criterion: dict[str, list[str]] = {}
     for evidence in retest.get("closure_evidence") or []:
         cid = evidence.get("criterion_id")
         if cid:
@@ -75,6 +69,16 @@ def main() -> int:
     close_authority = (remediation.get("authority") or {}).get("close") or []
     if (retest.get("disposition") or {}).get("status") == "closed" and not close_authority:
         errors.append("closed retest requires remediation close authority")
+
+    return errors
+
+
+def main() -> int:
+    remediation = load_yaml("generic-remediation.yaml")
+    retest = load_yaml("generic-retest.yaml")
+    errors = [f"remediation schema {e}" for e in schema_errors(remediation, "remediation-manifest.schema.json")]
+    errors += [f"retest schema {e}" for e in schema_errors(retest, "retest.schema.json")]
+    errors += semantic_errors(remediation, retest)
 
     if errors:
         for error in errors:
