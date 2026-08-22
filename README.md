@@ -1,7 +1,7 @@
 # RAHP Toolkit
 
 **Risk Assessment & Harms Prevention**  
-Stable release v1.2.0 · Development target v1.5.0 · CC-BY 4.0
+Release v1.2.0 (stable) · Development target v1.5.0 · CC-BY 4.0
 
 RAHP Toolkit is a **portable specification-assurance toolkit** for pressure-testing standards, protocols, implementations and composed systems against human harms, governance failures, adversarial conditions and resilience risks.
 
