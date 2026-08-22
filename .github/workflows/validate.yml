@@ -29,6 +29,8 @@ jobs:
         run: python3 tools/validate_v04_method.py
       - name: Validate portable assurance lineage
         run: python3 tools/validate_assurance_lineage.py
+      - name: Validate governed remediation and retest lineage
+        run: python3 tools/validate_remediation_retest_lineage.py
 
       - name: Validate persona analytical richness
         run: python3 tools/validate_persona_quality.py
