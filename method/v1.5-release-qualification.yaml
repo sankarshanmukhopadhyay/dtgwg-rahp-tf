@@ -12,9 +12,11 @@ required_capabilities:
   - evidence-freshness-delta
   - authority-policy-gates
   - portfolio-presentation
+  - release-qualification
 required_evidence:
   generic_fixture: examples/assurance-lineage/generic-specification.yaml
   posture_fixture: examples/assurance-lineage/generic-posture-result.json
+  portable_instance: examples/portable-instance/data/instance.yaml
   documentation_registry: method/capability-documentation.yaml
   release_runbook: docs/v1.5-release-runbook.md
 portable_paths:
@@ -37,6 +39,19 @@ forbidden_core_dependencies:
   - arpa
   - cawg
   - c2pa
+demonstrations:
+  - id: dtg-cross-spec
+    kind: project-specific
+    command: python3 tools/validate_cross_spec_registry.py --registry profiles/dtg/cross-spec-tests.yaml
+  - id: cawg-c2pa-cross-spec
+    kind: project-specific
+    command: python3 tools/validate_cross_spec_registry.py --registry profiles/cawg/cross-spec-tests.yaml
+  - id: cawg-deployment
+    kind: project-specific
+    command: python3 tools/validate_cawg_instance.py
+  - id: portable-instance
+    kind: deployment-neutral
+    command: python3 tools/validate_portability.py
 qualification_commands:
   - python3 tools/validate_assurance_lineage.py
   - python3 tools/validate_remediation_retest_lineage.py
@@ -45,7 +60,7 @@ qualification_commands:
   - python3 tools/validate_authority_policy_gates.py
   - python3 tools/validate_capability_documentation.py
   - python3 tools/validate_v15_release.py
-  - python3 -m unittest tests.test_assurance_posture tests.test_authority_policy_gates tests.test_evidence_freshness_delta tests.test_assurance_graph_impact tests.test_remediation_retest_lineage
+  - python3 -m unittest tests.test_v15_release_qualification tests.test_assurance_posture tests.test_authority_policy_gates tests.test_evidence_freshness_delta tests.test_assurance_graph_impact tests.test_remediation_retest_lineage
 release_cut:
   butterfly_name_selection: random-at-release-time
   butterfly_source: https://en.wikipedia.org/wiki/List_of_butterflies_of_West_Bengal
