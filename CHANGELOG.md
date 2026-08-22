@@ -9,7 +9,7 @@ parent: Reference
 
 This file records current release-level changes. The complete pre-v1.2 changelog, including accumulated historical `Unreleased` sections, is preserved at `archive/pre-v1.2/CHANGELOG-pre-v1.2.txt`.
 
-## Unreleased — v1.5.0 release qualification candidate
+## v1.5.0 — 2026-08-22 — Purple Leaf Blue
 
 ### Added
 
@@ -23,18 +23,18 @@ This file records current release-level changes. The complete pre-v1.2 changelog
 - Machine-readable v1.5 capability/documentation registry and synchronization validation.
 - Machine-readable v1.5 release qualification manifest and validator.
 - Deployment-neutral conformance fixtures plus maintained deployment demonstrations.
-- Release runbook and synchronized v1.5.0 preparation content.
+- Release runbook and synchronized v1.5.0 release content.
 
 ### Changed
 
-- The v1.5 lifecycle now connects target change → impact → freshness → reassessment/retest → assurance delta → remediation → policy gate → authority verification → operational posture.
+- The v1.5 lifecycle connects target change → impact → freshness → reassessment/retest → assurance delta → remediation → policy gate → authority verification → operational posture.
 - Portfolio presentation keeps assurance conclusion, freshness, remediation, gate and authority state separate rather than collapsing them into a percentage.
-- Documentation synchronization is now a CI-enforced property across implemented v1.5 capabilities.
-- The release boundary is explicitly evidence-based: the final release-cut commit should contain only version/release metadata, random butterfly-name selection and publication mechanics, not new method semantics.
+- Documentation synchronization is a CI-enforced property across implemented v1.5 capabilities.
+- Root/workspace package metadata advances to `1.5.0` while the stable v1 engine/result/retention contracts remain unchanged.
 
 ### Compatibility
 
-The stable v1 compatibility boundaries remain unchanged throughout qualification:
+The stable v1 compatibility boundaries remain unchanged:
 
 ```text
 rahp-engine-contract-v1
@@ -42,7 +42,7 @@ normalized result schema version 1
 rahp-evidence-retention-v1
 ```
 
-v1.2.0 remains the stable published release until v1.5.0 is actually tagged and published.
+v1.5.0 is an additive minor release. Existing v1.1 and v1.2 normalized results remain valid.
 
 ### Governance
 
@@ -53,7 +53,11 @@ v1.2.0 remains the stable published release until v1.5.0 is actually tagged and 
 - Work-item deletion does not destroy canonical assurance lineage.
 - Project-specific deployments remain demonstrations rather than portable-core dependencies.
 
-See [v1.5.0 release preparation](docs/releases/v1.5.0-preparation.md) and the [v1.5 release runbook](docs/v1.5-release-runbook.md).
+### Release name
+
+**Purple Leaf Blue — *Amblypodia anita***, selected from the recorded West Bengal butterfly list under the v1.5.x naming policy.
+
+See [v1.5.0 release notes](docs/releases/v1.5.0.md) and the [v1.5 release runbook](docs/v1.5-release-runbook.md).
 
 ## v1.2.0 — 2026-08-20
 
