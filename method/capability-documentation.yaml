@@ -12,7 +12,7 @@ capabilities:
     required_terms:
       - assessment identity
       - finding lineage
-      - canonical assurance identity
+      - canonical identity
   - id: remediation-retest
     schemas:
       - method/schema/remediation-manifest.schema.json
