@@ -1,0 +1,99 @@
+schema_version: 1
+kind: rahp-maintainer-feedback-disposition
+updated_on: '2026-08-22'
+rahp_baseline: v1.5.0
+target:
+  repository: OpenVTC/openvtc
+  historical_release: Cypress
+  current_reassessment_revision: 4fc64d711724cdbd23f94507b4e3743f99f00dcd
+records:
+  - id: OVTC-RAHP-01
+    prior_state: finding
+    transition: weakened
+    current_state: finding
+    severity: Medium
+    rationale: >-
+      Maintainer evidence narrows the unsafe retry surface. Deletes converge,
+      duplicate keys are inert orphans and join rollback limits several call
+      sites. The material residual case is auto-assigned WebVH DID creation after
+      a lost reply, combined with retry multiplication across layers. The durable
+      fix belongs at the VTA/SDK boundary.
+    upstream:
+      issue: https://github.com/OpenVTC/verifiable-trust-infrastructure/issues/1009
+      evidence_commits:
+        - 399caa99c17b847d08b2fd1a180528ba3977c6b2
+        - b91e64b5fe9694aadf37ebea91084a8df1e2fa4c
+        - 0ab8f6d5217e68dd4cb7606a7c1dee304c1ce2a5
+        - 514b4f0ed6e5b8df400cc0321a8e611cd79026c4
+    retest_when: >-
+      OpenVTC adopts the stack idempotent-operation contract for the affected
+      setup mutations and a lost-reply test proves one logical effect.
+  - id: OVTC-RAHP-02
+    prior_state: finding
+    transition: weakened
+    current_state: review-required
+    severity: Critical-if-uncontrolled
+    rationale: >-
+      The DIDComm handoff was deliberately made unbounded because the delivery
+      layer has already acknowledged and deleted the mediator copy before the
+      local handoff. Re-bounding with drop semantics can destroy membership
+      credentials and join verdicts; blocking can merely move loss to an
+      upstream broadcast lag boundary. The architecture claim is plausible and
+      materially rebuts automatic Critical disposition, but it remains a control
+      claim until queue depth, slow-consumer and memory-growth evidence exists.
+    upstream:
+      documentation_fix: https://github.com/OpenVTC/openvtc/pull/238
+    required_evidence:
+      - queue depth and high-water telemetry
+      - producer-faster-than-consumer stress test
+      - bounded-duration stalled-consumer memory measurement
+      - explicit per-channel overload and recoverability semantics
+    retest_when: Queue topology, acknowledgement ordering or overload handling changes.
+  - id: OVTC-RAHP-03
+    prior_state: finding
+    transition: strengthened
+    current_state: finding
+    severity: High
+    rationale: >-
+      Maintainer investigation found stronger evidence than the original review:
+      typed rejection code and reason arrive on multiple wire paths and are then
+      discarded by the client state transition. Client evidence retention and
+      governing-layer appeal/restoration remain distinct obligations.
+    upstream:
+      issue: https://github.com/OpenVTC/openvtc/issues/240
+    retest_when: >-
+      Decision authority, code, reason and time survive round-trip persistence and
+      the governing layer exposes review/restoration semantics where applicable.
+  - id: OVTC-RAHP-04
+    prior_state: finding
+    transition: strengthened
+    current_state: finding
+    severity: High
+    rationale: >-
+      Maintainer confirmation shows the privacy-preserving R-DID path is opt-in
+      across TUI and CLI. The stable fallback is a resolvable did:webvh that can
+      carry a verified agent name, making correlation a direct lookup rather
+      than merely an inference.
+    upstream:
+      issue: https://github.com/OpenVTC/openvtc/issues/241
+    retest_when: >-
+      Pairwise identity is the default, P-DID fallback is explicit and warned,
+      and cross-relationship tests prove no silent reversion or correlation.
+review_gaps:
+  - id: RLA-016
+    transition: promoted
+    current_state: finding
+    current_finding: OVTC-RAHP-05
+    rationale: Current design evidence explicitly documents mutual websocket eviction and reconnect looping for two instances sharing one persona.
+  - id: RLA-030
+    transition: unchanged
+    current_state: review-required
+    rationale: >-
+      Noisy-neighbour risk concerns shared session/dispatch capacity across
+      communities and is distinct from the two-instance websocket eviction loop.
+method_lessons:
+  - detector_match_is_signal_not_disposition
+  - documented_rationale_requires_evidence_not_automatic_rejection
+  - deployment_topology_affects_severity
+  - maintainer_counter_evidence_is_assurance_evidence
+  - accepted_strengthened_weakened_and_review_required_transitions_are_first_class
