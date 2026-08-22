@@ -1,192 +1,132 @@
 review:
   id: SR-XSP-002
   status: complete
-  title: "DTG Credential Specification \xD7 ZKP cross-specification pressure test baseline"
-  reviewed_on: '2026-08-19'
+  title: DTG Credential Specification × ZKP cross-specification pressure test
+  reviewed_on: '2026-08-22'
   evidence_grade: source-informed
   target:
     repository: trustoverip/dtgwg-cred-spec + trustoverip/dtgwg-zkp-tf
-    version: "RAHP cross-spec baseline for DTG Credential Specification \xD7 ZKP"
-    source_paths:
-    - corpora/credential-spec-zkp-composed.yaml
+    version: RAHP cross-spec baseline for DTG Credential Specification × ZKP
     commit: b89f389abbdae77ba60b673c0836c781c2b54169
+    source_paths:
+      - corpora/credential-spec-zkp-composed.yaml
   reviewed_against:
     repository: sankarshanmukhopadhyay/rahp-toolkit
-    rahp_version: v1.1.0
-    corpus_date: '2026-08-19'
+    rahp_version: v1.5.0
     engine_contract: rahp-engine-contract-v1
+    evidence_retention_contract: rahp-evidence-retention-v1
+    normalized_result_schema: '1'
+    reassessed_on: '2026-08-22'
+  lineage:
+    prior_rahp_version: v1.1.0
+    prior_record: history/pre-v1.5.yaml
+    transition: reassessed
+    evidence_freshness: retained
+  assurance:
+    residual_state: finding
+    policy_gate: FAIL
+    gate_reason: One Critical and two High composition findings remain unresolved.
+    assurance_delta:
+      disposition: retained
+      summary: No evidence supports closing or weakening the three composition obligations; v1.5 records them as current findings with explicit provenance and posture.
+      finding_lineage:
+        F-001: unchanged
+        F-002: unchanged
+        F-003: unchanged
   scope:
-    included:
-    - proof-semantics
-    - authority
-    - lifecycle
-    - privacy-composition
-    - Emergent interaction failures at the declared composition seam.
+    included: [proof-semantics, authority, lifecycle, privacy-composition, emergent-composition-failures]
     excluded:
-    - Independent implementation defects not caused or amplified by composition.
-    - Normative conformance claims where an upstream repository does not yet publish sufficient normative text.
+      - Independent implementation defects not caused or amplified by composition.
+      - Normative conformance claims where an upstream repository does not publish sufficient normative text.
   method:
     workflow: docs/cross-spec-pressure-testing.md
     rule: A component-level pass does not imply a composition-level pass.
   summary:
     finding_count: 3
     open_count: 3
-    overall_assessment: "DTG Credential Specification \xD7 ZKP is runnable as a RAHP cross-specification assurance seam. Evidence\
-      \ grade is source-informed; findings are review hypotheses/evidence-backed composition risks and require WG or maintainer\
-      \ disposition before being represented as upstream defects."
+    overall_assessment: The composition remains a source-informed assurance seam with unresolved authority/lifecycle, relying-context and cross-context reuse obligations under RAHP v1.5.0.
   findings:
-  - id: F-001
-    title: "DTG Credential Specification \xD7 ZKP: authority and lifecycle semantics require an explicit composition contract"
-    status: open
-    severity: Critical
-    primary_disposition: companion-specification
-    secondary_dispositions:
-    - governance
-    - implementation-guidance
-    scenarios:
-    - XSP-CZ-001
-    - XSP-CZ-002
-    scenario_patterns:
-    - SP-AUTH-02
-    - SP-COMP-01
-    - SP-GOV-01
-    personas:
-    - D1
-    risks:
-    - RK-G01
-    controls: []
-    guardrails: []
-    assurance_tests: []
-    portable_assurance:
-      harm_patterns:
-      - HRM-SEC-02
-      - HRM-INF-01
-      - HRM-AUT-04
-      - HRM-GOV-02
-      risk_patterns:
-      - RKP-COMP-01
-      - RKP-AUTH-02
-      control_patterns:
-      - CTP-COMP-01
-      - CTP-AUTH-02
-      guardrail_patterns:
-      - GRP-COMP-01
-      - GRP-AUTH-02
-      assurance_patterns:
-      - ATP-COMP-01
-      - ATP-AUTH-02
-      evidence_patterns:
-      - EVP-COMP-01
-      - EVP-AUTH-01
-    evidence:
-    - source: corpora/credential-spec-zkp-composed.yaml#xsp-cz-001
-      observation: The RAHP composed scenario exposes a failure mode that can arise only at the interaction boundary; component-level
-        validation alone does not establish a safe composed decision.
-    harm: Valid predicate proof is treated as proof of issuer authority. Without an explicit composition contract, a verifier
-      or runtime can infer more authority, currency or scope than either component establishes on its own.
-    recommendation: Define and test an explicit cross-spec semantic contract naming the authority owner, lifecycle check and
-      enforcement point for the composed decision.
-    retest_when: Re-run this composition after the owning specifications or companion guidance define the relevant semantic
-      contract and executable negative tests.
-  - id: F-002
-    title: "DTG Credential Specification \xD7 ZKP: relying context can be lost across the specification boundary"
-    status: open
-    severity: High
-    primary_disposition: companion-specification
-    secondary_dispositions:
-    - governance
-    - implementation-guidance
-    scenarios:
-    - XSP-CZ-003
-    scenario_patterns:
-    - SP-COMP-01
-    - SP-PRIV-01
-    personas:
-    - D1
-    risks:
-    - RK-G01
-    controls: []
-    guardrails: []
-    assurance_tests: []
-    portable_assurance:
-      harm_patterns:
-      - HRM-SEC-02
-      - HRM-INF-01
-      - HRM-AUT-04
-      - HRM-GOV-02
-      risk_patterns:
-      - RKP-COMP-01
-      - RKP-AUTH-02
-      control_patterns:
-      - CTP-COMP-01
-      - CTP-AUTH-02
-      guardrail_patterns:
-      - GRP-COMP-01
-      - GRP-AUTH-02
-      assurance_patterns:
-      - ATP-COMP-01
-      - ATP-AUTH-02
-      evidence_patterns:
-      - EVP-COMP-01
-      - EVP-AUTH-01
-    evidence:
-    - source: corpora/credential-spec-zkp-composed.yaml#xsp-cz-003
-      observation: The RAHP composed scenario exposes a failure mode that can arise only at the interaction boundary; component-level
-        validation alone does not establish a safe composed decision.
-    harm: Selective disclosure removes governance context required for reliance. Without an explicit composition contract,
-      a verifier or runtime can infer more authority, currency or scope than either component establishes on its own.
-    recommendation: Carry the minimum provenance, purpose, audience and status context needed for a relying party to distinguish
-      verification success from an authorization or trust decision.
-    retest_when: Re-run this composition after the owning specifications or companion guidance define the relevant semantic
-      contract and executable negative tests.
-  - id: F-003
-    title: "DTG Credential Specification \xD7 ZKP: cross-context reuse can amplify privacy, replay or scope risk"
-    status: open
-    severity: High
-    primary_disposition: companion-specification
-    secondary_dispositions:
-    - governance
-    - implementation-guidance
-    scenarios:
-    - XSP-CZ-004
-    scenario_patterns:
-    - SP-COMP-01
-    - SP-REPLAY-01
-    personas:
-    - D1
-    risks:
-    - RK-G01
-    controls: []
-    guardrails: []
-    assurance_tests: []
-    portable_assurance:
-      harm_patterns:
-      - HRM-SEC-02
-      - HRM-INF-01
-      - HRM-AUT-04
-      - HRM-GOV-02
-      risk_patterns:
-      - RKP-COMP-01
-      - RKP-AUTH-02
-      control_patterns:
-      - CTP-COMP-01
-      - CTP-AUTH-02
-      guardrail_patterns:
-      - GRP-COMP-01
-      - GRP-AUTH-02
-      assurance_patterns:
-      - ATP-COMP-01
-      - ATP-AUTH-02
-      evidence_patterns:
-      - EVP-COMP-01
-      - EVP-AUTH-01
-    evidence:
-    - source: corpora/credential-spec-zkp-composed.yaml#xsp-cz-004
-      observation: The RAHP composed scenario exposes a failure mode that can arise only at the interaction boundary; component-level
-        validation alone does not establish a safe composed decision.
-    harm: Proof is replayed outside the relying-party or transaction context. Without an explicit composition contract, a
-      verifier or runtime can infer more authority, currency or scope than either component establishes on its own.
-    recommendation: Add negative composition tests for cross-context reuse, correlation and scope amplification; require a
-      fresh decision when the relevant authority or lifecycle state changes.
-    retest_when: Re-run this composition after the owning specifications or companion guidance define the relevant semantic
-      contract and executable negative tests.
+    - id: F-001
+      title: DTG Credential Specification × ZKP authority and lifecycle semantics require an explicit composition contract
+      status: open
+      severity: Critical
+      primary_disposition: companion-specification
+      secondary_dispositions: [governance, implementation-guidance]
+      scenarios: [XSP-CZ-001, XSP-CZ-002]
+      scenario_patterns: [SP-AUTH-02, SP-COMP-01, SP-GOV-01]
+      personas: [D1]
+      risks: [RK-G01]
+      controls: []
+      guardrails: []
+      assurance_tests: []
+      portable_assurance:
+        harm_patterns: [HRM-SEC-02, HRM-INF-01, HRM-AUT-04, HRM-GOV-02]
+        risk_patterns: [RKP-COMP-01, RKP-AUTH-02]
+        control_patterns: [CTP-COMP-01, CTP-AUTH-02]
+        guardrail_patterns: [GRP-COMP-01, GRP-AUTH-02]
+        assurance_patterns: [ATP-COMP-01, ATP-AUTH-02]
+        evidence_patterns: [EVP-COMP-01, EVP-AUTH-01]
+      evidence:
+        - source: corpora/credential-spec-zkp-composed.yaml#xsp-cz-001
+          observation: The composed scenario exposes a failure mode that component-level validation alone cannot close.
+      harm: Valid predicate proof can be treated as proof of issuer authority, allowing a verifier or runtime to infer more authority, currency or scope than either component establishes.
+      recommendation: Define and test an explicit cross-spec semantic contract naming the authority owner, lifecycle check and enforcement point.
+      retest_when:
+        - The owning specifications or companion guidance define the semantic contract and executable negative tests.
+    - id: F-002
+      title: DTG Credential Specification × ZKP relying context can be lost across the specification boundary
+      status: open
+      severity: High
+      primary_disposition: companion-specification
+      secondary_dispositions: [governance, implementation-guidance]
+      scenarios: [XSP-CZ-003]
+      scenario_patterns: [SP-COMP-01, SP-PRIV-01]
+      personas: [D1]
+      risks: [RK-G01]
+      controls: []
+      guardrails: []
+      assurance_tests: []
+      portable_assurance:
+        harm_patterns: [HRM-SEC-02, HRM-INF-01, HRM-AUT-04, HRM-GOV-02]
+        risk_patterns: [RKP-COMP-01, RKP-AUTH-02]
+        control_patterns: [CTP-COMP-01, CTP-AUTH-02]
+        guardrail_patterns: [GRP-COMP-01, GRP-AUTH-02]
+        assurance_patterns: [ATP-COMP-01, ATP-AUTH-02]
+        evidence_patterns: [EVP-COMP-01, EVP-AUTH-01]
+      evidence:
+        - source: corpora/credential-spec-zkp-composed.yaml#xsp-cz-003
+          observation: Selective disclosure can remove governance context needed for safe reliance.
+      harm: A verifier can infer more authority, currency or scope than the disclosed proof establishes.
+      recommendation: Carry the minimum provenance, purpose, audience and status context needed to distinguish verification success from an authorization or trust decision.
+      retest_when:
+        - The owning specifications or companion guidance define the semantic contract and executable negative tests.
+    - id: F-003
+      title: DTG Credential Specification × ZKP cross-context reuse can amplify privacy, replay or scope risk
+      status: open
+      severity: High
+      primary_disposition: companion-specification
+      secondary_dispositions: [governance, implementation-guidance]
+      scenarios: [XSP-CZ-004]
+      scenario_patterns: [SP-COMP-01, SP-REPLAY-01]
+      personas: [D1]
+      risks: [RK-G01]
+      controls: []
+      guardrails: []
+      assurance_tests: []
+      portable_assurance:
+        harm_patterns: [HRM-SEC-02, HRM-INF-01, HRM-AUT-04, HRM-GOV-02]
+        risk_patterns: [RKP-COMP-01, RKP-AUTH-02]
+        control_patterns: [CTP-COMP-01, CTP-AUTH-02]
+        guardrail_patterns: [GRP-COMP-01, GRP-AUTH-02]
+        assurance_patterns: [ATP-COMP-01, ATP-AUTH-02]
+        evidence_patterns: [EVP-COMP-01, EVP-AUTH-01]
+      evidence:
+        - source: corpora/credential-spec-zkp-composed.yaml#xsp-cz-004
+          observation: A proof can be replayed outside the relying-party or transaction context at the composition seam.
+      harm: Cross-context proof reuse can amplify privacy, replay and authorization-scope risk.
+      recommendation: Add negative composition tests for cross-context reuse, correlation and scope amplification and require a fresh decision when authority or lifecycle state changes.
+      retest_when:
+        - The owning specifications or companion guidance define the semantic contract and executable negative tests.
+  closure:
+    disposition: assessment-cycle-complete
+    rationale: RAHP v1.5.0 confirms the three residual findings and records their current assurance posture without representing assessment completion as risk resolution.
