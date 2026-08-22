@@ -9,8 +9,8 @@
     {"id": "control:authorization-check", "type": "control", "distance": 2, "via": ["e1", "e2"]},
     {"id": "finding:authorization-gap", "type": "finding", "distance": 3, "via": ["e1", "e5", "e7"]},
     {"id": "test:authorization-revoked", "type": "assurance-test", "distance": 3, "via": ["e1", "e2", "e3"]},
-    {"id": "remediation:authorization-gap", "type": "remediation", "distance": 4, "via": ["e1", "e5", "e7", "e8"]},
-    {"id": "evidence:test-run", "type": "evidence", "distance": 4, "via": ["e1", "e2", "e3", "e4"]}
+    {"id": "evidence:test-run", "type": "evidence", "distance": 4, "via": ["e1", "e2", "e3", "e4"]},
+    {"id": "remediation:authorization-gap", "type": "remediation", "distance": 4, "via": ["e1", "e5", "e7", "e8"]}
   ],
   "affected_assessments": ["example:specification:payments-api"],
   "retest_required": ["example:specification:payments-api"],
