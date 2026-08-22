@@ -1,0 +1,54 @@
+version: 1
+release: v1.5.0
+qualification: continuous-governed-assurance
+stable_compatibility:
+  engine_contract: rahp-engine-contract-v1
+  normalized_result_schema: 1
+  evidence_retention_contract: rahp-evidence-retention-v1
+required_capabilities:
+  - assurance-lineage
+  - remediation-retest
+  - assurance-graph-impact
+  - evidence-freshness-delta
+  - authority-policy-gates
+  - portfolio-presentation
+required_evidence:
+  generic_fixture: examples/assurance-lineage/generic-specification.yaml
+  posture_fixture: examples/assurance-lineage/generic-posture-result.json
+  documentation_registry: method/capability-documentation.yaml
+  release_runbook: docs/v1.5-release-runbook.md
+portable_paths:
+  - method/schema/assessment-lineage.schema.json
+  - method/schema/finding-lineage.schema.json
+  - method/schema/remediation-manifest.schema.json
+  - method/schema/retest.schema.json
+  - method/schema/assurance-graph.schema.json
+  - method/schema/impact-analysis.schema.json
+  - method/schema/evidence-manifest.schema.json
+  - method/schema/assurance-freshness.schema.json
+  - method/schema/assurance-delta.schema.json
+  - method/schema/authority.schema.json
+  - method/schema/gate-policy.schema.json
+  - method/schema/assurance-posture.schema.json
+forbidden_core_dependencies:
+  - trustoverip
+  - dtg
+  - openvtc
+  - arpa
+  - cawg
+  - c2pa
+qualification_commands:
+  - python3 tools/validate_assurance_lineage.py
+  - python3 tools/validate_remediation_retest_lineage.py
+  - python3 tools/validate_assurance_graph.py
+  - python3 tools/validate_evidence_freshness_delta.py
+  - python3 tools/validate_authority_policy_gates.py
+  - python3 tools/validate_capability_documentation.py
+  - python3 tools/validate_v15_release.py
+  - python3 -m unittest tests.test_assurance_posture tests.test_authority_policy_gates tests.test_evidence_freshness_delta tests.test_assurance_graph_impact tests.test_remediation_retest_lineage
+release_cut:
+  butterfly_name_selection: random-at-release-time
+  butterfly_source: https://en.wikipedia.org/wiki/List_of_butterflies_of_West_Bengal
+  version_bump_required: true
+  tag: v1.5.0
+  publish_only_after_qualification: true
