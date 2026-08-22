@@ -1,0 +1,37 @@
+version: 1
+policy_id: example:release-assurance-gate
+purpose: Prevent publication when assurance is stale, unresolved or unsupported.
+authority_required:
+  action: publish
+  scope:
+    kind: assessment
+    id: example:specification:payments-api
+rules:
+  - id: require-current-assurance
+    effect: require
+    message: Assurance must be current before publication.
+    conditions:
+      - path: assurance.freshness
+        operator: equals
+        value: current
+  - id: deny-open-critical-findings
+    effect: deny
+    message: Critical residual findings block publication.
+    conditions:
+      - path: assurance.open_critical_findings
+        operator: not-equals
+        value: 0
+  - id: require-evidence-integrity
+    effect: require
+    message: Required evidence integrity must be verified.
+    conditions:
+      - path: evidence.integrity_verified
+        operator: equals
+        value: true
+  - id: require-authority-check
+    effect: require
+    message: Publication authority must be independently established.
+    conditions:
+      - path: authority.publish_authorized
+        operator: equals
+        value: true
