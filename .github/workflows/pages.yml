@@ -39,9 +39,22 @@ jobs:
         run: python3 tools/validate_glossary.py
       - name: Validate portable catalogue documentation
         run: python3 tools/render_portable_catalogue_docs.py --check
-
       - name: Validate portable method invariants
         run: python3 tools/validate_v04_method.py
+      - name: Validate portable assurance lineage
+        run: python3 tools/validate_assurance_lineage.py
+      - name: Validate governed remediation and retest lineage
+        run: python3 tools/validate_remediation_retest_lineage.py
+      - name: Validate portable assurance graph and impact analysis
+        run: python3 tools/validate_assurance_graph.py
+      - name: Validate evidence provenance, freshness and assurance delta
+        run: python3 tools/validate_evidence_freshness_delta.py
+      - name: Validate executable authority and policy gates
+        run: python3 tools/validate_authority_policy_gates.py
+      - name: Validate v1.5 capability documentation synchronization
+        run: python3 tools/validate_capability_documentation.py
+      - name: Validate v1.5 release qualification
+        run: python3 tools/validate_v15_release.py
 
       - name: Validate persona analytical richness
         run: python3 tools/validate_persona_quality.py
