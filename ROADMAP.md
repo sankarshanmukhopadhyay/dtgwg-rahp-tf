@@ -9,9 +9,7 @@ parent: Reference
 
 This roadmap records the current portable RAHP direction. Historical pre-v1.2 roadmap material is preserved under `archive/pre-v1.2/` and is not current authority.
 
-## Stable baseline
-
-### v1.2.0 — Evidence-Driven Assurance
+## v1.2.0 — Evidence-Driven Assurance (stable baseline)
 
 Status: **stable public release**.
 
