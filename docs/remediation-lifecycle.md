@@ -51,14 +51,22 @@ A remediation can define explicit acceptance criteria. Retest evidence may bind 
 
 This makes remediation history reconstructable even when repository issues, tickets or other coordination surfaces are later closed, moved or deleted.
 
-## Validation
+## Executable retest
 
-The generic conformance fixtures under `examples/assurance-lineage/` demonstrate the lifecycle using a fictional payments specification rather than a project-specific deployment.
+`tools/retest.py` evaluates an arbitrary YAML or JSON remediation/retest pair against both the portable schemas and the governed closure invariants. It can emit a machine-readable judgment suitable for CI or another assurance control plane.
+
+```bash
+python3 tools/retest.py \
+  --remediation examples/assurance-lineage/generic-remediation.yaml \
+  --retest examples/assurance-lineage/generic-retest.yaml \
+  --json
+```
+
+The generic conformance fixtures use a fictional payments specification rather than a project-specific deployment. Repository CI additionally runs:
 
 ```bash
 python3 tools/validate_remediation_retest_lineage.py
-python3 tools/assurance_cli.py validate-remediation examples/assurance-lineage/generic-remediation.yaml
-python3 tools/assurance_cli.py validate-retest examples/assurance-lineage/generic-retest.yaml
+python3 -m unittest tests.test_remediation_retest_lineage
 ```
 
 Project-specific deployments MAY add further acceptance rules or evidence obligations, but MUST NOT weaken the portable invariants when claiming portable RAHP conformance.
