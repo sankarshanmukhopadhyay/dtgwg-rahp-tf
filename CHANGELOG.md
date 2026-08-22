@@ -9,6 +9,52 @@ parent: Reference
 
 This file records current release-level changes. The complete pre-v1.2 changelog, including accumulated historical `Unreleased` sections, is preserved at `archive/pre-v1.2/CHANGELOG-pre-v1.2.txt`.
 
+## Unreleased — v1.5.0 release qualification candidate
+
+### Added
+
+- Durable assessment identity and finding lineage independent of individual assessment runs and issue trackers.
+- Governed remediation obligations, acceptance criteria, closure evidence and executable retest lineage.
+- Portable assurance graph with explicit impact-propagation semantics and deterministic reassessment selection.
+- Evidence provenance manifests, conservative assurance freshness and machine-readable assurance deltas.
+- Scoped executable authority with suspension, revocation and expiry state.
+- Three-valued policy gates with `PASS`, `FAIL` and `INDETERMINATE` outcomes.
+- Portable assurance posture for actionable operational/portfolio views without a synthetic assurance score.
+- Machine-readable v1.5 capability/documentation registry and synchronization validation.
+- Machine-readable v1.5 release qualification manifest and validator.
+- Deployment-neutral conformance fixtures plus maintained deployment demonstrations.
+- Release runbook and synchronized v1.5.0 preparation content.
+
+### Changed
+
+- The v1.5 lifecycle now connects target change → impact → freshness → reassessment/retest → assurance delta → remediation → policy gate → authority verification → operational posture.
+- Portfolio presentation keeps assurance conclusion, freshness, remediation, gate and authority state separate rather than collapsing them into a percentage.
+- Documentation synchronization is now a CI-enforced property across implemented v1.5 capabilities.
+- The release boundary is explicitly evidence-based: the final release-cut commit should contain only version/release metadata, random butterfly-name selection and publication mechanics, not new method semantics.
+
+### Compatibility
+
+The stable v1 compatibility boundaries remain unchanged throughout qualification:
+
+```text
+rahp-engine-contract-v1
+normalized result schema version 1
+rahp-evidence-retention-v1
+```
+
+v1.2.0 remains the stable published release until v1.5.0 is actually tagged and published.
+
+### Governance
+
+- Policy evaluation never creates authority.
+- Repository permissions are not automatically governance authority.
+- Stale/retest-required assurance is not automatically a finding.
+- Detector absence does not establish closure.
+- Work-item deletion does not destroy canonical assurance lineage.
+- Project-specific deployments remain demonstrations rather than portable-core dependencies.
+
+See [v1.5.0 release preparation](docs/releases/v1.5.0-preparation.md) and the [v1.5 release runbook](docs/v1.5-release-runbook.md).
+
 ## v1.2.0 — 2026-08-20
 
 ### Added
