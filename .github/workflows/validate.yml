@@ -33,6 +33,8 @@ jobs:
         run: python3 tools/validate_remediation_retest_lineage.py
       - name: Validate portable assurance graph and impact analysis
         run: python3 tools/validate_assurance_graph.py
+      - name: Validate evidence provenance, freshness and assurance delta
+        run: python3 tools/validate_evidence_freshness_delta.py
 
       - name: Validate persona analytical richness
         run: python3 tools/validate_persona_quality.py

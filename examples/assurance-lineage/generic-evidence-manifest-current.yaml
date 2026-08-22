@@ -1,0 +1,31 @@
+version: 1
+evidence_id: evidence:payments-auth-test:run-2026-08-22
+evidence_type: test-result
+source:
+  kind: repository
+  locator: https://example.org/payments-api
+  revision: rev-2026-08-22-b
+  path: tests/authorization-revoked.json
+producer:
+  mechanism: example-conformance-runner
+  version: "1.0"
+  workflow: portable-fixture
+  actor: example:test-operator
+observed_at: "2026-08-22T00:00:00Z"
+validity:
+  valid_from: "2026-08-22T00:00:00Z"
+  retest_on_source_change: true
+integrity:
+  algorithm: sha256
+  digest: 7c3a9f2d8e6d16b7e1e7c0f6bb4c91f468cb9ad6c39a7d5bd87a1ad11f4d8a01
+authority:
+  class: authoritative
+  issuer: example:test-operator
+  basis: designated conformance-test execution
+supports:
+  - ATP-PAYMENTS-AUTHORIZATION-001
+  - example:specification:payments-api
+applicable_patterns:
+  - ATP-PAYMENTS-AUTHORIZATION-001
+supersedes:
+  - evidence:payments-auth-test:run-2026-08-20
