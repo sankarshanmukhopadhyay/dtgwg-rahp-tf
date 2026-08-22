@@ -1,0 +1,17 @@
+version: 1
+assessment_id: example:specification:payments-api
+assessment_run_id: AR-2026-08-22-B
+status: retest-required
+evaluated_at: "2026-08-22T00:05:00Z"
+basis:
+  - kind: target-change
+    id: target:payments-api
+    effect: requires-retest
+    reason: Authorization semantics changed from the revision assessed by the current evidence.
+  - kind: evidence-change
+    id: evidence:payments-auth-test:run-2026-08-22
+    effect: potential
+    reason: Existing evidence was produced against the changed target revision and must be re-evaluated.
+evidence_ids:
+  - evidence:payments-auth-test:run-2026-08-22
+retest_required: true
