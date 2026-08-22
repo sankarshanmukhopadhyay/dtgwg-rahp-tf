@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "graph_id": "example:payments-api:assurance-graph",
+  "changed_nodes": ["target:payments-api"],
+  "affected_nodes": [
+    {"id": "target:payments-api", "type": "target", "distance": 0, "via": []},
+    {"id": "req:authorization", "type": "requirement", "distance": 1, "via": ["e1"]},
+    {"id": "assessment:payments-auth", "type": "assessment", "distance": 2, "via": ["e1", "e5"]},
+    {"id": "control:authorization-check", "type": "control", "distance": 2, "via": ["e1", "e2"]},
+    {"id": "finding:authorization-gap", "type": "finding", "distance": 3, "via": ["e1", "e5", "e7"]},
+    {"id": "test:authorization-revoked", "type": "assurance-test", "distance": 3, "via": ["e1", "e2", "e3"]},
+    {"id": "remediation:authorization-gap", "type": "remediation", "distance": 4, "via": ["e1", "e5", "e7", "e8"]},
+    {"id": "evidence:test-run", "type": "evidence", "distance": 4, "via": ["e1", "e2", "e3", "e4"]}
+  ],
+  "affected_assessments": ["example:specification:payments-api"],
+  "retest_required": ["example:specification:payments-api"],
+  "unresolved_changed_nodes": [],
+  "notes": [
+    "Impact is graph-reachability evidence, not an assurance conclusion.",
+    "Retest-required identifies candidate assessments; disposition remains governed."
+  ]
+}
