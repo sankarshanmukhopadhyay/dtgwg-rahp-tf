@@ -39,6 +39,8 @@ jobs:
         run: python3 tools/validate_authority_policy_gates.py
       - name: Validate v1.5 capability documentation synchronization
         run: python3 tools/validate_capability_documentation.py
+      - name: Validate v1.5 release qualification
+        run: python3 tools/validate_v15_release.py
 
       - name: Validate persona analytical richness
         run: python3 tools/validate_persona_quality.py
