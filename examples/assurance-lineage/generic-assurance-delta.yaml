@@ -1,0 +1,32 @@
+version: 1
+assessment_id: example:specification:payments-api
+baseline_run_id: AR-2026-08-20-A
+current_run_id: AR-2026-08-22-B
+material_change: true
+findings:
+  introduced: []
+  resolved:
+    - F-PAYMENTS-AUTH-001
+  changed: []
+  unchanged: []
+controls:
+  introduced:
+    - CTP-PAYMENTS-AUTHORIZATION-REVOCATION
+  resolved: []
+  changed:
+    - CTP-PAYMENTS-AUTHORIZATION-CHECK
+  unchanged: []
+evidence:
+  introduced:
+    - evidence:payments-auth-test:run-2026-08-22
+  resolved:
+    - evidence:payments-auth-test:run-2026-08-20
+  changed: []
+  unchanged: []
+conclusion:
+  previous: finding
+  current: controlled
+  transition: resolved
+freshness: current
+notes:
+  - The previous finding is considered resolved only because the current run has closure evidence satisfying the remediation criteria.
