@@ -1,0 +1,128 @@
+schema_version: 1
+kind: rahp-maintained-example-baselines
+updated_on: '2026-08-22'
+current_rahp_release:
+  version: v1.5.0
+  name: Purple Leaf Blue
+  engine_contract: rahp-engine-contract-v1
+  normalized_result_schema: '1'
+  evidence_retention_contract: rahp-evidence-retention-v1
+
+policy:
+  historical_records_are_immutable: true
+  current_baseline_requires_explicit_lineage: true
+  zero_findings_is_not_assured: true
+  deployment_examples_do_not_define_portable_core: true
+  baseline_label_for_older_issue_records: baseline:pre-v1.5
+
+maintained_examples:
+  - id: CAWG-COMP-005
+    title: C2PA x CAWG portfolio stack composition pressure test
+    profile: cawg-c2pa
+    detailed_record: examples/cawg-c2pa/compositions/portfolio-stack/pressure-test.yaml
+    current_baseline:
+      rahp_version: v1.5.0
+      assessed_on: '2026-08-22'
+      target_revision: b1703dc0a0420088d3f8b0e5fb11866d0fe931cb
+      target_policy: pinned
+      evidence_freshness: retained
+      residual_state: finding
+      finding_count: 2
+    prior_baseline:
+      rahp_version: v1.1.0
+      assessed_on: '2026-08-17'
+      issue: 14
+    assurance_delta:
+      disposition: retained
+      summary: Existing two composition findings remain the maintained hypotheses; v1.5 changes the governance and evidence lifecycle around the assessment, not the historical target evidence.
+      finding_lineage:
+        F-001: unchanged
+        F-002: unchanged
+
+  - id: SR-XSP-001
+    title: Trust Tasks x DTG Credential Specification cross-specification pressure test
+    profile: dtg
+    detailed_record: examples/cross-spec/trust-tasks-credspec/pressure-test.yaml
+    current_baseline:
+      rahp_version: v1.5.0
+      assessed_on: '2026-08-22'
+      target_revision: 2a40f6bd3b13c85c49123174fdbe4354b3c48d81
+      companion_revision: b89f389abbdae77ba60b673c0836c781c2b54169
+      target_policy: source-pinned
+      evidence_freshness: retained
+      residual_state: finding
+      finding_count: 3
+    prior_baseline:
+      rahp_version: v1.2
+      assessed_on: '2026-08-22'
+      issue: 32
+    assurance_delta:
+      disposition: retained
+      summary: The v1.2 consolidation remains substantively valid; v1.5 makes lineage, evidence freshness and residual posture explicit.
+      finding_lineage:
+        F-001: unchanged
+        F-002: unchanged
+        F-003: unchanged
+
+  - id: SR-XSP-002
+    title: DTG Credential Specification x ZKP cross-specification pressure test
+    profile: dtg
+    detailed_record: examples/cross-spec/credential-spec--zkp/pressure-test.yaml
+    current_baseline:
+      rahp_version: v1.5.0
+      assessed_on: '2026-08-22'
+      target_revision: b89f389abbdae77ba60b673c0836c781c2b54169
+      target_policy: source-informed
+      evidence_freshness: retained
+      residual_state: finding
+      finding_count: 3
+    prior_baseline:
+      rahp_version: v1.1.0
+      assessed_on: '2026-08-19'
+      issue: 34
+    assurance_delta:
+      disposition: retained
+      summary: No evidence supports closing or weakening the three cross-specification obligations; v1.5 records them as current residual findings with explicit lineage.
+      finding_lineage:
+        F-001: unchanged
+        F-002: unchanged
+        F-003: unchanged
+
+  - id: SR-XSP-004
+    title: Trust Tasks x ZKP cross-specification pressure test
+    profile: dtg
+    detailed_record: examples/cross-spec/trust-tasks--zkp/pressure-test.yaml
+    current_baseline:
+      rahp_version: v1.5.0
+      assessed_on: '2026-08-22'
+      target_revision: 2a40f6bd3b13c85c49123174fdbe4354b3c48d81
+      companion_revision: b37d52fca4ab64ef759d4952b13757f3b23cb20b
+      implementation_guidance_revision: 546babc471130af751ed3a117a0d476f5e0a7e03
+      target_policy: source-informed
+      evidence_freshness: retained
+      residual_state: finding
+      finding_count: 2
+    prior_baseline:
+      rahp_version: v1.2
+      assessed_on: '2026-08-22'
+      issue: 35
+    assurance_delta:
+      disposition: retained
+      summary: The two consolidated composition obligations remain open; v1.5 adds explicit current posture and evidence-lineage semantics without promoting fork-local guidance to normative authority.
+      finding_lineage:
+        F-001: unchanged
+        F-002: unchanged
+
+reassessment_queue:
+  - issue: 18
+    target: OpenVTC/openvtc Cypress
+    status: review-required
+    reason: Full implementation assessment requires refreshed target evidence and runtime-sensitive resilience evidence before a current v1.5 disposition can be asserted.
+  - issue: 19
+    target: sankarshanmukhopadhyay/agent-registry-protocol v0.9.5
+    status: review-required
+    reason: Retain as a mature-target regression case; unresolved resilience assurance evidence must be re-evaluated under v1.5 before disposition.
+  - issue: 21
+    target: OpenVTC/verifiable-trust-infrastructure
+    status: review-required
+    reason: Repository-change assessment should use the latest coalesced target revision and current evidence before disposition.
