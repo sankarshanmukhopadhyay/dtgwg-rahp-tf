@@ -31,18 +31,29 @@ def validate(doc, schema_name: str) -> list[str]:
 
 
 def main() -> int:
-    evidence = load_yaml("generic-evidence-manifest.yaml")
+    baseline_evidence = load_yaml("generic-evidence-manifest.yaml")
+    current_evidence = load_yaml("generic-evidence-manifest-current.yaml")
     freshness = load_yaml("generic-assurance-freshness.yaml")
     delta = load_yaml("generic-assurance-delta.yaml")
     errors: list[str] = []
 
-    errors.extend(validate(evidence, "evidence-manifest.schema.json"))
+    for evidence in (baseline_evidence, current_evidence):
+        errors.extend(validate(evidence, "evidence-manifest.schema.json"))
     errors.extend(validate(freshness, "assurance-freshness.schema.json"))
     errors.extend(validate(delta, "assurance-delta.schema.json"))
 
-    evidence_id = evidence.get("evidence_id")
-    if evidence_id not in (freshness.get("evidence_ids") or []):
-        errors.append("freshness record does not reference the generic evidence manifest")
+    baseline_id = baseline_evidence.get("evidence_id")
+    current_id = current_evidence.get("evidence_id")
+    if baseline_id not in (freshness.get("evidence_ids") or []):
+        errors.append("freshness record does not reference baseline evidence")
+    if baseline_id not in (current_evidence.get("supersedes") or []):
+        errors.append("current evidence does not supersede baseline evidence")
+
+    delta_evidence = delta.get("evidence") or {}
+    if current_id not in (delta_evidence.get("introduced") or []):
+        errors.append("delta does not introduce current evidence")
+    if baseline_id not in (delta_evidence.get("resolved") or []):
+        errors.append("delta does not retire baseline evidence")
 
     expected_status, expected_retest = freshness_from_basis(freshness.get("basis") or [])
     if freshness.get("status") != expected_status:
@@ -63,18 +74,17 @@ def main() -> int:
     if bool(delta.get("material_change")) != bool(changed):
         errors.append("material_change must reflect substantive finding/control/evidence/conclusion change")
 
-    if delta.get("freshness") == "current" and freshness.get("status") in {"stale", "retest-required", "indeterminate"}:
-        # These fixtures describe consecutive lifecycle moments: freshness first flags the old run,
-        # while the delta records the newly completed current run. Enforce that the run identities differ.
-        if freshness.get("assessment_run_id") == delta.get("current_run_id"):
-            errors.append("a run cannot be both current in delta and stale/retest-required in freshness")
+    if freshness.get("assessment_run_id") != delta.get("baseline_run_id"):
+        errors.append("freshness must evaluate the baseline run used by the delta")
+    if freshness.get("assessment_run_id") == delta.get("current_run_id"):
+        errors.append("a run cannot be both invalidated baseline and completed current run")
 
     if errors:
         for error in errors:
             print(f"ERROR: {error}")
         return 1
 
-    print("Portable evidence/freshness/delta validation passed: provenance, conservative freshness and transition semantics satisfied.")
+    print("Portable evidence/freshness/delta validation passed: provenance succession, conservative freshness and transition semantics satisfied.")
     return 0
 
 
